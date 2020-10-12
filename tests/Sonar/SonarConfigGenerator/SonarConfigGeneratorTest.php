@@ -42,6 +42,8 @@ final class SonarConfigGeneratorTest extends AbstractKernelTestCase
     public function provideData(): Iterator
     {
         yield [[], __DIR__ . '/Fixture/expected_config.txt'];
-        yield [['sonar.extra' => 'extra_values'], __DIR__ . '/Fixture/expected_modified_original_config.txt'];
+        yield [[
+            'sonar.extra' => 'extra_values',
+        ], __DIR__ . '/Fixture/expected_modified_original_config.txt'];
     }
 }
