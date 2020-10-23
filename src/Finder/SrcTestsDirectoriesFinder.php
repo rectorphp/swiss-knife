@@ -16,11 +16,13 @@ final class SrcTestsDirectoriesFinder
 {
     /**
      * @see https://regex101.com/r/KkSmFS/1
+     * @var string
      */
     private const SRC_ONLY_REGEX = '#\bsrc\b#';
 
     /**
      * @see https://regex101.com/r/wzPJ72/2
+     * @var string
      */
     private const TESTS_ONLY_REGEX = '#\btests\b#';
 
@@ -37,9 +39,11 @@ final class SrcTestsDirectoriesFinder
     /**
      * @param string[] $directories
      */
-    public function findSrcAndTestsDirectories(array $directories): ?SrcAndTestsDirectories
-    {
-        $fileInfos = $this->findInDirectories($directories);
+    public function findSrcAndTestsDirectories(
+        array $directories,
+        bool $allowTestingDirectory = false
+    ): ?SrcAndTestsDirectories {
+        $fileInfos = $this->findInDirectories($directories, $allowTestingDirectory);
         if ($fileInfos === []) {
             return null;
         }
@@ -64,7 +68,7 @@ final class SrcTestsDirectoriesFinder
     /**
      * @return SmartFileInfo[]
      */
-    private function findInDirectories(array $directories): array
+    private function findInDirectories(array $directories, bool $allowTestingDirectory = false): array
     {
         $existingDirectories = $this->filterExistingDirectories($directories);
         if ($existingDirectories === []) {
@@ -75,22 +79,20 @@ final class SrcTestsDirectoriesFinder
             ->directories()
             ->name('#(src|tests)$#')
             ->exclude('Fixture')
-            ->in($existingDirectories)
+            ->in($existingDirectories);
+
+        if (! $allowTestingDirectory) {
             // exclude tests/src directory nested in /tests, e.g. real project for testing
-            ->filter(function (SplFileInfo $fileInfo) {
+            $finder->filter(function (SplFileInfo $fileInfo) {
                 $srcCounter = count(Strings::matchAll($fileInfo->getPathname(), self::SRC_ONLY_REGEX));
                 $testsCounter = count(Strings::matchAll($fileInfo->getPathname(), self::TESTS_ONLY_REGEX));
 
                 if ($srcCounter > 1) {
                     return false;
                 }
-
-                if ($testsCounter > 1) {
-                    return false;
-                }
-
-                return true;
+                return $testsCounter <= 1;
             });
+        }
 
         return $this->finderSanitizer->sanitize($finder);
     }
