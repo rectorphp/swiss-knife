@@ -6,6 +6,7 @@ namespace Migrify\EasyCI\Finder;
 
 use Migrify\EasyCI\ValueObject\SrcAndTestsDirectories;
 use Nette\Utils\Strings;
+use SplFileInfo;
 use Symfony\Component\Finder\Finder;
 use Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
@@ -13,6 +14,16 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class SrcTestsDirectoriesFinder
 {
+    /**
+     * @see https://regex101.com/r/KkSmFS/1
+     */
+    private const SRC_ONLY_REGEX = '#\bsrc\b#';
+
+    /**
+     * @see https://regex101.com/r/wzPJ72/2
+     */
+    private const TESTS_ONLY_REGEX = '#\btests\b#';
+
     /**
      * @var FinderSanitizer
      */
@@ -64,7 +75,22 @@ final class SrcTestsDirectoriesFinder
             ->directories()
             ->name('#(src|tests)$#')
             ->exclude('Fixture')
-            ->in($existingDirectories);
+            ->in($existingDirectories)
+            // exclude tests/src directory nested in /tests, e.g. real project for testing
+            ->filter(function (SplFileInfo $fileInfo) {
+                $srcCounter = count(Strings::matchAll($fileInfo->getPathname(), self::SRC_ONLY_REGEX));
+                $testsCounter = count(Strings::matchAll($fileInfo->getPathname(), self::TESTS_ONLY_REGEX));
+
+                if ($srcCounter > 1) {
+                    return false;
+                }
+
+                if ($testsCounter > 1) {
+                    return false;
+                }
+
+                return true;
+            });
 
         return $this->finderSanitizer->sanitize($finder);
     }
