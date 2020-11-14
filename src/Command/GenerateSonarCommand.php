@@ -6,32 +6,19 @@ namespace Migrify\EasyCI\Command;
 
 use Migrify\EasyCI\Sonar\SonarConfigGenerator;
 use Migrify\EasyCI\ValueObject\Option;
-use Symfony\Component\Console\Command\Command;
+use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\SmartFileInfo;
-use Symplify\SmartFileSystem\SmartFileSystem;
 
-final class GenerateSonarCommand extends Command
+final class GenerateSonarCommand extends AbstractMigrifyCommand
 {
     /**
      * @var string
      */
     private const SONAR_CONFIG_FILE_NAME = 'sonar-project.properties';
-
-    /**
-     * @var SmartFileSystem
-     */
-    private $smartFileSystem;
-
-    /**
-     * @var SymfonyStyle
-     */
-    private $symfonyStyle;
 
     /**
      * @var string[]
@@ -53,14 +40,8 @@ final class GenerateSonarCommand extends Command
      */
     private $sonarOtherParameters = [];
 
-    public function __construct(
-        SymfonyStyle $symfonyStyle,
-        SmartFileSystem $smartFileSystem,
-        ParameterProvider $parameterProvider,
-        SonarConfigGenerator $sonarConfigGenerator
-    ) {
-        $this->symfonyStyle = $symfonyStyle;
-        $this->smartFileSystem = $smartFileSystem;
+    public function __construct(ParameterProvider $parameterProvider, SonarConfigGenerator $sonarConfigGenerator)
+    {
         $this->sonarDirectories = (array) $parameterProvider->provideParameter(Option::SONAR_DIRECTORIES);
         $this->sonarOtherParameters = (array) $parameterProvider->provideParameter(Option::SONAR_OTHER_PARAMETERS);
         $this->sonarConfigGenerator = $sonarConfigGenerator;
@@ -72,8 +53,6 @@ final class GenerateSonarCommand extends Command
 
     protected function configure(): void
     {
-        $this->setName(CommandNaming::classToName(self::class));
-
         $description = sprintf('Generate "%s" path', self::SONAR_CONFIG_FILE_NAME);
         $this->setDescription($description);
     }

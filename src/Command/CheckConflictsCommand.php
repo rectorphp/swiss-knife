@@ -5,48 +5,29 @@ declare(strict_types=1);
 namespace Migrify\EasyCI\Command;
 
 use Migrify\EasyCI\Git\ConflictResolver;
+use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
 use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
-use Symplify\SmartFileSystem\Finder\SmartFinder;
 
-final class CheckConflictsCommand extends Command
+final class CheckConflictsCommand extends AbstractMigrifyCommand
 {
-    /**
-     * @var SymfonyStyle
-     */
-    private $symfonyStyle;
-
     /**
      * @var ConflictResolver
      */
     private $conflictResolver;
 
-    /**
-     * @var SmartFinder
-     */
-    private $smartFinder;
-
-    public function __construct(
-        SymfonyStyle $symfonyStyle,
-        ConflictResolver $conflictResolver,
-        SmartFinder $smartFinder
-    ) {
-        $this->symfonyStyle = $symfonyStyle;
+    public function __construct(ConflictResolver $conflictResolver)
+    {
         $this->conflictResolver = $conflictResolver;
-        $this->smartFinder = $smartFinder;
 
         parent::__construct();
     }
 
     protected function configure(): void
     {
-        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Check files for missed git conflicts');
         $this->addArgument(
             MigrifyOption::SOURCES,
