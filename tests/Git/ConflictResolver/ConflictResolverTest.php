@@ -7,7 +7,7 @@ namespace Migrify\EasyCI\Tests\Git\ConflictResolver;
 use Iterator;
 use Migrify\EasyCI\Git\ConflictResolver;
 use Migrify\EasyCI\HttpKernel\EasyCIKernel;
-use Symplify\PackageBuilder\Tests\AbstractKernelTestCase;
+use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class ConflictResolverTest extends AbstractKernelTestCase

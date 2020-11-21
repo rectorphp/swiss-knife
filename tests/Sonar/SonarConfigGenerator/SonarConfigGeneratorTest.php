@@ -9,7 +9,7 @@ use Migrify\EasyCI\HttpKernel\EasyCIKernel;
 use Migrify\EasyCI\Sonar\SonarConfigGenerator;
 use Migrify\EasyCI\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Symplify\PackageBuilder\Tests\AbstractKernelTestCase;
+use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 
 final class SonarConfigGeneratorTest extends AbstractKernelTestCase
 {

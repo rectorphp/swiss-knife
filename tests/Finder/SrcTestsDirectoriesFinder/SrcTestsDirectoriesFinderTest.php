@@ -7,7 +7,7 @@ namespace Migrify\EasyCI\Tests\Finder\SrcTestsDirectoriesFinder;
 use Migrify\EasyCI\Finder\SrcTestsDirectoriesFinder;
 use Migrify\EasyCI\HttpKernel\EasyCIKernel;
 use Migrify\EasyCI\ValueObject\SrcAndTestsDirectories;
-use Symplify\PackageBuilder\Tests\AbstractKernelTestCase;
+use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 
 final class SrcTestsDirectoriesFinderTest extends AbstractKernelTestCase
 {

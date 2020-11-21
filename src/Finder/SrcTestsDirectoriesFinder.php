@@ -75,8 +75,8 @@ final class SrcTestsDirectoriesFinder
             return [];
         }
 
-        $finder = (new Finder())
-            ->directories()
+        $finder = new Finder();
+        $finder->directories()
             ->name('#(src|tests)$#')
             ->exclude('Fixture')
             ->in($existingDirectories);
