@@ -36,7 +36,7 @@ final class SonarConfigGeneratorTest extends AbstractKernelTestCase
     public function test(array $extraParameters, string $expectedSonartConfig): void
     {
         $sonarConfigContent = $this->sonarConfigGenerator->generate([__DIR__ . '/Fixture'], $extraParameters);
-        $this->assertStringEqualsFile($expectedSonartConfig, $sonarConfigContent);
+        $this->assertStringMatchesFormatFile($expectedSonartConfig, $sonarConfigContent);
     }
 
     public function provideData(): Iterator

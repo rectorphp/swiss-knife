@@ -2,4 +2,4 @@ sonar.organization=some_organization
 
 sonar.projectKey=some_project
 
-sonar.sources=packages/easy-ci/tests/Sonar/SonarConfigGenerator/Fixture/src
+sonar.sources=%sests/Sonar/SonarConfigGenerator/Fixture/src
