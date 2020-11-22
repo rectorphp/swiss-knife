@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\Sonar;
+namespace Symplify\EasyCI\Sonar;
 
-use Migrify\EasyCI\Finder\SrcTestsDirectoriesFinder;
-use Migrify\EasyCI\Printer\SonarConfigDataPrinter;
-use Migrify\EasyCI\ValueObject\Option;
-use Migrify\EasyCI\ValueObject\SonarConfigKey;
-use Migrify\EasyCI\ValueObject\SrcAndTestsDirectories;
+use Symplify\EasyCI\Finder\SrcTestsDirectoriesFinder;
+use Symplify\EasyCI\Printer\SonarConfigDataPrinter;
+use Symplify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\ValueObject\SonarConfigKey;
+use Symplify\EasyCI\ValueObject\SrcAndTestsDirectories;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 /**
- * @see \Migrify\EasyCI\Tests\Sonar\SonarConfigGenerator\SonarConfigGeneratorTest
+ * @see \Symplify\EasyCI\Tests\Sonar\SonarConfigGenerator\SonarConfigGeneratorTest
  */
 final class SonarConfigGenerator
 {

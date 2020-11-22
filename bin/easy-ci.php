@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Migrify\EasyCI\HttpKernel\EasyCIKernel;
 use Migrify\MigrifyKernel\Bootstrap\KernelBootAndApplicationRun;
+use Symplify\EasyCI\HttpKernel\EasyCIKernel;
 
 $possibleAutoloadPaths = [
     // dependency

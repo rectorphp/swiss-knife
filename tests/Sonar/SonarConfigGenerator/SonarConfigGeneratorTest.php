@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\Tests\Sonar\SonarConfigGenerator;
+namespace Symplify\EasyCI\Tests\Sonar\SonarConfigGenerator;
 
 use Iterator;
-use Migrify\EasyCI\HttpKernel\EasyCIKernel;
-use Migrify\EasyCI\Sonar\SonarConfigGenerator;
-use Migrify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\HttpKernel\EasyCIKernel;
+use Symplify\EasyCI\Sonar\SonarConfigGenerator;
+use Symplify\EasyCI\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\Command;
+namespace Symplify\EasyCI\Command;
 
-use Migrify\EasyCI\Sonar\SonarConfigGenerator;
-use Migrify\EasyCI\ValueObject\Option;
-use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symplify\EasyCI\Sonar\SonarConfigGenerator;
+use Symplify\EasyCI\ValueObject\Option;
+use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class GenerateSonarCommand extends AbstractMigrifyCommand
+final class GenerateSonarCommand extends AbstractSymplifyCommand
 {
     /**
      * @var string

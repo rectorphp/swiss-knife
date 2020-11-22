@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\Finder;
+namespace Symplify\EasyCI\Finder;
 
-use Migrify\EasyCI\ValueObject\SrcAndTestsDirectories;
 use Nette\Utils\Strings;
 use SplFileInfo;
 use Symfony\Component\Finder\Finder;
+use Symplify\EasyCI\ValueObject\SrcAndTestsDirectories;
 use Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\SmartFileInfo;

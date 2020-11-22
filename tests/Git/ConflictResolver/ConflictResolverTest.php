@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\Tests\Git\ConflictResolver;
+namespace Symplify\EasyCI\Tests\Git\ConflictResolver;
 
 use Iterator;
-use Migrify\EasyCI\Git\ConflictResolver;
-use Migrify\EasyCI\HttpKernel\EasyCIKernel;
+use Symplify\EasyCI\Git\ConflictResolver;
+use Symplify\EasyCI\HttpKernel\EasyCIKernel;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 use Symplify\SmartFileSystem\SmartFileInfo;
 

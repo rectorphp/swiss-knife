@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\Printer;
+namespace Symplify\EasyCI\Printer;
 
 use Migrify\MigrifyKernel\Exception\ShouldNotHappenException;
 

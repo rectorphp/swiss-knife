@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Migrify\EasyCI\ValueObject\Option;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCI\ValueObject\Option;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
@@ -21,6 +21,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Migrify\EasyCI\\', __DIR__ . '/../src')
+    $services->load('Symplify\EasyCI\\', __DIR__ . '/../src')
         ->exclude([__DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
 };

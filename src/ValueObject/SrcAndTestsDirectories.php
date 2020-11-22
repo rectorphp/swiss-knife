@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\EasyCI\ValueObject;
+namespace Symplify\EasyCI\ValueObject;
 
 use Symplify\SmartFileSystem\SmartFileInfo;
 
