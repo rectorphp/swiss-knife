@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\HttpKernel;
+namespace Symplify\EasyCI\Kernel;
 
 use Psr\Container\ContainerInterface;
 use Symplify\Astral\ValueObject\AstralConfig;
