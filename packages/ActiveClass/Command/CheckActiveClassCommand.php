@@ -1,85 +1,77 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\ActiveClass\Command;
+declare(strict_types=1);
 
-use EasyCI20220115\Symfony\Component\Console\Command\Command;
-use EasyCI20220115\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220115\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220115\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220115\Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter;
-use EasyCI20220115\Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder;
-use EasyCI20220115\Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter;
-use EasyCI20220115\Symplify\EasyCI\ActiveClass\UseImportsResolver;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220115\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use EasyCI20220115\Symplify\SmartFileSystem\Finder\SmartFinder;
-final class CheckActiveClassCommand extends \EasyCI20220115\Symfony\Component\Console\Command\Command
+namespace Symplify\EasyCI\ActiveClass\Command;
+
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter;
+use Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder;
+use Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter;
+use Symplify\EasyCI\ActiveClass\UseImportsResolver;
+use Symplify\EasyCI\ValueObject\Option;
+use Symplify\PackageBuilder\Console\Command\CommandNaming;
+use Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Symplify\SmartFileSystem\Finder\SmartFinder;
+
+final class CheckActiveClassCommand extends Command
 {
-    /**
-     * @var \Symplify\SmartFileSystem\Finder\SmartFinder
-     */
-    private $smartFinder;
-    /**
-     * @var \Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder
-     */
-    private $classNamesFinder;
-    /**
-     * @var \Symplify\EasyCI\ActiveClass\UseImportsResolver
-     */
-    private $useImportsResolver;
-    /**
-     * @var \Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter
-     */
-    private $possiblyUnusedClassesFilter;
-    /**
-     * @var \Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter
-     */
-    private $unusedClassReporter;
-    /**
-     * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
-     */
-    private $parameterProvider;
-    /**
-     * @var \Symfony\Component\Console\Style\SymfonyStyle
-     */
-    private $symfonyStyle;
-    public function __construct(\EasyCI20220115\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \EasyCI20220115\Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder $classNamesFinder, \EasyCI20220115\Symplify\EasyCI\ActiveClass\UseImportsResolver $useImportsResolver, \EasyCI20220115\Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter $possiblyUnusedClassesFilter, \EasyCI20220115\Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter $unusedClassReporter, \EasyCI20220115\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
-    {
-        $this->smartFinder = $smartFinder;
-        $this->classNamesFinder = $classNamesFinder;
-        $this->useImportsResolver = $useImportsResolver;
-        $this->possiblyUnusedClassesFilter = $possiblyUnusedClassesFilter;
-        $this->unusedClassReporter = $unusedClassReporter;
-        $this->parameterProvider = $parameterProvider;
-        $this->symfonyStyle = $symfonyStyle;
+    public function __construct(
+        private SmartFinder $smartFinder,
+        private ClassNamesFinder $classNamesFinder,
+        private UseImportsResolver $useImportsResolver,
+        private PossiblyUnusedClassesFilter $possiblyUnusedClassesFilter,
+        private UnusedClassReporter $unusedClassReporter,
+        private ParameterProvider $parameterProvider,
+        private SymfonyStyle $symfonyStyle
+    ) {
         parent::__construct();
     }
-    protected function configure() : void
+
+    protected function configure(): void
     {
-        $this->setName(\EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Check classes that are not used in any config and in the code');
-        $this->addArgument(\EasyCI20220115\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'One or more paths with templates');
+
+        $this->addArgument(
+            Option::SOURCES,
+            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
+            'One or more paths with templates'
+        );
     }
-    protected function execute(\EasyCI20220115\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220115\Symfony\Component\Console\Output\OutputInterface $output) : int
+
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $excludedCheckPaths = $this->parameterProvider->provideArrayParameter(\EasyCI20220115\Symplify\EasyCI\ValueObject\Option::EXCLUDED_CHECK_PATHS);
-        $sources = (array) $input->getArgument(\EasyCI20220115\Symplify\EasyCI\ValueObject\Option::SOURCES);
+        $excludedCheckPaths = $this->parameterProvider->provideArrayParameter(Option::EXCLUDED_CHECK_PATHS);
+
+        $sources = (array) $input->getArgument(Option::SOURCES);
         $phpFileInfos = $this->smartFinder->find($sources, '*.php', $excludedCheckPaths);
-        $phpFilesCount = \count($phpFileInfos);
+
+        $phpFilesCount = count($phpFileInfos);
         $this->symfonyStyle->progressStart($phpFilesCount);
+
         $usedNames = [];
         foreach ($phpFileInfos as $phpFileInfo) {
             $currentUsedNames = $this->useImportsResolver->resolve($phpFileInfo);
-            $usedNames = \array_merge($usedNames, $currentUsedNames);
+            $usedNames = array_merge($usedNames, $currentUsedNames);
+
             $this->symfonyStyle->progressAdvance();
         }
-        $usedNames = \array_unique($usedNames);
-        \sort($usedNames);
+
+        $usedNames = array_unique($usedNames);
+        sort($usedNames);
+
         $existingFilesWithClasses = $this->classNamesFinder->resolveClassNamesToCheck($phpFileInfos);
-        $possiblyUnusedFilesWithClasses = $this->possiblyUnusedClassesFilter->filter($existingFilesWithClasses, $usedNames);
+
+        $possiblyUnusedFilesWithClasses = $this->possiblyUnusedClassesFilter->filter(
+            $existingFilesWithClasses,
+            $usedNames
+        );
+
         return $this->unusedClassReporter->reportResult($possiblyUnusedFilesWithClasses, $existingFilesWithClasses);
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject;
+declare(strict_types=1);
+
+namespace Symplify\EasyCI\StaticDetector\ValueObject;
 
 final class StaticDetectorAttributeKey
 {

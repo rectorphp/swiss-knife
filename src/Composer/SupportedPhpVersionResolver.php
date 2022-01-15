@@ -1,70 +1,69 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Composer;
+declare(strict_types=1);
 
-use EasyCI20220115\Composer\Semver\Semver;
-use EasyCI20220115\Composer\Semver\VersionParser;
+namespace Symplify\EasyCI\Composer;
+
+use Composer\Semver\Semver;
+use Composer\Semver\VersionParser;
 use DateTimeInterface;
-use EasyCI20220115\Nette\Utils\DateTime;
-use EasyCI20220115\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use EasyCI20220115\Symplify\EasyCI\Exception\ShouldNotHappenException;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\PhpVersionList;
+use Nette\Utils\DateTime;
+use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use Symplify\EasyCI\Exception\ShouldNotHappenException;
+use Symplify\EasyCI\ValueObject\PhpVersionList;
+
 /**
  * @see \Symplify\EasyCI\Tests\Composer\SupportedPhpVersionResolverTest
  */
 final class SupportedPhpVersionResolver
 {
-    /**
-     * @var \Composer\Semver\VersionParser
-     */
-    private $versionParser;
-    /**
-     * @var \Composer\Semver\Semver
-     */
-    private $semver;
-    /**
-     * @var \Symplify\ComposerJsonManipulator\ComposerJsonFactory
-     */
-    private $composerJsonFactory;
-    public function __construct(\EasyCI20220115\Composer\Semver\VersionParser $versionParser, \EasyCI20220115\Composer\Semver\Semver $semver, \EasyCI20220115\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory)
-    {
-        $this->versionParser = $versionParser;
-        $this->semver = $semver;
-        $this->composerJsonFactory = $composerJsonFactory;
+    public function __construct(
+        private VersionParser $versionParser,
+        private Semver $semver,
+        private ComposerJsonFactory $composerJsonFactory
+    ) {
     }
+
     /**
      * @return string[]
      */
-    public function resolveFromComposerJsonFilePath(string $composerJsonFilePath) : array
+    public function resolveFromComposerJsonFilePath(string $composerJsonFilePath): array
     {
         $composerJson = $this->composerJsonFactory->createFromFilePath($composerJsonFilePath);
+
         $requirePhpVersion = $composerJson->getRequirePhpVersion();
         if ($requirePhpVersion === null) {
-            $message = \sprintf('PHP version was not found in "%s"', $composerJsonFilePath);
-            throw new \EasyCI20220115\Symplify\EasyCI\Exception\ShouldNotHappenException($message);
+            $message = sprintf('PHP version was not found in "%s"', $composerJsonFilePath);
+            throw new ShouldNotHappenException($message);
         }
-        return $this->resolveFromConstraints($requirePhpVersion, \EasyCI20220115\Nette\Utils\DateTime::from('now'));
+
+        return $this->resolveFromConstraints($requirePhpVersion, DateTime::from('now'));
     }
+
     /**
      * @return string[]
      */
-    public function resolveFromConstraints(string $phpVersionConstraints, \DateTimeInterface $todayDateTime) : array
+    public function resolveFromConstraints(string $phpVersionConstraints, DateTimeInterface $todayDateTime): array
     {
         // to validate version
         $this->versionParser->parseConstraints($phpVersionConstraints);
+
         $supportedPhpVersion = [];
-        foreach (\EasyCI20220115\Symplify\EasyCI\ValueObject\PhpVersionList::VERSIONS_BY_RELEASE_DATE as $releaseDate => $phpVersion) {
-            if (!$this->semver->satisfies($phpVersion, $phpVersionConstraints)) {
+
+        foreach (PhpVersionList::VERSIONS_BY_RELEASE_DATE as $releaseDate => $phpVersion) {
+            if (! $this->semver->satisfies($phpVersion, $phpVersionConstraints)) {
                 continue;
             }
+
             // is in the future?
-            $relaseDateTime = \EasyCI20220115\Nette\Utils\DateTime::from($releaseDate);
+            $relaseDateTime = DateTime::from($releaseDate);
             if ($relaseDateTime > $todayDateTime) {
                 continue;
             }
+
             $supportedPhpVersion[] = $phpVersion;
         }
+
         return $supportedPhpVersion;
     }
 }
