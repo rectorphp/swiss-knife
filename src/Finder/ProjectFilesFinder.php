@@ -1,29 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\Finder;
 
-namespace Symplify\EasyCI\Finder;
-
-use Symplify\SmartFileSystem\Finder\SmartFinder;
-use Symplify\SmartFileSystem\SmartFileInfo;
-
+use EasyCI20220115\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
 final class ProjectFilesFinder
 {
-    public function __construct(
-        private SmartFinder $smartFinder
-    ) {
+    /**
+     * @var \Symplify\SmartFileSystem\Finder\SmartFinder
+     */
+    private $smartFinder;
+    public function __construct(\EasyCI20220115\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
+    {
+        $this->smartFinder = $smartFinder;
     }
-
     /**
      * @return SmartFileInfo[]
      */
-    public function find(array $sources): array
+    public function find(array $sources) : array
     {
         $paths = [];
         foreach ($sources as $source) {
-            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
+            $paths[] = \getcwd() . \DIRECTORY_SEPARATOR . $source;
         }
-
         return $this->smartFinder->find($paths, '*');
     }
 }

@@ -1,53 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\Command;
 
-namespace Symplify\EasyCI\Command;
-
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symplify\EasyCI\Git\ConflictResolver;
-use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\PackageBuilder\Console\Command\CommandNaming;
-use Symplify\PackageBuilder\ValueObject\Option;
-
-final class CheckConflictsCommand extends AbstractSymplifyCommand
+use EasyCI20220115\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220115\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220115\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220115\Symplify\EasyCI\Git\ConflictResolver;
+use EasyCI20220115\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220115\Symplify\PackageBuilder\ValueObject\Option;
+final class CheckConflictsCommand extends \EasyCI20220115\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
-    public function __construct(
-        private ConflictResolver $conflictResolver
-    ) {
+    /**
+     * @var \Symplify\EasyCI\Git\ConflictResolver
+     */
+    private $conflictResolver;
+    public function __construct(\EasyCI20220115\Symplify\EasyCI\Git\ConflictResolver $conflictResolver)
+    {
+        $this->conflictResolver = $conflictResolver;
         parent::__construct();
     }
-
-    protected function configure(): void
+    protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
-
+        $this->setName(\EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Check files for missed git conflicts');
-        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
+        $this->addArgument(\EasyCI20220115\Symplify\PackageBuilder\ValueObject\Option::SOURCES, \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to project');
     }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(\EasyCI20220115\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220115\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $source */
-        $source = (array) $input->getArgument(Option::SOURCES);
-
+        $source = (array) $input->getArgument(\EasyCI20220115\Symplify\PackageBuilder\ValueObject\Option::SOURCES);
         $fileInfos = $this->smartFinder->find($source, '*', ['vendor']);
-
         $conflictsCountByFilePath = $this->conflictResolver->extractFromFileInfos($fileInfos);
         if ($conflictsCountByFilePath === []) {
-            $message = sprintf('No conflicts found in %d files', count($fileInfos));
+            $message = \sprintf('No conflicts found in %d files', \count($fileInfos));
             $this->symfonyStyle->success($message);
-
             return self::SUCCESS;
         }
-
         foreach ($conflictsCountByFilePath as $file => $conflictCount) {
-            $message = sprintf('File "%s" contains %d unresolved conflicts', $file, $conflictCount);
+            $message = \sprintf('File "%s" contains %d unresolved conflicts', $file, $conflictCount);
             $this->symfonyStyle->error($message);
         }
-
         return self::FAILURE;
     }
 }
