@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115;
 
-use Symplify\EasyCI\Kernel\EasyCIKernel;
-use Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
-
+use EasyCI20220115\Symplify\EasyCI\Kernel\EasyCIKernel;
+use EasyCI20220115\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -13,20 +13,16 @@ $possibleAutoloadPaths = [
     // monorepo
     __DIR__ . '/../../../vendor/autoload.php',
 ];
-
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
-    if (file_exists($possibleAutoloadPath)) {
+    if (\file_exists($possibleAutoloadPath)) {
         require_once $possibleAutoloadPath;
         break;
     }
 }
-
 $extraConfigs = [];
-
-$easyCIFilePath = getcwd() . DIRECTORY_SEPARATOR . 'easy-ci.php';
-if (file_exists($easyCIFilePath)) {
+$easyCIFilePath = \getcwd() . \DIRECTORY_SEPARATOR . 'easy-ci.php';
+if (\file_exists($easyCIFilePath)) {
     $extraConfigs[] = $easyCIFilePath;
 }
-
-$kernelBootAndApplicationRun = new KernelBootAndApplicationRun(EasyCIKernel::class, $extraConfigs);
+$kernelBootAndApplicationRun = new \EasyCI20220115\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\EasyCI20220115\Symplify\EasyCI\Kernel\EasyCIKernel::class, $extraConfigs);
 $kernelBootAndApplicationRun->run();

@@ -1,70 +1,58 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeVisitor;
 
-namespace Symplify\EasyCI\ActiveClass\NodeVisitor;
-
-use PhpParser\Node;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Stmt\ClassMethod;
-use PhpParser\Node\Stmt\Namespace_;
-use PhpParser\NodeVisitorAbstract;
-use Symplify\Astral\ValueObject\AttributeKey;
-
-final class UsedClassNodeVisitor extends NodeVisitorAbstract
+use EasyCI20220115\PhpParser\Node;
+use EasyCI20220115\PhpParser\Node\Name;
+use EasyCI20220115\PhpParser\Node\Stmt;
+use EasyCI20220115\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220115\PhpParser\Node\Stmt\Namespace_;
+use EasyCI20220115\PhpParser\NodeVisitorAbstract;
+use EasyCI20220115\Symplify\Astral\ValueObject\AttributeKey;
+final class UsedClassNodeVisitor extends \EasyCI20220115\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var string[]
      */
-    private array $usedNames = [];
-
+    private $usedNames = [];
     /**
      * @param Stmt[] $nodes
      * @return Stmt[]
      */
-    public function beforeTraverse(array $nodes): array
+    public function beforeTraverse(array $nodes) : ?array
     {
         $this->usedNames = [];
         return $nodes;
     }
-
-    public function enterNode(Node $node)
+    public function enterNode(\EasyCI20220115\PhpParser\Node $node)
     {
-        if (! $node instanceof Name) {
+        if (!$node instanceof \EasyCI20220115\PhpParser\Node\Name) {
             return null;
         }
-
         if ($this->isNonNameNode($node)) {
             return null;
         }
-
         // class names itself are skipped automatically, as they are Identifier node
-
         $this->usedNames[] = $node->toString();
-
         return null;
     }
-
     /**
      * @return string[]
      */
-    public function getUsedNames(): array
+    public function getUsedNames() : array
     {
-        $uniqueUsedNames = array_unique($this->usedNames);
-        sort($uniqueUsedNames);
-
+        $uniqueUsedNames = \array_unique($this->usedNames);
+        \sort($uniqueUsedNames);
         return $uniqueUsedNames;
     }
-
-    private function isNonNameNode(Name $name): bool
+    private function isNonNameNode(\EasyCI20220115\PhpParser\Node\Name $name) : bool
     {
         // skip nodes that are not part of class names
-        $parent = $name->getAttribute(AttributeKey::PARENT);
-        if ($parent instanceof Namespace_) {
-            return true;
+        $parent = $name->getAttribute(\EasyCI20220115\Symplify\Astral\ValueObject\AttributeKey::PARENT);
+        if ($parent instanceof \EasyCI20220115\PhpParser\Node\Stmt\Namespace_) {
+            return \true;
         }
-
-        return $parent instanceof ClassMethod;
+        return $parent instanceof \EasyCI20220115\PhpParser\Node\Stmt\ClassMethod;
     }
 }

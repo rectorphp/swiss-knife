@@ -1,81 +1,65 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115;
 
-use Composer\Semver\Semver;
-
-use Composer\Semver\VersionParser;
-use Nette\Neon\Decoder;
-use PhpParser\NodeFinder;
-use PhpParser\Parser;
-use PhpParser\ParserFactory;
-use PhpParser\PrettyPrinter\Standard;
-use Symfony\Component\Console\Application;
+use EasyCI20220115\Composer\Semver\Semver;
+use EasyCI20220115\Composer\Semver\VersionParser;
+use EasyCI20220115\Nette\Neon\Decoder;
+use EasyCI20220115\PhpParser\NodeFinder;
+use EasyCI20220115\PhpParser\Parser;
+use EasyCI20220115\PhpParser\ParserFactory;
+use EasyCI20220115\PhpParser\PrettyPrinter\Standard;
+use EasyCI20220115\Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\EasyCI\ActiveClass\Command\CheckActiveClassCommand;
-use Symplify\EasyCI\Command\CheckCommentedCodeCommand;
-use Symplify\EasyCI\Command\CheckConflictsCommand;
-use Symplify\EasyCI\Command\CheckLatteTemplateCommand;
-use Symplify\EasyCI\Command\CheckTwigRenderCommand;
-use Symplify\EasyCI\Command\CheckTwigTemplateCommand;
-use Symplify\EasyCI\Command\PhpVersionsJsonCommand;
-use Symplify\EasyCI\Command\ValidateFileLengthCommand;
-use Symplify\EasyCI\Config\Command\CheckConfigCommand;
-use Symplify\EasyCI\Neon\Command\CheckNeonCommand;
-use Symplify\EasyCI\Psr4\Command\CheckFileClassNameCommand;
-use Symplify\EasyCI\Psr4\Command\FindMultiClassesCommand;
-use Symplify\EasyCI\Psr4\Command\GeneratePsr4ToPathsCommand;
-use Symplify\EasyCI\StaticDetector\Command\DetectStaticCommand;
-use Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
-
-return static function (ContainerConfigurator $containerConfigurator): void {
+use EasyCI20220115\Symplify\EasyCI\ActiveClass\Command\CheckActiveClassCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\CheckCommentedCodeCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\CheckConflictsCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\CheckLatteTemplateCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\CheckTwigRenderCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\CheckTwigTemplateCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\PhpVersionsJsonCommand;
+use EasyCI20220115\Symplify\EasyCI\Command\ValidateFileLengthCommand;
+use EasyCI20220115\Symplify\EasyCI\Config\Command\CheckConfigCommand;
+use EasyCI20220115\Symplify\EasyCI\Neon\Command\CheckNeonCommand;
+use EasyCI20220115\Symplify\EasyCI\Psr4\Command\CheckFileClassNameCommand;
+use EasyCI20220115\Symplify\EasyCI\Psr4\Command\FindMultiClassesCommand;
+use EasyCI20220115\Symplify\EasyCI\Psr4\Command\GeneratePsr4ToPathsCommand;
+use EasyCI20220115\Symplify\EasyCI\StaticDetector\Command\DetectStaticCommand;
+use EasyCI20220115\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use function EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/config-packages.php');
-
     $services = $containerConfigurator->services();
-
-    $services->defaults()
-        ->public()
-        ->autowire()
-        ->autoconfigure();
-
-    $services->load('Symplify\EasyCI\\', __DIR__ . '/../src')
-        ->exclude([__DIR__ . '/../src/Kernel', __DIR__ . '/../src/ValueObject']);
-
+    $services->defaults()->public()->autowire()->autoconfigure();
+    $services->load('Symplify\\EasyCI\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Kernel', __DIR__ . '/../src/ValueObject']);
     // console
-    $services->set(Application::class)
-        ->call('addCommands', [[
-            // basic commands
-            service(CheckCommentedCodeCommand::class),
-            service(CheckConflictsCommand::class),
-            service(CheckLatteTemplateCommand::class),
-            service(CheckTwigRenderCommand::class),
-            service(CheckTwigTemplateCommand::class),
-            service(PhpVersionsJsonCommand::class),
-            service(ValidateFileLengthCommand::class),
-            // package commands
-            service(CheckActiveClassCommand::class),
-            service(CheckConfigCommand::class),
-            service(CheckNeonCommand::class),
-            service(CheckFileClassNameCommand::class),
-            service(FindMultiClassesCommand::class),
-            service(GeneratePsr4ToPathsCommand::class),
-            service(DetectStaticCommand::class),
-        ]]);
-
-    $services->set(VersionParser::class);
-    $services->set(Semver::class);
-
+    $services->set(\EasyCI20220115\Symfony\Component\Console\Application::class)->call('addCommands', [[
+        // basic commands
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\CheckCommentedCodeCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\CheckConflictsCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\CheckLatteTemplateCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\CheckTwigRenderCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\CheckTwigTemplateCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\PhpVersionsJsonCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Command\ValidateFileLengthCommand::class),
+        // package commands
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\ActiveClass\Command\CheckActiveClassCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Config\Command\CheckConfigCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Neon\Command\CheckNeonCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Psr4\Command\CheckFileClassNameCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Psr4\Command\FindMultiClassesCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\Psr4\Command\GeneratePsr4ToPathsCommand::class),
+        \EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\Symplify\EasyCI\StaticDetector\Command\DetectStaticCommand::class),
+    ]]);
+    $services->set(\EasyCI20220115\Composer\Semver\VersionParser::class);
+    $services->set(\EasyCI20220115\Composer\Semver\Semver::class);
     // neon
-    $services->set(Decoder::class);
-
+    $services->set(\EasyCI20220115\Nette\Neon\Decoder::class);
     // php-parser
-    $services->set(ParserFactory::class);
-    $services->set(Parser::class)
-        ->factory([service(ParserFactory::class), 'create'])
-        ->args([ParserFactory::PREFER_PHP7]);
-
-    $services->set(Standard::class);
-    $services->set(NodeFinder::class);
-    $services->set(ClassLikeExistenceChecker::class);
+    $services->set(\EasyCI20220115\PhpParser\ParserFactory::class);
+    $services->set(\EasyCI20220115\PhpParser\Parser::class)->factory([\EasyCI20220115\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220115\PhpParser\ParserFactory::class), 'create'])->args([\EasyCI20220115\PhpParser\ParserFactory::PREFER_PHP7]);
+    $services->set(\EasyCI20220115\PhpParser\PrettyPrinter\Standard::class);
+    $services->set(\EasyCI20220115\PhpParser\NodeFinder::class);
+    $services->set(\EasyCI20220115\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker::class);
 };

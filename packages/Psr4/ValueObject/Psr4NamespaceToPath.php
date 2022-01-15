@@ -1,33 +1,36 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Symplify\EasyCI\Psr4\ValueObject;
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\Psr4\ValueObject;
 
 use Stringable;
-
-final class Psr4NamespaceToPath implements Stringable
+final class Psr4NamespaceToPath
 {
-    public function __construct(
-        private string $namespace,
-        private string $path
-    ) {
+    /**
+     * @var string
+     */
+    private $namespace;
+    /**
+     * @var string
+     */
+    private $path;
+    public function __construct(string $namespace, string $path)
+    {
+        $this->namespace = $namespace;
+        $this->path = $path;
     }
-
     /**
      * For array_unique()
      */
-    public function __toString(): string
+    public function __toString() : string
     {
         return $this->namespace . $this->path;
     }
-
-    public function getNamespace(): string
+    public function getNamespace() : string
     {
         return $this->namespace;
     }
-
-    public function getPath(): string
+    public function getPath() : string
     {
         return $this->path;
     }

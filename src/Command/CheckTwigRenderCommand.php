@@ -1,66 +1,65 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\Command;
 
-namespace Symplify\EasyCI\Command;
-
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symplify\EasyCI\Console\Output\MissingTwigTemplatePathReporter;
-use Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
-use Symplify\EasyCI\Template\TemplatePathsResolver;
-use Symplify\EasyCI\Twig\TwigAnalyzer;
-use Symplify\EasyCI\ValueObject\Option;
-use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\PackageBuilder\Console\Command\CommandNaming;
-
-final class CheckTwigRenderCommand extends AbstractSymplifyCommand
+use EasyCI20220115\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220115\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220115\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220115\Symplify\EasyCI\Console\Output\MissingTwigTemplatePathReporter;
+use EasyCI20220115\Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
+use EasyCI20220115\Symplify\EasyCI\Template\TemplatePathsResolver;
+use EasyCI20220115\Symplify\EasyCI\Twig\TwigAnalyzer;
+use EasyCI20220115\Symplify\EasyCI\ValueObject\Option;
+use EasyCI20220115\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class CheckTwigRenderCommand extends \EasyCI20220115\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
-    public function __construct(
-        private TemplatePathsResolver $templatePathsResolver,
-        private RenderMethodTemplateExtractor $renderMethodTemplateExtractor,
-        private TwigAnalyzer $twigAnalyzer,
-        private MissingTwigTemplatePathReporter $missingTwigTemplatePathReporter
-    ) {
+    /**
+     * @var \Symplify\EasyCI\Template\TemplatePathsResolver
+     */
+    private $templatePathsResolver;
+    /**
+     * @var \Symplify\EasyCI\Template\RenderMethodTemplateExtractor
+     */
+    private $renderMethodTemplateExtractor;
+    /**
+     * @var \Symplify\EasyCI\Twig\TwigAnalyzer
+     */
+    private $twigAnalyzer;
+    /**
+     * @var \Symplify\EasyCI\Console\Output\MissingTwigTemplatePathReporter
+     */
+    private $missingTwigTemplatePathReporter;
+    public function __construct(\EasyCI20220115\Symplify\EasyCI\Template\TemplatePathsResolver $templatePathsResolver, \EasyCI20220115\Symplify\EasyCI\Template\RenderMethodTemplateExtractor $renderMethodTemplateExtractor, \EasyCI20220115\Symplify\EasyCI\Twig\TwigAnalyzer $twigAnalyzer, \EasyCI20220115\Symplify\EasyCI\Console\Output\MissingTwigTemplatePathReporter $missingTwigTemplatePathReporter)
+    {
+        $this->templatePathsResolver = $templatePathsResolver;
+        $this->renderMethodTemplateExtractor = $renderMethodTemplateExtractor;
+        $this->twigAnalyzer = $twigAnalyzer;
+        $this->missingTwigTemplatePathReporter = $missingTwigTemplatePathReporter;
         parent::__construct();
     }
-
-    protected function configure(): void
+    protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
-
+        $this->setName(\EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Validate template paths in $this->render(...)');
-        $this->addArgument(
-            Option::SOURCES,
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'Path to project directories'
-        );
+        $this->addArgument(\EasyCI20220115\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to project directories');
     }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(\EasyCI20220115\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220115\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $sources */
-        $sources = (array) $input->getArgument(Option::SOURCES);
-
+        $sources = (array) $input->getArgument(\EasyCI20220115\Symplify\EasyCI\ValueObject\Option::SOURCES);
         $this->symfonyStyle->title('Analysing controllers and templates');
-
         $stats = [];
-
-        $controllerFileInfos = $this->smartFinder->find($sources, '#Controller\.php$#');
-        $stats[] = sprintf('%d controllers', count($controllerFileInfos));
-
+        $controllerFileInfos = $this->smartFinder->find($sources, '#Controller\\.php$#');
+        $stats[] = \sprintf('%d controllers', \count($controllerFileInfos));
         $allowedTemplatePaths = $this->templatePathsResolver->resolveFromDirectories($sources);
-        $stats[] = sprintf('%d twig paths', count($allowedTemplatePaths));
-
+        $stats[] = \sprintf('%d twig paths', \count($allowedTemplatePaths));
         $usedTemplatePaths = $this->renderMethodTemplateExtractor->extractFromFileInfos($controllerFileInfos);
-        $stats[] = sprintf('%d unique used templates in "$this->render()" method', count($usedTemplatePaths));
-
+        $stats[] = \sprintf('%d unique used templates in "$this->render()" method', \count($usedTemplatePaths));
         $this->symfonyStyle->listing($stats);
         $this->symfonyStyle->newLine(2);
-
         $errorMessages = $this->twigAnalyzer->analyzeFileInfos($controllerFileInfos, $allowedTemplatePaths);
-
         return $this->missingTwigTemplatePathReporter->report($errorMessages);
     }
 }

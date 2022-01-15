@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Symplify\EasyCI\ValueObject;
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\ValueObject;
 
 final class PhpVersionList
 {
