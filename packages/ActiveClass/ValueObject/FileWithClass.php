@@ -1,25 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\ActiveClass\ValueObject;
 
-namespace Symplify\EasyCI\ActiveClass\ValueObject;
-
-use Symplify\SmartFileSystem\SmartFileInfo;
-
+use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileWithClass
 {
-    public function __construct(
-        private SmartFileInfo $fileInfo,
-        private string $className
-    ) {
+    /**
+     * @var \Symplify\SmartFileSystem\SmartFileInfo
+     */
+    private $fileInfo;
+    /**
+     * @var string
+     */
+    private $className;
+    public function __construct(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $className)
+    {
+        $this->fileInfo = $fileInfo;
+        $this->className = $className;
     }
-
-    public function getClassName(): string
+    public function getClassName() : string
     {
         return $this->className;
     }
-
-    public function getRelativeFilepath(): string
+    public function getRelativeFilepath() : string
     {
         return $this->fileInfo->getRelativeFilePathFromCwd();
     }

@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeDecorator;
 
-namespace Symplify\EasyCI\ActiveClass\NodeDecorator;
-
-use PhpParser\Node\Stmt;
-use PhpParser\NodeTraverser;
-use PhpParser\NodeVisitor\NameResolver;
-use PhpParser\NodeVisitor\NodeConnectingVisitor;
-
+use EasyCI20220115\PhpParser\Node\Stmt;
+use EasyCI20220115\PhpParser\NodeTraverser;
+use EasyCI20220115\PhpParser\NodeVisitor\NameResolver;
+use EasyCI20220115\PhpParser\NodeVisitor\NodeConnectingVisitor;
 final class FullyQualifiedNameNodeDecorator
 {
     /**
      * @param Stmt[] $stmts
      */
-    public function decorate(array $stmts): void
+    public function decorate(array $stmts) : void
     {
-        $nodeTraverser = new NodeTraverser();
-        $nodeTraverser->addVisitor(new NameResolver());
-        $nodeTraverser->addVisitor(new NodeConnectingVisitor());
+        $nodeTraverser = new \EasyCI20220115\PhpParser\NodeTraverser();
+        $nodeTraverser->addVisitor(new \EasyCI20220115\PhpParser\NodeVisitor\NameResolver());
+        $nodeTraverser->addVisitor(new \EasyCI20220115\PhpParser\NodeVisitor\NodeConnectingVisitor());
         $nodeTraverser->traverse($stmts);
     }
 }

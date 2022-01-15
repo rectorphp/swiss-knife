@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\Git;
 
-namespace Symplify\EasyCI\Git;
-
-use Nette\Utils\Strings;
-use Symplify\SmartFileSystem\SmartFileInfo;
-
+use EasyCI20220115\Nette\Utils\Strings;
+use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Git\ConflictResolver\ConflictResolverTest
  */
@@ -17,38 +15,29 @@ final class ConflictResolver
      * @var string
      */
     private const CONFLICT_REGEX = '#^<<<<<<<<#';
-
-    public function extractFromFileInfo(SmartFileInfo $fileInfo): int
+    public function extractFromFileInfo(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : int
     {
-        $conflictsMatch = Strings::matchAll($fileInfo->getContents(), self::CONFLICT_REGEX);
-
-        return count($conflictsMatch);
+        $conflictsMatch = \EasyCI20220115\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CONFLICT_REGEX);
+        return \count($conflictsMatch);
     }
-
     /**
      * @param SmartFileInfo[] $fileInfos
      * @return int[]
      */
-    public function extractFromFileInfos(array $fileInfos): array
+    public function extractFromFileInfos(array $fileInfos) : array
     {
         $conflictCountsByFilePath = [];
-
         foreach ($fileInfos as $fileInfo) {
             $conflictCount = $this->extractFromFileInfo($fileInfo);
             if ($conflictCount === 0) {
                 continue;
             }
-
             // test fixtures, that should be ignored
-            if ($fileInfo->getRealPath() === realpath(
-                __DIR__ . '/../../tests/Git/ConflictResolver/Fixture/some_file.txt'
-            )) {
+            if ($fileInfo->getRealPath() === \realpath(__DIR__ . '/../../tests/Git/ConflictResolver/Fixture/some_file.txt')) {
                 continue;
             }
-
             $conflictCountsByFilePath[$fileInfo->getRelativeFilePathFromCwd()] = $conflictCount;
         }
-
         return $conflictCountsByFilePath;
     }
 }

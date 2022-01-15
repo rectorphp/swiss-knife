@@ -1,36 +1,40 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI20220115\Symplify\EasyCI\Psr4\Finder;
 
-namespace Symplify\EasyCI\Psr4\Finder;
-
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
-
+use EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220115\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 final class MultipleClassInOneFileFinder
 {
-    public function __construct(
-        private PhpClassLoader $phpClassLoader,
-        private SymfonyStyle $symfonyStyle,
-    ) {
+    /**
+     * @var \Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader
+     */
+    private $phpClassLoader;
+    /**
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    public function __construct(\EasyCI20220115\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader $phpClassLoader, \EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    {
+        $this->phpClassLoader = $phpClassLoader;
+        $this->symfonyStyle = $symfonyStyle;
     }
-
     /**
      * @param string[] $directories
      * @return string[][]
      */
-    public function findInDirectories(array $directories): array
+    public function findInDirectories(array $directories) : array
     {
         $fileByClasses = $this->phpClassLoader->load($directories);
-
-        $message = sprintf('Analyzing %d PHP files', count($fileByClasses));
+        $message = \sprintf('Analyzing %d PHP files', \count($fileByClasses));
         $this->symfonyStyle->note($message);
-
         $classesByFile = [];
         foreach ($fileByClasses as $class => $file) {
             $classesByFile[$file][] = $class;
         }
-
-        return array_filter($classesByFile, fn (array $classes): bool => count($classes) >= 2);
+        return \array_filter($classesByFile, function (array $classes) : bool {
+            return \count($classes) >= 2;
+        });
     }
 }
