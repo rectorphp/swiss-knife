@@ -1,94 +1,113 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Neon\Application;
+declare(strict_types=1);
 
-use EasyCI20220115\Nette\Neon\Decoder;
-use EasyCI20220115\Nette\Neon\Node;
-use EasyCI20220115\Nette\Neon\Node\ArrayItemNode;
-use EasyCI20220115\Nette\Neon\Node\ArrayNode;
-use EasyCI20220115\Nette\Neon\Node\EntityNode;
-use EasyCI20220115\Nette\Neon\Traverser;
-use EasyCI20220115\Symplify\EasyCI\Contract\Application\FileProcessorInterface;
-use EasyCI20220115\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+namespace Symplify\EasyCI\Neon\Application;
+
+use Nette\Neon\Decoder;
+use Nette\Neon\Node;
+use Nette\Neon\Node\ArrayItemNode;
+use Nette\Neon\Node\ArrayNode;
+use Nette\Neon\Node\EntityNode;
+use Nette\Neon\Traverser;
+use Symplify\EasyCI\Contract\Application\FileProcessorInterface;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\ValueObject\FileError;
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 /**
  * @see \Symplify\EasyCI\Tests\Neon\Application\NeonFilesProcessor\NeonFilesProcessorTest
  */
-final class NeonFilesProcessor implements \EasyCI20220115\Symplify\EasyCI\Contract\Application\FileProcessorInterface
+final class NeonFilesProcessor implements FileProcessorInterface
 {
     /**
      * @var string
      */
     private const SERVICES_KEY = 'services';
-    /**
-     * @var \Nette\Neon\Decoder
-     */
-    private $decoder;
-    public function __construct(\EasyCI20220115\Nette\Neon\Decoder $decoder)
-    {
-        $this->decoder = $decoder;
+
+    public function __construct(
+        private Decoder $decoder
+    ) {
     }
+
     /**
      * @param SmartFileInfo[] $fileInfos
      * @return FileErrorInterface[]
      */
-    public function processFileInfos(array $fileInfos) : array
+    public function processFileInfos(array $fileInfos): array
     {
         $fileErrors = [];
+
         foreach ($fileInfos as $fileInfo) {
             $currentFileErrors = $this->process($fileInfo);
-            $fileErrors = \array_merge($fileErrors, $currentFileErrors);
+            $fileErrors = array_merge($fileErrors, $currentFileErrors);
         }
+
         return $fileErrors;
     }
+
     /**
      * @return FileErrorInterface[]
      */
-    private function process(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function process(SmartFileInfo $fileInfo): array
     {
         $fileErrors = [];
+
         $node = $this->decoder->parseToNode($fileInfo->getContents());
-        $traverser = new \EasyCI20220115\Nette\Neon\Traverser();
-        $traverser->traverse($node, function ($node) use($fileInfo, &$fileErrors) {
-            if (!$node instanceof \EasyCI20220115\Nette\Neon\Node\ArrayItemNode) {
+
+        $traverser = new Traverser();
+        $traverser->traverse($node, function ($node) use ($fileInfo, &$fileErrors) {
+            if (! $node instanceof ArrayItemNode) {
                 return null;
             }
+
             if ($node->key === null) {
                 return null;
             }
+
             $keyName = $node->key->toString();
+
             // we only take care about services
             if ($keyName !== self::SERVICES_KEY) {
                 return null;
             }
+
             $currentFileErrors = $this->processServicesSection($node->value, $fileInfo);
-            $fileErrors = \array_merge($fileErrors, $currentFileErrors);
+            $fileErrors = array_merge($fileErrors, $currentFileErrors);
             return null;
         });
+
         return $fileErrors;
     }
+
     /**
      * @return FileErrorInterface[]
      */
-    private function processServicesSection(\EasyCI20220115\Nette\Neon\Node $servicesNode, \EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function processServicesSection(Node $servicesNode, SmartFileInfo $fileInfo): array
     {
         $fileErrors = [];
-        if (!$servicesNode instanceof \EasyCI20220115\Nette\Neon\Node\ArrayNode) {
+        if (! $servicesNode instanceof ArrayNode) {
             return [];
         }
+
         foreach ($servicesNode->items as $serviceItem) {
-            if ($serviceItem->value instanceof \EasyCI20220115\Nette\Neon\Node\EntityNode) {
+            if ($serviceItem->value instanceof EntityNode) {
                 $errorMessage = $this->createErrorMessageFromNeonEntity($serviceItem->value);
-                $fileErrors[] = new \EasyCI20220115\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $fileErrors[] = new FileError($errorMessage, $fileInfo);
             }
         }
+
         return $fileErrors;
     }
-    private function createErrorMessageFromNeonEntity(\EasyCI20220115\Nette\Neon\Node\EntityNode $entityNode) : string
+
+    private function createErrorMessageFromNeonEntity(EntityNode $entityNode): string
     {
         $neonEntityContent = $entityNode->toString();
-        return \sprintf('Complex entity found "%s".%sChange it to explicit syntax with named keys, that is easier to read.', $neonEntityContent, \PHP_EOL);
+
+        return sprintf(
+            'Complex entity found "%s".%sChange it to explicit syntax with named keys, that is easier to read.',
+            $neonEntityContent,
+            PHP_EOL,
+        );
     }
 }

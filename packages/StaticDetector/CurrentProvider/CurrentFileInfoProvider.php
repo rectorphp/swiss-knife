@@ -1,20 +1,21 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector\CurrentProvider;
+declare(strict_types=1);
 
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+namespace Symplify\EasyCI\StaticDetector\CurrentProvider;
+
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 final class CurrentFileInfoProvider
 {
-    /**
-     * @var \Symplify\SmartFileSystem\SmartFileInfo
-     */
-    private $smartFileInfo;
-    public function setCurrentFileInfo(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    private SmartFileInfo $smartFileInfo;
+
+    public function setCurrentFileInfo(SmartFileInfo $smartFileInfo): void
     {
         $this->smartFileInfo = $smartFileInfo;
     }
-    public function getSmartFileInfo() : \EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo
+
+    public function getSmartFileInfo(): SmartFileInfo
     {
         return $this->smartFileInfo;
     }

@@ -1,62 +1,72 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+declare(strict_types=1);
 
-use EasyCI20220115\Nette\Utils\Strings;
-use EasyCI20220115\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220115\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+
+use Nette\Utils\Strings;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use Symplify\EasyCI\ValueObject\FileError;
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\SingleColonLatteAnalyzer\SingleColonLatteAnalyzerTest
  */
-final class SingleColonLatteAnalyzer implements \EasyCI20220115\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class SingleColonLatteAnalyzer implements LatteTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/Wrfff2/9
      * @var string
      */
-    private const CLASS_CONSTANT_REGEX = '#\\b(?<' . self::CLASS_CONSTANT_NAME_PART . '>[A-Z][\\w\\\\]+:[A-Z_]+)\\b#m';
+    private const CLASS_CONSTANT_REGEX = '#\b(?<' . self::CLASS_CONSTANT_NAME_PART . '>[A-Z][\w\\\\]+:[A-Z_]+)\b#m';
+
     /**
      * @see https://regex101.com/r/Wrfff2/9
      * @var string
      */
-    private const CALL_REGEX = '#\\b(?<' . self::CLASS_CONSTANT_NAME_PART . '>[A-Z][\\w\\\\]+:[A-Za-z_]+)\\((.*?)?\\)#m';
+    private const CALL_REGEX = '#\b(?<' . self::CLASS_CONSTANT_NAME_PART . '>[A-Z][\w\\\\]+:[A-Za-z_]+)\((.*?)?\)#m';
+
     /**
      * @var string
      */
     private const CLASS_CONSTANT_NAME_PART = 'class_constant_name';
+
     /**
      * @param SmartFileInfo[] $fileInfos
      * @return FileErrorInterface[]
      */
-    public function analyze(array $fileInfos) : array
+    public function analyze(array $fileInfos): array
     {
         $templateErrors = [];
+
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220115\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
+            $matches = Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
             if ($matches === []) {
                 continue;
             }
+
             foreach ($matches as $match) {
                 $classConstantName = (string) $match[self::CLASS_CONSTANT_NAME_PART];
-                $errorMessage = \sprintf('Single colon used in "%s" not found', $classConstantName);
-                $templateErrors[] = new \EasyCI20220115\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $errorMessage = sprintf('Single colon used in "%s" not found', $classConstantName);
+                $templateErrors[] = new FileError($errorMessage, $fileInfo);
             }
         }
+
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220115\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CALL_REGEX);
+            $matches = Strings::matchAll($fileInfo->getContents(), self::CALL_REGEX);
             if ($matches === []) {
                 continue;
             }
+
             /** @var array<array<string, string>> $matches */
             foreach ($matches as $match) {
                 $classConstantName = $match[self::CLASS_CONSTANT_NAME_PART];
-                $errorMessage = \sprintf('Single colon used in "%s" not found', $classConstantName);
-                $templateErrors[] = new \EasyCI20220115\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $errorMessage = sprintf('Single colon used in "%s" not found', $classConstantName);
+                $templateErrors[] = new FileError($errorMessage, $fileInfo);
             }
         }
+
         return $templateErrors;
     }
 }

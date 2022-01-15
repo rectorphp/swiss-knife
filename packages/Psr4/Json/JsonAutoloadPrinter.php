@@ -1,29 +1,36 @@
 <?php
 
-declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Psr4\Json;
+declare(strict_types=1);
 
-use EasyCI20220115\Nette\Utils\Json;
-use EasyCI20220115\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use EasyCI20220115\Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
-use EasyCI20220115\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
+namespace Symplify\EasyCI\Psr4\Json;
+
+use Nette\Utils\Json;
+use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
+use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
+
 final class JsonAutoloadPrinter
 {
-    /**
-     * @var \Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer
-     */
-    private $psr4PathNormalizer;
-    public function __construct(\EasyCI20220115\Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer $psr4PathNormalizer)
-    {
-        $this->psr4PathNormalizer = $psr4PathNormalizer;
+    public function __construct(
+        private Psr4PathNormalizer $psr4PathNormalizer
+    ) {
     }
+
     /**
      * @param Psr4NamespaceToPaths[] $psr4NamespaceToPaths
      */
-    public function createJsonAutoloadContent(array $psr4NamespaceToPaths) : string
+    public function createJsonAutoloadContent(array $psr4NamespaceToPaths): string
     {
-        $normalizedJsonArray = $this->psr4PathNormalizer->normalizePsr4NamespaceToPathsToJsonsArray($psr4NamespaceToPaths);
-        $composerJson = [\EasyCI20220115\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => ['psr-4' => $normalizedJsonArray]];
-        return \EasyCI20220115\Nette\Utils\Json::encode($composerJson, \EasyCI20220115\Nette\Utils\Json::PRETTY);
+        $normalizedJsonArray = $this->psr4PathNormalizer->normalizePsr4NamespaceToPathsToJsonsArray(
+            $psr4NamespaceToPaths
+        );
+
+        $composerJson = [
+            ComposerJsonSection::AUTOLOAD => [
+                'psr-4' => $normalizedJsonArray,
+            ],
+        ];
+
+        return Json::encode($composerJson, Json::PRETTY);
     }
 }
