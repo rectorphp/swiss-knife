@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Command;
+namespace Symplify\EasyCI\Command;
 
 use EasyCI20220116\Symfony\Component\Console\Command\Command;
 use EasyCI20220116\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220116\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220116\Symfony\Component\Console\Output\OutputInterface;
 use EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220116\Symplify\EasyCI\Finder\ProjectFilesFinder;
-use EasyCI20220116\Symplify\EasyCI\Resolver\TooLongFilesResolver;
+use Symplify\EasyCI\Finder\ProjectFilesFinder;
+use Symplify\EasyCI\Resolver\TooLongFilesResolver;
 use EasyCI20220116\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220116\Symplify\PackageBuilder\ValueObject\Option;
 final class ValidateFileLengthCommand extends \EasyCI20220116\Symfony\Component\Console\Command\Command
@@ -26,7 +26,7 @@ final class ValidateFileLengthCommand extends \EasyCI20220116\Symfony\Component\
      * @var \Symplify\EasyCI\Resolver\TooLongFilesResolver
      */
     private $tooLongFilesResolver;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\Finder\ProjectFilesFinder $projectFilesFinder, \EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \EasyCI20220116\Symplify\EasyCI\Resolver\TooLongFilesResolver $tooLongFilesResolver)
+    public function __construct(\Symplify\EasyCI\Finder\ProjectFilesFinder $projectFilesFinder, \EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\EasyCI\Resolver\TooLongFilesResolver $tooLongFilesResolver)
     {
         $this->projectFilesFinder = $projectFilesFinder;
         $this->symfonyStyle = $symfonyStyle;
@@ -51,7 +51,7 @@ final class ValidateFileLengthCommand extends \EasyCI20220116\Symfony\Component\
             return self::SUCCESS;
         }
         foreach ($tooLongFileInfos as $tooLongFileInfo) {
-            $message = \sprintf('Paths for file "%s" has %d chars, but must be shorter than %d.', $tooLongFileInfo->getRealPath(), \strlen($tooLongFileInfo->getRealPath()), \EasyCI20220116\Symplify\EasyCI\Resolver\TooLongFilesResolver::MAX_FILE_LENGTH);
+            $message = \sprintf('Paths for file "%s" has %d chars, but must be shorter than %d.', $tooLongFileInfo->getRealPath(), \strlen($tooLongFileInfo->getRealPath()), \Symplify\EasyCI\Resolver\TooLongFilesResolver::MAX_FILE_LENGTH);
             $this->symfonyStyle->warning($message);
         }
         return self::FAILURE;

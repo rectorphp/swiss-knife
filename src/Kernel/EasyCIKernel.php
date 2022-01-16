@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Kernel;
+namespace Symplify\EasyCI\Kernel;
 
 use EasyCI20220116\Psr\Container\ContainerInterface;
 use EasyCI20220116\Symplify\Astral\ValueObject\AstralConfig;

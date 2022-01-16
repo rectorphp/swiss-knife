@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\Collector;
+namespace Symplify\EasyCI\StaticDetector\Collector;
 
 use EasyCI20220116\PhpParser\Node\Expr;
 use EasyCI20220116\PhpParser\Node\Expr\StaticCall;
@@ -10,9 +10,9 @@ use EasyCI20220116\PhpParser\Node\Stmt\Class_;
 use EasyCI20220116\PhpParser\Node\Stmt\ClassLike;
 use EasyCI20220116\PhpParser\Node\Stmt\ClassMethod;
 use EasyCI20220116\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
-use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
-use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
 use EasyCI20220116\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticNodeCollector
 {
@@ -39,7 +39,7 @@ final class StaticNodeCollector
             return;
         }
         $methodName = (string) $classMethod->name;
-        $this->staticClassMethods[] = new \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod($className, $methodName, $classMethod);
+        $this->staticClassMethods[] = new \Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod($className, $methodName, $classMethod);
     }
     public function addStaticCall(\EasyCI20220116\PhpParser\Node\Expr\StaticCall $staticCall) : void
     {
@@ -69,9 +69,9 @@ final class StaticNodeCollector
         $method = (string) $staticCall->name;
         $this->staticCalls[$class][$method][] = $staticCall;
     }
-    public function generateStaticReport() : \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport
+    public function generateStaticReport() : \Symplify\EasyCI\StaticDetector\ValueObject\StaticReport
     {
-        return new \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport($this->getStaticClassMethodWithStaticCalls());
+        return new \Symplify\EasyCI\StaticDetector\ValueObject\StaticReport($this->getStaticClassMethodWithStaticCalls());
     }
     /**
      * @return StaticClassMethodWithStaticCalls[]
@@ -81,7 +81,7 @@ final class StaticNodeCollector
         $staticClassMethodWithStaticCalls = [];
         foreach ($this->staticClassMethods as $staticClassMethod) {
             $staticCalls = $this->staticCalls[$staticClassMethod->getClass()][$staticClassMethod->getMethod()] ?? [];
-            $staticClassMethodWithStaticCalls[] = new \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls($staticClassMethod, $staticCalls);
+            $staticClassMethodWithStaticCalls[] = new \Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls($staticClassMethod, $staticCalls);
         }
         return $staticClassMethodWithStaticCalls;
     }

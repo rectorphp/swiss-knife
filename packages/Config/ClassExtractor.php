@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Config;
+namespace Symplify\EasyCI\Config;
 
 use EasyCI20220116\Nette\Neon\Encoder;
 use EasyCI20220116\Nette\Neon\Neon;
 use EasyCI20220116\Nette\Utils\Strings;
-use EasyCI20220116\Symplify\EasyCI\Neon\NeonClassExtractor;
+use Symplify\EasyCI\Neon\NeonClassExtractor;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ClassExtractor\ClassExtractorTest
@@ -39,7 +39,7 @@ final class ClassExtractor
      * @var \Symplify\EasyCI\Neon\NeonClassExtractor
      */
     private $neonClassExtractor;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\Neon\NeonClassExtractor $neonClassExtractor)
+    public function __construct(\Symplify\EasyCI\Neon\NeonClassExtractor $neonClassExtractor)
     {
         $this->neonClassExtractor = $neonClassExtractor;
     }

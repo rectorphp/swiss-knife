@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\CurrentProvider;
+namespace Symplify\EasyCI\StaticDetector\CurrentProvider;
 
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class CurrentFileInfoProvider

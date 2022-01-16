@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\ActiveClass\Reporting;
+namespace Symplify\EasyCI\ActiveClass\Reporting;
 
 use EasyCI20220116\Symfony\Component\Console\Command\Command;
 use EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220116\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
+use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 final class UnusedClassReporter
 {
     /**

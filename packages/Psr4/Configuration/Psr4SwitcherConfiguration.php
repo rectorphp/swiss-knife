@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Psr4\Configuration;
+namespace Symplify\EasyCI\Psr4\Configuration;
 
 use EasyCI20220116\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220116\Symplify\EasyCI\Psr4\Exception\ConfigurationException;
-use EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option;
+use Symplify\EasyCI\Psr4\Exception\ConfigurationException;
+use Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220116\Symplify\SmartFileSystem\FileSystemGuard;
 final class Psr4SwitcherConfiguration
 {
@@ -34,13 +34,13 @@ final class Psr4SwitcherConfiguration
     }
     public function loadFromInput(\EasyCI20220116\Symfony\Component\Console\Input\InputInterface $input) : void
     {
-        $composerJsonPath = (string) $input->getOption(\EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON);
+        $composerJsonPath = (string) $input->getOption(\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON);
         if ($composerJsonPath === '') {
-            throw new \EasyCI20220116\Symplify\EasyCI\Psr4\Exception\ConfigurationException(\sprintf('Provide composer.json via "--%s"', \EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON));
+            throw new \Symplify\EasyCI\Psr4\Exception\ConfigurationException(\sprintf('Provide composer.json via "--%s"', \Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON));
         }
         $this->fileSystemGuard->ensureFileExists($composerJsonPath, __METHOD__);
         $this->composerJsonPath = $composerJsonPath;
-        $this->source = (array) $input->getArgument(\EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
+        $this->source = (array) $input->getArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
     }
     /**
      * @return string[]
@@ -52,7 +52,7 @@ final class Psr4SwitcherConfiguration
     public function getComposerJsonPath() : string
     {
         if ($this->composerJsonPath === null) {
-            throw new \EasyCI20220116\Symplify\EasyCI\Psr4\Exception\ConfigurationException();
+            throw new \Symplify\EasyCI\Psr4\Exception\ConfigurationException();
         }
         return $this->composerJsonPath;
     }

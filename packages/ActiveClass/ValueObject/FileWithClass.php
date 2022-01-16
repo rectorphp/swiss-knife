@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\ActiveClass\ValueObject;
+namespace Symplify\EasyCI\ActiveClass\ValueObject;
 
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileWithClass

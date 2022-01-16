@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Latte\Contract;
+namespace Symplify\EasyCI\Latte\Contract;
 
-use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 interface LatteTemplateAnalyzerInterface
 {

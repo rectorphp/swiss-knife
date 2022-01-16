@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject;
+namespace Symplify\EasyCI\StaticDetector\ValueObject;
 
 use EasyCI20220116\PhpParser\Node;
 use EasyCI20220116\PhpParser\Node\Expr\StaticCall;
@@ -22,7 +22,7 @@ final class StaticClassMethodWithStaticCalls
     /**
      * @param StaticCall[] $staticCalls
      */
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod $staticClassMethod, array $staticCalls)
+    public function __construct(\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod $staticClassMethod, array $staticCalls)
     {
         $this->staticClassMethod = $staticClassMethod;
         $this->staticCalls = $staticCalls;
@@ -62,7 +62,7 @@ final class StaticClassMethodWithStaticCalls
     {
         $filePathsWithLines = [];
         foreach ($nodes as $node) {
-            $filePathsWithLines[] = $node->getAttribute(\EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey::FILE_LINE);
+            $filePathsWithLines[] = $node->getAttribute(\Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey::FILE_LINE);
         }
         return $filePathsWithLines;
     }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Psr4\Exception;
+namespace Symplify\EasyCI\Psr4\Exception;
 
 use Exception;
 final class ConfigurationException extends \Exception

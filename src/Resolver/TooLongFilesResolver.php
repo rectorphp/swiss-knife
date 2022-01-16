@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Resolver;
+namespace Symplify\EasyCI\Resolver;
 
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class TooLongFilesResolver

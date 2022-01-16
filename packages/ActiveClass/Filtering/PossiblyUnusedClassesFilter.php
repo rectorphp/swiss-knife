@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\ActiveClass\Filtering;
+namespace Symplify\EasyCI\ActiveClass\Filtering;
 
-use EasyCI20220116\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
-use EasyCI20220116\Symplify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
+use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220116\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PossiblyUnusedClassesFilter
 {
@@ -24,7 +24,7 @@ final class PossiblyUnusedClassesFilter
     public function filter(array $filesWithClasses, array $usedNames) : array
     {
         $possiblyUnusedFilesWithClasses = [];
-        $typesToSkip = $this->parameterProvider->provideArrayParameter(\EasyCI20220116\Symplify\EasyCI\ValueObject\Option::TYPES_TO_SKIP);
+        $typesToSkip = $this->parameterProvider->provideArrayParameter(\Symplify\EasyCI\ValueObject\Option::TYPES_TO_SKIP);
         foreach ($filesWithClasses as $fileWithClass) {
             if (\in_array($fileWithClass->getClassName(), $usedNames, \true)) {
                 continue;
@@ -39,7 +39,7 @@ final class PossiblyUnusedClassesFilter
         }
         return $possiblyUnusedFilesWithClasses;
     }
-    private function isClassSkipped(\EasyCI20220116\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass $fileWithClass, string $typeToSkip) : bool
+    private function isClassSkipped(\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass $fileWithClass, string $typeToSkip) : bool
     {
         if (\strpos($typeToSkip, '*') === \false) {
             return \is_a($fileWithClass->getClassName(), $typeToSkip, \true);

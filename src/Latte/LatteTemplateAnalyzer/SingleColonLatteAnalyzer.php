@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
 use EasyCI20220116\Nette\Utils\Strings;
-use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220116\Symplify\EasyCI\ValueObject\FileError;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\SingleColonLatteAnalyzer\SingleColonLatteAnalyzerTest
  */
-final class SingleColonLatteAnalyzer implements \EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class SingleColonLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/Wrfff2/9
@@ -42,7 +42,7 @@ final class SingleColonLatteAnalyzer implements \EasyCI20220116\Symplify\EasyCI\
             foreach ($matches as $match) {
                 $classConstantName = (string) $match[self::CLASS_CONSTANT_NAME_PART];
                 $errorMessage = \sprintf('Single colon used in "%s" not found', $classConstantName);
-                $templateErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $templateErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
             }
         }
         foreach ($fileInfos as $fileInfo) {
@@ -54,7 +54,7 @@ final class SingleColonLatteAnalyzer implements \EasyCI20220116\Symplify\EasyCI\
             foreach ($matches as $match) {
                 $classConstantName = $match[self::CLASS_CONSTANT_NAME_PART];
                 $errorMessage = \sprintf('Single colon used in "%s" not found', $classConstantName);
-                $templateErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $templateErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
             }
         }
         return $templateErrors;

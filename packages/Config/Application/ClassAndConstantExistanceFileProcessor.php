@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Config\Application;
+namespace Symplify\EasyCI\Config\Application;
 
-use EasyCI20220116\Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
-use EasyCI20220116\Symplify\EasyCI\Contract\Application\FileProcessorInterface;
-use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
+use Symplify\EasyCI\Contract\Application\FileProcessorInterface;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfigFileAnalyzer\NonExistingClassConfigFileAnalyzerTest
  */
-final class ClassAndConstantExistanceFileProcessor implements \EasyCI20220116\Symplify\EasyCI\Contract\Application\FileProcessorInterface
+final class ClassAndConstantExistanceFileProcessor implements \Symplify\EasyCI\Contract\Application\FileProcessorInterface
 {
     /**
      * @var ConfigFileAnalyzerInterface[]

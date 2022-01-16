@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\NodeVisitor;
+namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
 
 use EasyCI20220116\PhpParser\Node;
 use EasyCI20220116\PhpParser\Node\Expr\StaticCall;
@@ -9,7 +9,7 @@ use EasyCI20220116\PhpParser\Node\Stmt\ClassLike;
 use EasyCI20220116\PhpParser\Node\Stmt\ClassMethod;
 use EasyCI20220116\PhpParser\NodeVisitorAbstract;
 use EasyCI20220116\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220116\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
+use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
 use EasyCI20220116\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticCollectNodeVisitor extends \EasyCI20220116\PhpParser\NodeVisitorAbstract
 {
@@ -29,7 +29,7 @@ final class StaticCollectNodeVisitor extends \EasyCI20220116\PhpParser\NodeVisit
      * @var \Symplify\Astral\Naming\SimpleNameResolver
      */
     private $simpleNameResolver;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector $staticNodeCollector, \EasyCI20220116\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
+    public function __construct(\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector $staticNodeCollector, \EasyCI20220116\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
     {
         $this->staticNodeCollector = $staticNodeCollector;
         $this->simpleNameResolver = $simpleNameResolver;

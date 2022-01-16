@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Twig;
+namespace Symplify\EasyCI\Twig;
 
-use EasyCI20220116\Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
+use Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class TwigAnalyzer
 {
@@ -11,7 +11,7 @@ final class TwigAnalyzer
      * @var \Symplify\EasyCI\Template\RenderMethodTemplateExtractor
      */
     private $renderMethodTemplateExtractor;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\Template\RenderMethodTemplateExtractor $renderMethodTemplateExtractor)
+    public function __construct(\Symplify\EasyCI\Template\RenderMethodTemplateExtractor $renderMethodTemplateExtractor)
     {
         $this->renderMethodTemplateExtractor = $renderMethodTemplateExtractor;
     }

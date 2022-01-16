@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Command;
+namespace Symplify\EasyCI\Command;
 
 use EasyCI20220116\Nette\Utils\Json;
 use EasyCI20220116\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220116\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220116\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220116\Symplify\EasyCI\Composer\SupportedPhpVersionResolver;
-use EasyCI20220116\Symplify\EasyCI\Exception\ShouldNotHappenException;
+use Symplify\EasyCI\Composer\SupportedPhpVersionResolver;
+use Symplify\EasyCI\Exception\ShouldNotHappenException;
 use EasyCI20220116\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220116\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class PhpVersionsJsonCommand extends \EasyCI20220116\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
@@ -21,7 +21,7 @@ final class PhpVersionsJsonCommand extends \EasyCI20220116\Symplify\PackageBuild
      * @var \Symplify\EasyCI\Composer\SupportedPhpVersionResolver
      */
     private $supportedPhpVersionResolver;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\Composer\SupportedPhpVersionResolver $supportedPhpVersionResolver)
+    public function __construct(\Symplify\EasyCI\Composer\SupportedPhpVersionResolver $supportedPhpVersionResolver)
     {
         $this->supportedPhpVersionResolver = $supportedPhpVersionResolver;
         parent::__construct();
@@ -39,7 +39,7 @@ final class PhpVersionsJsonCommand extends \EasyCI20220116\Symplify\PackageBuild
         $supportedPhpVersions = $this->supportedPhpVersionResolver->resolveFromComposerJsonFilePath($composerJsonFilePath);
         if ($supportedPhpVersions === []) {
             $message = \sprintf('No PHP versions were resolved from "%s"', $composerJsonFilePath);
-            throw new \EasyCI20220116\Symplify\EasyCI\Exception\ShouldNotHappenException($message);
+            throw new \Symplify\EasyCI\Exception\ShouldNotHappenException($message);
         }
         // output must be without spaces, otherwise it breaks the GitHub Actions json
         $jsonContent = \EasyCI20220116\Nette\Utils\Json::encode($supportedPhpVersions);

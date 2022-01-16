@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Neon;
+namespace Symplify\EasyCI\Neon;
 
 use EasyCI20220116\Nette\Neon\Decoder;
 use EasyCI20220116\Nette\Neon\Node;

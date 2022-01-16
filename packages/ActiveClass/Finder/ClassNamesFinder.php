@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\ActiveClass\Finder;
+namespace Symplify\EasyCI\ActiveClass\Finder;
 
-use EasyCI20220116\Symplify\EasyCI\ActiveClass\ClassNameResolver;
-use EasyCI20220116\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
+use Symplify\EasyCI\ActiveClass\ClassNameResolver;
+use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassNamesFinder
 {
@@ -12,7 +12,7 @@ final class ClassNamesFinder
      * @var \Symplify\EasyCI\ActiveClass\ClassNameResolver
      */
     private $classNameResolver;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\ActiveClass\ClassNameResolver $classNameResolver)
+    public function __construct(\Symplify\EasyCI\ActiveClass\ClassNameResolver $classNameResolver)
     {
         $this->classNameResolver = $classNameResolver;
     }
@@ -28,7 +28,7 @@ final class ClassNamesFinder
             if ($className === null) {
                 continue;
             }
-            $filesWithClasses[] = new \EasyCI20220116\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass($phpFileInfo, $className);
+            $filesWithClasses[] = new \Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass($phpFileInfo, $className);
         }
         return $filesWithClasses;
     }

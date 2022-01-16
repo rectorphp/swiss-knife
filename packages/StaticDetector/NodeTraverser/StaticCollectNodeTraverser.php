@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\NodeTraverser;
+namespace Symplify\EasyCI\StaticDetector\NodeTraverser;
 
 use EasyCI20220116\PhpParser\NodeTraverser;
 /**

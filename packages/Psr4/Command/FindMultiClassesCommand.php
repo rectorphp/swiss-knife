@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Psr4\Command;
+namespace Symplify\EasyCI\Psr4\Command;
 
 use EasyCI20220116\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220116\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220116\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220116\Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder;
-use EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option;
+use Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder;
+use Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220116\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220116\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class FindMultiClassesCommand extends \EasyCI20220116\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
@@ -16,7 +16,7 @@ final class FindMultiClassesCommand extends \EasyCI20220116\Symplify\PackageBuil
      * @var \Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder
      */
     private $multipleClassInOneFileFinder;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder $multipleClassInOneFileFinder)
+    public function __construct(\Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder $multipleClassInOneFileFinder)
     {
         $this->multipleClassInOneFileFinder = $multipleClassInOneFileFinder;
         parent::__construct();
@@ -25,12 +25,12 @@ final class FindMultiClassesCommand extends \EasyCI20220116\Symplify\PackageBuil
     {
         $this->setName(\EasyCI20220116\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Find multiple classes in one file');
-        $this->addArgument(\EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220116\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220116\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source to analyse');
+        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220116\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220116\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source to analyse');
     }
     protected function execute(\EasyCI20220116\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220116\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $source */
-        $source = (array) $input->getArgument(\EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
+        $source = (array) $input->getArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
         $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($source);
         if ($multipleClassesByFile === []) {
             $this->symfonyStyle->success('No files with 2+ classes found');

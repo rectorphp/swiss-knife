@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Comments;
+namespace Symplify\EasyCI\Comments;
 
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**

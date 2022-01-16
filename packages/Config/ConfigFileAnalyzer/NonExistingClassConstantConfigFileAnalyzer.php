@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Config\ConfigFileAnalyzer;
+namespace Symplify\EasyCI\Config\ConfigFileAnalyzer;
 
 use EasyCI20220116\Nette\Utils\Strings;
-use EasyCI20220116\Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
-use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220116\Symplify\EasyCI\ValueObject\FileError;
+use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConstantExtractor\NonExistingClassConstantExtractorTest
  */
-final class NonExistingClassConstantConfigFileAnalyzer implements \EasyCI20220116\Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface
+final class NonExistingClassConstantConfigFileAnalyzer implements \Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ final class NonExistingClassConstantConfigFileAnalyzer implements \EasyCI2022011
             $missingClassConstants = $this->extractFromFileInfo($fileInfo);
             foreach ($missingClassConstants as $missingClassConstant) {
                 $errorMessage = \sprintf('Class constant "%s" does not exist', $missingClassConstant);
-                $fileErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $fileErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
             }
         }
         return $fileErrors;

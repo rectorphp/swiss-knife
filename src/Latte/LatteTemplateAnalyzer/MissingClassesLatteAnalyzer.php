@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
 use EasyCI20220116\Nette\Utils\Strings;
-use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220116\Symplify\EasyCI\ValueObject\FileError;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220116\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\MissingClassesLatteAnalyzer\MissingClassesLatteAnalyzerTest
  */
-final class MissingClassesLatteAnalyzer implements \EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/Wrfff2/7
@@ -58,7 +58,7 @@ final class MissingClassesLatteAnalyzer implements \EasyCI20220116\Symplify\Easy
                 if ($this->classLikeExistenceChecker->doesClassLikeExist($class)) {
                     continue;
                 }
-                $errors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError(\sprintf('Class "%s" not found', $class), $fileInfo);
+                $errors[] = new \Symplify\EasyCI\ValueObject\FileError(\sprintf('Class "%s" not found', $class), $fileInfo);
             }
         }
         return $errors;

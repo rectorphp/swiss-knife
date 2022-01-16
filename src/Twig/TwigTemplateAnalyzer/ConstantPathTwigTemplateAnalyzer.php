@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
+namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
 use EasyCI20220116\Nette\Utils\Strings;
-use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220116\Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
-use EasyCI20220116\Symplify\EasyCI\ValueObject\LineAwareFileError;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
+use Symplify\EasyCI\ValueObject\LineAwareFileError;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
-final class ConstantPathTwigTemplateAnalyzer implements \EasyCI20220116\Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface
+final class ConstantPathTwigTemplateAnalyzer implements \Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/BK5zQ2/1
@@ -27,7 +27,7 @@ final class ConstantPathTwigTemplateAnalyzer implements \EasyCI20220116\Symplify
             foreach ($matches as $match) {
                 $errorMessage = \sprintf('Route name "%s" in path() function should be replaced by constant to avoid typos and loose on renames.', (string) $match['route_name'][0]);
                 $line = $this->resolveLineNumber($fileInfo, $match);
-                $templateErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\LineAwareFileError($errorMessage, $fileInfo, $line);
+                $templateErrors[] = new \Symplify\EasyCI\ValueObject\LineAwareFileError($errorMessage, $fileInfo, $line);
             }
         }
         return $templateErrors;

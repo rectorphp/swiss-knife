@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Template;
+namespace Symplify\EasyCI\Template;
 
 use EasyCI20220116\Nette\Utils\Strings;
 use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;

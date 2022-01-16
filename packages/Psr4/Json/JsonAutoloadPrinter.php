@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\Psr4\Json;
+namespace Symplify\EasyCI\Psr4\Json;
 
 use EasyCI20220116\Nette\Utils\Json;
 use EasyCI20220116\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use EasyCI20220116\Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
-use EasyCI20220116\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
+use Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
+use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class JsonAutoloadPrinter
 {
     /**
      * @var \Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer
      */
     private $psr4PathNormalizer;
-    public function __construct(\EasyCI20220116\Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer $psr4PathNormalizer)
+    public function __construct(\Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer $psr4PathNormalizer)
     {
         $this->psr4PathNormalizer = $psr4PathNormalizer;
     }

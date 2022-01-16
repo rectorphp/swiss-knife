@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\EasyCI\ActiveClass\NodeVisitor;
+namespace Symplify\EasyCI\ActiveClass\NodeVisitor;
 
 use EasyCI20220116\Nette\Utils\Strings;
 use EasyCI20220116\PhpParser\Comment\Doc;
