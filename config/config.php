@@ -32,7 +32,7 @@ return static function (\Symfony\Component\DependencyInjection\Loader\Configurat
     $containerConfigurator->import(__DIR__ . '/config-packages.php');
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('EasyCI20220116\Symplify\EasyCI\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Kernel', __DIR__ . '/../src/ValueObject']);
+    $services->load('Symplify\\EasyCI\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Kernel', __DIR__ . '/../src/ValueObject']);
     // console
     $services->set(\EasyCI20220116\Symfony\Component\Console\Application::class)->call('addCommands', [[
         // basic commands

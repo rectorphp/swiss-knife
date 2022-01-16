@@ -17,7 +17,7 @@ return static function (\Symfony\Component\DependencyInjection\Loader\Configurat
     $parameters->set(\Symplify\EasyCI\ValueObject\Option::EXCLUDED_CHECK_PATHS, []);
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('EasyCI20220116\Symplify\EasyCI\\', __DIR__ . '/../packages')->exclude([__DIR__ . '/../packages/StaticDetector/ValueObject', __DIR__ . '/../packages/ActiveClass/ValueObject', __DIR__ . '/../packages/Psr4/ValueObject']);
+    $services->load('Symplify\\EasyCI\\', __DIR__ . '/../packages')->exclude([__DIR__ . '/../packages/StaticDetector/ValueObject', __DIR__ . '/../packages/ActiveClass/ValueObject', __DIR__ . '/../packages/Psr4/ValueObject']);
     $services->set(\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser::class)->factory([\EasyCI20220116\Symfony\Component\DependencyInjection\Loader\Configurator\service(\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverserFactory::class), 'create']);
     $services->set(\EasyCI20220116\PhpParser\ParserFactory::class);
     $services->set(\EasyCI20220116\PhpParser\Parser::class)->factory([\EasyCI20220116\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220116\PhpParser\ParserFactory::class), 'create'])->arg('$kind', \EasyCI20220116\PhpParser\ParserFactory::PREFER_PHP7);
