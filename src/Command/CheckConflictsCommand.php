@@ -1,36 +1,36 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Command;
+namespace EasyCI20220116\Symplify\EasyCI\Command;
 
-use EasyCI20220115\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220115\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220115\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220115\Symplify\EasyCI\Git\ConflictResolver;
-use EasyCI20220115\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220115\Symplify\PackageBuilder\ValueObject\Option;
-final class CheckConflictsCommand extends \EasyCI20220115\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220116\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220116\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220116\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220116\Symplify\EasyCI\Git\ConflictResolver;
+use EasyCI20220116\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220116\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220116\Symplify\PackageBuilder\ValueObject\Option;
+final class CheckConflictsCommand extends \EasyCI20220116\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Git\ConflictResolver
      */
     private $conflictResolver;
-    public function __construct(\EasyCI20220115\Symplify\EasyCI\Git\ConflictResolver $conflictResolver)
+    public function __construct(\EasyCI20220116\Symplify\EasyCI\Git\ConflictResolver $conflictResolver)
     {
         $this->conflictResolver = $conflictResolver;
         parent::__construct();
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220115\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220116\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Check files for missed git conflicts');
-        $this->addArgument(\EasyCI20220115\Symplify\PackageBuilder\ValueObject\Option::SOURCES, \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220115\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to project');
+        $this->addArgument(\EasyCI20220116\Symplify\PackageBuilder\ValueObject\Option::SOURCES, \EasyCI20220116\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220116\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to project');
     }
-    protected function execute(\EasyCI20220115\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220115\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220116\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220116\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $source */
-        $source = (array) $input->getArgument(\EasyCI20220115\Symplify\PackageBuilder\ValueObject\Option::SOURCES);
+        $source = (array) $input->getArgument(\EasyCI20220116\Symplify\PackageBuilder\ValueObject\Option::SOURCES);
         $fileInfos = $this->smartFinder->find($source, '*', ['vendor']);
         $conflictsCountByFilePath = $this->conflictResolver->extractFromFileInfos($fileInfos);
         if ($conflictsCountByFilePath === []) {

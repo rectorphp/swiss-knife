@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Neon\Application;
+namespace EasyCI20220116\Symplify\EasyCI\Neon\Application;
 
-use EasyCI20220115\Nette\Neon\Decoder;
-use EasyCI20220115\Nette\Neon\Node;
-use EasyCI20220115\Nette\Neon\Node\ArrayItemNode;
-use EasyCI20220115\Nette\Neon\Node\ArrayNode;
-use EasyCI20220115\Nette\Neon\Node\EntityNode;
-use EasyCI20220115\Nette\Neon\Traverser;
-use EasyCI20220115\Symplify\EasyCI\Contract\Application\FileProcessorInterface;
-use EasyCI20220115\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Nette\Neon\Decoder;
+use EasyCI20220116\Nette\Neon\Node;
+use EasyCI20220116\Nette\Neon\Node\ArrayItemNode;
+use EasyCI20220116\Nette\Neon\Node\ArrayNode;
+use EasyCI20220116\Nette\Neon\Node\EntityNode;
+use EasyCI20220116\Nette\Neon\Traverser;
+use EasyCI20220116\Symplify\EasyCI\Contract\Application\FileProcessorInterface;
+use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220116\Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Neon\Application\NeonFilesProcessor\NeonFilesProcessorTest
  */
-final class NeonFilesProcessor implements \EasyCI20220115\Symplify\EasyCI\Contract\Application\FileProcessorInterface
+final class NeonFilesProcessor implements \EasyCI20220116\Symplify\EasyCI\Contract\Application\FileProcessorInterface
 {
     /**
      * @var string
@@ -26,7 +26,7 @@ final class NeonFilesProcessor implements \EasyCI20220115\Symplify\EasyCI\Contra
      * @var \Nette\Neon\Decoder
      */
     private $decoder;
-    public function __construct(\EasyCI20220115\Nette\Neon\Decoder $decoder)
+    public function __construct(\EasyCI20220116\Nette\Neon\Decoder $decoder)
     {
         $this->decoder = $decoder;
     }
@@ -46,13 +46,13 @@ final class NeonFilesProcessor implements \EasyCI20220115\Symplify\EasyCI\Contra
     /**
      * @return FileErrorInterface[]
      */
-    private function process(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function process(\EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
         $fileErrors = [];
         $node = $this->decoder->parseToNode($fileInfo->getContents());
-        $traverser = new \EasyCI20220115\Nette\Neon\Traverser();
+        $traverser = new \EasyCI20220116\Nette\Neon\Traverser();
         $traverser->traverse($node, function ($node) use($fileInfo, &$fileErrors) {
-            if (!$node instanceof \EasyCI20220115\Nette\Neon\Node\ArrayItemNode) {
+            if (!$node instanceof \EasyCI20220116\Nette\Neon\Node\ArrayItemNode) {
                 return null;
             }
             if ($node->key === null) {
@@ -72,21 +72,21 @@ final class NeonFilesProcessor implements \EasyCI20220115\Symplify\EasyCI\Contra
     /**
      * @return FileErrorInterface[]
      */
-    private function processServicesSection(\EasyCI20220115\Nette\Neon\Node $servicesNode, \EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function processServicesSection(\EasyCI20220116\Nette\Neon\Node $servicesNode, \EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
         $fileErrors = [];
-        if (!$servicesNode instanceof \EasyCI20220115\Nette\Neon\Node\ArrayNode) {
+        if (!$servicesNode instanceof \EasyCI20220116\Nette\Neon\Node\ArrayNode) {
             return [];
         }
         foreach ($servicesNode->items as $serviceItem) {
-            if ($serviceItem->value instanceof \EasyCI20220115\Nette\Neon\Node\EntityNode) {
+            if ($serviceItem->value instanceof \EasyCI20220116\Nette\Neon\Node\EntityNode) {
                 $errorMessage = $this->createErrorMessageFromNeonEntity($serviceItem->value);
-                $fileErrors[] = new \EasyCI20220115\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $fileErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
             }
         }
         return $fileErrors;
     }
-    private function createErrorMessageFromNeonEntity(\EasyCI20220115\Nette\Neon\Node\EntityNode $entityNode) : string
+    private function createErrorMessageFromNeonEntity(\EasyCI20220116\Nette\Neon\Node\EntityNode $entityNode) : string
     {
         $neonEntityContent = $entityNode->toString();
         return \sprintf('Complex entity found "%s".%sChange it to explicit syntax with named keys, that is easier to read.', $neonEntityContent, \PHP_EOL);

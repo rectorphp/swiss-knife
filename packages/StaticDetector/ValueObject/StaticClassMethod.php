@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject;
+namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject;
 
-use EasyCI20220115\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220116\PhpParser\Node\Stmt\ClassMethod;
 final class StaticClassMethod
 {
     /**
@@ -18,7 +18,7 @@ final class StaticClassMethod
      * @var \PhpParser\Node\Stmt\ClassMethod
      */
     private $classMethod;
-    public function __construct(string $class, string $method, \EasyCI20220115\PhpParser\Node\Stmt\ClassMethod $classMethod)
+    public function __construct(string $class, string $method, \EasyCI20220116\PhpParser\Node\Stmt\ClassMethod $classMethod)
     {
         $this->class = $class;
         $this->method = $method;
@@ -34,6 +34,6 @@ final class StaticClassMethod
     }
     public function getFileLocationWithLine() : string
     {
-        return $this->classMethod->getAttribute(\EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey::FILE_LINE);
+        return $this->classMethod->getAttribute(\EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey::FILE_LINE);
     }
 }

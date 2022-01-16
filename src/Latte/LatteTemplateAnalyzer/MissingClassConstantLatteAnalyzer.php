@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace EasyCI20220116\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220115\Nette\Utils\Strings;
-use EasyCI20220115\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220115\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Nette\Utils\Strings;
+use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use EasyCI20220116\Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\MissingClassConstantLatteAnalyzer\MissingClassConstantLatteAnalyzerTest
  */
-final class MissingClassConstantLatteAnalyzer implements \EasyCI20220115\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class MissingClassConstantLatteAnalyzer implements \EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/Wrfff2/9
@@ -30,7 +30,7 @@ final class MissingClassConstantLatteAnalyzer implements \EasyCI20220115\Symplif
     {
         $templateErrors = [];
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220115\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
+            $matches = \EasyCI20220116\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
             if ($matches === []) {
                 continue;
             }
@@ -40,7 +40,7 @@ final class MissingClassConstantLatteAnalyzer implements \EasyCI20220115\Symplif
                     continue;
                 }
                 $errorMessage = \sprintf('Class constant "%s" not found', $classConstantName);
-                $templateErrors[] = new \EasyCI20220115\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $templateErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
             }
         }
         return $templateErrors;

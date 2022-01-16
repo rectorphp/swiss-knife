@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector\Collector;
+namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\Collector;
 
-use EasyCI20220115\PhpParser\Node\Expr;
-use EasyCI20220115\PhpParser\Node\Expr\StaticCall;
-use EasyCI20220115\PhpParser\Node\Name;
-use EasyCI20220115\PhpParser\Node\Stmt\Class_;
-use EasyCI20220115\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220115\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220115\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
-use EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
-use EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
-use EasyCI20220115\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI20220116\PhpParser\Node\Expr;
+use EasyCI20220116\PhpParser\Node\Expr\StaticCall;
+use EasyCI20220116\PhpParser\Node\Name;
+use EasyCI20220116\PhpParser\Node\Stmt\Class_;
+use EasyCI20220116\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220116\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220116\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
+use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
+use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
+use EasyCI20220116\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticNodeCollector
 {
     /**
@@ -28,26 +28,26 @@ final class StaticNodeCollector
      * @var \Symplify\Astral\Naming\SimpleNameResolver
      */
     private $simpleNameResolver;
-    public function __construct(\EasyCI20220115\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
+    public function __construct(\EasyCI20220116\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
     {
         $this->simpleNameResolver = $simpleNameResolver;
     }
-    public function addStaticClassMethod(\EasyCI20220115\PhpParser\Node\Stmt\ClassMethod $classMethod, \EasyCI20220115\PhpParser\Node\Stmt\ClassLike $classLike) : void
+    public function addStaticClassMethod(\EasyCI20220116\PhpParser\Node\Stmt\ClassMethod $classMethod, \EasyCI20220116\PhpParser\Node\Stmt\ClassLike $classLike) : void
     {
         $className = $this->simpleNameResolver->getName($classLike);
         if ($className === null) {
             return;
         }
         $methodName = (string) $classMethod->name;
-        $this->staticClassMethods[] = new \EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod($className, $methodName, $classMethod);
+        $this->staticClassMethods[] = new \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod($className, $methodName, $classMethod);
     }
-    public function addStaticCall(\EasyCI20220115\PhpParser\Node\Expr\StaticCall $staticCall) : void
+    public function addStaticCall(\EasyCI20220116\PhpParser\Node\Expr\StaticCall $staticCall) : void
     {
-        if ($staticCall->class instanceof \EasyCI20220115\PhpParser\Node\Expr) {
+        if ($staticCall->class instanceof \EasyCI20220116\PhpParser\Node\Expr) {
             // weird expression, skip
             return;
         }
-        if ($staticCall->name instanceof \EasyCI20220115\PhpParser\Node\Expr) {
+        if ($staticCall->name instanceof \EasyCI20220116\PhpParser\Node\Expr) {
             // weird expression, skip
             return;
         }
@@ -55,13 +55,13 @@ final class StaticNodeCollector
         $method = (string) $staticCall->name;
         $this->staticCalls[$class][$method][] = $staticCall;
     }
-    public function addStaticCallInsideClass(\EasyCI20220115\PhpParser\Node\Expr\StaticCall $staticCall, \EasyCI20220115\PhpParser\Node\Stmt\ClassLike $classLike) : void
+    public function addStaticCallInsideClass(\EasyCI20220116\PhpParser\Node\Expr\StaticCall $staticCall, \EasyCI20220116\PhpParser\Node\Stmt\ClassLike $classLike) : void
     {
-        if ($staticCall->class instanceof \EasyCI20220115\PhpParser\Node\Expr) {
+        if ($staticCall->class instanceof \EasyCI20220116\PhpParser\Node\Expr) {
             // weird expression, skip
             return;
         }
-        if ($staticCall->name instanceof \EasyCI20220115\PhpParser\Node\Expr) {
+        if ($staticCall->name instanceof \EasyCI20220116\PhpParser\Node\Expr) {
             // weird expression, skip
             return;
         }
@@ -69,9 +69,9 @@ final class StaticNodeCollector
         $method = (string) $staticCall->name;
         $this->staticCalls[$class][$method][] = $staticCall;
     }
-    public function generateStaticReport() : \EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport
+    public function generateStaticReport() : \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport
     {
-        return new \EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport($this->getStaticClassMethodWithStaticCalls());
+        return new \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport($this->getStaticClassMethodWithStaticCalls());
     }
     /**
      * @return StaticClassMethodWithStaticCalls[]
@@ -81,22 +81,22 @@ final class StaticNodeCollector
         $staticClassMethodWithStaticCalls = [];
         foreach ($this->staticClassMethods as $staticClassMethod) {
             $staticCalls = $this->staticCalls[$staticClassMethod->getClass()][$staticClassMethod->getMethod()] ?? [];
-            $staticClassMethodWithStaticCalls[] = new \EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls($staticClassMethod, $staticCalls);
+            $staticClassMethodWithStaticCalls[] = new \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls($staticClassMethod, $staticCalls);
         }
         return $staticClassMethodWithStaticCalls;
     }
-    private function resolveClass(\EasyCI20220115\PhpParser\Node\Name $staticClassName, \EasyCI20220115\PhpParser\Node\Stmt\ClassLike $classLike) : string
+    private function resolveClass(\EasyCI20220116\PhpParser\Node\Name $staticClassName, \EasyCI20220116\PhpParser\Node\Stmt\ClassLike $classLike) : string
     {
         $class = (string) $staticClassName;
         if (\in_array($class, ['self', 'static'], \true)) {
             return (string) $this->simpleNameResolver->getName($classLike);
         }
         if ($class === 'parent') {
-            if (!$classLike instanceof \EasyCI20220115\PhpParser\Node\Stmt\Class_) {
-                throw new \EasyCI20220115\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            if (!$classLike instanceof \EasyCI20220116\PhpParser\Node\Stmt\Class_) {
+                throw new \EasyCI20220116\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
             }
             if ($classLike->extends === null) {
-                throw new \EasyCI20220115\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+                throw new \EasyCI20220116\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
             }
             return (string) $classLike->extends;
         }

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\ActiveClass;
+namespace EasyCI20220116\Symplify\EasyCI\ActiveClass;
 
-use EasyCI20220115\PhpParser\NodeTraverser;
-use EasyCI20220115\PhpParser\Parser;
-use EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
-use EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeVisitor\UsedClassNodeVisitor;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\PhpParser\NodeTraverser;
+use EasyCI20220116\PhpParser\Parser;
+use EasyCI20220116\Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
+use EasyCI20220116\Symplify\EasyCI\ActiveClass\NodeVisitor\UsedClassNodeVisitor;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\ActiveClass\UseImportsResolver\UseImportsResolverTest
  */
@@ -21,7 +21,7 @@ final class UseImportsResolver
      * @var \Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator
      */
     private $fullyQualifiedNameNodeDecorator;
-    public function __construct(\EasyCI20220115\PhpParser\Parser $parser, \EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator)
+    public function __construct(\EasyCI20220116\PhpParser\Parser $parser, \EasyCI20220116\Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator)
     {
         $this->parser = $parser;
         $this->fullyQualifiedNameNodeDecorator = $fullyQualifiedNameNodeDecorator;
@@ -43,15 +43,15 @@ final class UseImportsResolver
     /**
      * @return string[]
      */
-    public function resolve(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $phpFileInfo) : array
+    public function resolve(\EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo $phpFileInfo) : array
     {
         $stmts = $this->parser->parse($phpFileInfo->getContents());
         if ($stmts === null) {
             return [];
         }
         $this->fullyQualifiedNameNodeDecorator->decorate($stmts);
-        $nodeTraverser = new \EasyCI20220115\PhpParser\NodeTraverser();
-        $usedClassNodeVisitor = new \EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeVisitor\UsedClassNodeVisitor();
+        $nodeTraverser = new \EasyCI20220116\PhpParser\NodeTraverser();
+        $usedClassNodeVisitor = new \EasyCI20220116\Symplify\EasyCI\ActiveClass\NodeVisitor\UsedClassNodeVisitor();
         $nodeTraverser->addVisitor($usedClassNodeVisitor);
         $nodeTraverser->traverse($stmts);
         return $usedClassNodeVisitor->getUsedNames();

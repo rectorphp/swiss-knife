@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace EasyCI20220116\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220115\Nette\Utils\DateTime;
-use EasyCI20220115\Nette\Utils\Strings;
-use EasyCI20220115\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220115\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220115\Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Nette\Utils\DateTime;
+use EasyCI20220116\Nette\Utils\Strings;
+use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use EasyCI20220116\Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\LatteStaticCallAnalyzer\StaticCallLatteAnalyzerTest
  */
-final class StaticCallLatteAnalyzer implements \EasyCI20220115\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class StaticCallLatteAnalyzer implements \EasyCI20220116\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
 {
     /**
      * @var string
@@ -43,14 +43,14 @@ final class StaticCallLatteAnalyzer implements \EasyCI20220115\Symplify\EasyCI\L
     /**
      * @return FileErrorInterface[]
      */
-    private function analyzeFileInfo(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function analyzeFileInfo(\EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
-        $matches = \EasyCI20220115\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::STATIC_CALL_REGEX);
+        $matches = \EasyCI20220116\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::STATIC_CALL_REGEX);
         $matches = $this->filterOutAllowedStaticClasses($matches);
         $templateErrors = [];
         foreach ($matches as $match) {
             $errorMessage = \sprintf('Static call "%s::%s()" should not be used in template, move to filter provider instead', $match[self::CLASS_NAME_PART], $match[self::METHOD_NAME_PART]);
-            $templateErrors[] = new \EasyCI20220115\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+            $templateErrors[] = new \EasyCI20220116\Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
         }
         return $templateErrors;
     }
@@ -61,7 +61,7 @@ final class StaticCallLatteAnalyzer implements \EasyCI20220115\Symplify\EasyCI\L
     private function filterOutAllowedStaticClasses(array $matches) : array
     {
         return \array_filter($matches, static function (array $match) : bool {
-            return !\in_array($match[self::CLASS_NAME_PART], [\EasyCI20220115\Nette\Utils\Strings::class, \EasyCI20220115\Nette\Utils\DateTime::class], \true);
+            return !\in_array($match[self::CLASS_NAME_PART], [\EasyCI20220116\Nette\Utils\Strings::class, \EasyCI20220116\Nette\Utils\DateTime::class], \true);
         });
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector;
+namespace EasyCI20220116\Symplify\EasyCI\StaticDetector;
 
-use EasyCI20220115\PhpParser\Parser;
-use EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220115\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
-use EasyCI20220115\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\PhpParser\Parser;
+use EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220116\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
+use EasyCI20220116\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\StaticDetector\StaticScanner\StaticScannerTest
  */
@@ -29,7 +29,7 @@ final class StaticScanner
      * @var \Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider
      */
     private $currentFileInfoProvider;
-    public function __construct(\EasyCI20220115\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser $staticCollectNodeTraverser, \EasyCI20220115\PhpParser\Parser $parser, \EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \EasyCI20220115\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider $currentFileInfoProvider)
+    public function __construct(\EasyCI20220116\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser $staticCollectNodeTraverser, \EasyCI20220116\PhpParser\Parser $parser, \EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \EasyCI20220116\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider $currentFileInfoProvider)
     {
         $this->staticCollectNodeTraverser = $staticCollectNodeTraverser;
         $this->parser = $parser;
@@ -60,7 +60,7 @@ final class StaticScanner
         $this->symfonyStyle->success('Scanning done');
         $this->symfonyStyle->newLine(1);
     }
-    private function scanFileInfo(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    private function scanFileInfo(\EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $nodes = $this->parser->parse($smartFileInfo->getContents());
         if ($nodes === null) {

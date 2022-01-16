@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Psr4\RobotLoader;
+namespace EasyCI20220116\Symplify\EasyCI\Psr4\RobotLoader;
 
-use EasyCI20220115\Nette\Loaders\RobotLoader;
+use EasyCI20220116\Nette\Loaders\RobotLoader;
 final class PhpClassLoader
 {
     /**
@@ -12,7 +12,7 @@ final class PhpClassLoader
      */
     public function load(array $directories) : array
     {
-        $robotLoader = new \EasyCI20220115\Nette\Loaders\RobotLoader();
+        $robotLoader = new \EasyCI20220116\Nette\Loaders\RobotLoader();
         $robotLoader->addDirectory(...$directories);
         $robotLoader->setTempDirectory(\sys_get_temp_dir() . '/migrify_psr4_switcher');
         $robotLoader->ignoreDirs[] = 'bin';

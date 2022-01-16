@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Template;
+namespace EasyCI20220116\Symplify\EasyCI\Template;
 
-use EasyCI20220115\Nette\Utils\Strings;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Nette\Utils\Strings;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class RenderMethodTemplateExtractor
 {
     /**
@@ -22,12 +22,12 @@ final class RenderMethodTemplateExtractor
     {
         $usedTemplatePathsByControllerPath = [];
         foreach ($controllerFileInfos as $controllerFileInfo) {
-            $match = \EasyCI20220115\Nette\Utils\Strings::match($controllerFileInfo->getContents(), self::TEMPLATE_PATH_REGEX);
+            $match = \EasyCI20220116\Nette\Utils\Strings::match($controllerFileInfo->getContents(), self::TEMPLATE_PATH_REGEX);
             if ($match === null) {
                 continue;
             }
             /** @var string $relativeControllerFilePath */
-            $relativeControllerFilePath = \EasyCI20220115\Nette\Utils\Strings::after($controllerFileInfo->getRealPath(), \getcwd() . '/');
+            $relativeControllerFilePath = \EasyCI20220116\Nette\Utils\Strings::after($controllerFileInfo->getRealPath(), \getcwd() . '/');
             $usedTemplatePathsByControllerPath[$relativeControllerFilePath][] = $match['template_name'];
         }
         // normalize array nested values

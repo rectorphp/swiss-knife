@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Finder;
+namespace EasyCI20220116\Symplify\EasyCI\Finder;
 
-use EasyCI20220115\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class ProjectFilesFinder
 {
     /**
      * @var \Symplify\SmartFileSystem\Finder\SmartFinder
      */
     private $smartFinder;
-    public function __construct(\EasyCI20220115\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
+    public function __construct(\EasyCI20220116\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
     {
         $this->smartFinder = $smartFinder;
     }

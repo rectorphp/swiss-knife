@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Twig;
+namespace EasyCI20220116\Symplify\EasyCI\Twig;
 
-use EasyCI20220115\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220115\Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220116\Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 final class TwigTemplateProcessor
 {
     /**

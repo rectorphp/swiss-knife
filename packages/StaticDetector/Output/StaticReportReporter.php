@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector\Output;
+namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\Output;
 
-use EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
+use EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
 final class StaticReportReporter
 {
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
-    public function reportStaticClassMethods(\EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport $staticReport) : void
+    public function reportStaticClassMethods(\EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport $staticReport) : void
     {
         $i = 1;
         foreach ($staticReport->getStaticClassMethodsWithStaticCalls() as $staticClassMethodWithStaticCalls) {
@@ -37,7 +37,7 @@ final class StaticReportReporter
             $this->symfonyStyle->newLine(2);
         }
     }
-    public function reportTotalNumbers(\EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport $staticReport) : void
+    public function reportTotalNumbers(\EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport $staticReport) : void
     {
         $this->symfonyStyle->title('Static Overview');
         if ($staticReport->getStaticClassMethodCount() === 0) {

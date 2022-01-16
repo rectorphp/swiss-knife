@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Comments;
+namespace EasyCI20220116\Symplify\EasyCI\Comments;
 
-use EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Comments\CommentedCodeAnalyzerTest
  */
@@ -12,7 +12,7 @@ final class CommentedCodeAnalyzer
     /**
      * @return int[]
      */
-    public function process(\EasyCI20220115\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, int $commentedLinesCountLimit) : array
+    public function process(\EasyCI20220116\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, int $commentedLinesCountLimit) : array
     {
         $commentedLines = [];
         $fileLines = \explode(\PHP_EOL, $fileInfo->getContents());

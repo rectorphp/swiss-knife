@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject;
+namespace EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject;
 
 final class StaticReport
 {
@@ -24,7 +24,7 @@ final class StaticReport
         }
         $this->staticCallsCount = $staticCallsCount;
         // sort from most called, to least called - the latter is easier to remove, so put low-hanging fruit first
-        \usort($staticClassMethodsWithStaticCalls, function (\EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $firstStaticClassMethodWithStaticCalls, \EasyCI20220115\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $secondStaticClassMethodWithStaticCalls) : int {
+        \usort($staticClassMethodsWithStaticCalls, function (\EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $firstStaticClassMethodWithStaticCalls, \EasyCI20220116\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $secondStaticClassMethodWithStaticCalls) : int {
             return $secondStaticClassMethodWithStaticCalls->getStaticCallsCount() <=> $firstStaticClassMethodWithStaticCalls->getStaticCallsCount();
         });
         $this->staticClassMethodsWithStaticCalls = $staticClassMethodsWithStaticCalls;

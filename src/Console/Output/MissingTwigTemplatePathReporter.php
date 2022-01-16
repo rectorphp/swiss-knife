@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\Console\Output;
+namespace EasyCI20220116\Symplify\EasyCI\Console\Output;
 
-use EasyCI20220115\Symfony\Component\Console\Command\Command;
-use EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220116\Symfony\Component\Console\Command\Command;
+use EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle;
 final class MissingTwigTemplatePathReporter
 {
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\EasyCI20220115\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\EasyCI20220116\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -22,13 +22,13 @@ final class MissingTwigTemplatePathReporter
     {
         if ($errorMessages === []) {
             $this->symfonyStyle->success('All templates exists');
-            return \EasyCI20220115\Symfony\Component\Console\Command\Command::SUCCESS;
+            return \EasyCI20220116\Symfony\Component\Console\Command\Command::SUCCESS;
         }
         foreach ($errorMessages as $errorMessage) {
             $this->symfonyStyle->note($errorMessage);
         }
         $missingTemplatesMessage = \sprintf('Found %d missing templates', \count($errorMessages));
         $this->symfonyStyle->error($missingTemplatesMessage);
-        return \EasyCI20220115\Symfony\Component\Console\Command\Command::FAILURE;
+        return \EasyCI20220116\Symfony\Component\Console\Command\Command::FAILURE;
     }
 }

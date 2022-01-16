@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\PhpParser\Node\Stmt;
+namespace EasyCI20220116\PhpParser\Node\Stmt;
 
-use EasyCI20220115\PhpParser\Node;
-class Declare_ extends \EasyCI20220115\PhpParser\Node\Stmt
+use EasyCI20220116\PhpParser\Node;
+class Declare_ extends \EasyCI20220116\PhpParser\Node\Stmt
 {
     /** @var DeclareDeclare[] List of declares */
     public $declares;

@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220115\Symplify\EasyCI\ActiveClass\NodeVisitor;
+namespace EasyCI20220116\Symplify\EasyCI\ActiveClass\NodeVisitor;
 
-use EasyCI20220115\PhpParser\Node;
-use EasyCI20220115\PhpParser\Node\Name;
-use EasyCI20220115\PhpParser\Node\Stmt;
-use EasyCI20220115\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220115\PhpParser\Node\Stmt\Namespace_;
-use EasyCI20220115\PhpParser\NodeVisitorAbstract;
-use EasyCI20220115\Symplify\Astral\ValueObject\AttributeKey;
-final class UsedClassNodeVisitor extends \EasyCI20220115\PhpParser\NodeVisitorAbstract
+use EasyCI20220116\PhpParser\Node;
+use EasyCI20220116\PhpParser\Node\Name;
+use EasyCI20220116\PhpParser\Node\Stmt;
+use EasyCI20220116\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220116\PhpParser\Node\Stmt\Namespace_;
+use EasyCI20220116\PhpParser\NodeVisitorAbstract;
+use EasyCI20220116\Symplify\Astral\ValueObject\AttributeKey;
+final class UsedClassNodeVisitor extends \EasyCI20220116\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var string[]
@@ -25,9 +25,9 @@ final class UsedClassNodeVisitor extends \EasyCI20220115\PhpParser\NodeVisitorAb
         $this->usedNames = [];
         return $nodes;
     }
-    public function enterNode(\EasyCI20220115\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220116\PhpParser\Node $node)
     {
-        if (!$node instanceof \EasyCI20220115\PhpParser\Node\Name) {
+        if (!$node instanceof \EasyCI20220116\PhpParser\Node\Name) {
             return null;
         }
         if ($this->isNonNameNode($node)) {
@@ -46,13 +46,13 @@ final class UsedClassNodeVisitor extends \EasyCI20220115\PhpParser\NodeVisitorAb
         \sort($uniqueUsedNames);
         return $uniqueUsedNames;
     }
-    private function isNonNameNode(\EasyCI20220115\PhpParser\Node\Name $name) : bool
+    private function isNonNameNode(\EasyCI20220116\PhpParser\Node\Name $name) : bool
     {
         // skip nodes that are not part of class names
-        $parent = $name->getAttribute(\EasyCI20220115\Symplify\Astral\ValueObject\AttributeKey::PARENT);
-        if ($parent instanceof \EasyCI20220115\PhpParser\Node\Stmt\Namespace_) {
+        $parent = $name->getAttribute(\EasyCI20220116\Symplify\Astral\ValueObject\AttributeKey::PARENT);
+        if ($parent instanceof \EasyCI20220116\PhpParser\Node\Stmt\Namespace_) {
             return \true;
         }
-        return $parent instanceof \EasyCI20220115\PhpParser\Node\Stmt\ClassMethod;
+        return $parent instanceof \EasyCI20220116\PhpParser\Node\Stmt\ClassMethod;
     }
 }
