@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220116\Symplify\Astral\ValueObject;
+namespace EasyCI20220117\Symplify\Astral\ValueObject;
 
 final class AttributeKey
 {

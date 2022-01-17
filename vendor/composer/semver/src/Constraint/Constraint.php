@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI20220116\Composer\Semver\Constraint;
+namespace EasyCI20220117\Composer\Semver\Constraint;
 
 /**
  * Defines a constraint.
  */
-class Constraint implements \EasyCI20220116\Composer\Semver\Constraint\ConstraintInterface
+class Constraint implements \EasyCI20220117\Composer\Semver\Constraint\ConstraintInterface
 {
     /* operator integer values */
     const OP_EQ = 0;
@@ -97,7 +97,7 @@ class Constraint implements \EasyCI20220116\Composer\Semver\Constraint\Constrain
      *
      * @return bool
      */
-    public function matches(\EasyCI20220116\Composer\Semver\Constraint\ConstraintInterface $provider)
+    public function matches(\EasyCI20220117\Composer\Semver\Constraint\ConstraintInterface $provider)
     {
         if ($provider instanceof self) {
             return $this->matchSpecific($provider);
@@ -250,7 +250,7 @@ class Constraint implements \EasyCI20220116\Composer\Semver\Constraint\Constrain
      *
      * @return bool
      */
-    public function matchSpecific(\EasyCI20220116\Composer\Semver\Constraint\Constraint $provider, $compareBranches = \false)
+    public function matchSpecific(\EasyCI20220117\Composer\Semver\Constraint\Constraint $provider, $compareBranches = \false)
     {
         $noEqualOp = \str_replace('=', '', self::$transOpInt[$this->operator]);
         $providerNoEqualOp = \str_replace('=', '', self::$transOpInt[$provider->operator]);
@@ -320,34 +320,34 @@ class Constraint implements \EasyCI20220116\Composer\Semver\Constraint\Constrain
         }
         // Branches
         if (\strpos($this->version, 'dev-') === 0) {
-            $this->lowerBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::zero();
-            $this->upperBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::positiveInfinity();
+            $this->lowerBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::zero();
+            $this->upperBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::positiveInfinity();
             return;
         }
         switch ($this->operator) {
             case self::OP_EQ:
-                $this->lowerBound = new \EasyCI20220116\Composer\Semver\Constraint\Bound($this->version, \true);
-                $this->upperBound = new \EasyCI20220116\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->lowerBound = new \EasyCI20220117\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->upperBound = new \EasyCI20220117\Composer\Semver\Constraint\Bound($this->version, \true);
                 break;
             case self::OP_LT:
-                $this->lowerBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::zero();
-                $this->upperBound = new \EasyCI20220116\Composer\Semver\Constraint\Bound($this->version, \false);
+                $this->lowerBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::zero();
+                $this->upperBound = new \EasyCI20220117\Composer\Semver\Constraint\Bound($this->version, \false);
                 break;
             case self::OP_LE:
-                $this->lowerBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::zero();
-                $this->upperBound = new \EasyCI20220116\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->lowerBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::zero();
+                $this->upperBound = new \EasyCI20220117\Composer\Semver\Constraint\Bound($this->version, \true);
                 break;
             case self::OP_GT:
-                $this->lowerBound = new \EasyCI20220116\Composer\Semver\Constraint\Bound($this->version, \false);
-                $this->upperBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::positiveInfinity();
+                $this->lowerBound = new \EasyCI20220117\Composer\Semver\Constraint\Bound($this->version, \false);
+                $this->upperBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::positiveInfinity();
                 break;
             case self::OP_GE:
-                $this->lowerBound = new \EasyCI20220116\Composer\Semver\Constraint\Bound($this->version, \true);
-                $this->upperBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::positiveInfinity();
+                $this->lowerBound = new \EasyCI20220117\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->upperBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::positiveInfinity();
                 break;
             case self::OP_NE:
-                $this->lowerBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::zero();
-                $this->upperBound = \EasyCI20220116\Composer\Semver\Constraint\Bound::positiveInfinity();
+                $this->lowerBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::zero();
+                $this->upperBound = \EasyCI20220117\Composer\Semver\Constraint\Bound::positiveInfinity();
                 break;
         }
     }
