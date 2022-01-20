@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220117\Psr\Container;
+namespace EasyCI20220120\Psr\Container;
 
 /**
  * Describes the interface of a container that exposes methods to read its entries.

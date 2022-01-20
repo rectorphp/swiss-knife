@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220117\PhpParser\Builder;
+namespace EasyCI20220120\PhpParser\Builder;
 
-use EasyCI20220117\PhpParser;
-use EasyCI20220117\PhpParser\BuilderHelpers;
-use EasyCI20220117\PhpParser\Node;
-use EasyCI20220117\PhpParser\Node\Const_;
-use EasyCI20220117\PhpParser\Node\Identifier;
-use EasyCI20220117\PhpParser\Node\Stmt;
-class ClassConst implements \EasyCI20220117\PhpParser\Builder
+use EasyCI20220120\PhpParser;
+use EasyCI20220120\PhpParser\BuilderHelpers;
+use EasyCI20220120\PhpParser\Node;
+use EasyCI20220120\PhpParser\Node\Const_;
+use EasyCI20220120\PhpParser\Node\Identifier;
+use EasyCI20220120\PhpParser\Node\Stmt;
+class ClassConst implements \EasyCI20220120\PhpParser\Builder
 {
     protected $flags = 0;
     protected $attributes = [];
@@ -24,7 +24,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function __construct($name, $value)
     {
-        $this->constants = [new \EasyCI20220117\PhpParser\Node\Const_($name, \EasyCI20220117\PhpParser\BuilderHelpers::normalizeValue($value))];
+        $this->constants = [new \EasyCI20220120\PhpParser\Node\Const_($name, \EasyCI20220120\PhpParser\BuilderHelpers::normalizeValue($value))];
     }
     /**
      * Add another constant to const group
@@ -36,7 +36,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function addConst($name, $value)
     {
-        $this->constants[] = new \EasyCI20220117\PhpParser\Node\Const_($name, \EasyCI20220117\PhpParser\BuilderHelpers::normalizeValue($value));
+        $this->constants[] = new \EasyCI20220120\PhpParser\Node\Const_($name, \EasyCI20220120\PhpParser\BuilderHelpers::normalizeValue($value));
         return $this;
     }
     /**
@@ -46,7 +46,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function makePublic()
     {
-        $this->flags = \EasyCI20220117\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220117\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
+        $this->flags = \EasyCI20220120\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220120\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
         return $this;
     }
     /**
@@ -56,7 +56,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function makeProtected()
     {
-        $this->flags = \EasyCI20220117\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220117\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
+        $this->flags = \EasyCI20220120\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220120\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
         return $this;
     }
     /**
@@ -66,7 +66,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function makePrivate()
     {
-        $this->flags = \EasyCI20220117\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220117\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
+        $this->flags = \EasyCI20220120\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220120\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
         return $this;
     }
     /**
@@ -76,7 +76,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function makeFinal()
     {
-        $this->flags = \EasyCI20220117\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220117\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL);
+        $this->flags = \EasyCI20220120\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220120\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL);
         return $this;
     }
     /**
@@ -88,7 +88,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function setDocComment($docComment)
     {
-        $this->attributes = ['comments' => [\EasyCI20220117\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
+        $this->attributes = ['comments' => [\EasyCI20220120\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
         return $this;
     }
     /**
@@ -100,7 +100,7 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220117\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220120\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -108,8 +108,8 @@ class ClassConst implements \EasyCI20220117\PhpParser\Builder
      *
      * @return Stmt\ClassConst The built constant node
      */
-    public function getNode() : \EasyCI20220117\PhpParser\Node
+    public function getNode() : \EasyCI20220120\PhpParser\Node
     {
-        return new \EasyCI20220117\PhpParser\Node\Stmt\ClassConst($this->constants, $this->flags, $this->attributes, $this->attributeGroups);
+        return new \EasyCI20220120\PhpParser\Node\Stmt\ClassConst($this->constants, $this->flags, $this->attributes, $this->attributeGroups);
     }
 }

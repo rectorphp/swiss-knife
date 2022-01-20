@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220117\Symplify\Astral\NodeFinder;
+namespace EasyCI20220120\Symplify\Astral\NodeFinder;
 
-use EasyCI20220117\PhpParser\Node;
-use EasyCI20220117\PhpParser\NodeFinder;
-use EasyCI20220117\Symplify\Astral\ValueObject\AttributeKey;
-use EasyCI20220117\Symplify\PackageBuilder\Php\TypeChecker;
+use EasyCI20220120\PhpParser\Node;
+use EasyCI20220120\PhpParser\NodeFinder;
+use EasyCI20220120\Symplify\Astral\ValueObject\AttributeKey;
+use EasyCI20220120\Symplify\PackageBuilder\Php\TypeChecker;
 final class SimpleNodeFinder
 {
     /**
@@ -17,7 +17,7 @@ final class SimpleNodeFinder
      * @var \PhpParser\NodeFinder
      */
     private $nodeFinder;
-    public function __construct(\EasyCI20220117\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \EasyCI20220117\PhpParser\NodeFinder $nodeFinder)
+    public function __construct(\EasyCI20220120\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \EasyCI20220120\PhpParser\NodeFinder $nodeFinder)
     {
         $this->typeChecker = $typeChecker;
         $this->nodeFinder = $nodeFinder;
@@ -27,7 +27,7 @@ final class SimpleNodeFinder
      * @param class-string<T> $nodeClass
      * @return \PhpParser\Node|null
      */
-    public function findFirstByType(\EasyCI20220117\PhpParser\Node $node, string $nodeClass)
+    public function findFirstByType(\EasyCI20220120\PhpParser\Node $node, string $nodeClass)
     {
         return $this->nodeFinder->findFirstInstanceOf($node, $nodeClass);
     }
@@ -36,7 +36,7 @@ final class SimpleNodeFinder
      * @param class-string<T> $nodeClass
      * @return T[]
      */
-    public function findByType(\EasyCI20220117\PhpParser\Node $node, string $nodeClass) : array
+    public function findByType(\EasyCI20220120\PhpParser\Node $node, string $nodeClass) : array
     {
         return $this->nodeFinder->findInstanceOf($node, $nodeClass);
     }
@@ -44,7 +44,7 @@ final class SimpleNodeFinder
      * @template T of Node
      * @param array<class-string<T>> $nodeClasses
      */
-    public function hasByTypes(\EasyCI20220117\PhpParser\Node $node, array $nodeClasses) : bool
+    public function hasByTypes(\EasyCI20220120\PhpParser\Node $node, array $nodeClasses) : bool
     {
         foreach ($nodeClasses as $nodeClass) {
             $foundNodes = $this->findByType($node, $nodeClass);
@@ -61,14 +61,14 @@ final class SimpleNodeFinder
      * @param class-string<T> $nodeClass
      * @return T|null
      */
-    public function findFirstParentByType(\EasyCI20220117\PhpParser\Node $node, string $nodeClass) : ?\EasyCI20220117\PhpParser\Node
+    public function findFirstParentByType(\EasyCI20220120\PhpParser\Node $node, string $nodeClass) : ?\EasyCI20220120\PhpParser\Node
     {
-        $node = $node->getAttribute(\EasyCI20220117\Symplify\Astral\ValueObject\AttributeKey::PARENT);
+        $node = $node->getAttribute(\EasyCI20220120\Symplify\Astral\ValueObject\AttributeKey::PARENT);
         while ($node) {
             if (\is_a($node, $nodeClass, \true)) {
                 return $node;
             }
-            $node = $node->getAttribute(\EasyCI20220117\Symplify\Astral\ValueObject\AttributeKey::PARENT);
+            $node = $node->getAttribute(\EasyCI20220120\Symplify\Astral\ValueObject\AttributeKey::PARENT);
         }
         return null;
     }
@@ -77,14 +77,14 @@ final class SimpleNodeFinder
      * @param array<class-string<T>&class-string<Node>> $nodeTypes
      * @return T|null
      */
-    public function findFirstParentByTypes(\EasyCI20220117\PhpParser\Node $node, array $nodeTypes) : ?\EasyCI20220117\PhpParser\Node
+    public function findFirstParentByTypes(\EasyCI20220120\PhpParser\Node $node, array $nodeTypes) : ?\EasyCI20220120\PhpParser\Node
     {
-        $node = $node->getAttribute(\EasyCI20220117\Symplify\Astral\ValueObject\AttributeKey::PARENT);
+        $node = $node->getAttribute(\EasyCI20220120\Symplify\Astral\ValueObject\AttributeKey::PARENT);
         while ($node) {
             if ($this->typeChecker->isInstanceOf($node, $nodeTypes)) {
                 return $node;
             }
-            $node = $node->getAttribute(\EasyCI20220117\Symplify\Astral\ValueObject\AttributeKey::PARENT);
+            $node = $node->getAttribute(\EasyCI20220120\Symplify\Astral\ValueObject\AttributeKey::PARENT);
         }
         return null;
     }
