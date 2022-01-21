@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220120\PhpParser\Node\Stmt;
+namespace EasyCI20220121\PhpParser\Node\Stmt;
 
-use EasyCI20220120\PhpParser\Node;
-use EasyCI20220120\PhpParser\Node\Expr;
-class Catch_ extends \EasyCI20220120\PhpParser\Node\Stmt
+use EasyCI20220121\PhpParser\Node;
+use EasyCI20220121\PhpParser\Node\Expr;
+class Catch_ extends \EasyCI20220121\PhpParser\Node\Stmt
 {
     /** @var Node\Name[] Types of exceptions to catch */
     public $types;
@@ -21,7 +21,7 @@ class Catch_ extends \EasyCI20220120\PhpParser\Node\Stmt
      * @param Node\Stmt[]           $stmts      Statements
      * @param array                 $attributes Additional attributes
      */
-    public function __construct(array $types, \EasyCI20220120\PhpParser\Node\Expr\Variable $var = null, array $stmts = [], array $attributes = [])
+    public function __construct(array $types, \EasyCI20220121\PhpParser\Node\Expr\Variable $var = null, array $stmts = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->types = $types;

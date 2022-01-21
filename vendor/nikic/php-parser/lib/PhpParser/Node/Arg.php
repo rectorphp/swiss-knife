@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220120\PhpParser\Node;
+namespace EasyCI20220121\PhpParser\Node;
 
-use EasyCI20220120\PhpParser\Node\VariadicPlaceholder;
-use EasyCI20220120\PhpParser\NodeAbstract;
-class Arg extends \EasyCI20220120\PhpParser\NodeAbstract
+use EasyCI20220121\PhpParser\Node\VariadicPlaceholder;
+use EasyCI20220121\PhpParser\NodeAbstract;
+class Arg extends \EasyCI20220121\PhpParser\NodeAbstract
 {
     /** @var Identifier|null Parameter name (for named parameters) */
     public $name;
@@ -24,7 +24,7 @@ class Arg extends \EasyCI20220120\PhpParser\NodeAbstract
      * @param array $attributes Additional attributes
      * @param Identifier|null $name Parameter name (for named parameters)
      */
-    public function __construct(\EasyCI20220120\PhpParser\Node\Expr $value, bool $byRef = \false, bool $unpack = \false, array $attributes = [], \EasyCI20220120\PhpParser\Node\Identifier $name = null)
+    public function __construct(\EasyCI20220121\PhpParser\Node\Expr $value, bool $byRef = \false, bool $unpack = \false, array $attributes = [], \EasyCI20220121\PhpParser\Node\Identifier $name = null)
     {
         $this->attributes = $attributes;
         $this->name = $name;

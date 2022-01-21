@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220120\PhpParser\NodeVisitor;
+namespace EasyCI20220121\PhpParser\NodeVisitor;
 
-use EasyCI20220120\PhpParser\Node;
-use EasyCI20220120\PhpParser\NodeVisitorAbstract;
+use EasyCI20220121\PhpParser\Node;
+use EasyCI20220121\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor that connects a child node to its parent node
  * as well as its sibling nodes.
@@ -14,7 +14,7 @@ use EasyCI20220120\PhpParser\NodeVisitorAbstract;
  * node can be accessed through <code>$node->getAttribute('previous')</code>,
  * and the next node can be accessed through <code>$node->getAttribute('next')</code>.
  */
-final class NodeConnectingVisitor extends \EasyCI20220120\PhpParser\NodeVisitorAbstract
+final class NodeConnectingVisitor extends \EasyCI20220121\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var Node[]
@@ -29,7 +29,7 @@ final class NodeConnectingVisitor extends \EasyCI20220120\PhpParser\NodeVisitorA
         $this->stack = [];
         $this->previous = null;
     }
-    public function enterNode(\EasyCI20220120\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220121\PhpParser\Node $node)
     {
         if (!empty($this->stack)) {
             $node->setAttribute('parent', $this->stack[\count($this->stack) - 1]);
@@ -40,7 +40,7 @@ final class NodeConnectingVisitor extends \EasyCI20220120\PhpParser\NodeVisitorA
         }
         $this->stack[] = $node;
     }
-    public function leaveNode(\EasyCI20220120\PhpParser\Node $node)
+    public function leaveNode(\EasyCI20220121\PhpParser\Node $node)
     {
         $this->previous = $node;
         \array_pop($this->stack);

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220120\Symplify\PackageBuilder\DependencyInjection\FileLoader;
+namespace EasyCI20220121\Symplify\PackageBuilder\DependencyInjection\FileLoader;
 
-use EasyCI20220120\Symfony\Component\Config\FileLocatorInterface;
-use EasyCI20220120\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220120\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use EasyCI20220120\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use EasyCI20220121\Symfony\Component\Config\FileLocatorInterface;
+use EasyCI20220121\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220121\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use EasyCI20220121\Symplify\PackageBuilder\Yaml\ParametersMerger;
 /**
  * @api
  *
@@ -14,15 +14,15 @@ use EasyCI20220120\Symplify\PackageBuilder\Yaml\ParametersMerger;
  * - https://github.com/symfony/symfony/issues/26713
  * - https://github.com/symfony/symfony/pull/21313#issuecomment-372037445
  */
-final class ParameterMergingPhpFileLoader extends \EasyCI20220120\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+final class ParameterMergingPhpFileLoader extends \EasyCI20220121\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
     /**
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\EasyCI20220120\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \EasyCI20220120\Symfony\Component\Config\FileLocatorInterface $fileLocator)
+    public function __construct(\EasyCI20220121\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \EasyCI20220121\Symfony\Component\Config\FileLocatorInterface $fileLocator)
     {
-        $this->parametersMerger = new \EasyCI20220120\Symplify\PackageBuilder\Yaml\ParametersMerger();
+        $this->parametersMerger = new \EasyCI20220121\Symplify\PackageBuilder\Yaml\ParametersMerger();
         parent::__construct($containerBuilder, $fileLocator);
     }
     /**

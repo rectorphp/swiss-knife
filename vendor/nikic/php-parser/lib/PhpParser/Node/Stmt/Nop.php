@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220120\PhpParser\Node\Stmt;
+namespace EasyCI20220121\PhpParser\Node\Stmt;
 
-use EasyCI20220120\PhpParser\Node;
+use EasyCI20220121\PhpParser\Node;
 /** Nop/empty statement (;). */
-class Nop extends \EasyCI20220120\PhpParser\Node\Stmt
+class Nop extends \EasyCI20220121\PhpParser\Node\Stmt
 {
     public function getSubNodeNames() : array
     {

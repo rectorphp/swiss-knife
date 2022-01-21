@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220120\Symfony\Component\Finder;
+namespace EasyCI20220121\Symfony\Component\Finder;
 
 /**
  * Gitignore matches against text.

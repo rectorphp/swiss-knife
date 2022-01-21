@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220120\Symplify\PackageBuilder\ValueObject;
+namespace EasyCI20220121\Symplify\PackageBuilder\ValueObject;
 
 final class Option
 {
