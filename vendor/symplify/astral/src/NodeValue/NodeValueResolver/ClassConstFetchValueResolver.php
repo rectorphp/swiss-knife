@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220121\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI20220123\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI20220121\PhpParser\Node\Expr;
-use EasyCI20220121\PhpParser\Node\Expr\ClassConstFetch;
-use EasyCI20220121\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220123\PhpParser\Node\Expr;
+use EasyCI20220123\PhpParser\Node\Expr\ClassConstFetch;
+use EasyCI20220123\PhpParser\Node\Stmt\ClassLike;
 use ReflectionClassConstant;
-use EasyCI20220121\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI20220121\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220121\Symplify\Astral\NodeFinder\SimpleNodeFinder;
+use EasyCI20220123\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI20220123\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220123\Symplify\Astral\NodeFinder\SimpleNodeFinder;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *
  * @implements NodeValueResolverInterface<ClassConstFetch>
  */
-final class ClassConstFetchValueResolver implements \EasyCI20220121\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
+final class ClassConstFetchValueResolver implements \EasyCI20220123\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
 {
     /**
      * @var \Symplify\Astral\Naming\SimpleNameResolver
@@ -25,25 +25,25 @@ final class ClassConstFetchValueResolver implements \EasyCI20220121\Symplify\Ast
      * @var \Symplify\Astral\NodeFinder\SimpleNodeFinder
      */
     private $simpleNodeFinder;
-    public function __construct(\EasyCI20220121\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220121\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
+    public function __construct(\EasyCI20220123\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220123\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->simpleNodeFinder = $simpleNodeFinder;
     }
     public function getType() : string
     {
-        return \EasyCI20220121\PhpParser\Node\Expr\ClassConstFetch::class;
+        return \EasyCI20220123\PhpParser\Node\Expr\ClassConstFetch::class;
     }
     /**
      * @param ClassConstFetch $expr
      * @return null|string|mixed
      */
-    public function resolve(\EasyCI20220121\PhpParser\Node\Expr $expr, string $currentFilePath)
+    public function resolve(\EasyCI20220123\PhpParser\Node\Expr $expr, string $currentFilePath)
     {
         $className = $this->simpleNameResolver->getName($expr->class);
         if ($className === 'self') {
-            $classLike = $this->simpleNodeFinder->findFirstParentByType($expr, \EasyCI20220121\PhpParser\Node\Stmt\ClassLike::class);
-            if (!$classLike instanceof \EasyCI20220121\PhpParser\Node\Stmt\ClassLike) {
+            $classLike = $this->simpleNodeFinder->findFirstParentByType($expr, \EasyCI20220123\PhpParser\Node\Stmt\ClassLike::class);
+            if (!$classLike instanceof \EasyCI20220123\PhpParser\Node\Stmt\ClassLike) {
                 return null;
             }
             $className = $this->simpleNameResolver->getName($classLike);

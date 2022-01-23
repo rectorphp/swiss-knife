@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220121\Symfony\Component\Config\Definition;
+namespace EasyCI20220123\Symfony\Component\Config\Definition;
 
-use EasyCI20220121\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use EasyCI20220123\Symfony\Component\Config\Definition\Builder\TreeBuilder;
 /**
  * Configuration interface.
  *

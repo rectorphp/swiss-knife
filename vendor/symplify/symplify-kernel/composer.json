@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220121\\Symplify\\SymplifyKernel\\": "src"
+            "EasyCI20220123\\Symplify\\SymplifyKernel\\": "src"
         }
     },
     "extra": {

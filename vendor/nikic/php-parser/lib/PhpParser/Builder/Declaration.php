@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220121\PhpParser\Builder;
+namespace EasyCI20220123\PhpParser\Builder;
 
-use EasyCI20220121\PhpParser;
-use EasyCI20220121\PhpParser\BuilderHelpers;
-abstract class Declaration implements \EasyCI20220121\PhpParser\Builder
+use EasyCI20220123\PhpParser;
+use EasyCI20220123\PhpParser\BuilderHelpers;
+abstract class Declaration implements \EasyCI20220123\PhpParser\Builder
 {
     protected $attributes = [];
     public abstract function addStmt($stmt);
@@ -32,7 +32,7 @@ abstract class Declaration implements \EasyCI20220121\PhpParser\Builder
      */
     public function setDocComment($docComment)
     {
-        $this->attributes['comments'] = [\EasyCI20220121\PhpParser\BuilderHelpers::normalizeDocComment($docComment)];
+        $this->attributes['comments'] = [\EasyCI20220123\PhpParser\BuilderHelpers::normalizeDocComment($docComment)];
         return $this;
     }
 }

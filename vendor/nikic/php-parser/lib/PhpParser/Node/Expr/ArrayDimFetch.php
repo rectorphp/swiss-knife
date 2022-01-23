@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220121\PhpParser\Node\Expr;
+namespace EasyCI20220123\PhpParser\Node\Expr;
 
-use EasyCI20220121\PhpParser\Node\Expr;
-class ArrayDimFetch extends \EasyCI20220121\PhpParser\Node\Expr
+use EasyCI20220123\PhpParser\Node\Expr;
+class ArrayDimFetch extends \EasyCI20220123\PhpParser\Node\Expr
 {
     /** @var Expr Variable */
     public $var;
@@ -17,7 +17,7 @@ class ArrayDimFetch extends \EasyCI20220121\PhpParser\Node\Expr
      * @param null|Expr $dim        Array index / dim
      * @param array     $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220121\PhpParser\Node\Expr $var, \EasyCI20220121\PhpParser\Node\Expr $dim = null, array $attributes = [])
+    public function __construct(\EasyCI20220123\PhpParser\Node\Expr $var, \EasyCI20220123\PhpParser\Node\Expr $dim = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->var = $var;

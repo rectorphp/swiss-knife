@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220121\Symfony\Component\Console\Formatter;
+namespace EasyCI20220123\Symfony\Component\Console\Formatter;
 
-use EasyCI20220121\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI20220121\Symfony\Contracts\Service\ResetInterface;
+use EasyCI20220123\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI20220123\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class OutputFormatterStyleStack implements \EasyCI20220121\Symfony\Contracts\Service\ResetInterface
+class OutputFormatterStyleStack implements \EasyCI20220123\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * @var OutputFormatterStyleInterface[]
      */
     private $styles = [];
     private $emptyStyle;
-    public function __construct(\EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
+    public function __construct(\EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
     {
-        $this->emptyStyle = $emptyStyle ?? new \EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $this->emptyStyle = $emptyStyle ?? new \EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyle();
         $this->reset();
     }
     /**
@@ -37,7 +37,7 @@ class OutputFormatterStyleStack implements \EasyCI20220121\Symfony\Contracts\Ser
     /**
      * Pushes a style in the stack.
      */
-    public function push(\EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
+    public function push(\EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
     {
         $this->styles[] = $style;
     }
@@ -46,7 +46,7 @@ class OutputFormatterStyleStack implements \EasyCI20220121\Symfony\Contracts\Ser
      *
      * @throws InvalidArgumentException When style tags incorrectly nested
      */
-    public function pop(\EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null) : \EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function pop(\EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null) : \EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -60,12 +60,12 @@ class OutputFormatterStyleStack implements \EasyCI20220121\Symfony\Contracts\Ser
                 return $stackedStyle;
             }
         }
-        throw new \EasyCI20220121\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
+        throw new \EasyCI20220123\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
     }
     /**
      * Computes current style with stacks top codes.
      */
-    public function getCurrent() : \EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyle
+    public function getCurrent() : \EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyle
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -75,12 +75,12 @@ class OutputFormatterStyleStack implements \EasyCI20220121\Symfony\Contracts\Ser
     /**
      * @return $this
      */
-    public function setEmptyStyle(\EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
+    public function setEmptyStyle(\EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
     {
         $this->emptyStyle = $emptyStyle;
         return $this;
     }
-    public function getEmptyStyle() : \EasyCI20220121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function getEmptyStyle() : \EasyCI20220123\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         return $this->emptyStyle;
     }

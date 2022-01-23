@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220121\Symfony\Component\Config;
+namespace EasyCI20220123\Symfony\Component\Config;
 
-use EasyCI20220121\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use EasyCI20220123\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
