@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220123;
+namespace EasyCI20220124;
 
-use EasyCI20220123\PhpParser\ConstExprEvaluator;
-use EasyCI20220123\PhpParser\NodeFinder;
+use EasyCI20220124\PhpParser\ConstExprEvaluator;
+use EasyCI20220124\PhpParser\NodeFinder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI20220123\Symplify\Astral\PhpParser\SmartPhpParser;
-use EasyCI20220123\Symplify\Astral\PhpParser\SmartPhpParserFactory;
-use EasyCI20220123\Symplify\PackageBuilder\Php\TypeChecker;
-use function EasyCI20220123\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use EasyCI20220124\Symplify\Astral\PhpParser\SmartPhpParser;
+use EasyCI20220124\Symplify\Astral\PhpParser\SmartPhpParserFactory;
+use EasyCI20220124\Symplify\PackageBuilder\Php\TypeChecker;
+use function EasyCI20220124\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->autowire()->autoconfigure()->public();
-    $services->load('EasyCI20220123\Symplify\Astral\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/StaticFactory', __DIR__ . '/../src/ValueObject', __DIR__ . '/../src/NodeVisitor', __DIR__ . '/../src/PhpParser/SmartPhpParser.php']);
-    $services->set(\EasyCI20220123\Symplify\Astral\PhpParser\SmartPhpParser::class)->factory([\EasyCI20220123\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220123\Symplify\Astral\PhpParser\SmartPhpParserFactory::class), 'create']);
-    $services->set(\EasyCI20220123\PhpParser\ConstExprEvaluator::class);
-    $services->set(\EasyCI20220123\Symplify\PackageBuilder\Php\TypeChecker::class);
-    $services->set(\EasyCI20220123\PhpParser\NodeFinder::class);
+    $services->load('EasyCI20220124\Symplify\Astral\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/StaticFactory', __DIR__ . '/../src/ValueObject', __DIR__ . '/../src/NodeVisitor', __DIR__ . '/../src/PhpParser/SmartPhpParser.php']);
+    $services->set(\EasyCI20220124\Symplify\Astral\PhpParser\SmartPhpParser::class)->factory([\EasyCI20220124\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220124\Symplify\Astral\PhpParser\SmartPhpParserFactory::class), 'create']);
+    $services->set(\EasyCI20220124\PhpParser\ConstExprEvaluator::class);
+    $services->set(\EasyCI20220124\Symplify\PackageBuilder\Php\TypeChecker::class);
+    $services->set(\EasyCI20220124\PhpParser\NodeFinder::class);
 };

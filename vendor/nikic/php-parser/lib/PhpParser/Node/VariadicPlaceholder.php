@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220123\PhpParser\Node;
+namespace EasyCI20220124\PhpParser\Node;
 
-use EasyCI20220123\PhpParser\NodeAbstract;
+use EasyCI20220124\PhpParser\NodeAbstract;
 /**
  * Represents the "..." in "foo(...)" of the first-class callable syntax.
  */
-class VariadicPlaceholder extends \EasyCI20220123\PhpParser\NodeAbstract
+class VariadicPlaceholder extends \EasyCI20220124\PhpParser\NodeAbstract
 {
     /**
      * Create a variadic argument placeholder (first-class callable syntax).

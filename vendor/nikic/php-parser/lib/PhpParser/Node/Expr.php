@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220123\PhpParser\Node;
+namespace EasyCI20220124\PhpParser\Node;
 
-use EasyCI20220123\PhpParser\NodeAbstract;
-abstract class Expr extends \EasyCI20220123\PhpParser\NodeAbstract
+use EasyCI20220124\PhpParser\NodeAbstract;
+abstract class Expr extends \EasyCI20220124\PhpParser\NodeAbstract
 {
 }

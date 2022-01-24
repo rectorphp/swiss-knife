@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI20220123\Psr\Container;
+namespace EasyCI20220124\Psr\Container;
 
 use Throwable;
 /**

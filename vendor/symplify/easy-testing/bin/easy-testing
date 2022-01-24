@@ -1,5 +1,5 @@
 #!/usr/bin/env php
 <?php 
-namespace EasyCI20220123;
+namespace EasyCI20220124;
 
 require __DIR__ . '/easy-testing.php';

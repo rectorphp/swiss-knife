@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220123\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI20220124\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI20220123\PhpParser\Lexer\Emulative;
-final class EnumTokenEmulator extends \EasyCI20220123\PhpParser\Lexer\TokenEmulator\KeywordEmulator
+use EasyCI20220124\PhpParser\Lexer\Emulative;
+final class EnumTokenEmulator extends \EasyCI20220124\PhpParser\Lexer\TokenEmulator\KeywordEmulator
 {
     public function getPhpVersion() : string
     {
-        return \EasyCI20220123\PhpParser\Lexer\Emulative::PHP_8_1;
+        return \EasyCI20220124\PhpParser\Lexer\Emulative::PHP_8_1;
     }
     public function getKeywordString() : string
     {
