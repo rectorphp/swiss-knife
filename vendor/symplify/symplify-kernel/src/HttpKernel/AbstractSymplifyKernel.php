@@ -3,8 +3,10 @@
 declare (strict_types=1);
 namespace EasyCI20220124\Symplify\SymplifyKernel\HttpKernel;
 
+use EasyCI20220124\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use EasyCI20220124\Symfony\Component\DependencyInjection\Container;
 use EasyCI20220124\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220124\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use EasyCI20220124\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 use EasyCI20220124\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
 use EasyCI20220124\Symplify\SymplifyKernel\ContainerBuilderFactory;
@@ -21,6 +23,8 @@ abstract class AbstractSymplifyKernel implements \EasyCI20220124\Symplify\Sympli
      */
     private $container = null;
     /**
+     * @param ExtensionInterface[] $extensions
+     * @param CompilerPassInterface[] $compilerPasses
      * @param string[] $configFiles
      */
     public function create(array $extensions, array $compilerPasses, array $configFiles) : \EasyCI20220124\Symfony\Component\DependencyInjection\ContainerInterface

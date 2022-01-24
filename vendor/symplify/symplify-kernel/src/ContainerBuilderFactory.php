@@ -26,6 +26,8 @@ final class ContainerBuilderFactory
      */
     public function create(array $extensions, array $compilerPasses, array $configFiles) : \EasyCI20220124\Symfony\Component\DependencyInjection\ContainerBuilder
     {
+        \EasyCI20220124\Webmozart\Assert\Assert::allIsAOf($extensions, \EasyCI20220124\Symfony\Component\DependencyInjection\Extension\ExtensionInterface::class);
+        \EasyCI20220124\Webmozart\Assert\Assert::allIsAOf($compilerPasses, \EasyCI20220124\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface::class);
         \EasyCI20220124\Webmozart\Assert\Assert::allString($configFiles);
         \EasyCI20220124\Webmozart\Assert\Assert::allFile($configFiles);
         $containerBuilder = new \EasyCI20220124\Symfony\Component\DependencyInjection\ContainerBuilder();
