@@ -17,6 +17,6 @@ final class EasyCIKernel extends \EasyCI20220125\Symplify\SymplifyKernel\HttpKer
         $configFiles[] = __DIR__ . '/../../config/config.php';
         $configFiles[] = \EasyCI20220125\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig::FILE_PATH;
         $configFiles[] = \EasyCI20220125\Symplify\Astral\ValueObject\AstralConfig::FILE_PATH;
-        return $this->create([], [], $configFiles);
+        return $this->create($configFiles, [], []);
     }
 }

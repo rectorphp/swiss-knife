@@ -20,11 +20,11 @@ final class ContainerBuilderFactory
         $this->loaderFactory = $loaderFactory;
     }
     /**
-     * @param ExtensionInterface[] $extensions
-     * @param CompilerPassInterface[] $compilerPasses
      * @param string[] $configFiles
+     * @param CompilerPassInterface[] $compilerPasses
+     * @param ExtensionInterface[] $extensions
      */
-    public function create(array $extensions, array $compilerPasses, array $configFiles) : \EasyCI20220125\Symfony\Component\DependencyInjection\ContainerBuilder
+    public function create(array $configFiles, array $compilerPasses, array $extensions) : \EasyCI20220125\Symfony\Component\DependencyInjection\ContainerBuilder
     {
         \EasyCI20220125\Webmozart\Assert\Assert::allIsAOf($extensions, \EasyCI20220125\Symfony\Component\DependencyInjection\Extension\ExtensionInterface::class);
         \EasyCI20220125\Webmozart\Assert\Assert::allIsAOf($compilerPasses, \EasyCI20220125\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface::class);
