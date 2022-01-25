@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220124\Symfony\Component\Config;
+namespace EasyCI20220125\Symfony\Component\Config;
 
 /**
  * A ConfigCacheFactory implementation that validates the
@@ -16,7 +16,7 @@ namespace EasyCI20220124\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCacheFactory implements \EasyCI20220124\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ResourceCheckerConfigCacheFactory implements \EasyCI20220125\Symfony\Component\Config\ConfigCacheFactoryInterface
 {
     /**
      * @var mixed[]
@@ -32,9 +32,9 @@ class ResourceCheckerConfigCacheFactory implements \EasyCI20220124\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function cache(string $file, callable $callable) : \EasyCI20220124\Symfony\Component\Config\ConfigCacheInterface
+    public function cache(string $file, callable $callable) : \EasyCI20220125\Symfony\Component\Config\ConfigCacheInterface
     {
-        $cache = new \EasyCI20220124\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
+        $cache = new \EasyCI20220125\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
         if (!$cache->isFresh()) {
             $callable($cache);
         }

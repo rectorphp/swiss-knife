@@ -1,24 +1,24 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220124\PhpParser\Lexer;
+namespace EasyCI20220125\PhpParser\Lexer;
 
-use EasyCI20220124\PhpParser\Error;
-use EasyCI20220124\PhpParser\ErrorHandler;
-use EasyCI20220124\PhpParser\Lexer;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
-use EasyCI20220124\PhpParser\Lexer\TokenEmulator\TokenEmulator;
-class Emulative extends \EasyCI20220124\PhpParser\Lexer
+use EasyCI20220125\PhpParser\Error;
+use EasyCI20220125\PhpParser\ErrorHandler;
+use EasyCI20220125\PhpParser\Lexer;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
+use EasyCI20220125\PhpParser\Lexer\TokenEmulator\TokenEmulator;
+class Emulative extends \EasyCI20220125\PhpParser\Lexer
 {
     const PHP_7_3 = '7.3dev';
     const PHP_7_4 = '7.4dev';
@@ -37,10 +37,10 @@ class Emulative extends \EasyCI20220124\PhpParser\Lexer
      */
     public function __construct(array $options = [])
     {
-        $this->targetPhpVersion = $options['phpVersion'] ?? \EasyCI20220124\PhpParser\Lexer\Emulative::PHP_8_1;
+        $this->targetPhpVersion = $options['phpVersion'] ?? \EasyCI20220125\PhpParser\Lexer\Emulative::PHP_8_1;
         unset($options['phpVersion']);
         parent::__construct($options);
-        $emulators = [new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\FnTokenEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\AttributeEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator(), new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator()];
+        $emulators = [new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\FnTokenEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\AttributeEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator(), new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator()];
         // Collect emulators that are relevant for the PHP version we're running
         // and the PHP version we're targeting for emulation.
         foreach ($emulators as $emulator) {
@@ -49,12 +49,12 @@ class Emulative extends \EasyCI20220124\PhpParser\Lexer
                 $this->emulators[] = $emulator;
             } else {
                 if ($this->isReverseEmulationNeeded($emulatorPhpVersion)) {
-                    $this->emulators[] = new \EasyCI20220124\PhpParser\Lexer\TokenEmulator\ReverseEmulator($emulator);
+                    $this->emulators[] = new \EasyCI20220125\PhpParser\Lexer\TokenEmulator\ReverseEmulator($emulator);
                 }
             }
         }
     }
-    public function startLexing(string $code, \EasyCI20220124\PhpParser\ErrorHandler $errorHandler = null)
+    public function startLexing(string $code, \EasyCI20220125\PhpParser\ErrorHandler $errorHandler = null)
     {
         $emulators = \array_filter($this->emulators, function ($emulator) use($code) {
             return $emulator->isEmulationNeeded($code);
@@ -68,7 +68,7 @@ class Emulative extends \EasyCI20220124\PhpParser\Lexer
         foreach ($emulators as $emulator) {
             $code = $emulator->preprocessCode($code, $this->patches);
         }
-        $collector = new \EasyCI20220124\PhpParser\ErrorHandler\Collecting();
+        $collector = new \EasyCI20220125\PhpParser\ErrorHandler\Collecting();
         parent::startLexing($code, $collector);
         $this->sortPatches();
         $this->fixupTokens();

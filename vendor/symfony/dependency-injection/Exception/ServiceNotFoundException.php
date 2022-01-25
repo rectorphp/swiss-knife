@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220124\Symfony\Component\DependencyInjection\Exception;
+namespace EasyCI20220125\Symfony\Component\DependencyInjection\Exception;
 
-use EasyCI20220124\Psr\Container\NotFoundExceptionInterface;
+use EasyCI20220125\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent service is requested.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceNotFoundException extends \EasyCI20220124\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \EasyCI20220124\Psr\Container\NotFoundExceptionInterface
+class ServiceNotFoundException extends \EasyCI20220125\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \EasyCI20220125\Psr\Container\NotFoundExceptionInterface
 {
     /**
      * @var string

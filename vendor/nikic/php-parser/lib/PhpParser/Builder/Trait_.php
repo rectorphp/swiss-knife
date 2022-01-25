@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220124\PhpParser\Builder;
+namespace EasyCI20220125\PhpParser\Builder;
 
-use EasyCI20220124\PhpParser;
-use EasyCI20220124\PhpParser\BuilderHelpers;
-use EasyCI20220124\PhpParser\Node;
-use EasyCI20220124\PhpParser\Node\Stmt;
-class Trait_ extends \EasyCI20220124\PhpParser\Builder\Declaration
+use EasyCI20220125\PhpParser;
+use EasyCI20220125\PhpParser\BuilderHelpers;
+use EasyCI20220125\PhpParser\Node;
+use EasyCI20220125\PhpParser\Node\Stmt;
+class Trait_ extends \EasyCI20220125\PhpParser\Builder\Declaration
 {
     protected $name;
     protected $uses = [];
@@ -33,12 +33,12 @@ class Trait_ extends \EasyCI20220124\PhpParser\Builder\Declaration
      */
     public function addStmt($stmt)
     {
-        $stmt = \EasyCI20220124\PhpParser\BuilderHelpers::normalizeNode($stmt);
-        if ($stmt instanceof \EasyCI20220124\PhpParser\Node\Stmt\Property) {
+        $stmt = \EasyCI20220125\PhpParser\BuilderHelpers::normalizeNode($stmt);
+        if ($stmt instanceof \EasyCI20220125\PhpParser\Node\Stmt\Property) {
             $this->properties[] = $stmt;
-        } elseif ($stmt instanceof \EasyCI20220124\PhpParser\Node\Stmt\ClassMethod) {
+        } elseif ($stmt instanceof \EasyCI20220125\PhpParser\Node\Stmt\ClassMethod) {
             $this->methods[] = $stmt;
-        } elseif ($stmt instanceof \EasyCI20220124\PhpParser\Node\Stmt\TraitUse) {
+        } elseif ($stmt instanceof \EasyCI20220125\PhpParser\Node\Stmt\TraitUse) {
             $this->uses[] = $stmt;
         } else {
             throw new \LogicException(\sprintf('Unexpected node of type "%s"', $stmt->getType()));
@@ -54,7 +54,7 @@ class Trait_ extends \EasyCI20220124\PhpParser\Builder\Declaration
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220124\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220125\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -62,8 +62,8 @@ class Trait_ extends \EasyCI20220124\PhpParser\Builder\Declaration
      *
      * @return Stmt\Trait_ The built interface node
      */
-    public function getNode() : \EasyCI20220124\PhpParser\Node
+    public function getNode() : \EasyCI20220125\PhpParser\Node
     {
-        return new \EasyCI20220124\PhpParser\Node\Stmt\Trait_($this->name, ['stmts' => \array_merge($this->uses, $this->properties, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new \EasyCI20220125\PhpParser\Node\Stmt\Trait_($this->name, ['stmts' => \array_merge($this->uses, $this->properties, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

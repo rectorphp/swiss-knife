@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220124\Symfony\Component\Console\Tester;
+namespace EasyCI20220125\Symfony\Component\Console\Tester;
 
-use EasyCI20220124\Symfony\Component\Console\Command\Command;
-use EasyCI20220124\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI20220124\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI20220125\Symfony\Component\Console\Command\Command;
+use EasyCI20220125\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI20220125\Symfony\Component\Console\Completion\CompletionSuggestions;
 /**
  * Eases the testing of command completion.
  *
@@ -21,7 +21,7 @@ use EasyCI20220124\Symfony\Component\Console\Completion\CompletionSuggestions;
 class CommandCompletionTester
 {
     private $command;
-    public function __construct(\EasyCI20220124\Symfony\Component\Console\Command\Command $command)
+    public function __construct(\EasyCI20220125\Symfony\Component\Console\Command\Command $command)
     {
         $this->command = $command;
     }
@@ -35,9 +35,9 @@ class CommandCompletionTester
             \array_pop($input);
         }
         \array_unshift($input, $this->command->getName());
-        $completionInput = \EasyCI20220124\Symfony\Component\Console\Completion\CompletionInput::fromTokens($input, $currentIndex);
+        $completionInput = \EasyCI20220125\Symfony\Component\Console\Completion\CompletionInput::fromTokens($input, $currentIndex);
         $completionInput->bind($this->command->getDefinition());
-        $suggestions = new \EasyCI20220124\Symfony\Component\Console\Completion\CompletionSuggestions();
+        $suggestions = new \EasyCI20220125\Symfony\Component\Console\Completion\CompletionSuggestions();
         $this->command->complete($completionInput, $suggestions);
         $options = [];
         foreach ($suggestions->getOptionSuggestions() as $option) {

@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\Twig;
 
 use Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
-use EasyCI20220124\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220125\Symplify\SmartFileSystem\SmartFileInfo;
 final class TwigAnalyzer
 {
     /**
