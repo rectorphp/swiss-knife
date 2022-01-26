@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220125\Symfony\Component\DependencyInjection;
+namespace EasyCI20220126\Symfony\Component\DependencyInjection;
 
 /**
  * ContainerAwareInterface should be implemented by classes that depends on a Container.
@@ -20,5 +20,5 @@ interface ContainerAwareInterface
     /**
      * Sets the container.
      */
-    public function setContainer(\EasyCI20220125\Symfony\Component\DependencyInjection\ContainerInterface $container = null);
+    public function setContainer(\EasyCI20220126\Symfony\Component\DependencyInjection\ContainerInterface $container = null);
 }

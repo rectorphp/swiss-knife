@@ -3,12 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220125\Nette\Utils\DateTime;
-use EasyCI20220125\Nette\Utils\Strings;
+use EasyCI20220126\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220125\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220126\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\LatteStaticCallAnalyzer\StaticCallLatteAnalyzerTest
  */
@@ -43,9 +42,9 @@ final class StaticCallLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\L
     /**
      * @return FileErrorInterface[]
      */
-    private function analyzeFileInfo(\EasyCI20220125\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function analyzeFileInfo(\EasyCI20220126\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
-        $matches = \EasyCI20220125\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::STATIC_CALL_REGEX);
+        $matches = \EasyCI20220126\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::STATIC_CALL_REGEX);
         $matches = $this->filterOutAllowedStaticClasses($matches);
         $templateErrors = [];
         foreach ($matches as $match) {
@@ -60,8 +59,12 @@ final class StaticCallLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\L
      */
     private function filterOutAllowedStaticClasses(array $matches) : array
     {
-        return \array_filter($matches, static function (array $match) : bool {
-            return !\in_array($match[self::CLASS_NAME_PART], [\EasyCI20220125\Nette\Utils\Strings::class, \EasyCI20220125\Nette\Utils\DateTime::class], \true);
+        return \array_filter($matches, function (array $match) : bool {
+            return !\in_array($match[self::CLASS_NAME_PART], [
+                // keep strings, to avoid prefixing
+                'Nette\\Utils\\Strings',
+                'Nette\\Utils\\DateTime',
+            ], \true);
         });
     }
 }

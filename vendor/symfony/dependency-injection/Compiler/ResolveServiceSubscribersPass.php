@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220125\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220126\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220125\Psr\Container\ContainerInterface;
-use EasyCI20220125\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220125\Symfony\Component\DependencyInjection\Reference;
-use EasyCI20220125\Symfony\Contracts\Service\ServiceProviderInterface;
+use EasyCI20220126\Psr\Container\ContainerInterface;
+use EasyCI20220126\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220126\Symfony\Component\DependencyInjection\Reference;
+use EasyCI20220126\Symfony\Contracts\Service\ServiceProviderInterface;
 /**
  * Compiler pass to inject their service locator to service subscribers.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveServiceSubscribersPass extends \EasyCI20220125\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveServiceSubscribersPass extends \EasyCI20220126\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     /**
      * @var string|null
@@ -31,10 +31,10 @@ class ResolveServiceSubscribersPass extends \EasyCI20220125\Symfony\Component\De
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \EasyCI20220125\Symfony\Component\DependencyInjection\Reference && $this->serviceLocator && \in_array((string) $value, [\EasyCI20220125\Psr\Container\ContainerInterface::class, \EasyCI20220125\Symfony\Contracts\Service\ServiceProviderInterface::class], \true)) {
-            return new \EasyCI20220125\Symfony\Component\DependencyInjection\Reference($this->serviceLocator);
+        if ($value instanceof \EasyCI20220126\Symfony\Component\DependencyInjection\Reference && $this->serviceLocator && \in_array((string) $value, [\EasyCI20220126\Psr\Container\ContainerInterface::class, \EasyCI20220126\Symfony\Contracts\Service\ServiceProviderInterface::class], \true)) {
+            return new \EasyCI20220126\Symfony\Component\DependencyInjection\Reference($this->serviceLocator);
         }
-        if (!$value instanceof \EasyCI20220125\Symfony\Component\DependencyInjection\Definition) {
+        if (!$value instanceof \EasyCI20220126\Symfony\Component\DependencyInjection\Definition) {
             return parent::processValue($value, $isRoot);
         }
         $serviceLocator = $this->serviceLocator;
