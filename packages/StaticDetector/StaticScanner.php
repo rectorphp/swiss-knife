@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector;
 
-use EasyCI20220126\PhpParser\Parser;
-use EasyCI20220126\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220127\PhpParser\Parser;
+use EasyCI20220127\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
 use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
-use EasyCI20220126\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220127\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\StaticDetector\StaticScanner\StaticScannerTest
  */
@@ -29,7 +29,7 @@ final class StaticScanner
      * @var \Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider
      */
     private $currentFileInfoProvider;
-    public function __construct(\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser $staticCollectNodeTraverser, \EasyCI20220126\PhpParser\Parser $parser, \EasyCI20220126\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider $currentFileInfoProvider)
+    public function __construct(\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser $staticCollectNodeTraverser, \EasyCI20220127\PhpParser\Parser $parser, \EasyCI20220127\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider $currentFileInfoProvider)
     {
         $this->staticCollectNodeTraverser = $staticCollectNodeTraverser;
         $this->parser = $parser;
@@ -60,7 +60,7 @@ final class StaticScanner
         $this->symfonyStyle->success('Scanning done');
         $this->symfonyStyle->newLine(1);
     }
-    private function scanFileInfo(\EasyCI20220126\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    private function scanFileInfo(\EasyCI20220127\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $nodes = $this->parser->parse($smartFileInfo->getContents());
         if ($nodes === null) {

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220126\PhpParser\Node;
+namespace EasyCI20220127\PhpParser\Node;
 
-use EasyCI20220126\PhpParser\Node;
-use EasyCI20220126\PhpParser\NodeAbstract;
-class MatchArm extends \EasyCI20220126\PhpParser\NodeAbstract
+use EasyCI20220127\PhpParser\Node;
+use EasyCI20220127\PhpParser\NodeAbstract;
+class MatchArm extends \EasyCI20220127\PhpParser\NodeAbstract
 {
     /** @var null|Node\Expr[] */
     public $conds;
@@ -14,7 +14,7 @@ class MatchArm extends \EasyCI20220126\PhpParser\NodeAbstract
     /**
      * @param null|Node\Expr[] $conds
      */
-    public function __construct($conds, \EasyCI20220126\PhpParser\Node\Expr $body, array $attributes = [])
+    public function __construct($conds, \EasyCI20220127\PhpParser\Node\Expr $body, array $attributes = [])
     {
         $this->conds = $conds;
         $this->body = $body;
