@@ -6,20 +6,14 @@ namespace EasyCI20220130\Symplify\Astral\NodeFinder;
 use EasyCI20220130\PhpParser\Node;
 use EasyCI20220130\PhpParser\NodeFinder;
 use EasyCI20220130\Symplify\Astral\ValueObject\AttributeKey;
-use EasyCI20220130\Symplify\PackageBuilder\Php\TypeChecker;
 final class SimpleNodeFinder
 {
-    /**
-     * @var \Symplify\PackageBuilder\Php\TypeChecker
-     */
-    private $typeChecker;
     /**
      * @var \PhpParser\NodeFinder
      */
     private $nodeFinder;
-    public function __construct(\EasyCI20220130\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \EasyCI20220130\PhpParser\NodeFinder $nodeFinder)
+    public function __construct(\EasyCI20220130\PhpParser\NodeFinder $nodeFinder)
     {
-        $this->typeChecker = $typeChecker;
         $this->nodeFinder = $nodeFinder;
     }
     /**
@@ -64,7 +58,7 @@ final class SimpleNodeFinder
     public function findFirstParentByType(\EasyCI20220130\PhpParser\Node $node, string $nodeClass) : ?\EasyCI20220130\PhpParser\Node
     {
         $node = $node->getAttribute(\EasyCI20220130\Symplify\Astral\ValueObject\AttributeKey::PARENT);
-        while ($node) {
+        while ($node instanceof \EasyCI20220130\PhpParser\Node) {
             if (\is_a($node, $nodeClass, \true)) {
                 return $node;
             }
@@ -80,9 +74,11 @@ final class SimpleNodeFinder
     public function findFirstParentByTypes(\EasyCI20220130\PhpParser\Node $node, array $nodeTypes) : ?\EasyCI20220130\PhpParser\Node
     {
         $node = $node->getAttribute(\EasyCI20220130\Symplify\Astral\ValueObject\AttributeKey::PARENT);
-        while ($node) {
-            if ($this->typeChecker->isInstanceOf($node, $nodeTypes)) {
-                return $node;
+        while ($node instanceof \EasyCI20220130\PhpParser\Node) {
+            foreach ($nodeTypes as $nodeType) {
+                if (\is_a($node, $nodeType)) {
+                    return $node;
+                }
             }
             $node = $node->getAttribute(\EasyCI20220130\Symplify\Astral\ValueObject\AttributeKey::PARENT);
         }

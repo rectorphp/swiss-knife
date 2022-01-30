@@ -15,7 +15,7 @@ final class NodeValueResolverStaticFactory
     public static function create() : \EasyCI20220130\Symplify\Astral\NodeValue\NodeValueResolver
     {
         $simpleNameResolver = \EasyCI20220130\Symplify\Astral\StaticFactory\SimpleNameResolverStaticFactory::create();
-        $simpleNodeFinder = new \EasyCI20220130\Symplify\Astral\NodeFinder\SimpleNodeFinder(new \EasyCI20220130\Symplify\PackageBuilder\Php\TypeChecker(), new \EasyCI20220130\PhpParser\NodeFinder());
+        $simpleNodeFinder = new \EasyCI20220130\Symplify\Astral\NodeFinder\SimpleNodeFinder(new \EasyCI20220130\PhpParser\NodeFinder());
         return new \EasyCI20220130\Symplify\Astral\NodeValue\NodeValueResolver($simpleNameResolver, new \EasyCI20220130\Symplify\PackageBuilder\Php\TypeChecker(), $simpleNodeFinder);
     }
 }
