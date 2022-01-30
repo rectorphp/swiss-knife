@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220127\PhpParser\Node\Expr\AssignOp;
+namespace EasyCI20220130\PhpParser\Node\Expr\AssignOp;
 
-use EasyCI20220127\PhpParser\Node\Expr\AssignOp;
-class BitwiseAnd extends \EasyCI20220127\PhpParser\Node\Expr\AssignOp
+use EasyCI20220130\PhpParser\Node\Expr\AssignOp;
+class BitwiseAnd extends \EasyCI20220130\PhpParser\Node\Expr\AssignOp
 {
     public function getType() : string
     {

@@ -5,7 +5,7 @@
  * https://github.com/nette/coding-standard
  */
 declare (strict_types=1);
-namespace EasyCI20220127;
+namespace EasyCI20220130;
 
 return [
     // use function in Arrays.php, Callback.php, Html.php, Strings.php

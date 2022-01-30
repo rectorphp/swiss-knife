@@ -16,12 +16,12 @@ final class DualTestCaseAuloader
     {
         if (!\class_exists(self::UNDERSCORED_TEST_CASE_CLASS)) {
             // alias new test case to old one
-            \class_alias('EasyCI20220127\\PHPUnit\\Framework\\TestCase', self::UNDERSCORED_TEST_CASE_CLASS);
+            \class_alias('EasyCI20220130\\PHPUnit\\Framework\\TestCase', self::UNDERSCORED_TEST_CASE_CLASS);
             return;
         }
-        if (!\class_exists('EasyCI20220127\\PHPUnit\\Framework\\TestCase')) {
+        if (!\class_exists('EasyCI20220130\\PHPUnit\\Framework\\TestCase')) {
             // alias old test case to new one
-            \class_alias(self::UNDERSCORED_TEST_CASE_CLASS, 'EasyCI20220127\\PHPUnit\\Framework\\TestCase');
+            \class_alias(self::UNDERSCORED_TEST_CASE_CLASS, 'EasyCI20220130\\PHPUnit\\Framework\\TestCase');
         }
     }
 }

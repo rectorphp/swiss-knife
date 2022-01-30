@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220127\PhpParser\Node;
+namespace EasyCI20220130\PhpParser\Node;
 
-class NullableType extends \EasyCI20220127\PhpParser\Node\ComplexType
+class NullableType extends \EasyCI20220130\PhpParser\Node\ComplexType
 {
     /** @var Identifier|Name Type */
     public $type;
@@ -16,7 +16,7 @@ class NullableType extends \EasyCI20220127\PhpParser\Node\ComplexType
     public function __construct($type, array $attributes = [])
     {
         $this->attributes = $attributes;
-        $this->type = \is_string($type) ? new \EasyCI20220127\PhpParser\Node\Identifier($type) : $type;
+        $this->type = \is_string($type) ? new \EasyCI20220130\PhpParser\Node\Identifier($type) : $type;
     }
     public function getSubNodeNames() : array
     {

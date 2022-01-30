@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Command;
 
-use EasyCI20220127\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220127\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220127\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220130\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220130\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220130\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
-use EasyCI20220127\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220127\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class FindMultiClassesCommand extends \EasyCI20220127\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220130\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220130\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class FindMultiClassesCommand extends \EasyCI20220130\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder
@@ -23,11 +23,11 @@ final class FindMultiClassesCommand extends \EasyCI20220127\Symplify\PackageBuil
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220127\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220130\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Find multiple classes in one file');
-        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220127\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220127\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source to analyse');
+        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220130\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220130\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source to analyse');
     }
-    protected function execute(\EasyCI20220127\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220127\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220130\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220130\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $source */
         $source = (array) $input->getArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220127\PhpParser\Node\Expr\BinaryOp;
+namespace EasyCI20220130\PhpParser\Node\Expr\BinaryOp;
 
-use EasyCI20220127\PhpParser\Node\Expr\BinaryOp;
-class GreaterOrEqual extends \EasyCI20220127\PhpParser\Node\Expr\BinaryOp
+use EasyCI20220130\PhpParser\Node\Expr\BinaryOp;
+class GreaterOrEqual extends \EasyCI20220130\PhpParser\Node\Expr\BinaryOp
 {
     public function getOperatorSigil() : string
     {
