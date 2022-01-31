@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Utils;
 
-use EasyCI20220130\Nette\Utils\Strings;
+use EasyCI20220131\Nette\Utils\Strings;
 /**
  * @see \Symplify\EasyCI\Tests\Psr4\Utils\SymplifyStringsTest
  */
@@ -42,15 +42,15 @@ final class SymplifyStrings
     }
     public function subtractFromRight(string $mainString, string $stringToSubtract) : string
     {
-        return \EasyCI20220130\Nette\Utils\Strings::substring($mainString, 0, -\strlen($stringToSubtract));
+        return \EasyCI20220131\Nette\Utils\Strings::substring($mainString, 0, -\strlen($stringToSubtract));
     }
     public function subtractFromLeft(string $mainString, string $stringToSubtract) : string
     {
-        return \EasyCI20220130\Nette\Utils\Strings::substring($mainString, \strlen($stringToSubtract));
+        return \EasyCI20220131\Nette\Utils\Strings::substring($mainString, \strlen($stringToSubtract));
     }
     private function normalizePath(string $firstString) : string
     {
-        return \EasyCI20220130\Nette\Utils\Strings::replace($firstString, '#\\\\#', '/');
+        return \EasyCI20220131\Nette\Utils\Strings::replace($firstString, '#\\\\#', '/');
     }
     private function shouldIncludeChar(string $string, int $sBackPosition, string $first, int $firstBackPosition, int $i) : bool
     {

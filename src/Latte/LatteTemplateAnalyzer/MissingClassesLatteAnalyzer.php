@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220130\Nette\Utils\Strings;
+use EasyCI20220131\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220130\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use EasyCI20220130\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220131\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\MissingClassesLatteAnalyzer\MissingClassesLatteAnalyzerTest
  */
@@ -33,7 +33,7 @@ final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contra
      * @var \Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\EasyCI20220130\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(\EasyCI20220131\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->classLikeExistenceChecker = $classLikeExistenceChecker;
     }
@@ -46,9 +46,9 @@ final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contra
         $errors = [];
         foreach ($fileInfos as $fileInfo) {
             // clear content from javascript fiels
-            $fileContents = \EasyCI20220130\Nette\Utils\Strings::replace($fileInfo->getContents(), self::SCRIPT_CONTENTS_REGEX, '');
-            $classMatches = \EasyCI20220130\Nette\Utils\Strings::matchAll($fileContents, self::CLASS_REGEX);
-            $varTypeInstanceOfClassMatches = \EasyCI20220130\Nette\Utils\Strings::matchAll($fileContents, self::VARTYPE_INSTANCEOF_CLASS_REGEX);
+            $fileContents = \EasyCI20220131\Nette\Utils\Strings::replace($fileInfo->getContents(), self::SCRIPT_CONTENTS_REGEX, '');
+            $classMatches = \EasyCI20220131\Nette\Utils\Strings::matchAll($fileContents, self::CLASS_REGEX);
+            $varTypeInstanceOfClassMatches = \EasyCI20220131\Nette\Utils\Strings::matchAll($fileContents, self::VARTYPE_INSTANCEOF_CLASS_REGEX);
             $matches = \array_merge($classMatches, $varTypeInstanceOfClassMatches);
             if ($matches === []) {
                 continue;

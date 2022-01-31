@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220130\PhpParser\Node\Expr;
+namespace EasyCI20220131\PhpParser\Node\Expr;
 
-use EasyCI20220130\PhpParser\Node;
-use EasyCI20220130\PhpParser\Node\Expr;
-class FuncCall extends \EasyCI20220130\PhpParser\Node\Expr\CallLike
+use EasyCI20220131\PhpParser\Node;
+use EasyCI20220131\PhpParser\Node\Expr;
+class FuncCall extends \EasyCI20220131\PhpParser\Node\Expr\CallLike
 {
     /** @var Node\Name|Expr Function name */
     public $name;

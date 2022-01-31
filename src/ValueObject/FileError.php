@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\ValueObject;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220130\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileError implements \Symplify\EasyCI\Contract\ValueObject\FileErrorInterface
 {
     /**
@@ -15,7 +15,7 @@ final class FileError implements \Symplify\EasyCI\Contract\ValueObject\FileError
      * @var \Symplify\SmartFileSystem\SmartFileInfo
      */
     private $smartFileInfo;
-    public function __construct(string $errorMessage, \EasyCI20220130\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo)
+    public function __construct(string $errorMessage, \EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo)
     {
         $this->errorMessage = $errorMessage;
         $this->smartFileInfo = $smartFileInfo;

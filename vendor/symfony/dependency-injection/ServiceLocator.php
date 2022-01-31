@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220130\Symfony\Component\DependencyInjection;
+namespace EasyCI20220131\Symfony\Component\DependencyInjection;
 
-use EasyCI20220130\Psr\Container\ContainerExceptionInterface;
-use EasyCI20220130\Psr\Container\NotFoundExceptionInterface;
-use EasyCI20220130\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI20220130\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use EasyCI20220130\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI20220130\Symfony\Contracts\Service\ServiceLocatorTrait;
-use EasyCI20220130\Symfony\Contracts\Service\ServiceProviderInterface;
-use EasyCI20220130\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use EasyCI20220131\Psr\Container\ContainerExceptionInterface;
+use EasyCI20220131\Psr\Container\NotFoundExceptionInterface;
+use EasyCI20220131\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI20220131\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI20220131\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI20220131\Symfony\Contracts\Service\ServiceLocatorTrait;
+use EasyCI20220131\Symfony\Contracts\Service\ServiceProviderInterface;
+use EasyCI20220131\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ServiceLocator implements \EasyCI20220130\Symfony\Contracts\Service\ServiceProviderInterface
+class ServiceLocator implements \EasyCI20220131\Symfony\Contracts\Service\ServiceProviderInterface
 {
     use ServiceLocatorTrait {
         get as private doGet;
@@ -43,7 +43,7 @@ class ServiceLocator implements \EasyCI20220130\Symfony\Contracts\Service\Servic
         }
         try {
             return $this->doGet($id);
-        } catch (\EasyCI20220130\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+        } catch (\EasyCI20220131\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
             $what = \sprintf('service "%s" required by "%s"', $id, $this->externalId);
             $message = \preg_replace('/service "\\.service_locator\\.[^"]++"/', $what, $e->getMessage());
             if ($e->getMessage() === $message) {
@@ -63,18 +63,18 @@ class ServiceLocator implements \EasyCI20220130\Symfony\Contracts\Service\Servic
      * @internal
      * @return $this
      */
-    public function withContext(string $externalId, \EasyCI20220130\Symfony\Component\DependencyInjection\Container $container)
+    public function withContext(string $externalId, \EasyCI20220131\Symfony\Component\DependencyInjection\Container $container)
     {
         $locator = clone $this;
         $locator->externalId = $externalId;
         $locator->container = $container;
         return $locator;
     }
-    private function createNotFoundException(string $id) : \EasyCI20220130\Psr\Container\NotFoundExceptionInterface
+    private function createNotFoundException(string $id) : \EasyCI20220131\Psr\Container\NotFoundExceptionInterface
     {
         if ($this->loading) {
             $msg = \sprintf('The service "%s" has a dependency on a non-existent service "%s". This locator %s', \end($this->loading), $id, $this->formatAlternatives());
-            return new \EasyCI20220130\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], $msg);
+            return new \EasyCI20220131\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], $msg);
         }
         $class = \debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT | \DEBUG_BACKTRACE_IGNORE_ARGS, 4);
         $class = isset($class[3]['object']) ? \get_class($class[3]['object']) : null;
@@ -89,7 +89,7 @@ class ServiceLocator implements \EasyCI20220130\Symfony\Contracts\Service\Servic
             try {
                 $this->container->get($id);
                 $class = null;
-            } catch (\EasyCI20220130\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
+            } catch (\EasyCI20220131\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
                 if ($e->getAlternatives()) {
                     $msg[] = \sprintf('did you mean %s? Anyway,', $this->formatAlternatives($e->getAlternatives(), 'or'));
                 } else {
@@ -104,16 +104,16 @@ class ServiceLocator implements \EasyCI20220130\Symfony\Contracts\Service\Servic
         }
         if (!$class) {
             // no-op
-        } elseif (\is_subclass_of($class, \EasyCI20220130\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+        } elseif (\is_subclass_of($class, \EasyCI20220131\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
             $msg[] = \sprintf('Unless you need extra laziness, try using dependency injection instead. Otherwise, you need to declare it using "%s::getSubscribedServices()".', \preg_replace('/([^\\\\]++\\\\)++/', '', $class));
         } else {
             $msg[] = 'Try using dependency injection instead.';
         }
-        return new \EasyCI20220130\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], \implode(' ', $msg));
+        return new \EasyCI20220131\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], \implode(' ', $msg));
     }
-    private function createCircularReferenceException(string $id, array $path) : \EasyCI20220130\Psr\Container\ContainerExceptionInterface
+    private function createCircularReferenceException(string $id, array $path) : \EasyCI20220131\Psr\Container\ContainerExceptionInterface
     {
-        return new \EasyCI20220130\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, $path);
+        return new \EasyCI20220131\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, $path);
     }
     private function formatAlternatives(array $alternatives = null, string $separator = 'and') : string
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI20220130;
+namespace EasyCI20220131;
 
 require __DIR__ . '/phpyLang.php';
 $grammarFileToName = [__DIR__ . '/php5.y' => 'Php5', __DIR__ . '/php7.y' => 'Php7'];
@@ -27,18 +27,18 @@ foreach ($grammarFileToName as $grammarFile => $name) {
     echo "Building temporary {$name} grammar file.\n";
     $grammarCode = \file_get_contents($grammarFile);
     $grammarCode = \str_replace('%tokens', $tokens, $grammarCode);
-    $grammarCode = \EasyCI20220130\preprocessGrammar($grammarCode);
+    $grammarCode = \EasyCI20220131\preprocessGrammar($grammarCode);
     \file_put_contents($tmpGrammarFile, $grammarCode);
     $additionalArgs = $optionDebug ? '-t -v' : '';
     echo "Building {$name} parser.\n";
-    $output = \EasyCI20220130\execCmd("{$kmyacc} {$additionalArgs} -m {$skeletonFile} -p {$name} {$tmpGrammarFile}");
+    $output = \EasyCI20220131\execCmd("{$kmyacc} {$additionalArgs} -m {$skeletonFile} -p {$name} {$tmpGrammarFile}");
     $resultCode = \file_get_contents($tmpResultFile);
-    $resultCode = \EasyCI20220130\removeTrailingWhitespace($resultCode);
-    \EasyCI20220130\ensureDirExists($resultDir);
+    $resultCode = \EasyCI20220131\removeTrailingWhitespace($resultCode);
+    \EasyCI20220131\ensureDirExists($resultDir);
     \file_put_contents("{$resultDir}/{$name}.php", $resultCode);
     \unlink($tmpResultFile);
     echo "Building token definition.\n";
-    $output = \EasyCI20220130\execCmd("{$kmyacc} -m {$tokensTemplate} {$tmpGrammarFile}");
+    $output = \EasyCI20220131\execCmd("{$kmyacc} -m {$tokensTemplate} {$tmpGrammarFile}");
     \rename($tmpResultFile, $tokensResultsFile);
     if (!$optionKeepTmpGrammar) {
         \unlink($tmpGrammarFile);

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220130\Symfony\Component\DependencyInjection\Exception;
+namespace EasyCI20220131\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Thrown when a definition cannot be autowired.
  */
-class AutowiringFailedException extends \EasyCI20220130\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class AutowiringFailedException extends \EasyCI20220131\Symfony\Component\DependencyInjection\Exception\RuntimeException
 {
     /**
      * @var string

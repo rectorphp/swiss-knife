@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220130\Symplify\Astral\NodeNameResolver;
+namespace EasyCI20220131\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220130\PhpParser\Node;
-use EasyCI20220130\PhpParser\Node\Expr;
-use EasyCI20220130\PhpParser\Node\Param;
-use EasyCI20220130\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class ParamNodeNameResolver implements \EasyCI20220130\Symplify\Astral\Contract\NodeNameResolverInterface
+use EasyCI20220131\PhpParser\Node;
+use EasyCI20220131\PhpParser\Node\Expr;
+use EasyCI20220131\PhpParser\Node\Param;
+use EasyCI20220131\Symplify\Astral\Contract\NodeNameResolverInterface;
+final class ParamNodeNameResolver implements \EasyCI20220131\Symplify\Astral\Contract\NodeNameResolverInterface
 {
-    public function match(\EasyCI20220130\PhpParser\Node $node) : bool
+    public function match(\EasyCI20220131\PhpParser\Node $node) : bool
     {
-        return $node instanceof \EasyCI20220130\PhpParser\Node\Param;
+        return $node instanceof \EasyCI20220131\PhpParser\Node\Param;
     }
     /**
      * @param Param $node
      */
-    public function resolve(\EasyCI20220130\PhpParser\Node $node) : ?string
+    public function resolve(\EasyCI20220131\PhpParser\Node $node) : ?string
     {
         $paramName = $node->var->name;
-        if ($paramName instanceof \EasyCI20220130\PhpParser\Node\Expr) {
+        if ($paramName instanceof \EasyCI20220131\PhpParser\Node\Expr) {
             return null;
         }
         return $paramName;

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220130\PhpParser\Node;
+namespace EasyCI20220131\PhpParser\Node;
 
-use EasyCI20220130\PhpParser\NodeAbstract;
+use EasyCI20220131\PhpParser\NodeAbstract;
 /**
  * Represents a non-namespaced name. Namespaced names are represented using Name nodes.
  */
-class Identifier extends \EasyCI20220130\PhpParser\NodeAbstract
+class Identifier extends \EasyCI20220131\PhpParser\NodeAbstract
 {
     /** @var string Identifier as string */
     public $name;

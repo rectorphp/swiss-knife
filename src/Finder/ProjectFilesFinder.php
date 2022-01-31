@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Finder;
 
-use EasyCI20220130\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI20220130\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220131\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo;
 final class ProjectFilesFinder
 {
     /**
      * @var \Symplify\SmartFileSystem\Finder\SmartFinder
      */
     private $smartFinder;
-    public function __construct(\EasyCI20220130\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
+    public function __construct(\EasyCI20220131\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
     {
         $this->smartFinder = $smartFinder;
     }
