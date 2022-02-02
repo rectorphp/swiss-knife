@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220131\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220202\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-class ClosureReferenceConfigurator extends \EasyCI20220131\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
+class ClosureReferenceConfigurator extends \EasyCI20220202\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
 {
 }

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220131\PhpParser\Node\Expr;
+namespace EasyCI20220202\PhpParser\Node\Expr;
 
-use EasyCI20220131\PhpParser\Node\Expr;
-class Array_ extends \EasyCI20220131\PhpParser\Node\Expr
+use EasyCI20220202\PhpParser\Node\Expr;
+class Array_ extends \EasyCI20220202\PhpParser\Node\Expr
 {
     // For use in "kind" attribute
     const KIND_LONG = 1;

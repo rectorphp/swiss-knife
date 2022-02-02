@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220131\\Symplify\\EasyTesting\\": "src"
+            "EasyCI20220202\\Symplify\\EasyTesting\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220131\\Symplify\\EasyTesting\\Tests\\": "tests"
+            "EasyCI20220202\\Symplify\\EasyTesting\\Tests\\": "tests"
         }
     },
     "extra": {

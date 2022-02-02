@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220131\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI20220202\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI20220131\PhpParser\Lexer\Emulative;
-final class CoaleseEqualTokenEmulator extends \EasyCI20220131\PhpParser\Lexer\TokenEmulator\TokenEmulator
+use EasyCI20220202\PhpParser\Lexer\Emulative;
+final class CoaleseEqualTokenEmulator extends \EasyCI20220202\PhpParser\Lexer\TokenEmulator\TokenEmulator
 {
     public function getPhpVersion() : string
     {
-        return \EasyCI20220131\PhpParser\Lexer\Emulative::PHP_7_4;
+        return \EasyCI20220202\PhpParser\Lexer\Emulative::PHP_7_4;
     }
     public function isEmulationNeeded(string $code) : bool
     {

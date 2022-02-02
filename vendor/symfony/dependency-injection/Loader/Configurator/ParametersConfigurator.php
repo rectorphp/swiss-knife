@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220131\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220202\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220131\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220202\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ParametersConfigurator extends \EasyCI20220131\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ParametersConfigurator extends \EasyCI20220202\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     public const FACTORY = 'parameters';
     private $container;
-    public function __construct(\EasyCI20220131\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\EasyCI20220202\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }

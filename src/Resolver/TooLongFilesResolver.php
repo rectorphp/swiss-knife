@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Resolver;
 
-use EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220202\Symplify\SmartFileSystem\SmartFileInfo;
 final class TooLongFilesResolver
 {
     /**
@@ -18,11 +18,11 @@ final class TooLongFilesResolver
      */
     public function resolve(array $fileInfos) : array
     {
-        return \array_filter($fileInfos, function (\EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : bool {
+        return \array_filter($fileInfos, function (\EasyCI20220202\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : bool {
             return $this->isFileContentLongerThan($fileInfo, self::MAX_FILE_LENGTH);
         });
     }
-    private function isFileContentLongerThan(\EasyCI20220131\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, int $maxFileLenght) : bool
+    private function isFileContentLongerThan(\EasyCI20220202\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, int $maxFileLenght) : bool
     {
         $filePathLength = \strlen($fileInfo->getRealPath());
         return $filePathLength > $maxFileLenght;
