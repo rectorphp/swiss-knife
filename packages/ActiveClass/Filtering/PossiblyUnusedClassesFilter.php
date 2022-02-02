@@ -9,6 +9,13 @@ use EasyCI20220202\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PossiblyUnusedClassesFilter
 {
     /**
+     * These class types are used by some kind of collector pattern. Either loaded magically, registered only in config,
+     * an entry point or a tagged extensions.
+     *
+     * @var string[]
+     */
+    private const DEFAULT_TYPES_TO_SKIP = ['EasyCI20220202\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController', 'EasyCI20220202\\Symfony\\Component\\HttpKernel\\Bundle\\BundleInterface', 'EasyCI20220202\\Symfony\\Component\\HttpKernel\\KernelInterface', 'EasyCI20220202\\Symfony\\Component\\Console\\Command\\Command', 'EasyCI20220202\\Twig\\Extension\\ExtensionInterface', 'EasyCI20220202\\PhpCsFixer\\Fixer\\FixerInterface', 'EasyCI20220202\\PHPUnit\\Framework\\TestCase', 'EasyCI20220202\\PHPStan\\Rules\\Rule', 'EasyCI20220202\\PHPStan\\Command\\ErrorFormatter\\ErrorFormatter'];
+    /**
      * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
      */
     private $parameterProvider;
@@ -25,6 +32,7 @@ final class PossiblyUnusedClassesFilter
     {
         $possiblyUnusedFilesWithClasses = [];
         $typesToSkip = $this->parameterProvider->provideArrayParameter(\Symplify\EasyCI\ValueObject\Option::TYPES_TO_SKIP);
+        $typesToSkip = \array_merge($typesToSkip, self::DEFAULT_TYPES_TO_SKIP);
         foreach ($filesWithClasses as $fileWithClass) {
             if (\in_array($fileWithClass->getClassName(), $usedNames, \true)) {
                 continue;
