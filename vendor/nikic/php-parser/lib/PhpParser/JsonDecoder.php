@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220202\PhpParser;
+namespace EasyCI20220204\PhpParser;
 
 class JsonDecoder
 {
@@ -36,7 +36,7 @@ class JsonDecoder
         }
         return $decodedArray;
     }
-    private function decodeNode(array $value) : \EasyCI20220202\PhpParser\Node
+    private function decodeNode(array $value) : \EasyCI20220204\PhpParser\Node
     {
         $nodeType = $value['nodeType'];
         if (!\is_string($nodeType)) {
@@ -59,9 +59,9 @@ class JsonDecoder
         }
         return $node;
     }
-    private function decodeComment(array $value) : \EasyCI20220202\PhpParser\Comment
+    private function decodeComment(array $value) : \EasyCI20220204\PhpParser\Comment
     {
-        $className = $value['nodeType'] === 'Comment' ? \EasyCI20220202\PhpParser\Comment::class : \EasyCI20220202\PhpParser\Comment\Doc::class;
+        $className = $value['nodeType'] === 'Comment' ? \EasyCI20220204\PhpParser\Comment::class : \EasyCI20220204\PhpParser\Comment\Doc::class;
         if (!isset($value['text'])) {
             throw new \RuntimeException('Comment must have text');
         }
