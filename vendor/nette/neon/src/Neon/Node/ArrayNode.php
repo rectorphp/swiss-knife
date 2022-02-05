@@ -5,17 +5,17 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220204\Nette\Neon\Node;
+namespace EasyCI20220205\Nette\Neon\Node;
 
-use EasyCI20220204\Nette\Neon\Node;
+use EasyCI20220205\Nette\Neon\Node;
 /** @internal */
-abstract class ArrayNode extends \EasyCI20220204\Nette\Neon\Node
+abstract class ArrayNode extends \EasyCI20220205\Nette\Neon\Node
 {
     /** @var ArrayItemNode[] */
     public $items = [];
     public function toValue() : array
     {
-        return \EasyCI20220204\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->items);
+        return \EasyCI20220205\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->items);
     }
     public function getSubNodes() : array
     {

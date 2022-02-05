@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220204\PhpParser\Node\Expr;
+namespace EasyCI20220205\PhpParser\Node\Expr;
 
-use EasyCI20220204\PhpParser\Node\Expr;
-class UnaryMinus extends \EasyCI20220204\PhpParser\Node\Expr
+use EasyCI20220205\PhpParser\Node\Expr;
+class UnaryMinus extends \EasyCI20220205\PhpParser\Node\Expr
 {
     /** @var Expr Expression */
     public $expr;
@@ -14,7 +14,7 @@ class UnaryMinus extends \EasyCI20220204\PhpParser\Node\Expr
      * @param Expr  $expr       Expression
      * @param array $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220204\PhpParser\Node\Expr $expr, array $attributes = [])
+    public function __construct(\EasyCI20220205\PhpParser\Node\Expr $expr, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->expr = $expr;

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220204\PhpParser\Node\Expr\AssignOp;
+namespace EasyCI20220205\PhpParser\Node\Expr\AssignOp;
 
-use EasyCI20220204\PhpParser\Node\Expr\AssignOp;
-class Concat extends \EasyCI20220204\PhpParser\Node\Expr\AssignOp
+use EasyCI20220205\PhpParser\Node\Expr\AssignOp;
+class Concat extends \EasyCI20220205\PhpParser\Node\Expr\AssignOp
 {
     public function getType() : string
     {

@@ -3,18 +3,18 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\CurrentProvider;
 
-use EasyCI20220204\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220205\Symplify\SmartFileSystem\SmartFileInfo;
 final class CurrentFileInfoProvider
 {
     /**
      * @var \Symplify\SmartFileSystem\SmartFileInfo
      */
     private $smartFileInfo;
-    public function setCurrentFileInfo(\EasyCI20220204\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function setCurrentFileInfo(\EasyCI20220205\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->smartFileInfo = $smartFileInfo;
     }
-    public function getSmartFileInfo() : \EasyCI20220204\Symplify\SmartFileSystem\SmartFileInfo
+    public function getSmartFileInfo() : \EasyCI20220205\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->smartFileInfo;
     }

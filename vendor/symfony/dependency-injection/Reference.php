@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220204\Symfony\Component\DependencyInjection;
+namespace EasyCI20220205\Symfony\Component\DependencyInjection;
 
 /**
  * Reference represents a service reference.
@@ -25,7 +25,7 @@ class Reference
      * @var int
      */
     private $invalidBehavior;
-    public function __construct(string $id, int $invalidBehavior = \EasyCI20220204\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
+    public function __construct(string $id, int $invalidBehavior = \EasyCI20220205\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
     {
         $this->id = $id;
         $this->invalidBehavior = $invalidBehavior;
