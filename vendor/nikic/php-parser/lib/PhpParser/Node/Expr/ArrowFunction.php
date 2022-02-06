@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220205\PhpParser\Node\Expr;
+namespace EasyCI20220206\PhpParser\Node\Expr;
 
-use EasyCI20220205\PhpParser\Node;
-use EasyCI20220205\PhpParser\Node\Expr;
-use EasyCI20220205\PhpParser\Node\FunctionLike;
-class ArrowFunction extends \EasyCI20220205\PhpParser\Node\Expr implements \EasyCI20220205\PhpParser\Node\FunctionLike
+use EasyCI20220206\PhpParser\Node;
+use EasyCI20220206\PhpParser\Node\Expr;
+use EasyCI20220206\PhpParser\Node\FunctionLike;
+class ArrowFunction extends \EasyCI20220206\PhpParser\Node\Expr implements \EasyCI20220206\PhpParser\Node\FunctionLike
 {
     /** @var bool */
     public $static;
@@ -37,7 +37,7 @@ class ArrowFunction extends \EasyCI20220205\PhpParser\Node\Expr implements \Easy
         $this->byRef = $subNodes['byRef'] ?? \false;
         $this->params = $subNodes['params'] ?? [];
         $returnType = $subNodes['returnType'] ?? null;
-        $this->returnType = \is_string($returnType) ? new \EasyCI20220205\PhpParser\Node\Identifier($returnType) : $returnType;
+        $this->returnType = \is_string($returnType) ? new \EasyCI20220206\PhpParser\Node\Identifier($returnType) : $returnType;
         $this->expr = $subNodes['expr'];
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }
@@ -66,7 +66,7 @@ class ArrowFunction extends \EasyCI20220205\PhpParser\Node\Expr implements \Easy
      */
     public function getStmts() : ?array
     {
-        return [new \EasyCI20220205\PhpParser\Node\Stmt\Return_($this->expr)];
+        return [new \EasyCI20220206\PhpParser\Node\Stmt\Return_($this->expr)];
     }
     public function getType() : string
     {

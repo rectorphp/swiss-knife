@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220205\\Symfony\\Polyfill\\Php81\\": ""
+            "EasyCI20220206\\Symfony\\Polyfill\\Php81\\": ""
         },
         "files": [
             "bootstrap.php"

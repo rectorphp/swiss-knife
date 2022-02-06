@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220205\PhpParser\Node;
+namespace EasyCI20220206\PhpParser\Node;
 
-use EasyCI20220205\PhpParser\NodeAbstract;
-class Name extends \EasyCI20220205\PhpParser\NodeAbstract
+use EasyCI20220206\PhpParser\NodeAbstract;
+class Name extends \EasyCI20220206\PhpParser\NodeAbstract
 {
     /** @var string[] Parts of the name */
     public $parts;
