@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220206\PhpParser\NodeVisitor;
+namespace EasyCI20220207\PhpParser\NodeVisitor;
 
-use EasyCI20220206\PhpParser\Node;
-use EasyCI20220206\PhpParser\NodeTraverser;
-use EasyCI20220206\PhpParser\NodeVisitorAbstract;
+use EasyCI20220207\PhpParser\Node;
+use EasyCI20220207\PhpParser\NodeTraverser;
+use EasyCI20220207\PhpParser\NodeVisitorAbstract;
 /**
  * This visitor can be used to find the first node satisfying some criterion determined by
  * a filter callback.
  */
-class FirstFindingVisitor extends \EasyCI20220206\PhpParser\NodeVisitorAbstract
+class FirstFindingVisitor extends \EasyCI20220207\PhpParser\NodeVisitorAbstract
 {
     /** @var callable Filter callback */
     protected $filterCallback;
@@ -36,12 +36,12 @@ class FirstFindingVisitor extends \EasyCI20220206\PhpParser\NodeVisitorAbstract
         $this->foundNode = null;
         return null;
     }
-    public function enterNode(\EasyCI20220206\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220207\PhpParser\Node $node)
     {
         $filterCallback = $this->filterCallback;
         if ($filterCallback($node)) {
             $this->foundNode = $node;
-            return \EasyCI20220206\PhpParser\NodeTraverser::STOP_TRAVERSAL;
+            return \EasyCI20220207\PhpParser\NodeTraverser::STOP_TRAVERSAL;
         }
         return null;
     }

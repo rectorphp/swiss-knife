@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220206\PhpParser\Node\Stmt;
+namespace EasyCI20220207\PhpParser\Node\Stmt;
 
-use EasyCI20220206\PhpParser\Node\Stmt;
-class Static_ extends \EasyCI20220206\PhpParser\Node\Stmt
+use EasyCI20220207\PhpParser\Node\Stmt;
+class Static_ extends \EasyCI20220207\PhpParser\Node\Stmt
 {
     /** @var StaticVar[] Variable definitions */
     public $vars;

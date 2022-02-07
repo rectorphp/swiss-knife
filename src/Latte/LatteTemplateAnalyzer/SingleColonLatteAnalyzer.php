@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220206\Nette\Utils\Strings;
+use EasyCI20220207\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220206\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220207\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\SingleColonLatteAnalyzer\SingleColonLatteAnalyzerTest
  */
@@ -35,7 +35,7 @@ final class SingleColonLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\
     {
         $templateErrors = [];
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220206\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
+            $matches = \EasyCI20220207\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
             if ($matches === []) {
                 continue;
             }
@@ -46,7 +46,7 @@ final class SingleColonLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\
             }
         }
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220206\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CALL_REGEX);
+            $matches = \EasyCI20220207\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CALL_REGEX);
             if ($matches === []) {
                 continue;
             }

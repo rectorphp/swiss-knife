@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
-use EasyCI20220206\Nette\Utils\Strings;
+use EasyCI20220207\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\LineAwareFileError;
-use EasyCI20220206\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220207\Symplify\SmartFileSystem\SmartFileInfo;
 final class ConstantPathTwigTemplateAnalyzer implements \Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface
 {
     /**
@@ -23,7 +23,7 @@ final class ConstantPathTwigTemplateAnalyzer implements \Symplify\EasyCI\Twig\Co
     {
         $templateErrors = [];
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220206\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::PATH_WITH_NAME_REGEX, \PREG_OFFSET_CAPTURE);
+            $matches = \EasyCI20220207\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::PATH_WITH_NAME_REGEX, \PREG_OFFSET_CAPTURE);
             foreach ($matches as $match) {
                 $errorMessage = \sprintf('Route name "%s" in path() function should be replaced by constant to avoid typos and loose on renames.', (string) $match['route_name'][0]);
                 $line = $this->resolveLineNumber($fileInfo, $match);
@@ -32,7 +32,7 @@ final class ConstantPathTwigTemplateAnalyzer implements \Symplify\EasyCI\Twig\Co
         }
         return $templateErrors;
     }
-    private function resolveLineNumber(\EasyCI20220206\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, array $match) : int
+    private function resolveLineNumber(\EasyCI20220207\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, array $match) : int
     {
         $length = $match[0][1];
         return \substr_count(\substr($fileInfo->getContents(), 0, $length), "\n") + 1;
