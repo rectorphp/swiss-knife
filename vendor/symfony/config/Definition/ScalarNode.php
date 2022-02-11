@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220207\Symfony\Component\Config\Definition;
+namespace EasyCI20220211\Symfony\Component\Config\Definition;
 
-use EasyCI20220207\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use EasyCI20220211\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * This node represents a scalar value in the config tree.
  *
@@ -23,7 +23,7 @@ use EasyCI20220207\Symfony\Component\Config\Definition\Exception\InvalidTypeExce
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ScalarNode extends \EasyCI20220207\Symfony\Component\Config\Definition\VariableNode
+class ScalarNode extends \EasyCI20220211\Symfony\Component\Config\Definition\VariableNode
 {
     /**
      * {@inheritdoc}
@@ -32,7 +32,7 @@ class ScalarNode extends \EasyCI20220207\Symfony\Component\Config\Definition\Var
     protected function validateType($value)
     {
         if (!\is_scalar($value) && null !== $value) {
-            $ex = new \EasyCI20220207\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "scalar", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new \EasyCI20220211\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "scalar", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

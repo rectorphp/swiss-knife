@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220207\Symplify\SmartFileSystem;
+namespace EasyCI20220211\Symplify\SmartFileSystem;
 
-use EasyCI20220207\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
-use EasyCI20220207\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use EasyCI20220211\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
+use EasyCI20220211\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 final class FileSystemGuard
 {
     public function ensureFileExists(string $file, string $location) : void
@@ -12,7 +12,7 @@ final class FileSystemGuard
         if (\file_exists($file)) {
             return;
         }
-        throw new \EasyCI20220207\Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File "%s" not found in "%s".', $file, $location));
+        throw new \EasyCI20220211\Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File "%s" not found in "%s".', $file, $location));
     }
     public function ensureDirectoryExists(string $directory, string $extraMessage) : void
     {
@@ -23,6 +23,6 @@ final class FileSystemGuard
         if ($extraMessage !== '') {
             $message .= ' ' . $extraMessage;
         }
-        throw new \EasyCI20220207\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException($message);
+        throw new \EasyCI20220211\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException($message);
     }
 }
