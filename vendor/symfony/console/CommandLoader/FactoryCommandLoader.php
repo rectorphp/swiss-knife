@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220211\Symfony\Component\Console\CommandLoader;
+namespace EasyCI20220213\Symfony\Component\Console\CommandLoader;
 
-use EasyCI20220211\Symfony\Component\Console\Command\Command;
-use EasyCI20220211\Symfony\Component\Console\Exception\CommandNotFoundException;
+use EasyCI20220213\Symfony\Component\Console\Command\Command;
+use EasyCI20220213\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * A simple command loader using factories to instantiate commands lazily.
  *
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class FactoryCommandLoader implements \EasyCI20220211\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
+class FactoryCommandLoader implements \EasyCI20220213\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
 {
     /**
      * @var mixed[]
@@ -40,10 +40,10 @@ class FactoryCommandLoader implements \EasyCI20220211\Symfony\Component\Console\
     /**
      * {@inheritdoc}
      */
-    public function get(string $name) : \EasyCI20220211\Symfony\Component\Console\Command\Command
+    public function get(string $name) : \EasyCI20220213\Symfony\Component\Console\Command\Command
     {
         if (!isset($this->factories[$name])) {
-            throw new \EasyCI20220211\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
+            throw new \EasyCI20220213\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
         }
         $factory = $this->factories[$name];
         return $factory();

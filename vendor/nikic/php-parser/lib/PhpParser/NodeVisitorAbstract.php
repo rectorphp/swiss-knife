@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220211\PhpParser;
+namespace EasyCI20220213\PhpParser;
 
 /**
  * @codeCoverageIgnore
  */
-class NodeVisitorAbstract implements \EasyCI20220211\PhpParser\NodeVisitor
+class NodeVisitorAbstract implements \EasyCI20220213\PhpParser\NodeVisitor
 {
     public function beforeTraverse(array $nodes)
     {
         return null;
     }
-    public function enterNode(\EasyCI20220211\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220213\PhpParser\Node $node)
     {
         return null;
     }
-    public function leaveNode(\EasyCI20220211\PhpParser\Node $node)
+    public function leaveNode(\EasyCI20220213\PhpParser\Node $node)
     {
         return null;
     }

@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220211\\Symfony\\Component\\Finder\\": ""
+            "EasyCI20220213\\Symfony\\Component\\Finder\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

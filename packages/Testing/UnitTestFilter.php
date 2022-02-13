@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing;
 
-use EasyCI20220211\PHPUnit\Framework\TestCase;
-use EasyCI20220211\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use EasyCI20220213\PHPUnit\Framework\TestCase;
+use EasyCI20220213\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 final class UnitTestFilter
 {
     /**
      * @var string[]|class-string<KernelTestCase>[]
      */
-    private const NON_UNIT_TEST_CASE_CLASSES = [\EasyCI20220211\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase::class, 'EasyCI20220211\\Symfony\\Component\\Form\\Test\\TypeTestCase'];
+    private const NON_UNIT_TEST_CASE_CLASSES = [\EasyCI20220213\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase::class, 'EasyCI20220213\\Symfony\\Component\\Form\\Test\\TypeTestCase'];
     /**
      * @param array<string, string> $testClassesToFilePaths
      * @return array<string, string>
@@ -23,7 +23,7 @@ final class UnitTestFilter
     }
     private function isUnitTest(string $class) : bool
     {
-        if (!\is_a($class, \EasyCI20220211\PHPUnit\Framework\TestCase::class, \true)) {
+        if (!\is_a($class, \EasyCI20220213\PHPUnit\Framework\TestCase::class, \true)) {
             return \false;
         }
         foreach (self::NON_UNIT_TEST_CASE_CLASSES as $nonUnitTestCaseClass) {

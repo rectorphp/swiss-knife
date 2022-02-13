@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220211\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI20220213\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI20220211\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI20220211\Symfony\Component\Config\Definition\VariableNode;
+use EasyCI20220213\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI20220213\Symfony\Component\Config\Definition\VariableNode;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class VariableNodeDefinition extends \EasyCI20220211\Symfony\Component\Config\Definition\Builder\NodeDefinition
+class VariableNodeDefinition extends \EasyCI20220213\Symfony\Component\Config\Definition\Builder\NodeDefinition
 {
     /**
      * Instantiate a Node.
      */
-    protected function instantiateNode() : \EasyCI20220211\Symfony\Component\Config\Definition\VariableNode
+    protected function instantiateNode() : \EasyCI20220213\Symfony\Component\Config\Definition\VariableNode
     {
-        return new \EasyCI20220211\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
+        return new \EasyCI20220213\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
     }
     /**
      * {@inheritdoc}
      */
-    protected function createNode() : \EasyCI20220211\Symfony\Component\Config\Definition\NodeInterface
+    protected function createNode() : \EasyCI20220213\Symfony\Component\Config\Definition\NodeInterface
     {
         $node = $this->instantiateNode();
         if (null !== $this->normalization) {

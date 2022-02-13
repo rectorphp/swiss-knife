@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220211\\Symplify\\Astral\\": "src"
+            "EasyCI20220213\\Symplify\\Astral\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220211\\Symplify\\Astral\\Tests\\": "tests"
+            "EasyCI20220213\\Symplify\\Astral\\Tests\\": "tests"
         }
     },
     "extra": {
