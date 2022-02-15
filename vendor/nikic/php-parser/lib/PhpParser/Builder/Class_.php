@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220213\PhpParser\Builder;
+namespace EasyCI20220215\PhpParser\Builder;
 
-use EasyCI20220213\PhpParser;
-use EasyCI20220213\PhpParser\BuilderHelpers;
-use EasyCI20220213\PhpParser\Node;
-use EasyCI20220213\PhpParser\Node\Name;
-use EasyCI20220213\PhpParser\Node\Stmt;
-class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
+use EasyCI20220215\PhpParser;
+use EasyCI20220215\PhpParser\BuilderHelpers;
+use EasyCI20220215\PhpParser\Node;
+use EasyCI20220215\PhpParser\Node\Name;
+use EasyCI20220215\PhpParser\Node\Stmt;
+class Class_ extends \EasyCI20220215\PhpParser\Builder\Declaration
 {
     protected $name;
     protected $extends = null;
@@ -38,7 +38,7 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
      */
     public function extend($class)
     {
-        $this->extends = \EasyCI20220213\PhpParser\BuilderHelpers::normalizeName($class);
+        $this->extends = \EasyCI20220215\PhpParser\BuilderHelpers::normalizeName($class);
         return $this;
     }
     /**
@@ -51,7 +51,7 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
     public function implement(...$interfaces)
     {
         foreach ($interfaces as $interface) {
-            $this->implements[] = \EasyCI20220213\PhpParser\BuilderHelpers::normalizeName($interface);
+            $this->implements[] = \EasyCI20220215\PhpParser\BuilderHelpers::normalizeName($interface);
         }
         return $this;
     }
@@ -62,7 +62,7 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
      */
     public function makeAbstract()
     {
-        $this->flags = \EasyCI20220213\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220213\PhpParser\Node\Stmt\Class_::MODIFIER_ABSTRACT);
+        $this->flags = \EasyCI20220215\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220215\PhpParser\Node\Stmt\Class_::MODIFIER_ABSTRACT);
         return $this;
     }
     /**
@@ -72,7 +72,7 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
      */
     public function makeFinal()
     {
-        $this->flags = \EasyCI20220213\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220213\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL);
+        $this->flags = \EasyCI20220215\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220215\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL);
         return $this;
     }
     /**
@@ -84,8 +84,8 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
      */
     public function addStmt($stmt)
     {
-        $stmt = \EasyCI20220213\PhpParser\BuilderHelpers::normalizeNode($stmt);
-        $targets = [\EasyCI20220213\PhpParser\Node\Stmt\TraitUse::class => &$this->uses, \EasyCI20220213\PhpParser\Node\Stmt\ClassConst::class => &$this->constants, \EasyCI20220213\PhpParser\Node\Stmt\Property::class => &$this->properties, \EasyCI20220213\PhpParser\Node\Stmt\ClassMethod::class => &$this->methods];
+        $stmt = \EasyCI20220215\PhpParser\BuilderHelpers::normalizeNode($stmt);
+        $targets = [\EasyCI20220215\PhpParser\Node\Stmt\TraitUse::class => &$this->uses, \EasyCI20220215\PhpParser\Node\Stmt\ClassConst::class => &$this->constants, \EasyCI20220215\PhpParser\Node\Stmt\Property::class => &$this->properties, \EasyCI20220215\PhpParser\Node\Stmt\ClassMethod::class => &$this->methods];
         $class = \get_class($stmt);
         if (!isset($targets[$class])) {
             throw new \LogicException(\sprintf('Unexpected node of type "%s"', $stmt->getType()));
@@ -102,7 +102,7 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220213\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220215\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -110,8 +110,8 @@ class Class_ extends \EasyCI20220213\PhpParser\Builder\Declaration
      *
      * @return Stmt\Class_ The built class node
      */
-    public function getNode() : \EasyCI20220213\PhpParser\Node
+    public function getNode() : \EasyCI20220215\PhpParser\Node
     {
-        return new \EasyCI20220213\PhpParser\Node\Stmt\Class_($this->name, ['flags' => $this->flags, 'extends' => $this->extends, 'implements' => $this->implements, 'stmts' => \array_merge($this->uses, $this->constants, $this->properties, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new \EasyCI20220215\PhpParser\Node\Stmt\Class_($this->name, ['flags' => $this->flags, 'extends' => $this->extends, 'implements' => $this->implements, 'stmts' => \array_merge($this->uses, $this->constants, $this->properties, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

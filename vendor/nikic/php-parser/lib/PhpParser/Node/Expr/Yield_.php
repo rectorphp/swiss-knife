@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220213\PhpParser\Node\Expr;
+namespace EasyCI20220215\PhpParser\Node\Expr;
 
-use EasyCI20220213\PhpParser\Node\Expr;
-class Yield_ extends \EasyCI20220213\PhpParser\Node\Expr
+use EasyCI20220215\PhpParser\Node\Expr;
+class Yield_ extends \EasyCI20220215\PhpParser\Node\Expr
 {
     /** @var null|Expr Key expression */
     public $key;
@@ -17,7 +17,7 @@ class Yield_ extends \EasyCI20220213\PhpParser\Node\Expr
      * @param null|Expr $key        Key expression
      * @param array     $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220213\PhpParser\Node\Expr $value = null, \EasyCI20220213\PhpParser\Node\Expr $key = null, array $attributes = [])
+    public function __construct(\EasyCI20220215\PhpParser\Node\Expr $value = null, \EasyCI20220215\PhpParser\Node\Expr $key = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->key = $key;

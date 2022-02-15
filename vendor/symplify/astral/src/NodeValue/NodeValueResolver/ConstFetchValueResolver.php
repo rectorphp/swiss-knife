@@ -1,36 +1,36 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220213\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI20220215\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI20220213\PhpParser\Node\Expr;
-use EasyCI20220213\PhpParser\Node\Expr\ConstFetch;
-use EasyCI20220213\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI20220213\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220215\PhpParser\Node\Expr;
+use EasyCI20220215\PhpParser\Node\Expr\ConstFetch;
+use EasyCI20220215\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI20220215\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *
  * @implements NodeValueResolverInterface<ConstFetch>
  */
-final class ConstFetchValueResolver implements \EasyCI20220213\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
+final class ConstFetchValueResolver implements \EasyCI20220215\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
 {
     /**
      * @var \Symplify\Astral\Naming\SimpleNameResolver
      */
     private $simpleNameResolver;
-    public function __construct(\EasyCI20220213\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
+    public function __construct(\EasyCI20220215\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
     {
         $this->simpleNameResolver = $simpleNameResolver;
     }
     public function getType() : string
     {
-        return \EasyCI20220213\PhpParser\Node\Expr\ConstFetch::class;
+        return \EasyCI20220215\PhpParser\Node\Expr\ConstFetch::class;
     }
     /**
      * @param ConstFetch $expr
      * @return null|mixed
      */
-    public function resolve(\EasyCI20220213\PhpParser\Node\Expr $expr, string $currentFilePath)
+    public function resolve(\EasyCI20220215\PhpParser\Node\Expr $expr, string $currentFilePath)
     {
         $constFetchName = $this->simpleNameResolver->getName($expr);
         if ($constFetchName === null) {
