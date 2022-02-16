@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220215\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220216\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220215\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI20220215\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220215\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220216\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI20220216\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220216\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveClassPass implements \EasyCI20220215\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResolveClassPass implements \EasyCI20220216\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\EasyCI20220215\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\EasyCI20220216\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $id => $definition) {
             if ($definition->isSynthetic() || null !== $definition->getClass()) {
                 continue;
             }
             if (\preg_match('/^[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*+(?:\\\\[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*+)++$/', $id)) {
-                if ($definition instanceof \EasyCI20220215\Symfony\Component\DependencyInjection\ChildDefinition && !\class_exists($id)) {
-                    throw new \EasyCI20220215\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Service definition "%s" has a parent but no class, and its name looks like an FQCN. Either the class is missing or you want to inherit it from the parent service. To resolve this ambiguity, please rename this service to a non-FQCN (e.g. using dots), or create the missing class.', $id));
+                if ($definition instanceof \EasyCI20220216\Symfony\Component\DependencyInjection\ChildDefinition && !\class_exists($id)) {
+                    throw new \EasyCI20220216\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Service definition "%s" has a parent but no class, and its name looks like an FQCN. Either the class is missing or you want to inherit it from the parent service. To resolve this ambiguity, please rename this service to a non-FQCN (e.g. using dots), or create the missing class.', $id));
                 }
                 $definition->setClass($id);
             }

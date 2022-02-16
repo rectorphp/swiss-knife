@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220215\Symplify\Astral\ValueObject\NodeBuilder;
+namespace EasyCI20220216\Symplify\Astral\ValueObject\NodeBuilder;
 
-use EasyCI20220215\PhpParser\Builder\Method;
+use EasyCI20220216\PhpParser\Builder\Method;
 /**
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class MethodBuilder extends \EasyCI20220215\PhpParser\Builder\Method
+final class MethodBuilder extends \EasyCI20220216\PhpParser\Builder\Method
 {
 }
