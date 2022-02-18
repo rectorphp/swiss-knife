@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\PhpParser;
+namespace EasyCI20220218\PhpParser;
 
-use EasyCI20220216\PhpParser\NodeVisitor\FindingVisitor;
-use EasyCI20220216\PhpParser\NodeVisitor\FirstFindingVisitor;
+use EasyCI20220218\PhpParser\NodeVisitor\FindingVisitor;
+use EasyCI20220218\PhpParser\NodeVisitor\FirstFindingVisitor;
 class NodeFinder
 {
     /**
@@ -20,8 +20,8 @@ class NodeFinder
         if (!\is_array($nodes)) {
             $nodes = [$nodes];
         }
-        $visitor = new \EasyCI20220216\PhpParser\NodeVisitor\FindingVisitor($filter);
-        $traverser = new \EasyCI20220216\PhpParser\NodeTraverser();
+        $visitor = new \EasyCI20220218\PhpParser\NodeVisitor\FindingVisitor($filter);
+        $traverser = new \EasyCI20220218\PhpParser\NodeTraverser();
         $traverser->addVisitor($visitor);
         $traverser->traverse($nodes);
         return $visitor->getFoundNodes();
@@ -53,8 +53,8 @@ class NodeFinder
         if (!\is_array($nodes)) {
             $nodes = [$nodes];
         }
-        $visitor = new \EasyCI20220216\PhpParser\NodeVisitor\FirstFindingVisitor($filter);
-        $traverser = new \EasyCI20220216\PhpParser\NodeTraverser();
+        $visitor = new \EasyCI20220218\PhpParser\NodeVisitor\FirstFindingVisitor($filter);
+        $traverser = new \EasyCI20220218\PhpParser\NodeTraverser();
         $traverser->addVisitor($visitor);
         $traverser->traverse($nodes);
         return $visitor->getFoundNode();

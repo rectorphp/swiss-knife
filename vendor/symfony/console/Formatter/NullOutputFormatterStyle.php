@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220216\Symfony\Component\Console\Formatter;
+namespace EasyCI20220218\Symfony\Component\Console\Formatter;
 
 /**
  * @author Tien Xuan Vo <tien.xuan.vo@gmail.com>
  */
-final class NullOutputFormatterStyle implements \EasyCI20220216\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+final class NullOutputFormatterStyle implements \EasyCI20220218\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
 {
     /**
      * {@inheritdoc}

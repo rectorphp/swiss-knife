@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\PhpParser\Node\Stmt;
+namespace EasyCI20220218\PhpParser\Node\Stmt;
 
-use EasyCI20220216\PhpParser\Node\Stmt;
-class HaltCompiler extends \EasyCI20220216\PhpParser\Node\Stmt
+use EasyCI20220218\PhpParser\Node\Stmt;
+class HaltCompiler extends \EasyCI20220218\PhpParser\Node\Stmt
 {
     /** @var string Remaining text after halt compiler statement. */
     public $remaining;

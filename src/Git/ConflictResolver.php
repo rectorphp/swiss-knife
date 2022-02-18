@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Git;
 
-use EasyCI20220216\Nette\Utils\Strings;
-use EasyCI20220216\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220218\Nette\Utils\Strings;
+use EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Git\ConflictResolver\ConflictResolverTest
  */
@@ -15,9 +15,9 @@ final class ConflictResolver
      * @var string
      */
     private const CONFLICT_REGEX = '#^<<<<<<<<#';
-    public function extractFromFileInfo(\EasyCI20220216\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : int
+    public function extractFromFileInfo(\EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : int
     {
-        $conflictsMatch = \EasyCI20220216\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CONFLICT_REGEX);
+        $conflictsMatch = \EasyCI20220218\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CONFLICT_REGEX);
         return \count($conflictsMatch);
     }
     /**

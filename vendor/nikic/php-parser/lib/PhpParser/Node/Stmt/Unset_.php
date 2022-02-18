@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\PhpParser\Node\Stmt;
+namespace EasyCI20220218\PhpParser\Node\Stmt;
 
-use EasyCI20220216\PhpParser\Node;
-class Unset_ extends \EasyCI20220216\PhpParser\Node\Stmt
+use EasyCI20220218\PhpParser\Node;
+class Unset_ extends \EasyCI20220218\PhpParser\Node\Stmt
 {
     /** @var Node\Expr[] Variables to unset */
     public $vars;

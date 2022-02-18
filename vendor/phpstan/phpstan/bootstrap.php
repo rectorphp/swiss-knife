@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\PHPStan;
+namespace EasyCI20220218\PHPStan;
 
-use EasyCI20220216\Composer\Autoload\ClassLoader;
+use EasyCI20220218\Composer\Autoload\ClassLoader;
 final class PharAutoloader
 {
     /** @var ClassLoader */
@@ -49,4 +49,4 @@ final class PharAutoloader
         require $filepath;
     }
 }
-\spl_autoload_register([\EasyCI20220216\PHPStan\PharAutoloader::class, 'loadClass']);
+\spl_autoload_register([\EasyCI20220218\PHPStan\PharAutoloader::class, 'loadClass']);

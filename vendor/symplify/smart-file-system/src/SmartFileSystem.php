@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\Symplify\SmartFileSystem;
+namespace EasyCI20220218\Symplify\SmartFileSystem;
 
-use EasyCI20220216\Nette\Utils\Strings;
-use EasyCI20220216\Symfony\Component\Filesystem\Exception\IOException;
-use EasyCI20220216\Symfony\Component\Filesystem\Filesystem;
+use EasyCI20220218\Nette\Utils\Strings;
+use EasyCI20220218\Symfony\Component\Filesystem\Exception\IOException;
+use EasyCI20220218\Symfony\Component\Filesystem\Filesystem;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileSystem\SmartFileSystemTest
  */
-final class SmartFileSystem extends \EasyCI20220216\Symfony\Component\Filesystem\Filesystem
+final class SmartFileSystem extends \EasyCI20220218\Symfony\Component\Filesystem\Filesystem
 {
     /**
      * @var string
@@ -24,13 +24,13 @@ final class SmartFileSystem extends \EasyCI20220216\Symfony\Component\Filesystem
         $source = @\file_get_contents($filename);
         if (!$source) {
             $message = \sprintf('Failed to read "%s" file: "%s"', $filename, $this->getLastError());
-            throw new \EasyCI20220216\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
+            throw new \EasyCI20220218\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
         }
         return $source;
     }
-    public function readFileToSmartFileInfo(string $filename) : \EasyCI20220216\Symplify\SmartFileSystem\SmartFileInfo
+    public function readFileToSmartFileInfo(string $filename) : \EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo
     {
-        return new \EasyCI20220216\Symplify\SmartFileSystem\SmartFileInfo($filename);
+        return new \EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo($filename);
     }
     /**
      * Converts given HTML code to plain text
@@ -63,6 +63,6 @@ final class SmartFileSystem extends \EasyCI20220216\Symfony\Component\Filesystem
     {
         $message = \error_get_last()['message'] ?? '';
         $htmlMessage = \ini_get('html_errors') ? $this->htmlToText($message) : $message;
-        return \EasyCI20220216\Nette\Utils\Strings::replace($htmlMessage, self::BEFORE_COLLON_REGEX, '');
+        return \EasyCI20220218\Nette\Utils\Strings::replace($htmlMessage, self::BEFORE_COLLON_REGEX, '');
     }
 }

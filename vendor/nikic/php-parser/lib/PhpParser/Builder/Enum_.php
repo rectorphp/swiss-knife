@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\PhpParser\Builder;
+namespace EasyCI20220218\PhpParser\Builder;
 
-use EasyCI20220216\PhpParser;
-use EasyCI20220216\PhpParser\BuilderHelpers;
-use EasyCI20220216\PhpParser\Node;
-use EasyCI20220216\PhpParser\Node\Identifier;
-use EasyCI20220216\PhpParser\Node\Name;
-use EasyCI20220216\PhpParser\Node\Stmt;
-class Enum_ extends \EasyCI20220216\PhpParser\Builder\Declaration
+use EasyCI20220218\PhpParser;
+use EasyCI20220218\PhpParser\BuilderHelpers;
+use EasyCI20220218\PhpParser\Node;
+use EasyCI20220218\PhpParser\Node\Identifier;
+use EasyCI20220218\PhpParser\Node\Name;
+use EasyCI20220218\PhpParser\Node\Stmt;
+class Enum_ extends \EasyCI20220218\PhpParser\Builder\Declaration
 {
     protected $name;
     protected $scalarType = null;
@@ -38,7 +38,7 @@ class Enum_ extends \EasyCI20220216\PhpParser\Builder\Declaration
      */
     public function setScalarType($scalarType)
     {
-        $this->scalarType = \EasyCI20220216\PhpParser\BuilderHelpers::normalizeType($scalarType);
+        $this->scalarType = \EasyCI20220218\PhpParser\BuilderHelpers::normalizeType($scalarType);
         return $this;
     }
     /**
@@ -51,7 +51,7 @@ class Enum_ extends \EasyCI20220216\PhpParser\Builder\Declaration
     public function implement(...$interfaces)
     {
         foreach ($interfaces as $interface) {
-            $this->implements[] = \EasyCI20220216\PhpParser\BuilderHelpers::normalizeName($interface);
+            $this->implements[] = \EasyCI20220218\PhpParser\BuilderHelpers::normalizeName($interface);
         }
         return $this;
     }
@@ -64,8 +64,8 @@ class Enum_ extends \EasyCI20220216\PhpParser\Builder\Declaration
      */
     public function addStmt($stmt)
     {
-        $stmt = \EasyCI20220216\PhpParser\BuilderHelpers::normalizeNode($stmt);
-        $targets = [\EasyCI20220216\PhpParser\Node\Stmt\TraitUse::class => &$this->uses, \EasyCI20220216\PhpParser\Node\Stmt\EnumCase::class => &$this->enumCases, \EasyCI20220216\PhpParser\Node\Stmt\ClassConst::class => &$this->constants, \EasyCI20220216\PhpParser\Node\Stmt\ClassMethod::class => &$this->methods];
+        $stmt = \EasyCI20220218\PhpParser\BuilderHelpers::normalizeNode($stmt);
+        $targets = [\EasyCI20220218\PhpParser\Node\Stmt\TraitUse::class => &$this->uses, \EasyCI20220218\PhpParser\Node\Stmt\EnumCase::class => &$this->enumCases, \EasyCI20220218\PhpParser\Node\Stmt\ClassConst::class => &$this->constants, \EasyCI20220218\PhpParser\Node\Stmt\ClassMethod::class => &$this->methods];
         $class = \get_class($stmt);
         if (!isset($targets[$class])) {
             throw new \LogicException(\sprintf('Unexpected node of type "%s"', $stmt->getType()));
@@ -82,7 +82,7 @@ class Enum_ extends \EasyCI20220216\PhpParser\Builder\Declaration
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220216\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220218\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -90,8 +90,8 @@ class Enum_ extends \EasyCI20220216\PhpParser\Builder\Declaration
      *
      * @return Stmt\Enum_ The built enum node
      */
-    public function getNode() : \EasyCI20220216\PhpParser\Node
+    public function getNode() : \EasyCI20220218\PhpParser\Node
     {
-        return new \EasyCI20220216\PhpParser\Node\Stmt\Enum_($this->name, ['scalarType' => $this->scalarType, 'implements' => $this->implements, 'stmts' => \array_merge($this->uses, $this->enumCases, $this->constants, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new \EasyCI20220218\PhpParser\Node\Stmt\Enum_($this->name, ['scalarType' => $this->scalarType, 'implements' => $this->implements, 'stmts' => \array_merge($this->uses, $this->enumCases, $this->constants, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

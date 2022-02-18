@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220216\PhpParser\Node\Scalar;
+namespace EasyCI20220218\PhpParser\Node\Scalar;
 
-use EasyCI20220216\PhpParser\Node\Scalar;
-class EncapsedStringPart extends \EasyCI20220216\PhpParser\Node\Scalar
+use EasyCI20220218\PhpParser\Node\Scalar;
+class EncapsedStringPart extends \EasyCI20220218\PhpParser\Node\Scalar
 {
     /** @var string String value */
     public $value;
