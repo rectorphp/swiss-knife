@@ -12,6 +12,7 @@ use EasyCI20220218\Symplify\Astral\NodeVisitor\CallableNodeVisitor;
 final class SimpleCallableNodeTraverser
 {
     /**
+     * @param callable(Node $node): (int|Node|null) $callable
      * @param mixed[]|\PhpParser\Node|null $nodes
      */
     public function traverseNodesWithCallable($nodes, callable $callable) : void

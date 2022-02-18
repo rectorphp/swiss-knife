@@ -11,9 +11,12 @@ use EasyCI20220218\PhpParser\NodeVisitorAbstract;
 final class CallableNodeVisitor extends \EasyCI20220218\PhpParser\NodeVisitorAbstract
 {
     /**
-     * @var callable
+     * @var callable(Node): (int|Node|null)
      */
     private $callable;
+    /**
+     * @param callable(Node $node): (int|Node|null) $callable
+     */
     public function __construct(callable $callable)
     {
         $this->callable = $callable;
