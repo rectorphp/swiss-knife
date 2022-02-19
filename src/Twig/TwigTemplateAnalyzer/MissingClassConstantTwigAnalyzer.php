@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
-use EasyCI20220218\Nette\Utils\Strings;
+use EasyCI20220219\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220219\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer\MissingClassConstantTwigAnalyzerTest
  */
@@ -30,7 +30,7 @@ final class MissingClassConstantTwigAnalyzer implements \Symplify\EasyCI\Twig\Co
     {
         $templateErrors = [];
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220218\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
+            $matches = \EasyCI20220219\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
             if ($matches === []) {
                 continue;
             }

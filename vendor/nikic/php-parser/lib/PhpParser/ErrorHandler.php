@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220218\PhpParser;
+namespace EasyCI20220219\PhpParser;
 
 interface ErrorHandler
 {
@@ -10,5 +10,5 @@ interface ErrorHandler
      *
      * @param Error $error The error that needs to be handled
      */
-    public function handleError(\EasyCI20220218\PhpParser\Error $error);
+    public function handleError(\EasyCI20220219\PhpParser\Error $error);
 }

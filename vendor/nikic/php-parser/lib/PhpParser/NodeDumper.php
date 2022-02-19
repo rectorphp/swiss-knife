@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220218\PhpParser;
+namespace EasyCI20220219\PhpParser;
 
-use EasyCI20220218\PhpParser\Node\Expr\Include_;
-use EasyCI20220218\PhpParser\Node\Stmt\Class_;
-use EasyCI20220218\PhpParser\Node\Stmt\GroupUse;
-use EasyCI20220218\PhpParser\Node\Stmt\Use_;
-use EasyCI20220218\PhpParser\Node\Stmt\UseUse;
+use EasyCI20220219\PhpParser\Node\Expr\Include_;
+use EasyCI20220219\PhpParser\Node\Stmt\Class_;
+use EasyCI20220219\PhpParser\Node\Stmt\GroupUse;
+use EasyCI20220219\PhpParser\Node\Stmt\Use_;
+use EasyCI20220219\PhpParser\Node\Stmt\UseUse;
 class NodeDumper
 {
     private $dumpComments;
@@ -45,7 +45,7 @@ class NodeDumper
     }
     protected function dumpRecursive($node)
     {
-        if ($node instanceof \EasyCI20220218\PhpParser\Node) {
+        if ($node instanceof \EasyCI20220219\PhpParser\Node) {
             $r = $node->getType();
             if ($this->dumpPositions && null !== ($p = $this->dumpPosition($node))) {
                 $r .= $p;
@@ -63,9 +63,9 @@ class NodeDumper
                 } elseif (\is_scalar($value)) {
                     if ('flags' === $key || 'newModifier' === $key) {
                         $r .= $this->dumpFlags($value);
-                    } elseif ('type' === $key && $node instanceof \EasyCI20220218\PhpParser\Node\Expr\Include_) {
+                    } elseif ('type' === $key && $node instanceof \EasyCI20220219\PhpParser\Node\Expr\Include_) {
                         $r .= $this->dumpIncludeType($value);
-                    } elseif ('type' === $key && ($node instanceof \EasyCI20220218\PhpParser\Node\Stmt\Use_ || $node instanceof \EasyCI20220218\PhpParser\Node\Stmt\UseUse || $node instanceof \EasyCI20220218\PhpParser\Node\Stmt\GroupUse)) {
+                    } elseif ('type' === $key && ($node instanceof \EasyCI20220219\PhpParser\Node\Stmt\Use_ || $node instanceof \EasyCI20220219\PhpParser\Node\Stmt\UseUse || $node instanceof \EasyCI20220219\PhpParser\Node\Stmt\GroupUse)) {
                         $r .= $this->dumpUseType($value);
                     } else {
                         $r .= $value;
@@ -93,7 +93,7 @@ class NodeDumper
                     $r .= \str_replace("\n", "\n    ", $this->dumpRecursive($value));
                 }
             }
-        } elseif ($node instanceof \EasyCI20220218\PhpParser\Comment) {
+        } elseif ($node instanceof \EasyCI20220219\PhpParser\Comment) {
             return $node->getReformattedText();
         } else {
             throw new \InvalidArgumentException('Can only dump nodes and arrays.');
@@ -103,25 +103,25 @@ class NodeDumper
     protected function dumpFlags($flags)
     {
         $strs = [];
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC) {
             $strs[] = 'MODIFIER_PUBLIC';
         }
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED) {
             $strs[] = 'MODIFIER_PROTECTED';
         }
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE) {
             $strs[] = 'MODIFIER_PRIVATE';
         }
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_ABSTRACT) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_ABSTRACT) {
             $strs[] = 'MODIFIER_ABSTRACT';
         }
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_STATIC) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_STATIC) {
             $strs[] = 'MODIFIER_STATIC';
         }
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL) {
             $strs[] = 'MODIFIER_FINAL';
         }
-        if ($flags & \EasyCI20220218\PhpParser\Node\Stmt\Class_::MODIFIER_READONLY) {
+        if ($flags & \EasyCI20220219\PhpParser\Node\Stmt\Class_::MODIFIER_READONLY) {
             $strs[] = 'MODIFIER_READONLY';
         }
         if ($strs) {
@@ -132,7 +132,7 @@ class NodeDumper
     }
     protected function dumpIncludeType($type)
     {
-        $map = [\EasyCI20220218\PhpParser\Node\Expr\Include_::TYPE_INCLUDE => 'TYPE_INCLUDE', \EasyCI20220218\PhpParser\Node\Expr\Include_::TYPE_INCLUDE_ONCE => 'TYPE_INCLUDE_ONCE', \EasyCI20220218\PhpParser\Node\Expr\Include_::TYPE_REQUIRE => 'TYPE_REQUIRE', \EasyCI20220218\PhpParser\Node\Expr\Include_::TYPE_REQUIRE_ONCE => 'TYPE_REQUIRE_ONCE'];
+        $map = [\EasyCI20220219\PhpParser\Node\Expr\Include_::TYPE_INCLUDE => 'TYPE_INCLUDE', \EasyCI20220219\PhpParser\Node\Expr\Include_::TYPE_INCLUDE_ONCE => 'TYPE_INCLUDE_ONCE', \EasyCI20220219\PhpParser\Node\Expr\Include_::TYPE_REQUIRE => 'TYPE_REQUIRE', \EasyCI20220219\PhpParser\Node\Expr\Include_::TYPE_REQUIRE_ONCE => 'TYPE_REQUIRE_ONCE'];
         if (!isset($map[$type])) {
             return $type;
         }
@@ -140,7 +140,7 @@ class NodeDumper
     }
     protected function dumpUseType($type)
     {
-        $map = [\EasyCI20220218\PhpParser\Node\Stmt\Use_::TYPE_UNKNOWN => 'TYPE_UNKNOWN', \EasyCI20220218\PhpParser\Node\Stmt\Use_::TYPE_NORMAL => 'TYPE_NORMAL', \EasyCI20220218\PhpParser\Node\Stmt\Use_::TYPE_FUNCTION => 'TYPE_FUNCTION', \EasyCI20220218\PhpParser\Node\Stmt\Use_::TYPE_CONSTANT => 'TYPE_CONSTANT'];
+        $map = [\EasyCI20220219\PhpParser\Node\Stmt\Use_::TYPE_UNKNOWN => 'TYPE_UNKNOWN', \EasyCI20220219\PhpParser\Node\Stmt\Use_::TYPE_NORMAL => 'TYPE_NORMAL', \EasyCI20220219\PhpParser\Node\Stmt\Use_::TYPE_FUNCTION => 'TYPE_FUNCTION', \EasyCI20220219\PhpParser\Node\Stmt\Use_::TYPE_CONSTANT => 'TYPE_CONSTANT'];
         if (!isset($map[$type])) {
             return $type;
         }
@@ -153,7 +153,7 @@ class NodeDumper
      *
      * @return string|null Dump of position, or null if position information not available
      */
-    protected function dumpPosition(\EasyCI20220218\PhpParser\Node $node)
+    protected function dumpPosition(\EasyCI20220219\PhpParser\Node $node)
     {
         if (!$node->hasAttribute('startLine') || !$node->hasAttribute('endLine')) {
             return null;

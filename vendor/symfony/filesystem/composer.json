@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220218\\Symfony\\Component\\Filesystem\\": ""
+            "EasyCI20220219\\Symfony\\Component\\Filesystem\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

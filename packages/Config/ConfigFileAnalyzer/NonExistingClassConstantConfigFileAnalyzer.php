@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Config\ConfigFileAnalyzer;
 
-use EasyCI20220218\Nette\Utils\Strings;
+use EasyCI20220219\Nette\Utils\Strings;
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220219\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConstantExtractor\NonExistingClassConstantExtractorTest
  */
@@ -38,9 +38,9 @@ final class NonExistingClassConstantConfigFileAnalyzer implements \Symplify\Easy
     /**
      * @return string[]
      */
-    private function extractFromFileInfo(\EasyCI20220218\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function extractFromFileInfo(\EasyCI20220219\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
-        $foundMatches = \EasyCI20220218\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_NAME_REGEX);
+        $foundMatches = \EasyCI20220219\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_NAME_REGEX);
         if ($foundMatches === []) {
             return [];
         }

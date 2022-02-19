@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220218\Symfony\Component\Console\Output;
+namespace EasyCI20220219\Symfony\Component\Console\Output;
 
 /**
  * ConsoleOutputInterface is the interface implemented by ConsoleOutput class.
@@ -16,12 +16,12 @@ namespace EasyCI20220218\Symfony\Component\Console\Output;
  *
  * @author Dariusz Górecki <darek.krk@gmail.com>
  */
-interface ConsoleOutputInterface extends \EasyCI20220218\Symfony\Component\Console\Output\OutputInterface
+interface ConsoleOutputInterface extends \EasyCI20220219\Symfony\Component\Console\Output\OutputInterface
 {
     /**
      * Gets the OutputInterface for errors.
      */
-    public function getErrorOutput() : \EasyCI20220218\Symfony\Component\Console\Output\OutputInterface;
-    public function setErrorOutput(\EasyCI20220218\Symfony\Component\Console\Output\OutputInterface $error);
-    public function section() : \EasyCI20220218\Symfony\Component\Console\Output\ConsoleSectionOutput;
+    public function getErrorOutput() : \EasyCI20220219\Symfony\Component\Console\Output\OutputInterface;
+    public function setErrorOutput(\EasyCI20220219\Symfony\Component\Console\Output\OutputInterface $error);
+    public function section() : \EasyCI20220219\Symfony\Component\Console\Output\ConsoleSectionOutput;
 }

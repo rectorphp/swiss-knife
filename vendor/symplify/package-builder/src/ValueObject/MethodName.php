@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220218\Symplify\PackageBuilder\ValueObject;
+namespace EasyCI20220219\Symplify\PackageBuilder\ValueObject;
 
 /**
  * @api

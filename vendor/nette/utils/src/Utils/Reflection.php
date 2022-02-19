@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220218\Nette\Utils;
+namespace EasyCI20220219\Nette\Utils;
 
-use EasyCI20220218\Nette;
+use EasyCI20220219\Nette;
 /**
  * PHP reflection helpers.
  */
@@ -45,7 +45,7 @@ final class Reflection
      */
     public static function getReturnTypes(\ReflectionFunctionAbstract $func) : array
     {
-        $type = \EasyCI20220218\Nette\Utils\Type::fromReflection($func);
+        $type = \EasyCI20220219\Nette\Utils\Type::fromReflection($func);
         return $type ? $type->getNames() : [];
     }
     /**
@@ -62,7 +62,7 @@ final class Reflection
      */
     public static function getParameterTypes(\ReflectionParameter $param) : array
     {
-        $type = \EasyCI20220218\Nette\Utils\Type::fromReflection($param);
+        $type = \EasyCI20220219\Nette\Utils\Type::fromReflection($param);
         return $type ? $type->getNames() : [];
     }
     /**
@@ -79,7 +79,7 @@ final class Reflection
      */
     public static function getPropertyTypes(\ReflectionProperty $prop) : array
     {
-        $type = \EasyCI20220218\Nette\Utils\Type::fromReflection($prop);
+        $type = \EasyCI20220219\Nette\Utils\Type::fromReflection($prop);
         return $type ? $type->getNames() : [];
     }
     /**
@@ -90,11 +90,11 @@ final class Reflection
         if ($type === null) {
             return null;
         } elseif ($type instanceof \ReflectionNamedType) {
-            return \EasyCI20220218\Nette\Utils\Type::resolve($type->getName(), $reflection);
-        } elseif ($type instanceof \ReflectionUnionType || $type instanceof \EasyCI20220218\ReflectionIntersectionType) {
-            throw new \EasyCI20220218\Nette\InvalidStateException('The ' . self::toString($reflection) . ' is not expected to have a union or intersection type.');
+            return \EasyCI20220219\Nette\Utils\Type::resolve($type->getName(), $reflection);
+        } elseif ($type instanceof \ReflectionUnionType || $type instanceof \EasyCI20220219\ReflectionIntersectionType) {
+            throw new \EasyCI20220219\Nette\InvalidStateException('The ' . self::toString($reflection) . ' is not expected to have a union or intersection type.');
         } else {
-            throw new \EasyCI20220218\Nette\InvalidStateException('Unexpected type of ' . self::toString($reflection));
+            throw new \EasyCI20220219\Nette\InvalidStateException('Unexpected type of ' . self::toString($reflection));
         }
     }
     /**
@@ -108,7 +108,7 @@ final class Reflection
             $const = $orig = $param->getDefaultValueConstantName();
             $pair = \explode('::', $const);
             if (isset($pair[1])) {
-                $pair[0] = \EasyCI20220218\Nette\Utils\Type::resolve($pair[0], $param);
+                $pair[0] = \EasyCI20220219\Nette\Utils\Type::resolve($pair[0], $param);
                 try {
                     $rcc = new \ReflectionClassConstant($pair[0], $pair[1]);
                 } catch (\ReflectionException $e) {
@@ -182,7 +182,7 @@ final class Reflection
         } elseif ($ref instanceof \ReflectionParameter) {
             return '$' . $ref->name . ' in ' . self::toString($ref->getDeclaringFunction());
         } else {
-            throw new \EasyCI20220218\Nette\InvalidArgumentException();
+            throw new \EasyCI20220219\Nette\InvalidArgumentException();
         }
     }
     /**
@@ -194,7 +194,7 @@ final class Reflection
     {
         $lower = \strtolower($name);
         if (empty($name)) {
-            throw new \EasyCI20220218\Nette\InvalidArgumentException('Class name must not be empty.');
+            throw new \EasyCI20220219\Nette\InvalidArgumentException('Class name must not be empty.');
         } elseif (isset(self::BUILTIN_TYPES[$lower])) {
             return $lower;
         } elseif ($lower === 'self' || $lower === 'static') {
@@ -220,7 +220,7 @@ final class Reflection
     public static function getUseStatements(\ReflectionClass $class) : array
     {
         if ($class->isAnonymous()) {
-            throw new \EasyCI20220218\Nette\NotImplementedException('Anonymous classes are not supported.');
+            throw new \EasyCI20220219\Nette\NotImplementedException('Anonymous classes are not supported.');
         }
         static $cache = [];
         if (!isset($cache[$name = $class->name])) {
