@@ -1639,7 +1639,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/astral",
-                "reference": "55112da7bb629f2163d823c1ac035fdf11b81bb6"
+                "reference": "71f4d886b3d8d970415d8cb9dfd24174c451cc03"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1657,7 +1657,6 @@
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/composer-json-manipulator": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",
@@ -1725,7 +1724,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "9e0b23f722817b561dace4d8de92146ac9bc7a68"
+                "reference": "447951215268d794eb1560e7481212a0a9bea455"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1739,7 +1738,6 @@
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/composer-json-manipulator": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",
@@ -1801,7 +1799,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "599738b49d633e67c2e0b0a66f4380f529856c28"
+                "reference": "30eceb0dcc9f5278e9f536e4db283573fffb0643"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1819,7 +1817,6 @@
                 "symplify\/autowire-array-parameter": "<10.0.24",
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",
@@ -1880,7 +1877,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "b0343d59e19e08483324bfcb41584a0cec2f78eb"
+                "reference": "76609a5e7dd8376fddd5924fd19c4e49c9a2f15b"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1899,7 +1896,6 @@
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/composer-json-manipulator": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",
@@ -1961,7 +1957,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "50ee1bcf015f7944848bd3df7c1c51be569fc5bc"
+                "reference": "de66ebf9b4815cb673014abefe503ef44d97fd42"
             },
             "require": {
                 "nette\/neon": "^3.3.2",
@@ -1981,7 +1977,6 @@
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/composer-json-manipulator": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",
@@ -2041,7 +2036,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "a00bc0e288890cb2a2cfe9d6e5c1829fe6a25f3c"
+                "reference": "526579e4496d73111c1ef0717b175a65deda7788"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2056,7 +2051,6 @@
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/composer-json-manipulator": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",
@@ -2119,7 +2113,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "e7ca4a196dd3ad7dbdc3c1c7c0182e64fb97eff8"
+                "reference": "0fc3c2760465264f9a8250544b1a5849562683fa"
             },
             "require": {
                 "php": ">=8.0",
@@ -2136,7 +2130,6 @@
                 "symplify\/astral": "<10.0.24",
                 "symplify\/coding-standard": "<10.0.24",
                 "symplify\/config-transformer": "<10.0.24",
-                "symplify\/console-color-diff": "<10.0.24",
                 "symplify\/easy-ci": "<10.0.24",
                 "symplify\/easy-coding-standard": "<10.0.24",
                 "symplify\/easy-parallel": "<10.0.24",

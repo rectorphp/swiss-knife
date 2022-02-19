@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29
+class ComposerStaticInit59290842244eb1ec7d6e65d4d70fa04b
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -970,10 +970,13 @@ class ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29
         'EasyCI20220219\\Symplify\\PackageBuilder\\Configuration\\StaticEolConfiguration' => __DIR__ . '/..' . '/symplify/package-builder/src/Configuration/StaticEolConfiguration.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Console\\Command\\AbstractSymplifyCommand' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/AbstractSymplifyCommand.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Console\\Command\\CommandNaming' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/CommandNaming.php',
+        'EasyCI20220219\\Symplify\\PackageBuilder\\Console\\Formatter\\ColorConsoleDiffFormatter' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Formatter/ColorConsoleDiffFormatter.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Console\\Input\\StaticInputDetector' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Input/StaticInputDetector.php',
+        'EasyCI20220219\\Symplify\\PackageBuilder\\Console\\Output\\ConsoleDiffer' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Output/ConsoleDiffer.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Console\\Style\\SymfonyStyleFactory' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Style/SymfonyStyleFactory.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/CompilerPass/AutowireInterfacesCompilerPass.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\DependencyInjection\\FileLoader\\ParameterMergingPhpFileLoader' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/FileLoader/ParameterMergingPhpFileLoader.php',
+        'EasyCI20220219\\Symplify\\PackageBuilder\\Diff\\Output\\CompleteUnifiedDiffOutputBuilderFactory' => __DIR__ . '/..' . '/symplify/package-builder/src/Diff/Output/CompleteUnifiedDiffOutputBuilderFactory.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Exception\\HttpKernel\\MissingInterfaceException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/HttpKernel/MissingInterfaceException.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Exception\\InvalidPrivatePropertyTypeException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/InvalidPrivatePropertyTypeException.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Exception\\MissingPrivatePropertyException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/MissingPrivatePropertyException.php',
@@ -986,6 +989,7 @@ class ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29
         'EasyCI20220219\\Symplify\\PackageBuilder\\Reflection\\PrivatesCaller' => __DIR__ . '/..' . '/symplify/package-builder/src/Reflection/PrivatesCaller.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Strings\\StringFormatConverter' => __DIR__ . '/..' . '/symplify/package-builder/src/Strings/StringFormatConverter.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase' => __DIR__ . '/..' . '/symplify/package-builder/src/Testing/AbstractKernelTestCase.php',
+        'EasyCI20220219\\Symplify\\PackageBuilder\\ValueObject\\ConsoleColorDiffConfig' => __DIR__ . '/..' . '/symplify/package-builder/src/ValueObject/ConsoleColorDiffConfig.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\ValueObject\\MethodName' => __DIR__ . '/..' . '/symplify/package-builder/src/ValueObject/MethodName.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/package-builder/src/ValueObject/Option.php',
         'EasyCI20220219\\Symplify\\PackageBuilder\\Yaml\\ParametersMerger' => __DIR__ . '/..' . '/symplify/package-builder/src/Yaml/ParametersMerger.php',
@@ -1113,9 +1117,9 @@ class ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit05fe86a075af05b7cdfbd59228b4ac29::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit59290842244eb1ec7d6e65d4d70fa04b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit59290842244eb1ec7d6e65d4d70fa04b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit59290842244eb1ec7d6e65d4d70fa04b::$classMap;
 
         }, null, ClassLoader::class);
     }
