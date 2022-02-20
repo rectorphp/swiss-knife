@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220219\Symfony\Component\Console;
+namespace EasyCI20220220\Symfony\Component\Console;
 
-use EasyCI20220219\Symfony\Component\Console\Event\ConsoleCommandEvent;
-use EasyCI20220219\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use EasyCI20220219\Symfony\Component\Console\Event\ConsoleSignalEvent;
-use EasyCI20220219\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use EasyCI20220220\Symfony\Component\Console\Event\ConsoleCommandEvent;
+use EasyCI20220220\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use EasyCI20220220\Symfony\Component\Console\Event\ConsoleSignalEvent;
+use EasyCI20220220\Symfony\Component\Console\Event\ConsoleTerminateEvent;
 /**
  * Contains all events dispatched by an Application.
  *
@@ -57,5 +57,5 @@ final class ConsoleEvents
      *
      * These aliases can be consumed by RegisterListenersPass.
      */
-    public const ALIASES = [\EasyCI20220219\Symfony\Component\Console\Event\ConsoleCommandEvent::class => self::COMMAND, \EasyCI20220219\Symfony\Component\Console\Event\ConsoleErrorEvent::class => self::ERROR, \EasyCI20220219\Symfony\Component\Console\Event\ConsoleSignalEvent::class => self::SIGNAL, \EasyCI20220219\Symfony\Component\Console\Event\ConsoleTerminateEvent::class => self::TERMINATE];
+    public const ALIASES = [\EasyCI20220220\Symfony\Component\Console\Event\ConsoleCommandEvent::class => self::COMMAND, \EasyCI20220220\Symfony\Component\Console\Event\ConsoleErrorEvent::class => self::ERROR, \EasyCI20220220\Symfony\Component\Console\Event\ConsoleSignalEvent::class => self::SIGNAL, \EasyCI20220220\Symfony\Component\Console\Event\ConsoleTerminateEvent::class => self::TERMINATE];
 }
