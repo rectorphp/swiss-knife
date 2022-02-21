@@ -57,8 +57,8 @@ final class FuncCallValueResolver implements \EasyCI20220221\Symplify\Astral\Con
             if (!$this->isAllowedFunctionName($functionName)) {
                 return null;
             }
-            if (\function_exists($functionName) && \is_callable($functionName)) {
-                return \call_user_func_array($functionName, $arguments);
+            if (\function_exists($functionName)) {
+                return $functionName(...$arguments);
             }
             throw new \EasyCI20220221\Symplify\Astral\Exception\ShouldNotHappenException();
         }
