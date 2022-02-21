@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI20220220\PhpParser\Parser;
+namespace EasyCI20220221\PhpParser\Parser;
 
 /* GENERATED file based on grammar/tokens.y */
 final class Tokens

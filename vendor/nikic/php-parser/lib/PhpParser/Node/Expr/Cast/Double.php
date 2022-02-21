@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220220\PhpParser\Node\Expr\Cast;
+namespace EasyCI20220221\PhpParser\Node\Expr\Cast;
 
-use EasyCI20220220\PhpParser\Node\Expr\Cast;
-class Double extends \EasyCI20220220\PhpParser\Node\Expr\Cast
+use EasyCI20220221\PhpParser\Node\Expr\Cast;
+class Double extends \EasyCI20220221\PhpParser\Node\Expr\Cast
 {
     // For use in "kind" attribute
     const KIND_DOUBLE = 1;

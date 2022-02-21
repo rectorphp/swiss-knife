@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220220\Symfony\Component\Console\EventListener;
+namespace EasyCI20220221\Symfony\Component\Console\EventListener;
 
-use EasyCI20220220\Psr\Log\LoggerInterface;
-use EasyCI20220220\Symfony\Component\Console\ConsoleEvents;
-use EasyCI20220220\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use EasyCI20220220\Symfony\Component\Console\Event\ConsoleEvent;
-use EasyCI20220220\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use EasyCI20220220\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use EasyCI20220221\Psr\Log\LoggerInterface;
+use EasyCI20220221\Symfony\Component\Console\ConsoleEvents;
+use EasyCI20220221\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use EasyCI20220221\Symfony\Component\Console\Event\ConsoleEvent;
+use EasyCI20220221\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use EasyCI20220221\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class ErrorListener implements \EasyCI20220220\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ErrorListener implements \EasyCI20220221\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $logger;
-    public function __construct(\EasyCI20220220\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(\EasyCI20220221\Psr\Log\LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
-    public function onConsoleError(\EasyCI20220220\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
+    public function onConsoleError(\EasyCI20220221\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -39,7 +39,7 @@ class ErrorListener implements \EasyCI20220220\Symfony\Component\EventDispatcher
         }
         $this->logger->critical('Error thrown while running command "{command}". Message: "{message}"', ['exception' => $error, 'command' => $inputString, 'message' => $error->getMessage()]);
     }
-    public function onConsoleTerminate(\EasyCI20220220\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
+    public function onConsoleTerminate(\EasyCI20220221\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -56,9 +56,9 @@ class ErrorListener implements \EasyCI20220220\Symfony\Component\EventDispatcher
     }
     public static function getSubscribedEvents() : array
     {
-        return [\EasyCI20220220\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \EasyCI20220220\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
+        return [\EasyCI20220221\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \EasyCI20220221\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
     }
-    private static function getInputString(\EasyCI20220220\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
+    private static function getInputString(\EasyCI20220221\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
     {
         $commandName = $event->getCommand() ? $event->getCommand()->getName() : null;
         $input = $event->getInput();

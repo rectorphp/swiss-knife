@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\NodeDecorator;
 
-use EasyCI20220220\PhpParser\Node\Stmt;
-use EasyCI20220220\PhpParser\NodeTraverser;
-use EasyCI20220220\PhpParser\NodeVisitor\NameResolver;
-use EasyCI20220220\PhpParser\NodeVisitor\NodeConnectingVisitor;
+use EasyCI20220221\PhpParser\Node\Stmt;
+use EasyCI20220221\PhpParser\NodeTraverser;
+use EasyCI20220221\PhpParser\NodeVisitor\NameResolver;
+use EasyCI20220221\PhpParser\NodeVisitor\NodeConnectingVisitor;
 final class FullyQualifiedNameNodeDecorator
 {
     /**
@@ -14,9 +14,9 @@ final class FullyQualifiedNameNodeDecorator
      */
     public function decorate(array $stmts) : void
     {
-        $nodeTraverser = new \EasyCI20220220\PhpParser\NodeTraverser();
-        $nodeTraverser->addVisitor(new \EasyCI20220220\PhpParser\NodeVisitor\NameResolver());
-        $nodeTraverser->addVisitor(new \EasyCI20220220\PhpParser\NodeVisitor\NodeConnectingVisitor());
+        $nodeTraverser = new \EasyCI20220221\PhpParser\NodeTraverser();
+        $nodeTraverser->addVisitor(new \EasyCI20220221\PhpParser\NodeVisitor\NameResolver());
+        $nodeTraverser->addVisitor(new \EasyCI20220221\PhpParser\NodeVisitor\NodeConnectingVisitor());
         $nodeTraverser->traverse($stmts);
     }
 }

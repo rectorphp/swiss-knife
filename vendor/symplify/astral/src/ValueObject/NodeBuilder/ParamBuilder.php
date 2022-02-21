@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220220\Symplify\Astral\ValueObject\NodeBuilder;
+namespace EasyCI20220221\Symplify\Astral\ValueObject\NodeBuilder;
 
-use EasyCI20220220\PhpParser\Builder\Param;
+use EasyCI20220221\PhpParser\Builder\Param;
 /**
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class ParamBuilder extends \EasyCI20220220\PhpParser\Builder\Param
+final class ParamBuilder extends \EasyCI20220221\PhpParser\Builder\Param
 {
 }
