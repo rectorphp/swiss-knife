@@ -29,5 +29,6 @@ return array(
     'EasyCI20220221\\Symfony\\Component\\Config\\' => array($vendorDir . '/symfony/config'),
     'EasyCI20220221\\Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'EasyCI20220221\\PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
+    'EasyCI20220221\\PHPStan\\PhpDocParser\\' => array($vendorDir . '/phpstan/phpdoc-parser/src'),
     'EasyCI20220221\\Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
 );
