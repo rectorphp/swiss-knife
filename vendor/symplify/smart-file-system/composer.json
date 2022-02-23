@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220221\\Symplify\\SmartFileSystem\\": "src"
+            "EasyCI20220223\\Symplify\\SmartFileSystem\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220221\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+            "EasyCI20220223\\Symplify\\SmartFileSystem\\Tests\\": "tests"
         }
     },
     "extra": {

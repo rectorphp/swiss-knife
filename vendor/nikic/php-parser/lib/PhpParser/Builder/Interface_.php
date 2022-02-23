@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220221\PhpParser\Builder;
+namespace EasyCI20220223\PhpParser\Builder;
 
-use EasyCI20220221\PhpParser;
-use EasyCI20220221\PhpParser\BuilderHelpers;
-use EasyCI20220221\PhpParser\Node;
-use EasyCI20220221\PhpParser\Node\Name;
-use EasyCI20220221\PhpParser\Node\Stmt;
-class Interface_ extends \EasyCI20220221\PhpParser\Builder\Declaration
+use EasyCI20220223\PhpParser;
+use EasyCI20220223\PhpParser\BuilderHelpers;
+use EasyCI20220223\PhpParser\Node;
+use EasyCI20220223\PhpParser\Node\Name;
+use EasyCI20220223\PhpParser\Node\Stmt;
+class Interface_ extends \EasyCI20220223\PhpParser\Builder\Declaration
 {
     protected $name;
     protected $extends = [];
@@ -35,7 +35,7 @@ class Interface_ extends \EasyCI20220221\PhpParser\Builder\Declaration
     public function extend(...$interfaces)
     {
         foreach ($interfaces as $interface) {
-            $this->extends[] = \EasyCI20220221\PhpParser\BuilderHelpers::normalizeName($interface);
+            $this->extends[] = \EasyCI20220223\PhpParser\BuilderHelpers::normalizeName($interface);
         }
         return $this;
     }
@@ -48,10 +48,10 @@ class Interface_ extends \EasyCI20220221\PhpParser\Builder\Declaration
      */
     public function addStmt($stmt)
     {
-        $stmt = \EasyCI20220221\PhpParser\BuilderHelpers::normalizeNode($stmt);
-        if ($stmt instanceof \EasyCI20220221\PhpParser\Node\Stmt\ClassConst) {
+        $stmt = \EasyCI20220223\PhpParser\BuilderHelpers::normalizeNode($stmt);
+        if ($stmt instanceof \EasyCI20220223\PhpParser\Node\Stmt\ClassConst) {
             $this->constants[] = $stmt;
-        } elseif ($stmt instanceof \EasyCI20220221\PhpParser\Node\Stmt\ClassMethod) {
+        } elseif ($stmt instanceof \EasyCI20220223\PhpParser\Node\Stmt\ClassMethod) {
             // we erase all statements in the body of an interface method
             $stmt->stmts = null;
             $this->methods[] = $stmt;
@@ -69,7 +69,7 @@ class Interface_ extends \EasyCI20220221\PhpParser\Builder\Declaration
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220221\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220223\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -77,8 +77,8 @@ class Interface_ extends \EasyCI20220221\PhpParser\Builder\Declaration
      *
      * @return Stmt\Interface_ The built interface node
      */
-    public function getNode() : \EasyCI20220221\PhpParser\Node
+    public function getNode() : \EasyCI20220223\PhpParser\Node
     {
-        return new \EasyCI20220221\PhpParser\Node\Stmt\Interface_($this->name, ['extends' => $this->extends, 'stmts' => \array_merge($this->constants, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new \EasyCI20220223\PhpParser\Node\Stmt\Interface_($this->name, ['extends' => $this->extends, 'stmts' => \array_merge($this->constants, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

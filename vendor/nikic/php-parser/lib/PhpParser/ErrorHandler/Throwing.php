@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220221\PhpParser\ErrorHandler;
+namespace EasyCI20220223\PhpParser\ErrorHandler;
 
-use EasyCI20220221\PhpParser\Error;
-use EasyCI20220221\PhpParser\ErrorHandler;
+use EasyCI20220223\PhpParser\Error;
+use EasyCI20220223\PhpParser\ErrorHandler;
 /**
  * Error handler that handles all errors by throwing them.
  *
  * This is the default strategy used by all components.
  */
-class Throwing implements \EasyCI20220221\PhpParser\ErrorHandler
+class Throwing implements \EasyCI20220223\PhpParser\ErrorHandler
 {
-    public function handleError(\EasyCI20220221\PhpParser\Error $error)
+    public function handleError(\EasyCI20220223\PhpParser\Error $error)
     {
         throw $error;
     }

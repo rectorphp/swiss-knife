@@ -3,20 +3,20 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Kernel;
 
-use EasyCI20220221\Psr\Container\ContainerInterface;
-use EasyCI20220221\Symplify\Astral\ValueObject\AstralConfig;
-use EasyCI20220221\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
-use EasyCI20220221\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class EasyCIKernel extends \EasyCI20220221\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use EasyCI20220223\Psr\Container\ContainerInterface;
+use EasyCI20220223\Symplify\Astral\ValueObject\AstralConfig;
+use EasyCI20220223\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
+use EasyCI20220223\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class EasyCIKernel extends \EasyCI20220223\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs(array $configFiles) : \EasyCI20220221\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFiles) : \EasyCI20220223\Psr\Container\ContainerInterface
     {
         $configFiles[] = __DIR__ . '/../../config/config.php';
-        $configFiles[] = \EasyCI20220221\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig::FILE_PATH;
-        $configFiles[] = \EasyCI20220221\Symplify\Astral\ValueObject\AstralConfig::FILE_PATH;
+        $configFiles[] = \EasyCI20220223\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig::FILE_PATH;
+        $configFiles[] = \EasyCI20220223\Symplify\Astral\ValueObject\AstralConfig::FILE_PATH;
         return $this->create($configFiles);
     }
 }

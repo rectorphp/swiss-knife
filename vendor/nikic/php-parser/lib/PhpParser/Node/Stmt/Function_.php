@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220221\PhpParser\Node\Stmt;
+namespace EasyCI20220223\PhpParser\Node\Stmt;
 
-use EasyCI20220221\PhpParser\Node;
-use EasyCI20220221\PhpParser\Node\FunctionLike;
-class Function_ extends \EasyCI20220221\PhpParser\Node\Stmt implements \EasyCI20220221\PhpParser\Node\FunctionLike
+use EasyCI20220223\PhpParser\Node;
+use EasyCI20220223\PhpParser\Node\FunctionLike;
+class Function_ extends \EasyCI20220223\PhpParser\Node\Stmt implements \EasyCI20220223\PhpParser\Node\FunctionLike
 {
     /** @var bool Whether function returns by reference */
     public $byRef;
@@ -37,10 +37,10 @@ class Function_ extends \EasyCI20220221\PhpParser\Node\Stmt implements \EasyCI20
     {
         $this->attributes = $attributes;
         $this->byRef = $subNodes['byRef'] ?? \false;
-        $this->name = \is_string($name) ? new \EasyCI20220221\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220223\PhpParser\Node\Identifier($name) : $name;
         $this->params = $subNodes['params'] ?? [];
         $returnType = $subNodes['returnType'] ?? null;
-        $this->returnType = \is_string($returnType) ? new \EasyCI20220221\PhpParser\Node\Identifier($returnType) : $returnType;
+        $this->returnType = \is_string($returnType) ? new \EasyCI20220223\PhpParser\Node\Identifier($returnType) : $returnType;
         $this->stmts = $subNodes['stmts'] ?? [];
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }

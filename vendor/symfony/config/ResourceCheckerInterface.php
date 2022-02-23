@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220221\Symfony\Component\Config;
+namespace EasyCI20220223\Symfony\Component\Config;
 
-use EasyCI20220221\Symfony\Component\Config\Resource\ResourceInterface;
+use EasyCI20220223\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Interface for ResourceCheckers.
  *
@@ -30,7 +30,7 @@ interface ResourceCheckerInterface
      *
      * @return bool
      */
-    public function supports(\EasyCI20220221\Symfony\Component\Config\Resource\ResourceInterface $metadata);
+    public function supports(\EasyCI20220223\Symfony\Component\Config\Resource\ResourceInterface $metadata);
     /**
      * Validates the resource.
      *
@@ -38,5 +38,5 @@ interface ResourceCheckerInterface
      *
      * @return bool
      */
-    public function isFresh(\EasyCI20220221\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp);
+    public function isFresh(\EasyCI20220223\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp);
 }

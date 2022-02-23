@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220221\Nette\Localization;
+namespace EasyCI20220223\Nette\Localization;
 
 /**
  * Translator adapter.
@@ -19,4 +19,4 @@ interface Translator
      */
     function translate($message, ...$parameters) : string;
 }
-\interface_exists(\EasyCI20220221\Nette\Localization\ITranslator::class);
+\interface_exists(\EasyCI20220223\Nette\Localization\ITranslator::class);

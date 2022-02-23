@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Configuration;
 
-use EasyCI20220221\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220223\Symfony\Component\Console\Input\InputInterface;
 use Symplify\EasyCI\Psr4\Exception\ConfigurationException;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
-use EasyCI20220221\Symplify\SmartFileSystem\FileSystemGuard;
+use EasyCI20220223\Symplify\SmartFileSystem\FileSystemGuard;
 final class Psr4SwitcherConfiguration
 {
     /**
@@ -21,7 +21,7 @@ final class Psr4SwitcherConfiguration
      * @var \Symplify\SmartFileSystem\FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\EasyCI20220221\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\EasyCI20220223\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         $this->fileSystemGuard = $fileSystemGuard;
     }
@@ -32,7 +32,7 @@ final class Psr4SwitcherConfiguration
     {
         $this->composerJsonPath = $composerJsonPath;
     }
-    public function loadFromInput(\EasyCI20220221\Symfony\Component\Console\Input\InputInterface $input) : void
+    public function loadFromInput(\EasyCI20220223\Symfony\Component\Console\Input\InputInterface $input) : void
     {
         $composerJsonPath = (string) $input->getOption(\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON);
         if ($composerJsonPath === '') {
