@@ -6,7 +6,7 @@ namespace Symplify\EasyCI\Config\Application;
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
 use Symplify\EasyCI\Contract\Application\FileProcessorInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220223\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220224\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfigFileAnalyzer\NonExistingClassConfigFileAnalyzerTest
  */

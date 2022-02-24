@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220223\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220224\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220223\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220223\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-class TypeAliasTagValueNode implements \EasyCI20220223\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220224\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220224\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+class TypeAliasTagValueNode implements \EasyCI20220224\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string */
     public $alias;
     /** @var TypeNode */
     public $type;
-    public function __construct(string $alias, \EasyCI20220223\PHPStan\PhpDocParser\Ast\Type\TypeNode $type)
+    public function __construct(string $alias, \EasyCI20220224\PHPStan\PhpDocParser\Ast\Type\TypeNode $type)
     {
         $this->alias = $alias;
         $this->type = $type;

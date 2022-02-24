@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220223\PhpParser\Builder;
+namespace EasyCI20220224\PhpParser\Builder;
 
-use EasyCI20220223\PhpParser\BuilderHelpers;
-use EasyCI20220223\PhpParser\Node;
-abstract class FunctionLike extends \EasyCI20220223\PhpParser\Builder\Declaration
+use EasyCI20220224\PhpParser\BuilderHelpers;
+use EasyCI20220224\PhpParser\Node;
+abstract class FunctionLike extends \EasyCI20220224\PhpParser\Builder\Declaration
 {
     protected $returnByRef = \false;
     protected $params = [];
@@ -30,8 +30,8 @@ abstract class FunctionLike extends \EasyCI20220223\PhpParser\Builder\Declaratio
      */
     public function addParam($param)
     {
-        $param = \EasyCI20220223\PhpParser\BuilderHelpers::normalizeNode($param);
-        if (!$param instanceof \EasyCI20220223\PhpParser\Node\Param) {
+        $param = \EasyCI20220224\PhpParser\BuilderHelpers::normalizeNode($param);
+        if (!$param instanceof \EasyCI20220224\PhpParser\Node\Param) {
             throw new \LogicException(\sprintf('Expected parameter node, got "%s"', $param->getType()));
         }
         $this->params[] = $param;
@@ -60,7 +60,7 @@ abstract class FunctionLike extends \EasyCI20220223\PhpParser\Builder\Declaratio
      */
     public function setReturnType($type)
     {
-        $this->returnType = \EasyCI20220223\PhpParser\BuilderHelpers::normalizeType($type);
+        $this->returnType = \EasyCI20220224\PhpParser\BuilderHelpers::normalizeType($type);
         return $this;
     }
 }

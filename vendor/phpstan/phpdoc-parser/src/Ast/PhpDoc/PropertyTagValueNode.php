@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220223\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220224\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220223\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220223\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-class PropertyTagValueNode implements \EasyCI20220223\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220224\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220224\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+class PropertyTagValueNode implements \EasyCI20220224\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var TypeNode */
@@ -14,7 +14,7 @@ class PropertyTagValueNode implements \EasyCI20220223\PHPStan\PhpDocParser\Ast\P
     public $propertyName;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(\EasyCI20220223\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, string $propertyName, string $description)
+    public function __construct(\EasyCI20220224\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, string $propertyName, string $description)
     {
         $this->type = $type;
         $this->propertyName = $propertyName;

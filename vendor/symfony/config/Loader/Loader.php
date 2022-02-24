@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220223\Symfony\Component\Config\Loader;
+namespace EasyCI20220224\Symfony\Component\Config\Loader;
 
-use EasyCI20220223\Symfony\Component\Config\Exception\LoaderLoadException;
+use EasyCI20220224\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * Loader is the abstract class used by all built-in loaders.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Loader implements \EasyCI20220223\Symfony\Component\Config\Loader\LoaderInterface
+abstract class Loader implements \EasyCI20220224\Symfony\Component\Config\Loader\LoaderInterface
 {
     protected $resolver;
     protected $env;
@@ -27,14 +27,14 @@ abstract class Loader implements \EasyCI20220223\Symfony\Component\Config\Loader
     /**
      * {@inheritdoc}
      */
-    public function getResolver() : \EasyCI20220223\Symfony\Component\Config\Loader\LoaderResolverInterface
+    public function getResolver() : \EasyCI20220224\Symfony\Component\Config\Loader\LoaderResolverInterface
     {
         return $this->resolver;
     }
     /**
      * {@inheritdoc}
      */
-    public function setResolver(\EasyCI20220223\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function setResolver(\EasyCI20220224\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -55,14 +55,14 @@ abstract class Loader implements \EasyCI20220223\Symfony\Component\Config\Loader
      * @throws LoaderLoadException If no loader is found
      * @param mixed $resource
      */
-    public function resolve($resource, string $type = null) : \EasyCI20220223\Symfony\Component\Config\Loader\LoaderInterface
+    public function resolve($resource, string $type = null) : \EasyCI20220224\Symfony\Component\Config\Loader\LoaderInterface
     {
         if ($this->supports($resource, $type)) {
             return $this;
         }
         $loader = null === $this->resolver ? \false : $this->resolver->resolve($resource, $type);
         if (\false === $loader) {
-            throw new \EasyCI20220223\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
+            throw new \EasyCI20220224\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
         }
         return $loader;
     }
