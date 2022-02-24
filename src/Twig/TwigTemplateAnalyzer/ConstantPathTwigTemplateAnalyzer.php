@@ -32,6 +32,9 @@ final class ConstantPathTwigTemplateAnalyzer implements \Symplify\EasyCI\Twig\Co
         }
         return $templateErrors;
     }
+    /**
+     * @param array<int|string, mixed> $match
+     */
     private function resolveLineNumber(\EasyCI20220224\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, array $match) : int
     {
         $length = $match[0][1];
