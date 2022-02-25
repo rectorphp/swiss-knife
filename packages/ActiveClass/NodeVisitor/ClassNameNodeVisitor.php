@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\NodeVisitor;
 
-use EasyCI20220224\Nette\Utils\Strings;
-use EasyCI20220224\PhpParser\Comment\Doc;
-use EasyCI20220224\PhpParser\Node;
-use EasyCI20220224\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220224\PhpParser\NodeTraverser;
-use EasyCI20220224\PhpParser\NodeVisitorAbstract;
-final class ClassNameNodeVisitor extends \EasyCI20220224\PhpParser\NodeVisitorAbstract
+use EasyCI20220225\Nette\Utils\Strings;
+use EasyCI20220225\PhpParser\Comment\Doc;
+use EasyCI20220225\PhpParser\Node;
+use EasyCI20220225\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220225\PhpParser\NodeTraverser;
+use EasyCI20220225\PhpParser\NodeVisitorAbstract;
+final class ClassNameNodeVisitor extends \EasyCI20220225\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var string
@@ -25,9 +25,9 @@ final class ClassNameNodeVisitor extends \EasyCI20220224\PhpParser\NodeVisitorAb
         $this->className = null;
         return $nodes;
     }
-    public function enterNode(\EasyCI20220224\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220225\PhpParser\Node $node)
     {
-        if (!$node instanceof \EasyCI20220224\PhpParser\Node\Stmt\ClassLike) {
+        if (!$node instanceof \EasyCI20220225\PhpParser\Node\Stmt\ClassLike) {
             return null;
         }
         if ($node->name === null) {
@@ -37,19 +37,19 @@ final class ClassNameNodeVisitor extends \EasyCI20220224\PhpParser\NodeVisitorAb
             return null;
         }
         $this->className = $node->namespacedName->toString();
-        return \EasyCI20220224\PhpParser\NodeTraverser::DONT_TRAVERSE_CURRENT_AND_CHILDREN;
+        return \EasyCI20220225\PhpParser\NodeTraverser::DONT_TRAVERSE_CURRENT_AND_CHILDREN;
     }
     public function getClassName() : ?string
     {
         return $this->className;
     }
-    private function hasApiTag(\EasyCI20220224\PhpParser\Node\Stmt\ClassLike $classLike) : bool
+    private function hasApiTag(\EasyCI20220225\PhpParser\Node\Stmt\ClassLike $classLike) : bool
     {
         $doc = $classLike->getDocComment();
-        if (!$doc instanceof \EasyCI20220224\PhpParser\Comment\Doc) {
+        if (!$doc instanceof \EasyCI20220225\PhpParser\Comment\Doc) {
             return \false;
         }
-        $matches = \EasyCI20220224\Nette\Utils\Strings::match($doc->getText(), self::API_TAG_REGEX);
+        $matches = \EasyCI20220225\Nette\Utils\Strings::match($doc->getText(), self::API_TAG_REGEX);
         return $matches !== null;
     }
 }

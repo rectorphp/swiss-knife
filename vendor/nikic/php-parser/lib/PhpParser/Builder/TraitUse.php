@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220224\PhpParser\Builder;
+namespace EasyCI20220225\PhpParser\Builder;
 
-use EasyCI20220224\PhpParser\Builder;
-use EasyCI20220224\PhpParser\BuilderHelpers;
-use EasyCI20220224\PhpParser\Node;
-use EasyCI20220224\PhpParser\Node\Stmt;
-class TraitUse implements \EasyCI20220224\PhpParser\Builder
+use EasyCI20220225\PhpParser\Builder;
+use EasyCI20220225\PhpParser\BuilderHelpers;
+use EasyCI20220225\PhpParser\Node;
+use EasyCI20220225\PhpParser\Node\Stmt;
+class TraitUse implements \EasyCI20220225\PhpParser\Builder
 {
     protected $traits = [];
     protected $adaptations = [];
@@ -31,7 +31,7 @@ class TraitUse implements \EasyCI20220224\PhpParser\Builder
      */
     public function and($trait)
     {
-        $this->traits[] = \EasyCI20220224\PhpParser\BuilderHelpers::normalizeName($trait);
+        $this->traits[] = \EasyCI20220225\PhpParser\BuilderHelpers::normalizeName($trait);
         return $this;
     }
     /**
@@ -43,8 +43,8 @@ class TraitUse implements \EasyCI20220224\PhpParser\Builder
      */
     public function with($adaptation)
     {
-        $adaptation = \EasyCI20220224\PhpParser\BuilderHelpers::normalizeNode($adaptation);
-        if (!$adaptation instanceof \EasyCI20220224\PhpParser\Node\Stmt\TraitUseAdaptation) {
+        $adaptation = \EasyCI20220225\PhpParser\BuilderHelpers::normalizeNode($adaptation);
+        if (!$adaptation instanceof \EasyCI20220225\PhpParser\Node\Stmt\TraitUseAdaptation) {
             throw new \LogicException('Adaptation must have type TraitUseAdaptation');
         }
         $this->adaptations[] = $adaptation;
@@ -55,8 +55,8 @@ class TraitUse implements \EasyCI20220224\PhpParser\Builder
      *
      * @return Node The built node
      */
-    public function getNode() : \EasyCI20220224\PhpParser\Node
+    public function getNode() : \EasyCI20220225\PhpParser\Node
     {
-        return new \EasyCI20220224\PhpParser\Node\Stmt\TraitUse($this->traits, $this->adaptations);
+        return new \EasyCI20220225\PhpParser\Node\Stmt\TraitUse($this->traits, $this->adaptations);
     }
 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220224\Symfony\Component\Console\SignalRegistry;
+namespace EasyCI20220225\Symfony\Component\Console\SignalRegistry;
 
 final class SignalRegistry
 {

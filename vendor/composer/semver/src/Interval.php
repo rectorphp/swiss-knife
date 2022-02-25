@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI20220224\Composer\Semver;
+namespace EasyCI20220225\Composer\Semver;
 
-use EasyCI20220224\Composer\Semver\Constraint\Constraint;
+use EasyCI20220225\Composer\Semver\Constraint\Constraint;
 class Interval
 {
     /** @var Constraint */
     private $start;
     /** @var Constraint */
     private $end;
-    public function __construct(\EasyCI20220224\Composer\Semver\Constraint\Constraint $start, \EasyCI20220224\Composer\Semver\Constraint\Constraint $end)
+    public function __construct(\EasyCI20220225\Composer\Semver\Constraint\Constraint $start, \EasyCI20220225\Composer\Semver\Constraint\Constraint $end)
     {
         $this->start = $start;
         $this->end = $end;
@@ -43,7 +43,7 @@ class Interval
     {
         static $zero;
         if (null === $zero) {
-            $zero = new \EasyCI20220224\Composer\Semver\Constraint\Constraint('>=', '0.0.0.0-dev');
+            $zero = new \EasyCI20220225\Composer\Semver\Constraint\Constraint('>=', '0.0.0.0-dev');
         }
         return $zero;
     }
@@ -54,7 +54,7 @@ class Interval
     {
         static $positiveInfinity;
         if (null === $positiveInfinity) {
-            $positiveInfinity = new \EasyCI20220224\Composer\Semver\Constraint\Constraint('<', \PHP_INT_MAX . '.0.0.0');
+            $positiveInfinity = new \EasyCI20220225\Composer\Semver\Constraint\Constraint('<', \PHP_INT_MAX . '.0.0.0');
         }
         return $positiveInfinity;
     }

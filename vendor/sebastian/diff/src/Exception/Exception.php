@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220224\SebastianBergmann\Diff;
+namespace EasyCI20220225\SebastianBergmann\Diff;
 
 use Throwable;
 interface Exception extends \Throwable
