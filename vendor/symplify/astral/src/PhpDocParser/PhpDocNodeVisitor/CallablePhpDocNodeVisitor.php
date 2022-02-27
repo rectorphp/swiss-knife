@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220225\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI20220227\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI20220225\PHPStan\PhpDocParser\Ast\Node;
-final class CallablePhpDocNodeVisitor extends \EasyCI20220225\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
+use EasyCI20220227\PHPStan\PhpDocParser\Ast\Node;
+final class CallablePhpDocNodeVisitor extends \EasyCI20220227\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
 {
     /**
      * @var callable(Node, string|null): (int|null|Node)
@@ -25,7 +25,7 @@ final class CallablePhpDocNodeVisitor extends \EasyCI20220225\Symplify\Astral\Ph
     /**
      * @return int|Node|null
      */
-    public function enterNode(\EasyCI20220225\PHPStan\PhpDocParser\Ast\Node $node)
+    public function enterNode(\EasyCI20220227\PHPStan\PhpDocParser\Ast\Node $node)
     {
         $callable = $this->callable;
         return $callable($node, $this->docContent);

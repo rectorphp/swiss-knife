@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220225\PhpParser\Node\Stmt;
+namespace EasyCI20220227\PhpParser\Node\Stmt;
 
-use EasyCI20220225\PhpParser\Node;
-class Case_ extends \EasyCI20220225\PhpParser\Node\Stmt
+use EasyCI20220227\PhpParser\Node;
+class Case_ extends \EasyCI20220227\PhpParser\Node\Stmt
 {
     /** @var null|Node\Expr Condition (null for default) */
     public $cond;

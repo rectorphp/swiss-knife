@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220225\PhpParser\Node\Expr;
+namespace EasyCI20220227\PhpParser\Node\Expr;
 
-use EasyCI20220225\PhpParser\Node\Expr;
-class Ternary extends \EasyCI20220225\PhpParser\Node\Expr
+use EasyCI20220227\PhpParser\Node\Expr;
+class Ternary extends \EasyCI20220227\PhpParser\Node\Expr
 {
     /** @var Expr Condition */
     public $cond;
@@ -20,7 +20,7 @@ class Ternary extends \EasyCI20220225\PhpParser\Node\Expr
      * @param Expr      $else       Expression for false
      * @param array                    $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220225\PhpParser\Node\Expr $cond, $if, \EasyCI20220225\PhpParser\Node\Expr $else, array $attributes = [])
+    public function __construct(\EasyCI20220227\PhpParser\Node\Expr $cond, $if, \EasyCI20220227\PhpParser\Node\Expr $else, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->cond = $cond;

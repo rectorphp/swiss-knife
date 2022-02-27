@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220225\Symplify\Astral\Reflection;
+namespace EasyCI20220227\Symplify\Astral\Reflection;
 
-use EasyCI20220225\PhpParser\Node\Expr\MethodCall;
-use EasyCI20220225\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220225\PHPStan\Analyser\Scope;
-use EasyCI20220225\PHPStan\Reflection\ClassReflection;
-use EasyCI20220225\PHPStan\Type\ObjectType;
-use EasyCI20220225\PHPStan\Type\ThisType;
-use EasyCI20220225\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220227\PhpParser\Node\Expr\MethodCall;
+use EasyCI20220227\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220227\PHPStan\Analyser\Scope;
+use EasyCI20220227\PHPStan\Reflection\ClassReflection;
+use EasyCI20220227\PHPStan\Type\ObjectType;
+use EasyCI20220227\PHPStan\Type\ThisType;
+use EasyCI20220227\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @api
  */
@@ -23,7 +23,7 @@ final class MethodCallParser
      * @var \Symplify\Astral\Reflection\ReflectionParser
      */
     private $reflectionParser;
-    public function __construct(\EasyCI20220225\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220225\Symplify\Astral\Reflection\ReflectionParser $reflectionParser)
+    public function __construct(\EasyCI20220227\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220227\Symplify\Astral\Reflection\ReflectionParser $reflectionParser)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->reflectionParser = $reflectionParser;
@@ -31,17 +31,17 @@ final class MethodCallParser
     /**
      * @return \PhpParser\Node\Stmt\ClassMethod|null
      */
-    public function parseMethodCall(\EasyCI20220225\PhpParser\Node\Expr\MethodCall $methodCall, \EasyCI20220225\PHPStan\Analyser\Scope $scope)
+    public function parseMethodCall(\EasyCI20220227\PhpParser\Node\Expr\MethodCall $methodCall, \EasyCI20220227\PHPStan\Analyser\Scope $scope)
     {
         $callerType = $scope->getType($methodCall->var);
-        if ($callerType instanceof \EasyCI20220225\PHPStan\Type\ThisType) {
+        if ($callerType instanceof \EasyCI20220227\PHPStan\Type\ThisType) {
             $callerType = $callerType->getStaticObjectType();
         }
-        if (!$callerType instanceof \EasyCI20220225\PHPStan\Type\ObjectType) {
+        if (!$callerType instanceof \EasyCI20220227\PHPStan\Type\ObjectType) {
             return null;
         }
         $classReflection = $callerType->getClassReflection();
-        if (!$classReflection instanceof \EasyCI20220225\PHPStan\Reflection\ClassReflection) {
+        if (!$classReflection instanceof \EasyCI20220227\PHPStan\Reflection\ClassReflection) {
             return null;
         }
         $methodName = $this->simpleNameResolver->getName($methodCall->name);

@@ -39,12 +39,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220225\\Composer\\Semver\\": "src"
+            "EasyCI20220227\\Composer\\Semver\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220225\\Composer\\Semver\\": "tests"
+            "EasyCI20220227\\Composer\\Semver\\": "tests"
         }
     },
     "extra": {

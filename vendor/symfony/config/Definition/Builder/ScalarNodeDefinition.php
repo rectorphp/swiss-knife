@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220225\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI20220227\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI20220225\Symfony\Component\Config\Definition\ScalarNode;
+use EasyCI20220227\Symfony\Component\Config\Definition\ScalarNode;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ScalarNodeDefinition extends \EasyCI20220225\Symfony\Component\Config\Definition\Builder\VariableNodeDefinition
+class ScalarNodeDefinition extends \EasyCI20220227\Symfony\Component\Config\Definition\Builder\VariableNodeDefinition
 {
     /**
      * Instantiate a Node.
      */
-    protected function instantiateNode() : \EasyCI20220225\Symfony\Component\Config\Definition\VariableNode
+    protected function instantiateNode() : \EasyCI20220227\Symfony\Component\Config\Definition\VariableNode
     {
-        return new \EasyCI20220225\Symfony\Component\Config\Definition\ScalarNode($this->name, $this->parent, $this->pathSeparator);
+        return new \EasyCI20220227\Symfony\Component\Config\Definition\ScalarNode($this->name, $this->parent, $this->pathSeparator);
     }
 }

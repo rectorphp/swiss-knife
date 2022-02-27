@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220225\PhpParser\Node\Expr;
+namespace EasyCI20220227\PhpParser\Node\Expr;
 
-use EasyCI20220225\PhpParser\Node;
-use EasyCI20220225\PhpParser\Node\Arg;
-use EasyCI20220225\PhpParser\Node\Expr;
-use EasyCI20220225\PhpParser\Node\Identifier;
-use EasyCI20220225\PhpParser\Node\VariadicPlaceholder;
-class StaticCall extends \EasyCI20220225\PhpParser\Node\Expr\CallLike
+use EasyCI20220227\PhpParser\Node;
+use EasyCI20220227\PhpParser\Node\Arg;
+use EasyCI20220227\PhpParser\Node\Expr;
+use EasyCI20220227\PhpParser\Node\Identifier;
+use EasyCI20220227\PhpParser\Node\VariadicPlaceholder;
+class StaticCall extends \EasyCI20220227\PhpParser\Node\Expr\CallLike
 {
     /** @var Node\Name|Expr Class name */
     public $class;
@@ -28,7 +28,7 @@ class StaticCall extends \EasyCI20220225\PhpParser\Node\Expr\CallLike
     {
         $this->attributes = $attributes;
         $this->class = $class;
-        $this->name = \is_string($name) ? new \EasyCI20220225\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220227\PhpParser\Node\Identifier($name) : $name;
         $this->args = $args;
     }
     public function getSubNodeNames() : array
