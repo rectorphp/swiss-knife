@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220227\PhpParser\Node\Scalar;
+namespace EasyCI20220302\PhpParser\Node\Scalar;
 
-use EasyCI20220227\PhpParser\Node\Scalar;
-abstract class MagicConst extends \EasyCI20220227\PhpParser\Node\Scalar
+use EasyCI20220302\PhpParser\Node\Scalar;
+abstract class MagicConst extends \EasyCI20220302\PhpParser\Node\Scalar
 {
     /**
      * Constructs a magic constant node.

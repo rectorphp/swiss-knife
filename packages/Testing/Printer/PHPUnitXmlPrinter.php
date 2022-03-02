@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing\Printer;
 
-use EasyCI20220227\Nette\Utils\Strings;
+use EasyCI20220302\Nette\Utils\Strings;
 final class PHPUnitXmlPrinter
 {
     /**
@@ -16,7 +16,7 @@ final class PHPUnitXmlPrinter
         $rootDirectory = \realpath($rootDirectory);
         $fileContents = '';
         foreach ($filePaths as $filePath) {
-            $relativeFilePath = \EasyCI20220227\Nette\Utils\Strings::after($filePath, $rootDirectory . '/');
+            $relativeFilePath = \EasyCI20220302\Nette\Utils\Strings::after($filePath, $rootDirectory . '/');
             $fileContents .= '<file>' . $relativeFilePath . '</file>' . \PHP_EOL;
         }
         return $fileContents;

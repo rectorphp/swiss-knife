@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI20220227\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220227\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220227\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220302\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220302\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220302\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Console\Output\FileErrorsReporter;
 use Symplify\EasyCI\Twig\TwigTemplateProcessor;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220227\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220227\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class CheckTwigTemplateCommand extends \EasyCI20220227\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220302\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220302\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class CheckTwigTemplateCommand extends \EasyCI20220302\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Twig\TwigTemplateProcessor
@@ -29,11 +29,11 @@ final class CheckTwigTemplateCommand extends \EasyCI20220227\Symplify\PackageBui
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220227\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
-        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220227\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220227\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'One or more paths with templates');
+        $this->setName(\EasyCI20220302\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220302\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220302\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'One or more paths with templates');
         $this->setDescription('Analyze missing classes, constant and static calls in Latte templates');
     }
-    protected function execute(\EasyCI20220227\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220227\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220302\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220302\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $sources = (array) $input->getArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES);
         $twigFileInfos = $this->smartFinder->find($sources, '*.twig');

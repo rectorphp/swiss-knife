@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220227\PhpParser\Node;
+namespace EasyCI20220302\PhpParser\Node;
 
-use EasyCI20220227\PhpParser\Node;
-use EasyCI20220227\PhpParser\NodeAbstract;
-class AttributeGroup extends \EasyCI20220227\PhpParser\NodeAbstract
+use EasyCI20220302\PhpParser\Node;
+use EasyCI20220302\PhpParser\NodeAbstract;
+class AttributeGroup extends \EasyCI20220302\PhpParser\NodeAbstract
 {
     /** @var Attribute[] Attributes */
     public $attrs;

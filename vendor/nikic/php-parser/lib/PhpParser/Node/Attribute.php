@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220227\PhpParser\Node;
+namespace EasyCI20220302\PhpParser\Node;
 
-use EasyCI20220227\PhpParser\Node;
-use EasyCI20220227\PhpParser\NodeAbstract;
-class Attribute extends \EasyCI20220227\PhpParser\NodeAbstract
+use EasyCI20220302\PhpParser\Node;
+use EasyCI20220302\PhpParser\NodeAbstract;
+class Attribute extends \EasyCI20220302\PhpParser\NodeAbstract
 {
     /** @var Name Attribute name */
     public $name;
@@ -16,7 +16,7 @@ class Attribute extends \EasyCI20220227\PhpParser\NodeAbstract
      * @param Arg[]     $args       Attribute arguments
      * @param array     $attributes Additional node attributes
      */
-    public function __construct(\EasyCI20220227\PhpParser\Node\Name $name, array $args = [], array $attributes = [])
+    public function __construct(\EasyCI20220302\PhpParser\Node\Name $name, array $args = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->name = $name;
