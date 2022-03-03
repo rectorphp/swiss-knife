@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220302\Symfony\Component\Config;
+namespace EasyCI20220303\Symfony\Component\Config;
 
 /**
  * Basic implementation of ConfigCacheFactoryInterface that
@@ -19,7 +19,7 @@ namespace EasyCI20220302\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCacheFactory implements \EasyCI20220302\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ConfigCacheFactory implements \EasyCI20220303\Symfony\Component\Config\ConfigCacheFactoryInterface
 {
     /**
      * @var bool
@@ -35,9 +35,9 @@ class ConfigCacheFactory implements \EasyCI20220302\Symfony\Component\Config\Con
     /**
      * {@inheritdoc}
      */
-    public function cache(string $file, callable $callback) : \EasyCI20220302\Symfony\Component\Config\ConfigCacheInterface
+    public function cache(string $file, callable $callback) : \EasyCI20220303\Symfony\Component\Config\ConfigCacheInterface
     {
-        $cache = new \EasyCI20220302\Symfony\Component\Config\ConfigCache($file, $this->debug);
+        $cache = new \EasyCI20220303\Symfony\Component\Config\ConfigCache($file, $this->debug);
         if (!$cache->isFresh()) {
             $callback($cache);
         }

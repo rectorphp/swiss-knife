@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220302\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220303\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220302\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220303\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ReferenceConfigurator extends \EasyCI20220302\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ReferenceConfigurator extends \EasyCI20220303\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     /** @internal
      * @var string */
     protected $id;
     /** @internal
      * @var int */
-    protected $invalidBehavior = \EasyCI20220302\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+    protected $invalidBehavior = \EasyCI20220303\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
     public function __construct(string $id)
     {
         $this->id = $id;
@@ -31,7 +31,7 @@ class ReferenceConfigurator extends \EasyCI20220302\Symfony\Component\Dependency
      */
     public final function ignoreOnInvalid()
     {
-        $this->invalidBehavior = \EasyCI20220302\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+        $this->invalidBehavior = \EasyCI20220303\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
         return $this;
     }
     /**
@@ -39,7 +39,7 @@ class ReferenceConfigurator extends \EasyCI20220302\Symfony\Component\Dependency
      */
     public final function nullOnInvalid()
     {
-        $this->invalidBehavior = \EasyCI20220302\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+        $this->invalidBehavior = \EasyCI20220303\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
         return $this;
     }
     /**
@@ -47,7 +47,7 @@ class ReferenceConfigurator extends \EasyCI20220302\Symfony\Component\Dependency
      */
     public final function ignoreOnUninitialized()
     {
-        $this->invalidBehavior = \EasyCI20220302\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
+        $this->invalidBehavior = \EasyCI20220303\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
         return $this;
     }
     public function __toString() : string

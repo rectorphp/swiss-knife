@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220302\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220303\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220302\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220302\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-class ParamTagValueNode implements \EasyCI20220302\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220303\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220303\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+class ParamTagValueNode implements \EasyCI20220303\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var TypeNode */
@@ -18,7 +18,7 @@ class ParamTagValueNode implements \EasyCI20220302\PHPStan\PhpDocParser\Ast\PhpD
     public $parameterName;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(\EasyCI20220302\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, bool $isVariadic, string $parameterName, string $description, bool $isReference = \false)
+    public function __construct(\EasyCI20220303\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, bool $isVariadic, string $parameterName, string $description, bool $isReference = \false)
     {
         $this->type = $type;
         $this->isReference = $isReference;

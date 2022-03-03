@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220302\Symfony\Component\Config\Resource;
+namespace EasyCI20220303\Symfony\Component\Config\Resource;
 
 /**
  * ClassExistenceResource represents a class existence.
@@ -20,7 +20,7 @@ namespace EasyCI20220302\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class ClassExistenceResource implements \EasyCI20220302\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ClassExistenceResource implements \EasyCI20220303\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var string

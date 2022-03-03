@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220302\PHPStan\PhpDocParser\Ast\ConstExpr;
+namespace EasyCI20220303\PHPStan\PhpDocParser\Ast\ConstExpr;
 
-use EasyCI20220302\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ConstExprIntegerNode implements \EasyCI20220302\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
+use EasyCI20220303\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class ConstExprIntegerNode implements \EasyCI20220303\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
 {
     use NodeAttributes;
     /** @var string */

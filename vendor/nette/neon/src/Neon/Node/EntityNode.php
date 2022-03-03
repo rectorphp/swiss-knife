@@ -5,31 +5,31 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220302\Nette\Neon\Node;
+namespace EasyCI20220303\Nette\Neon\Node;
 
-use EasyCI20220302\Nette\Neon\Entity;
-use EasyCI20220302\Nette\Neon\Node;
+use EasyCI20220303\Nette\Neon\Entity;
+use EasyCI20220303\Nette\Neon\Node;
 /** @internal */
-final class EntityNode extends \EasyCI20220302\Nette\Neon\Node
+final class EntityNode extends \EasyCI20220303\Nette\Neon\Node
 {
     /** @var Node */
     public $value;
     /** @var ArrayItemNode[] */
     public $attributes = [];
-    public function __construct(\EasyCI20220302\Nette\Neon\Node $value, array $attributes, int $startPos = null, int $endPos = null)
+    public function __construct(\EasyCI20220303\Nette\Neon\Node $value, array $attributes, int $startPos = null, int $endPos = null)
     {
         $this->value = $value;
         $this->attributes = $attributes;
         $this->startPos = $startPos;
         $this->endPos = $endPos ?? $startPos;
     }
-    public function toValue() : \EasyCI20220302\Nette\Neon\Entity
+    public function toValue() : \EasyCI20220303\Nette\Neon\Entity
     {
-        return new \EasyCI20220302\Nette\Neon\Entity($this->value->toValue(), \EasyCI20220302\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->attributes));
+        return new \EasyCI20220303\Nette\Neon\Entity($this->value->toValue(), \EasyCI20220303\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->attributes));
     }
     public function toString() : string
     {
-        return $this->value->toString() . '(' . ($this->attributes ? \EasyCI20220302\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->attributes) : '') . ')';
+        return $this->value->toString() . '(' . ($this->attributes ? \EasyCI20220303\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->attributes) : '') . ')';
     }
     public function getSubNodes() : array
     {
