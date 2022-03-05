@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220303\PhpParser\Node\Expr\AssignOp;
+namespace EasyCI20220305\PhpParser\Node\Expr\AssignOp;
 
-use EasyCI20220303\PhpParser\Node\Expr\AssignOp;
-class Div extends \EasyCI20220303\PhpParser\Node\Expr\AssignOp
+use EasyCI20220305\PhpParser\Node\Expr\AssignOp;
+class Div extends \EasyCI20220305\PhpParser\Node\Expr\AssignOp
 {
     public function getType() : string
     {

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220303\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220305\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220303\Symfony\Component\Config\Loader\ParamConfigurator;
-class EnvConfigurator extends \EasyCI20220303\Symfony\Component\Config\Loader\ParamConfigurator
+use EasyCI20220305\Symfony\Component\Config\Loader\ParamConfigurator;
+class EnvConfigurator extends \EasyCI20220305\Symfony\Component\Config\Loader\ParamConfigurator
 {
     /**
      * @var string[]
@@ -30,7 +30,7 @@ class EnvConfigurator extends \EasyCI20220303\Symfony\Component\Config\Loader\Pa
      */
     public function __call(string $name, array $arguments)
     {
-        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'EasyCI20220303\\1_\\2', $name));
+        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'EasyCI20220305\\1_\\2', $name));
         $this->custom($processor, ...$arguments);
         return $this;
     }
