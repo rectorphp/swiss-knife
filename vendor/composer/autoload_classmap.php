@@ -896,6 +896,7 @@ return array(
     'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\EasyTestingConfig' => $vendorDir . '/symplify/easy-testing/src/ValueObject/EasyTestingConfig.php',
     'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\ExpectedAndOutputFileInfoPair' => $vendorDir . '/symplify/easy-testing/src/ValueObject/ExpectedAndOutputFileInfoPair.php',
     'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\FixtureSplit\\TrioContent' => $vendorDir . '/symplify/easy-testing/src/ValueObject/FixtureSplit/TrioContent.php',
+    'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\IncorrectAndMissingSkips' => $vendorDir . '/symplify/easy-testing/src/ValueObject/IncorrectAndMissingSkips.php',
     'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\InputAndExpected' => $vendorDir . '/symplify/easy-testing/src/ValueObject/InputAndExpected.php',
     'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\InputFileInfoAndExpected' => $vendorDir . '/symplify/easy-testing/src/ValueObject/InputFileInfoAndExpected.php',
     'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\InputFileInfoAndExpectedFileInfo' => $vendorDir . '/symplify/easy-testing/src/ValueObject/InputFileInfoAndExpectedFileInfo.php',

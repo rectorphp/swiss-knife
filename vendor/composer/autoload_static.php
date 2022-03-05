@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb385cdbe2ec0c99a41eaad4100174ba1
+class ComposerStaticInit68c9bd721abaf3f396b9111b13f27555
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -1046,6 +1046,7 @@ class ComposerStaticInitb385cdbe2ec0c99a41eaad4100174ba1
         'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\EasyTestingConfig' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/EasyTestingConfig.php',
         'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\ExpectedAndOutputFileInfoPair' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/ExpectedAndOutputFileInfoPair.php',
         'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\FixtureSplit\\TrioContent' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/FixtureSplit/TrioContent.php',
+        'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\IncorrectAndMissingSkips' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/IncorrectAndMissingSkips.php',
         'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\InputAndExpected' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/InputAndExpected.php',
         'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\InputFileInfoAndExpected' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/InputFileInfoAndExpected.php',
         'EasyCI20220305\\Symplify\\EasyTesting\\ValueObject\\InputFileInfoAndExpectedFileInfo' => __DIR__ . '/..' . '/symplify/easy-testing/src/ValueObject/InputFileInfoAndExpectedFileInfo.php',
@@ -1203,9 +1204,9 @@ class ComposerStaticInitb385cdbe2ec0c99a41eaad4100174ba1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb385cdbe2ec0c99a41eaad4100174ba1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb385cdbe2ec0c99a41eaad4100174ba1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb385cdbe2ec0c99a41eaad4100174ba1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit68c9bd721abaf3f396b9111b13f27555::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit68c9bd721abaf3f396b9111b13f27555::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit68c9bd721abaf3f396b9111b13f27555::$classMap;
 
         }, null, ClassLoader::class);
     }
