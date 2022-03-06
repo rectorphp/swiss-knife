@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220305\PhpParser\Node\Stmt;
+namespace EasyCI20220306\PhpParser\Node\Stmt;
 
-use EasyCI20220305\PhpParser\Node;
-class Do_ extends \EasyCI20220305\PhpParser\Node\Stmt
+use EasyCI20220306\PhpParser\Node;
+class Do_ extends \EasyCI20220306\PhpParser\Node\Stmt
 {
     /** @var Node\Stmt[] Statements */
     public $stmts;
@@ -17,7 +17,7 @@ class Do_ extends \EasyCI20220305\PhpParser\Node\Stmt
      * @param Node\Stmt[] $stmts      Statements
      * @param array       $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220305\PhpParser\Node\Expr $cond, array $stmts = [], array $attributes = [])
+    public function __construct(\EasyCI20220306\PhpParser\Node\Expr $cond, array $stmts = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->cond = $cond;

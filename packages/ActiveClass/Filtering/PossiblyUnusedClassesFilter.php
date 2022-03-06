@@ -5,7 +5,7 @@ namespace Symplify\EasyCI\ActiveClass\Filtering;
 
 use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220305\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use EasyCI20220306\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PossiblyUnusedClassesFilter
 {
     /**
@@ -19,7 +19,7 @@ final class PossiblyUnusedClassesFilter
      * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\EasyCI20220305\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\EasyCI20220306\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->parameterProvider = $parameterProvider;
     }

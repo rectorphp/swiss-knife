@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220305\PhpParser\Node\Stmt;
+namespace EasyCI20220306\PhpParser\Node\Stmt;
 
-use EasyCI20220305\PhpParser\Error;
-use EasyCI20220305\PhpParser\Node;
-class Class_ extends \EasyCI20220305\PhpParser\Node\Stmt\ClassLike
+use EasyCI20220306\PhpParser\Error;
+use EasyCI20220306\PhpParser\Node;
+class Class_ extends \EasyCI20220306\PhpParser\Node\Stmt\ClassLike
 {
     const MODIFIER_PUBLIC = 1;
     const MODIFIER_PROTECTED = 2;
@@ -38,7 +38,7 @@ class Class_ extends \EasyCI20220305\PhpParser\Node\Stmt\ClassLike
     {
         $this->attributes = $attributes;
         $this->flags = $subNodes['flags'] ?? $subNodes['type'] ?? 0;
-        $this->name = \is_string($name) ? new \EasyCI20220305\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220306\PhpParser\Node\Identifier($name) : $name;
         $this->extends = $subNodes['extends'] ?? null;
         $this->implements = $subNodes['implements'] ?? [];
         $this->stmts = $subNodes['stmts'] ?? [];
@@ -81,22 +81,22 @@ class Class_ extends \EasyCI20220305\PhpParser\Node\Stmt\ClassLike
     public static function verifyModifier($a, $b)
     {
         if ($a & self::VISIBILITY_MODIFIER_MASK && $b & self::VISIBILITY_MODIFIER_MASK) {
-            throw new \EasyCI20220305\PhpParser\Error('Multiple access type modifiers are not allowed');
+            throw new \EasyCI20220306\PhpParser\Error('Multiple access type modifiers are not allowed');
         }
         if ($a & self::MODIFIER_ABSTRACT && $b & self::MODIFIER_ABSTRACT) {
-            throw new \EasyCI20220305\PhpParser\Error('Multiple abstract modifiers are not allowed');
+            throw new \EasyCI20220306\PhpParser\Error('Multiple abstract modifiers are not allowed');
         }
         if ($a & self::MODIFIER_STATIC && $b & self::MODIFIER_STATIC) {
-            throw new \EasyCI20220305\PhpParser\Error('Multiple static modifiers are not allowed');
+            throw new \EasyCI20220306\PhpParser\Error('Multiple static modifiers are not allowed');
         }
         if ($a & self::MODIFIER_FINAL && $b & self::MODIFIER_FINAL) {
-            throw new \EasyCI20220305\PhpParser\Error('Multiple final modifiers are not allowed');
+            throw new \EasyCI20220306\PhpParser\Error('Multiple final modifiers are not allowed');
         }
         if ($a & self::MODIFIER_READONLY && $b & self::MODIFIER_READONLY) {
-            throw new \EasyCI20220305\PhpParser\Error('Multiple readonly modifiers are not allowed');
+            throw new \EasyCI20220306\PhpParser\Error('Multiple readonly modifiers are not allowed');
         }
         if ($a & 48 && $b & 48) {
-            throw new \EasyCI20220305\PhpParser\Error('Cannot use the final modifier on an abstract class member');
+            throw new \EasyCI20220306\PhpParser\Error('Cannot use the final modifier on an abstract class member');
         }
     }
     public function getType() : string

@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass;
 
-use EasyCI20220305\PhpParser\NodeTraverser;
-use EasyCI20220305\PhpParser\Parser;
-use EasyCI20220305\Symfony\Component\Finder\SplFileInfo;
+use EasyCI20220306\PhpParser\NodeTraverser;
+use EasyCI20220306\PhpParser\Parser;
+use EasyCI20220306\Symfony\Component\Finder\SplFileInfo;
 use Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
 use Symplify\EasyCI\ActiveClass\NodeVisitor\ClassNameNodeVisitor;
-use EasyCI20220305\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220306\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\ActiveClass\ClassNameResolver\ClassNameResolverTest
  */
@@ -22,7 +22,7 @@ final class ClassNameResolver
      * @var \Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator
      */
     private $fullyQualifiedNameNodeDecorator;
-    public function __construct(\EasyCI20220305\PhpParser\Parser $parser, \Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator)
+    public function __construct(\EasyCI20220306\PhpParser\Parser $parser, \Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator)
     {
         $this->parser = $parser;
         $this->fullyQualifiedNameNodeDecorator = $fullyQualifiedNameNodeDecorator;
@@ -54,7 +54,7 @@ final class ClassNameResolver
         }
         $this->fullyQualifiedNameNodeDecorator->decorate($stmts);
         $classNameNodeVisitor = new \Symplify\EasyCI\ActiveClass\NodeVisitor\ClassNameNodeVisitor();
-        $nodeTraverser = new \EasyCI20220305\PhpParser\NodeTraverser();
+        $nodeTraverser = new \EasyCI20220306\PhpParser\NodeTraverser();
         $nodeTraverser->addVisitor($classNameNodeVisitor);
         $nodeTraverser->traverse($stmts);
         return $classNameNodeVisitor->getClassName();

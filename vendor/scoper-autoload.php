@@ -6,114 +6,114 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit68c9bd721abaf3f396b9111b13f27555', false) && !interface_exists('ComposerAutoloaderInit68c9bd721abaf3f396b9111b13f27555', false) && !trait_exists('ComposerAutoloaderInit68c9bd721abaf3f396b9111b13f27555', false)) {
-    spl_autoload_call('EasyCI20220305\ComposerAutoloaderInit68c9bd721abaf3f396b9111b13f27555');
+if (!class_exists('ComposerAutoloaderInitb608d1b2eff62d674a0e7d888afe3e7f', false) && !interface_exists('ComposerAutoloaderInitb608d1b2eff62d674a0e7d888afe3e7f', false) && !trait_exists('ComposerAutoloaderInitb608d1b2eff62d674a0e7d888afe3e7f', false)) {
+    spl_autoload_call('EasyCI20220306\ComposerAutoloaderInitb608d1b2eff62d674a0e7d888afe3e7f');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
-    spl_autoload_call('EasyCI20220305\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
+    spl_autoload_call('EasyCI20220306\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
 }
 if (!class_exists('Normalizer', false) && !interface_exists('Normalizer', false) && !trait_exists('Normalizer', false)) {
-    spl_autoload_call('EasyCI20220305\Normalizer');
+    spl_autoload_call('EasyCI20220306\Normalizer');
 }
 if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTypeWillChange', false) && !trait_exists('ReturnTypeWillChange', false)) {
-    spl_autoload_call('EasyCI20220305\ReturnTypeWillChange');
+    spl_autoload_call('EasyCI20220306\ReturnTypeWillChange');
 }
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire68c9bd721abaf3f396b9111b13f27555')) {
-    function composerRequire68c9bd721abaf3f396b9111b13f27555() {
-        return \EasyCI20220305\composerRequire68c9bd721abaf3f396b9111b13f27555(...func_get_args());
+if (!function_exists('composerRequireb608d1b2eff62d674a0e7d888afe3e7f')) {
+    function composerRequireb608d1b2eff62d674a0e7d888afe3e7f() {
+        return \EasyCI20220306\composerRequireb608d1b2eff62d674a0e7d888afe3e7f(...func_get_args());
     }
 }
 if (!function_exists('scanPath')) {
     function scanPath() {
-        return \EasyCI20220305\scanPath(...func_get_args());
+        return \EasyCI20220306\scanPath(...func_get_args());
     }
 }
 if (!function_exists('lintFile')) {
     function lintFile() {
-        return \EasyCI20220305\lintFile(...func_get_args());
+        return \EasyCI20220306\lintFile(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {
     function parseArgs() {
-        return \EasyCI20220305\parseArgs(...func_get_args());
+        return \EasyCI20220306\parseArgs(...func_get_args());
     }
 }
 if (!function_exists('showHelp')) {
     function showHelp() {
-        return \EasyCI20220305\showHelp(...func_get_args());
+        return \EasyCI20220306\showHelp(...func_get_args());
     }
 }
 if (!function_exists('formatErrorMessage')) {
     function formatErrorMessage() {
-        return \EasyCI20220305\formatErrorMessage(...func_get_args());
+        return \EasyCI20220306\formatErrorMessage(...func_get_args());
     }
 }
 if (!function_exists('preprocessGrammar')) {
     function preprocessGrammar() {
-        return \EasyCI20220305\preprocessGrammar(...func_get_args());
+        return \EasyCI20220306\preprocessGrammar(...func_get_args());
     }
 }
 if (!function_exists('resolveNodes')) {
     function resolveNodes() {
-        return \EasyCI20220305\resolveNodes(...func_get_args());
+        return \EasyCI20220306\resolveNodes(...func_get_args());
     }
 }
 if (!function_exists('resolveMacros')) {
     function resolveMacros() {
-        return \EasyCI20220305\resolveMacros(...func_get_args());
+        return \EasyCI20220306\resolveMacros(...func_get_args());
     }
 }
 if (!function_exists('resolveStackAccess')) {
     function resolveStackAccess() {
-        return \EasyCI20220305\resolveStackAccess(...func_get_args());
+        return \EasyCI20220306\resolveStackAccess(...func_get_args());
     }
 }
 if (!function_exists('magicSplit')) {
     function magicSplit() {
-        return \EasyCI20220305\magicSplit(...func_get_args());
+        return \EasyCI20220306\magicSplit(...func_get_args());
     }
 }
 if (!function_exists('assertArgs')) {
     function assertArgs() {
-        return \EasyCI20220305\assertArgs(...func_get_args());
+        return \EasyCI20220306\assertArgs(...func_get_args());
     }
 }
 if (!function_exists('removeTrailingWhitespace')) {
     function removeTrailingWhitespace() {
-        return \EasyCI20220305\removeTrailingWhitespace(...func_get_args());
+        return \EasyCI20220306\removeTrailingWhitespace(...func_get_args());
     }
 }
 if (!function_exists('regex')) {
     function regex() {
-        return \EasyCI20220305\regex(...func_get_args());
+        return \EasyCI20220306\regex(...func_get_args());
     }
 }
 if (!function_exists('execCmd')) {
     function execCmd() {
-        return \EasyCI20220305\execCmd(...func_get_args());
+        return \EasyCI20220306\execCmd(...func_get_args());
     }
 }
 if (!function_exists('ensureDirExists')) {
     function ensureDirExists() {
-        return \EasyCI20220305\ensureDirExists(...func_get_args());
+        return \EasyCI20220306\ensureDirExists(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {
     function setproctitle() {
-        return \EasyCI20220305\setproctitle(...func_get_args());
+        return \EasyCI20220306\setproctitle(...func_get_args());
     }
 }
 if (!function_exists('array_is_list')) {
     function array_is_list() {
-        return \EasyCI20220305\array_is_list(...func_get_args());
+        return \EasyCI20220306\array_is_list(...func_get_args());
     }
 }
 if (!function_exists('enum_exists')) {
     function enum_exists() {
-        return \EasyCI20220305\enum_exists(...func_get_args());
+        return \EasyCI20220306\enum_exists(...func_get_args());
     }
 }
 

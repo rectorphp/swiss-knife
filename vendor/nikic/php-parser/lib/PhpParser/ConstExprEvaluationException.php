@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI20220305\PhpParser;
+namespace EasyCI20220306\PhpParser;
 
 class ConstExprEvaluationException extends \Exception
 {

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220305\Symplify\Astral\PhpDocParser\Exception;
+namespace EasyCI20220306\Symplify\Astral\PhpDocParser\Exception;
 
 use Exception;
 final class InvalidTraverseException extends \Exception

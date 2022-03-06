@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220305\Symfony\Component\DependencyInjection\ParameterBag;
+namespace EasyCI20220306\Symfony\Component\DependencyInjection\ParameterBag;
 
-use EasyCI20220305\Psr\Container\ContainerInterface;
-use EasyCI20220305\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use EasyCI20220306\Psr\Container\ContainerInterface;
+use EasyCI20220306\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * ContainerBagInterface is the interface implemented by objects that manage service container parameters.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface ContainerBagInterface extends \EasyCI20220305\Psr\Container\ContainerInterface
+interface ContainerBagInterface extends \EasyCI20220306\Psr\Container\ContainerInterface
 {
     /**
      * Gets the service container parameters.
