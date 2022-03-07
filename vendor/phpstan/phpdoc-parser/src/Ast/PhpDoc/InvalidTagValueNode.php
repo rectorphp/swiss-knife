@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220306\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220307\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220306\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class InvalidTagValueNode implements \EasyCI20220306\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220307\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class InvalidTagValueNode implements \EasyCI20220307\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string (may be empty) */
     public $value;
     /** @var \PHPStan\PhpDocParser\Parser\ParserException */
     public $exception;
-    public function __construct(string $value, \EasyCI20220306\PHPStan\PhpDocParser\Parser\ParserException $exception)
+    public function __construct(string $value, \EasyCI20220307\PHPStan\PhpDocParser\Parser\ParserException $exception)
     {
         $this->value = $value;
         $this->exception = $exception;

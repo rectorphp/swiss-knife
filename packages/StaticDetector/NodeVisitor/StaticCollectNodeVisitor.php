@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
 
-use EasyCI20220306\PhpParser\Node;
-use EasyCI20220306\PhpParser\Node\Expr\StaticCall;
-use EasyCI20220306\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220306\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220306\PhpParser\NodeVisitorAbstract;
-use EasyCI20220306\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220307\PhpParser\Node;
+use EasyCI20220307\PhpParser\Node\Expr\StaticCall;
+use EasyCI20220307\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220307\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220307\PhpParser\NodeVisitorAbstract;
+use EasyCI20220307\Symplify\Astral\Naming\SimpleNameResolver;
 use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
-use EasyCI20220306\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-final class StaticCollectNodeVisitor extends \EasyCI20220306\PhpParser\NodeVisitorAbstract
+use EasyCI20220307\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+final class StaticCollectNodeVisitor extends \EasyCI20220307\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var string[]
@@ -29,25 +29,25 @@ final class StaticCollectNodeVisitor extends \EasyCI20220306\PhpParser\NodeVisit
      * @var \Symplify\Astral\Naming\SimpleNameResolver
      */
     private $simpleNameResolver;
-    public function __construct(\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector $staticNodeCollector, \EasyCI20220306\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
+    public function __construct(\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector $staticNodeCollector, \EasyCI20220307\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver)
     {
         $this->staticNodeCollector = $staticNodeCollector;
         $this->simpleNameResolver = $simpleNameResolver;
     }
-    public function enterNode(\EasyCI20220306\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220307\PhpParser\Node $node)
     {
         $this->ensureClassLikeOrStaticCall($node);
-        if ($node instanceof \EasyCI20220306\PhpParser\Node\Stmt\ClassMethod) {
+        if ($node instanceof \EasyCI20220307\PhpParser\Node\Stmt\ClassMethod) {
             $this->enterClassMethod($node);
         }
         return null;
     }
-    private function ensureClassLikeOrStaticCall(\EasyCI20220306\PhpParser\Node $node) : void
+    private function ensureClassLikeOrStaticCall(\EasyCI20220307\PhpParser\Node $node) : void
     {
-        if ($node instanceof \EasyCI20220306\PhpParser\Node\Stmt\ClassLike) {
+        if ($node instanceof \EasyCI20220307\PhpParser\Node\Stmt\ClassLike) {
             $this->currentClassLike = $node;
         }
-        if ($node instanceof \EasyCI20220306\PhpParser\Node\Expr\StaticCall) {
+        if ($node instanceof \EasyCI20220307\PhpParser\Node\Expr\StaticCall) {
             if ($this->currentClassLike !== null) {
                 $this->staticNodeCollector->addStaticCallInsideClass($node, $this->currentClassLike);
             } else {
@@ -55,7 +55,7 @@ final class StaticCollectNodeVisitor extends \EasyCI20220306\PhpParser\NodeVisit
             }
         }
     }
-    private function enterClassMethod(\EasyCI20220306\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
+    private function enterClassMethod(\EasyCI20220307\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
         if (!$classMethod->isStatic()) {
             return;
@@ -66,7 +66,7 @@ final class StaticCollectNodeVisitor extends \EasyCI20220306\PhpParser\NodeVisit
         }
         if ($this->currentClassLike === null) {
             $errorMessage = \sprintf('Class not found for static call "%s"', $classMethodName);
-            throw new \EasyCI20220306\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
+            throw new \EasyCI20220307\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
         }
         $currentClassName = $this->simpleNameResolver->getName($this->currentClassLike);
         if ($currentClassName === null) {

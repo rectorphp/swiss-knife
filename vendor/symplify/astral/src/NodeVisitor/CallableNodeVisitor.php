@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220306\Symplify\Astral\NodeVisitor;
+namespace EasyCI20220307\Symplify\Astral\NodeVisitor;
 
-use EasyCI20220306\PhpParser\Node;
-use EasyCI20220306\PhpParser\Node\Expr;
-use EasyCI20220306\PhpParser\Node\Stmt;
-use EasyCI20220306\PhpParser\Node\Stmt\Expression;
-use EasyCI20220306\PhpParser\NodeVisitorAbstract;
-final class CallableNodeVisitor extends \EasyCI20220306\PhpParser\NodeVisitorAbstract
+use EasyCI20220307\PhpParser\Node;
+use EasyCI20220307\PhpParser\Node\Expr;
+use EasyCI20220307\PhpParser\Node\Stmt;
+use EasyCI20220307\PhpParser\Node\Stmt\Expression;
+use EasyCI20220307\PhpParser\NodeVisitorAbstract;
+final class CallableNodeVisitor extends \EasyCI20220307\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var callable(Node): (int|Node|null)
@@ -24,14 +24,14 @@ final class CallableNodeVisitor extends \EasyCI20220306\PhpParser\NodeVisitorAbs
     /**
      * @return int|Node|null
      */
-    public function enterNode(\EasyCI20220306\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220307\PhpParser\Node $node)
     {
         $originalNode = $node;
         $callable = $this->callable;
         /** @var int|Node|null $newNode */
         $newNode = $callable($node);
-        if ($originalNode instanceof \EasyCI20220306\PhpParser\Node\Stmt && $newNode instanceof \EasyCI20220306\PhpParser\Node\Expr) {
-            return new \EasyCI20220306\PhpParser\Node\Stmt\Expression($newNode);
+        if ($originalNode instanceof \EasyCI20220307\PhpParser\Node\Stmt && $newNode instanceof \EasyCI20220307\PhpParser\Node\Expr) {
+            return new \EasyCI20220307\PhpParser\Node\Stmt\Expression($newNode);
         }
         return $newNode;
     }

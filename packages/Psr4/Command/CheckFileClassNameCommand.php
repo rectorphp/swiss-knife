@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Command;
 
-use EasyCI20220306\Nette\Utils\Strings;
-use EasyCI20220306\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220306\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220306\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220307\Nette\Utils\Strings;
+use EasyCI20220307\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220307\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220307\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
-use EasyCI20220306\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220306\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220306\Symplify\SmartFileSystem\SmartFileInfo;
-final class CheckFileClassNameCommand extends \EasyCI20220306\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220307\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220307\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220307\Symplify\SmartFileSystem\SmartFileInfo;
+final class CheckFileClassNameCommand extends \EasyCI20220307\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader
@@ -25,11 +25,11 @@ final class CheckFileClassNameCommand extends \EasyCI20220306\Symplify\PackageBu
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220306\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220307\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Check if short file name is same as class name');
-        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220306\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220306\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source');
+        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220307\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220307\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source');
     }
-    protected function execute(\EasyCI20220306\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220306\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220307\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220307\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $sources */
         $sources = (array) $input->getArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
@@ -37,7 +37,7 @@ final class CheckFileClassNameCommand extends \EasyCI20220306\Symplify\PackageBu
         $missMatchingClassNamesByFiles = [];
         foreach ($classesToFiles as $class => $file) {
             $fileBasename = \pathinfo($file, \PATHINFO_FILENAME);
-            $shortClassName = \EasyCI20220306\Nette\Utils\Strings::after($class, '\\', -1);
+            $shortClassName = \EasyCI20220307\Nette\Utils\Strings::after($class, '\\', -1);
             if ($shortClassName === $fileBasename) {
                 continue;
             }
@@ -48,7 +48,7 @@ final class CheckFileClassNameCommand extends \EasyCI20220306\Symplify\PackageBu
             return self::SUCCESS;
         }
         foreach ($missMatchingClassNamesByFiles as $file => $class) {
-            $fileInfo = new \EasyCI20220306\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $fileInfo = new \EasyCI20220307\Symplify\SmartFileSystem\SmartFileInfo($file);
             $message = \sprintf('Check "%s" file to match class name "%s"', $fileInfo->getRelativeFilePathFromCwd(), $class);
             $this->symfonyStyle->warning($message);
         }

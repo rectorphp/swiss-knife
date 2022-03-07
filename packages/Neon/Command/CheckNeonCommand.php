@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Neon\Command;
 
-use EasyCI20220306\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220306\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220306\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220307\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220307\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220307\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Console\Output\FileErrorsReporter;
 use Symplify\EasyCI\Neon\Application\NeonFilesProcessor;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220306\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220306\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class CheckNeonCommand extends \EasyCI20220306\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220307\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220307\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class CheckNeonCommand extends \EasyCI20220307\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Neon\Application\NeonFilesProcessor
@@ -29,11 +29,11 @@ final class CheckNeonCommand extends \EasyCI20220306\Symplify\PackageBuilder\Con
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220306\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
-        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220306\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220306\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'One or more paths with templates');
+        $this->setName(\EasyCI20220307\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220307\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220307\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'One or more paths with templates');
         $this->setDescription('Analyze NEON files for complex syntax');
     }
-    protected function execute(\EasyCI20220306\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220306\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220307\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220307\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $sources = (array) $input->getArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES);
         $neonFileInfos = $this->smartFinder->find($sources, '*.neon');

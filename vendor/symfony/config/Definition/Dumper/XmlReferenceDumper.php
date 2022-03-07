@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220306\Symfony\Component\Config\Definition\Dumper;
+namespace EasyCI20220307\Symfony\Component\Config\Definition\Dumper;
 
-use EasyCI20220306\Symfony\Component\Config\Definition\ArrayNode;
-use EasyCI20220306\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI20220306\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI20220306\Symfony\Component\Config\Definition\EnumNode;
-use EasyCI20220306\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI20220306\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use EasyCI20220307\Symfony\Component\Config\Definition\ArrayNode;
+use EasyCI20220307\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI20220307\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI20220307\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI20220307\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI20220307\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * Dumps an XML reference configuration for the given configuration/node instance.
  *
@@ -27,11 +27,11 @@ class XmlReferenceDumper
      * @var string|null
      */
     private $reference;
-    public function dump(\EasyCI20220306\Symfony\Component\Config\Definition\ConfigurationInterface $configuration, string $namespace = null)
+    public function dump(\EasyCI20220307\Symfony\Component\Config\Definition\ConfigurationInterface $configuration, string $namespace = null)
     {
         return $this->dumpNode($configuration->getConfigTreeBuilder()->buildTree(), $namespace);
     }
-    public function dumpNode(\EasyCI20220306\Symfony\Component\Config\Definition\NodeInterface $node, string $namespace = null)
+    public function dumpNode(\EasyCI20220307\Symfony\Component\Config\Definition\NodeInterface $node, string $namespace = null)
     {
         $this->reference = '';
         $this->writeNode($node, 0, \true, $namespace);
@@ -39,7 +39,7 @@ class XmlReferenceDumper
         $this->reference = null;
         return $ref;
     }
-    private function writeNode(\EasyCI20220306\Symfony\Component\Config\Definition\NodeInterface $node, int $depth = 0, bool $root = \false, string $namespace = null)
+    private function writeNode(\EasyCI20220307\Symfony\Component\Config\Definition\NodeInterface $node, int $depth = 0, bool $root = \false, string $namespace = null)
     {
         $rootName = $root ? 'config' : $node->getName();
         $rootNamespace = $namespace ?: ($root ? 'http://example.org/schema/dic/' . $node->getName() : null);
@@ -58,7 +58,7 @@ class XmlReferenceDumper
         $rootAttributeComments = [];
         $rootChildren = [];
         $rootComments = [];
-        if ($node instanceof \EasyCI20220306\Symfony\Component\Config\Definition\ArrayNode) {
+        if ($node instanceof \EasyCI20220307\Symfony\Component\Config\Definition\ArrayNode) {
             $children = $node->getChildren();
             // comments about the root node
             if ($rootInfo = $node->getInfo()) {
@@ -68,7 +68,7 @@ class XmlReferenceDumper
                 $rootComments[] = 'Namespace: ' . $rootNamespace;
             }
             // render prototyped nodes
-            if ($node instanceof \EasyCI20220306\Symfony\Component\Config\Definition\PrototypedArrayNode) {
+            if ($node instanceof \EasyCI20220307\Symfony\Component\Config\Definition\PrototypedArrayNode) {
                 $prototype = $node->getPrototype();
                 $info = 'prototype';
                 if (null !== $prototype->getInfo()) {
@@ -78,10 +78,10 @@ class XmlReferenceDumper
                 if ($key = $node->getKeyAttribute()) {
                     $rootAttributes[$key] = \str_replace('-', ' ', $rootName) . ' ' . $key;
                 }
-                if ($prototype instanceof \EasyCI20220306\Symfony\Component\Config\Definition\PrototypedArrayNode) {
+                if ($prototype instanceof \EasyCI20220307\Symfony\Component\Config\Definition\PrototypedArrayNode) {
                     $prototype->setName($key ?? '');
                     $children = [$key => $prototype];
-                } elseif ($prototype instanceof \EasyCI20220306\Symfony\Component\Config\Definition\ArrayNode) {
+                } elseif ($prototype instanceof \EasyCI20220307\Symfony\Component\Config\Definition\ArrayNode) {
                     $children = $prototype->getChildren();
                 } else {
                     if ($prototype->hasDefaultValue()) {
@@ -109,7 +109,7 @@ class XmlReferenceDumper
             }
             // get attributes and elements
             foreach ($children as $child) {
-                if ($child instanceof \EasyCI20220306\Symfony\Component\Config\Definition\ArrayNode) {
+                if ($child instanceof \EasyCI20220307\Symfony\Component\Config\Definition\ArrayNode) {
                     // get elements
                     $rootChildren[] = $child;
                     continue;
@@ -121,20 +121,20 @@ class XmlReferenceDumper
                 // use a string which isn't used in the normal world
                 // comments
                 $comments = [];
-                if ($child instanceof \EasyCI20220306\Symfony\Component\Config\Definition\BaseNode && ($info = $child->getInfo())) {
+                if ($child instanceof \EasyCI20220307\Symfony\Component\Config\Definition\BaseNode && ($info = $child->getInfo())) {
                     $comments[] = $info;
                 }
-                if ($child instanceof \EasyCI20220306\Symfony\Component\Config\Definition\BaseNode && ($example = $child->getExample())) {
+                if ($child instanceof \EasyCI20220307\Symfony\Component\Config\Definition\BaseNode && ($example = $child->getExample())) {
                     $comments[] = 'Example: ' . $example;
                 }
                 if ($child->isRequired()) {
                     $comments[] = 'Required';
                 }
-                if ($child instanceof \EasyCI20220306\Symfony\Component\Config\Definition\BaseNode && $child->isDeprecated()) {
+                if ($child instanceof \EasyCI20220307\Symfony\Component\Config\Definition\BaseNode && $child->isDeprecated()) {
                     $deprecation = $child->getDeprecation($child->getName(), $node->getPath());
                     $comments[] = \sprintf('Deprecated (%s)', ($deprecation['package'] || $deprecation['version'] ? "Since {$deprecation['package']} {$deprecation['version']}: " : '') . $deprecation['message']);
                 }
-                if ($child instanceof \EasyCI20220306\Symfony\Component\Config\Definition\EnumNode) {
+                if ($child instanceof \EasyCI20220307\Symfony\Component\Config\Definition\EnumNode) {
                     $comments[] = 'One of ' . \implode('; ', \array_map('json_encode', $child->getValues()));
                 }
                 if (\count($comments)) {
