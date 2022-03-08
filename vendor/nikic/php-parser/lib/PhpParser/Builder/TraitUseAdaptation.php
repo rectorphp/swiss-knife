@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220307\PhpParser\Builder;
+namespace EasyCI20220308\PhpParser\Builder;
 
-use EasyCI20220307\PhpParser\Builder;
-use EasyCI20220307\PhpParser\BuilderHelpers;
-use EasyCI20220307\PhpParser\Node;
-use EasyCI20220307\PhpParser\Node\Stmt;
-class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
+use EasyCI20220308\PhpParser\Builder;
+use EasyCI20220308\PhpParser\BuilderHelpers;
+use EasyCI20220308\PhpParser\Node;
+use EasyCI20220308\PhpParser\Node\Stmt;
+class TraitUseAdaptation implements \EasyCI20220308\PhpParser\Builder
 {
     const TYPE_UNDEFINED = 0;
     const TYPE_ALIAS = 1;
@@ -28,8 +28,8 @@ class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
     public function __construct($trait, $method)
     {
         $this->type = self::TYPE_UNDEFINED;
-        $this->trait = \is_null($trait) ? null : \EasyCI20220307\PhpParser\BuilderHelpers::normalizeName($trait);
-        $this->method = \EasyCI20220307\PhpParser\BuilderHelpers::normalizeIdentifier($method);
+        $this->trait = \is_null($trait) ? null : \EasyCI20220308\PhpParser\BuilderHelpers::normalizeName($trait);
+        $this->method = \EasyCI20220308\PhpParser\BuilderHelpers::normalizeIdentifier($method);
     }
     /**
      * Sets alias of method.
@@ -56,7 +56,7 @@ class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
      */
     public function makePublic()
     {
-        $this->setModifier(\EasyCI20220307\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
+        $this->setModifier(\EasyCI20220308\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
         return $this;
     }
     /**
@@ -66,7 +66,7 @@ class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
      */
     public function makeProtected()
     {
-        $this->setModifier(\EasyCI20220307\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
+        $this->setModifier(\EasyCI20220308\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
         return $this;
     }
     /**
@@ -76,7 +76,7 @@ class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
      */
     public function makePrivate()
     {
-        $this->setModifier(\EasyCI20220307\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
+        $this->setModifier(\EasyCI20220308\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
         return $this;
     }
     /**
@@ -98,7 +98,7 @@ class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
             throw new \LogicException('Cannot add overwritten traits for not precedence adaptation buider');
         }
         foreach ($traits as $trait) {
-            $this->insteadof[] = \EasyCI20220307\PhpParser\BuilderHelpers::normalizeName($trait);
+            $this->insteadof[] = \EasyCI20220308\PhpParser\BuilderHelpers::normalizeName($trait);
         }
         return $this;
     }
@@ -121,13 +121,13 @@ class TraitUseAdaptation implements \EasyCI20220307\PhpParser\Builder
      *
      * @return Node The built node
      */
-    public function getNode() : \EasyCI20220307\PhpParser\Node
+    public function getNode() : \EasyCI20220308\PhpParser\Node
     {
         switch ($this->type) {
             case self::TYPE_ALIAS:
-                return new \EasyCI20220307\PhpParser\Node\Stmt\TraitUseAdaptation\Alias($this->trait, $this->method, $this->modifier, $this->alias);
+                return new \EasyCI20220308\PhpParser\Node\Stmt\TraitUseAdaptation\Alias($this->trait, $this->method, $this->modifier, $this->alias);
             case self::TYPE_PRECEDENCE:
-                return new \EasyCI20220307\PhpParser\Node\Stmt\TraitUseAdaptation\Precedence($this->trait, $this->method, $this->insteadof);
+                return new \EasyCI20220308\PhpParser\Node\Stmt\TraitUseAdaptation\Precedence($this->trait, $this->method, $this->insteadof);
             default:
                 throw new \LogicException('Type of adaptation is not defined');
         }

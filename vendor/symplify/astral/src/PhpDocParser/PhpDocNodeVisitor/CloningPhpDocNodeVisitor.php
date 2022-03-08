@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220307\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI20220308\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI20220307\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220307\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
+use EasyCI20220308\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220308\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
 /**
  * @api
  *
  * Mirrors
  * https://github.com/nikic/PHP-Parser/blob/d520bc9e1d6203c35a1ba20675b79a051c821a9e/lib/PhpParser/NodeVisitor/CloningVisitor.php
  */
-final class CloningPhpDocNodeVisitor extends \EasyCI20220307\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
+final class CloningPhpDocNodeVisitor extends \EasyCI20220308\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
 {
-    public function enterNode(\EasyCI20220307\PHPStan\PhpDocParser\Ast\Node $node) : \EasyCI20220307\PHPStan\PhpDocParser\Ast\Node
+    public function enterNode(\EasyCI20220308\PHPStan\PhpDocParser\Ast\Node $node) : \EasyCI20220308\PHPStan\PhpDocParser\Ast\Node
     {
         $clonedNode = clone $node;
-        $clonedNode->setAttribute(\EasyCI20220307\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey::ORIG_NODE, $node);
+        $clonedNode->setAttribute(\EasyCI20220308\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey::ORIG_NODE, $node);
         return $clonedNode;
     }
 }

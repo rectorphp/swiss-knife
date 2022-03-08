@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220307\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI20220308\PhpParser\Lexer\TokenEmulator;
 
 /** @internal */
 abstract class TokenEmulator

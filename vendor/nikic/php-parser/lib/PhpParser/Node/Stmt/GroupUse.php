@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220307\PhpParser\Node\Stmt;
+namespace EasyCI20220308\PhpParser\Node\Stmt;
 
-use EasyCI20220307\PhpParser\Node\Name;
-use EasyCI20220307\PhpParser\Node\Stmt;
-class GroupUse extends \EasyCI20220307\PhpParser\Node\Stmt
+use EasyCI20220308\PhpParser\Node\Name;
+use EasyCI20220308\PhpParser\Node\Stmt;
+class GroupUse extends \EasyCI20220308\PhpParser\Node\Stmt
 {
     /** @var int Type of group use */
     public $type;
@@ -21,7 +21,7 @@ class GroupUse extends \EasyCI20220307\PhpParser\Node\Stmt
      * @param int      $type       Type of group use
      * @param array    $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220307\PhpParser\Node\Name $prefix, array $uses, int $type = \EasyCI20220307\PhpParser\Node\Stmt\Use_::TYPE_NORMAL, array $attributes = [])
+    public function __construct(\EasyCI20220308\PhpParser\Node\Name $prefix, array $uses, int $type = \EasyCI20220308\PhpParser\Node\Stmt\Use_::TYPE_NORMAL, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->type = $type;

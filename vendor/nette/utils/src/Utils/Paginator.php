@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220307\Nette\Utils;
+namespace EasyCI20220308\Nette\Utils;
 
-use EasyCI20220307\Nette;
+use EasyCI20220308\Nette;
 /**
  * Paginating math.
  *

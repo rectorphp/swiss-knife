@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220307\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220308\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220307\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220307\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-class MixinTagValueNode implements \EasyCI20220307\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220308\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220308\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+class MixinTagValueNode implements \EasyCI20220308\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var TypeNode */
     public $type;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(\EasyCI20220307\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, string $description)
+    public function __construct(\EasyCI20220308\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, string $description)
     {
         $this->type = $type;
         $this->description = $description;
