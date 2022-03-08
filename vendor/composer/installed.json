@@ -1760,14 +1760,14 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/astral",
-                "reference": "f70f4caa0142c4d54cf2b61c41c5126a96ffc3a2"
+                "reference": "708dcde7fea76582443ef0ca63740f769c3b39e4"
             },
             "require": {
                 "nette\/utils": "^3.2",
                 "nikic\/php-parser": "^4.13.2",
                 "php": ">=8.0",
                 "phpstan\/phpdoc-parser": "^1.2",
-                "phpstan\/phpstan": "^1.4.6",
+                "phpstan\/phpstan": "^1.4.8",
                 "symfony\/config": "^6.0",
                 "symfony\/dependency-injection": "^6.0",
                 "symplify\/package-builder": "dev-main",
