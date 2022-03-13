@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220308\Symplify\Astral\Contract\NodeValueResolver;
+namespace EasyCI20220313\Symplify\Astral\Contract\NodeValueResolver;
 
-use EasyCI20220308\PhpParser\Node\Expr;
+use EasyCI20220313\PhpParser\Node\Expr;
 /**
  * @template TExpr as Expr
  */
@@ -17,5 +17,5 @@ interface NodeValueResolverInterface
      * @param TExpr $expr
      * @return mixed
      */
-    public function resolve(\EasyCI20220308\PhpParser\Node\Expr $expr, string $currentFilePath);
+    public function resolve(\EasyCI20220313\PhpParser\Node\Expr $expr, string $currentFilePath);
 }

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220308\Symplify\PackageBuilder\DependencyInjection\FileLoader;
+namespace EasyCI20220313\Symplify\PackageBuilder\DependencyInjection\FileLoader;
 
-use EasyCI20220308\Symfony\Component\Config\FileLocatorInterface;
-use EasyCI20220308\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220308\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use EasyCI20220308\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use EasyCI20220313\Symfony\Component\Config\FileLocatorInterface;
+use EasyCI20220313\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220313\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use EasyCI20220313\Symplify\PackageBuilder\Yaml\ParametersMerger;
 /**
  * @api
  *
@@ -16,15 +16,15 @@ use EasyCI20220308\Symplify\PackageBuilder\Yaml\ParametersMerger;
  *
  * @property ContainerBuilder $container
  */
-final class ParameterMergingPhpFileLoader extends \EasyCI20220308\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+final class ParameterMergingPhpFileLoader extends \EasyCI20220313\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
     /**
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\EasyCI20220308\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \EasyCI20220308\Symfony\Component\Config\FileLocatorInterface $fileLocator)
+    public function __construct(\EasyCI20220313\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \EasyCI20220313\Symfony\Component\Config\FileLocatorInterface $fileLocator)
     {
-        $this->parametersMerger = new \EasyCI20220308\Symplify\PackageBuilder\Yaml\ParametersMerger();
+        $this->parametersMerger = new \EasyCI20220313\Symplify\PackageBuilder\Yaml\ParametersMerger();
         parent::__construct($containerBuilder, $fileLocator);
     }
     /**

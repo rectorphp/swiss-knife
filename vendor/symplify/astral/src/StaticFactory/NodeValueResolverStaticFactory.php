@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220308\Symplify\Astral\StaticFactory;
+namespace EasyCI20220313\Symplify\Astral\StaticFactory;
 
-use EasyCI20220308\PhpParser\NodeFinder;
-use EasyCI20220308\Symplify\Astral\NodeFinder\SimpleNodeFinder;
-use EasyCI20220308\Symplify\Astral\NodeValue\NodeValueResolver;
-use EasyCI20220308\Symplify\PackageBuilder\Php\TypeChecker;
+use EasyCI20220313\PhpParser\NodeFinder;
+use EasyCI20220313\Symplify\Astral\NodeFinder\SimpleNodeFinder;
+use EasyCI20220313\Symplify\Astral\NodeValue\NodeValueResolver;
+use EasyCI20220313\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @api
  */
 final class NodeValueResolverStaticFactory
 {
-    public static function create() : \EasyCI20220308\Symplify\Astral\NodeValue\NodeValueResolver
+    public static function create() : \EasyCI20220313\Symplify\Astral\NodeValue\NodeValueResolver
     {
-        $simpleNameResolver = \EasyCI20220308\Symplify\Astral\StaticFactory\SimpleNameResolverStaticFactory::create();
-        $simpleNodeFinder = new \EasyCI20220308\Symplify\Astral\NodeFinder\SimpleNodeFinder(new \EasyCI20220308\PhpParser\NodeFinder());
-        return new \EasyCI20220308\Symplify\Astral\NodeValue\NodeValueResolver($simpleNameResolver, new \EasyCI20220308\Symplify\PackageBuilder\Php\TypeChecker(), $simpleNodeFinder);
+        $simpleNameResolver = \EasyCI20220313\Symplify\Astral\StaticFactory\SimpleNameResolverStaticFactory::create();
+        $simpleNodeFinder = new \EasyCI20220313\Symplify\Astral\NodeFinder\SimpleNodeFinder(new \EasyCI20220313\PhpParser\NodeFinder());
+        return new \EasyCI20220313\Symplify\Astral\NodeValue\NodeValueResolver($simpleNameResolver, new \EasyCI20220313\Symplify\PackageBuilder\Php\TypeChecker(), $simpleNodeFinder);
     }
 }

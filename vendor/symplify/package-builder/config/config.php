@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220308;
+namespace EasyCI20220313;
 
-use EasyCI20220308\SebastianBergmann\Diff\Differ;
+use EasyCI20220313\SebastianBergmann\Diff\Differ;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI20220308\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
-use EasyCI20220308\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use EasyCI20220308\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory;
-use EasyCI20220308\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use EasyCI20220313\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
+use EasyCI20220313\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use EasyCI20220313\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory;
+use EasyCI20220313\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->set(\EasyCI20220308\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter::class);
-    $services->set(\EasyCI20220308\Symplify\PackageBuilder\Console\Output\ConsoleDiffer::class);
-    $services->set(\EasyCI20220308\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory::class);
-    $services->set(\EasyCI20220308\SebastianBergmann\Diff\Differ::class);
-    $services->set(\EasyCI20220308\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
+    $services->set(\EasyCI20220313\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter::class);
+    $services->set(\EasyCI20220313\Symplify\PackageBuilder\Console\Output\ConsoleDiffer::class);
+    $services->set(\EasyCI20220313\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory::class);
+    $services->set(\EasyCI20220313\SebastianBergmann\Diff\Differ::class);
+    $services->set(\EasyCI20220313\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
 };

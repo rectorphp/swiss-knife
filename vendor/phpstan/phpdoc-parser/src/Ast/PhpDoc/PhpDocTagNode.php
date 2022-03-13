@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220308\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220313\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220308\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class PhpDocTagNode implements \EasyCI20220308\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
+use EasyCI20220313\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class PhpDocTagNode implements \EasyCI20220313\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
 {
     use NodeAttributes;
     /** @var string */
     public $name;
     /** @var PhpDocTagValueNode */
     public $value;
-    public function __construct(string $name, \EasyCI20220308\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode $value)
+    public function __construct(string $name, \EasyCI20220313\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode $value)
     {
         $this->name = $name;
         $this->value = $value;

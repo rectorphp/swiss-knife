@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220308\Symplify\ComposerJsonManipulator\Json;
+namespace EasyCI20220313\Symplify\ComposerJsonManipulator\Json;
 
 final class JsonCleaner
 {

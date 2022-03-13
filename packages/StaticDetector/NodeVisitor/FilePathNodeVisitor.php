@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
 
-use EasyCI20220308\PhpParser\Node;
-use EasyCI20220308\PhpParser\NodeVisitorAbstract;
+use EasyCI20220313\PhpParser\Node;
+use EasyCI20220313\PhpParser\NodeVisitorAbstract;
 use Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
 use Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey;
-final class FilePathNodeVisitor extends \EasyCI20220308\PhpParser\NodeVisitorAbstract
+final class FilePathNodeVisitor extends \EasyCI20220313\PhpParser\NodeVisitorAbstract
 {
     /**
      * @var \Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider
@@ -17,7 +17,7 @@ final class FilePathNodeVisitor extends \EasyCI20220308\PhpParser\NodeVisitorAbs
     {
         $this->currentFileInfoProvider = $currentFileInfoProvider;
     }
-    public function enterNode(\EasyCI20220308\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220313\PhpParser\Node $node)
     {
         $smartFileInfo = $this->currentFileInfoProvider->getSmartFileInfo();
         $fileLine = $smartFileInfo->getRelativeFilePathFromCwd() . ':' . $node->getStartLine();

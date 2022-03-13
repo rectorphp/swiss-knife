@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220308\Symfony\Component\DependencyInjection;
+namespace EasyCI20220313\Symfony\Component\DependencyInjection;
 
-use EasyCI20220308\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220308\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use EasyCI20220313\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220313\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * This definition extends another definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \EasyCI20220308\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends \EasyCI20220313\Symfony\Component\DependencyInjection\Definition
 {
     /**
      * @var string
@@ -85,7 +85,7 @@ class ChildDefinition extends \EasyCI20220308\Symfony\Component\DependencyInject
         } elseif (\strncmp($index, '$', \strlen('$')) === 0) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \EasyCI20220308\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new \EasyCI20220313\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }

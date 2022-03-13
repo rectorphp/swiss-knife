@@ -5,24 +5,23 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220308\Nette\Neon\Node;
+namespace EasyCI20220313\Nette\Neon\Node;
 
 /** @internal */
-final class BlockArrayNode extends \EasyCI20220308\Nette\Neon\Node\ArrayNode
+final class BlockArrayNode extends \EasyCI20220313\Nette\Neon\Node\ArrayNode
 {
     /** @var string */
     public $indentation;
-    public function __construct(string $indentation = '', int $pos = null)
+    public function __construct(string $indentation = '')
     {
         $this->indentation = $indentation;
-        $this->startPos = $this->endPos = $pos;
     }
     public function toString() : string
     {
         if (\count($this->items) === 0) {
             return '[]';
         }
-        $res = \EasyCI20220308\Nette\Neon\Node\ArrayItemNode::itemsToBlockString($this->items);
+        $res = \EasyCI20220313\Nette\Neon\Node\ArrayItemNode::itemsToBlockString($this->items);
         return \preg_replace('#^(?=.)#m', $this->indentation, $res);
     }
 }
