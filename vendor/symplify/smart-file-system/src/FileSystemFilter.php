@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220313\Symplify\SmartFileSystem;
+namespace EasyCI20220315\Symplify\SmartFileSystem;
 
 /**
  * @see \Symplify\SmartFileSystem\Tests\FileSystemFilter\FileSystemFilterTest

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220313\Symplify\PackageBuilder\Matcher;
+namespace EasyCI20220315\Symplify\PackageBuilder\Matcher;
 
 /**
  * @api

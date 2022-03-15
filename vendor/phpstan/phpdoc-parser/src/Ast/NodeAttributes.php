@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220313\PHPStan\PhpDocParser\Ast;
+namespace EasyCI20220315\PHPStan\PhpDocParser\Ast;
 
 trait NodeAttributes
 {

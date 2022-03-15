@@ -1,8 +1,8 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220313\PhpParser\Node;
+namespace EasyCI20220315\PhpParser\Node;
 
-abstract class Scalar extends \EasyCI20220313\PhpParser\Node\Expr
+abstract class Scalar extends \EasyCI20220315\PhpParser\Node\Expr
 {
 }

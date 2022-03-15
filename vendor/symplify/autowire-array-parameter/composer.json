@@ -13,12 +13,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220313\\Symplify\\AutowireArrayParameter\\": "src"
+            "EasyCI20220315\\Symplify\\AutowireArrayParameter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220313\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+            "EasyCI20220315\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
         }
     },
     "extra": {

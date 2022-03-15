@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220313\Symfony\Contracts\Service;
+namespace EasyCI20220315\Symfony\Contracts\Service;
 
 /**
  * Provides a way to reset an object to its initial state.

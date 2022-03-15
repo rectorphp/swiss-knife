@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220313\Symplify\SymplifyKernel\Config\Loader;
+namespace EasyCI20220315\Symplify\SymplifyKernel\Config\Loader;
 
-use EasyCI20220313\Symfony\Component\Config\FileLocator;
-use EasyCI20220313\Symfony\Component\Config\Loader\DelegatingLoader;
-use EasyCI20220313\Symfony\Component\Config\Loader\GlobFileLoader;
-use EasyCI20220313\Symfony\Component\Config\Loader\LoaderResolver;
-use EasyCI20220313\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220313\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader;
-use EasyCI20220313\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
-final class ParameterMergingLoaderFactory implements \EasyCI20220313\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
+use EasyCI20220315\Symfony\Component\Config\FileLocator;
+use EasyCI20220315\Symfony\Component\Config\Loader\DelegatingLoader;
+use EasyCI20220315\Symfony\Component\Config\Loader\GlobFileLoader;
+use EasyCI20220315\Symfony\Component\Config\Loader\LoaderResolver;
+use EasyCI20220315\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220315\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader;
+use EasyCI20220315\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+final class ParameterMergingLoaderFactory implements \EasyCI20220315\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
 {
-    public function create(\EasyCI20220313\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \EasyCI20220313\Symfony\Component\Config\Loader\LoaderInterface
+    public function create(\EasyCI20220315\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \EasyCI20220315\Symfony\Component\Config\Loader\LoaderInterface
     {
-        $fileLocator = new \EasyCI20220313\Symfony\Component\Config\FileLocator([$currentWorkingDirectory]);
-        $loaders = [new \EasyCI20220313\Symfony\Component\Config\Loader\GlobFileLoader($fileLocator), new \EasyCI20220313\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader($containerBuilder, $fileLocator)];
-        $loaderResolver = new \EasyCI20220313\Symfony\Component\Config\Loader\LoaderResolver($loaders);
-        return new \EasyCI20220313\Symfony\Component\Config\Loader\DelegatingLoader($loaderResolver);
+        $fileLocator = new \EasyCI20220315\Symfony\Component\Config\FileLocator([$currentWorkingDirectory]);
+        $loaders = [new \EasyCI20220315\Symfony\Component\Config\Loader\GlobFileLoader($fileLocator), new \EasyCI20220315\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader($containerBuilder, $fileLocator)];
+        $loaderResolver = new \EasyCI20220315\Symfony\Component\Config\Loader\LoaderResolver($loaders);
+        return new \EasyCI20220315\Symfony\Component\Config\Loader\DelegatingLoader($loaderResolver);
     }
 }
