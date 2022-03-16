@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220315\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220316\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220315\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220315\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-class TemplateTagValueNode implements \EasyCI20220315\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220316\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220316\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+class TemplateTagValueNode implements \EasyCI20220316\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string */
@@ -14,7 +14,7 @@ class TemplateTagValueNode implements \EasyCI20220315\PHPStan\PhpDocParser\Ast\P
     public $bound;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(string $name, ?\EasyCI20220315\PHPStan\PhpDocParser\Ast\Type\TypeNode $bound, string $description)
+    public function __construct(string $name, ?\EasyCI20220316\PHPStan\PhpDocParser\Ast\Type\TypeNode $bound, string $description)
     {
         $this->name = $name;
         $this->bound = $bound;

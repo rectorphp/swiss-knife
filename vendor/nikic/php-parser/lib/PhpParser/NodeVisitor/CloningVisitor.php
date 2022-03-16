@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220315\PhpParser\NodeVisitor;
+namespace EasyCI20220316\PhpParser\NodeVisitor;
 
-use EasyCI20220315\PhpParser\Node;
-use EasyCI20220315\PhpParser\NodeVisitorAbstract;
+use EasyCI20220316\PhpParser\Node;
+use EasyCI20220316\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor cloning all nodes and linking to the original nodes using an attribute.
  *
  * This visitor is required to perform format-preserving pretty prints.
  */
-class CloningVisitor extends \EasyCI20220315\PhpParser\NodeVisitorAbstract
+class CloningVisitor extends \EasyCI20220316\PhpParser\NodeVisitorAbstract
 {
-    public function enterNode(\EasyCI20220315\PhpParser\Node $origNode)
+    public function enterNode(\EasyCI20220316\PhpParser\Node $origNode)
     {
         $node = clone $origNode;
         $node->setAttribute('origNode', $origNode);

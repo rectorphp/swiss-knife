@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\ValueObject;
 
-use EasyCI20220315\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220316\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileWithClass
 {
     /**
@@ -14,7 +14,7 @@ final class FileWithClass
      * @var string
      */
     private $className;
-    public function __construct(\EasyCI20220315\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $className)
+    public function __construct(\EasyCI20220316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $className)
     {
         $this->fileInfo = $fileInfo;
         $this->className = $className;

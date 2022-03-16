@@ -5,12 +5,12 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220315\Nette\Neon\Node;
+namespace EasyCI20220316\Nette\Neon\Node;
 
-use EasyCI20220315\Nette\Neon;
-use EasyCI20220315\Nette\Neon\Node;
+use EasyCI20220316\Nette\Neon;
+use EasyCI20220316\Nette\Neon\Node;
 /** @internal */
-final class EntityChainNode extends \EasyCI20220315\Nette\Neon\Node
+final class EntityChainNode extends \EasyCI20220316\Nette\Neon\Node
 {
     /** @var EntityNode[] */
     public $chain = [];
@@ -18,13 +18,13 @@ final class EntityChainNode extends \EasyCI20220315\Nette\Neon\Node
     {
         $this->chain = $chain;
     }
-    public function toValue() : \EasyCI20220315\Nette\Neon\Entity
+    public function toValue() : \EasyCI20220316\Nette\Neon\Entity
     {
         $entities = [];
         foreach ($this->chain as $item) {
             $entities[] = $item->toValue();
         }
-        return new \EasyCI20220315\Nette\Neon\Entity(\EasyCI20220315\Nette\Neon\Neon::Chain, $entities);
+        return new \EasyCI20220316\Nette\Neon\Entity(\EasyCI20220316\Nette\Neon\Neon::Chain, $entities);
     }
     public function toString() : string
     {
