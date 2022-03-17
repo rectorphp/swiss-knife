@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220316\Symplify\AutowireArrayParameter\DocBlock;
+namespace EasyCI20220317\Symplify\AutowireArrayParameter\DocBlock;
 
-use EasyCI20220316\Nette\Utils\Strings;
+use EasyCI20220317\Nette\Utils\Strings;
 /**
  * @see \Symplify\AutowireArrayParameter\Tests\DocBlock\ParamTypeDocBlockResolverTest
  */
@@ -38,7 +38,7 @@ final class ParamTypeDocBlockResolver
     {
         foreach (self::ARRAY_REGEXES as $arrayRegexWithPlaceholder) {
             $arrayRegex = \str_replace(self::NAME_PLACEHOLDER, $parameterName, $arrayRegexWithPlaceholder);
-            $result = \EasyCI20220316\Nette\Utils\Strings::match($docBlock, $arrayRegex);
+            $result = \EasyCI20220317\Nette\Utils\Strings::match($docBlock, $arrayRegex);
             if (isset($result[self::TYPE_PART])) {
                 return $result[self::TYPE_PART];
             }

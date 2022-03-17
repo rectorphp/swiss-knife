@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220316\PhpParser\Internal;
+namespace EasyCI20220317\PhpParser\Internal;
 
-use EasyCI20220316\PhpParser\Node;
-use EasyCI20220316\PhpParser\Node\Expr;
+use EasyCI20220317\PhpParser\Node;
+use EasyCI20220317\PhpParser\Node\Expr;
 /**
  * This node is used internally by the format-preserving pretty printer to print anonymous classes.
  *
@@ -15,7 +15,7 @@ use EasyCI20220316\PhpParser\Node\Expr;
  *
  * @internal
  */
-class PrintableNewAnonClassNode extends \EasyCI20220316\PhpParser\Node\Expr
+class PrintableNewAnonClassNode extends \EasyCI20220317\PhpParser\Node\Expr
 {
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
@@ -27,7 +27,7 @@ class PrintableNewAnonClassNode extends \EasyCI20220316\PhpParser\Node\Expr
     public $implements;
     /** @var Node\Stmt[] Statements */
     public $stmts;
-    public function __construct(array $attrGroups, array $args, \EasyCI20220316\PhpParser\Node\Name $extends = null, array $implements, array $stmts, array $attributes)
+    public function __construct(array $attrGroups, array $args, \EasyCI20220317\PhpParser\Node\Name $extends = null, array $implements, array $stmts, array $attributes)
     {
         parent::__construct($attributes);
         $this->attrGroups = $attrGroups;
@@ -36,10 +36,10 @@ class PrintableNewAnonClassNode extends \EasyCI20220316\PhpParser\Node\Expr
         $this->implements = $implements;
         $this->stmts = $stmts;
     }
-    public static function fromNewNode(\EasyCI20220316\PhpParser\Node\Expr\New_ $newNode)
+    public static function fromNewNode(\EasyCI20220317\PhpParser\Node\Expr\New_ $newNode)
     {
         $class = $newNode->class;
-        \assert($class instanceof \EasyCI20220316\PhpParser\Node\Stmt\Class_);
+        \assert($class instanceof \EasyCI20220317\PhpParser\Node\Stmt\Class_);
         // We don't assert that $class->name is null here, to allow consumers to assign unique names
         // to anonymous classes for their own purposes. We simplify ignore the name here.
         return new self($class->attrGroups, $newNode->args, $class->extends, $class->implements, $class->stmts, $newNode->getAttributes());

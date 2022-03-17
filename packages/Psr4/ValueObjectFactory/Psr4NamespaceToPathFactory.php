@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\ValueObjectFactory;
 
-use EasyCI20220316\Nette\Utils\Strings;
+use EasyCI20220317\Nette\Utils\Strings;
 use Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
 use Symplify\EasyCI\Psr4\Utils\SymplifyStrings;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
@@ -33,13 +33,13 @@ final class Psr4NamespaceToPathFactory
         // fallback for identical namespace + file directory
         if ($uniqueNamespace === '') {
             // shorten shared suffix by "Element/"
-            $sharedSuffix = '/' . \EasyCI20220316\Nette\Utils\Strings::after($sharedSuffix, '/');
+            $sharedSuffix = '/' . \EasyCI20220317\Nette\Utils\Strings::after($sharedSuffix, '/');
             $uniqueFilePath = $this->symplifyStrings->subtractFromRight($file, $sharedSuffix);
             $uniqueNamespace = $this->symplifyStrings->subtractFromRight($class . '.php', $sharedSuffix);
         }
         $uniqueNamespace = \rtrim($uniqueNamespace, '\\');
         $composerJsonPath = $this->psr4SwitcherConfiguration->getComposerJsonPath();
-        $commonFilePathPrefix = \EasyCI20220316\Nette\Utils\Strings::findPrefix([$uniqueFilePath, $composerJsonPath]);
+        $commonFilePathPrefix = \EasyCI20220317\Nette\Utils\Strings::findPrefix([$uniqueFilePath, $composerJsonPath]);
         $relativeDirectory = $this->symplifyStrings->subtractFromLeft($uniqueFilePath, $commonFilePathPrefix);
         $relativeDirectory = \rtrim($relativeDirectory, '/');
         if ($uniqueNamespace === '') {

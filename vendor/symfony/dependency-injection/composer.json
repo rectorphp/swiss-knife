@@ -47,7 +47,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220316\\Symfony\\Component\\DependencyInjection\\": ""
+            "EasyCI20220317\\Symfony\\Component\\DependencyInjection\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

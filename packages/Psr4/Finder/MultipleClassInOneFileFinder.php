@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Finder;
 
-use EasyCI20220316\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220317\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 final class MultipleClassInOneFileFinder
 {
@@ -15,7 +15,7 @@ final class MultipleClassInOneFileFinder
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader $phpClassLoader, \EasyCI20220316\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader $phpClassLoader, \EasyCI20220317\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->phpClassLoader = $phpClassLoader;
         $this->symfonyStyle = $symfonyStyle;

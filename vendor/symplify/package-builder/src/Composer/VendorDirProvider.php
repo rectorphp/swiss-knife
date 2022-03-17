@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220316\Symplify\PackageBuilder\Composer;
+namespace EasyCI20220317\Symplify\PackageBuilder\Composer;
 
-use EasyCI20220316\Composer\Autoload\ClassLoader;
+use EasyCI20220317\Composer\Autoload\ClassLoader;
 use ReflectionClass;
 /**
  * @api
@@ -25,7 +25,7 @@ final class VendorDirProvider
     }
     private function reflectionFallback() : string
     {
-        $reflectionClass = new \ReflectionClass(\EasyCI20220316\Composer\Autoload\ClassLoader::class);
+        $reflectionClass = new \ReflectionClass(\EasyCI20220317\Composer\Autoload\ClassLoader::class);
         return \dirname($reflectionClass->getFileName(), 2);
     }
 }
