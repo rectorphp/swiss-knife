@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI20220317\Nette\Utils\Json;
-use EasyCI20220317\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220317\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220317\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220325\Nette\Utils\Json;
+use EasyCI20220325\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220325\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220325\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Composer\SupportedPhpVersionResolver;
 use Symplify\EasyCI\Exception\ShouldNotHappenException;
-use EasyCI20220317\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220317\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class PhpVersionsJsonCommand extends \EasyCI20220317\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220325\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220325\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class PhpVersionsJsonCommand extends \EasyCI20220325\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var string
@@ -28,11 +28,11 @@ final class PhpVersionsJsonCommand extends \EasyCI20220317\Symplify\PackageBuild
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220317\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
-        $this->addArgument(self::COMPOSER_JSON_FILE_PATH, \EasyCI20220317\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Path to composer.json', \getcwd() . '/composer.json');
+        $this->setName(\EasyCI20220325\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->addArgument(self::COMPOSER_JSON_FILE_PATH, \EasyCI20220325\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Path to composer.json', \getcwd() . '/composer.json');
         $this->setDescription('Generate supported PHP versions based on `composer.json` in JSON format. Useful for PHP matrix build in CI');
     }
-    protected function execute(\EasyCI20220317\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220317\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220325\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220325\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $composerJsonFilePath = (string) $input->getArgument(self::COMPOSER_JSON_FILE_PATH);
         $this->fileSystemGuard->ensureFileExists($composerJsonFilePath, __METHOD__);
@@ -42,7 +42,7 @@ final class PhpVersionsJsonCommand extends \EasyCI20220317\Symplify\PackageBuild
             throw new \Symplify\EasyCI\Exception\ShouldNotHappenException($message);
         }
         // output must be without spaces, otherwise it breaks the GitHub Actions json
-        $jsonContent = \EasyCI20220317\Nette\Utils\Json::encode($supportedPhpVersions);
+        $jsonContent = \EasyCI20220325\Nette\Utils\Json::encode($supportedPhpVersions);
         $this->symfonyStyle->writeln($jsonContent);
         return self::SUCCESS;
     }

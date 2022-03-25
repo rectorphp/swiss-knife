@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Template;
 
-use EasyCI20220317\Nette\Utils\Strings;
-use EasyCI20220317\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI20220317\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI20220317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI20220325\Nette\Utils\Strings;
+use EasyCI20220325\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI20220325\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220325\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class TemplatePathsResolver
 {
     /**
@@ -23,7 +23,7 @@ final class TemplatePathsResolver
      * @var \Symplify\SmartFileSystem\Finder\SmartFinder
      */
     private $smartFinder;
-    public function __construct(\EasyCI20220317\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
+    public function __construct(\EasyCI20220325\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder)
     {
         $this->smartFinder = $smartFinder;
     }
@@ -51,7 +51,7 @@ final class TemplatePathsResolver
         \sort($templatePathsWithBundle);
         return $templatePathsWithBundle;
     }
-    private function findBundlePrefix(\EasyCI20220317\Symplify\SmartFileSystem\SmartFileInfo $templateFileInfo) : string
+    private function findBundlePrefix(\EasyCI20220325\Symplify\SmartFileSystem\SmartFileInfo $templateFileInfo) : string
     {
         $templateRealPath = $templateFileInfo->getRealPath();
         $bundleFileInfo = null;
@@ -61,9 +61,9 @@ final class TemplatePathsResolver
             $foundFiles = \glob($currentDirectory . '/*Bundle.php');
             if ($foundFiles !== []) {
                 $bundleFileRealPath = $foundFiles[0];
-                $match = \EasyCI20220317\Nette\Utils\Strings::match($bundleFileRealPath, self::BUNDLE_NAME_REGEX);
+                $match = \EasyCI20220325\Nette\Utils\Strings::match($bundleFileRealPath, self::BUNDLE_NAME_REGEX);
                 if (!isset($match['bundle_name'])) {
-                    throw new \EasyCI20220317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+                    throw new \EasyCI20220325\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
                 }
                 return $match['bundle_name'];
             }
@@ -73,13 +73,13 @@ final class TemplatePathsResolver
                 break;
             }
         } while ($bundleFileInfo === null);
-        throw new \EasyCI20220317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        throw new \EasyCI20220325\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
     }
-    private function resolveRelativeTemplateFilepath(\EasyCI20220317\Symplify\SmartFileSystem\SmartFileInfo $templateFileInfo) : string
+    private function resolveRelativeTemplateFilepath(\EasyCI20220325\Symplify\SmartFileSystem\SmartFileInfo $templateFileInfo) : string
     {
-        $match = \EasyCI20220317\Nette\Utils\Strings::match($templateFileInfo->getRealPath(), self::TEMPLATE_PATH_REGEX);
+        $match = \EasyCI20220325\Nette\Utils\Strings::match($templateFileInfo->getRealPath(), self::TEMPLATE_PATH_REGEX);
         if (!isset($match['template_relative_path'])) {
-            throw new \EasyCI20220317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \EasyCI20220325\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         return $match['template_relative_path'];
     }

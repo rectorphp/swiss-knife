@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220317\PhpParser\Builder;
+namespace EasyCI20220325\PhpParser\Builder;
 
-use EasyCI20220317\PhpParser;
-use EasyCI20220317\PhpParser\BuilderHelpers;
-use EasyCI20220317\PhpParser\Node;
-use EasyCI20220317\PhpParser\Node\Identifier;
-use EasyCI20220317\PhpParser\Node\Stmt;
-class EnumCase implements \EasyCI20220317\PhpParser\Builder
+use EasyCI20220325\PhpParser;
+use EasyCI20220325\PhpParser\BuilderHelpers;
+use EasyCI20220325\PhpParser\Node;
+use EasyCI20220325\PhpParser\Node\Identifier;
+use EasyCI20220325\PhpParser\Node\Stmt;
+class EnumCase implements \EasyCI20220325\PhpParser\Builder
 {
     protected $name;
     protected $value = null;
@@ -33,7 +33,7 @@ class EnumCase implements \EasyCI20220317\PhpParser\Builder
      */
     public function setValue($value)
     {
-        $this->value = \EasyCI20220317\PhpParser\BuilderHelpers::normalizeValue($value);
+        $this->value = \EasyCI20220325\PhpParser\BuilderHelpers::normalizeValue($value);
         return $this;
     }
     /**
@@ -45,7 +45,7 @@ class EnumCase implements \EasyCI20220317\PhpParser\Builder
      */
     public function setDocComment($docComment)
     {
-        $this->attributes = ['comments' => [\EasyCI20220317\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
+        $this->attributes = ['comments' => [\EasyCI20220325\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
         return $this;
     }
     /**
@@ -57,7 +57,7 @@ class EnumCase implements \EasyCI20220317\PhpParser\Builder
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220317\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220325\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -65,8 +65,8 @@ class EnumCase implements \EasyCI20220317\PhpParser\Builder
      *
      * @return Stmt\EnumCase The built constant node
      */
-    public function getNode() : \EasyCI20220317\PhpParser\Node
+    public function getNode() : \EasyCI20220325\PhpParser\Node
     {
-        return new \EasyCI20220317\PhpParser\Node\Stmt\EnumCase($this->name, $this->value, $this->attributes, $this->attributeGroups);
+        return new \EasyCI20220325\PhpParser\Node\Stmt\EnumCase($this->name, $this->value, $this->attributes, $this->attributeGroups);
     }
 }

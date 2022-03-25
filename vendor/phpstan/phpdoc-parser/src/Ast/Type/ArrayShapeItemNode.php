@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220317\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220325\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220317\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
-use EasyCI20220317\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
-use EasyCI20220317\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ArrayShapeItemNode implements \EasyCI20220317\PHPStan\PhpDocParser\Ast\Type\TypeNode
+use EasyCI20220325\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
+use EasyCI20220325\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
+use EasyCI20220325\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class ArrayShapeItemNode implements \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var ConstExprIntegerNode|ConstExprStringNode|IdentifierTypeNode|null */
@@ -18,7 +18,7 @@ class ArrayShapeItemNode implements \EasyCI20220317\PHPStan\PhpDocParser\Ast\Typ
     /**
      * @param ConstExprIntegerNode|ConstExprStringNode|IdentifierTypeNode|null $keyName
      */
-    public function __construct($keyName, bool $optional, \EasyCI20220317\PHPStan\PhpDocParser\Ast\Type\TypeNode $valueType)
+    public function __construct($keyName, bool $optional, \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\TypeNode $valueType)
     {
         $this->keyName = $keyName;
         $this->optional = $optional;

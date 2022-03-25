@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220317\PHPStan\PhpDocParser\Ast\ConstExpr;
+namespace EasyCI20220325\PHPStan\PhpDocParser\Ast\ConstExpr;
 
-use EasyCI20220317\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ConstExprArrayItemNode implements \EasyCI20220317\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
+use EasyCI20220325\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class ConstExprArrayItemNode implements \EasyCI20220325\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
 {
     use NodeAttributes;
     /** @var ConstExprNode|null */
     public $key;
     /** @var ConstExprNode */
     public $value;
-    public function __construct(?\EasyCI20220317\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $key, \EasyCI20220317\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $value)
+    public function __construct(?\EasyCI20220325\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $key, \EasyCI20220325\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $value)
     {
         $this->key = $key;
         $this->value = $value;

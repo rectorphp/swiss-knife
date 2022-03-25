@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220317\PhpParser\Node\Stmt;
+namespace EasyCI20220325\PhpParser\Node\Stmt;
 
-use EasyCI20220317\PhpParser\Node;
-class PropertyProperty extends \EasyCI20220317\PhpParser\Node\Stmt
+use EasyCI20220325\PhpParser\Node;
+class PropertyProperty extends \EasyCI20220325\PhpParser\Node\Stmt
 {
     /** @var Node\VarLikeIdentifier Name */
     public $name;
@@ -17,10 +17,10 @@ class PropertyProperty extends \EasyCI20220317\PhpParser\Node\Stmt
      * @param null|Node\Expr                $default    Default value
      * @param array                         $attributes Additional attributes
      */
-    public function __construct($name, \EasyCI20220317\PhpParser\Node\Expr $default = null, array $attributes = [])
+    public function __construct($name, \EasyCI20220325\PhpParser\Node\Expr $default = null, array $attributes = [])
     {
         $this->attributes = $attributes;
-        $this->name = \is_string($name) ? new \EasyCI20220317\PhpParser\Node\VarLikeIdentifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220325\PhpParser\Node\VarLikeIdentifier($name) : $name;
         $this->default = $default;
     }
     public function getSubNodeNames() : array

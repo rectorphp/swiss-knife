@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220317\Symfony\Component\Config;
+namespace EasyCI20220325\Symfony\Component\Config;
 
-use EasyCI20220317\Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
+use EasyCI20220325\Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
 /**
  * ConfigCache caches arbitrary content in files on disk.
  *
@@ -21,7 +21,7 @@ use EasyCI20220317\Symfony\Component\Config\Resource\SelfCheckingResourceChecker
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCache extends \EasyCI20220317\Symfony\Component\Config\ResourceCheckerConfigCache
+class ConfigCache extends \EasyCI20220325\Symfony\Component\Config\ResourceCheckerConfigCache
 {
     /**
      * @var bool
@@ -36,7 +36,7 @@ class ConfigCache extends \EasyCI20220317\Symfony\Component\Config\ResourceCheck
         $this->debug = $debug;
         $checkers = [];
         if (\true === $this->debug) {
-            $checkers = [new \EasyCI20220317\Symfony\Component\Config\Resource\SelfCheckingResourceChecker()];
+            $checkers = [new \EasyCI20220325\Symfony\Component\Config\Resource\SelfCheckingResourceChecker()];
         }
         parent::__construct($file, $checkers);
     }
