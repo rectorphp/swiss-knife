@@ -1,83 +1,87 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325\PHPStan\PhpDocParser\Parser;
+namespace EasyCI20220403\PHPStan\PhpDocParser\Parser;
 
-use EasyCI20220325\PHPStan\PhpDocParser\Ast;
-use EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
-use EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220403\PHPStan\PhpDocParser\Ast;
+use EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220403\PHPStan\ShouldNotHappenException;
+use function array_values;
+use function count;
+use function trim;
 class PhpDocParser
 {
-    private const DISALLOWED_DESCRIPTION_START_TOKENS = [\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_UNION, \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_INTERSECTION];
+    private const DISALLOWED_DESCRIPTION_START_TOKENS = [\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_UNION, \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_INTERSECTION];
     /** @var TypeParser */
     private $typeParser;
     /** @var ConstExprParser */
     private $constantExprParser;
-    public function __construct(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TypeParser $typeParser, \EasyCI20220325\PHPStan\PhpDocParser\Parser\ConstExprParser $constantExprParser)
+    public function __construct(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TypeParser $typeParser, \EasyCI20220403\PHPStan\PhpDocParser\Parser\ConstExprParser $constantExprParser)
     {
         $this->typeParser = $typeParser;
         $this->constantExprParser = $constantExprParser;
     }
-    public function parse(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode
+    public function parse(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode
     {
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PHPDOC);
-        $tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PHPDOC);
+        $tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL);
         $children = [];
-        if (!$tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC)) {
+        if (!$tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC)) {
             $children[] = $this->parseChild($tokens);
-            while ($tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL) && !$tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC)) {
+            while ($tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL) && !$tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC)) {
                 $children[] = $this->parseChild($tokens);
             }
         }
         try {
-            $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC);
-        } catch (\EasyCI20220325\PHPStan\PhpDocParser\Parser\ParserException $e) {
+            $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC);
+        } catch (\EasyCI20220403\PHPStan\PhpDocParser\Parser\ParserException $e) {
             $name = '';
             if (\count($children) > 0) {
                 $lastChild = $children[\count($children) - 1];
-                if ($lastChild instanceof \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
+                if ($lastChild instanceof \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
                     $name = $lastChild->name;
                 }
             }
             $tokens->forwardToTheEnd();
-            return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode([new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode($name, new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode($e->getMessage(), $e))]);
+            return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode([new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode($name, new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode($e->getMessage(), $e))]);
         }
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode(\array_values($children));
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode(\array_values($children));
     }
-    private function parseChild(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
+    private function parseChild(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
     {
-        if ($tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_TAG)) {
+        if ($tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_TAG)) {
             return $this->parseTag($tokens);
         }
         return $this->parseText($tokens);
     }
-    private function parseText(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTextNode
+    private function parseText(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTextNode
     {
         $text = '';
-        while (!$tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL)) {
-            $text .= $tokens->getSkippedHorizontalWhiteSpaceIfAny() . $tokens->joinUntil(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL, \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC, \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_END);
-            if (!$tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL)) {
+        while (!$tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL)) {
+            $text .= $tokens->getSkippedHorizontalWhiteSpaceIfAny() . $tokens->joinUntil(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL, \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC, \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_END);
+            if (!$tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL)) {
                 break;
             }
             $tokens->pushSavePoint();
             $tokens->next();
-            if ($tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_TAG) || $tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL) || $tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC) || $tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_END)) {
+            if ($tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_TAG) || $tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_PHPDOC_EOL) || $tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PHPDOC) || $tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_END)) {
                 $tokens->rollback();
                 break;
             }
             $tokens->dropSavePoint();
             $text .= "\n";
         }
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTextNode(\trim($text, " \t"));
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTextNode(\trim($text, " \t"));
     }
-    public function parseTag(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode
+    public function parseTag(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode
     {
         $tag = $tokens->currentTokenValue();
         $tokens->next();
         $value = $this->parseTagValue($tokens, $tag);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode($tag, $value);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode($tag, $value);
     }
-    public function parseTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens, string $tag) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+    public function parseTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens, string $tag) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
     {
         try {
             $tokens->pushSavePoint();
@@ -155,172 +159,172 @@ class PhpDocParser
                     $tagValue = $this->parseTypeAliasImportTagValue($tokens);
                     break;
                 default:
-                    $tagValue = new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode($this->parseOptionalDescription($tokens));
+                    $tagValue = new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode($this->parseOptionalDescription($tokens));
                     break;
             }
             $tokens->dropSavePoint();
-        } catch (\EasyCI20220325\PHPStan\PhpDocParser\Parser\ParserException $e) {
+        } catch (\EasyCI20220403\PHPStan\PhpDocParser\Parser\ParserException $e) {
             $tokens->rollback();
-            $tagValue = new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode($this->parseOptionalDescription($tokens), $e);
+            $tagValue = new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode($this->parseOptionalDescription($tokens), $e);
         }
         return $tagValue;
     }
-    private function parseParamTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode
+    private function parseParamTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode
     {
         $type = $this->typeParser->parse($tokens);
-        $isReference = $tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_REFERENCE);
-        $isVariadic = $tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIADIC);
+        $isReference = $tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_REFERENCE);
+        $isVariadic = $tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIADIC);
         $parameterName = $this->parseRequiredVariableName($tokens);
         $description = $this->parseOptionalDescription($tokens);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode($type, $isVariadic, $parameterName, $description, $isReference);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode($type, $isVariadic, $parameterName, $description, $isReference);
     }
-    private function parseVarTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode
+    private function parseVarTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode
     {
         $type = $this->typeParser->parse($tokens);
         $variableName = $this->parseOptionalVariableName($tokens);
         $description = $this->parseOptionalDescription($tokens, $variableName === '');
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode($type, $variableName, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode($type, $variableName, $description);
     }
-    private function parseReturnTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode
+    private function parseReturnTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode
     {
         $type = $this->typeParser->parse($tokens);
         $description = $this->parseOptionalDescription($tokens, \true);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode($type, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode($type, $description);
     }
-    private function parseThrowsTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode
+    private function parseThrowsTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode
     {
         $type = $this->typeParser->parse($tokens);
         $description = $this->parseOptionalDescription($tokens, \true);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode($type, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode($type, $description);
     }
-    private function parseMixinTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\MixinTagValueNode
+    private function parseMixinTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\MixinTagValueNode
     {
         $type = $this->typeParser->parse($tokens);
         $description = $this->parseOptionalDescription($tokens, \true);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\MixinTagValueNode($type, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\MixinTagValueNode($type, $description);
     }
-    private function parseDeprecatedTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\DeprecatedTagValueNode
+    private function parseDeprecatedTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\DeprecatedTagValueNode
     {
         $description = $this->parseOptionalDescription($tokens);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\DeprecatedTagValueNode($description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\DeprecatedTagValueNode($description);
     }
-    private function parsePropertyTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode
+    private function parsePropertyTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode
     {
         $type = $this->typeParser->parse($tokens);
         $parameterName = $this->parseRequiredVariableName($tokens);
         $description = $this->parseOptionalDescription($tokens);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode($type, $parameterName, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode($type, $parameterName, $description);
     }
-    private function parseMethodTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode
+    private function parseMethodTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode
     {
         $isStatic = $tokens->tryConsumeTokenValue('static');
         $returnTypeOrMethodName = $this->typeParser->parse($tokens);
-        if ($tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER)) {
+        if ($tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER)) {
             $returnType = $returnTypeOrMethodName;
             $methodName = $tokens->currentTokenValue();
             $tokens->next();
-        } elseif ($returnTypeOrMethodName instanceof \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode) {
-            $returnType = $isStatic ? new \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode('static') : null;
+        } elseif ($returnTypeOrMethodName instanceof \EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode) {
+            $returnType = $isStatic ? new \EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode('static') : null;
             $methodName = $returnTypeOrMethodName->name;
             $isStatic = \false;
         } else {
-            $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+            $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
             // will throw exception
             exit;
         }
         $parameters = [];
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PARENTHESES);
-        if (!$tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PARENTHESES)) {
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PARENTHESES);
+        if (!$tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PARENTHESES)) {
             $parameters[] = $this->parseMethodTagValueParameter($tokens);
-            while ($tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_COMMA)) {
+            while ($tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_COMMA)) {
                 $parameters[] = $this->parseMethodTagValueParameter($tokens);
             }
         }
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PARENTHESES);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PARENTHESES);
         $description = $this->parseOptionalDescription($tokens);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode($isStatic, $returnType, $methodName, $parameters, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode($isStatic, $returnType, $methodName, $parameters, $description);
     }
-    private function parseMethodTagValueParameter(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueParameterNode
+    private function parseMethodTagValueParameter(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueParameterNode
     {
         switch ($tokens->currentTokenType()) {
-            case \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER:
-            case \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PARENTHESES:
-            case \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_NULLABLE:
+            case \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER:
+            case \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PARENTHESES:
+            case \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_NULLABLE:
                 $parameterType = $this->typeParser->parse($tokens);
                 break;
             default:
                 $parameterType = null;
         }
-        $isReference = $tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_REFERENCE);
-        $isVariadic = $tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIADIC);
+        $isReference = $tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_REFERENCE);
+        $isVariadic = $tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIADIC);
         $parameterName = $tokens->currentTokenValue();
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIABLE);
-        if ($tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_EQUAL)) {
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIABLE);
+        if ($tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_EQUAL)) {
             $defaultValue = $this->constantExprParser->parse($tokens);
         } else {
             $defaultValue = null;
         }
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueParameterNode($parameterType, $isReference, $isVariadic, $parameterName, $defaultValue);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueParameterNode($parameterType, $isReference, $isVariadic, $parameterName, $defaultValue);
     }
-    private function parseTemplateTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode
+    private function parseTemplateTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode
     {
         $name = $tokens->currentTokenValue();
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         if ($tokens->tryConsumeTokenValue('of') || $tokens->tryConsumeTokenValue('as')) {
             $bound = $this->typeParser->parse($tokens);
         } else {
             $bound = null;
         }
         $description = $this->parseOptionalDescription($tokens);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode($name, $bound, $description);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode($name, $bound, $description);
     }
-    private function parseExtendsTagValue(string $tagName, \EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+    private function parseExtendsTagValue(string $tagName, \EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
     {
-        $baseType = new \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode($tokens->currentTokenValue());
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+        $baseType = new \EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode($tokens->currentTokenValue());
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         $type = $this->typeParser->parseGeneric($tokens, $baseType);
         $description = $this->parseOptionalDescription($tokens);
         switch ($tagName) {
             case '@extends':
-                return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ExtendsTagValueNode($type, $description);
+                return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ExtendsTagValueNode($type, $description);
             case '@implements':
-                return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\ImplementsTagValueNode($type, $description);
+                return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\ImplementsTagValueNode($type, $description);
             case '@use':
-                return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\UsesTagValueNode($type, $description);
+                return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\UsesTagValueNode($type, $description);
         }
-        throw new \EasyCI20220325\PHPStan\ShouldNotHappenException();
+        throw new \EasyCI20220403\PHPStan\ShouldNotHappenException();
     }
-    private function parseTypeAliasTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode
+    private function parseTypeAliasTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode
     {
         $alias = $tokens->currentTokenValue();
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         // support psalm-type syntax
-        $tokens->tryConsumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_EQUAL);
+        $tokens->tryConsumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_EQUAL);
         $type = $this->typeParser->parse($tokens);
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode($alias, $type);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode($alias, $type);
     }
-    private function parseTypeAliasImportTagValue(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode
+    private function parseTypeAliasImportTagValue(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode
     {
         $importedAlias = $tokens->currentTokenValue();
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         if (!$tokens->tryConsumeTokenValue('from')) {
-            throw new \EasyCI20220325\PHPStan\PhpDocParser\Parser\ParserException($tokens->currentTokenValue(), $tokens->currentTokenType(), $tokens->currentTokenOffset(), \EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+            throw new \EasyCI20220403\PHPStan\PhpDocParser\Parser\ParserException($tokens->currentTokenValue(), $tokens->currentTokenType(), $tokens->currentTokenOffset(), \EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         }
         $importedFrom = $tokens->currentTokenValue();
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         $importedAs = null;
         if ($tokens->tryConsumeTokenValue('as')) {
             $importedAs = $tokens->currentTokenValue();
-            $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
+            $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_IDENTIFIER);
         }
-        return new \EasyCI20220325\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode($importedAlias, new \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode($importedFrom), $importedAs);
+        return new \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode($importedAlias, new \EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode($importedFrom), $importedAs);
     }
-    private function parseOptionalVariableName(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : string
+    private function parseOptionalVariableName(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : string
     {
-        if ($tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIABLE)) {
+        if ($tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIABLE)) {
             $parameterName = $tokens->currentTokenValue();
             $tokens->next();
-        } elseif ($tokens->isCurrentTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_THIS_VARIABLE)) {
+        } elseif ($tokens->isCurrentTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_THIS_VARIABLE)) {
             $parameterName = '$this';
             $tokens->next();
         } else {
@@ -328,20 +332,20 @@ class PhpDocParser
         }
         return $parameterName;
     }
-    private function parseRequiredVariableName(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : string
+    private function parseRequiredVariableName(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens) : string
     {
         $parameterName = $tokens->currentTokenValue();
-        $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIABLE);
+        $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_VARIABLE);
         return $parameterName;
     }
-    private function parseOptionalDescription(\EasyCI20220325\PHPStan\PhpDocParser\Parser\TokenIterator $tokens, bool $limitStartToken = \false) : string
+    private function parseOptionalDescription(\EasyCI20220403\PHPStan\PhpDocParser\Parser\TokenIterator $tokens, bool $limitStartToken = \false) : string
     {
         if ($limitStartToken) {
             foreach (self::DISALLOWED_DESCRIPTION_START_TOKENS as $disallowedStartToken) {
                 if (!$tokens->isCurrentTokenType($disallowedStartToken)) {
                     continue;
                 }
-                $tokens->consumeTokenType(\EasyCI20220325\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OTHER);
+                $tokens->consumeTokenType(\EasyCI20220403\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OTHER);
                 // will throw exception
             }
         }

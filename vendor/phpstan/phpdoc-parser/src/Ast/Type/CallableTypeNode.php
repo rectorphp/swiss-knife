@@ -1,10 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220403\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220325\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class CallableTypeNode implements \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\TypeNode
+use EasyCI20220403\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use function implode;
+class CallableTypeNode implements \EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var IdentifierTypeNode */
@@ -13,7 +14,7 @@ class CallableTypeNode implements \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\
     public $parameters;
     /** @var TypeNode */
     public $returnType;
-    public function __construct(\EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode $identifier, array $parameters, \EasyCI20220325\PHPStan\PhpDocParser\Ast\Type\TypeNode $returnType)
+    public function __construct(\EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode $identifier, array $parameters, \EasyCI20220403\PHPStan\PhpDocParser\Ast\Type\TypeNode $returnType)
     {
         $this->identifier = $identifier;
         $this->parameters = $parameters;

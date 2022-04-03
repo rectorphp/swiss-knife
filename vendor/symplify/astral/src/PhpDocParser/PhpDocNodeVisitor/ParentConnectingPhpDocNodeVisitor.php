@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI20220403\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI20220325\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220325\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
+use EasyCI20220403\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220403\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
 /**
  * @api
  *
@@ -12,21 +12,21 @@ use EasyCI20220325\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
  *
  * @see \Symplify\Astral\Tests\PhpDocParser\PhpDocNodeVisitor\ParentConnectingPhpDocNodeVisitorTest
  */
-final class ParentConnectingPhpDocNodeVisitor extends \EasyCI20220325\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
+final class ParentConnectingPhpDocNodeVisitor extends \EasyCI20220403\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
 {
     /**
      * @var Node[]
      */
     private $stack = [];
-    public function beforeTraverse(\EasyCI20220325\PHPStan\PhpDocParser\Ast\Node $node) : void
+    public function beforeTraverse(\EasyCI20220403\PHPStan\PhpDocParser\Ast\Node $node) : void
     {
         $this->stack = [$node];
     }
-    public function enterNode(\EasyCI20220325\PHPStan\PhpDocParser\Ast\Node $node) : \EasyCI20220325\PHPStan\PhpDocParser\Ast\Node
+    public function enterNode(\EasyCI20220403\PHPStan\PhpDocParser\Ast\Node $node) : \EasyCI20220403\PHPStan\PhpDocParser\Ast\Node
     {
         if ($this->stack !== []) {
             $parentNode = $this->stack[\count($this->stack) - 1];
-            $node->setAttribute(\EasyCI20220325\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey::PARENT, $parentNode);
+            $node->setAttribute(\EasyCI20220403\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey::PARENT, $parentNode);
         }
         $this->stack[] = $node;
         return $node;
@@ -34,7 +34,7 @@ final class ParentConnectingPhpDocNodeVisitor extends \EasyCI20220325\Symplify\A
     /**
      * @return mixed[]|int|\PhpParser\Node|null Replacement node (or special return
      */
-    public function leaveNode(\EasyCI20220325\PHPStan\PhpDocParser\Ast\Node $node)
+    public function leaveNode(\EasyCI20220403\PHPStan\PhpDocParser\Ast\Node $node)
     {
         \array_pop($this->stack);
         return null;

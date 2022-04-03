@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325\PhpParser;
+namespace EasyCI20220403\PhpParser;
 
 class Error extends \RuntimeException
 {

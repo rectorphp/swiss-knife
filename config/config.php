@@ -1,35 +1,35 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325;
+namespace EasyCI20220403;
 
-use EasyCI20220325\Composer\Semver\Semver;
-use EasyCI20220325\Composer\Semver\VersionParser;
-use EasyCI20220325\Nette\Neon\Decoder;
-use EasyCI20220325\PhpParser\NodeFinder;
-use EasyCI20220325\PhpParser\Parser;
-use EasyCI20220325\PhpParser\ParserFactory;
-use EasyCI20220325\PhpParser\PrettyPrinter\Standard;
-use EasyCI20220325\Symfony\Component\Console\Application;
+use EasyCI20220403\Composer\Semver\Semver;
+use EasyCI20220403\Composer\Semver\VersionParser;
+use EasyCI20220403\Nette\Neon\Decoder;
+use EasyCI20220403\PhpParser\NodeFinder;
+use EasyCI20220403\PhpParser\Parser;
+use EasyCI20220403\PhpParser\ParserFactory;
+use EasyCI20220403\PhpParser\PrettyPrinter\Standard;
+use EasyCI20220403\Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCI\Console\EasyCIApplication;
-use EasyCI20220325\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use function EasyCI20220325\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use EasyCI20220403\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use function EasyCI20220403\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/config-packages.php');
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
     $services->load('Symplify\\EasyCI\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Kernel', __DIR__ . '/../src/ValueObject']);
     // for autowired commands
-    $services->alias(\EasyCI20220325\Symfony\Component\Console\Application::class, \Symplify\EasyCI\Console\EasyCIApplication::class);
-    $services->set(\EasyCI20220325\Composer\Semver\VersionParser::class);
-    $services->set(\EasyCI20220325\Composer\Semver\Semver::class);
+    $services->alias(\EasyCI20220403\Symfony\Component\Console\Application::class, \Symplify\EasyCI\Console\EasyCIApplication::class);
+    $services->set(\EasyCI20220403\Composer\Semver\VersionParser::class);
+    $services->set(\EasyCI20220403\Composer\Semver\Semver::class);
     // neon
-    $services->set(\EasyCI20220325\Nette\Neon\Decoder::class);
+    $services->set(\EasyCI20220403\Nette\Neon\Decoder::class);
     // php-parser
-    $services->set(\EasyCI20220325\PhpParser\ParserFactory::class);
-    $services->set(\EasyCI20220325\PhpParser\Parser::class)->factory([\EasyCI20220325\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220325\PhpParser\ParserFactory::class), 'create'])->args([\EasyCI20220325\PhpParser\ParserFactory::PREFER_PHP7]);
-    $services->set(\EasyCI20220325\PhpParser\PrettyPrinter\Standard::class);
-    $services->set(\EasyCI20220325\PhpParser\NodeFinder::class);
-    $services->set(\EasyCI20220325\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker::class);
+    $services->set(\EasyCI20220403\PhpParser\ParserFactory::class);
+    $services->set(\EasyCI20220403\PhpParser\Parser::class)->factory([\EasyCI20220403\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220403\PhpParser\ParserFactory::class), 'create'])->args([\EasyCI20220403\PhpParser\ParserFactory::PREFER_PHP7]);
+    $services->set(\EasyCI20220403\PhpParser\PrettyPrinter\Standard::class);
+    $services->set(\EasyCI20220403\PhpParser\NodeFinder::class);
+    $services->set(\EasyCI20220403\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker::class);
 };

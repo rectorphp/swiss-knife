@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325\PhpParser\Builder;
+namespace EasyCI20220403\PhpParser\Builder;
 
-use EasyCI20220325\PhpParser;
-use EasyCI20220325\PhpParser\BuilderHelpers;
-use EasyCI20220325\PhpParser\Node;
-use EasyCI20220325\PhpParser\Node\Identifier;
-use EasyCI20220325\PhpParser\Node\Name;
-use EasyCI20220325\PhpParser\Node\Stmt;
-use EasyCI20220325\PhpParser\Node\ComplexType;
-class Property implements \EasyCI20220325\PhpParser\Builder
+use EasyCI20220403\PhpParser;
+use EasyCI20220403\PhpParser\BuilderHelpers;
+use EasyCI20220403\PhpParser\Node;
+use EasyCI20220403\PhpParser\Node\Identifier;
+use EasyCI20220403\PhpParser\Node\Name;
+use EasyCI20220403\PhpParser\Node\Stmt;
+use EasyCI20220403\PhpParser\Node\ComplexType;
+class Property implements \EasyCI20220403\PhpParser\Builder
 {
     protected $name;
     protected $flags = 0;
@@ -36,7 +36,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function makePublic()
     {
-        $this->flags = \EasyCI20220325\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220325\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
+        $this->flags = \EasyCI20220403\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220403\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
         return $this;
     }
     /**
@@ -46,7 +46,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function makeProtected()
     {
-        $this->flags = \EasyCI20220325\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220325\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
+        $this->flags = \EasyCI20220403\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220403\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
         return $this;
     }
     /**
@@ -56,7 +56,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function makePrivate()
     {
-        $this->flags = \EasyCI20220325\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220325\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
+        $this->flags = \EasyCI20220403\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220403\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
         return $this;
     }
     /**
@@ -66,7 +66,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function makeStatic()
     {
-        $this->flags = \EasyCI20220325\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220325\PhpParser\Node\Stmt\Class_::MODIFIER_STATIC);
+        $this->flags = \EasyCI20220403\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220403\PhpParser\Node\Stmt\Class_::MODIFIER_STATIC);
         return $this;
     }
     /**
@@ -76,7 +76,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function makeReadonly()
     {
-        $this->flags = \EasyCI20220325\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220325\PhpParser\Node\Stmt\Class_::MODIFIER_READONLY);
+        $this->flags = \EasyCI20220403\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220403\PhpParser\Node\Stmt\Class_::MODIFIER_READONLY);
         return $this;
     }
     /**
@@ -88,7 +88,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function setDefault($value)
     {
-        $this->default = \EasyCI20220325\PhpParser\BuilderHelpers::normalizeValue($value);
+        $this->default = \EasyCI20220403\PhpParser\BuilderHelpers::normalizeValue($value);
         return $this;
     }
     /**
@@ -100,7 +100,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function setDocComment($docComment)
     {
-        $this->attributes = ['comments' => [\EasyCI20220325\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
+        $this->attributes = ['comments' => [\EasyCI20220403\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
         return $this;
     }
     /**
@@ -112,7 +112,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function setType($type)
     {
-        $this->type = \EasyCI20220325\PhpParser\BuilderHelpers::normalizeType($type);
+        $this->type = \EasyCI20220403\PhpParser\BuilderHelpers::normalizeType($type);
         return $this;
     }
     /**
@@ -124,7 +124,7 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220325\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220403\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -132,8 +132,8 @@ class Property implements \EasyCI20220325\PhpParser\Builder
      *
      * @return Stmt\Property The built property node
      */
-    public function getNode() : \EasyCI20220325\PhpParser\Node
+    public function getNode() : \EasyCI20220403\PhpParser\Node
     {
-        return new \EasyCI20220325\PhpParser\Node\Stmt\Property($this->flags !== 0 ? $this->flags : \EasyCI20220325\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC, [new \EasyCI20220325\PhpParser\Node\Stmt\PropertyProperty($this->name, $this->default)], $this->attributes, $this->type, $this->attributeGroups);
+        return new \EasyCI20220403\PhpParser\Node\Stmt\Property($this->flags !== 0 ? $this->flags : \EasyCI20220403\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC, [new \EasyCI20220403\PhpParser\Node\Stmt\PropertyProperty($this->name, $this->default)], $this->attributes, $this->type, $this->attributeGroups);
     }
 }

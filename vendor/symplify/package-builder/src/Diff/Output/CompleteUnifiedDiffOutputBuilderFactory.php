@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220325\Symplify\PackageBuilder\Diff\Output;
+namespace EasyCI20220403\Symplify\PackageBuilder\Diff\Output;
 
-use EasyCI20220325\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
-use EasyCI20220325\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use EasyCI20220403\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use EasyCI20220403\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 /**
  * @api
  * Creates @see UnifiedDiffOutputBuilder with "$contextLines = 1000;"
@@ -15,16 +15,16 @@ final class CompleteUnifiedDiffOutputBuilderFactory
      * @var \Symplify\PackageBuilder\Reflection\PrivatesAccessor
      */
     private $privatesAccessor;
-    public function __construct(\EasyCI20220325\Symplify\PackageBuilder\Reflection\PrivatesAccessor $privatesAccessor)
+    public function __construct(\EasyCI20220403\Symplify\PackageBuilder\Reflection\PrivatesAccessor $privatesAccessor)
     {
         $this->privatesAccessor = $privatesAccessor;
     }
     /**
      * @api
      */
-    public function create() : \EasyCI20220325\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder
+    public function create() : \EasyCI20220403\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder
     {
-        $unifiedDiffOutputBuilder = new \EasyCI20220325\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder('');
+        $unifiedDiffOutputBuilder = new \EasyCI20220403\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder('');
         $this->privatesAccessor->setPrivateProperty($unifiedDiffOutputBuilder, 'contextLines', 10000);
         return $unifiedDiffOutputBuilder;
     }
