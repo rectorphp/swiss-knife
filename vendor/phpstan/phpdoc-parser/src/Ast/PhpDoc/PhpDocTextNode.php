@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220414\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220403\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class PhpDocTextNode implements \EasyCI20220403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
+use EasyCI20220414\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class PhpDocTextNode implements \EasyCI20220414\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
 {
     use NodeAttributes;
     /** @var string */

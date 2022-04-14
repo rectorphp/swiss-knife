@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220403\Symfony\Component\DependencyInjection;
+namespace EasyCI20220414\Symfony\Component\DependencyInjection;
 
 /**
  * Represents a variable.

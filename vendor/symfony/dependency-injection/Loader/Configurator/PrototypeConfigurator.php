@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220403\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220414\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220403\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220403\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use EasyCI20220414\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220414\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class PrototypeConfigurator extends \EasyCI20220403\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class PrototypeConfigurator extends \EasyCI20220414\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
@@ -46,9 +46,9 @@ class PrototypeConfigurator extends \EasyCI20220403\Symfony\Component\Dependency
      * @var bool
      */
     private $allowParent;
-    public function __construct(\EasyCI20220403\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \EasyCI20220403\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \EasyCI20220403\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
+    public function __construct(\EasyCI20220414\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \EasyCI20220414\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \EasyCI20220414\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
     {
-        $definition = new \EasyCI20220403\Symfony\Component\DependencyInjection\Definition();
+        $definition = new \EasyCI20220414\Symfony\Component\DependencyInjection\Definition();
         if (!$defaults->isPublic() || !$defaults->isPrivate()) {
             $definition->setPublic($defaults->isPublic());
         }

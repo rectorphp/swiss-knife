@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220403\PhpParser\Node\Stmt;
+namespace EasyCI20220414\PhpParser\Node\Stmt;
 
-use EasyCI20220403\PhpParser\Node;
-class Enum_ extends \EasyCI20220403\PhpParser\Node\Stmt\ClassLike
+use EasyCI20220414\PhpParser\Node;
+class Enum_ extends \EasyCI20220414\PhpParser\Node\Stmt\ClassLike
 {
     /** @var null|Node\Identifier Scalar Type */
     public $scalarType;
@@ -21,7 +21,7 @@ class Enum_ extends \EasyCI20220403\PhpParser\Node\Stmt\ClassLike
      */
     public function __construct($name, array $subNodes = [], array $attributes = [])
     {
-        $this->name = \is_string($name) ? new \EasyCI20220403\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220414\PhpParser\Node\Identifier($name) : $name;
         $this->scalarType = $subNodes['scalarType'] ?? null;
         $this->implements = $subNodes['implements'] ?? [];
         $this->stmts = $subNodes['stmts'] ?? [];

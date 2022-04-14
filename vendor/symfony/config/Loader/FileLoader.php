@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220403\Symfony\Component\Config\Loader;
+namespace EasyCI20220414\Symfony\Component\Config\Loader;
 
-use EasyCI20220403\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
-use EasyCI20220403\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use EasyCI20220403\Symfony\Component\Config\Exception\LoaderLoadException;
-use EasyCI20220403\Symfony\Component\Config\FileLocatorInterface;
-use EasyCI20220403\Symfony\Component\Config\Resource\FileExistenceResource;
-use EasyCI20220403\Symfony\Component\Config\Resource\GlobResource;
+use EasyCI20220414\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
+use EasyCI20220414\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use EasyCI20220414\Symfony\Component\Config\Exception\LoaderLoadException;
+use EasyCI20220414\Symfony\Component\Config\FileLocatorInterface;
+use EasyCI20220414\Symfony\Component\Config\Resource\FileExistenceResource;
+use EasyCI20220414\Symfony\Component\Config\Resource\GlobResource;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class FileLoader extends \EasyCI20220403\Symfony\Component\Config\Loader\Loader
+abstract class FileLoader extends \EasyCI20220414\Symfony\Component\Config\Loader\Loader
 {
     protected static $loading = [];
     protected $locator;
@@ -29,7 +29,7 @@ abstract class FileLoader extends \EasyCI20220403\Symfony\Component\Config\Loade
      * @var string|null
      */
     private $currentDir;
-    public function __construct(\EasyCI20220403\Symfony\Component\Config\FileLocatorInterface $locator, string $env = null)
+    public function __construct(\EasyCI20220414\Symfony\Component\Config\FileLocatorInterface $locator, string $env = null)
     {
         $this->locator = $locator;
         parent::__construct($env);
@@ -44,7 +44,7 @@ abstract class FileLoader extends \EasyCI20220403\Symfony\Component\Config\Loade
     /**
      * Returns the file locator used by this loader.
      */
-    public function getLocator() : \EasyCI20220403\Symfony\Component\Config\FileLocatorInterface
+    public function getLocator() : \EasyCI20220414\Symfony\Component\Config\FileLocatorInterface
     {
         return $this->locator;
     }
@@ -105,17 +105,17 @@ abstract class FileLoader extends \EasyCI20220403\Symfony\Component\Config\Loade
         }
         try {
             $prefix = $this->locator->locate($prefix, $this->currentDir, \true);
-        } catch (\EasyCI20220403\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException $e) {
+        } catch (\EasyCI20220414\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException $e) {
             if (!$ignoreErrors) {
                 throw $e;
             }
             $resource = [];
             foreach ($e->getPaths() as $path) {
-                $resource[] = new \EasyCI20220403\Symfony\Component\Config\Resource\FileExistenceResource($path);
+                $resource[] = new \EasyCI20220414\Symfony\Component\Config\Resource\FileExistenceResource($path);
             }
             return;
         }
-        $resource = new \EasyCI20220403\Symfony\Component\Config\Resource\GlobResource($prefix, $pattern, $recursive, $forExclusion, $excluded);
+        $resource = new \EasyCI20220414\Symfony\Component\Config\Resource\GlobResource($prefix, $pattern, $recursive, $forExclusion, $excluded);
         yield from $resource;
     }
     /**
@@ -132,7 +132,7 @@ abstract class FileLoader extends \EasyCI20220403\Symfony\Component\Config\Loade
             for ($i = 0; $i < ($resourcesCount = \count($resources)); ++$i) {
                 if (isset(self::$loading[$resources[$i]])) {
                     if ($i == $resourcesCount - 1) {
-                        throw new \EasyCI20220403\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException(\array_keys(self::$loading));
+                        throw new \EasyCI20220414\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException(\array_keys(self::$loading));
                     }
                 } else {
                     $resource = $resources[$i];
@@ -146,15 +146,15 @@ abstract class FileLoader extends \EasyCI20220403\Symfony\Component\Config\Loade
                 unset(self::$loading[$resource]);
             }
             return $ret;
-        } catch (\EasyCI20220403\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException $e) {
+        } catch (\EasyCI20220414\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException $e) {
             throw $e;
         } catch (\Exception $e) {
             if (!$ignoreErrors) {
                 // prevent embedded imports from nesting multiple exceptions
-                if ($e instanceof \EasyCI20220403\Symfony\Component\Config\Exception\LoaderLoadException) {
+                if ($e instanceof \EasyCI20220414\Symfony\Component\Config\Exception\LoaderLoadException) {
                     throw $e;
                 }
-                throw new \EasyCI20220403\Symfony\Component\Config\Exception\LoaderLoadException($resource, $sourceResource, 0, $e, $type);
+                throw new \EasyCI20220414\Symfony\Component\Config\Exception\LoaderLoadException($resource, $sourceResource, 0, $e, $type);
             }
         }
         return null;
