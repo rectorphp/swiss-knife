@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit8e48cc0998e9421fc4572a35b110fbf9', false) && !interface_exists('ComposerAutoloaderInit8e48cc0998e9421fc4572a35b110fbf9', false) && !trait_exists('ComposerAutoloaderInit8e48cc0998e9421fc4572a35b110fbf9', false)) {
-    spl_autoload_call('EasyCI20220414\ComposerAutoloaderInit8e48cc0998e9421fc4572a35b110fbf9');
+if (!class_exists('ComposerAutoloaderInit4f9f466a64acfacbd1ae762c8a63df6b', false) && !interface_exists('ComposerAutoloaderInit4f9f466a64acfacbd1ae762c8a63df6b', false) && !trait_exists('ComposerAutoloaderInit4f9f466a64acfacbd1ae762c8a63df6b', false)) {
+    spl_autoload_call('EasyCI20220414\ComposerAutoloaderInit4f9f466a64acfacbd1ae762c8a63df6b');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('EasyCI20220414\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -21,9 +21,9 @@ if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTyp
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire8e48cc0998e9421fc4572a35b110fbf9')) {
-    function composerRequire8e48cc0998e9421fc4572a35b110fbf9() {
-        return \EasyCI20220414\composerRequire8e48cc0998e9421fc4572a35b110fbf9(...func_get_args());
+if (!function_exists('composerRequire4f9f466a64acfacbd1ae762c8a63df6b')) {
+    function composerRequire4f9f466a64acfacbd1ae762c8a63df6b() {
+        return \EasyCI20220414\composerRequire4f9f466a64acfacbd1ae762c8a63df6b(...func_get_args());
     }
 }
 if (!function_exists('scanPath')) {
