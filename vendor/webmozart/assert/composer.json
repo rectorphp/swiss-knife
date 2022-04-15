@@ -31,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220414\\Webmozart\\Assert\\": "src\/"
+            "EasyCI20220415\\Webmozart\\Assert\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220414\\Webmozart\\Assert\\Tests\\": "tests\/",
-            "EasyCI20220414\\Webmozart\\Assert\\Bin\\": "bin\/src"
+            "EasyCI20220415\\Webmozart\\Assert\\Tests\\": "tests\/",
+            "EasyCI20220415\\Webmozart\\Assert\\Bin\\": "bin\/src"
         }
     }
 }

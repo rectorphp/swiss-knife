@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220414\Symfony\Component\Console;
+namespace EasyCI20220415\Symfony\Component\Console;
 
-use EasyCI20220414\Symfony\Component\Console\Command\Command;
-use EasyCI20220414\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220414\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220415\Symfony\Component\Console\Command\Command;
+use EasyCI20220415\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220415\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class SingleCommandApplication extends \EasyCI20220414\Symfony\Component\Console\Command\Command
+class SingleCommandApplication extends \EasyCI20220415\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -48,13 +48,13 @@ class SingleCommandApplication extends \EasyCI20220414\Symfony\Component\Console
         $this->autoExit = $autoExit;
         return $this;
     }
-    public function run(\EasyCI20220414\Symfony\Component\Console\Input\InputInterface $input = null, \EasyCI20220414\Symfony\Component\Console\Output\OutputInterface $output = null) : int
+    public function run(\EasyCI20220415\Symfony\Component\Console\Input\InputInterface $input = null, \EasyCI20220415\Symfony\Component\Console\Output\OutputInterface $output = null) : int
     {
         if ($this->running) {
             return parent::run($input, $output);
         }
         // We use the command name as the application name
-        $application = new \EasyCI20220414\Symfony\Component\Console\Application($this->getName() ?: 'UNKNOWN', $this->version);
+        $application = new \EasyCI20220415\Symfony\Component\Console\Application($this->getName() ?: 'UNKNOWN', $this->version);
         $application->setAutoExit($this->autoExit);
         // Fix the usage of the command displayed with "--help"
         $this->setName($_SERVER['argv'][0]);

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220414\PhpParser\Node\Stmt;
+namespace EasyCI20220415\PhpParser\Node\Stmt;
 
-use EasyCI20220414\PhpParser\Node;
-class Echo_ extends \EasyCI20220414\PhpParser\Node\Stmt
+use EasyCI20220415\PhpParser\Node;
+class Echo_ extends \EasyCI20220415\PhpParser\Node\Stmt
 {
     /** @var Node\Expr[] Expressions */
     public $exprs;

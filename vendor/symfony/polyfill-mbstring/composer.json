@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220414\\Symfony\\Polyfill\\Mbstring\\": ""
+            "EasyCI20220415\\Symfony\\Polyfill\\Mbstring\\": ""
         },
         "files": [
             "bootstrap.php"
