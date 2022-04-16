@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220415\Symplify\Astral\NodeNameResolver;
+namespace EasyCI20220416\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220415\PhpParser\Node;
-use EasyCI20220415\PhpParser\Node\Attribute;
-use EasyCI20220415\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class AttributeNodeNameResolver implements \EasyCI20220415\Symplify\Astral\Contract\NodeNameResolverInterface
+use EasyCI20220416\PhpParser\Node;
+use EasyCI20220416\PhpParser\Node\Attribute;
+use EasyCI20220416\Symplify\Astral\Contract\NodeNameResolverInterface;
+final class AttributeNodeNameResolver implements \EasyCI20220416\Symplify\Astral\Contract\NodeNameResolverInterface
 {
-    public function match(\EasyCI20220415\PhpParser\Node $node) : bool
+    public function match(\EasyCI20220416\PhpParser\Node $node) : bool
     {
-        return $node instanceof \EasyCI20220415\PhpParser\Node\Attribute;
+        return $node instanceof \EasyCI20220416\PhpParser\Node\Attribute;
     }
     /**
      * @param Attribute $node
      */
-    public function resolve(\EasyCI20220415\PhpParser\Node $node) : ?string
+    public function resolve(\EasyCI20220416\PhpParser\Node $node) : ?string
     {
         return $node->name->toString();
     }

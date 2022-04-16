@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220415\Symfony\Component\DependencyInjection\Exception;
+namespace EasyCI20220416\Symfony\Component\DependencyInjection\Exception;
 
-use EasyCI20220415\Psr\Container\NotFoundExceptionInterface;
+use EasyCI20220416\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent parameter is used.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParameterNotFoundException extends \EasyCI20220415\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \EasyCI20220415\Psr\Container\NotFoundExceptionInterface
+class ParameterNotFoundException extends \EasyCI20220416\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \EasyCI20220416\Psr\Container\NotFoundExceptionInterface
 {
     /**
      * @var string

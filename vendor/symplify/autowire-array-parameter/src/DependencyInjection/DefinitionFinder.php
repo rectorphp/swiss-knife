@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220415\Symplify\AutowireArrayParameter\DependencyInjection;
+namespace EasyCI20220416\Symplify\AutowireArrayParameter\DependencyInjection;
 
-use EasyCI20220415\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220415\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220415\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
+use EasyCI20220416\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220416\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220416\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
 use Throwable;
 /**
  * @api
@@ -16,7 +16,7 @@ final class DefinitionFinder
     /**
      * @return Definition[]
      */
-    public function findAllByType(\EasyCI20220415\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : array
+    public function findAllByType(\EasyCI20220416\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : array
     {
         $definitions = [];
         $containerBuilderDefinitions = $containerBuilder->getDefinitions();
@@ -31,15 +31,15 @@ final class DefinitionFinder
         }
         return $definitions;
     }
-    public function getByType(\EasyCI20220415\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : \EasyCI20220415\Symfony\Component\DependencyInjection\Definition
+    public function getByType(\EasyCI20220416\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : \EasyCI20220416\Symfony\Component\DependencyInjection\Definition
     {
         $definition = $this->getByTypeIfExists($containerBuilder, $type);
         if ($definition !== null) {
             return $definition;
         }
-        throw new \EasyCI20220415\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException(\sprintf('Definition for type "%s" was not found.', $type));
+        throw new \EasyCI20220416\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException(\sprintf('Definition for type "%s" was not found.', $type));
     }
-    private function getByTypeIfExists(\EasyCI20220415\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : ?\EasyCI20220415\Symfony\Component\DependencyInjection\Definition
+    private function getByTypeIfExists(\EasyCI20220416\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : ?\EasyCI20220416\Symfony\Component\DependencyInjection\Definition
     {
         $containerBuilderDefinitions = $containerBuilder->getDefinitions();
         foreach ($containerBuilderDefinitions as $name => $definition) {

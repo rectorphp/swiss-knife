@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220415\Symfony\Component\Config\Builder;
+namespace EasyCI20220416\Symfony\Component\Config\Builder;
 
 /**
  * Build PHP classes to generate config.
@@ -122,11 +122,11 @@ BODY
     }
     public function addMethod(string $name, string $body, array $params = []) : void
     {
-        $this->methods[] = new \EasyCI20220415\Symfony\Component\Config\Builder\Method(\strtr($body, ['NAME' => $this->camelCase($name)] + $params));
+        $this->methods[] = new \EasyCI20220416\Symfony\Component\Config\Builder\Method(\strtr($body, ['NAME' => $this->camelCase($name)] + $params));
     }
-    public function addProperty(string $name, string $classType = null, string $defaultValue = null) : \EasyCI20220415\Symfony\Component\Config\Builder\Property
+    public function addProperty(string $name, string $classType = null, string $defaultValue = null) : \EasyCI20220416\Symfony\Component\Config\Builder\Property
     {
-        $property = new \EasyCI20220415\Symfony\Component\Config\Builder\Property($name, '_' !== $name[0] ? $this->camelCase($name) : $name);
+        $property = new \EasyCI20220416\Symfony\Component\Config\Builder\Property($name, '_' !== $name[0] ? $this->camelCase($name) : $name);
         if (null !== $classType) {
             $property->setType($classType);
         }

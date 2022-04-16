@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220415\Symplify\Astral\PhpParser;
+namespace EasyCI20220416\Symplify\Astral\PhpParser;
 
-use EasyCI20220415\PhpParser\Node\Stmt;
-use EasyCI20220415\PHPStan\Parser\Parser;
+use EasyCI20220416\PhpParser\Node\Stmt;
+use EasyCI20220416\PHPStan\Parser\Parser;
 /**
  * @see \Symplify\Astral\PhpParser\SmartPhpParserFactory
  */
@@ -14,7 +14,7 @@ final class SmartPhpParser
      * @var \PHPStan\Parser\Parser
      */
     private $parser;
-    public function __construct(\EasyCI20220415\PHPStan\Parser\Parser $parser)
+    public function __construct(\EasyCI20220416\PHPStan\Parser\Parser $parser)
     {
         $this->parser = $parser;
     }

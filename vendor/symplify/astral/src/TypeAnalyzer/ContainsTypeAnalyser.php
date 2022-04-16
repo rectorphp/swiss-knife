@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220415\Symplify\Astral\TypeAnalyzer;
+namespace EasyCI20220416\Symplify\Astral\TypeAnalyzer;
 
-use EasyCI20220415\PhpParser\Node\Expr;
-use EasyCI20220415\PHPStan\Analyser\Scope;
-use EasyCI20220415\PHPStan\Type\ArrayType;
-use EasyCI20220415\PHPStan\Type\IntersectionType;
-use EasyCI20220415\PHPStan\Type\Type;
-use EasyCI20220415\PHPStan\Type\TypeWithClassName;
-use EasyCI20220415\PHPStan\Type\UnionType;
+use EasyCI20220416\PhpParser\Node\Expr;
+use EasyCI20220416\PHPStan\Analyser\Scope;
+use EasyCI20220416\PHPStan\Type\ArrayType;
+use EasyCI20220416\PHPStan\Type\IntersectionType;
+use EasyCI20220416\PHPStan\Type\Type;
+use EasyCI20220416\PHPStan\Type\TypeWithClassName;
+use EasyCI20220416\PHPStan\Type\UnionType;
 final class ContainsTypeAnalyser
 {
     /**
      * @param class-string[] $types
      */
-    public function containsExprTypes(\EasyCI20220415\PhpParser\Node\Expr $expr, \EasyCI20220415\PHPStan\Analyser\Scope $scope, array $types) : bool
+    public function containsExprTypes(\EasyCI20220416\PhpParser\Node\Expr $expr, \EasyCI20220416\PHPStan\Analyser\Scope $scope, array $types) : bool
     {
         foreach ($types as $type) {
             if (!$this->containsExprType($expr, $scope, $type)) {
@@ -28,7 +28,7 @@ final class ContainsTypeAnalyser
     /**
      * @param class-string[] $types
      */
-    public function containsTypeExprTypes(\EasyCI20220415\PHPStan\Type\Type $exprType, array $types) : bool
+    public function containsTypeExprTypes(\EasyCI20220416\PHPStan\Type\Type $exprType, array $types) : bool
     {
         foreach ($types as $type) {
             if ($this->containsTypeExprType($exprType, $type)) {
@@ -40,9 +40,9 @@ final class ContainsTypeAnalyser
     /**
      * @param class-string $type
      */
-    public function containsTypeExprType(\EasyCI20220415\PHPStan\Type\Type $exprType, string $type) : bool
+    public function containsTypeExprType(\EasyCI20220416\PHPStan\Type\Type $exprType, string $type) : bool
     {
-        if ($exprType instanceof \EasyCI20220415\PHPStan\Type\IntersectionType) {
+        if ($exprType instanceof \EasyCI20220416\PHPStan\Type\IntersectionType) {
             $intersectionedTypes = $exprType->getTypes();
             foreach ($intersectionedTypes as $intersectionedType) {
                 if ($this->isExprTypeOfType($intersectionedType, $type)) {
@@ -55,7 +55,7 @@ final class ContainsTypeAnalyser
     /**
      * @param class-string $type
      */
-    public function containsExprType(\EasyCI20220415\PhpParser\Node\Expr $expr, \EasyCI20220415\PHPStan\Analyser\Scope $scope, string $type) : bool
+    public function containsExprType(\EasyCI20220416\PhpParser\Node\Expr $expr, \EasyCI20220416\PHPStan\Analyser\Scope $scope, string $type) : bool
     {
         $exprType = $scope->getType($expr);
         return $this->containsTypeExprType($exprType, $type);
@@ -63,14 +63,14 @@ final class ContainsTypeAnalyser
     /**
      * @param class-string $class
      */
-    private function isUnionTypeWithClass(\EasyCI20220415\PHPStan\Type\Type $type, string $class) : bool
+    private function isUnionTypeWithClass(\EasyCI20220416\PHPStan\Type\Type $type, string $class) : bool
     {
-        if (!$type instanceof \EasyCI20220415\PHPStan\Type\UnionType) {
+        if (!$type instanceof \EasyCI20220416\PHPStan\Type\UnionType) {
             return \false;
         }
         $unionedTypes = $type->getTypes();
         foreach ($unionedTypes as $unionedType) {
-            if (!$unionedType instanceof \EasyCI20220415\PHPStan\Type\TypeWithClassName) {
+            if (!$unionedType instanceof \EasyCI20220416\PHPStan\Type\TypeWithClassName) {
                 continue;
             }
             if (\is_a($unionedType->getClassName(), $class, \true)) {
@@ -82,13 +82,13 @@ final class ContainsTypeAnalyser
     /**
      * @param class-string $type
      */
-    private function isArrayWithItemType(\EasyCI20220415\PHPStan\Type\Type $propertyType, string $type) : bool
+    private function isArrayWithItemType(\EasyCI20220416\PHPStan\Type\Type $propertyType, string $type) : bool
     {
-        if (!$propertyType instanceof \EasyCI20220415\PHPStan\Type\ArrayType) {
+        if (!$propertyType instanceof \EasyCI20220416\PHPStan\Type\ArrayType) {
             return \false;
         }
         $arrayItemType = $propertyType->getItemType();
-        if (!$arrayItemType instanceof \EasyCI20220415\PHPStan\Type\TypeWithClassName) {
+        if (!$arrayItemType instanceof \EasyCI20220416\PHPStan\Type\TypeWithClassName) {
             return \false;
         }
         return \is_a($arrayItemType->getClassName(), $type, \true);
@@ -96,9 +96,9 @@ final class ContainsTypeAnalyser
     /**
      * @param class-string $type
      */
-    private function isExprTypeOfType(\EasyCI20220415\PHPStan\Type\Type $exprType, string $type) : bool
+    private function isExprTypeOfType(\EasyCI20220416\PHPStan\Type\Type $exprType, string $type) : bool
     {
-        if ($exprType instanceof \EasyCI20220415\PHPStan\Type\TypeWithClassName) {
+        if ($exprType instanceof \EasyCI20220416\PHPStan\Type\TypeWithClassName) {
             return \is_a($exprType->getClassName(), $type, \true);
         }
         if ($this->isUnionTypeWithClass($exprType, $type)) {
