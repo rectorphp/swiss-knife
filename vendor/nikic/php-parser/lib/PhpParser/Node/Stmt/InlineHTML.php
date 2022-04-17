@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220416\PhpParser\Node\Stmt;
+namespace EasyCI20220417\PhpParser\Node\Stmt;
 
-use EasyCI20220416\PhpParser\Node\Stmt;
-class InlineHTML extends \EasyCI20220416\PhpParser\Node\Stmt
+use EasyCI20220417\PhpParser\Node\Stmt;
+class InlineHTML extends \EasyCI20220417\PhpParser\Node\Stmt
 {
     /** @var string String */
     public $value;

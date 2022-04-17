@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\Contract\Application;
 
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220416\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220417\Symplify\SmartFileSystem\SmartFileInfo;
 interface FileProcessorInterface
 {
     /**
