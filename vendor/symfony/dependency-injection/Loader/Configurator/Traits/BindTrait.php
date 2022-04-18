@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use EasyCI20220417\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
-use EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
+use EasyCI20220418\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
+use EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
 trait BindTrait
 {
     /**
@@ -31,8 +31,8 @@ trait BindTrait
     {
         $valueOrRef = static::processValue($valueOrRef, \true);
         $bindings = $this->definition->getBindings();
-        $type = $this instanceof \EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator ? \EasyCI20220417\Symfony\Component\DependencyInjection\Argument\BoundArgument::DEFAULTS_BINDING : ($this instanceof \EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator ? \EasyCI20220417\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \EasyCI20220417\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING);
-        $bindings[$nameOrFqcn] = new \EasyCI20220417\Symfony\Component\DependencyInjection\Argument\BoundArgument($valueOrRef, \true, $type, $this->path ?? null);
+        $type = $this instanceof \EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator ? \EasyCI20220418\Symfony\Component\DependencyInjection\Argument\BoundArgument::DEFAULTS_BINDING : ($this instanceof \EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator ? \EasyCI20220418\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \EasyCI20220418\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING);
+        $bindings[$nameOrFqcn] = new \EasyCI20220418\Symfony\Component\DependencyInjection\Argument\BoundArgument($valueOrRef, \true, $type, $this->path ?? null);
         $this->definition->setBindings($bindings);
         return $this;
     }

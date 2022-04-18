@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220417\Symplify\Astral\NodeValue;
+namespace EasyCI20220418\Symplify\Astral\NodeValue;
 
-use EasyCI20220417\PHPStan\Type\ConstantScalarType;
-use EasyCI20220417\PHPStan\Type\UnionType;
+use EasyCI20220418\PHPStan\Type\ConstantScalarType;
+use EasyCI20220418\PHPStan\Type\UnionType;
 final class UnionTypeValueResolver
 {
     /**
      * @return mixed[]
      */
-    public function resolveConstantTypes(\EasyCI20220417\PHPStan\Type\UnionType $unionType) : array
+    public function resolveConstantTypes(\EasyCI20220418\PHPStan\Type\UnionType $unionType) : array
     {
         $resolvedValues = [];
         foreach ($unionType->getTypes() as $unionedType) {
-            if (!$unionedType instanceof \EasyCI20220417\PHPStan\Type\ConstantScalarType) {
+            if (!$unionedType instanceof \EasyCI20220418\PHPStan\Type\ConstantScalarType) {
                 continue;
             }
             $resolvedValues[] = $unionedType->getValue();

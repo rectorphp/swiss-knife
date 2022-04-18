@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220417\PhpParser\Builder;
+namespace EasyCI20220418\PhpParser\Builder;
 
-use EasyCI20220417\PhpParser;
-use EasyCI20220417\PhpParser\BuilderHelpers;
-use EasyCI20220417\PhpParser\Node;
-use EasyCI20220417\PhpParser\Node\Stmt;
-class Function_ extends \EasyCI20220417\PhpParser\Builder\FunctionLike
+use EasyCI20220418\PhpParser;
+use EasyCI20220418\PhpParser\BuilderHelpers;
+use EasyCI20220418\PhpParser\Node;
+use EasyCI20220418\PhpParser\Node\Stmt;
+class Function_ extends \EasyCI20220418\PhpParser\Builder\FunctionLike
 {
     protected $name;
     protected $stmts = [];
@@ -31,7 +31,7 @@ class Function_ extends \EasyCI20220417\PhpParser\Builder\FunctionLike
      */
     public function addStmt($stmt)
     {
-        $this->stmts[] = \EasyCI20220417\PhpParser\BuilderHelpers::normalizeStmt($stmt);
+        $this->stmts[] = \EasyCI20220418\PhpParser\BuilderHelpers::normalizeStmt($stmt);
         return $this;
     }
     /**
@@ -43,7 +43,7 @@ class Function_ extends \EasyCI20220417\PhpParser\Builder\FunctionLike
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220417\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220418\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -51,8 +51,8 @@ class Function_ extends \EasyCI20220417\PhpParser\Builder\FunctionLike
      *
      * @return Stmt\Function_ The built function node
      */
-    public function getNode() : \EasyCI20220417\PhpParser\Node
+    public function getNode() : \EasyCI20220418\PhpParser\Node
     {
-        return new \EasyCI20220417\PhpParser\Node\Stmt\Function_($this->name, ['byRef' => $this->returnByRef, 'params' => $this->params, 'returnType' => $this->returnType, 'stmts' => $this->stmts, 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new \EasyCI20220418\PhpParser\Node\Stmt\Function_($this->name, ['byRef' => $this->returnByRef, 'params' => $this->params, 'returnType' => $this->returnType, 'stmts' => $this->stmts, 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

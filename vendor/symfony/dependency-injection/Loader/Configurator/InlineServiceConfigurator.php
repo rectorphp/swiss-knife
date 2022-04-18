@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220417\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220418\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class InlineServiceConfigurator extends \EasyCI20220417\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class InlineServiceConfigurator extends \EasyCI20220418\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     use Traits\ArgumentTrait;
     use Traits\AutowireTrait;
@@ -40,7 +40,7 @@ class InlineServiceConfigurator extends \EasyCI20220417\Symfony\Component\Depend
      * @var string|null
      */
     private $path;
-    public function __construct(\EasyCI20220417\Symfony\Component\DependencyInjection\Definition $definition)
+    public function __construct(\EasyCI20220418\Symfony\Component\DependencyInjection\Definition $definition)
     {
         $this->definition = $definition;
     }

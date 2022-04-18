@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Console;
 
-use EasyCI20220417\Symfony\Component\Console\Application;
-use EasyCI20220417\Symfony\Component\Console\Command\Command;
-final class EasyCIApplication extends \EasyCI20220417\Symfony\Component\Console\Application
+use EasyCI20220418\Symfony\Component\Console\Application;
+use EasyCI20220418\Symfony\Component\Console\Command\Command;
+final class EasyCIApplication extends \EasyCI20220418\Symfony\Component\Console\Application
 {
     /**
      * @param Command[] $commands
