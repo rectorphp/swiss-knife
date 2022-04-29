@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220418\Symfony\Component\Config\Resource;
+namespace EasyCI20220429\Symfony\Component\Config\Resource;
 
-use EasyCI20220418\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use EasyCI20220418\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use EasyCI20220418\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use EasyCI20220429\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use EasyCI20220429\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use EasyCI20220429\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @final
  */
-class ReflectionClassResource implements \EasyCI20220418\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ReflectionClassResource implements \EasyCI20220429\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var mixed[]
@@ -207,18 +207,18 @@ class ReflectionClassResource implements \EasyCI20220418\Symfony\Component\Confi
         if ($class->isAbstract() || $class->isInterface() || $class->isTrait()) {
             return;
         }
-        if (\interface_exists(\EasyCI20220418\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\EasyCI20220418\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-            (yield \EasyCI20220418\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
+        if (\interface_exists(\EasyCI20220429\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\EasyCI20220429\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
+            (yield \EasyCI20220429\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedEvents(), \true));
         }
-        if (\interface_exists(\EasyCI20220418\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\EasyCI20220418\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
-            (yield \EasyCI20220418\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
+        if (\interface_exists(\EasyCI20220429\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\EasyCI20220429\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
+            (yield \EasyCI20220429\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
             foreach ($class->name::getHandledMessages() as $key => $value) {
                 (yield $key . \print_r($value, \true));
             }
         }
-        if (\interface_exists(\EasyCI20220418\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\EasyCI20220418\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
-            (yield \EasyCI20220418\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
+        if (\interface_exists(\EasyCI20220429\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\EasyCI20220429\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+            (yield \EasyCI20220429\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedServices(), \true));
         }
     }

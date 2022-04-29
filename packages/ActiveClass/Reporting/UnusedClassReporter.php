@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\Reporting;
 
-use EasyCI20220418\Symfony\Component\Console\Command\Command;
-use EasyCI20220418\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220429\Symfony\Component\Console\Command\Command;
+use EasyCI20220429\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 final class UnusedClassReporter
 {
@@ -12,7 +12,7 @@ final class UnusedClassReporter
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\EasyCI20220418\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\EasyCI20220429\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -26,7 +26,7 @@ final class UnusedClassReporter
         if ($unusedFilesWithClasses === []) {
             $successMessage = \sprintf('All the %d services are used. Great job!', \count($existingFilesWithClasses));
             $this->symfonyStyle->success($successMessage);
-            return \EasyCI20220418\Symfony\Component\Console\Command\Command::SUCCESS;
+            return \EasyCI20220429\Symfony\Component\Console\Command\Command::SUCCESS;
         }
         foreach ($unusedFilesWithClasses as $unusedFileWithClass) {
             $this->symfonyStyle->writeln(' * ' . $unusedFileWithClass->getClassName());
@@ -35,6 +35,6 @@ final class UnusedClassReporter
         }
         $successMessage = \sprintf('Found %d unused classes. Check them, remove them or correct the command.', \count($unusedFilesWithClasses));
         $this->symfonyStyle->error($successMessage);
-        return \EasyCI20220418\Symfony\Component\Console\Command\Command::FAILURE;
+        return \EasyCI20220429\Symfony\Component\Console\Command\Command::FAILURE;
     }
 }

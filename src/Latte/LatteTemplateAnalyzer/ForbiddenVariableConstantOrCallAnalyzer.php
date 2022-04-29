@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220418\Nette\Utils\Strings;
+use EasyCI20220429\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220418\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220429\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\ForbiddenVariableConstantOrCallAnalyzer\ForbiddenVariableConstantOrCallAnalyzerTest
  */
@@ -42,9 +42,9 @@ final class ForbiddenVariableConstantOrCallAnalyzer implements \Symplify\EasyCI\
     /**
      * @return FileErrorInterface[]
      */
-    private function analyzeFileInfo(\EasyCI20220418\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function analyzeFileInfo(\EasyCI20220429\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
-        $matches = \EasyCI20220418\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::ON_VARIABLE_CALL_REGEX);
+        $matches = \EasyCI20220429\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::ON_VARIABLE_CALL_REGEX);
         $templateErrors = [];
         foreach ($matches as $match) {
             $errorMessage = \sprintf('On variable "%s::%s" call/constant fetch is not allowed', (string) $match[self::VARIABLE_PART_KEY], (string) $match[self::CONSTANT_OR_METHOD_PART_KEY]);

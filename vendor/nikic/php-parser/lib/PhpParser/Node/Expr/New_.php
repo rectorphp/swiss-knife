@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220418\PhpParser\Node\Expr;
+namespace EasyCI20220429\PhpParser\Node\Expr;
 
-use EasyCI20220418\PhpParser\Node;
-use EasyCI20220418\PhpParser\Node\Arg;
-use EasyCI20220418\PhpParser\Node\Expr;
-use EasyCI20220418\PhpParser\Node\VariadicPlaceholder;
-class New_ extends \EasyCI20220418\PhpParser\Node\Expr\CallLike
+use EasyCI20220429\PhpParser\Node;
+use EasyCI20220429\PhpParser\Node\Arg;
+use EasyCI20220429\PhpParser\Node\Expr;
+use EasyCI20220429\PhpParser\Node\VariadicPlaceholder;
+class New_ extends \EasyCI20220429\PhpParser\Node\Expr\CallLike
 {
     /** @var Node\Name|Expr|Node\Stmt\Class_ Class name */
     public $class;

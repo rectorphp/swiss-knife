@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220418\Symplify\Astral\NodeTraverser;
+namespace EasyCI20220429\Symplify\Astral\NodeTraverser;
 
-use EasyCI20220418\PhpParser\Node;
-use EasyCI20220418\PhpParser\NodeTraverser;
-use EasyCI20220418\Symplify\Astral\NodeVisitor\CallableNodeVisitor;
+use EasyCI20220429\PhpParser\Node;
+use EasyCI20220429\PhpParser\NodeTraverser;
+use EasyCI20220429\Symplify\Astral\NodeVisitor\CallableNodeVisitor;
 /**
  * @api
  */
@@ -13,7 +13,7 @@ final class SimpleCallableNodeTraverser
 {
     /**
      * @param callable(Node $node): (int|Node|null) $callable
-     * @param mixed[]|\PhpParser\Node|null $nodes
+     * @param \PhpParser\Node|mixed[]|null $nodes
      */
     public function traverseNodesWithCallable($nodes, callable $callable) : void
     {
@@ -26,8 +26,8 @@ final class SimpleCallableNodeTraverser
         if (!\is_array($nodes)) {
             $nodes = [$nodes];
         }
-        $nodeTraverser = new \EasyCI20220418\PhpParser\NodeTraverser();
-        $callableNodeVisitor = new \EasyCI20220418\Symplify\Astral\NodeVisitor\CallableNodeVisitor($callable);
+        $nodeTraverser = new \EasyCI20220429\PhpParser\NodeTraverser();
+        $callableNodeVisitor = new \EasyCI20220429\Symplify\Astral\NodeVisitor\CallableNodeVisitor($callable);
         $nodeTraverser->addVisitor($callableNodeVisitor);
         $nodeTraverser->traverse($nodes);
     }

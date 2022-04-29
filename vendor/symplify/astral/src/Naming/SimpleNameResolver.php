@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220418\Symplify\Astral\Naming;
+namespace EasyCI20220429\Symplify\Astral\Naming;
 
-use EasyCI20220418\Nette\Utils\Strings;
-use EasyCI20220418\PhpParser\Node;
-use EasyCI20220418\PhpParser\Node\Expr\ClassConstFetch;
-use EasyCI20220418\PhpParser\Node\Expr\Variable;
-use EasyCI20220418\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220418\PhpParser\Node\Stmt\Property;
-use EasyCI20220418\PHPStan\Analyser\Scope;
-use EasyCI20220418\PHPStan\Reflection\ClassReflection;
-use EasyCI20220418\Symplify\Astral\Contract\NodeNameResolverInterface;
+use EasyCI20220429\Nette\Utils\Strings;
+use EasyCI20220429\PhpParser\Node;
+use EasyCI20220429\PhpParser\Node\Expr\ClassConstFetch;
+use EasyCI20220429\PhpParser\Node\Expr\Variable;
+use EasyCI20220429\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220429\PhpParser\Node\Stmt\Property;
+use EasyCI20220429\PHPStan\Analyser\Scope;
+use EasyCI20220429\PHPStan\Reflection\ClassReflection;
+use EasyCI20220429\Symplify\Astral\Contract\NodeNameResolverInterface;
 /**
  * @see \Symplify\Astral\Tests\Naming\SimpleNameResolverTest
  */
@@ -47,14 +47,14 @@ final class SimpleNameResolver
             }
             return $nodeNameResolver->resolve($node);
         }
-        if ($node instanceof \EasyCI20220418\PhpParser\Node\Expr\ClassConstFetch && $this->isName($node->name, 'class')) {
+        if ($node instanceof \EasyCI20220429\PhpParser\Node\Expr\ClassConstFetch && $this->isName($node->name, 'class')) {
             return $this->getName($node->class);
         }
-        if ($node instanceof \EasyCI20220418\PhpParser\Node\Stmt\Property) {
+        if ($node instanceof \EasyCI20220429\PhpParser\Node\Stmt\Property) {
             $propertyProperty = $node->props[0];
             return $this->getName($propertyProperty->name);
         }
-        if ($node instanceof \EasyCI20220418\PhpParser\Node\Expr\Variable) {
+        if ($node instanceof \EasyCI20220429\PhpParser\Node\Expr\Variable) {
             return $this->getName($node->name);
         }
         return null;
@@ -62,7 +62,7 @@ final class SimpleNameResolver
     /**
      * @param string[] $desiredNames
      */
-    public function isNames(\EasyCI20220418\PhpParser\Node $node, array $desiredNames) : bool
+    public function isNames(\EasyCI20220429\PhpParser\Node $node, array $desiredNames) : bool
     {
         foreach ($desiredNames as $desiredName) {
             if ($this->isName($node, $desiredName)) {
@@ -72,7 +72,7 @@ final class SimpleNameResolver
         return \false;
     }
     /**
-     * @param \PhpParser\Node|string $node
+     * @param string|\PhpParser\Node $node
      */
     public function isName($node, string $desiredName) : bool
     {
@@ -85,7 +85,7 @@ final class SimpleNameResolver
         }
         return $name === $desiredName;
     }
-    public function areNamesEqual(\EasyCI20220418\PhpParser\Node $firstNode, \EasyCI20220418\PhpParser\Node $secondNode) : bool
+    public function areNamesEqual(\EasyCI20220429\PhpParser\Node $firstNode, \EasyCI20220429\PhpParser\Node $secondNode) : bool
     {
         $firstName = $this->getName($firstNode);
         if ($firstName === null) {
@@ -93,19 +93,19 @@ final class SimpleNameResolver
         }
         return $this->isName($secondNode, $firstName);
     }
-    public function resolveShortNameFromNode(\EasyCI20220418\PhpParser\Node\Stmt\ClassLike $classLike) : ?string
+    public function resolveShortNameFromNode(\EasyCI20220429\PhpParser\Node\Stmt\ClassLike $classLike) : ?string
     {
         $className = $this->getName($classLike);
         if ($className === null) {
             return null;
         }
         // anonymous class return null name
-        if (\EasyCI20220418\Nette\Utils\Strings::match($className, self::ANONYMOUS_CLASS_REGEX)) {
+        if (\EasyCI20220429\Nette\Utils\Strings::match($className, self::ANONYMOUS_CLASS_REGEX)) {
             return null;
         }
         return $this->resolveShortName($className);
     }
-    public function resolveShortNameFromScope(\EasyCI20220418\PHPStan\Analyser\Scope $scope) : ?string
+    public function resolveShortNameFromScope(\EasyCI20220429\PHPStan\Analyser\Scope $scope) : ?string
     {
         $className = $this->getClassNameFromScope($scope);
         if ($className === null) {
@@ -113,34 +113,34 @@ final class SimpleNameResolver
         }
         return $this->resolveShortName($className);
     }
-    public function getClassNameFromScope(\EasyCI20220418\PHPStan\Analyser\Scope $scope) : ?string
+    public function getClassNameFromScope(\EasyCI20220429\PHPStan\Analyser\Scope $scope) : ?string
     {
         if ($scope->isInTrait()) {
             $traitReflection = $scope->getTraitReflection();
-            if (!$traitReflection instanceof \EasyCI20220418\PHPStan\Reflection\ClassReflection) {
+            if (!$traitReflection instanceof \EasyCI20220429\PHPStan\Reflection\ClassReflection) {
                 return null;
             }
             return $traitReflection->getName();
         }
         $classReflection = $scope->getClassReflection();
-        if (!$classReflection instanceof \EasyCI20220418\PHPStan\Reflection\ClassReflection) {
+        if (!$classReflection instanceof \EasyCI20220429\PHPStan\Reflection\ClassReflection) {
             return null;
         }
         return $classReflection->getName();
     }
-    public function isNameMatch(\EasyCI20220418\PhpParser\Node $node, string $desiredNameRegex) : bool
+    public function isNameMatch(\EasyCI20220429\PhpParser\Node $node, string $desiredNameRegex) : bool
     {
         $name = $this->getName($node);
         if ($name === null) {
             return \false;
         }
-        return (bool) \EasyCI20220418\Nette\Utils\Strings::match($name, $desiredNameRegex);
+        return (bool) \EasyCI20220429\Nette\Utils\Strings::match($name, $desiredNameRegex);
     }
     public function resolveShortName(string $className) : string
     {
         if (\strpos($className, '\\') === \false) {
             return $className;
         }
-        return (string) \EasyCI20220418\Nette\Utils\Strings::after($className, '\\', -1);
+        return (string) \EasyCI20220429\Nette\Utils\Strings::after($className, '\\', -1);
     }
 }

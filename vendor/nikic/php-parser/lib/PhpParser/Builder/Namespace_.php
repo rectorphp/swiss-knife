@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220418\PhpParser\Builder;
+namespace EasyCI20220429\PhpParser\Builder;
 
-use EasyCI20220418\PhpParser;
-use EasyCI20220418\PhpParser\BuilderHelpers;
-use EasyCI20220418\PhpParser\Node;
-use EasyCI20220418\PhpParser\Node\Stmt;
-class Namespace_ extends \EasyCI20220418\PhpParser\Builder\Declaration
+use EasyCI20220429\PhpParser;
+use EasyCI20220429\PhpParser\BuilderHelpers;
+use EasyCI20220429\PhpParser\Node;
+use EasyCI20220429\PhpParser\Node\Stmt;
+class Namespace_ extends \EasyCI20220429\PhpParser\Builder\Declaration
 {
     private $name;
     private $stmts = [];
@@ -18,7 +18,7 @@ class Namespace_ extends \EasyCI20220418\PhpParser\Builder\Declaration
      */
     public function __construct($name)
     {
-        $this->name = null !== $name ? \EasyCI20220418\PhpParser\BuilderHelpers::normalizeName($name) : null;
+        $this->name = null !== $name ? \EasyCI20220429\PhpParser\BuilderHelpers::normalizeName($name) : null;
     }
     /**
      * Adds a statement.
@@ -29,7 +29,7 @@ class Namespace_ extends \EasyCI20220418\PhpParser\Builder\Declaration
      */
     public function addStmt($stmt)
     {
-        $this->stmts[] = \EasyCI20220418\PhpParser\BuilderHelpers::normalizeStmt($stmt);
+        $this->stmts[] = \EasyCI20220429\PhpParser\BuilderHelpers::normalizeStmt($stmt);
         return $this;
     }
     /**
@@ -37,8 +37,8 @@ class Namespace_ extends \EasyCI20220418\PhpParser\Builder\Declaration
      *
      * @return Stmt\Namespace_ The built node
      */
-    public function getNode() : \EasyCI20220418\PhpParser\Node
+    public function getNode() : \EasyCI20220429\PhpParser\Node
     {
-        return new \EasyCI20220418\PhpParser\Node\Stmt\Namespace_($this->name, $this->stmts, $this->attributes);
+        return new \EasyCI20220429\PhpParser\Node\Stmt\Namespace_($this->name, $this->stmts, $this->attributes);
     }
 }

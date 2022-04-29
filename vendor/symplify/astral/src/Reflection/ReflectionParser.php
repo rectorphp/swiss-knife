@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220418\Symplify\Astral\Reflection;
+namespace EasyCI20220429\Symplify\Astral\Reflection;
 
-use EasyCI20220418\PhpParser\Node;
-use EasyCI20220418\PhpParser\Node\Stmt\Class_;
-use EasyCI20220418\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220418\PhpParser\Node\Stmt\Property;
-use EasyCI20220418\PhpParser\NodeFinder;
-use EasyCI20220418\PHPStan\Reflection\MethodReflection;
+use EasyCI20220429\PhpParser\Node;
+use EasyCI20220429\PhpParser\Node\Stmt\Class_;
+use EasyCI20220429\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220429\PhpParser\Node\Stmt\Property;
+use EasyCI20220429\PhpParser\NodeFinder;
+use EasyCI20220429\PHPStan\Reflection\MethodReflection;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
-use EasyCI20220418\Symplify\Astral\PhpParser\SmartPhpParser;
+use EasyCI20220429\Symplify\Astral\PhpParser\SmartPhpParser;
 use Throwable;
 /**
  * @api
@@ -27,12 +27,12 @@ final class ReflectionParser
      * @var \PhpParser\NodeFinder
      */
     private $nodeFinder;
-    public function __construct(\EasyCI20220418\Symplify\Astral\PhpParser\SmartPhpParser $smartPhpParser, \EasyCI20220418\PhpParser\NodeFinder $nodeFinder)
+    public function __construct(\EasyCI20220429\Symplify\Astral\PhpParser\SmartPhpParser $smartPhpParser, \EasyCI20220429\PhpParser\NodeFinder $nodeFinder)
     {
         $this->smartPhpParser = $smartPhpParser;
         $this->nodeFinder = $nodeFinder;
     }
-    public function parsePHPStanMethodReflection(\EasyCI20220418\PHPStan\Reflection\MethodReflection $methodReflection) : ?\EasyCI20220418\PhpParser\Node\Stmt\ClassMethod
+    public function parsePHPStanMethodReflection(\EasyCI20220429\PHPStan\Reflection\MethodReflection $methodReflection) : ?\EasyCI20220429\PhpParser\Node\Stmt\ClassMethod
     {
         $classReflection = $methodReflection->getDeclaringClass();
         $fileName = $classReflection->getFileName();
@@ -40,28 +40,28 @@ final class ReflectionParser
             return null;
         }
         $class = $this->parseFilenameToClass($fileName);
-        if (!$class instanceof \EasyCI20220418\PhpParser\Node) {
+        if (!$class instanceof \EasyCI20220429\PhpParser\Node) {
             return null;
         }
         return $class->getMethod($methodReflection->getName());
     }
-    public function parseMethodReflection(\ReflectionMethod $reflectionMethod) : ?\EasyCI20220418\PhpParser\Node\Stmt\ClassMethod
+    public function parseMethodReflection(\ReflectionMethod $reflectionMethod) : ?\EasyCI20220429\PhpParser\Node\Stmt\ClassMethod
     {
         $class = $this->parseNativeClassReflection($reflectionMethod->getDeclaringClass());
-        if (!$class instanceof \EasyCI20220418\PhpParser\Node\Stmt\Class_) {
+        if (!$class instanceof \EasyCI20220429\PhpParser\Node\Stmt\Class_) {
             return null;
         }
         return $class->getMethod($reflectionMethod->getName());
     }
-    public function parsePropertyReflection(\ReflectionProperty $reflectionProperty) : ?\EasyCI20220418\PhpParser\Node\Stmt\Property
+    public function parsePropertyReflection(\ReflectionProperty $reflectionProperty) : ?\EasyCI20220429\PhpParser\Node\Stmt\Property
     {
         $class = $this->parseNativeClassReflection($reflectionProperty->getDeclaringClass());
-        if (!$class instanceof \EasyCI20220418\PhpParser\Node\Stmt\Class_) {
+        if (!$class instanceof \EasyCI20220429\PhpParser\Node\Stmt\Class_) {
             return null;
         }
         return $class->getProperty($reflectionProperty->getName());
     }
-    private function parseNativeClassReflection(\ReflectionClass $reflectionClass) : ?\EasyCI20220418\PhpParser\Node\Stmt\Class_
+    private function parseNativeClassReflection(\ReflectionClass $reflectionClass) : ?\EasyCI20220429\PhpParser\Node\Stmt\Class_
     {
         $fileName = $reflectionClass->getFileName();
         if ($fileName === \false) {
@@ -80,8 +80,8 @@ final class ReflectionParser
             // not reachable
             return null;
         }
-        $class = $this->nodeFinder->findFirstInstanceOf($stmts, \EasyCI20220418\PhpParser\Node\Stmt\Class_::class);
-        if (!$class instanceof \EasyCI20220418\PhpParser\Node\Stmt\Class_) {
+        $class = $this->nodeFinder->findFirstInstanceOf($stmts, \EasyCI20220429\PhpParser\Node\Stmt\Class_::class);
+        if (!$class instanceof \EasyCI20220429\PhpParser\Node\Stmt\Class_) {
             return null;
         }
         return $class;

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220418\Symfony\Component\DependencyInjection\ParameterBag;
+namespace EasyCI20220429\Symfony\Component\DependencyInjection\ParameterBag;
 
-use EasyCI20220418\Symfony\Component\DependencyInjection\Container;
+use EasyCI20220429\Symfony\Component\DependencyInjection\Container;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ContainerBag extends \EasyCI20220418\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \EasyCI20220418\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
+class ContainerBag extends \EasyCI20220429\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \EasyCI20220429\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
 {
     private $container;
-    public function __construct(\EasyCI20220418\Symfony\Component\DependencyInjection\Container $container)
+    public function __construct(\EasyCI20220429\Symfony\Component\DependencyInjection\Container $container)
     {
         $this->container = $container;
     }
@@ -30,7 +30,7 @@ class ContainerBag extends \EasyCI20220418\Symfony\Component\DependencyInjection
     }
     /**
      * {@inheritdoc}
-     * @return mixed[]|bool|float|int|string|\UnitEnum|null
+     * @return mixed[]|bool|string|int|float|\UnitEnum|null
      */
     public function get(string $name)
     {

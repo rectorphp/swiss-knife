@@ -1,10 +1,10 @@
 <?php
 
-namespace EasyCI20220418\Psr\Container;
+namespace EasyCI20220429\Psr\Container;
 
 /**
  * No entry was found in the container.
  */
-interface NotFoundExceptionInterface extends \EasyCI20220418\Psr\Container\ContainerExceptionInterface
+interface NotFoundExceptionInterface extends \EasyCI20220429\Psr\Container\ContainerExceptionInterface
 {
 }
