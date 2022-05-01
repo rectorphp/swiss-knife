@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220429\Symplify\Astral\Exception;
+namespace EasyCI20220501\Symplify\Astral\Exception;
 
 use Exception;
 final class ShouldNotHappenException extends \Exception

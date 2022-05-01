@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220429\Symplify\EasyTesting\ValueObject;
+namespace EasyCI20220501\Symplify\EasyTesting\ValueObject;
 
-use EasyCI20220429\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220501\Symplify\SmartFileSystem\SmartFileInfo;
 final class InputFileInfoAndExpected
 {
     /**
@@ -17,7 +17,7 @@ final class InputFileInfoAndExpected
     /**
      * @param mixed $expected
      */
-    public function __construct(\EasyCI20220429\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, $expected)
+    public function __construct(\EasyCI20220501\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, $expected)
     {
         $this->inputFileInfo = $inputFileInfo;
         $this->expected = $expected;
@@ -26,7 +26,7 @@ final class InputFileInfoAndExpected
     {
         return $this->inputFileInfo->getContents();
     }
-    public function getInputFileInfo() : \EasyCI20220429\Symplify\SmartFileSystem\SmartFileInfo
+    public function getInputFileInfo() : \EasyCI20220501\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->inputFileInfo;
     }

@@ -5,7 +5,7 @@ namespace Symplify\EasyCI\Latte;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220429\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220501\Symplify\SmartFileSystem\SmartFileInfo;
 final class LatteTemplateProcessor
 {
     /**

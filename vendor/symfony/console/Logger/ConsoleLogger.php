@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220429\Symfony\Component\Console\Logger;
+namespace EasyCI20220501\Symfony\Component\Console\Logger;
 
-use EasyCI20220429\Psr\Log\AbstractLogger;
-use EasyCI20220429\Psr\Log\InvalidArgumentException;
-use EasyCI20220429\Psr\Log\LogLevel;
-use EasyCI20220429\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI20220429\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220501\Psr\Log\AbstractLogger;
+use EasyCI20220501\Psr\Log\InvalidArgumentException;
+use EasyCI20220501\Psr\Log\LogLevel;
+use EasyCI20220501\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI20220501\Symfony\Component\Console\Output\OutputInterface;
 /**
  * PSR-3 compliant console logger.
  *
@@ -22,7 +22,7 @@ use EasyCI20220429\Symfony\Component\Console\Output\OutputInterface;
  *
  * @see https://www.php-fig.org/psr/psr-3/
  */
-class ConsoleLogger extends \EasyCI20220429\Psr\Log\AbstractLogger
+class ConsoleLogger extends \EasyCI20220501\Psr\Log\AbstractLogger
 {
     public const INFO = 'info';
     public const ERROR = 'error';
@@ -30,16 +30,16 @@ class ConsoleLogger extends \EasyCI20220429\Psr\Log\AbstractLogger
     /**
      * @var mixed[]
      */
-    private $verbosityLevelMap = [\EasyCI20220429\Psr\Log\LogLevel::EMERGENCY => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220429\Psr\Log\LogLevel::ALERT => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220429\Psr\Log\LogLevel::CRITICAL => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220429\Psr\Log\LogLevel::ERROR => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220429\Psr\Log\LogLevel::WARNING => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220429\Psr\Log\LogLevel::NOTICE => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE, \EasyCI20220429\Psr\Log\LogLevel::INFO => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE, \EasyCI20220429\Psr\Log\LogLevel::DEBUG => \EasyCI20220429\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG];
+    private $verbosityLevelMap = [\EasyCI20220501\Psr\Log\LogLevel::EMERGENCY => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220501\Psr\Log\LogLevel::ALERT => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220501\Psr\Log\LogLevel::CRITICAL => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220501\Psr\Log\LogLevel::ERROR => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220501\Psr\Log\LogLevel::WARNING => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \EasyCI20220501\Psr\Log\LogLevel::NOTICE => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE, \EasyCI20220501\Psr\Log\LogLevel::INFO => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE, \EasyCI20220501\Psr\Log\LogLevel::DEBUG => \EasyCI20220501\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG];
     /**
      * @var mixed[]
      */
-    private $formatLevelMap = [\EasyCI20220429\Psr\Log\LogLevel::EMERGENCY => self::ERROR, \EasyCI20220429\Psr\Log\LogLevel::ALERT => self::ERROR, \EasyCI20220429\Psr\Log\LogLevel::CRITICAL => self::ERROR, \EasyCI20220429\Psr\Log\LogLevel::ERROR => self::ERROR, \EasyCI20220429\Psr\Log\LogLevel::WARNING => self::INFO, \EasyCI20220429\Psr\Log\LogLevel::NOTICE => self::INFO, \EasyCI20220429\Psr\Log\LogLevel::INFO => self::INFO, \EasyCI20220429\Psr\Log\LogLevel::DEBUG => self::INFO];
+    private $formatLevelMap = [\EasyCI20220501\Psr\Log\LogLevel::EMERGENCY => self::ERROR, \EasyCI20220501\Psr\Log\LogLevel::ALERT => self::ERROR, \EasyCI20220501\Psr\Log\LogLevel::CRITICAL => self::ERROR, \EasyCI20220501\Psr\Log\LogLevel::ERROR => self::ERROR, \EasyCI20220501\Psr\Log\LogLevel::WARNING => self::INFO, \EasyCI20220501\Psr\Log\LogLevel::NOTICE => self::INFO, \EasyCI20220501\Psr\Log\LogLevel::INFO => self::INFO, \EasyCI20220501\Psr\Log\LogLevel::DEBUG => self::INFO];
     /**
      * @var bool
      */
     private $errored = \false;
-    public function __construct(\EasyCI20220429\Symfony\Component\Console\Output\OutputInterface $output, array $verbosityLevelMap = [], array $formatLevelMap = [])
+    public function __construct(\EasyCI20220501\Symfony\Component\Console\Output\OutputInterface $output, array $verbosityLevelMap = [], array $formatLevelMap = [])
     {
         $this->output = $output;
         $this->verbosityLevelMap = $verbosityLevelMap + $this->verbosityLevelMap;
@@ -51,12 +51,12 @@ class ConsoleLogger extends \EasyCI20220429\Psr\Log\AbstractLogger
     public function log($level, $message, array $context = []) : void
     {
         if (!isset($this->verbosityLevelMap[$level])) {
-            throw new \EasyCI20220429\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
+            throw new \EasyCI20220501\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
         }
         $output = $this->output;
         // Write to the error output if necessary and available
         if (self::ERROR === $this->formatLevelMap[$level]) {
-            if ($this->output instanceof \EasyCI20220429\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+            if ($this->output instanceof \EasyCI20220501\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                 $output = $output->getErrorOutput();
             }
             $this->errored = \true;

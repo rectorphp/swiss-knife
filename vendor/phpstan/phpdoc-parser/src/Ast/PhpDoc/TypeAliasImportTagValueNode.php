@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220429\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220501\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220429\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220429\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use EasyCI20220501\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220501\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use function trim;
-class TypeAliasImportTagValueNode implements \EasyCI20220429\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class TypeAliasImportTagValueNode implements \EasyCI20220501\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string */
@@ -15,7 +15,7 @@ class TypeAliasImportTagValueNode implements \EasyCI20220429\PHPStan\PhpDocParse
     public $importedFrom;
     /** @var string|null */
     public $importedAs;
-    public function __construct(string $importedAlias, \EasyCI20220429\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode $importedFrom, ?string $importedAs)
+    public function __construct(string $importedAlias, \EasyCI20220501\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode $importedFrom, ?string $importedAs)
     {
         $this->importedAlias = $importedAlias;
         $this->importedFrom = $importedFrom;

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220429\PhpParser\Node\Scalar\MagicConst;
+namespace EasyCI20220501\PhpParser\Node\Scalar\MagicConst;
 
-use EasyCI20220429\PhpParser\Node\Scalar\MagicConst;
-class Trait_ extends \EasyCI20220429\PhpParser\Node\Scalar\MagicConst
+use EasyCI20220501\PhpParser\Node\Scalar\MagicConst;
+class Trait_ extends \EasyCI20220501\PhpParser\Node\Scalar\MagicConst
 {
     public function getName() : string
     {

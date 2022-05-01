@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220429\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
+namespace EasyCI20220501\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
-use EasyCI20220429\Nette\Utils\Strings;
+use EasyCI20220501\Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
-use EasyCI20220429\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI20220429\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220429\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220429\Symfony\Component\DependencyInjection\Reference;
-use EasyCI20220429\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
-use EasyCI20220429\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
-use EasyCI20220429\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
-use EasyCI20220429\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
-use EasyCI20220429\Symplify\PackageBuilder\ValueObject\MethodName;
+use EasyCI20220501\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI20220501\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220501\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220501\Symfony\Component\DependencyInjection\Reference;
+use EasyCI20220501\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
+use EasyCI20220501\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use EasyCI20220501\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
+use EasyCI20220501\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use EasyCI20220501\Symplify\PackageBuilder\ValueObject\MethodName;
 /**
  * @inspiration https://github.com/nette/di/pull/178
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
  */
-final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class AutowireArrayParameterCompilerPass implements \EasyCI20220501\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * These namespaces are already configured by their bundles/extensions.
@@ -33,7 +33,7 @@ final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfon
      * @var string[]
      * @noRector
      */
-    private $excludedFatalClasses = ['EasyCI20220429\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI20220429\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI20220429\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI20220429\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI20220429\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI20220429\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI20220429\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI20220429\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI20220429\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private $excludedFatalClasses = ['EasyCI20220501\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI20220501\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI20220501\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI20220501\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI20220501\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI20220501\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI20220501\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI20220501\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI20220501\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */
@@ -51,12 +51,12 @@ final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfon
      */
     public function __construct(array $excludedFatalClasses = [])
     {
-        $this->definitionFinder = new \EasyCI20220429\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder();
-        $paramTypeDocBlockResolver = new \EasyCI20220429\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver();
-        $this->parameterTypeResolver = new \EasyCI20220429\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver($paramTypeDocBlockResolver);
-        $this->parameterSkipper = new \EasyCI20220429\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper($this->parameterTypeResolver, $excludedFatalClasses);
+        $this->definitionFinder = new \EasyCI20220501\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder();
+        $paramTypeDocBlockResolver = new \EasyCI20220501\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver();
+        $this->parameterTypeResolver = new \EasyCI20220501\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver($paramTypeDocBlockResolver);
+        $this->parameterSkipper = new \EasyCI20220501\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper($this->parameterTypeResolver, $excludedFatalClasses);
     }
-    public function process(\EasyCI20220429\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(\EasyCI20220501\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $definitions = $containerBuilder->getDefinitions();
         foreach ($definitions as $definition) {
@@ -70,7 +70,7 @@ final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfon
             $this->processParameters($containerBuilder, $constructorReflectionMethod, $definition);
         }
     }
-    private function shouldSkipDefinition(\EasyCI20220429\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \EasyCI20220429\Symfony\Component\DependencyInjection\Definition $definition) : bool
+    private function shouldSkipDefinition(\EasyCI20220501\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \EasyCI20220501\Symfony\Component\DependencyInjection\Definition $definition) : bool
     {
         if ($definition->isAbstract()) {
             return \true;
@@ -83,7 +83,7 @@ final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfon
         $resolvedClassName = $parameterBag->resolveValue($definition->getClass());
         // skip 3rd party classes, they're autowired by own config
         $excludedNamespacePattern = '#^(' . \implode('|', self::EXCLUDED_NAMESPACES) . ')\\\\#';
-        if (\EasyCI20220429\Nette\Utils\Strings::match($resolvedClassName, $excludedNamespacePattern)) {
+        if (\EasyCI20220501\Nette\Utils\Strings::match($resolvedClassName, $excludedNamespacePattern)) {
             return \true;
         }
         if (\in_array($resolvedClassName, $this->excludedFatalClasses, \true)) {
@@ -99,14 +99,14 @@ final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfon
         if (!$reflectionClass instanceof \ReflectionClass) {
             return \true;
         }
-        if (!$reflectionClass->hasMethod(\EasyCI20220429\Symplify\PackageBuilder\ValueObject\MethodName::CONSTRUCTOR)) {
+        if (!$reflectionClass->hasMethod(\EasyCI20220501\Symplify\PackageBuilder\ValueObject\MethodName::CONSTRUCTOR)) {
             return \true;
         }
         /** @var ReflectionMethod $constructorReflectionMethod */
         $constructorReflectionMethod = $reflectionClass->getConstructor();
         return !$constructorReflectionMethod->getParameters();
     }
-    private function processParameters(\EasyCI20220429\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \ReflectionMethod $reflectionMethod, \EasyCI20220429\Symfony\Component\DependencyInjection\Definition $definition) : void
+    private function processParameters(\EasyCI20220501\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \ReflectionMethod $reflectionMethod, \EasyCI20220501\Symfony\Component\DependencyInjection\Definition $definition) : void
     {
         $reflectionParameters = $reflectionMethod->getParameters();
         foreach ($reflectionParameters as $reflectionParameter) {
@@ -147,7 +147,7 @@ final class AutowireArrayParameterCompilerPass implements \EasyCI20220429\Symfon
         $references = [];
         $definitionOfTypeNames = \array_keys($definitions);
         foreach ($definitionOfTypeNames as $definitionOfTypeName) {
-            $references[] = new \EasyCI20220429\Symfony\Component\DependencyInjection\Reference($definitionOfTypeName);
+            $references[] = new \EasyCI20220501\Symfony\Component\DependencyInjection\Reference($definitionOfTypeName);
         }
         return $references;
     }

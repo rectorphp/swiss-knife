@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI20220429;
+namespace EasyCI20220501;
 
 ///////////////////////////////
 /// Utility regex constants ///
@@ -19,17 +19,17 @@ const ARGS = '\\((?<args>[^()]*+(?:\\((?&args)\\)[^()]*+)*+)\\)';
 ///////////////////////////////
 function preprocessGrammar($code)
 {
-    $code = \EasyCI20220429\resolveNodes($code);
-    $code = \EasyCI20220429\resolveMacros($code);
-    $code = \EasyCI20220429\resolveStackAccess($code);
+    $code = \EasyCI20220501\resolveNodes($code);
+    $code = \EasyCI20220501\resolveMacros($code);
+    $code = \EasyCI20220501\resolveStackAccess($code);
     return $code;
 }
 function resolveNodes($code)
 {
     return \preg_replace_callback('~\\b(?<name>[A-Z][a-zA-Z_\\\\]++)\\s*' . \PARAMS . '~', function ($matches) {
         // recurse
-        $matches['params'] = \EasyCI20220429\resolveNodes($matches['params']);
-        $params = \EasyCI20220429\magicSplit('(?:' . \PARAMS . '|' . \ARGS . ')(*SKIP)(*FAIL)|,', $matches['params']);
+        $matches['params'] = \EasyCI20220501\resolveNodes($matches['params']);
+        $params = \EasyCI20220501\magicSplit('(?:' . \PARAMS . '|' . \ARGS . ')(*SKIP)(*FAIL)|,', $matches['params']);
         $paramCode = '';
         foreach ($params as $param) {
             $paramCode .= $param . ', ';
@@ -41,54 +41,54 @@ function resolveMacros($code)
 {
     return \preg_replace_callback('~\\b(?<!::|->)(?!array\\()(?<name>[a-z][A-Za-z]++)' . \ARGS . '~', function ($matches) {
         // recurse
-        $matches['args'] = \EasyCI20220429\resolveMacros($matches['args']);
+        $matches['args'] = \EasyCI20220501\resolveMacros($matches['args']);
         $name = $matches['name'];
-        $args = \EasyCI20220429\magicSplit('(?:' . \PARAMS . '|' . \ARGS . ')(*SKIP)(*FAIL)|,', $matches['args']);
+        $args = \EasyCI20220501\magicSplit('(?:' . \PARAMS . '|' . \ARGS . ')(*SKIP)(*FAIL)|,', $matches['args']);
         if ('attributes' === $name) {
-            \EasyCI20220429\assertArgs(0, $args, $name);
+            \EasyCI20220501\assertArgs(0, $args, $name);
             return '$this->startAttributeStack[#1] + $this->endAttributes';
         }
         if ('stackAttributes' === $name) {
-            \EasyCI20220429\assertArgs(1, $args, $name);
+            \EasyCI20220501\assertArgs(1, $args, $name);
             return '$this->startAttributeStack[' . $args[0] . ']' . ' + $this->endAttributeStack[' . $args[0] . ']';
         }
         if ('init' === $name) {
             return '$$ = array(' . \implode(', ', $args) . ')';
         }
         if ('push' === $name) {
-            \EasyCI20220429\assertArgs(2, $args, $name);
+            \EasyCI20220501\assertArgs(2, $args, $name);
             return $args[0] . '[] = ' . $args[1] . '; $$ = ' . $args[0];
         }
         if ('pushNormalizing' === $name) {
-            \EasyCI20220429\assertArgs(2, $args, $name);
+            \EasyCI20220501\assertArgs(2, $args, $name);
             return 'if (is_array(' . $args[1] . ')) { $$ = array_merge(' . $args[0] . ', ' . $args[1] . '); }' . ' else { ' . $args[0] . '[] = ' . $args[1] . '; $$ = ' . $args[0] . '; }';
         }
         if ('toArray' == $name) {
-            \EasyCI20220429\assertArgs(1, $args, $name);
+            \EasyCI20220501\assertArgs(1, $args, $name);
             return 'is_array(' . $args[0] . ') ? ' . $args[0] . ' : array(' . $args[0] . ')';
         }
         if ('parseVar' === $name) {
-            \EasyCI20220429\assertArgs(1, $args, $name);
+            \EasyCI20220501\assertArgs(1, $args, $name);
             return 'substr(' . $args[0] . ', 1)';
         }
         if ('parseEncapsed' === $name) {
-            \EasyCI20220429\assertArgs(3, $args, $name);
+            \EasyCI20220501\assertArgs(3, $args, $name);
             return 'foreach (' . $args[0] . ' as $s) { if ($s instanceof Node\\Scalar\\EncapsedStringPart) {' . ' $s->value = Node\\Scalar\\String_::parseEscapeSequences($s->value, ' . $args[1] . ', ' . $args[2] . '); } }';
         }
         if ('makeNop' === $name) {
-            \EasyCI20220429\assertArgs(3, $args, $name);
+            \EasyCI20220501\assertArgs(3, $args, $name);
             return '$startAttributes = ' . $args[1] . ';' . ' if (isset($startAttributes[\'comments\']))' . ' { ' . $args[0] . ' = new Stmt\\Nop($startAttributes + ' . $args[2] . '); }' . ' else { ' . $args[0] . ' = null; }';
         }
         if ('makeZeroLengthNop' == $name) {
-            \EasyCI20220429\assertArgs(2, $args, $name);
+            \EasyCI20220501\assertArgs(2, $args, $name);
             return '$startAttributes = ' . $args[1] . ';' . ' if (isset($startAttributes[\'comments\']))' . ' { ' . $args[0] . ' = new Stmt\\Nop($this->createCommentNopAttributes($startAttributes[\'comments\'])); }' . ' else { ' . $args[0] . ' = null; }';
         }
         if ('strKind' === $name) {
-            \EasyCI20220429\assertArgs(1, $args, $name);
+            \EasyCI20220501\assertArgs(1, $args, $name);
             return '(' . $args[0] . '[0] === "\'" || (' . $args[0] . '[1] === "\'" && ' . '(' . $args[0] . '[0] === \'b\' || ' . $args[0] . '[0] === \'B\')) ' . '? Scalar\\String_::KIND_SINGLE_QUOTED : Scalar\\String_::KIND_DOUBLE_QUOTED)';
         }
         if ('prependLeadingComments' === $name) {
-            \EasyCI20220429\assertArgs(1, $args, $name);
+            \EasyCI20220501\assertArgs(1, $args, $name);
             return '$attrs = $this->startAttributeStack[#1]; $stmts = ' . $args[0] . '; ' . 'if (!empty($attrs[\'comments\'])) {' . '$stmts[0]->setAttribute(\'comments\', ' . 'array_merge($attrs[\'comments\'], $stmts[0]->getAttribute(\'comments\', []))); }';
         }
         return $matches[0];
@@ -121,7 +121,7 @@ function regex($regex)
 }
 function magicSplit($regex, $string)
 {
-    $pieces = \preg_split(\EasyCI20220429\regex('(?:(?&string)|(?&comment)|(?&code))(*SKIP)(*FAIL)|' . $regex), $string);
+    $pieces = \preg_split(\EasyCI20220501\regex('(?:(?&string)|(?&comment)|(?&code))(*SKIP)(*FAIL)|' . $regex), $string);
     foreach ($pieces as &$piece) {
         $piece = \trim($piece);
     }
