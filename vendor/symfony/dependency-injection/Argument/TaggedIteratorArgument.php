@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220501\Symfony\Component\DependencyInjection\Argument;
+namespace EasyCI20220503\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * Represents a collection of services found by tag name to lazily iterate over.
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class TaggedIteratorArgument extends \EasyCI20220501\Symfony\Component\DependencyInjection\Argument\IteratorArgument
+class TaggedIteratorArgument extends \EasyCI20220503\Symfony\Component\DependencyInjection\Argument\IteratorArgument
 {
     /**
      * @var string
