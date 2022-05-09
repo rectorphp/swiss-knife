@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220503\PhpParser\Node\Stmt;
+namespace EasyCI20220509\PhpParser\Node\Stmt;
 
-use EasyCI20220503\PhpParser\Node;
-class Interface_ extends \EasyCI20220503\PhpParser\Node\Stmt\ClassLike
+use EasyCI20220509\PhpParser\Node;
+class Interface_ extends \EasyCI20220509\PhpParser\Node\Stmt\ClassLike
 {
     /** @var Node\Name[] Extended interfaces */
     public $extends;
@@ -21,7 +21,7 @@ class Interface_ extends \EasyCI20220503\PhpParser\Node\Stmt\ClassLike
     public function __construct($name, array $subNodes = [], array $attributes = [])
     {
         $this->attributes = $attributes;
-        $this->name = \is_string($name) ? new \EasyCI20220503\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220509\PhpParser\Node\Identifier($name) : $name;
         $this->extends = $subNodes['extends'] ?? [];
         $this->stmts = $subNodes['stmts'] ?? [];
         $this->attrGroups = $subNodes['attrGroups'] ?? [];

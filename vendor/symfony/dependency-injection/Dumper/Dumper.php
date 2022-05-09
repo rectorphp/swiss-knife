@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220503\Symfony\Component\DependencyInjection\Dumper;
+namespace EasyCI20220509\Symfony\Component\DependencyInjection\Dumper;
 
-use EasyCI20220503\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220509\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Dumper is the abstract class for all built-in dumpers.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Dumper implements \EasyCI20220503\Symfony\Component\DependencyInjection\Dumper\DumperInterface
+abstract class Dumper implements \EasyCI20220509\Symfony\Component\DependencyInjection\Dumper\DumperInterface
 {
     protected $container;
-    public function __construct(\EasyCI20220503\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\EasyCI20220509\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }

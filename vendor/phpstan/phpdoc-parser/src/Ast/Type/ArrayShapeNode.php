@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220503\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220509\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220503\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220509\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
-class ArrayShapeNode implements \EasyCI20220503\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ArrayShapeNode implements \EasyCI20220509\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var ArrayShapeItemNode[] */

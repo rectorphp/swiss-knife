@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220503\Symfony\Component\DependencyInjection\Exception;
+namespace EasyCI20220509\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base BadMethodCallException for Dependency Injection component.
  */
-class BadMethodCallException extends \BadMethodCallException implements \EasyCI20220503\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class BadMethodCallException extends \BadMethodCallException implements \EasyCI20220509\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

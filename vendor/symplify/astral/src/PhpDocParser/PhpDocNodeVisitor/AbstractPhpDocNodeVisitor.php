@@ -1,33 +1,33 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220503\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI20220509\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI20220503\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220503\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface;
+use EasyCI20220509\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220509\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface;
 /**
  * Inspired by https://github.com/nikic/PHP-Parser/blob/master/lib/PhpParser/NodeVisitorAbstract.php
  */
-abstract class AbstractPhpDocNodeVisitor implements \EasyCI20220503\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface
+abstract class AbstractPhpDocNodeVisitor implements \EasyCI20220509\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface
 {
-    public function beforeTraverse(\EasyCI20220503\PHPStan\PhpDocParser\Ast\Node $node) : void
+    public function beforeTraverse(\EasyCI20220509\PHPStan\PhpDocParser\Ast\Node $node) : void
     {
     }
     /**
      * @return int|\PHPStan\PhpDocParser\Ast\Node|null
      */
-    public function enterNode(\EasyCI20220503\PHPStan\PhpDocParser\Ast\Node $node)
+    public function enterNode(\EasyCI20220509\PHPStan\PhpDocParser\Ast\Node $node)
     {
         return null;
     }
     /**
      * @return int|\PhpParser\Node|mixed[]|null Replacement node (or special return)
      */
-    public function leaveNode(\EasyCI20220503\PHPStan\PhpDocParser\Ast\Node $node)
+    public function leaveNode(\EasyCI20220509\PHPStan\PhpDocParser\Ast\Node $node)
     {
         return null;
     }
-    public function afterTraverse(\EasyCI20220503\PHPStan\PhpDocParser\Ast\Node $node) : void
+    public function afterTraverse(\EasyCI20220509\PHPStan\PhpDocParser\Ast\Node $node) : void
     {
     }
 }

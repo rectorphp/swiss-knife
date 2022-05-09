@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220503\Symplify\Astral\PhpDocParser\StaticFactory;
+namespace EasyCI20220509\Symplify\Astral\PhpDocParser\StaticFactory;
 
-use EasyCI20220503\PHPStan\PhpDocParser\Lexer\Lexer;
-use EasyCI20220503\PHPStan\PhpDocParser\Parser\ConstExprParser;
-use EasyCI20220503\PHPStan\PhpDocParser\Parser\PhpDocParser;
-use EasyCI20220503\PHPStan\PhpDocParser\Parser\TypeParser;
-use EasyCI20220503\Symplify\Astral\PhpDocParser\SimplePhpDocParser;
+use EasyCI20220509\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220509\PHPStan\PhpDocParser\Parser\ConstExprParser;
+use EasyCI20220509\PHPStan\PhpDocParser\Parser\PhpDocParser;
+use EasyCI20220509\PHPStan\PhpDocParser\Parser\TypeParser;
+use EasyCI20220509\Symplify\Astral\PhpDocParser\SimplePhpDocParser;
 /**
  * @api
  */
 final class SimplePhpDocParserStaticFactory
 {
-    public static function create() : \EasyCI20220503\Symplify\Astral\PhpDocParser\SimplePhpDocParser
+    public static function create() : \EasyCI20220509\Symplify\Astral\PhpDocParser\SimplePhpDocParser
     {
-        $phpDocParser = new \EasyCI20220503\PHPStan\PhpDocParser\Parser\PhpDocParser(new \EasyCI20220503\PHPStan\PhpDocParser\Parser\TypeParser(), new \EasyCI20220503\PHPStan\PhpDocParser\Parser\ConstExprParser());
-        return new \EasyCI20220503\Symplify\Astral\PhpDocParser\SimplePhpDocParser($phpDocParser, new \EasyCI20220503\PHPStan\PhpDocParser\Lexer\Lexer());
+        $phpDocParser = new \EasyCI20220509\PHPStan\PhpDocParser\Parser\PhpDocParser(new \EasyCI20220509\PHPStan\PhpDocParser\Parser\TypeParser(), new \EasyCI20220509\PHPStan\PhpDocParser\Parser\ConstExprParser());
+        return new \EasyCI20220509\Symplify\Astral\PhpDocParser\SimplePhpDocParser($phpDocParser, new \EasyCI20220509\PHPStan\PhpDocParser\Lexer\Lexer());
     }
 }

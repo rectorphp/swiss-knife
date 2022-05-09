@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220503\PhpParser;
+namespace EasyCI20220509\PhpParser;
 
 interface Builder
 {
@@ -10,5 +10,5 @@ interface Builder
      *
      * @return Node The built node
      */
-    public function getNode() : \EasyCI20220503\PhpParser\Node;
+    public function getNode() : \EasyCI20220509\PhpParser\Node;
 }
