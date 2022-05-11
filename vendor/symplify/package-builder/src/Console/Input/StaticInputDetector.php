@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220509\Symplify\PackageBuilder\Console\Input;
+namespace EasyCI20220511\Symplify\PackageBuilder\Console\Input;
 
-use EasyCI20220509\Symfony\Component\Console\Input\ArgvInput;
+use EasyCI20220511\Symfony\Component\Console\Input\ArgvInput;
 /**
  * @api
  */
@@ -11,7 +11,7 @@ final class StaticInputDetector
 {
     public static function isDebug() : bool
     {
-        $argvInput = new \EasyCI20220509\Symfony\Component\Console\Input\ArgvInput();
+        $argvInput = new \EasyCI20220511\Symfony\Component\Console\Input\ArgvInput();
         return $argvInput->hasParameterOption(['--debug', '-v', '-vv', '-vvv']);
     }
 }

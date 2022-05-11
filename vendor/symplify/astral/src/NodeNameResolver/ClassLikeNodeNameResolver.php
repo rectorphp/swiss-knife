@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220509\Symplify\Astral\NodeNameResolver;
+namespace EasyCI20220511\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220509\PhpParser\Node;
-use EasyCI20220509\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220509\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class ClassLikeNodeNameResolver implements \EasyCI20220509\Symplify\Astral\Contract\NodeNameResolverInterface
+use EasyCI20220511\PhpParser\Node;
+use EasyCI20220511\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220511\Symplify\Astral\Contract\NodeNameResolverInterface;
+final class ClassLikeNodeNameResolver implements \EasyCI20220511\Symplify\Astral\Contract\NodeNameResolverInterface
 {
-    public function match(\EasyCI20220509\PhpParser\Node $node) : bool
+    public function match(\EasyCI20220511\PhpParser\Node $node) : bool
     {
-        return $node instanceof \EasyCI20220509\PhpParser\Node\Stmt\ClassLike;
+        return $node instanceof \EasyCI20220511\PhpParser\Node\Stmt\ClassLike;
     }
     /**
      * @param ClassLike $node
      */
-    public function resolve(\EasyCI20220509\PhpParser\Node $node) : ?string
+    public function resolve(\EasyCI20220511\PhpParser\Node $node) : ?string
     {
         if (\property_exists($node, 'namespacedName')) {
             return (string) $node->namespacedName;

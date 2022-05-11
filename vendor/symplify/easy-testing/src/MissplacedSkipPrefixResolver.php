@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220509\Symplify\EasyTesting;
+namespace EasyCI20220511\Symplify\EasyTesting;
 
-use EasyCI20220509\Nette\Utils\Strings;
-use EasyCI20220509\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips;
-use EasyCI20220509\Symplify\EasyTesting\ValueObject\Prefix;
-use EasyCI20220509\Symplify\EasyTesting\ValueObject\SplitLine;
-use EasyCI20220509\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220511\Nette\Utils\Strings;
+use EasyCI20220511\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips;
+use EasyCI20220511\Symplify\EasyTesting\ValueObject\Prefix;
+use EasyCI20220511\Symplify\EasyTesting\ValueObject\SplitLine;
+use EasyCI20220511\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyTesting\Tests\MissingSkipPrefixResolver\MissingSkipPrefixResolverTest
  */
@@ -16,14 +16,14 @@ final class MissplacedSkipPrefixResolver
     /**
      * @param SmartFileInfo[] $fixtureFileInfos
      */
-    public function resolve(array $fixtureFileInfos) : \EasyCI20220509\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips
+    public function resolve(array $fixtureFileInfos) : \EasyCI20220511\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips
     {
         $incorrectSkips = [];
         $missingSkips = [];
         foreach ($fixtureFileInfos as $fixtureFileInfo) {
             $hasNameSkipStart = $this->hasNameSkipStart($fixtureFileInfo);
             $fileContents = $fixtureFileInfo->getContents();
-            $hasSplitLine = (bool) \EasyCI20220509\Nette\Utils\Strings::match($fileContents, \EasyCI20220509\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
+            $hasSplitLine = (bool) \EasyCI20220511\Nette\Utils\Strings::match($fileContents, \EasyCI20220511\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
             if ($hasNameSkipStart && $hasSplitLine) {
                 $incorrectSkips[] = $fixtureFileInfo;
                 continue;
@@ -32,10 +32,10 @@ final class MissplacedSkipPrefixResolver
                 $missingSkips[] = $fixtureFileInfo;
             }
         }
-        return new \EasyCI20220509\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips($incorrectSkips, $missingSkips);
+        return new \EasyCI20220511\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips($incorrectSkips, $missingSkips);
     }
-    private function hasNameSkipStart(\EasyCI20220509\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
+    private function hasNameSkipStart(\EasyCI20220511\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
     {
-        return (bool) \EasyCI20220509\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \EasyCI20220509\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
+        return (bool) \EasyCI20220511\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \EasyCI20220511\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
     }
 }

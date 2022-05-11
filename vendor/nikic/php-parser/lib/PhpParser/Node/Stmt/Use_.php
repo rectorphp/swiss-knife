@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220509\PhpParser\Node\Stmt;
+namespace EasyCI20220511\PhpParser\Node\Stmt;
 
-use EasyCI20220509\PhpParser\Node\Stmt;
-class Use_ extends \EasyCI20220509\PhpParser\Node\Stmt
+use EasyCI20220511\PhpParser\Node\Stmt;
+class Use_ extends \EasyCI20220511\PhpParser\Node\Stmt
 {
     /**
      * Unknown type. Both Stmt\Use_ / Stmt\GroupUse and Stmt\UseUse have a $type property, one of them will always be
