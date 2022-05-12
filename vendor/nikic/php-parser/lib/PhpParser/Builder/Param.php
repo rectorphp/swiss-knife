@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220511\PhpParser\Builder;
+namespace EasyCI20220512\PhpParser\Builder;
 
-use EasyCI20220511\PhpParser;
-use EasyCI20220511\PhpParser\BuilderHelpers;
-use EasyCI20220511\PhpParser\Node;
-class Param implements \EasyCI20220511\PhpParser\Builder
+use EasyCI20220512\PhpParser;
+use EasyCI20220512\PhpParser\BuilderHelpers;
+use EasyCI20220512\PhpParser\Node;
+class Param implements \EasyCI20220512\PhpParser\Builder
 {
     protected $name;
     protected $default = null;
@@ -34,7 +34,7 @@ class Param implements \EasyCI20220511\PhpParser\Builder
      */
     public function setDefault($value)
     {
-        $this->default = \EasyCI20220511\PhpParser\BuilderHelpers::normalizeValue($value);
+        $this->default = \EasyCI20220512\PhpParser\BuilderHelpers::normalizeValue($value);
         return $this;
     }
     /**
@@ -46,7 +46,7 @@ class Param implements \EasyCI20220511\PhpParser\Builder
      */
     public function setType($type)
     {
-        $this->type = \EasyCI20220511\PhpParser\BuilderHelpers::normalizeType($type);
+        $this->type = \EasyCI20220512\PhpParser\BuilderHelpers::normalizeType($type);
         if ($this->type == 'void') {
             throw new \LogicException('Parameter type cannot be void');
         }
@@ -94,7 +94,7 @@ class Param implements \EasyCI20220511\PhpParser\Builder
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220511\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = \EasyCI20220512\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -102,8 +102,8 @@ class Param implements \EasyCI20220511\PhpParser\Builder
      *
      * @return Node\Param The built parameter node
      */
-    public function getNode() : \EasyCI20220511\PhpParser\Node
+    public function getNode() : \EasyCI20220512\PhpParser\Node
     {
-        return new \EasyCI20220511\PhpParser\Node\Param(new \EasyCI20220511\PhpParser\Node\Expr\Variable($this->name), $this->default, $this->type, $this->byRef, $this->variadic, [], 0, $this->attributeGroups);
+        return new \EasyCI20220512\PhpParser\Node\Param(new \EasyCI20220512\PhpParser\Node\Expr\Variable($this->name), $this->default, $this->type, $this->byRef, $this->variadic, [], 0, $this->attributeGroups);
     }
 }

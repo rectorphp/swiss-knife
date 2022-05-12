@@ -3,30 +3,30 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Neon;
 
-use EasyCI20220511\Nette\Neon\Decoder;
-use EasyCI20220511\Nette\Neon\Node;
-use EasyCI20220511\Nette\Neon\Node\ArrayItemNode;
-use EasyCI20220511\Nette\Neon\Node\ArrayNode;
-use EasyCI20220511\Nette\Neon\Node\LiteralNode;
-use EasyCI20220511\Nette\Neon\Traverser;
-use EasyCI20220511\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220512\Nette\Neon\Decoder;
+use EasyCI20220512\Nette\Neon\Node;
+use EasyCI20220512\Nette\Neon\Node\ArrayItemNode;
+use EasyCI20220512\Nette\Neon\Node\ArrayNode;
+use EasyCI20220512\Nette\Neon\Node\LiteralNode;
+use EasyCI20220512\Nette\Neon\Traverser;
+use EasyCI20220512\Symplify\SmartFileSystem\SmartFileInfo;
 final class NeonClassExtractor
 {
     /**
      * @return string[]
      */
-    public function extract(\EasyCI20220511\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    public function extract(\EasyCI20220512\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
-        $neonDecoder = new \EasyCI20220511\Nette\Neon\Decoder();
+        $neonDecoder = new \EasyCI20220512\Nette\Neon\Decoder();
         $node = $neonDecoder->parseToNode($fileInfo->getContents());
         $classKeyClassNames = $this->findClassNames($node);
         $stringStaticCallReferences = $this->findsStringStaticCallReferences($node);
         $servicesKeyList = $this->findsServicesKeyList($node);
         return \array_merge($classKeyClassNames, $stringStaticCallReferences, $servicesKeyList);
     }
-    private function hasKeyValue(\EasyCI20220511\Nette\Neon\Node\ArrayItemNode $arrayItemNode, string $value) : bool
+    private function hasKeyValue(\EasyCI20220512\Nette\Neon\Node\ArrayItemNode $arrayItemNode, string $value) : bool
     {
-        if (!$arrayItemNode->key instanceof \EasyCI20220511\Nette\Neon\Node\LiteralNode) {
+        if (!$arrayItemNode->key instanceof \EasyCI20220512\Nette\Neon\Node\LiteralNode) {
             return \false;
         }
         return $arrayItemNode->key->toString() === $value;
@@ -36,18 +36,18 @@ final class NeonClassExtractor
      *
      * @return string[]
      */
-    private function findClassNames(\EasyCI20220511\Nette\Neon\Node $node) : array
+    private function findClassNames(\EasyCI20220512\Nette\Neon\Node $node) : array
     {
         $classNames = [];
-        $traverser = new \EasyCI20220511\Nette\Neon\Traverser();
-        $traverser->traverse($node, function (\EasyCI20220511\Nette\Neon\Node $node) use(&$classNames) : ?Node {
-            if (!$node instanceof \EasyCI20220511\Nette\Neon\Node\ArrayItemNode) {
+        $traverser = new \EasyCI20220512\Nette\Neon\Traverser();
+        $traverser->traverse($node, function (\EasyCI20220512\Nette\Neon\Node $node) use(&$classNames) : ?Node {
+            if (!$node instanceof \EasyCI20220512\Nette\Neon\Node\ArrayItemNode) {
                 return $node;
             }
             if (!$this->hasKeyValue($node, 'class')) {
                 return null;
             }
-            if ($node->value instanceof \EasyCI20220511\Nette\Neon\Node\LiteralNode) {
+            if ($node->value instanceof \EasyCI20220512\Nette\Neon\Node\LiteralNode) {
                 $classNames[] = $node->value->toString();
             }
             return null;
@@ -59,12 +59,12 @@ final class NeonClassExtractor
      *
      * @return string[]
      */
-    private function findsStringStaticCallReferences(\EasyCI20220511\Nette\Neon\Node $node) : array
+    private function findsStringStaticCallReferences(\EasyCI20220512\Nette\Neon\Node $node) : array
     {
         $classNames = [];
-        $traverser = new \EasyCI20220511\Nette\Neon\Traverser();
-        $traverser->traverse($node, function (\EasyCI20220511\Nette\Neon\Node $node) use(&$classNames) {
-            if (!$node instanceof \EasyCI20220511\Nette\Neon\Node\LiteralNode) {
+        $traverser = new \EasyCI20220512\Nette\Neon\Traverser();
+        $traverser->traverse($node, function (\EasyCI20220512\Nette\Neon\Node $node) use(&$classNames) {
+            if (!$node instanceof \EasyCI20220512\Nette\Neon\Node\LiteralNode) {
                 return null;
             }
             $stringValue = $node->toString();
@@ -92,25 +92,25 @@ final class NeonClassExtractor
      *
      * @return string[]
      */
-    private function findsServicesKeyList(\EasyCI20220511\Nette\Neon\Node $node) : array
+    private function findsServicesKeyList(\EasyCI20220512\Nette\Neon\Node $node) : array
     {
         $classNames = [];
-        $traverser = new \EasyCI20220511\Nette\Neon\Traverser();
-        $traverser->traverse($node, function (\EasyCI20220511\Nette\Neon\Node $node) use(&$classNames) {
-            if (!$node instanceof \EasyCI20220511\Nette\Neon\Node\ArrayItemNode) {
+        $traverser = new \EasyCI20220512\Nette\Neon\Traverser();
+        $traverser->traverse($node, function (\EasyCI20220512\Nette\Neon\Node $node) use(&$classNames) {
+            if (!$node instanceof \EasyCI20220512\Nette\Neon\Node\ArrayItemNode) {
                 return null;
             }
             if (!$this->hasKeyValue($node, 'services')) {
                 return null;
             }
-            if (!$node->value instanceof \EasyCI20220511\Nette\Neon\Node\ArrayNode) {
+            if (!$node->value instanceof \EasyCI20220512\Nette\Neon\Node\ArrayNode) {
                 return null;
             }
             foreach ($node->value->items as $arrayItemNode) {
                 if ($arrayItemNode->key !== null) {
                     continue;
                 }
-                if (!$arrayItemNode->value instanceof \EasyCI20220511\Nette\Neon\Node\LiteralNode) {
+                if (!$arrayItemNode->value instanceof \EasyCI20220512\Nette\Neon\Node\LiteralNode) {
                     continue;
                 }
                 $classNames[] = $arrayItemNode->value->toString();

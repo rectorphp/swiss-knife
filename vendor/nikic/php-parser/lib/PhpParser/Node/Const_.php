@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220511\PhpParser\Node;
+namespace EasyCI20220512\PhpParser\Node;
 
-use EasyCI20220511\PhpParser\NodeAbstract;
-class Const_ extends \EasyCI20220511\PhpParser\NodeAbstract
+use EasyCI20220512\PhpParser\NodeAbstract;
+class Const_ extends \EasyCI20220512\PhpParser\NodeAbstract
 {
     /** @var Identifier Name */
     public $name;
@@ -19,10 +19,10 @@ class Const_ extends \EasyCI20220511\PhpParser\NodeAbstract
      * @param Expr              $value      Value
      * @param array             $attributes Additional attributes
      */
-    public function __construct($name, \EasyCI20220511\PhpParser\Node\Expr $value, array $attributes = [])
+    public function __construct($name, \EasyCI20220512\PhpParser\Node\Expr $value, array $attributes = [])
     {
         $this->attributes = $attributes;
-        $this->name = \is_string($name) ? new \EasyCI20220511\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220512\PhpParser\Node\Identifier($name) : $name;
         $this->value = $value;
     }
     public function getSubNodeNames() : array
