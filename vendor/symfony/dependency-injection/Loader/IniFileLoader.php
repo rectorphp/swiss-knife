@@ -23,9 +23,8 @@ class IniFileLoader extends \EasyCI20220512\Symfony\Component\DependencyInjectio
      * {@inheritdoc}
      * @param mixed $resource
      * @return mixed
-     * @param string|null $type
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null)
     {
         $path = $this->locator->locate($resource);
         $this->container->fileExists($path);

@@ -23,9 +23,8 @@ class RealServiceInstantiator implements \EasyCI20220512\Symfony\Component\Depen
 {
     /**
      * {@inheritdoc}
-     * @return object
      */
-    public function instantiateProxy(\EasyCI20220512\Symfony\Component\DependencyInjection\ContainerInterface $container, \EasyCI20220512\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator)
+    public function instantiateProxy(\EasyCI20220512\Symfony\Component\DependencyInjection\ContainerInterface $container, \EasyCI20220512\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
     {
         return $realInstantiator();
     }

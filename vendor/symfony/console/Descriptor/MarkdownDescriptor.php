@@ -28,9 +28,8 @@ class MarkdownDescriptor extends \EasyCI20220512\Symfony\Component\Console\Descr
 {
     /**
      * {@inheritdoc}
-     * @param object $object
      */
-    public function describe(\EasyCI20220512\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
+    public function describe(\EasyCI20220512\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = [])
     {
         $decorated = $output->isDecorated();
         $output->setDecorated(\false);

@@ -30,9 +30,8 @@ abstract class Descriptor implements \EasyCI20220512\Symfony\Component\Console\D
     protected $output;
     /**
      * {@inheritdoc}
-     * @param object $object
      */
-    public function describe(\EasyCI20220512\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
+    public function describe(\EasyCI20220512\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = [])
     {
         $this->output = $output;
         switch (\true) {
