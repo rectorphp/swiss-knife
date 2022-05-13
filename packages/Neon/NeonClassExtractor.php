@@ -24,6 +24,13 @@ final class NeonClassExtractor
         $servicesKeyList = $this->findsServicesKeyList($node);
         return \array_merge($classKeyClassNames, $stringStaticCallReferences, $servicesKeyList);
     }
+    private function isServiceListNode(\EasyCI20220513\Nette\Neon\Node\ArrayItemNode $arrayItemNode) : bool
+    {
+        if ($this->hasKeyValue($arrayItemNode, 'services')) {
+            return \true;
+        }
+        return $this->hasKeyValue($arrayItemNode, 'rules');
+    }
     private function hasKeyValue(\EasyCI20220513\Nette\Neon\Node\ArrayItemNode $arrayItemNode, string $value) : bool
     {
         if (!$arrayItemNode->key instanceof \EasyCI20220513\Nette\Neon\Node\LiteralNode) {
@@ -88,7 +95,7 @@ final class NeonClassExtractor
         return $classNames;
     }
     /**
-     * Finds "services: - <className>"
+     * Finds "services: - <className>" Finds "rules: - <className>"
      *
      * @return string[]
      */
@@ -100,7 +107,7 @@ final class NeonClassExtractor
             if (!$node instanceof \EasyCI20220513\Nette\Neon\Node\ArrayItemNode) {
                 return null;
             }
-            if (!$this->hasKeyValue($node, 'services')) {
+            if (!$this->isServiceListNode($node)) {
                 return null;
             }
             if (!$node->value instanceof \EasyCI20220513\Nette\Neon\Node\ArrayNode) {
