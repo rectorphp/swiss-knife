@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220512\PhpParser\Node\Stmt;
+namespace EasyCI20220513\PhpParser\Node\Stmt;
 
-use EasyCI20220512\PhpParser\Node;
-class TryCatch extends \EasyCI20220512\PhpParser\Node\Stmt
+use EasyCI20220513\PhpParser\Node;
+class TryCatch extends \EasyCI20220513\PhpParser\Node\Stmt
 {
     /** @var Node\Stmt[] Statements */
     public $stmts;
@@ -20,7 +20,7 @@ class TryCatch extends \EasyCI20220512\PhpParser\Node\Stmt
      * @param null|Finally_ $finally    Optional finally node
      * @param array         $attributes Additional attributes
      */
-    public function __construct(array $stmts, array $catches, \EasyCI20220512\PhpParser\Node\Stmt\Finally_ $finally = null, array $attributes = [])
+    public function __construct(array $stmts, array $catches, \EasyCI20220513\PhpParser\Node\Stmt\Finally_ $finally = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->stmts = $stmts;

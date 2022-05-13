@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220512\PhpParser;
+namespace EasyCI20220513\PhpParser;
 
 interface NodeTraverserInterface
 {
@@ -10,13 +10,13 @@ interface NodeTraverserInterface
      *
      * @param NodeVisitor $visitor Visitor to add
      */
-    public function addVisitor(\EasyCI20220512\PhpParser\NodeVisitor $visitor);
+    public function addVisitor(\EasyCI20220513\PhpParser\NodeVisitor $visitor);
     /**
      * Removes an added visitor.
      *
      * @param NodeVisitor $visitor
      */
-    public function removeVisitor(\EasyCI20220512\PhpParser\NodeVisitor $visitor);
+    public function removeVisitor(\EasyCI20220513\PhpParser\NodeVisitor $visitor);
     /**
      * Traverses an array of nodes using the registered visitors.
      *
