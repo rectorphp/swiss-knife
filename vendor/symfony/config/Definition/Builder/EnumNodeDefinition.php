@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220513\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI20220514\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI20220513\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI20220514\Symfony\Component\Config\Definition\EnumNode;
 /**
  * Enum Node Definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class EnumNodeDefinition extends \EasyCI20220513\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+class EnumNodeDefinition extends \EasyCI20220514\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
 {
     /**
      * @var mixed[]
@@ -39,11 +39,11 @@ class EnumNodeDefinition extends \EasyCI20220513\Symfony\Component\Config\Defini
      *
      * @throws \RuntimeException
      */
-    protected function instantiateNode() : \EasyCI20220513\Symfony\Component\Config\Definition\ScalarNode
+    protected function instantiateNode() : \EasyCI20220514\Symfony\Component\Config\Definition\ScalarNode
     {
         if (!isset($this->values)) {
             throw new \RuntimeException('You must call ->values() on enum nodes.');
         }
-        return new \EasyCI20220513\Symfony\Component\Config\Definition\EnumNode($this->name, $this->parent, $this->values, $this->pathSeparator);
+        return new \EasyCI20220514\Symfony\Component\Config\Definition\EnumNode($this->name, $this->parent, $this->values, $this->pathSeparator);
     }
 }

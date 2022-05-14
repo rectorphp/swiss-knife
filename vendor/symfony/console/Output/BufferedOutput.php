@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220513\Symfony\Component\Console\Output;
+namespace EasyCI20220514\Symfony\Component\Console\Output;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class BufferedOutput extends \EasyCI20220513\Symfony\Component\Console\Output\Output
+class BufferedOutput extends \EasyCI20220514\Symfony\Component\Console\Output\Output
 {
     /**
      * @var string
