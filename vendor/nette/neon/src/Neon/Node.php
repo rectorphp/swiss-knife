@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220514\Nette\Neon;
+namespace EasyCI20220516\Nette\Neon;
 
 /**
  * @implements \IteratorAggregate<Node>

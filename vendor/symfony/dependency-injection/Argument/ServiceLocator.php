@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220514\Symfony\Component\DependencyInjection\Argument;
+namespace EasyCI20220516\Symfony\Component\DependencyInjection\Argument;
 
-use EasyCI20220514\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
+use EasyCI20220516\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @internal
  */
-class ServiceLocator extends \EasyCI20220514\Symfony\Component\DependencyInjection\ServiceLocator
+class ServiceLocator extends \EasyCI20220516\Symfony\Component\DependencyInjection\ServiceLocator
 {
     /**
      * @var \Closure

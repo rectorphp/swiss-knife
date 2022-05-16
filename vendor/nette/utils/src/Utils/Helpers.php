@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220514\Nette\Utils;
+namespace EasyCI20220516\Nette\Utils;
 
-use EasyCI20220514\Nette;
+use EasyCI20220516\Nette;
 class Helpers
 {
     /**
@@ -32,7 +32,7 @@ class Helpers
     public static function getLastError() : string
     {
         $message = \error_get_last()['message'] ?? '';
-        $message = \ini_get('html_errors') ? \EasyCI20220514\Nette\Utils\Html::htmlToText($message) : $message;
+        $message = \ini_get('html_errors') ? \EasyCI20220516\Nette\Utils\Html::htmlToText($message) : $message;
         $message = \preg_replace('#^\\w+\\(.*?\\): #', '', $message);
         return $message;
     }
@@ -55,7 +55,7 @@ class Helpers
     public static function clamp($value, $min, $max)
     {
         if ($min > $max) {
-            throw new \EasyCI20220514\Nette\InvalidArgumentException("Minimum ({$min}) is not less than maximum ({$max}).");
+            throw new \EasyCI20220516\Nette\InvalidArgumentException("Minimum ({$min}) is not less than maximum ({$max}).");
         }
         return \min(\max($value, $min), $max);
     }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220514\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
+namespace EasyCI20220516\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
 
-use EasyCI20220514\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220514\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220516\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220516\Symfony\Component\DependencyInjection\Definition;
 /**
  * {@inheritdoc}
  *
@@ -19,12 +19,12 @@ use EasyCI20220514\Symfony\Component\DependencyInjection\Definition;
  *
  * @author Marco Pivetta <ocramius@gmail.com>
  */
-class RealServiceInstantiator implements \EasyCI20220514\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
+class RealServiceInstantiator implements \EasyCI20220516\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function instantiateProxy(\EasyCI20220514\Symfony\Component\DependencyInjection\ContainerInterface $container, \EasyCI20220514\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
+    public function instantiateProxy(\EasyCI20220516\Symfony\Component\DependencyInjection\ContainerInterface $container, \EasyCI20220516\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
     {
         return $realInstantiator();
     }

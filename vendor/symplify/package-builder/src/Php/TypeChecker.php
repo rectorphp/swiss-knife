@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220514\Symplify\PackageBuilder\Php;
+namespace EasyCI20220516\Symplify\PackageBuilder\Php;
 
 /**
  * @api

@@ -37,7 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220514\\Symfony\\Component\\Config\\": ""
+            "EasyCI20220516\\Symfony\\Component\\Config\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
