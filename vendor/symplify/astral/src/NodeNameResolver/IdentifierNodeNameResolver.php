@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220516\Symplify\Astral\NodeNameResolver;
+namespace EasyCI20220517\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220516\PhpParser\Node;
-use EasyCI20220516\PhpParser\Node\Identifier;
-use EasyCI20220516\PhpParser\Node\Name;
-use EasyCI20220516\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class IdentifierNodeNameResolver implements \EasyCI20220516\Symplify\Astral\Contract\NodeNameResolverInterface
+use EasyCI20220517\PhpParser\Node;
+use EasyCI20220517\PhpParser\Node\Identifier;
+use EasyCI20220517\PhpParser\Node\Name;
+use EasyCI20220517\Symplify\Astral\Contract\NodeNameResolverInterface;
+final class IdentifierNodeNameResolver implements \EasyCI20220517\Symplify\Astral\Contract\NodeNameResolverInterface
 {
-    public function match(\EasyCI20220516\PhpParser\Node $node) : bool
+    public function match(\EasyCI20220517\PhpParser\Node $node) : bool
     {
-        if ($node instanceof \EasyCI20220516\PhpParser\Node\Identifier) {
+        if ($node instanceof \EasyCI20220517\PhpParser\Node\Identifier) {
             return \true;
         }
-        return $node instanceof \EasyCI20220516\PhpParser\Node\Name;
+        return $node instanceof \EasyCI20220517\PhpParser\Node\Name;
     }
     /**
      * @param Identifier|Name $node
      */
-    public function resolve(\EasyCI20220516\PhpParser\Node $node) : ?string
+    public function resolve(\EasyCI20220517\PhpParser\Node $node) : ?string
     {
         return (string) $node;
     }

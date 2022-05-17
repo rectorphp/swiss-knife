@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220516\PhpParser\Node;
+namespace EasyCI20220517\PhpParser\Node;
 
-use EasyCI20220516\PhpParser\NodeAbstract;
-class IntersectionType extends \EasyCI20220516\PhpParser\Node\ComplexType
+use EasyCI20220517\PhpParser\NodeAbstract;
+class IntersectionType extends \EasyCI20220517\PhpParser\Node\ComplexType
 {
     /** @var (Identifier|Name)[] Types */
     public $types;

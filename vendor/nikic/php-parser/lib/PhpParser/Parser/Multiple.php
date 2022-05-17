@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220516\PhpParser\Parser;
+namespace EasyCI20220517\PhpParser\Parser;
 
-use EasyCI20220516\PhpParser\Error;
-use EasyCI20220516\PhpParser\ErrorHandler;
-use EasyCI20220516\PhpParser\Parser;
-class Multiple implements \EasyCI20220516\PhpParser\Parser
+use EasyCI20220517\PhpParser\Error;
+use EasyCI20220517\PhpParser\ErrorHandler;
+use EasyCI20220517\PhpParser\Parser;
+class Multiple implements \EasyCI20220517\PhpParser\Parser
 {
     /** @var Parser[] List of parsers to try, in order of preference */
     private $parsers;
@@ -23,10 +23,10 @@ class Multiple implements \EasyCI20220516\PhpParser\Parser
     {
         $this->parsers = $parsers;
     }
-    public function parse(string $code, \EasyCI20220516\PhpParser\ErrorHandler $errorHandler = null)
+    public function parse(string $code, \EasyCI20220517\PhpParser\ErrorHandler $errorHandler = null)
     {
         if (null === $errorHandler) {
-            $errorHandler = new \EasyCI20220516\PhpParser\ErrorHandler\Throwing();
+            $errorHandler = new \EasyCI20220517\PhpParser\ErrorHandler\Throwing();
         }
         list($firstStmts, $firstError) = $this->tryParse($this->parsers[0], $errorHandler, $code);
         if ($firstError === null) {
@@ -40,13 +40,13 @@ class Multiple implements \EasyCI20220516\PhpParser\Parser
         }
         throw $firstError;
     }
-    private function tryParse(\EasyCI20220516\PhpParser\Parser $parser, \EasyCI20220516\PhpParser\ErrorHandler $errorHandler, $code)
+    private function tryParse(\EasyCI20220517\PhpParser\Parser $parser, \EasyCI20220517\PhpParser\ErrorHandler $errorHandler, $code)
     {
         $stmts = null;
         $error = null;
         try {
             $stmts = $parser->parse($code, $errorHandler);
-        } catch (\EasyCI20220516\PhpParser\Error $error) {
+        } catch (\EasyCI20220517\PhpParser\Error $error) {
         }
         return [$stmts, $error];
     }

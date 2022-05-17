@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220516\\Symfony\\Polyfill\\Ctype\\": ""
+            "EasyCI20220517\\Symfony\\Polyfill\\Ctype\\": ""
         },
         "files": [
             "bootstrap.php"
