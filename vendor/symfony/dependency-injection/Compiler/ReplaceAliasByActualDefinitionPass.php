@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220517\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220520\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220517\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220517\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI20220517\Symfony\Component\DependencyInjection\Reference;
+use EasyCI20220520\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220520\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI20220520\Symfony\Component\DependencyInjection\Reference;
 /**
  * Replaces aliases with actual service definitions, effectively removing these
  * aliases.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ReplaceAliasByActualDefinitionPass extends \EasyCI20220517\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ReplaceAliasByActualDefinitionPass extends \EasyCI20220520\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     /**
      * @var mixed[]
@@ -31,7 +31,7 @@ class ReplaceAliasByActualDefinitionPass extends \EasyCI20220517\Symfony\Compone
      *
      * @throws InvalidArgumentException if the service definition does not exist
      */
-    public function process(\EasyCI20220517\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\EasyCI20220520\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         // First collect all alias targets that need to be replaced
         $seenAliasTargets = [];
@@ -57,9 +57,9 @@ class ReplaceAliasByActualDefinitionPass extends \EasyCI20220517\Symfony\Compone
             $seenAliasTargets[$targetId] = \true;
             try {
                 $definition = $container->getDefinition($targetId);
-            } catch (\EasyCI20220517\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
+            } catch (\EasyCI20220520\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
                 if ('' !== $e->getId() && '@' === $e->getId()[0]) {
-                    throw new \EasyCI20220517\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($e->getId(), $e->getSourceId(), null, [\substr($e->getId(), 1)]);
+                    throw new \EasyCI20220520\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($e->getId(), $e->getSourceId(), null, [\substr($e->getId(), 1)]);
                 }
                 throw $e;
             }
@@ -86,10 +86,10 @@ class ReplaceAliasByActualDefinitionPass extends \EasyCI20220517\Symfony\Compone
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \EasyCI20220517\Symfony\Component\DependencyInjection\Reference && isset($this->replacements[$referenceId = (string) $value])) {
+        if ($value instanceof \EasyCI20220520\Symfony\Component\DependencyInjection\Reference && isset($this->replacements[$referenceId = (string) $value])) {
             // Perform the replacement
             $newId = $this->replacements[$referenceId];
-            $value = new \EasyCI20220517\Symfony\Component\DependencyInjection\Reference($newId, $value->getInvalidBehavior());
+            $value = new \EasyCI20220520\Symfony\Component\DependencyInjection\Reference($newId, $value->getInvalidBehavior());
             $this->container->log($this, \sprintf('Changed reference of service "%s" previously pointing to "%s" to "%s".', $this->currentId, $referenceId, $newId));
         }
         return parent::processValue($value, $isRoot);

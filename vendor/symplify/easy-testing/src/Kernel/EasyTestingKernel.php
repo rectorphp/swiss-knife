@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220517\Symplify\EasyTesting\Kernel;
+namespace EasyCI20220520\Symplify\EasyTesting\Kernel;
 
-use EasyCI20220517\Psr\Container\ContainerInterface;
-use EasyCI20220517\Symplify\EasyTesting\ValueObject\EasyTestingConfig;
-use EasyCI20220517\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class EasyTestingKernel extends \EasyCI20220517\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use EasyCI20220520\Psr\Container\ContainerInterface;
+use EasyCI20220520\Symplify\EasyTesting\ValueObject\EasyTestingConfig;
+use EasyCI20220520\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class EasyTestingKernel extends \EasyCI20220520\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs(array $configFiles) : \EasyCI20220517\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFiles) : \EasyCI20220520\Psr\Container\ContainerInterface
     {
-        $configFiles[] = \EasyCI20220517\Symplify\EasyTesting\ValueObject\EasyTestingConfig::FILE_PATH;
+        $configFiles[] = \EasyCI20220520\Symplify\EasyTesting\ValueObject\EasyTestingConfig::FILE_PATH;
         return $this->create($configFiles);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220517\PhpParser\Node\Stmt;
+namespace EasyCI20220520\PhpParser\Node\Stmt;
 
-use EasyCI20220517\PhpParser\Node;
-class Else_ extends \EasyCI20220517\PhpParser\Node\Stmt
+use EasyCI20220520\PhpParser\Node;
+class Else_ extends \EasyCI20220520\PhpParser\Node\Stmt
 {
     /** @var Node\Stmt[] Statements */
     public $stmts;
