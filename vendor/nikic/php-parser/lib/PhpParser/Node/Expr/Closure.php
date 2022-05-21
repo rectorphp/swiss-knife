@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220520\PhpParser\Node\Expr;
+namespace EasyCI20220521\PhpParser\Node\Expr;
 
-use EasyCI20220520\PhpParser\Node;
-use EasyCI20220520\PhpParser\Node\Expr;
-use EasyCI20220520\PhpParser\Node\FunctionLike;
-class Closure extends \EasyCI20220520\PhpParser\Node\Expr implements \EasyCI20220520\PhpParser\Node\FunctionLike
+use EasyCI20220521\PhpParser\Node;
+use EasyCI20220521\PhpParser\Node\Expr;
+use EasyCI20220521\PhpParser\Node\FunctionLike;
+class Closure extends \EasyCI20220521\PhpParser\Node\Expr implements \EasyCI20220521\PhpParser\Node\FunctionLike
 {
     /** @var bool Whether the closure is static */
     public $static;
@@ -43,7 +43,7 @@ class Closure extends \EasyCI20220520\PhpParser\Node\Expr implements \EasyCI2022
         $this->params = $subNodes['params'] ?? [];
         $this->uses = $subNodes['uses'] ?? [];
         $returnType = $subNodes['returnType'] ?? null;
-        $this->returnType = \is_string($returnType) ? new \EasyCI20220520\PhpParser\Node\Identifier($returnType) : $returnType;
+        $this->returnType = \is_string($returnType) ? new \EasyCI20220521\PhpParser\Node\Identifier($returnType) : $returnType;
         $this->stmts = $subNodes['stmts'] ?? [];
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }

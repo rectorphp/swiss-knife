@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220520\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI20220521\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI20220520\PhpParser\ConstExprEvaluator;
-use EasyCI20220520\PhpParser\Node\Expr;
-use EasyCI20220520\PhpParser\Node\Expr\FuncCall;
-use EasyCI20220520\PhpParser\Node\Name;
-use EasyCI20220520\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI20220520\Symplify\Astral\Exception\ShouldNotHappenException;
-use EasyCI20220520\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220521\PhpParser\ConstExprEvaluator;
+use EasyCI20220521\PhpParser\Node\Expr;
+use EasyCI20220521\PhpParser\Node\Expr\FuncCall;
+use EasyCI20220521\PhpParser\Node\Name;
+use EasyCI20220521\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI20220521\Symplify\Astral\Exception\ShouldNotHappenException;
+use EasyCI20220521\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *
  * @implements NodeValueResolverInterface<FuncCall>
  */
-final class FuncCallValueResolver implements \EasyCI20220520\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
+final class FuncCallValueResolver implements \EasyCI20220521\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
 {
     /**
      * @var string[]
@@ -29,20 +29,20 @@ final class FuncCallValueResolver implements \EasyCI20220520\Symplify\Astral\Con
      * @var \PhpParser\ConstExprEvaluator
      */
     private $constExprEvaluator;
-    public function __construct(\EasyCI20220520\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220520\PhpParser\ConstExprEvaluator $constExprEvaluator)
+    public function __construct(\EasyCI20220521\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220521\PhpParser\ConstExprEvaluator $constExprEvaluator)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->constExprEvaluator = $constExprEvaluator;
     }
     public function getType() : string
     {
-        return \EasyCI20220520\PhpParser\Node\Expr\FuncCall::class;
+        return \EasyCI20220521\PhpParser\Node\Expr\FuncCall::class;
     }
     /**
      * @param FuncCall $expr
      * @return mixed
      */
-    public function resolve(\EasyCI20220520\PhpParser\Node\Expr $expr, string $currentFilePath)
+    public function resolve(\EasyCI20220521\PhpParser\Node\Expr $expr, string $currentFilePath)
     {
         if ($this->simpleNameResolver->isName($expr, 'getcwd')) {
             return \dirname($currentFilePath);
@@ -52,7 +52,7 @@ final class FuncCallValueResolver implements \EasyCI20220520\Symplify\Astral\Con
         foreach ($args as $arg) {
             $arguments[] = $this->constExprEvaluator->evaluateDirectly($arg->value);
         }
-        if ($expr->name instanceof \EasyCI20220520\PhpParser\Node\Name) {
+        if ($expr->name instanceof \EasyCI20220521\PhpParser\Node\Name) {
             $functionName = (string) $expr->name;
             if (!$this->isAllowedFunctionName($functionName)) {
                 return null;
@@ -60,7 +60,7 @@ final class FuncCallValueResolver implements \EasyCI20220520\Symplify\Astral\Con
             if (\function_exists($functionName)) {
                 return $functionName(...$arguments);
             }
-            throw new \EasyCI20220520\Symplify\Astral\Exception\ShouldNotHappenException();
+            throw new \EasyCI20220521\Symplify\Astral\Exception\ShouldNotHappenException();
         }
         return null;
     }

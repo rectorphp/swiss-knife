@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220520\Nette;
+namespace EasyCI20220521\Nette;
 
 interface HtmlStringable
 {
@@ -14,4 +14,4 @@ interface HtmlStringable
      */
     function __toString() : string;
 }
-\interface_exists(\EasyCI20220520\Nette\Utils\IHtmlString::class);
+\interface_exists(\EasyCI20220521\Nette\Utils\IHtmlString::class);

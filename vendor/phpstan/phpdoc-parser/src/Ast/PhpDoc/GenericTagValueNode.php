@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220520\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220521\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220520\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class GenericTagValueNode implements \EasyCI20220520\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+use EasyCI20220521\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class GenericTagValueNode implements \EasyCI20220521\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string (may be empty) */

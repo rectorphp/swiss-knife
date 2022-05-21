@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220520\PhpParser\Builder;
+namespace EasyCI20220521\PhpParser\Builder;
 
-use EasyCI20220520\PhpParser\Builder;
-use EasyCI20220520\PhpParser\BuilderHelpers;
-use EasyCI20220520\PhpParser\Node;
-use EasyCI20220520\PhpParser\Node\Stmt;
-class Use_ implements \EasyCI20220520\PhpParser\Builder
+use EasyCI20220521\PhpParser\Builder;
+use EasyCI20220521\PhpParser\BuilderHelpers;
+use EasyCI20220521\PhpParser\Node;
+use EasyCI20220521\PhpParser\Node\Stmt;
+class Use_ implements \EasyCI20220521\PhpParser\Builder
 {
     protected $name;
     protected $type;
@@ -20,7 +20,7 @@ class Use_ implements \EasyCI20220520\PhpParser\Builder
      */
     public function __construct($name, int $type)
     {
-        $this->name = \EasyCI20220520\PhpParser\BuilderHelpers::normalizeName($name);
+        $this->name = \EasyCI20220521\PhpParser\BuilderHelpers::normalizeName($name);
         $this->type = $type;
     }
     /**
@@ -40,8 +40,8 @@ class Use_ implements \EasyCI20220520\PhpParser\Builder
      *
      * @return Stmt\Use_ The built node
      */
-    public function getNode() : \EasyCI20220520\PhpParser\Node
+    public function getNode() : \EasyCI20220521\PhpParser\Node
     {
-        return new \EasyCI20220520\PhpParser\Node\Stmt\Use_([new \EasyCI20220520\PhpParser\Node\Stmt\UseUse($this->name, $this->alias)], $this->type);
+        return new \EasyCI20220521\PhpParser\Node\Stmt\Use_([new \EasyCI20220521\PhpParser\Node\Stmt\UseUse($this->name, $this->alias)], $this->type);
     }
 }

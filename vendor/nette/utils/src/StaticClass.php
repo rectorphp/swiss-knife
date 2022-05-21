@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220520\Nette;
+namespace EasyCI20220521\Nette;
 
 /**
  * Static class.
@@ -27,6 +27,6 @@ trait StaticClass
      */
     public static function __callStatic(string $name, array $args)
     {
-        \EasyCI20220520\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
+        \EasyCI20220521\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
     }
 }

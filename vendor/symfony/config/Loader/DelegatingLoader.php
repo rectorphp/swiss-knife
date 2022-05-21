@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220520\Symfony\Component\Config\Loader;
+namespace EasyCI20220521\Symfony\Component\Config\Loader;
 
-use EasyCI20220520\Symfony\Component\Config\Exception\LoaderLoadException;
+use EasyCI20220521\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * DelegatingLoader delegates loading to other loaders using a loader resolver.
  *
@@ -19,9 +19,9 @@ use EasyCI20220520\Symfony\Component\Config\Exception\LoaderLoadException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DelegatingLoader extends \EasyCI20220520\Symfony\Component\Config\Loader\Loader
+class DelegatingLoader extends \EasyCI20220521\Symfony\Component\Config\Loader\Loader
 {
-    public function __construct(\EasyCI20220520\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function __construct(\EasyCI20220521\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -33,7 +33,7 @@ class DelegatingLoader extends \EasyCI20220520\Symfony\Component\Config\Loader\L
     public function load($resource, string $type = null)
     {
         if (\false === ($loader = $this->resolver->resolve($resource, $type))) {
-            throw new \EasyCI20220520\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
+            throw new \EasyCI20220521\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
         }
         return $loader->load($resource, $type);
     }

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220520\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220521\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220520\PHPStan\PhpDocParser\Ast\Node;
-interface TypeNode extends \EasyCI20220520\PHPStan\PhpDocParser\Ast\Node
+use EasyCI20220521\PHPStan\PhpDocParser\Ast\Node;
+interface TypeNode extends \EasyCI20220521\PHPStan\PhpDocParser\Ast\Node
 {
 }

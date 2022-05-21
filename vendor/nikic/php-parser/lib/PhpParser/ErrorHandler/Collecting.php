@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220520\PhpParser\ErrorHandler;
+namespace EasyCI20220521\PhpParser\ErrorHandler;
 
-use EasyCI20220520\PhpParser\Error;
-use EasyCI20220520\PhpParser\ErrorHandler;
+use EasyCI20220521\PhpParser\Error;
+use EasyCI20220521\PhpParser\ErrorHandler;
 /**
  * Error handler that collects all errors into an array.
  *
  * This allows graceful handling of errors.
  */
-class Collecting implements \EasyCI20220520\PhpParser\ErrorHandler
+class Collecting implements \EasyCI20220521\PhpParser\ErrorHandler
 {
     /** @var Error[] Collected errors */
     private $errors = [];
-    public function handleError(\EasyCI20220520\PhpParser\Error $error)
+    public function handleError(\EasyCI20220521\PhpParser\Error $error)
     {
         $this->errors[] = $error;
     }
