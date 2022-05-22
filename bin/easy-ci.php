@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220521;
+namespace EasyCI20220522;
 
 use Symplify\EasyCI\Kernel\EasyCIKernel;
-use EasyCI20220521\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use EasyCI20220522\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -28,5 +28,5 @@ $scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
 if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
-$kernelBootAndApplicationRun = new \EasyCI20220521\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\EasyCI\Kernel\EasyCIKernel::class, $extraConfigs);
+$kernelBootAndApplicationRun = new \EasyCI20220522\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\EasyCI\Kernel\EasyCIKernel::class, $extraConfigs);
 $kernelBootAndApplicationRun->run();

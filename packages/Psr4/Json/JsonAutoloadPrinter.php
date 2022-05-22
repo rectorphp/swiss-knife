@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Json;
 
-use EasyCI20220521\Nette\Utils\Json;
-use EasyCI20220521\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use EasyCI20220522\Nette\Utils\Json;
+use EasyCI20220522\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class JsonAutoloadPrinter
@@ -23,7 +23,7 @@ final class JsonAutoloadPrinter
     public function createJsonAutoloadContent(array $psr4NamespaceToPaths) : string
     {
         $normalizedJsonArray = $this->psr4PathNormalizer->normalizePsr4NamespaceToPathsToJsonsArray($psr4NamespaceToPaths);
-        $composerJson = [\EasyCI20220521\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => ['psr-4' => $normalizedJsonArray]];
-        return \EasyCI20220521\Nette\Utils\Json::encode($composerJson, \EasyCI20220521\Nette\Utils\Json::PRETTY);
+        $composerJson = [\EasyCI20220522\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => ['psr-4' => $normalizedJsonArray]];
+        return \EasyCI20220522\Nette\Utils\Json::encode($composerJson, \EasyCI20220522\Nette\Utils\Json::PRETTY);
     }
 }

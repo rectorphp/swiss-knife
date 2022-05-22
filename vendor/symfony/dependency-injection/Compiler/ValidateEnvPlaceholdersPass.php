@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220521\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220522\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220521\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI20220521\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI20220521\Symfony\Component\Config\Definition\Processor;
-use EasyCI20220521\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220521\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use EasyCI20220521\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI20220521\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use EasyCI20220522\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI20220522\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI20220522\Symfony\Component\Config\Definition\Processor;
+use EasyCI20220522\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220522\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use EasyCI20220522\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI20220522\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 /**
  * Validates environment variable placeholders used in extension configuration with dummy values.
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class ValidateEnvPlaceholdersPass implements \EasyCI20220521\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ValidateEnvPlaceholdersPass implements \EasyCI20220522\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private const TYPE_FIXTURES = ['array' => [], 'bool' => \false, 'float' => 0.0, 'int' => 0, 'string' => ''];
     /**
@@ -32,17 +32,17 @@ class ValidateEnvPlaceholdersPass implements \EasyCI20220521\Symfony\Component\D
     /**
      * {@inheritdoc}
      */
-    public function process(\EasyCI20220521\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\EasyCI20220522\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->extensionConfig = [];
-        if (!\class_exists(\EasyCI20220521\Symfony\Component\Config\Definition\BaseNode::class) || !($extensions = $container->getExtensions())) {
+        if (!\class_exists(\EasyCI20220522\Symfony\Component\Config\Definition\BaseNode::class) || !($extensions = $container->getExtensions())) {
             return;
         }
         $resolvingBag = $container->getParameterBag();
-        if (!$resolvingBag instanceof \EasyCI20220521\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
+        if (!$resolvingBag instanceof \EasyCI20220522\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
             return;
         }
-        $defaultBag = new \EasyCI20220521\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($resolvingBag->all());
+        $defaultBag = new \EasyCI20220522\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($resolvingBag->all());
         $envTypes = $resolvingBag->getProvidedTypes();
         foreach ($resolvingBag->getEnvPlaceholders() + $resolvingBag->getUnusedEnvPlaceholders() as $env => $placeholders) {
             $values = [];
@@ -57,17 +57,17 @@ class ValidateEnvPlaceholdersPass implements \EasyCI20220521\Symfony\Component\D
                 }
             }
             foreach ($placeholders as $placeholder) {
-                \EasyCI20220521\Symfony\Component\Config\Definition\BaseNode::setPlaceholder($placeholder, $values);
+                \EasyCI20220522\Symfony\Component\Config\Definition\BaseNode::setPlaceholder($placeholder, $values);
             }
         }
-        $processor = new \EasyCI20220521\Symfony\Component\Config\Definition\Processor();
+        $processor = new \EasyCI20220522\Symfony\Component\Config\Definition\Processor();
         foreach ($extensions as $name => $extension) {
-            if (!($extension instanceof \EasyCI20220521\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface || $extension instanceof \EasyCI20220521\Symfony\Component\Config\Definition\ConfigurationInterface) || !($config = \array_filter($container->getExtensionConfig($name)))) {
+            if (!($extension instanceof \EasyCI20220522\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface || $extension instanceof \EasyCI20220522\Symfony\Component\Config\Definition\ConfigurationInterface) || !($config = \array_filter($container->getExtensionConfig($name)))) {
                 // this extension has no semantic configuration or was not called
                 continue;
             }
             $config = $resolvingBag->resolveValue($config);
-            if ($extension instanceof \EasyCI20220521\Symfony\Component\Config\Definition\ConfigurationInterface) {
+            if ($extension instanceof \EasyCI20220522\Symfony\Component\Config\Definition\ConfigurationInterface) {
                 $configuration = $extension;
             } elseif (null === ($configuration = $extension->getConfiguration($config, $container))) {
                 continue;

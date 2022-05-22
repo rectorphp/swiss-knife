@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220521\PhpParser;
+namespace EasyCI20220522\PhpParser;
 
 interface Node
 {
@@ -96,7 +96,7 @@ interface Node
      *
      * @param Comment\Doc $docComment Doc comment to set
      */
-    public function setDocComment(\EasyCI20220521\PhpParser\Comment\Doc $docComment);
+    public function setDocComment(\EasyCI20220522\PhpParser\Comment\Doc $docComment);
     /**
      * Sets an attribute on a node.
      *
