@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220522\PhpParser\Internal;
+namespace EasyCI20220523\PhpParser\Internal;
 
 /**
  * Provides operations on token streams, for use by pretty printer.

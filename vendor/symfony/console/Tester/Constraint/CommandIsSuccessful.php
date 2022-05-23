@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220522\Symfony\Component\Console\Tester\Constraint;
+namespace EasyCI20220523\Symfony\Component\Console\Tester\Constraint;
 
-use EasyCI20220522\PHPUnit\Framework\Constraint\Constraint;
-use EasyCI20220522\Symfony\Component\Console\Command\Command;
-final class CommandIsSuccessful extends \EasyCI20220522\PHPUnit\Framework\Constraint\Constraint
+use EasyCI20220523\PHPUnit\Framework\Constraint\Constraint;
+use EasyCI20220523\Symfony\Component\Console\Command\Command;
+final class CommandIsSuccessful extends \EasyCI20220523\PHPUnit\Framework\Constraint\Constraint
 {
     /**
      * {@inheritdoc}
@@ -26,7 +26,7 @@ final class CommandIsSuccessful extends \EasyCI20220522\PHPUnit\Framework\Constr
      */
     protected function matches($other) : bool
     {
-        return \EasyCI20220522\Symfony\Component\Console\Command\Command::SUCCESS === $other;
+        return \EasyCI20220523\Symfony\Component\Console\Command\Command::SUCCESS === $other;
     }
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ final class CommandIsSuccessful extends \EasyCI20220522\PHPUnit\Framework\Constr
      */
     protected function additionalFailureDescription($other) : string
     {
-        $mapping = [\EasyCI20220522\Symfony\Component\Console\Command\Command::FAILURE => 'Command failed.', \EasyCI20220522\Symfony\Component\Console\Command\Command::INVALID => 'Command was invalid.'];
+        $mapping = [\EasyCI20220523\Symfony\Component\Console\Command\Command::FAILURE => 'Command failed.', \EasyCI20220523\Symfony\Component\Console\Command\Command::INVALID => 'Command was invalid.'];
         return $mapping[$other] ?? \sprintf('Command returned exit status %d.', $other);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220522\PhpParser\Node\Expr;
+namespace EasyCI20220523\PhpParser\Node\Expr;
 
-use EasyCI20220522\PhpParser\Node\Expr;
-class Variable extends \EasyCI20220522\PhpParser\Node\Expr
+use EasyCI20220523\PhpParser\Node\Expr;
+class Variable extends \EasyCI20220523\PhpParser\Node\Expr
 {
     /** @var string|Expr Name */
     public $name;

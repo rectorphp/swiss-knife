@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220522\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220523\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220522\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ArrayTypeNode implements \EasyCI20220522\PHPStan\PhpDocParser\Ast\Type\TypeNode
+use EasyCI20220523\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class ArrayTypeNode implements \EasyCI20220523\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var TypeNode */
     public $type;
-    public function __construct(\EasyCI20220522\PHPStan\PhpDocParser\Ast\Type\TypeNode $type)
+    public function __construct(\EasyCI20220523\PHPStan\PhpDocParser\Ast\Type\TypeNode $type)
     {
         $this->type = $type;
     }

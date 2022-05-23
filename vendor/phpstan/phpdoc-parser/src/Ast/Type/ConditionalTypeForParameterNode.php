@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220522\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220523\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220522\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220523\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
-class ConditionalTypeForParameterNode implements \EasyCI20220522\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ConditionalTypeForParameterNode implements \EasyCI20220523\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var string */
@@ -18,7 +18,7 @@ class ConditionalTypeForParameterNode implements \EasyCI20220522\PHPStan\PhpDocP
     public $else;
     /** @var bool */
     public $negated;
-    public function __construct(string $parameterName, \EasyCI20220522\PHPStan\PhpDocParser\Ast\Type\TypeNode $targetType, \EasyCI20220522\PHPStan\PhpDocParser\Ast\Type\TypeNode $if, \EasyCI20220522\PHPStan\PhpDocParser\Ast\Type\TypeNode $else, bool $negated)
+    public function __construct(string $parameterName, \EasyCI20220523\PHPStan\PhpDocParser\Ast\Type\TypeNode $targetType, \EasyCI20220523\PHPStan\PhpDocParser\Ast\Type\TypeNode $if, \EasyCI20220523\PHPStan\PhpDocParser\Ast\Type\TypeNode $else, bool $negated)
     {
         $this->parameterName = $parameterName;
         $this->targetType = $targetType;
