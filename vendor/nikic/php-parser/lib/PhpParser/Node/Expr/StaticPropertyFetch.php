@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220523\PhpParser\Node\Expr;
+namespace EasyCI20220524\PhpParser\Node\Expr;
 
-use EasyCI20220523\PhpParser\Node\Expr;
-use EasyCI20220523\PhpParser\Node\Name;
-use EasyCI20220523\PhpParser\Node\VarLikeIdentifier;
-class StaticPropertyFetch extends \EasyCI20220523\PhpParser\Node\Expr
+use EasyCI20220524\PhpParser\Node\Expr;
+use EasyCI20220524\PhpParser\Node\Name;
+use EasyCI20220524\PhpParser\Node\VarLikeIdentifier;
+class StaticPropertyFetch extends \EasyCI20220524\PhpParser\Node\Expr
 {
     /** @var Name|Expr Class name */
     public $class;
@@ -23,7 +23,7 @@ class StaticPropertyFetch extends \EasyCI20220523\PhpParser\Node\Expr
     {
         $this->attributes = $attributes;
         $this->class = $class;
-        $this->name = \is_string($name) ? new \EasyCI20220523\PhpParser\Node\VarLikeIdentifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220524\PhpParser\Node\VarLikeIdentifier($name) : $name;
     }
     public function getSubNodeNames() : array
     {

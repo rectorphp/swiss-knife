@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220523\Nette\Utils;
+namespace EasyCI20220524\Nette\Utils;
 
-use EasyCI20220523\Nette;
+use EasyCI20220524\Nette;
 /**
  * Provides objects to work as array.
  * @template T
@@ -51,7 +51,7 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     {
         if (!\is_scalar($key)) {
             // prevents null
-            throw new \EasyCI20220523\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
+            throw new \EasyCI20220524\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
         }
         $this->{$key} = $value;
     }

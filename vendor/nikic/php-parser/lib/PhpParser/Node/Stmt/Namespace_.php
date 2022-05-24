@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220523\PhpParser\Node\Stmt;
+namespace EasyCI20220524\PhpParser\Node\Stmt;
 
-use EasyCI20220523\PhpParser\Node;
-class Namespace_ extends \EasyCI20220523\PhpParser\Node\Stmt
+use EasyCI20220524\PhpParser\Node;
+class Namespace_ extends \EasyCI20220524\PhpParser\Node\Stmt
 {
     /* For use in the "kind" attribute */
     const KIND_SEMICOLON = 1;
@@ -20,7 +20,7 @@ class Namespace_ extends \EasyCI20220523\PhpParser\Node\Stmt
      * @param null|Node\Stmt[] $stmts      Statements
      * @param array            $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220523\PhpParser\Node\Name $name = null, $stmts = [], array $attributes = [])
+    public function __construct(\EasyCI20220524\PhpParser\Node\Name $name = null, $stmts = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->name = $name;

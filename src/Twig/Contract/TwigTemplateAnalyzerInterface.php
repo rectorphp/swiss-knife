@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\Twig\Contract;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220523\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220524\Symplify\SmartFileSystem\SmartFileInfo;
 interface TwigTemplateAnalyzerInterface
 {
     /**
