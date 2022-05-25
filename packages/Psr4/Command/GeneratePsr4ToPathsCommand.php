@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Command;
 
-use EasyCI20220524\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220524\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220524\Symfony\Component\Console\Input\InputOption;
-use EasyCI20220524\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220525\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220525\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220525\Symfony\Component\Console\Input\InputOption;
+use EasyCI20220525\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
 use Symplify\EasyCI\Psr4\Json\JsonAutoloadPrinter;
 use Symplify\EasyCI\Psr4\Psr4Filter;
@@ -14,9 +14,9 @@ use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
 use Symplify\EasyCI\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory;
-use EasyCI20220524\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220524\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class GeneratePsr4ToPathsCommand extends \EasyCI20220524\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220525\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220525\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class GeneratePsr4ToPathsCommand extends \EasyCI20220525\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration
@@ -49,12 +49,12 @@ final class GeneratePsr4ToPathsCommand extends \EasyCI20220524\Symplify\PackageB
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220524\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220525\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Check if application is PSR-4 ready');
-        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220524\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220524\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source');
-        $this->addOption(\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON, null, \EasyCI20220524\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to composer.json');
+        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220525\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220525\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source');
+        $this->addOption(\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON, null, \EasyCI20220525\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to composer.json');
     }
-    protected function execute(\EasyCI20220524\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220524\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220525\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220525\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->psr4SwitcherConfiguration->loadFromInput($input);
         $classesToFiles = $this->phpClassLoader->load($this->psr4SwitcherConfiguration->getSource());

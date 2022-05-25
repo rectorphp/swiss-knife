@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220524\PHPStan\PhpDocParser\Ast;
+namespace EasyCI20220525\PHPStan\PhpDocParser\Ast;
 
 interface Node
 {

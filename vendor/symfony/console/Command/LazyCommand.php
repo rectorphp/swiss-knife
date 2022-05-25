@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220524\Symfony\Component\Console\Command;
+namespace EasyCI20220525\Symfony\Component\Console\Command;
 
-use EasyCI20220524\Symfony\Component\Console\Application;
-use EasyCI20220524\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI20220524\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI20220524\Symfony\Component\Console\Helper\HelperSet;
-use EasyCI20220524\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI20220524\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220524\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220525\Symfony\Component\Console\Application;
+use EasyCI20220525\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI20220525\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI20220525\Symfony\Component\Console\Helper\HelperSet;
+use EasyCI20220525\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI20220525\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220525\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class LazyCommand extends \EasyCI20220524\Symfony\Component\Console\Command\Command
+final class LazyCommand extends \EasyCI20220525\Symfony\Component\Console\Command\Command
 {
     private $command;
     /**
@@ -37,14 +37,14 @@ final class LazyCommand extends \EasyCI20220524\Symfony\Component\Console\Comman
     {
         $this->getCommand()->ignoreValidationErrors();
     }
-    public function setApplication(\EasyCI20220524\Symfony\Component\Console\Application $application = null) : void
+    public function setApplication(\EasyCI20220525\Symfony\Component\Console\Application $application = null) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setApplication($application);
         }
         parent::setApplication($application);
     }
-    public function setHelperSet(\EasyCI20220524\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
+    public function setHelperSet(\EasyCI20220525\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setHelperSet($helperSet);
@@ -55,11 +55,11 @@ final class LazyCommand extends \EasyCI20220524\Symfony\Component\Console\Comman
     {
         return $this->isEnabled ?? $this->getCommand()->isEnabled();
     }
-    public function run(\EasyCI20220524\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220524\Symfony\Component\Console\Output\OutputInterface $output) : int
+    public function run(\EasyCI20220525\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220525\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         return $this->getCommand()->run($input, $output);
     }
-    public function complete(\EasyCI20220524\Symfony\Component\Console\Completion\CompletionInput $input, \EasyCI20220524\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
+    public function complete(\EasyCI20220525\Symfony\Component\Console\Completion\CompletionInput $input, \EasyCI20220525\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
     {
         $this->getCommand()->complete($input, $suggestions);
     }
@@ -87,11 +87,11 @@ final class LazyCommand extends \EasyCI20220524\Symfony\Component\Console\Comman
         $this->getCommand()->setDefinition($definition);
         return $this;
     }
-    public function getDefinition() : \EasyCI20220524\Symfony\Component\Console\Input\InputDefinition
+    public function getDefinition() : \EasyCI20220525\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getDefinition();
     }
-    public function getNativeDefinition() : \EasyCI20220524\Symfony\Component\Console\Input\InputDefinition
+    public function getNativeDefinition() : \EasyCI20220525\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getNativeDefinition();
     }
