@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI20220525\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220525\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220525\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220527\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220527\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220527\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Console\Output\MissingTwigTemplatePathReporter;
 use Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
 use Symplify\EasyCI\Template\TemplatePathsResolver;
 use Symplify\EasyCI\Twig\TwigAnalyzer;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220525\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220525\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class CheckTwigRenderCommand extends \EasyCI20220525\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220527\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220527\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class CheckTwigRenderCommand extends \EasyCI20220527\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Template\TemplatePathsResolver
@@ -41,11 +41,11 @@ final class CheckTwigRenderCommand extends \EasyCI20220525\Symplify\PackageBuild
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220525\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220527\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Validate template paths in $this->render(...)');
-        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220525\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220525\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to project directories');
+        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220527\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220527\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to project directories');
     }
-    protected function execute(\EasyCI20220525\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220525\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220527\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220527\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string[] $sources */
         $sources = (array) $input->getArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES);

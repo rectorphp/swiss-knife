@@ -1,30 +1,30 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525;
+namespace EasyCI20220527;
 
-use EasyCI20220525\PhpParser\ConstExprEvaluator;
-use EasyCI20220525\PhpParser\NodeFinder;
-use EasyCI20220525\PHPStan\PhpDocParser\Lexer\Lexer;
-use EasyCI20220525\PHPStan\PhpDocParser\Parser\ConstExprParser;
-use EasyCI20220525\PHPStan\PhpDocParser\Parser\PhpDocParser;
-use EasyCI20220525\PHPStan\PhpDocParser\Parser\TypeParser;
+use EasyCI20220527\PhpParser\ConstExprEvaluator;
+use EasyCI20220527\PhpParser\NodeFinder;
+use EasyCI20220527\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220527\PHPStan\PhpDocParser\Parser\ConstExprParser;
+use EasyCI20220527\PHPStan\PhpDocParser\Parser\PhpDocParser;
+use EasyCI20220527\PHPStan\PhpDocParser\Parser\TypeParser;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI20220525\Symplify\Astral\PhpParser\SmartPhpParser;
-use EasyCI20220525\Symplify\Astral\PhpParser\SmartPhpParserFactory;
-use EasyCI20220525\Symplify\PackageBuilder\Php\TypeChecker;
-use function EasyCI20220525\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use EasyCI20220527\Symplify\Astral\PhpParser\SmartPhpParser;
+use EasyCI20220527\Symplify\Astral\PhpParser\SmartPhpParserFactory;
+use EasyCI20220527\Symplify\PackageBuilder\Php\TypeChecker;
+use function EasyCI20220527\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->autowire()->autoconfigure()->public();
-    $services->load('EasyCI20220525\Symplify\Astral\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/StaticFactory', __DIR__ . '/../src/ValueObject', __DIR__ . '/../src/NodeVisitor', __DIR__ . '/../src/PhpParser/SmartPhpParser.php', __DIR__ . '/../src/PhpDocParser/PhpDocNodeVisitor/CallablePhpDocNodeVisitor.php']);
-    $services->set(\EasyCI20220525\Symplify\Astral\PhpParser\SmartPhpParser::class)->factory([\EasyCI20220525\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220525\Symplify\Astral\PhpParser\SmartPhpParserFactory::class), 'create']);
-    $services->set(\EasyCI20220525\PhpParser\ConstExprEvaluator::class);
-    $services->set(\EasyCI20220525\Symplify\PackageBuilder\Php\TypeChecker::class);
-    $services->set(\EasyCI20220525\PhpParser\NodeFinder::class);
+    $services->load('EasyCI20220527\Symplify\Astral\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/StaticFactory', __DIR__ . '/../src/ValueObject', __DIR__ . '/../src/NodeVisitor', __DIR__ . '/../src/PhpParser/SmartPhpParser.php', __DIR__ . '/../src/PhpDocParser/PhpDocNodeVisitor/CallablePhpDocNodeVisitor.php']);
+    $services->set(\EasyCI20220527\Symplify\Astral\PhpParser\SmartPhpParser::class)->factory([\EasyCI20220527\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220527\Symplify\Astral\PhpParser\SmartPhpParserFactory::class), 'create']);
+    $services->set(\EasyCI20220527\PhpParser\ConstExprEvaluator::class);
+    $services->set(\EasyCI20220527\Symplify\PackageBuilder\Php\TypeChecker::class);
+    $services->set(\EasyCI20220527\PhpParser\NodeFinder::class);
     // phpdoc parser
-    $services->set(\EasyCI20220525\PHPStan\PhpDocParser\Parser\PhpDocParser::class);
-    $services->set(\EasyCI20220525\PHPStan\PhpDocParser\Lexer\Lexer::class);
-    $services->set(\EasyCI20220525\PHPStan\PhpDocParser\Parser\TypeParser::class);
-    $services->set(\EasyCI20220525\PHPStan\PhpDocParser\Parser\ConstExprParser::class);
+    $services->set(\EasyCI20220527\PHPStan\PhpDocParser\Parser\PhpDocParser::class);
+    $services->set(\EasyCI20220527\PHPStan\PhpDocParser\Lexer\Lexer::class);
+    $services->set(\EasyCI20220527\PHPStan\PhpDocParser\Parser\TypeParser::class);
+    $services->set(\EasyCI20220527\PHPStan\PhpDocParser\Parser\ConstExprParser::class);
 };

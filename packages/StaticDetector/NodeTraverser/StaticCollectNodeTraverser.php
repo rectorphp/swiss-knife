@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeTraverser;
 
-use EasyCI20220525\PhpParser\NodeTraverser;
+use EasyCI20220527\PhpParser\NodeTraverser;
 /**
  * For specific type autowire
  */
-final class StaticCollectNodeTraverser extends \EasyCI20220525\PhpParser\NodeTraverser
+final class StaticCollectNodeTraverser extends \EasyCI20220527\PhpParser\NodeTraverser
 {
 }

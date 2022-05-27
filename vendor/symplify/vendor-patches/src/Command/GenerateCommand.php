@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\Symplify\VendorPatches\Command;
+namespace EasyCI20220527\Symplify\VendorPatches\Command;
 
-use EasyCI20220525\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220525\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220525\Symplify\PackageBuilder\Composer\VendorDirProvider;
-use EasyCI20220525\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220525\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220525\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater;
-use EasyCI20220525\Symplify\VendorPatches\Console\GenerateCommandReporter;
-use EasyCI20220525\Symplify\VendorPatches\Differ\PatchDiffer;
-use EasyCI20220525\Symplify\VendorPatches\Finder\OldToNewFilesFinder;
-use EasyCI20220525\Symplify\VendorPatches\PatchFileFactory;
-final class GenerateCommand extends \EasyCI20220525\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use EasyCI20220527\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220527\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220527\Symplify\PackageBuilder\Composer\VendorDirProvider;
+use EasyCI20220527\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220527\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220527\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater;
+use EasyCI20220527\Symplify\VendorPatches\Console\GenerateCommandReporter;
+use EasyCI20220527\Symplify\VendorPatches\Differ\PatchDiffer;
+use EasyCI20220527\Symplify\VendorPatches\Finder\OldToNewFilesFinder;
+use EasyCI20220527\Symplify\VendorPatches\PatchFileFactory;
+final class GenerateCommand extends \EasyCI20220527\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\VendorPatches\Finder\OldToNewFilesFinder
@@ -39,7 +39,7 @@ final class GenerateCommand extends \EasyCI20220525\Symplify\PackageBuilder\Cons
      * @var \Symplify\VendorPatches\Console\GenerateCommandReporter
      */
     private $generateCommandReporter;
-    public function __construct(\EasyCI20220525\Symplify\VendorPatches\Finder\OldToNewFilesFinder $oldToNewFilesFinder, \EasyCI20220525\Symplify\VendorPatches\Differ\PatchDiffer $patchDiffer, \EasyCI20220525\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater $composerPatchesConfigurationUpdater, \EasyCI20220525\Symplify\PackageBuilder\Composer\VendorDirProvider $vendorDirProvider, \EasyCI20220525\Symplify\VendorPatches\PatchFileFactory $patchFileFactory, \EasyCI20220525\Symplify\VendorPatches\Console\GenerateCommandReporter $generateCommandReporter)
+    public function __construct(\EasyCI20220527\Symplify\VendorPatches\Finder\OldToNewFilesFinder $oldToNewFilesFinder, \EasyCI20220527\Symplify\VendorPatches\Differ\PatchDiffer $patchDiffer, \EasyCI20220527\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater $composerPatchesConfigurationUpdater, \EasyCI20220527\Symplify\PackageBuilder\Composer\VendorDirProvider $vendorDirProvider, \EasyCI20220527\Symplify\VendorPatches\PatchFileFactory $patchFileFactory, \EasyCI20220527\Symplify\VendorPatches\Console\GenerateCommandReporter $generateCommandReporter)
     {
         $this->oldToNewFilesFinder = $oldToNewFilesFinder;
         $this->patchDiffer = $patchDiffer;
@@ -51,10 +51,10 @@ final class GenerateCommand extends \EasyCI20220525\Symplify\PackageBuilder\Cons
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220525\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220527\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Generate patches from /vendor directory');
     }
-    protected function execute(\EasyCI20220525\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220525\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220527\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220527\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $vendorDirectory = $this->vendorDirProvider->provide();
         $oldAndNewFileInfos = $this->oldToNewFilesFinder->find($vendorDirectory);

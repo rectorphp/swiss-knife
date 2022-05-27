@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\PhpParser\Node\Stmt;
+namespace EasyCI20220527\PhpParser\Node\Stmt;
 
-use EasyCI20220525\PhpParser\Node;
-class TraitUse extends \EasyCI20220525\PhpParser\Node\Stmt
+use EasyCI20220527\PhpParser\Node;
+class TraitUse extends \EasyCI20220527\PhpParser\Node\Stmt
 {
     /** @var Node\Name[] Traits */
     public $traits;

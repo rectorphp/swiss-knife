@@ -32,7 +32,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Composer\\Semver\\": "src"
+                    "EasyCI20220527\\Composer\\Semver\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -115,7 +115,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\cweagans\\Composer\\": "src"
+                    "EasyCI20220527\\cweagans\\Composer\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -470,7 +470,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\PhpParser\\": "lib\/PhpParser"
+                    "EasyCI20220527\\PhpParser\\": "lib\/PhpParser"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -524,7 +524,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\PHPStan\\PhpDocParser\\": [
+                    "EasyCI20220527\\PHPStan\\PhpDocParser\\": [
                         "src\/"
                     ]
                 }
@@ -542,17 +542,17 @@
         },
         {
             "name": "phpstan\/phpstan",
-            "version": "1.7.1",
-            "version_normalized": "1.7.1.0",
+            "version": "1.7.2",
+            "version_normalized": "1.7.2.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/phpstan\/phpstan.git",
-                "reference": "e3baed2ee2ef322e0f9b8fe8f87fdbe024c7c719"
+                "reference": "c602f80d66ba425943b0f4aaa27010c822dd8f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpstan\/zipball\/e3baed2ee2ef322e0f9b8fe8f87fdbe024c7c719",
-                "reference": "e3baed2ee2ef322e0f9b8fe8f87fdbe024c7c719",
+                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpstan\/zipball\/c602f80d66ba425943b0f4aaa27010c822dd8f87",
+                "reference": "c602f80d66ba425943b0f4aaa27010c822dd8f87",
                 "shasum": ""
             },
             "require": {
@@ -561,7 +561,7 @@
             "conflict": {
                 "phpstan\/phpstan-shim": "*"
             },
-            "time": "2022-05-24T09:05:09+00:00",
+            "time": "2022-05-26T12:59:20+00:00",
             "bin": [
                 "phpstan",
                 "phpstan.phar"
@@ -580,7 +580,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https:\/\/github.com\/phpstan\/phpstan\/issues",
-                "source": "https:\/\/github.com\/phpstan\/phpstan\/tree\/1.7.1"
+                "source": "https:\/\/github.com\/phpstan\/phpstan\/tree\/1.7.2"
             },
             "funding": [
                 {
@@ -630,7 +630,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Psr\\Container\\": "src\/"
+                    "EasyCI20220527\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -729,17 +729,17 @@
         },
         {
             "name": "symfony\/config",
-            "version": "v6.0.8",
-            "version_normalized": "6.0.8.0",
+            "version": "v6.0.9",
+            "version_normalized": "6.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/config.git",
-                "reference": "6ac50d559aa64c8e7b5b17640c46241e4accb487"
+                "reference": "9c40f44bc38d91aeefbcdd1d42609033984ce062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/config\/zipball\/6ac50d559aa64c8e7b5b17640c46241e4accb487",
-                "reference": "6ac50d559aa64c8e7b5b17640c46241e4accb487",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/config\/zipball\/9c40f44bc38d91aeefbcdd1d42609033984ce062",
+                "reference": "9c40f44bc38d91aeefbcdd1d42609033984ce062",
                 "shasum": ""
             },
             "require": {
@@ -762,12 +762,12 @@
             "suggest": {
                 "symfony\/yaml": "To use the yaml reference dumper"
             },
-            "time": "2022-04-12T16:11:42+00:00",
+            "time": "2022-05-17T12:08:13+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Component\\Config\\": ""
+                    "EasyCI20220527\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -790,7 +790,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/config\/tree\/v6.0.8"
+                "source": "https:\/\/github.com\/symfony\/config\/tree\/v6.0.9"
             },
             "funding": [
                 {
@@ -810,17 +810,17 @@
         },
         {
             "name": "symfony\/console",
-            "version": "v6.0.8",
-            "version_normalized": "6.0.8.0",
+            "version": "v6.0.9",
+            "version_normalized": "6.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/console.git",
-                "reference": "0d00aa289215353aa8746a31d101f8e60826285c"
+                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/0d00aa289215353aa8746a31d101f8e60826285c",
-                "reference": "0d00aa289215353aa8746a31d101f8e60826285c",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/9b190bc7a19d19add1dbb3382721973836e59b50",
+                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50",
                 "shasum": ""
             },
             "require": {
@@ -854,12 +854,12 @@
                 "symfony\/lock": "",
                 "symfony\/process": ""
             },
-            "time": "2022-04-20T15:01:42+00:00",
+            "time": "2022-05-27T06:40:13+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Component\\Console\\": ""
+                    "EasyCI20220527\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -888,7 +888,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/console\/tree\/v6.0.8"
+                "source": "https:\/\/github.com\/symfony\/console\/tree\/v6.0.9"
             },
             "funding": [
                 {
@@ -908,17 +908,17 @@
         },
         {
             "name": "symfony\/dependency-injection",
-            "version": "v6.0.8",
-            "version_normalized": "6.0.8.0",
+            "version": "v6.0.9",
+            "version_normalized": "6.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/dependency-injection.git",
-                "reference": "571041cd7e765664cc527b461ee41be3013aa08e"
+                "reference": "eb0945f285285861a6a6b95b8e7f5881680c0d75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/571041cd7e765664cc527b461ee41be3013aa08e",
-                "reference": "571041cd7e765664cc527b461ee41be3013aa08e",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/eb0945f285285861a6a6b95b8e7f5881680c0d75",
+                "reference": "eb0945f285285861a6a6b95b8e7f5881680c0d75",
                 "shasum": ""
             },
             "require": {
@@ -951,7 +951,7 @@
                 "symfony\/proxy-manager-bridge": "Generate service proxies to lazy load them",
                 "symfony\/yaml": ""
             },
-            "time": "2022-04-26T13:22:23+00:00",
+            "time": "2022-05-27T06:40:13+00:00",
             "type": "library",
             "extra": {
                 "patches_applied": [
@@ -961,7 +961,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Component\\DependencyInjection\\": ""
+                    "EasyCI20220527\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -984,7 +984,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/dependency-injection\/tree\/v6.0.8"
+                "source": "https:\/\/github.com\/symfony\/dependency-injection\/tree\/v6.0.9"
             },
             "funding": [
                 {
@@ -1074,17 +1074,17 @@
         },
         {
             "name": "symfony\/filesystem",
-            "version": "v6.0.7",
-            "version_normalized": "6.0.7.0",
+            "version": "v6.0.9",
+            "version_normalized": "6.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/filesystem.git",
-                "reference": "6c9e4c41f2c51dfde3db298594ed9cba55dbf5ff"
+                "reference": "bf7b9d2ee692b6df2a41017d6023a2fe732d240c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/filesystem\/zipball\/6c9e4c41f2c51dfde3db298594ed9cba55dbf5ff",
-                "reference": "6c9e4c41f2c51dfde3db298594ed9cba55dbf5ff",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/filesystem\/zipball\/bf7b9d2ee692b6df2a41017d6023a2fe732d240c",
+                "reference": "bf7b9d2ee692b6df2a41017d6023a2fe732d240c",
                 "shasum": ""
             },
             "require": {
@@ -1092,12 +1092,12 @@
                 "symfony\/polyfill-ctype": "~1.8",
                 "symfony\/polyfill-mbstring": "~1.8"
             },
-            "time": "2022-04-01T12:54:51+00:00",
+            "time": "2022-05-21T13:33:31+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Component\\Filesystem\\": ""
+                    "EasyCI20220527\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1120,7 +1120,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/filesystem\/tree\/v6.0.7"
+                "source": "https:\/\/github.com\/symfony\/filesystem\/tree\/v6.0.9"
             },
             "funding": [
                 {
@@ -1161,7 +1161,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Component\\Finder\\": ""
+                    "EasyCI20220527\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1243,7 +1243,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Polyfill\\Ctype\\": ""
+                    "EasyCI20220527\\Symfony\\Polyfill\\Ctype\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1325,7 +1325,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                    "EasyCI20220527\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1409,7 +1409,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                    "EasyCI20220527\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
                 },
                 "classmap": [
                     "Resources\/stubs"
@@ -1499,7 +1499,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Polyfill\\Mbstring\\": ""
+                    "EasyCI20220527\\Symfony\\Polyfill\\Mbstring\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1579,7 +1579,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Polyfill\\Php81\\": ""
+                    "EasyCI20220527\\Symfony\\Polyfill\\Php81\\": ""
                 },
                 "classmap": [
                     "Resources\/stubs"
@@ -1665,7 +1665,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Contracts\\Service\\": ""
+                    "EasyCI20220527\\Symfony\\Contracts\\Service\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1713,17 +1713,17 @@
         },
         {
             "name": "symfony\/string",
-            "version": "v6.0.8",
-            "version_normalized": "6.0.8.0",
+            "version": "v6.0.9",
+            "version_normalized": "6.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/string.git",
-                "reference": "ac0aa5c2282e0de624c175b68d13f2c8f2e2649d"
+                "reference": "df9f03d595aa2d446498ba92fe803a519b2c43cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/string\/zipball\/ac0aa5c2282e0de624c175b68d13f2c8f2e2649d",
-                "reference": "ac0aa5c2282e0de624c175b68d13f2c8f2e2649d",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/string\/zipball\/df9f03d595aa2d446498ba92fe803a519b2c43cc",
+                "reference": "df9f03d595aa2d446498ba92fe803a519b2c43cc",
                 "shasum": ""
             },
             "require": {
@@ -1750,7 +1750,7 @@
                     "Resources\/functions.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220525\\Symfony\\Component\\String\\": ""
+                    "EasyCI20220527\\Symfony\\Component\\String\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1781,7 +1781,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/string\/tree\/v6.0.8"
+                "source": "https:\/\/github.com\/symfony\/string\/tree\/v6.0.9"
             },
             "funding": [
                 {
@@ -1806,7 +1806,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/astral",
-                "reference": "e68bf3d3fe578aa28510b4ea4f5a9509ec94366b"
+                "reference": "bbf831ca2c7119b0f09ae53ba63b1fc0c18d8f31"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1821,7 +1821,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/autowire-array-parameter": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
                 "symplify\/composer-json-manipulator": "<10.2.7",
@@ -1866,12 +1865,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\Astral\\": "src"
+                    "EasyCI20220527\\Symplify\\Astral\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\Astral\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\Astral\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1891,7 +1890,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "7276607f9705fca32554e2d710dede07a84d5e1f"
+                "reference": "8314e5c2715f209e58a7437c9f1e506cc99ea62f"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1900,7 +1899,6 @@
                 "symplify\/package-builder": "dev-main"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
                 "symplify\/composer-json-manipulator": "<10.2.7",
@@ -1938,12 +1936,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\AutowireArrayParameter\\": "src"
+                    "EasyCI20220527\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1963,7 +1961,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "708e36576f826272c98cc031525dbafb01a2b48e"
+                "reference": "fe9a9542f6008c20c1db8e1b831f4839ed897dd5"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1976,7 +1974,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/autowire-array-parameter": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
@@ -2013,12 +2010,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\ComposerJsonManipulator\\": "src"
+                    "EasyCI20220527\\Symplify\\ComposerJsonManipulator\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2038,7 +2035,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "631a1fe3c4aec39e495f9ec2f415e76e14b4c0c5"
+                "reference": "0fc264714f4703d0ab094aa719e8db7cb25c5b14"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2051,7 +2048,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/autowire-array-parameter": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
@@ -2090,12 +2086,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\EasyTesting\\": "src"
+                    "EasyCI20220527\\Symplify\\EasyTesting\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\EasyTesting\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\EasyTesting\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2115,7 +2111,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "d80bbf75c94c2a924a76becf03482e8e3375f586"
+                "reference": "71ecd6d952426d827d48fe90cce2d3714ff6ad0f"
             },
             "require": {
                 "nette\/neon": "^3.3.3",
@@ -2130,7 +2126,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/autowire-array-parameter": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
@@ -2167,12 +2162,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\PackageBuilder\\": "src"
+                    "EasyCI20220527\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\PackageBuilder\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\PackageBuilder\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2192,7 +2187,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "c243799b2b7ad4201d6aed77829cc3b07b8503fb"
+                "reference": "f5590fcc247b62d1c73e0ea83920634c9f17a91d"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2201,7 +2196,6 @@
                 "symfony\/finder": "^6.0"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/autowire-array-parameter": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
@@ -2241,12 +2235,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\SmartFileSystem\\": "src"
+                    "EasyCI20220527\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\SmartFileSystem\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2266,7 +2260,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "28664f202b8ffd85c951724b7f850617af19fecd"
+                "reference": "e653ef4561b1aa06355c04d1462b79fb517a6af2"
             },
             "require": {
                 "php": ">=8.0",
@@ -2279,7 +2273,6 @@
                 "webmozart\/assert": "^1.10"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
                 "symplify\/config-transformer": "<10.2.7",
@@ -2314,12 +2307,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\SymplifyKernel\\": "src"
+                    "EasyCI20220527\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\SymplifyKernel\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\SymplifyKernel\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2339,7 +2332,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/vendor-patches",
-                "reference": "aee2899e68de13beb01ebe3d088cfa960e4ccfc8"
+                "reference": "8063e0ed6ce281aa31bcb9905060d0d2e8b5f00e"
             },
             "require": {
                 "cweagans\/composer-patches": "^1.7",
@@ -2352,7 +2345,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/amnesia": "<10.2.7",
                 "symplify\/astral": "<10.2.7",
                 "symplify\/autowire-array-parameter": "<10.2.7",
                 "symplify\/coding-standard": "<10.2.7",
@@ -2392,12 +2384,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\VendorPatches\\": "src"
+                    "EasyCI20220527\\Symplify\\VendorPatches\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI20220525\\Symplify\\VendorPatches\\Tests\\": "tests"
+                    "EasyCI20220527\\Symplify\\VendorPatches\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2446,7 +2438,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI20220525\\Webmozart\\Assert\\": "src\/"
+                    "EasyCI20220527\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",

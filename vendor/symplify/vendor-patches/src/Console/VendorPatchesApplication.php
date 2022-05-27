@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\Symplify\VendorPatches\Console;
+namespace EasyCI20220527\Symplify\VendorPatches\Console;
 
-use EasyCI20220525\Symfony\Component\Console\Application;
-use EasyCI20220525\Symfony\Component\Console\Command\Command;
-final class VendorPatchesApplication extends \EasyCI20220525\Symfony\Component\Console\Application
+use EasyCI20220527\Symfony\Component\Console\Application;
+use EasyCI20220527\Symfony\Component\Console\Command\Command;
+final class VendorPatchesApplication extends \EasyCI20220527\Symfony\Component\Console\Application
 {
     /**
      * @param Command[] $commands

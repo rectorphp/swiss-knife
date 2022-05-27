@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220525\\cweagans\\Composer\\": "src"
+            "EasyCI20220527\\cweagans\\Composer\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220525\\cweagans\\Composer\\Tests\\": "tests"
+            "EasyCI20220527\\cweagans\\Composer\\Tests\\": "tests"
         }
     }
 }

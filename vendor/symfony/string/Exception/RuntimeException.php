@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220525\Symfony\Component\String\Exception;
+namespace EasyCI20220527\Symfony\Component\String\Exception;
 
-class RuntimeException extends \RuntimeException implements \EasyCI20220525\Symfony\Component\String\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements \EasyCI20220527\Symfony\Component\String\Exception\ExceptionInterface
 {
 }

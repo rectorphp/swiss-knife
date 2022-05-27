@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220527\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220525\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
-use EasyCI20220525\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ConstTypeNode implements \EasyCI20220525\PHPStan\PhpDocParser\Ast\Type\TypeNode
+use EasyCI20220527\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
+use EasyCI20220527\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class ConstTypeNode implements \EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var ConstExprNode */
     public $constExpr;
-    public function __construct(\EasyCI20220525\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $constExpr)
+    public function __construct(\EasyCI20220527\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $constExpr)
     {
         $this->constExpr = $constExpr;
     }

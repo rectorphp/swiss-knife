@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\PhpParser\Node\Scalar;
+namespace EasyCI20220527\PhpParser\Node\Scalar;
 
-use EasyCI20220525\PhpParser\Node\Scalar;
-class DNumber extends \EasyCI20220525\PhpParser\Node\Scalar
+use EasyCI20220527\PhpParser\Node\Scalar;
+class DNumber extends \EasyCI20220527\PhpParser\Node\Scalar
 {
     /** @var float Number value */
     public $value;

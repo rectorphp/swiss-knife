@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220527\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220525\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220527\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
-class ConditionalTypeNode implements \EasyCI20220525\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ConditionalTypeNode implements \EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var TypeNode */
@@ -18,7 +18,7 @@ class ConditionalTypeNode implements \EasyCI20220525\PHPStan\PhpDocParser\Ast\Ty
     public $else;
     /** @var bool */
     public $negated;
-    public function __construct(\EasyCI20220525\PHPStan\PhpDocParser\Ast\Type\TypeNode $subjectType, \EasyCI20220525\PHPStan\PhpDocParser\Ast\Type\TypeNode $targetType, \EasyCI20220525\PHPStan\PhpDocParser\Ast\Type\TypeNode $if, \EasyCI20220525\PHPStan\PhpDocParser\Ast\Type\TypeNode $else, bool $negated)
+    public function __construct(\EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\TypeNode $subjectType, \EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\TypeNode $targetType, \EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\TypeNode $if, \EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\TypeNode $else, bool $negated)
     {
         $this->subjectType = $subjectType;
         $this->targetType = $targetType;

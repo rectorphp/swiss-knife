@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220525\Symplify\Astral\ValueObject\NodeBuilder;
+namespace EasyCI20220527\Symplify\Astral\ValueObject\NodeBuilder;
 
-use EasyCI20220525\PhpParser\Builder\Use_;
-use EasyCI20220525\PhpParser\Node\Name;
-use EasyCI20220525\PhpParser\Node\Stmt\Use_ as UseStmt;
+use EasyCI20220527\PhpParser\Builder\Use_;
+use EasyCI20220527\PhpParser\Node\Name;
+use EasyCI20220527\PhpParser\Node\Stmt\Use_ as UseStmt;
 /**
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class UseBuilder extends \EasyCI20220525\PhpParser\Builder\Use_
+final class UseBuilder extends \EasyCI20220527\PhpParser\Builder\Use_
 {
     /**
      * @param \PhpParser\Node\Name|string $name
      */
-    public function __construct($name, int $type = \EasyCI20220525\PhpParser\Node\Stmt\Use_::TYPE_NORMAL)
+    public function __construct($name, int $type = \EasyCI20220527\PhpParser\Node\Stmt\Use_::TYPE_NORMAL)
     {
         parent::__construct($name, $type);
     }
