@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220527\PhpParser\Node\Stmt;
+namespace EasyCI20220529\PhpParser\Node\Stmt;
 
-use EasyCI20220527\PhpParser\Node\Identifier;
-use EasyCI20220527\PhpParser\Node\Stmt;
-class Goto_ extends \EasyCI20220527\PhpParser\Node\Stmt
+use EasyCI20220529\PhpParser\Node\Identifier;
+use EasyCI20220529\PhpParser\Node\Stmt;
+class Goto_ extends \EasyCI20220529\PhpParser\Node\Stmt
 {
     /** @var Identifier Name of label to jump to */
     public $name;
@@ -18,7 +18,7 @@ class Goto_ extends \EasyCI20220527\PhpParser\Node\Stmt
     public function __construct($name, array $attributes = [])
     {
         $this->attributes = $attributes;
-        $this->name = \is_string($name) ? new \EasyCI20220527\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220529\PhpParser\Node\Identifier($name) : $name;
     }
     public function getSubNodeNames() : array
     {

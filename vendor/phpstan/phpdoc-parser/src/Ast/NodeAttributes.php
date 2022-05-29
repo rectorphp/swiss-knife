@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220527\PHPStan\PhpDocParser\Ast;
+namespace EasyCI20220529\PHPStan\PhpDocParser\Ast;
 
 use function array_key_exists;
 trait NodeAttributes

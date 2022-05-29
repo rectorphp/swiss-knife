@@ -1,5 +1,5 @@
 #!/usr/bin/env php
 <?php 
-namespace EasyCI20220527;
+namespace EasyCI20220529;
 
 require __DIR__ . '/vendor-patches.php';

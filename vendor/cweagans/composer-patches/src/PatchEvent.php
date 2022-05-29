@@ -4,11 +4,11 @@
  * @file
  * Dispatch events when patches are applied.
  */
-namespace EasyCI20220527\cweagans\Composer;
+namespace EasyCI20220529\cweagans\Composer;
 
-use EasyCI20220527\Composer\EventDispatcher\Event;
-use EasyCI20220527\Composer\Package\PackageInterface;
-class PatchEvent extends \EasyCI20220527\Composer\EventDispatcher\Event
+use EasyCI20220529\Composer\EventDispatcher\Event;
+use EasyCI20220529\Composer\Package\PackageInterface;
+class PatchEvent extends \EasyCI20220529\Composer\EventDispatcher\Event
 {
     /**
      * @var PackageInterface $package
@@ -30,7 +30,7 @@ class PatchEvent extends \EasyCI20220527\Composer\EventDispatcher\Event
      * @param string $url
      * @param string $description
      */
-    public function __construct($eventName, \EasyCI20220527\Composer\Package\PackageInterface $package, $url, $description)
+    public function __construct($eventName, \EasyCI20220529\Composer\Package\PackageInterface $package, $url, $description)
     {
         parent::__construct($eventName);
         $this->package = $package;

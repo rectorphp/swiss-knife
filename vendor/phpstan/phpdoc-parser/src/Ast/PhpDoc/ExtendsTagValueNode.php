@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220527\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220529\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220527\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
+use EasyCI20220529\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220529\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
 use function trim;
-class ExtendsTagValueNode implements \EasyCI20220527\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class ExtendsTagValueNode implements \EasyCI20220529\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var GenericTypeNode */
     public $type;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(\EasyCI20220527\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode $type, string $description)
+    public function __construct(\EasyCI20220529\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode $type, string $description)
     {
         $this->type = $type;
         $this->description = $description;

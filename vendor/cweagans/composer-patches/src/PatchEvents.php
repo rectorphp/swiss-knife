@@ -4,7 +4,7 @@
  * @file
  * Dispatch events when patches are applied.
  */
-namespace EasyCI20220527\cweagans\Composer;
+namespace EasyCI20220529\cweagans\Composer;
 
 class PatchEvents
 {

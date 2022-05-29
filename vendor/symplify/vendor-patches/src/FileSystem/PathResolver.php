@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220527\Symplify\VendorPatches\FileSystem;
+namespace EasyCI20220529\Symplify\VendorPatches\FileSystem;
 
-use EasyCI20220527\Nette\Utils\Strings;
-use EasyCI20220527\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI20220527\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI20220529\Nette\Utils\Strings;
+use EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220529\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class PathResolver
 {
     /**
@@ -13,11 +13,11 @@ final class PathResolver
      * @var string
      */
     private const VENDOR_PACKAGE_DIRECTORY_REGEX = '#^(?<vendor_package_directory>.*?vendor\\/(\\w|\\.|\\-)+\\/(\\w|\\.|\\-)+)\\/#si';
-    public function resolveVendorDirectory(\EasyCI20220527\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
+    public function resolveVendorDirectory(\EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
     {
-        $match = \EasyCI20220527\Nette\Utils\Strings::match($fileInfo->getRealPath(), self::VENDOR_PACKAGE_DIRECTORY_REGEX);
+        $match = \EasyCI20220529\Nette\Utils\Strings::match($fileInfo->getRealPath(), self::VENDOR_PACKAGE_DIRECTORY_REGEX);
         if (!isset($match['vendor_package_directory'])) {
-            throw new \EasyCI20220527\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Could not resolve vendor package directory');
+            throw new \EasyCI20220529\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Could not resolve vendor package directory');
         }
         return $match['vendor_package_directory'];
     }
