@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbc43cf271781d998987127a45755fc30
+class ComposerStaticInit5683c79b7c801fb342601071a4ab0d61
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -24,9 +24,7 @@ class ComposerStaticInitbc43cf271781d998987127a45755fc30
         ),
         'E' => 
         array (
-            'EasyCI20220530\\cweagans\\Composer\\' => 33,
             'EasyCI20220530\\Webmozart\\Assert\\' => 32,
-            'EasyCI20220530\\Symplify\\VendorPatches\\' => 38,
             'EasyCI20220530\\Symplify\\SymplifyKernel\\' => 39,
             'EasyCI20220530\\Symplify\\SmartFileSystem\\' => 40,
             'EasyCI20220530\\Symplify\\PackageBuilder\\' => 39,
@@ -59,17 +57,9 @@ class ComposerStaticInitbc43cf271781d998987127a45755fc30
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/packages',
         ),
-        'EasyCI20220530\\cweagans\\Composer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
-        ),
         'EasyCI20220530\\Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'EasyCI20220530\\Symplify\\VendorPatches\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symplify/vendor-patches/src',
         ),
         'EasyCI20220530\\Symplify\\SymplifyKernel\\' => 
         array (
@@ -1113,23 +1103,9 @@ class ComposerStaticInitbc43cf271781d998987127a45755fc30
         'EasyCI20220530\\Symplify\\SymplifyKernel\\HttpKernel\\AbstractSymplifyKernel' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/HttpKernel/AbstractSymplifyKernel.php',
         'EasyCI20220530\\Symplify\\SymplifyKernel\\ValueObject\\KernelBootAndApplicationRun' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/KernelBootAndApplicationRun.php',
         'EasyCI20220530\\Symplify\\SymplifyKernel\\ValueObject\\SymplifyKernelConfig' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/SymplifyKernelConfig.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Command\\GenerateCommand' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Command/GenerateCommand.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Composer\\ComposerPatchesConfigurationUpdater' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Composer/ComposerPatchesConfigurationUpdater.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Composer\\PackageNameResolver' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Composer/PackageNameResolver.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Console\\GenerateCommandReporter' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Console/GenerateCommandReporter.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Console\\VendorPatchesApplication' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Console/VendorPatchesApplication.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Differ\\PatchDiffer' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Differ/PatchDiffer.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\FileSystem\\PathResolver' => __DIR__ . '/..' . '/symplify/vendor-patches/src/FileSystem/PathResolver.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Finder\\OldToNewFilesFinder' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Finder/OldToNewFilesFinder.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\Kernel\\VendorPatchesKernel' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Kernel/VendorPatchesKernel.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\PatchFileFactory' => __DIR__ . '/..' . '/symplify/vendor-patches/src/PatchFileFactory.php',
-        'EasyCI20220530\\Symplify\\VendorPatches\\ValueObject\\OldAndNewFileInfo' => __DIR__ . '/..' . '/symplify/vendor-patches/src/ValueObject/OldAndNewFileInfo.php',
         'EasyCI20220530\\Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'EasyCI20220530\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'EasyCI20220530\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
-        'EasyCI20220530\\cweagans\\Composer\\PatchEvent' => __DIR__ . '/..' . '/cweagans/composer-patches/src/PatchEvent.php',
-        'EasyCI20220530\\cweagans\\Composer\\PatchEvents' => __DIR__ . '/..' . '/cweagans/composer-patches/src/PatchEvents.php',
-        'EasyCI20220530\\cweagans\\Composer\\Patches' => __DIR__ . '/..' . '/cweagans/composer-patches/src/Patches.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'Symplify\\EasyCI\\ActiveClass\\ClassNameResolver' => __DIR__ . '/../..' . '/packages/ActiveClass/ClassNameResolver.php',
@@ -1232,9 +1208,9 @@ class ComposerStaticInitbc43cf271781d998987127a45755fc30
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbc43cf271781d998987127a45755fc30::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbc43cf271781d998987127a45755fc30::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitbc43cf271781d998987127a45755fc30::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5683c79b7c801fb342601071a4ab0d61::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5683c79b7c801fb342601071a4ab0d61::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5683c79b7c801fb342601071a4ab0d61::$classMap;
 
         }, null, ClassLoader::class);
     }

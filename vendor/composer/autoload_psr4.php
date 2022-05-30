@@ -7,9 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symplify\\EasyCI\\' => array($baseDir . '/src', $baseDir . '/packages'),
-    'EasyCI20220530\\cweagans\\Composer\\' => array($vendorDir . '/cweagans/composer-patches/src'),
     'EasyCI20220530\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
-    'EasyCI20220530\\Symplify\\VendorPatches\\' => array($vendorDir . '/symplify/vendor-patches/src'),
     'EasyCI20220530\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'EasyCI20220530\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
     'EasyCI20220530\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
