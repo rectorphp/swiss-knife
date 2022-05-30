@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInitd6f92291bf182492e2a0769e24fa69b2', false) && !interface_exists('ComposerAutoloaderInitd6f92291bf182492e2a0769e24fa69b2', false) && !trait_exists('ComposerAutoloaderInitd6f92291bf182492e2a0769e24fa69b2', false)) {
-    spl_autoload_call('EasyCI20220530\ComposerAutoloaderInitd6f92291bf182492e2a0769e24fa69b2');
+if (!class_exists('ComposerAutoloaderInit3c51f4f9dcec883e84aab48a40b0e6aa', false) && !interface_exists('ComposerAutoloaderInit3c51f4f9dcec883e84aab48a40b0e6aa', false) && !trait_exists('ComposerAutoloaderInit3c51f4f9dcec883e84aab48a40b0e6aa', false)) {
+    spl_autoload_call('EasyCI20220530\ComposerAutoloaderInit3c51f4f9dcec883e84aab48a40b0e6aa');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('EasyCI20220530\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -21,9 +21,19 @@ if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTyp
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequired6f92291bf182492e2a0769e24fa69b2')) {
-    function composerRequired6f92291bf182492e2a0769e24fa69b2() {
-        return \EasyCI20220530\composerRequired6f92291bf182492e2a0769e24fa69b2(...func_get_args());
+if (!function_exists('composerRequire3c51f4f9dcec883e84aab48a40b0e6aa')) {
+    function composerRequire3c51f4f9dcec883e84aab48a40b0e6aa() {
+        return \EasyCI20220530\composerRequire3c51f4f9dcec883e84aab48a40b0e6aa(...func_get_args());
+    }
+}
+if (!function_exists('scanPath')) {
+    function scanPath() {
+        return \EasyCI20220530\scanPath(...func_get_args());
+    }
+}
+if (!function_exists('lintFile')) {
+    function lintFile() {
+        return \EasyCI20220530\lintFile(...func_get_args());
     }
 }
 if (!function_exists('array_is_list')) {

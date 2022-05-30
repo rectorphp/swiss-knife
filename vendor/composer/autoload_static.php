@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd6f92291bf182492e2a0769e24fa69b2
+class ComposerStaticInit3c51f4f9dcec883e84aab48a40b0e6aa
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -193,6 +193,25 @@ class ComposerStaticInitd6f92291bf182492e2a0769e24fa69b2
         'EasyCI20220530\\Nette\\Localization\\ITranslator' => __DIR__ . '/..' . '/nette/utils/src/compatibility.php',
         'EasyCI20220530\\Nette\\Localization\\Translator' => __DIR__ . '/..' . '/nette/utils/src/Translator.php',
         'EasyCI20220530\\Nette\\MemberAccessException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
+        'EasyCI20220530\\Nette\\Neon\\Decoder' => __DIR__ . '/..' . '/nette/neon/src/Neon/Decoder.php',
+        'EasyCI20220530\\Nette\\Neon\\Encoder' => __DIR__ . '/..' . '/nette/neon/src/Neon/Encoder.php',
+        'EasyCI20220530\\Nette\\Neon\\Entity' => __DIR__ . '/..' . '/nette/neon/src/Neon/Entity.php',
+        'EasyCI20220530\\Nette\\Neon\\Exception' => __DIR__ . '/..' . '/nette/neon/src/Neon/Exception.php',
+        'EasyCI20220530\\Nette\\Neon\\Lexer' => __DIR__ . '/..' . '/nette/neon/src/Neon/Lexer.php',
+        'EasyCI20220530\\Nette\\Neon\\Neon' => __DIR__ . '/..' . '/nette/neon/src/Neon/Neon.php',
+        'EasyCI20220530\\Nette\\Neon\\Node' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\ArrayItemNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/ArrayItemNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\ArrayNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/ArrayNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\BlockArrayNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/BlockArrayNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\EntityChainNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/EntityChainNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\EntityNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/EntityNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\InlineArrayNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/InlineArrayNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\LiteralNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/LiteralNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Node\\StringNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/StringNode.php',
+        'EasyCI20220530\\Nette\\Neon\\Parser' => __DIR__ . '/..' . '/nette/neon/src/Neon/Parser.php',
+        'EasyCI20220530\\Nette\\Neon\\Token' => __DIR__ . '/..' . '/nette/neon/src/Neon/Token.php',
+        'EasyCI20220530\\Nette\\Neon\\TokenStream' => __DIR__ . '/..' . '/nette/neon/src/Neon/TokenStream.php',
+        'EasyCI20220530\\Nette\\Neon\\Traverser' => __DIR__ . '/..' . '/nette/neon/src/Neon/Traverser.php',
         'EasyCI20220530\\Nette\\NotImplementedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'EasyCI20220530\\Nette\\NotSupportedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'EasyCI20220530\\Nette\\OutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
@@ -1213,9 +1232,9 @@ class ComposerStaticInitd6f92291bf182492e2a0769e24fa69b2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd6f92291bf182492e2a0769e24fa69b2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd6f92291bf182492e2a0769e24fa69b2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd6f92291bf182492e2a0769e24fa69b2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3c51f4f9dcec883e84aab48a40b0e6aa::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3c51f4f9dcec883e84aab48a40b0e6aa::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3c51f4f9dcec883e84aab48a40b0e6aa::$classMap;
 
         }, null, ClassLoader::class);
     }
