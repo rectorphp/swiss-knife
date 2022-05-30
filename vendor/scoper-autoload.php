@@ -6,14 +6,11 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit1b7d0d596a28f58c0d27045c1e4aeb18', false) && !interface_exists('ComposerAutoloaderInit1b7d0d596a28f58c0d27045c1e4aeb18', false) && !trait_exists('ComposerAutoloaderInit1b7d0d596a28f58c0d27045c1e4aeb18', false)) {
-    spl_autoload_call('EasyCI20220530\ComposerAutoloaderInit1b7d0d596a28f58c0d27045c1e4aeb18');
+if (!class_exists('ComposerAutoloaderInitaff4771dff9ceda34932750f7f46e0a7', false) && !interface_exists('ComposerAutoloaderInitaff4771dff9ceda34932750f7f46e0a7', false) && !trait_exists('ComposerAutoloaderInitaff4771dff9ceda34932750f7f46e0a7', false)) {
+    spl_autoload_call('EasyCI20220530\ComposerAutoloaderInitaff4771dff9ceda34932750f7f46e0a7');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('EasyCI20220530\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
-}
-if (!class_exists('Normalizer', false) && !interface_exists('Normalizer', false) && !trait_exists('Normalizer', false)) {
-    spl_autoload_call('EasyCI20220530\Normalizer');
 }
 if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTypeWillChange', false) && !trait_exists('ReturnTypeWillChange', false)) {
     spl_autoload_call('EasyCI20220530\ReturnTypeWillChange');
@@ -21,9 +18,9 @@ if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTyp
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire1b7d0d596a28f58c0d27045c1e4aeb18')) {
-    function composerRequire1b7d0d596a28f58c0d27045c1e4aeb18() {
-        return \EasyCI20220530\composerRequire1b7d0d596a28f58c0d27045c1e4aeb18(...func_get_args());
+if (!function_exists('composerRequireaff4771dff9ceda34932750f7f46e0a7')) {
+    function composerRequireaff4771dff9ceda34932750f7f46e0a7() {
+        return \EasyCI20220530\composerRequireaff4771dff9ceda34932750f7f46e0a7(...func_get_args());
     }
 }
 if (!function_exists('scanPath')) {
