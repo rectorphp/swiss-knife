@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220529\Symplify\VendorPatches\Finder;
+namespace EasyCI20220530\Symplify\VendorPatches\Finder;
 
-use EasyCI20220529\Symfony\Component\Finder\Finder;
-use EasyCI20220529\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI20220529\Symplify\VendorPatches\Composer\PackageNameResolver;
-use EasyCI20220529\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo;
+use EasyCI20220530\Symfony\Component\Finder\Finder;
+use EasyCI20220530\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220530\Symplify\VendorPatches\Composer\PackageNameResolver;
+use EasyCI20220530\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo;
 final class OldToNewFilesFinder
 {
     /**
@@ -18,7 +18,7 @@ final class OldToNewFilesFinder
      * @var \Symplify\VendorPatches\Composer\PackageNameResolver
      */
     private $packageNameResolver;
-    public function __construct(\EasyCI20220529\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer, \EasyCI20220529\Symplify\VendorPatches\Composer\PackageNameResolver $packageNameResolver)
+    public function __construct(\EasyCI20220530\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer, \EasyCI20220530\Symplify\VendorPatches\Composer\PackageNameResolver $packageNameResolver)
     {
         $this->finderSanitizer = $finderSanitizer;
         $this->packageNameResolver = $packageNameResolver;
@@ -40,9 +40,9 @@ final class OldToNewFilesFinder
             if (!\file_exists($newFilePath)) {
                 continue;
             }
-            $newFileInfo = new \EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo($newFilePath);
+            $newFileInfo = new \EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo($newFilePath);
             $packageName = $this->packageNameResolver->resolveFromFileInfo($newFileInfo);
-            $oldAndNewFileInfos[] = new \EasyCI20220529\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo($oldFileInfo, $newFileInfo, $packageName);
+            $oldAndNewFileInfos[] = new \EasyCI20220530\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo($oldFileInfo, $newFileInfo, $packageName);
         }
         return $oldAndNewFileInfos;
     }
@@ -51,7 +51,7 @@ final class OldToNewFilesFinder
      */
     private function findSmartFileInfosInDirectory(string $directory) : array
     {
-        $finder = \EasyCI20220529\Symfony\Component\Finder\Finder::create()->in($directory)->files()->exclude('composer/')->exclude('ocramius/')->name('*.old');
+        $finder = \EasyCI20220530\Symfony\Component\Finder\Finder::create()->in($directory)->files()->exclude('composer/')->exclude('ocramius/')->name('*.old');
         return $this->finderSanitizer->sanitize($finder);
     }
 }

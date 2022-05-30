@@ -3,18 +3,18 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing\Command;
 
-use EasyCI20220529\Symfony\Component\Console\Command\Command;
-use EasyCI20220529\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220529\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220529\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220529\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220530\Symfony\Component\Console\Command\Command;
+use EasyCI20220530\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220530\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220530\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220530\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter;
 use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220529\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220529\Symplify\SmartFileSystem\SmartFileSystem;
-use EasyCI20220529\Webmozart\Assert\Assert;
-final class DetectUnitTestsCommand extends \EasyCI20220529\Symfony\Component\Console\Command\Command
+use EasyCI20220530\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220530\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI20220530\Webmozart\Assert\Assert;
+final class DetectUnitTestsCommand extends \EasyCI20220530\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -36,7 +36,7 @@ final class DetectUnitTestsCommand extends \EasyCI20220529\Symfony\Component\Con
      * @var \Symplify\EasyCI\Testing\UnitTestFilePathsFinder
      */
     private $unitTestFilePathsFinder;
-    public function __construct(\Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter $phpunitXmlPrinter, \EasyCI20220529\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \EasyCI20220529\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\EasyCI\Testing\UnitTestFilePathsFinder $unitTestFilePathsFinder)
+    public function __construct(\Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter $phpunitXmlPrinter, \EasyCI20220530\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \EasyCI20220530\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\EasyCI\Testing\UnitTestFilePathsFinder $unitTestFilePathsFinder)
     {
         $this->phpunitXmlPrinter = $phpunitXmlPrinter;
         $this->smartFileSystem = $smartFileSystem;
@@ -46,16 +46,16 @@ final class DetectUnitTestsCommand extends \EasyCI20220529\Symfony\Component\Con
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220529\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\EasyCI20220530\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Get list of tests in specific directory, that are considered "unit".
 They depend only on bare PHPUnit test case, but not on KernelTestCase. Move the generated file to your phpunit.xml test group.');
-        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220529\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220529\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to directory with tests');
+        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220530\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220530\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to directory with tests');
     }
-    protected function execute(\EasyCI20220529\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220529\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220530\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220530\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $sources = (array) $input->getArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES);
-        \EasyCI20220529\Webmozart\Assert\Assert::isArray($sources);
-        \EasyCI20220529\Webmozart\Assert\Assert::allString($sources);
+        \EasyCI20220530\Webmozart\Assert\Assert::isArray($sources);
+        \EasyCI20220530\Webmozart\Assert\Assert::allString($sources);
         $unitTestCasesClassesToFilePaths = $this->unitTestFilePathsFinder->findInDirectories($sources);
         if ($unitTestCasesClassesToFilePaths === []) {
             $this->symfonyStyle->note('No unit tests found in provided paths');

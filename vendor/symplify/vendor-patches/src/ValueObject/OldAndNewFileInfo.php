@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220529\Symplify\VendorPatches\ValueObject;
+namespace EasyCI20220530\Symplify\VendorPatches\ValueObject;
 
-use EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo;
 final class OldAndNewFileInfo
 {
     /**
@@ -18,13 +18,13 @@ final class OldAndNewFileInfo
      * @var string
      */
     private $packageName;
-    public function __construct(\EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo $oldFileInfo, \EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo $newFileInfo, string $packageName)
+    public function __construct(\EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo $oldFileInfo, \EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo $newFileInfo, string $packageName)
     {
         $this->oldFileInfo = $oldFileInfo;
         $this->newFileInfo = $newFileInfo;
         $this->packageName = $packageName;
     }
-    public function getOldFileInfo() : \EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo
+    public function getOldFileInfo() : \EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->oldFileInfo;
     }
@@ -36,7 +36,7 @@ final class OldAndNewFileInfo
     {
         return $this->newFileInfo->getRelativeFilePathFromCwd();
     }
-    public function getNewFileInfo() : \EasyCI20220529\Symplify\SmartFileSystem\SmartFileInfo
+    public function getNewFileInfo() : \EasyCI20220530\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->newFileInfo;
     }

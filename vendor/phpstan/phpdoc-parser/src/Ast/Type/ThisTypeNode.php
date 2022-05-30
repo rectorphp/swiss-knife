@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220529\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220530\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220529\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ThisTypeNode implements \EasyCI20220529\PHPStan\PhpDocParser\Ast\Type\TypeNode
+use EasyCI20220530\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class ThisTypeNode implements \EasyCI20220530\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     public function __toString() : string

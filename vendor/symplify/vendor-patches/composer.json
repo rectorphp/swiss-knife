@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220529\\Symplify\\VendorPatches\\": "src"
+            "EasyCI20220530\\Symplify\\VendorPatches\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220529\\Symplify\\VendorPatches\\Tests\\": "tests"
+            "EasyCI20220530\\Symplify\\VendorPatches\\Tests\\": "tests"
         }
     },
     "extra": {
