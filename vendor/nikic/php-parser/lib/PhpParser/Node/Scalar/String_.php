@@ -31,6 +31,16 @@ class String_ extends \EasyCI20220531\PhpParser\Node\Scalar
         return ['value'];
     }
     /**
+     * @param bool $parseUnicodeEscape Whether to parse PHP 7 \u escapes
+     */
+    public static function fromString(string $str, array $attributes = [], bool $parseUnicodeEscape = \true) : self
+    {
+        $attributes['kind'] = $str[0] === "'" || $str[1] === "'" && ($str[0] === 'b' || $str[0] === 'B') ? \EasyCI20220531\PhpParser\Node\Scalar\String_::KIND_SINGLE_QUOTED : \EasyCI20220531\PhpParser\Node\Scalar\String_::KIND_DOUBLE_QUOTED;
+        $attributes['rawValue'] = $str;
+        $string = self::parse($str, $parseUnicodeEscape);
+        return new self($string, $attributes);
+    }
+    /**
      * @internal
      *
      * Parses a string token.

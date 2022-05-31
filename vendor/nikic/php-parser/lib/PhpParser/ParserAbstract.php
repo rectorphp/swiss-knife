@@ -719,6 +719,15 @@ abstract class ParserAbstract implements \EasyCI20220531\PhpParser\Parser
         }
         return $attributes;
     }
+    protected function checkClassModifier($a, $b, $modifierPos)
+    {
+        try {
+            \EasyCI20220531\PhpParser\Node\Stmt\Class_::verifyClassModifier($a, $b);
+        } catch (\EasyCI20220531\PhpParser\Error $error) {
+            $error->setAttributes($this->getAttributesAt($modifierPos));
+            $this->emitError($error);
+        }
+    }
     protected function checkModifier($a, $b, $modifierPos)
     {
         // Jumping through some hoops here because verifyModifier() is also used elsewhere

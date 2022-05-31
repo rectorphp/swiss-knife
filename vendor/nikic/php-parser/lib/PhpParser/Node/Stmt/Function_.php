@@ -19,7 +19,7 @@ class Function_ extends \EasyCI20220531\PhpParser\Node\Stmt implements \EasyCI20
     public $stmts;
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
-    /** @var Node\Name Namespaced name (if using NameResolver) */
+    /** @var Node\Name|null Namespaced name (if using NameResolver) */
     public $namespacedName;
     /**
      * Constructs a function node.

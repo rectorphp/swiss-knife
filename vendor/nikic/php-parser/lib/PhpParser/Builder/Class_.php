@@ -62,7 +62,7 @@ class Class_ extends \EasyCI20220531\PhpParser\Builder\Declaration
      */
     public function makeAbstract()
     {
-        $this->flags = \EasyCI20220531\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220531\PhpParser\Node\Stmt\Class_::MODIFIER_ABSTRACT);
+        $this->flags = \EasyCI20220531\PhpParser\BuilderHelpers::addClassModifier($this->flags, \EasyCI20220531\PhpParser\Node\Stmt\Class_::MODIFIER_ABSTRACT);
         return $this;
     }
     /**
@@ -72,7 +72,12 @@ class Class_ extends \EasyCI20220531\PhpParser\Builder\Declaration
      */
     public function makeFinal()
     {
-        $this->flags = \EasyCI20220531\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220531\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL);
+        $this->flags = \EasyCI20220531\PhpParser\BuilderHelpers::addClassModifier($this->flags, \EasyCI20220531\PhpParser\Node\Stmt\Class_::MODIFIER_FINAL);
+        return $this;
+    }
+    public function makeReadonly()
+    {
+        $this->flags = \EasyCI20220531\PhpParser\BuilderHelpers::addClassModifier($this->flags, \EasyCI20220531\PhpParser\Node\Stmt\Class_::MODIFIER_READONLY);
         return $this;
     }
     /**

@@ -938,9 +938,7 @@ class Php5 extends \EasyCI20220531\PhpParser\ParserAbstract
         }, 391 => function ($stackPos) {
             $this->semValue = new \EasyCI20220531\PhpParser\Node\Expr\ArrayDimFetch($this->semStack[$stackPos - (4 - 1)], $this->semStack[$stackPos - (4 - 3)], $this->startAttributeStack[$stackPos - (4 - 1)] + $this->endAttributes);
         }, 392 => function ($stackPos) {
-            $attrs = $this->startAttributeStack[$stackPos - (4 - 1)] + $this->endAttributes;
-            $attrs['kind'] = $this->semStack[$stackPos - (4 - 1)][0] === "'" || $this->semStack[$stackPos - (4 - 1)][1] === "'" && ($this->semStack[$stackPos - (4 - 1)][0] === 'b' || $this->semStack[$stackPos - (4 - 1)][0] === 'B') ? \EasyCI20220531\PhpParser\Node\Scalar\String_::KIND_SINGLE_QUOTED : \EasyCI20220531\PhpParser\Node\Scalar\String_::KIND_DOUBLE_QUOTED;
-            $this->semValue = new \EasyCI20220531\PhpParser\Node\Expr\ArrayDimFetch(new \EasyCI20220531\PhpParser\Node\Scalar\String_(\EasyCI20220531\PhpParser\Node\Scalar\String_::parse($this->semStack[$stackPos - (4 - 1)]), $attrs), $this->semStack[$stackPos - (4 - 3)], $this->startAttributeStack[$stackPos - (4 - 1)] + $this->endAttributes);
+            $this->semValue = new \EasyCI20220531\PhpParser\Node\Expr\ArrayDimFetch(\EasyCI20220531\PhpParser\Node\Scalar\String_::fromString($this->semStack[$stackPos - (4 - 1)], $this->startAttributeStack[$stackPos - (4 - 1)] + $this->endAttributes), $this->semStack[$stackPos - (4 - 3)], $this->startAttributeStack[$stackPos - (4 - 1)] + $this->endAttributes);
         }, 393 => function ($stackPos) {
             $this->semValue = new \EasyCI20220531\PhpParser\Node\Expr\ArrayDimFetch($this->semStack[$stackPos - (4 - 1)], $this->semStack[$stackPos - (4 - 3)], $this->startAttributeStack[$stackPos - (4 - 1)] + $this->endAttributes);
         }, 394 => function ($stackPos) {
@@ -1032,11 +1030,9 @@ class Php5 extends \EasyCI20220531\PhpParser\ParserAbstract
         }, 433 => function ($stackPos) {
             $this->semValue = $this->parseLNumber($this->semStack[$stackPos - (1 - 1)], $this->startAttributeStack[$stackPos - (1 - 1)] + $this->endAttributes, \true);
         }, 434 => function ($stackPos) {
-            $this->semValue = new \EasyCI20220531\PhpParser\Node\Scalar\DNumber(\EasyCI20220531\PhpParser\Node\Scalar\DNumber::parse($this->semStack[$stackPos - (1 - 1)]), $this->startAttributeStack[$stackPos - (1 - 1)] + $this->endAttributes);
+            $this->semValue = \EasyCI20220531\PhpParser\Node\Scalar\DNumber::fromString($this->semStack[$stackPos - (1 - 1)], $this->startAttributeStack[$stackPos - (1 - 1)] + $this->endAttributes);
         }, 435 => function ($stackPos) {
-            $attrs = $this->startAttributeStack[$stackPos - (1 - 1)] + $this->endAttributes;
-            $attrs['kind'] = $this->semStack[$stackPos - (1 - 1)][0] === "'" || $this->semStack[$stackPos - (1 - 1)][1] === "'" && ($this->semStack[$stackPos - (1 - 1)][0] === 'b' || $this->semStack[$stackPos - (1 - 1)][0] === 'B') ? \EasyCI20220531\PhpParser\Node\Scalar\String_::KIND_SINGLE_QUOTED : \EasyCI20220531\PhpParser\Node\Scalar\String_::KIND_DOUBLE_QUOTED;
-            $this->semValue = new \EasyCI20220531\PhpParser\Node\Scalar\String_(\EasyCI20220531\PhpParser\Node\Scalar\String_::parse($this->semStack[$stackPos - (1 - 1)], \false), $attrs);
+            $this->semValue = \EasyCI20220531\PhpParser\Node\Scalar\String_::fromString($this->semStack[$stackPos - (1 - 1)], $this->startAttributeStack[$stackPos - (1 - 1)] + $this->endAttributes, \false);
         }, 436 => function ($stackPos) {
             $this->semValue = new \EasyCI20220531\PhpParser\Node\Scalar\MagicConst\Line($this->startAttributeStack[$stackPos - (1 - 1)] + $this->endAttributes);
         }, 437 => function ($stackPos) {
