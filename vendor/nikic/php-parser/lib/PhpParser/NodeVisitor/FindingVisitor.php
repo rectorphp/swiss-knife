@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220530\PhpParser\NodeVisitor;
+namespace EasyCI20220531\PhpParser\NodeVisitor;
 
-use EasyCI20220530\PhpParser\Node;
-use EasyCI20220530\PhpParser\NodeVisitorAbstract;
+use EasyCI20220531\PhpParser\Node;
+use EasyCI20220531\PhpParser\NodeVisitorAbstract;
 /**
  * This visitor can be used to find and collect all nodes satisfying some criterion determined by
  * a filter callback.
  */
-class FindingVisitor extends \EasyCI20220530\PhpParser\NodeVisitorAbstract
+class FindingVisitor extends \EasyCI20220531\PhpParser\NodeVisitorAbstract
 {
     /** @var callable Filter callback */
     protected $filterCallback;
@@ -35,7 +35,7 @@ class FindingVisitor extends \EasyCI20220530\PhpParser\NodeVisitorAbstract
         $this->foundNodes = [];
         return null;
     }
-    public function enterNode(\EasyCI20220530\PhpParser\Node $node)
+    public function enterNode(\EasyCI20220531\PhpParser\Node $node)
     {
         $filterCallback = $this->filterCallback;
         if ($filterCallback($node)) {

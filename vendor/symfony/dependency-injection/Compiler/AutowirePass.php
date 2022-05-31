@@ -8,27 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220530\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220531\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220530\Symfony\Component\Config\Resource\ClassExistenceResource;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Attribute\Target;
-use EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI20220530\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI20220531\Symfony\Component\Config\Resource\ClassExistenceResource;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Attribute\Target;
+use EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI20220531\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
+use EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Inspects existing service definitions and wires the autowired ones using the type hints of their classes.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class AutowirePass extends \EasyCI20220531\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     /**
      * @var mixed[]
@@ -98,7 +98,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
     /**
      * {@inheritdoc}
      */
-    public function process(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->populateCombinedAliases($container);
         try {
@@ -125,7 +125,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
     {
         try {
             return $this->doProcessValue($value, $isRoot);
-        } catch (\EasyCI20220530\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException $e) {
+        } catch (\EasyCI20220531\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException $e) {
             if ($this->throwOnAutowiringException) {
                 throw $e;
             }
@@ -139,19 +139,19 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
      */
     private function doProcessValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference) {
+        if ($value instanceof \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference) {
             if ($ref = $this->getAutowiredReference($value, \true)) {
                 return $ref;
             }
-            if (\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE === $value->getInvalidBehavior()) {
+            if (\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE === $value->getInvalidBehavior()) {
                 $message = $this->createTypeNotFoundMessageCallback($value, 'it');
                 // since the error message varies by referenced id and $this->currentId, so should the id of the dummy errored definition
                 $this->container->register($id = \sprintf('.errored.%s.%s', $this->currentId, (string) $value), $value->getType())->addError($message);
-                return new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($id, $value->getType(), $value->getInvalidBehavior(), $value->getName());
+                return new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($id, $value->getType(), $value->getInvalidBehavior(), $value->getName());
             }
         }
         $value = parent::processValue($value, $isRoot);
-        if (!$value instanceof \EasyCI20220530\Symfony\Component\DependencyInjection\Definition || !$value->isAutowired() || $value->isAbstract() || !$value->getClass()) {
+        if (!$value instanceof \EasyCI20220531\Symfony\Component\DependencyInjection\Definition || !$value->isAutowired() || $value->isAbstract() || !$value->getClass()) {
             return $value;
         }
         if (!($reflectionClass = $this->container->getReflectionClass($value->getClass(), \false))) {
@@ -161,8 +161,8 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
         $this->methodCalls = $value->getMethodCalls();
         try {
             $constructor = $this->getConstructor($value, \false);
-        } catch (\EasyCI20220530\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
-            throw new \EasyCI20220530\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException($this->currentId, $e->getMessage(), 0, $e);
+        } catch (\EasyCI20220531\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+            throw new \EasyCI20220531\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException($this->currentId, $e->getMessage(), 0, $e);
         }
         if ($constructor) {
             \array_unshift($this->methodCalls, [$constructor, $value->getArguments()]);
@@ -194,10 +194,10 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
             if ($method instanceof \ReflectionFunctionAbstract) {
                 $reflectionMethod = $method;
             } else {
-                $definition = new \EasyCI20220530\Symfony\Component\DependencyInjection\Definition($reflectionClass->name);
+                $definition = new \EasyCI20220531\Symfony\Component\DependencyInjection\Definition($reflectionClass->name);
                 try {
                     $reflectionMethod = $this->getReflectionMethod($definition, $method);
-                } catch (\EasyCI20220530\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+                } catch (\EasyCI20220531\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
                     if ($definition->getFactory()) {
                         continue;
                     }
@@ -252,17 +252,17 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
             if (\array_key_exists($index, $arguments) && '' !== $arguments[$index]) {
                 continue;
             }
-            $type = \EasyCI20220530\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($reflectionMethod, $parameter, \true);
+            $type = \EasyCI20220531\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($reflectionMethod, $parameter, \true);
             if ($checkAttributes) {
                 foreach (\method_exists($parameter, 'getAttributes') ? $parameter->getAttributes() : [] as $attribute) {
-                    if (\EasyCI20220530\Symfony\Component\DependencyInjection\Attribute\TaggedIterator::class === $attribute->getName()) {
+                    if (\EasyCI20220531\Symfony\Component\DependencyInjection\Attribute\TaggedIterator::class === $attribute->getName()) {
                         $attribute = $attribute->newInstance();
-                        $arguments[$index] = new \EasyCI20220530\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute, $attribute->defaultIndexMethod, \false, $attribute->defaultPriorityMethod);
+                        $arguments[$index] = new \EasyCI20220531\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute, $attribute->defaultIndexMethod, \false, $attribute->defaultPriorityMethod);
                         break;
                     }
-                    if (\EasyCI20220530\Symfony\Component\DependencyInjection\Attribute\TaggedLocator::class === $attribute->getName()) {
+                    if (\EasyCI20220531\Symfony\Component\DependencyInjection\Attribute\TaggedLocator::class === $attribute->getName()) {
                         $attribute = $attribute->newInstance();
-                        $arguments[$index] = new \EasyCI20220530\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(new \EasyCI20220530\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute, $attribute->defaultIndexMethod, \true, $attribute->defaultPriorityMethod));
+                        $arguments[$index] = new \EasyCI20220531\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(new \EasyCI20220531\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute, $attribute->defaultIndexMethod, \true, $attribute->defaultPriorityMethod));
                         break;
                     }
                 }
@@ -283,9 +283,9 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
                         --$index;
                         break;
                     }
-                    $type = \EasyCI20220530\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($reflectionMethod, $parameter, \false);
+                    $type = \EasyCI20220531\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($reflectionMethod, $parameter, \false);
                     $type = $type ? \sprintf('is type-hinted "%s"', \ltrim($type, '\\')) : 'has no type-hint';
-                    throw new \EasyCI20220530\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException($this->currentId, \sprintf('Cannot autowire service "%s": argument "$%s" of method "%s()" %s, you should configure its value explicitly.', $this->currentId, $parameter->name, $class !== $this->currentId ? $class . '::' . $method : $method, $type));
+                    throw new \EasyCI20220531\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException($this->currentId, \sprintf('Cannot autowire service "%s": argument "$%s" of method "%s()" %s, you should configure its value explicitly.', $this->currentId, $parameter->name, $class !== $this->currentId ? $class . '::' . $method : $method, $type));
                 }
                 // specifically pass the default value
                 $arguments[$index] = clone $this->defaultArgument;
@@ -293,13 +293,13 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
                 continue;
             }
             $getValue = function () use($type, $parameter, $class, $method) {
-                if (!($value = $this->getAutowiredReference($ref = new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($type, $type, \EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder::EXCEPTION_ON_INVALID_REFERENCE, \EasyCI20220530\Symfony\Component\DependencyInjection\Attribute\Target::parseName($parameter)), \true))) {
+                if (!($value = $this->getAutowiredReference($ref = new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($type, $type, \EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder::EXCEPTION_ON_INVALID_REFERENCE, \EasyCI20220531\Symfony\Component\DependencyInjection\Attribute\Target::parseName($parameter)), \true))) {
                     $failureMessage = $this->createTypeNotFoundMessageCallback($ref, \sprintf('argument "$%s" of method "%s()"', $parameter->name, $class !== $this->currentId ? $class . '::' . $method : $method));
                     if ($parameter->isDefaultValueAvailable()) {
                         $value = clone $this->defaultArgument;
                         $value->value = $parameter->getDefaultValue();
                     } elseif (!$parameter->allowsNull()) {
-                        throw new \EasyCI20220530\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException($this->currentId, $failureMessage);
+                        throw new \EasyCI20220531\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException($this->currentId, $failureMessage);
                     }
                 }
                 return $value;
@@ -314,7 +314,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
                     $this->decoratedClass = null;
                     // Prevent further checks
                 } else {
-                    $arguments[$index] = new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($this->decoratedId, $this->decoratedClass);
+                    $arguments[$index] = new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($this->decoratedId, $this->decoratedClass);
                     $this->getPreviousValue = $getValue;
                     $this->decoratedMethodIndex = $methodIndex;
                     $this->decoratedMethodArgumentIndex = $index;
@@ -339,7 +339,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
     /**
      * Returns a reference to the service matching the given type, if any.
      */
-    private function getAutowiredReference(\EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference $reference, bool $filterType) : ?\EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference
+    private function getAutowiredReference(\EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference $reference, bool $filterType) : ?\EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference
     {
         $this->lastFailure = null;
         $type = $reference->getType();
@@ -353,31 +353,31 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
         }
         if (null !== ($name = $reference->getName())) {
             if ($this->container->has($alias = $type . ' $' . $name) && !$this->container->findDefinition($alias)->isAbstract()) {
-                return new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($alias, $type, $reference->getInvalidBehavior());
+                return new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($alias, $type, $reference->getInvalidBehavior());
             }
             if (null !== ($alias = $this->combinedAliases[$alias] ?? null) && !$this->container->findDefinition($alias)->isAbstract()) {
-                return new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($alias, $type, $reference->getInvalidBehavior());
+                return new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($alias, $type, $reference->getInvalidBehavior());
             }
             if ($this->container->has($name) && !$this->container->findDefinition($name)->isAbstract()) {
                 foreach ($this->container->getAliases() + $this->combinedAliases as $id => $alias) {
                     if ($name === (string) $alias && \strncmp($id, $type . ' $', \strlen($type . ' $')) === 0) {
-                        return new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($name, $type, $reference->getInvalidBehavior());
+                        return new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($name, $type, $reference->getInvalidBehavior());
                     }
                 }
             }
         }
         if ($this->container->has($type) && !$this->container->findDefinition($type)->isAbstract()) {
-            return new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($type, $type, $reference->getInvalidBehavior());
+            return new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($type, $type, $reference->getInvalidBehavior());
         }
         if (null !== ($alias = $this->combinedAliases[$type] ?? null) && !$this->container->findDefinition($alias)->isAbstract()) {
-            return new \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference($alias, $type, $reference->getInvalidBehavior());
+            return new \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference($alias, $type, $reference->getInvalidBehavior());
         }
         return null;
     }
     /**
      * Populates the list of available types.
      */
-    private function populateAvailableTypes(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    private function populateAvailableTypes(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->types = [];
         $this->ambiguousServiceTypes = [];
@@ -392,7 +392,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
     /**
      * Populates the list of available types for a given definition.
      */
-    private function populateAvailableType(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, \EasyCI20220530\Symfony\Component\DependencyInjection\Definition $definition)
+    private function populateAvailableType(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, \EasyCI20220531\Symfony\Component\DependencyInjection\Definition $definition)
     {
         // Never use abstract services
         if ($definition->isAbstract()) {
@@ -431,10 +431,10 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
         }
         $this->ambiguousServiceTypes[$type][] = $id;
     }
-    private function createTypeNotFoundMessageCallback(\EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference $reference, string $label) : \Closure
+    private function createTypeNotFoundMessageCallback(\EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference $reference, string $label) : \Closure
     {
         if (null === $this->typesClone->container) {
-            $this->typesClone->container = new \EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder($this->container->getParameterBag());
+            $this->typesClone->container = new \EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder($this->container->getParameterBag());
             $this->typesClone->container->setAliases($this->container->getAliases());
             $this->typesClone->container->setDefinitions($this->container->getDefinitions());
             $this->typesClone->container->setResourceTracking(\false);
@@ -444,12 +444,12 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
             return $this->createTypeNotFoundMessage($reference, $label, $currentId);
         })->bindTo($this->typesClone);
     }
-    private function createTypeNotFoundMessage(\EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference $reference, string $label, string $currentId) : string
+    private function createTypeNotFoundMessage(\EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference $reference, string $label, string $currentId) : string
     {
         if (!($r = $this->container->getReflectionClass($type = $reference->getType(), \false))) {
             // either $type does not exist or a parent class does not exist
             try {
-                $resource = new \EasyCI20220530\Symfony\Component\Config\Resource\ClassExistenceResource($type, \false);
+                $resource = new \EasyCI20220531\Symfony\Component\Config\Resource\ClassExistenceResource($type, \false);
                 // isFresh() will explode ONLY if a parent class/trait does not exist
                 $resource->isFresh(0);
                 $parentMsg = \false;
@@ -472,7 +472,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
         }
         return $message;
     }
-    private function createTypeAlternatives(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container, \EasyCI20220530\Symfony\Component\DependencyInjection\TypedReference $reference) : string
+    private function createTypeAlternatives(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container, \EasyCI20220531\Symfony\Component\DependencyInjection\TypedReference $reference) : string
     {
         // try suggesting available aliases first
         if ($message = $this->getAliasesSuggestionForType($container, $type = $reference->getType())) {
@@ -496,7 +496,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
         }
         return \sprintf(' You should maybe alias this %s to %s.', \class_exists($type, \false) ? 'class' : 'interface', $message);
     }
-    private function getAliasesSuggestionForType(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $type) : ?string
+    private function getAliasesSuggestionForType(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $type) : ?string
     {
         $aliases = [];
         foreach (\class_parents($type) + \class_implements($type) as $parent) {
@@ -528,7 +528,7 @@ class AutowirePass extends \EasyCI20220530\Symfony\Component\DependencyInjection
             $this->autowiringAliases[$type][$name] = $name;
         }
     }
-    private function populateCombinedAliases(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container) : void
+    private function populateCombinedAliases(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container) : void
     {
         $this->combinedAliases = [];
         $reverseAliases = [];

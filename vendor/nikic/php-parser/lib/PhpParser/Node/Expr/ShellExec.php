@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220530\PhpParser\Node\Expr;
+namespace EasyCI20220531\PhpParser\Node\Expr;
 
-use EasyCI20220530\PhpParser\Node\Expr;
-class ShellExec extends \EasyCI20220530\PhpParser\Node\Expr
+use EasyCI20220531\PhpParser\Node\Expr;
+class ShellExec extends \EasyCI20220531\PhpParser\Node\Expr
 {
     /** @var array Encapsed string array */
     public $parts;

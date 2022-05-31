@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220530\Symplify\Astral\ValueObject\NodeBuilder;
+namespace EasyCI20220531\Symplify\Astral\ValueObject\NodeBuilder;
 
-use EasyCI20220530\PhpParser\Builder\Property;
+use EasyCI20220531\PhpParser\Builder\Property;
 /**
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class PropertyBuilder extends \EasyCI20220530\PhpParser\Builder\Property
+final class PropertyBuilder extends \EasyCI20220531\PhpParser\Builder\Property
 {
 }

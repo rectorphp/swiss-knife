@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220530\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220531\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Removes abstract Definitions.
  */
-class RemoveAbstractDefinitionsPass implements \EasyCI20220530\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RemoveAbstractDefinitionsPass implements \EasyCI20220531\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * Removes abstract definitions from the ContainerBuilder.
      */
-    public function process(\EasyCI20220530\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\EasyCI20220531\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $id => $definition) {
             if ($definition->isAbstract()) {

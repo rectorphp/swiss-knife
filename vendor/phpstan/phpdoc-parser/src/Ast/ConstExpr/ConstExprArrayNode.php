@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220530\PHPStan\PhpDocParser\Ast\ConstExpr;
+namespace EasyCI20220531\PHPStan\PhpDocParser\Ast\ConstExpr;
 
-use EasyCI20220530\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220531\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
-class ConstExprArrayNode implements \EasyCI20220530\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
+class ConstExprArrayNode implements \EasyCI20220531\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
 {
     use NodeAttributes;
     /** @var ConstExprArrayItemNode[] */

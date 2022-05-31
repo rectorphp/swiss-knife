@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220530\Symfony\Component\DependencyInjection\Loader;
+namespace EasyCI20220531\Symfony\Component\DependencyInjection\Loader;
 
-use EasyCI20220530\Symfony\Component\Config\Util\XmlUtils;
-use EasyCI20220530\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220531\Symfony\Component\Config\Util\XmlUtils;
+use EasyCI20220531\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IniFileLoader extends \EasyCI20220530\Symfony\Component\DependencyInjection\Loader\FileLoader
+class IniFileLoader extends \EasyCI20220531\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class IniFileLoader extends \EasyCI20220530\Symfony\Component\DependencyInjectio
         // first pass to catch parsing errors
         $result = \parse_ini_file($path, \true);
         if (\false === $result || [] === $result) {
-            throw new \EasyCI20220530\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
+            throw new \EasyCI20220531\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
         }
         // real raw parsing
         $result = \parse_ini_file($path, \true, \INI_SCANNER_RAW);
@@ -85,7 +85,7 @@ class IniFileLoader extends \EasyCI20220530\Symfony\Component\DependencyInjectio
                 // quoted string
                 return \substr($value, 1, -1);
             default:
-                return \EasyCI20220530\Symfony\Component\Config\Util\XmlUtils::phpize($value);
+                return \EasyCI20220531\Symfony\Component\Config\Util\XmlUtils::phpize($value);
         }
     }
 }

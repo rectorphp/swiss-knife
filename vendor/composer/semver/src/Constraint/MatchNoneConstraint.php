@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI20220530\Composer\Semver\Constraint;
+namespace EasyCI20220531\Composer\Semver\Constraint;
 
 /**
  * Blackhole of constraints, nothing escapes it
  */
-class MatchNoneConstraint implements \EasyCI20220530\Composer\Semver\Constraint\ConstraintInterface
+class MatchNoneConstraint implements \EasyCI20220531\Composer\Semver\Constraint\ConstraintInterface
 {
     /** @var string|null */
     protected $prettyString;
@@ -22,7 +22,7 @@ class MatchNoneConstraint implements \EasyCI20220530\Composer\Semver\Constraint\
      *
      * @return bool
      */
-    public function matches(\EasyCI20220530\Composer\Semver\Constraint\ConstraintInterface $provider)
+    public function matches(\EasyCI20220531\Composer\Semver\Constraint\ConstraintInterface $provider)
     {
         return \false;
     }
@@ -62,13 +62,13 @@ class MatchNoneConstraint implements \EasyCI20220530\Composer\Semver\Constraint\
      */
     public function getUpperBound()
     {
-        return new \EasyCI20220530\Composer\Semver\Constraint\Bound('0.0.0.0-dev', \false);
+        return new \EasyCI20220531\Composer\Semver\Constraint\Bound('0.0.0.0-dev', \false);
     }
     /**
      * {@inheritDoc}
      */
     public function getLowerBound()
     {
-        return new \EasyCI20220530\Composer\Semver\Constraint\Bound('0.0.0.0-dev', \false);
+        return new \EasyCI20220531\Composer\Semver\Constraint\Bound('0.0.0.0-dev', \false);
     }
 }
