@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220531\Symfony\Component\DependencyInjection\Exception;
+namespace EasyCI20220601\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base OutOfBoundsException for Dependency Injection component.
  */
-class OutOfBoundsException extends \OutOfBoundsException implements \EasyCI20220531\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class OutOfBoundsException extends \OutOfBoundsException implements \EasyCI20220601\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

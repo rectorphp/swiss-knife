@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220531\PhpParser\Internal;
+namespace EasyCI20220601\PhpParser\Internal;
 
 /**
  * @internal
