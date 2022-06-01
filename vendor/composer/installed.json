@@ -1413,11 +1413,11 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/astral",
-                "reference": "5b3931ddec4c2214dbaaa782ac911f5ffd27f2fb"
+                "reference": "318bdf6a07082e586dbb8e3e3451f4a3b2b67ab0"
             },
             "require": {
                 "nette\/utils": "^3.2",
-                "nikic\/php-parser": "^4.13.2",
+                "nikic\/php-parser": "^4.14.0",
                 "php": ">=8.0",
                 "phpstan\/phpdoc-parser": "^1.5.1",
                 "phpstan\/phpstan": "^1.7.6",
