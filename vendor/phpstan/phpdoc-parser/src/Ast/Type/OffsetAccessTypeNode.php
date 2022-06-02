@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220601\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220602\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220601\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class OffsetAccessTypeNode implements \EasyCI20220601\PHPStan\PhpDocParser\Ast\Type\TypeNode
+use EasyCI20220602\PHPStan\PhpDocParser\Ast\NodeAttributes;
+class OffsetAccessTypeNode implements \EasyCI20220602\PHPStan\PhpDocParser\Ast\Type\TypeNode
 {
     use NodeAttributes;
     /** @var TypeNode */
     public $type;
     /** @var TypeNode */
     public $offset;
-    public function __construct(\EasyCI20220601\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, \EasyCI20220601\PHPStan\PhpDocParser\Ast\Type\TypeNode $offset)
+    public function __construct(\EasyCI20220602\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, \EasyCI20220602\PHPStan\PhpDocParser\Ast\Type\TypeNode $offset)
     {
         $this->type = $type;
         $this->offset = $offset;

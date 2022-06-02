@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220601\PhpParser\Node\Expr;
+namespace EasyCI20220602\PhpParser\Node\Expr;
 
-use EasyCI20220601\PhpParser\Node\Arg;
-use EasyCI20220601\PhpParser\Node\Expr;
-use EasyCI20220601\PhpParser\Node\Identifier;
-use EasyCI20220601\PhpParser\Node\VariadicPlaceholder;
-class NullsafeMethodCall extends \EasyCI20220601\PhpParser\Node\Expr\CallLike
+use EasyCI20220602\PhpParser\Node\Arg;
+use EasyCI20220602\PhpParser\Node\Expr;
+use EasyCI20220602\PhpParser\Node\Identifier;
+use EasyCI20220602\PhpParser\Node\VariadicPlaceholder;
+class NullsafeMethodCall extends \EasyCI20220602\PhpParser\Node\Expr\CallLike
 {
     /** @var Expr Variable holding object */
     public $var;
@@ -23,11 +23,11 @@ class NullsafeMethodCall extends \EasyCI20220601\PhpParser\Node\Expr\CallLike
      * @param array<Arg|VariadicPlaceholder> $args       Arguments
      * @param array                          $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220601\PhpParser\Node\Expr $var, $name, array $args = [], array $attributes = [])
+    public function __construct(\EasyCI20220602\PhpParser\Node\Expr $var, $name, array $args = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->var = $var;
-        $this->name = \is_string($name) ? new \EasyCI20220601\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220602\PhpParser\Node\Identifier($name) : $name;
         $this->args = $args;
     }
     public function getSubNodeNames() : array

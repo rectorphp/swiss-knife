@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220601\Symfony\Component\DependencyInjection;
+namespace EasyCI20220602\Symfony\Component\DependencyInjection;
 
-use EasyCI20220601\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI20220602\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * The EnvVarProcessorInterface is implemented by objects that manage environment-like variables.
  *

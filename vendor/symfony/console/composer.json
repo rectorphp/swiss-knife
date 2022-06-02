@@ -53,7 +53,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220601\\Symfony\\Component\\Console\\": ""
+            "EasyCI20220602\\Symfony\\Component\\Console\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
