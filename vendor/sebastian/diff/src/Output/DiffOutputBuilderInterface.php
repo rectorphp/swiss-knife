@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220602\SebastianBergmann\Diff\Output;
+namespace EasyCI20220604\SebastianBergmann\Diff\Output;
 
 /**
  * Defines how an output builder should take a generated

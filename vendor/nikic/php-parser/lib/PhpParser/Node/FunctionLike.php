@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220602\PhpParser\Node;
+namespace EasyCI20220604\PhpParser\Node;
 
-use EasyCI20220602\PhpParser\Node;
-interface FunctionLike extends \EasyCI20220602\PhpParser\Node
+use EasyCI20220604\PhpParser\Node;
+interface FunctionLike extends \EasyCI20220604\PhpParser\Node
 {
     /**
      * Whether to return by reference

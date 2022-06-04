@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220602\PhpParser\Node\Scalar;
+namespace EasyCI20220604\PhpParser\Node\Scalar;
 
-use EasyCI20220602\PhpParser\Node\Scalar;
-class DNumber extends \EasyCI20220602\PhpParser\Node\Scalar
+use EasyCI20220604\PhpParser\Node\Scalar;
+class DNumber extends \EasyCI20220604\PhpParser\Node\Scalar
 {
     /** @var float Number value */
     public $value;
@@ -26,11 +26,11 @@ class DNumber extends \EasyCI20220602\PhpParser\Node\Scalar
     /**
      * @param mixed[] $attributes
      */
-    public static function fromString(string $str, array $attributes = []) : \EasyCI20220602\PhpParser\Node\Scalar\DNumber
+    public static function fromString(string $str, array $attributes = []) : \EasyCI20220604\PhpParser\Node\Scalar\DNumber
     {
         $attributes['rawValue'] = $str;
         $float = self::parse($str);
-        return new \EasyCI20220602\PhpParser\Node\Scalar\DNumber($float, $attributes);
+        return new \EasyCI20220604\PhpParser\Node\Scalar\DNumber($float, $attributes);
     }
     /**
      * @internal

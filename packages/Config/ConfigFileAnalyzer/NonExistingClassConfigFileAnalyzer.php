@@ -7,8 +7,8 @@ use Symplify\EasyCI\Config\ClassExtractor;
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220602\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use EasyCI20220602\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220604\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use EasyCI20220604\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfigFileAnalyzer\NonExistingClassConfigFileAnalyzerTest
  */
@@ -22,7 +22,7 @@ final class NonExistingClassConfigFileAnalyzer implements \Symplify\EasyCI\Confi
      * @var \Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\Symplify\EasyCI\Config\ClassExtractor $classExtractor, \EasyCI20220602\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(\Symplify\EasyCI\Config\ClassExtractor $classExtractor, \EasyCI20220604\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->classExtractor = $classExtractor;
         $this->classLikeExistenceChecker = $classLikeExistenceChecker;
@@ -46,7 +46,7 @@ final class NonExistingClassConfigFileAnalyzer implements \Symplify\EasyCI\Confi
     /**
      * @return string[]
      */
-    private function extractFromFileInfo(\EasyCI20220602\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function extractFromFileInfo(\EasyCI20220604\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
     {
         $classes = $this->classExtractor->extractFromFileInfo($fileInfo);
         $nonExistingClasses = $this->filterNonExistingClasses($classes);

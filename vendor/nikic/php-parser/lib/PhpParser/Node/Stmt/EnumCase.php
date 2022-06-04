@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220602\PhpParser\Node\Stmt;
+namespace EasyCI20220604\PhpParser\Node\Stmt;
 
-use EasyCI20220602\PhpParser\Node;
-use EasyCI20220602\PhpParser\Node\AttributeGroup;
-class EnumCase extends \EasyCI20220602\PhpParser\Node\Stmt
+use EasyCI20220604\PhpParser\Node;
+use EasyCI20220604\PhpParser\Node\AttributeGroup;
+class EnumCase extends \EasyCI20220604\PhpParser\Node\Stmt
 {
     /** @var Node\Identifier Enum case name */
     public $name;
@@ -19,10 +19,10 @@ class EnumCase extends \EasyCI20220602\PhpParser\Node\Stmt
      * @param AttributeGroup[]          $attrGroups PHP attribute groups
      * @param array                     $attributes Additional attributes
      */
-    public function __construct($name, \EasyCI20220602\PhpParser\Node\Expr $expr = null, array $attrGroups = [], array $attributes = [])
+    public function __construct($name, \EasyCI20220604\PhpParser\Node\Expr $expr = null, array $attrGroups = [], array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->name = \is_string($name) ? new \EasyCI20220602\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new \EasyCI20220604\PhpParser\Node\Identifier($name) : $name;
         $this->expr = $expr;
         $this->attrGroups = $attrGroups;
     }

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220602\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220604\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220602\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220604\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function trim;
-class DeprecatedTagValueNode implements \EasyCI20220602\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class DeprecatedTagValueNode implements \EasyCI20220604\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string (may be empty) */

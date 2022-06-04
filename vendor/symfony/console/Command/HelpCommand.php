@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220602\Symfony\Component\Console\Command;
+namespace EasyCI20220604\Symfony\Component\Console\Command;
 
-use EasyCI20220602\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI20220602\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI20220602\Symfony\Component\Console\Descriptor\ApplicationDescription;
-use EasyCI20220602\Symfony\Component\Console\Helper\DescriptorHelper;
-use EasyCI20220602\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220602\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220602\Symfony\Component\Console\Input\InputOption;
-use EasyCI20220602\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220604\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI20220604\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI20220604\Symfony\Component\Console\Descriptor\ApplicationDescription;
+use EasyCI20220604\Symfony\Component\Console\Helper\DescriptorHelper;
+use EasyCI20220604\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220604\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220604\Symfony\Component\Console\Input\InputOption;
+use EasyCI20220604\Symfony\Component\Console\Output\OutputInterface;
 /**
  * HelpCommand displays the help for a given command.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class HelpCommand extends \EasyCI20220602\Symfony\Component\Console\Command\Command
+class HelpCommand extends \EasyCI20220604\Symfony\Component\Console\Command\Command
 {
     private $command;
     /**
@@ -32,7 +32,7 @@ class HelpCommand extends \EasyCI20220602\Symfony\Component\Console\Command\Comm
     protected function configure()
     {
         $this->ignoreValidationErrors();
-        $this->setName('help')->setDefinition([new \EasyCI20220602\Symfony\Component\Console\Input\InputArgument('command_name', \EasyCI20220602\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The command name', 'help'), new \EasyCI20220602\Symfony\Component\Console\Input\InputOption('format', null, \EasyCI20220602\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \EasyCI20220602\Symfony\Component\Console\Input\InputOption('raw', null, \EasyCI20220602\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command help')])->setDescription('Display help for a command')->setHelp(<<<'EOF'
+        $this->setName('help')->setDefinition([new \EasyCI20220604\Symfony\Component\Console\Input\InputArgument('command_name', \EasyCI20220604\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The command name', 'help'), new \EasyCI20220604\Symfony\Component\Console\Input\InputOption('format', null, \EasyCI20220604\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \EasyCI20220604\Symfony\Component\Console\Input\InputOption('raw', null, \EasyCI20220604\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command help')])->setDescription('Display help for a command')->setHelp(<<<'EOF'
 The <info>%command.name%</info> command displays help for a given command:
 
   <info>%command.full_name% list</info>
@@ -45,30 +45,30 @@ To display the list of available commands, please use the <info>list</info> comm
 EOF
 );
     }
-    public function setCommand(\EasyCI20220602\Symfony\Component\Console\Command\Command $command)
+    public function setCommand(\EasyCI20220604\Symfony\Component\Console\Command\Command $command)
     {
         $this->command = $command;
     }
     /**
      * {@inheritdoc}
      */
-    protected function execute(\EasyCI20220602\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220602\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\EasyCI20220604\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220604\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->command = $this->command ?? $this->getApplication()->find($input->getArgument('command_name'));
-        $helper = new \EasyCI20220602\Symfony\Component\Console\Helper\DescriptorHelper();
+        $helper = new \EasyCI20220604\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->command, ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw')]);
         unset($this->command);
         return 0;
     }
-    public function complete(\EasyCI20220602\Symfony\Component\Console\Completion\CompletionInput $input, \EasyCI20220602\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
+    public function complete(\EasyCI20220604\Symfony\Component\Console\Completion\CompletionInput $input, \EasyCI20220604\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
     {
         if ($input->mustSuggestArgumentValuesFor('command_name')) {
-            $descriptor = new \EasyCI20220602\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
+            $descriptor = new \EasyCI20220604\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
             $suggestions->suggestValues(\array_keys($descriptor->getCommands()));
             return;
         }
         if ($input->mustSuggestOptionValuesFor('format')) {
-            $helper = new \EasyCI20220602\Symfony\Component\Console\Helper\DescriptorHelper();
+            $helper = new \EasyCI20220604\Symfony\Component\Console\Helper\DescriptorHelper();
             $suggestions->suggestValues($helper->getFormats());
         }
     }
