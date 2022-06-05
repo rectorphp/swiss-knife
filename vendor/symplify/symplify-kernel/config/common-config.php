@@ -16,7 +16,7 @@ use EasyCI20220605\Symplify\SmartFileSystem\SmartFileSystem;
 use function EasyCI20220605\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
-    $services->defaults()->public()->autowire()->autoconfigure();
+    $services->defaults()->public()->autowire();
     // symfony style
     $services->set(\EasyCI20220605\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class);
     $services->set(\EasyCI20220605\Symfony\Component\Console\Style\SymfonyStyle::class)->factory([\EasyCI20220605\Symfony\Component\DependencyInjection\Loader\Configurator\service(\EasyCI20220605\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class), 'create']);
