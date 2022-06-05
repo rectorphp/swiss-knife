@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220604\Symfony\Component\Console\Descriptor;
+namespace EasyCI20220605\Symfony\Component\Console\Descriptor;
 
-use EasyCI20220604\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220605\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Descriptor interface.
  *
@@ -18,5 +18,5 @@ use EasyCI20220604\Symfony\Component\Console\Output\OutputInterface;
  */
 interface DescriptorInterface
 {
-    public function describe(\EasyCI20220604\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = []);
+    public function describe(\EasyCI20220605\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = []);
 }
