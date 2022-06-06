@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220605;
+namespace EasyCI20220606;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI20220605\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI20220606\Symplify\SmartFileSystem\SmartFileSystem;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
-    $services->set(\EasyCI20220605\Symplify\SmartFileSystem\SmartFileSystem::class);
+    $services->set(\EasyCI20220606\Symplify\SmartFileSystem\SmartFileSystem::class);
 };

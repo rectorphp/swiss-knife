@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220605\Symplify\Astral\Contract;
+namespace EasyCI20220606\Symplify\Astral\Contract;
 
-use EasyCI20220605\PhpParser\Node;
+use EasyCI20220606\PhpParser\Node;
 interface NodeNameResolverInterface
 {
-    public function match(\EasyCI20220605\PhpParser\Node $node) : bool;
-    public function resolve(\EasyCI20220605\PhpParser\Node $node) : ?string;
+    public function match(\EasyCI20220606\PhpParser\Node $node) : bool;
+    public function resolve(\EasyCI20220606\PhpParser\Node $node) : ?string;
 }

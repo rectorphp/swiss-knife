@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220605\PhpParser\Node\Stmt;
+namespace EasyCI20220606\PhpParser\Node\Stmt;
 
-use EasyCI20220605\PhpParser\Node;
+use EasyCI20220606\PhpParser\Node;
 /**
  * Represents statements of type "expr;"
  */
-class Expression extends \EasyCI20220605\PhpParser\Node\Stmt
+class Expression extends \EasyCI20220606\PhpParser\Node\Stmt
 {
     /** @var Node\Expr Expression */
     public $expr;
@@ -17,7 +17,7 @@ class Expression extends \EasyCI20220605\PhpParser\Node\Stmt
      * @param Node\Expr $expr       Expression
      * @param array     $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220605\PhpParser\Node\Expr $expr, array $attributes = [])
+    public function __construct(\EasyCI20220606\PhpParser\Node\Expr $expr, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->expr = $expr;

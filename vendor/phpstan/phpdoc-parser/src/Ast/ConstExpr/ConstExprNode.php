@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220605\PHPStan\PhpDocParser\Ast\ConstExpr;
+namespace EasyCI20220606\PHPStan\PhpDocParser\Ast\ConstExpr;
 
-use EasyCI20220605\PHPStan\PhpDocParser\Ast\Node;
-interface ConstExprNode extends \EasyCI20220605\PHPStan\PhpDocParser\Ast\Node
+use EasyCI20220606\PHPStan\PhpDocParser\Ast\Node;
+interface ConstExprNode extends \EasyCI20220606\PHPStan\PhpDocParser\Ast\Node
 {
 }

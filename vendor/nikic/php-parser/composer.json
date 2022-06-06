@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220605\\PhpParser\\": "lib\/PhpParser"
+            "EasyCI20220606\\PhpParser\\": "lib\/PhpParser"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220605\\PhpParser\\": "test\/PhpParser\/"
+            "EasyCI20220606\\PhpParser\\": "test\/PhpParser\/"
         }
     },
     "bin": [
