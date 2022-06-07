@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Twig;
+namespace Symplify\EasyCI\Twig;
 
-use EasyCI20220607\Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
+use Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 final class TwigAnalyzer
 {

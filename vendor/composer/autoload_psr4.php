@@ -6,12 +6,12 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symplify\\EasyCI\\' => array($baseDir . '/src', $baseDir . '/packages'),
     'EasyCI20220607\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'EasyCI20220607\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'EasyCI20220607\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
     'EasyCI20220607\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
     'EasyCI20220607\\Symplify\\EasyTesting\\' => array($vendorDir . '/symplify/easy-testing/src'),
-    'EasyCI20220607\\Symplify\\EasyCI\\' => array($baseDir . '/src', $baseDir . '/packages'),
     'EasyCI20220607\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'EasyCI20220607\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
     'EasyCI20220607\\Symplify\\Astral\\' => array($vendorDir . '/symplify/astral/src'),

@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Testing\Command;
+namespace Symplify\EasyCI\Testing\Command;
 
 use EasyCI20220607\Symfony\Component\Console\Command\Command;
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
 use EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220607\Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter;
-use EasyCI20220607\Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter;
+use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
+use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileSystem;
 use EasyCI20220607\Webmozart\Assert\Assert;

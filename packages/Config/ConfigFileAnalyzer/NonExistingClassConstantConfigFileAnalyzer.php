@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Config\ConfigFileAnalyzer;
+namespace Symplify\EasyCI\Config\ConfigFileAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use EasyCI20220607\Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
-use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
+use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConstantExtractor\NonExistingClassConstantExtractorTest

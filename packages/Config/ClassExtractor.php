@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Config;
+namespace Symplify\EasyCI\Config;
 
 use EasyCI20220607\Nette\Neon\Encoder;
 use EasyCI20220607\Nette\Neon\Neon;
 use EasyCI20220607\Nette\Utils\Strings;
-use EasyCI20220607\Symplify\EasyCI\Neon\NeonClassExtractor;
+use Symplify\EasyCI\Neon\NeonClassExtractor;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ClassExtractor\ClassExtractorTest

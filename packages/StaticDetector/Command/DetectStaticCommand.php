@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\Command;
+namespace Symplify\EasyCI\StaticDetector\Command;
 
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\Output\StaticReportReporter;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\StaticScanner;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
+use Symplify\EasyCI\StaticDetector\Output\StaticReportReporter;
+use Symplify\EasyCI\StaticDetector\StaticScanner;
+use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class DetectStaticCommand extends AbstractSymplifyCommand

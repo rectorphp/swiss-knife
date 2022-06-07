@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Testing;
+namespace Symplify\EasyCI\Testing;
 
-use EasyCI20220607\Symplify\EasyCI\Testing\Autoloading\DualTestCaseAuloader;
-use EasyCI20220607\Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
+use Symplify\EasyCI\Testing\Autoloading\DualTestCaseAuloader;
+use Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
 /**
  * @see \Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\UnitTestFilePathsFinderTest
  */
@@ -22,7 +22,7 @@ final class UnitTestFilePathsFinder
      * @var \Symplify\EasyCI\Testing\UnitTestFilter
      */
     private $unitTestFilter;
-    public function __construct(DualTestCaseAuloader $dualTestCaseAuloader, TestCaseClassFinder $testCaseClassFinder, UnitTestFilter $unitTestFilter)
+    public function __construct(DualTestCaseAuloader $dualTestCaseAuloader, TestCaseClassFinder $testCaseClassFinder, \Symplify\EasyCI\Testing\UnitTestFilter $unitTestFilter)
     {
         $this->dualTestCaseAuloader = $dualTestCaseAuloader;
         $this->testCaseClassFinder = $testCaseClassFinder;

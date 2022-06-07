@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Testing\Autoloading;
+namespace Symplify\EasyCI\Testing\Autoloading;
 
 /**
  * To ease detection of dual test case classes.

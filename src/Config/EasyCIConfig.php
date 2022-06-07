@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Config;
+namespace Symplify\EasyCI\Config;
 
 use EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220607\Webmozart\Assert\Assert;
 final class EasyCIConfig extends ContainerConfigurator
 {

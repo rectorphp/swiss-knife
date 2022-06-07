@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Neon\Command;
+namespace Symplify\EasyCI\Neon\Command;
 
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220607\Symplify\EasyCI\Console\Output\FileErrorsReporter;
-use EasyCI20220607\Symplify\EasyCI\Neon\Application\NeonFilesProcessor;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\Option;
+use Symplify\EasyCI\Console\Output\FileErrorsReporter;
+use Symplify\EasyCI\Neon\Application\NeonFilesProcessor;
+use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CheckNeonCommand extends AbstractSymplifyCommand

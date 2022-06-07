@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\StaticDetector;
+namespace Symplify\EasyCI\StaticDetector;
 
 use EasyCI20220607\PhpParser\Parser;
 use EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
+use Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
+use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\StaticDetector\StaticScanner\StaticScannerTest

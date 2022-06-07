@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Psr4\ValueObjectFactory;
+namespace Symplify\EasyCI\Psr4\ValueObjectFactory;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use EasyCI20220607\Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
-use EasyCI20220607\Symplify\EasyCI\Psr4\Utils\SymplifyStrings;
-use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
+use Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
+use Symplify\EasyCI\Psr4\Utils\SymplifyStrings;
+use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
 /**
  * @see \Symplify\EasyCI\Tests\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory\Psr4NamespaceToPathFactoryTest
  */

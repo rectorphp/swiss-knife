@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\Collector;
+namespace Symplify\EasyCI\StaticDetector\Collector;
 
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\Expr\StaticCall;
@@ -10,9 +10,9 @@ use EasyCI20220607\PhpParser\Node\Stmt\Class_;
 use EasyCI20220607\PhpParser\Node\Stmt\ClassLike;
 use EasyCI20220607\PhpParser\Node\Stmt\ClassMethod;
 use EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
 use EasyCI20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticNodeCollector
 {

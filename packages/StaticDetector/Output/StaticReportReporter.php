@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\Output;
+namespace Symplify\EasyCI\StaticDetector\Output;
 
 use EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
+use Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
 final class StaticReportReporter
 {
     /**

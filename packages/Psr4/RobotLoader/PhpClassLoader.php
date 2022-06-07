@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Psr4\RobotLoader;
+namespace Symplify\EasyCI\Psr4\RobotLoader;
 
 use EasyCI20220607\Nette\Loaders\RobotLoader;
 final class PhpClassLoader

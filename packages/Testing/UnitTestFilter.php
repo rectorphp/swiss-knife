@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Testing;
+namespace Symplify\EasyCI\Testing;
 
 use EasyCI20220607\PHPUnit\Framework\TestCase;
 use EasyCI20220607\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

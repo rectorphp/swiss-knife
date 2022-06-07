@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Latte;
+namespace Symplify\EasyCI\Latte;
 
-use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220607\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 final class LatteTemplateProcessor
 {

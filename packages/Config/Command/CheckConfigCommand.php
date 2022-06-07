@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Config\Command;
+namespace Symplify\EasyCI\Config\Command;
 
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220607\Symplify\EasyCI\Config\Application\ClassAndConstantExistanceFileProcessor;
-use EasyCI20220607\Symplify\EasyCI\Console\Output\FileErrorsReporter;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\ConfigFileSuffixes;
+use Symplify\EasyCI\Config\Application\ClassAndConstantExistanceFileProcessor;
+use Symplify\EasyCI\Console\Output\FileErrorsReporter;
+use Symplify\EasyCI\ValueObject\ConfigFileSuffixes;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220607\Symplify\PackageBuilder\ValueObject\Option;

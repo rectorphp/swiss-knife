@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\ActiveClass\NodeDecorator;
+namespace Symplify\EasyCI\ActiveClass\NodeDecorator;
 
 use EasyCI20220607\PhpParser\Node\Stmt;
 use EasyCI20220607\PhpParser\NodeTraverser;

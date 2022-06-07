@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Psr4\Finder;
+namespace Symplify\EasyCI\Psr4\Finder;
 
 use EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220607\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
+use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 final class MultipleClassInOneFileFinder
 {
     /**

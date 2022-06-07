@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Command;
+namespace Symplify\EasyCI\Command;
 
 use EasyCI20220607\Nette\Utils\Json;
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220607\Symplify\EasyCI\Composer\SupportedPhpVersionResolver;
-use EasyCI20220607\Symplify\EasyCI\Exception\ShouldNotHappenException;
+use Symplify\EasyCI\Composer\SupportedPhpVersionResolver;
+use Symplify\EasyCI\Exception\ShouldNotHappenException;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class PhpVersionsJsonCommand extends AbstractSymplifyCommand

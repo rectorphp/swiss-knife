@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Finder;
+namespace Symplify\EasyCI\Finder;
 
 use EasyCI20220607\Symplify\SmartFileSystem\Finder\SmartFinder;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;

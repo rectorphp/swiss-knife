@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Console;
+namespace Symplify\EasyCI\Console;
 
 use EasyCI20220607\Symfony\Component\Console\Application;
 use EasyCI20220607\Symfony\Component\Console\Command\Command;

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Psr4\FileSystem;
+namespace Symplify\EasyCI\Psr4\FileSystem;
 
-use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
+use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class Psr4PathResolver
 {
     /**

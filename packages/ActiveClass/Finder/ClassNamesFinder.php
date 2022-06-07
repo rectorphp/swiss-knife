@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\ActiveClass\Finder;
+namespace Symplify\EasyCI\ActiveClass\Finder;
 
-use EasyCI20220607\Symplify\EasyCI\ActiveClass\ClassNameResolver;
-use EasyCI20220607\Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
+use Symplify\EasyCI\ActiveClass\ClassNameResolver;
+use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassNamesFinder
 {

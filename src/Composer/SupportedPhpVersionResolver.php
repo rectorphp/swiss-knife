@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Composer;
+namespace Symplify\EasyCI\Composer;
 
 use EasyCI20220607\Composer\Semver\Semver;
 use EasyCI20220607\Composer\Semver\VersionParser;
 use DateTimeInterface;
 use EasyCI20220607\Nette\Utils\DateTime;
 use EasyCI20220607\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use EasyCI20220607\Symplify\EasyCI\Exception\ShouldNotHappenException;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\PhpVersionList;
+use Symplify\EasyCI\Exception\ShouldNotHappenException;
+use Symplify\EasyCI\ValueObject\PhpVersionList;
 /**
  * @see \Symplify\EasyCI\Tests\Composer\SupportedPhpVersionResolverTest
  */

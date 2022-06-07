@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\NodeTraverser;
+namespace Symplify\EasyCI\StaticDetector\NodeTraverser;
 
 use EasyCI20220607\PhpParser\NodeVisitor\NameResolver;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\NodeVisitor\FilePathNodeVisitor;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\NodeVisitor\StaticCollectNodeVisitor;
+use Symplify\EasyCI\StaticDetector\NodeVisitor\FilePathNodeVisitor;
+use Symplify\EasyCI\StaticDetector\NodeVisitor\StaticCollectNodeVisitor;
 final class StaticCollectNodeTraverserFactory
 {
     /**
@@ -21,9 +21,9 @@ final class StaticCollectNodeTraverserFactory
         $this->staticCollectNodeVisitor = $staticCollectNodeVisitor;
         $this->filePathNodeVisitor = $filePathNodeVisitor;
     }
-    public function create() : StaticCollectNodeTraverser
+    public function create() : \Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser
     {
-        $staticCollectNodeTraverser = new StaticCollectNodeTraverser();
+        $staticCollectNodeTraverser = new \Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser();
         $staticCollectNodeTraverser->addVisitor(new NameResolver());
         $staticCollectNodeTraverser->addVisitor($this->staticCollectNodeVisitor);
         $staticCollectNodeTraverser->addVisitor($this->filePathNodeVisitor);

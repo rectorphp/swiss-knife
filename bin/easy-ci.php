@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace EasyCI20220607;
 
-use EasyCI20220607\Symplify\EasyCI\Kernel\EasyCIKernel;
+use Symplify\EasyCI\Kernel\EasyCIKernel;
 use EasyCI20220607\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency

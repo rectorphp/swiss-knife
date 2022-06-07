@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220607\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\LatteStaticCallAnalyzer\StaticCallLatteAnalyzerTest

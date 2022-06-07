@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Testing\Finder;
+namespace Symplify\EasyCI\Testing\Finder;
 
 use EasyCI20220607\Nette\Loaders\RobotLoader;
 final class TestCaseClassFinder

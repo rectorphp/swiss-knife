@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Psr4\Configuration;
+namespace Symplify\EasyCI\Psr4\Configuration;
 
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220607\Symplify\EasyCI\Psr4\Exception\ConfigurationException;
-use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Option;
+use Symplify\EasyCI\Psr4\Exception\ConfigurationException;
+use Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220607\Symplify\SmartFileSystem\FileSystemGuard;
 final class Psr4SwitcherConfiguration
 {

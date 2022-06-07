@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Testing\Printer;
+namespace Symplify\EasyCI\Testing\Printer;
 
 use EasyCI20220607\Nette\Utils\Strings;
 final class PHPUnitXmlPrinter

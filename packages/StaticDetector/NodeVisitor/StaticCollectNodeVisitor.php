@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\NodeVisitor;
+namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
 
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Expr\StaticCall;
@@ -9,7 +9,7 @@ use EasyCI20220607\PhpParser\Node\Stmt\ClassLike;
 use EasyCI20220607\PhpParser\Node\Stmt\ClassMethod;
 use EasyCI20220607\PhpParser\NodeVisitorAbstract;
 use EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220607\Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
+use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
 use EasyCI20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticCollectNodeVisitor extends NodeVisitorAbstract
 {

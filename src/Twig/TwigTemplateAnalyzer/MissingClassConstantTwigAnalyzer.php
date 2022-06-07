@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
+namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220607\Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
-use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
+use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
+use Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer\MissingClassConstantTwigAnalyzerTest
