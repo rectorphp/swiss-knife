@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220606\PhpParser\Node\Expr\Cast;
+namespace EasyCI20220607\PhpParser\Node\Expr\Cast;
 
-use EasyCI20220606\PhpParser\Node\Expr\Cast;
-class Bool_ extends \EasyCI20220606\PhpParser\Node\Expr\Cast
+use EasyCI20220607\PhpParser\Node\Expr\Cast;
+class Bool_ extends \EasyCI20220607\PhpParser\Node\Expr\Cast
 {
     public function getType() : string
     {

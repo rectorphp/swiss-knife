@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220606\PhpParser\Node\Scalar;
+namespace EasyCI20220607\PhpParser\Node\Scalar;
 
-use EasyCI20220606\PhpParser\Node\Expr;
-use EasyCI20220606\PhpParser\Node\Scalar;
-class Encapsed extends \EasyCI20220606\PhpParser\Node\Scalar
+use EasyCI20220607\PhpParser\Node\Expr;
+use EasyCI20220607\PhpParser\Node\Scalar;
+class Encapsed extends \EasyCI20220607\PhpParser\Node\Scalar
 {
     /** @var Expr[] list of string parts */
     public $parts;

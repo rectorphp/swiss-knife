@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220606\PhpParser\Node\Expr;
+namespace EasyCI20220607\PhpParser\Node\Expr;
 
-use EasyCI20220606\PhpParser\Node\Arg;
-use EasyCI20220606\PhpParser\Node\Expr;
-use EasyCI20220606\PhpParser\Node\VariadicPlaceholder;
-abstract class CallLike extends \EasyCI20220606\PhpParser\Node\Expr
+use EasyCI20220607\PhpParser\Node\Arg;
+use EasyCI20220607\PhpParser\Node\Expr;
+use EasyCI20220607\PhpParser\Node\VariadicPlaceholder;
+abstract class CallLike extends \EasyCI20220607\PhpParser\Node\Expr
 {
     /**
      * Return raw arguments, which may be actual Args, or VariadicPlaceholders for first-class
@@ -21,7 +21,7 @@ abstract class CallLike extends \EasyCI20220606\PhpParser\Node\Expr
     public function isFirstClassCallable() : bool
     {
         foreach ($this->getRawArgs() as $arg) {
-            if ($arg instanceof \EasyCI20220606\PhpParser\Node\VariadicPlaceholder) {
+            if ($arg instanceof \EasyCI20220607\PhpParser\Node\VariadicPlaceholder) {
                 return \true;
             }
         }

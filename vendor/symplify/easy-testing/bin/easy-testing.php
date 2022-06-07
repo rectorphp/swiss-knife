@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220606;
+namespace EasyCI20220607;
 
-use EasyCI20220606\Symplify\EasyTesting\Kernel\EasyTestingKernel;
-use EasyCI20220606\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use EasyCI20220607\Symplify\EasyTesting\Kernel\EasyTestingKernel;
+use EasyCI20220607\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -19,5 +19,5 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
         break;
     }
 }
-$kernelBootAndApplicationRun = new \EasyCI20220606\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\EasyCI20220606\Symplify\EasyTesting\Kernel\EasyTestingKernel::class);
+$kernelBootAndApplicationRun = new \EasyCI20220607\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\EasyCI20220607\Symplify\EasyTesting\Kernel\EasyTestingKernel::class);
 $kernelBootAndApplicationRun->run();

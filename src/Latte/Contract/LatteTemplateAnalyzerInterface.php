@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\Latte\Contract;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220606\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 interface LatteTemplateAnalyzerInterface
 {
     /**

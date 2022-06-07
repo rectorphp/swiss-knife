@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220606\PhpParser\Node\Expr\AssignOp;
+namespace EasyCI20220607\PhpParser\Node\Expr\AssignOp;
 
-use EasyCI20220606\PhpParser\Node\Expr\AssignOp;
-class Mod extends \EasyCI20220606\PhpParser\Node\Expr\AssignOp
+use EasyCI20220607\PhpParser\Node\Expr\AssignOp;
+class Mod extends \EasyCI20220607\PhpParser\Node\Expr\AssignOp
 {
     public function getType() : string
     {
