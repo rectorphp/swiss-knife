@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symplify\\EasyCI\\' => array($baseDir . '/src', $baseDir . '/packages'),
+    'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'EasyCI20220607\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'EasyCI20220607\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'EasyCI20220607\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
@@ -15,7 +16,6 @@ return array(
     'EasyCI20220607\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'EasyCI20220607\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
     'EasyCI20220607\\Symplify\\Astral\\' => array($vendorDir . '/symplify/astral/src'),
-    'EasyCI20220607\\Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'EasyCI20220607\\Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
     'EasyCI20220607\\Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'EasyCI20220607\\Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),

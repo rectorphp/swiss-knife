@@ -1186,7 +1186,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "EasyCI20220607\\Symfony\\Polyfill\\Php81\\": ""
+                    "Symfony\\Polyfill\\Php81\\": ""
                 },
                 "classmap": [
                     "Resources\/stubs"

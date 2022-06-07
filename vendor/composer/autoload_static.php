@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
+class ComposerStaticInit08ddc3f4c5dbd74dff9b9cca56298955
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -17,6 +17,7 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
         'S' => 
         array (
             'Symplify\\EasyCI\\' => 16,
+            'Symfony\\Polyfill\\Php81\\' => 23,
         ),
         'E' => 
         array (
@@ -28,7 +29,6 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
             'EasyCI20220607\\Symplify\\ComposerJsonManipulator\\' => 48,
             'EasyCI20220607\\Symplify\\AutowireArrayParameter\\' => 47,
             'EasyCI20220607\\Symplify\\Astral\\' => 31,
-            'EasyCI20220607\\Symfony\\Polyfill\\Php81\\' => 38,
             'EasyCI20220607\\Symfony\\Contracts\\Service\\' => 41,
             'EasyCI20220607\\Symfony\\Component\\String\\' => 40,
             'EasyCI20220607\\Symfony\\Component\\Finder\\' => 40,
@@ -48,6 +48,10 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
         array (
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/packages',
+        ),
+        'Symfony\\Polyfill\\Php81\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
         'EasyCI20220607\\Webmozart\\Assert\\' => 
         array (
@@ -80,10 +84,6 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
         'EasyCI20220607\\Symplify\\Astral\\' => 
         array (
             0 => __DIR__ . '/..' . '/symplify/astral/src',
-        ),
-        'EasyCI20220607\\Symfony\\Polyfill\\Php81\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
         'EasyCI20220607\\Symfony\\Contracts\\Service\\' => 
         array (
@@ -519,7 +519,6 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
         'EasyCI20220607\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'EasyCI20220607\\Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'EasyCI20220607\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
-        'EasyCI20220607\\ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'EasyCI20220607\\SebastianBergmann\\Diff\\Chunk' => __DIR__ . '/..' . '/sebastian/diff/src/Chunk.php',
         'EasyCI20220607\\SebastianBergmann\\Diff\\ConfigurationException' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/ConfigurationException.php',
         'EasyCI20220607\\SebastianBergmann\\Diff\\Diff' => __DIR__ . '/..' . '/sebastian/diff/src/Diff.php',
@@ -941,7 +940,6 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
         'EasyCI20220607\\Symfony\\Contracts\\Service\\ServiceSubscriberInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberInterface.php',
         'EasyCI20220607\\Symfony\\Contracts\\Service\\ServiceSubscriberTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberTrait.php',
         'EasyCI20220607\\Symfony\\Contracts\\Service\\Test\\ServiceLocatorTest' => __DIR__ . '/..' . '/symfony/service-contracts/Test/ServiceLocatorTest.php',
-        'EasyCI20220607\\Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'EasyCI20220607\\Symplify\\Astral\\Contract\\NodeNameResolverInterface' => __DIR__ . '/..' . '/symplify/astral/src/Contract/NodeNameResolverInterface.php',
         'EasyCI20220607\\Symplify\\Astral\\Contract\\NodeValueResolver\\NodeValueResolverInterface' => __DIR__ . '/..' . '/symplify/astral/src/Contract/NodeValueResolver/NodeValueResolverInterface.php',
         'EasyCI20220607\\Symplify\\Astral\\Exception\\ShouldNotHappenException' => __DIR__ . '/..' . '/symplify/astral/src/Exception/ShouldNotHappenException.php',
@@ -1078,6 +1076,8 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
         'EasyCI20220607\\Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'EasyCI20220607\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'EasyCI20220607\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
+        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
+        'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'Symplify\\EasyCI\\ActiveClass\\ClassNameResolver' => __DIR__ . '/../..' . '/packages/ActiveClass/ClassNameResolver.php',
         'Symplify\\EasyCI\\ActiveClass\\Command\\CheckActiveClassCommand' => __DIR__ . '/../..' . '/packages/ActiveClass/Command/CheckActiveClassCommand.php',
         'Symplify\\EasyCI\\ActiveClass\\Filtering\\PossiblyUnusedClassesFilter' => __DIR__ . '/../..' . '/packages/ActiveClass/Filtering/PossiblyUnusedClassesFilter.php',
@@ -1178,9 +1178,9 @@ class ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit26489cbdecbb0bad09eea878a7d6dfc9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit08ddc3f4c5dbd74dff9b9cca56298955::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit08ddc3f4c5dbd74dff9b9cca56298955::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit08ddc3f4c5dbd74dff9b9cca56298955::$classMap;
 
         }, null, ClassLoader::class);
     }
