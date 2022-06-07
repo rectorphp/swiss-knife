@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class Case_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class Case_ extends Node\Stmt
 {
     /** @var null|Node\Expr Condition (null for default) */
     public $cond;

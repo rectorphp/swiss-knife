@@ -15,7 +15,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgume
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DefaultsConfigurator extends \EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class DefaultsConfigurator extends AbstractServiceConfigurator
 {
     use Traits\AutoconfigureTrait;
     use Traits\AutowireTrait;
@@ -26,7 +26,7 @@ class DefaultsConfigurator extends \EasyCI20220607\Symfony\Component\DependencyI
      * @var string|null
      */
     private $path;
-    public function __construct(\EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \EasyCI20220607\Symfony\Component\DependencyInjection\Definition $definition, string $path = null)
+    public function __construct(ServicesConfigurator $parent, Definition $definition, string $path = null)
     {
         parent::__construct($parent, $definition, null, []);
         $this->path = $path;
@@ -41,11 +41,11 @@ class DefaultsConfigurator extends \EasyCI20220607\Symfony\Component\DependencyI
     public final function tag(string $name, array $attributes = [])
     {
         if ('' === $name) {
-            throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The tag name in "_defaults" must be a non-empty string.');
+            throw new InvalidArgumentException('The tag name in "_defaults" must be a non-empty string.');
         }
         foreach ($attributes as $attribute => $value) {
             if (null !== $value && !\is_scalar($value)) {
-                throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "%s", attribute "%s" in "_defaults" must be of a scalar-type.', $name, $attribute));
+                throw new InvalidArgumentException(\sprintf('Tag "%s", attribute "%s" in "_defaults" must be of a scalar-type.', $name, $attribute));
             }
         }
         $this->definition->addTag($name, $attributes);
@@ -54,7 +54,7 @@ class DefaultsConfigurator extends \EasyCI20220607\Symfony\Component\DependencyI
     /**
      * Defines an instanceof-conditional to be applied to following service definitions.
      */
-    public final function instanceof(string $fqcn) : \EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
+    public final function instanceof(string $fqcn) : InstanceofConfigurator
     {
         return $this->parent->instanceof($fqcn);
     }

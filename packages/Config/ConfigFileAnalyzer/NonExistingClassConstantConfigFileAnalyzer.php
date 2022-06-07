@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Config\ConfigFileAnalyzer;
+namespace EasyCI20220607\Symplify\EasyCI\Config\ConfigFileAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220607\Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConstantExtractor\NonExistingClassConstantExtractorTest
  */
-final class NonExistingClassConstantConfigFileAnalyzer implements \Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface
+final class NonExistingClassConstantConfigFileAnalyzer implements ConfigFileAnalyzerInterface
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ final class NonExistingClassConstantConfigFileAnalyzer implements \Symplify\Easy
             $missingClassConstants = $this->extractFromFileInfo($fileInfo);
             foreach ($missingClassConstants as $missingClassConstant) {
                 $errorMessage = \sprintf('Class constant "%s" does not exist', $missingClassConstant);
-                $fileErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $fileErrors[] = new FileError($errorMessage, $fileInfo);
             }
         }
         return $fileErrors;
@@ -38,9 +38,9 @@ final class NonExistingClassConstantConfigFileAnalyzer implements \Symplify\Easy
     /**
      * @return string[]
      */
-    private function extractFromFileInfo(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function extractFromFileInfo(SmartFileInfo $fileInfo) : array
     {
-        $foundMatches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_NAME_REGEX);
+        $foundMatches = Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_NAME_REGEX);
         if ($foundMatches === []) {
             return [];
         }

@@ -15,6 +15,6 @@ namespace EasyCI20220607\Symfony\Component\Console\Exception;
  *
  * @author Pierre du Plessis <pdples@gmail.com>
  */
-class NamespaceNotFoundException extends \EasyCI20220607\Symfony\Component\Console\Exception\CommandNotFoundException
+class NamespaceNotFoundException extends CommandNotFoundException
 {
 }

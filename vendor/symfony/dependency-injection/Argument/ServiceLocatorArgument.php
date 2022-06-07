@@ -16,7 +16,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Reference;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ServiceLocatorArgument implements \EasyCI20220607\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
+class ServiceLocatorArgument implements ArgumentInterface
 {
     use ReferenceSetArgumentTrait;
     private $taggedIteratorArgument = null;
@@ -25,14 +25,14 @@ class ServiceLocatorArgument implements \EasyCI20220607\Symfony\Component\Depend
      */
     public function __construct($values = [])
     {
-        if ($values instanceof \EasyCI20220607\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument) {
+        if ($values instanceof TaggedIteratorArgument) {
             $this->taggedIteratorArgument = $values;
             $this->values = [];
         } else {
             $this->setValues($values);
         }
     }
-    public function getTaggedIteratorArgument() : ?\EasyCI20220607\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument
+    public function getTaggedIteratorArgument() : ?TaggedIteratorArgument
     {
         return $this->taggedIteratorArgument;
     }

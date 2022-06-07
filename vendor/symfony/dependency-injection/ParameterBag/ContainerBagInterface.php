@@ -17,7 +17,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ParameterNotF
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface ContainerBagInterface extends \EasyCI20220607\Psr\Container\ContainerInterface
+interface ContainerBagInterface extends ContainerInterface
 {
     /**
      * Gets the service container parameters.

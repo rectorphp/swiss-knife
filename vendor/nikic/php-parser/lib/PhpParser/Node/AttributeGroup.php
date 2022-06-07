@@ -5,7 +5,7 @@ namespace EasyCI20220607\PhpParser\Node;
 
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\NodeAbstract;
-class AttributeGroup extends \EasyCI20220607\PhpParser\NodeAbstract
+class AttributeGroup extends NodeAbstract
 {
     /** @var Attribute[] Attributes */
     public $attrs;

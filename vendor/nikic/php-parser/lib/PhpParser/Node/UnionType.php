@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node;
 
-class UnionType extends \EasyCI20220607\PhpParser\Node\ComplexType
+class UnionType extends ComplexType
 {
     /** @var (Identifier|Name)[] Types */
     public $types;

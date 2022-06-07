@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class Return_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class Return_ extends Node\Stmt
 {
     /** @var null|Node\Expr Expression */
     public $expr;
@@ -14,7 +14,7 @@ class Return_ extends \EasyCI20220607\PhpParser\Node\Stmt
      * @param null|Node\Expr $expr       Expression
      * @param array          $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220607\PhpParser\Node\Expr $expr = null, array $attributes = [])
+    public function __construct(Node\Expr $expr = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->expr = $expr;

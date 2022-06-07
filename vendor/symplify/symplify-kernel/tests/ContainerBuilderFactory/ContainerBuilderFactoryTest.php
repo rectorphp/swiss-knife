@@ -7,13 +7,13 @@ use EasyCI20220607\PHPUnit\Framework\TestCase;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileSystem;
 use EasyCI20220607\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
 use EasyCI20220607\Symplify\SymplifyKernel\ContainerBuilderFactory;
-final class ContainerBuilderFactoryTest extends \EasyCI20220607\PHPUnit\Framework\TestCase
+final class ContainerBuilderFactoryTest extends TestCase
 {
     public function test() : void
     {
-        $containerBuilderFactory = new \EasyCI20220607\Symplify\SymplifyKernel\ContainerBuilderFactory(new \EasyCI20220607\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
+        $containerBuilderFactory = new ContainerBuilderFactory(new ParameterMergingLoaderFactory());
         $containerBuilder = $containerBuilderFactory->create([__DIR__ . '/config/some_services.php'], [], []);
-        $hasSmartFileSystemService = $containerBuilder->has(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $hasSmartFileSystemService = $containerBuilder->has(SmartFileSystem::class);
         $this->assertTrue($hasSmartFileSystemService);
     }
 }

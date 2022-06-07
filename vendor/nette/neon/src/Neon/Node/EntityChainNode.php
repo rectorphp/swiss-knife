@@ -10,7 +10,7 @@ namespace EasyCI20220607\Nette\Neon\Node;
 use EasyCI20220607\Nette\Neon;
 use EasyCI20220607\Nette\Neon\Node;
 /** @internal */
-final class EntityChainNode extends \EasyCI20220607\Nette\Neon\Node
+final class EntityChainNode extends Node
 {
     /** @var EntityNode[] */
     public $chain = [];
@@ -18,13 +18,13 @@ final class EntityChainNode extends \EasyCI20220607\Nette\Neon\Node
     {
         $this->chain = $chain;
     }
-    public function toValue() : \EasyCI20220607\Nette\Neon\Entity
+    public function toValue() : Neon\Entity
     {
         $entities = [];
         foreach ($this->chain as $item) {
             $entities[] = $item->toValue();
         }
-        return new \EasyCI20220607\Nette\Neon\Entity(\EasyCI20220607\Nette\Neon\Neon::Chain, $entities);
+        return new Neon\Entity(Neon\Neon::Chain, $entities);
     }
     public function toString() : string
     {

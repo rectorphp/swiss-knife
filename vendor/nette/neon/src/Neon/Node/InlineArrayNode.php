@@ -8,7 +8,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\Nette\Neon\Node;
 
 /** @internal */
-final class InlineArrayNode extends \EasyCI20220607\Nette\Neon\Node\ArrayNode
+final class InlineArrayNode extends ArrayNode
 {
     /** @var string */
     public $bracket;
@@ -18,6 +18,6 @@ final class InlineArrayNode extends \EasyCI20220607\Nette\Neon\Node\ArrayNode
     }
     public function toString() : string
     {
-        return $this->bracket . \EasyCI20220607\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->items) . ['[' => ']', '{' => '}', '(' => ')'][$this->bracket];
+        return $this->bracket . ArrayItemNode::itemsToInlineString($this->items) . ['[' => ']', '{' => '}', '(' => ')'][$this->bracket];
     }
 }

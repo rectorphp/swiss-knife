@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\ActiveClass\Command;
+namespace EasyCI20220607\Symplify\EasyCI\ActiveClass\Command;
 
 use EasyCI20220607\Symfony\Component\Console\Command\Command;
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
 use EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter;
-use Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder;
-use Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter;
-use Symplify\EasyCI\ActiveClass\UseImportsResolver;
-use Symplify\EasyCI\ValueObject\Option;
+use EasyCI20220607\Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter;
+use EasyCI20220607\Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder;
+use EasyCI20220607\Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter;
+use EasyCI20220607\Symplify\EasyCI\ActiveClass\UseImportsResolver;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220607\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use EasyCI20220607\Symplify\SmartFileSystem\Finder\SmartFinder;
-final class CheckActiveClassCommand extends \EasyCI20220607\Symfony\Component\Console\Command\Command
+final class CheckActiveClassCommand extends Command
 {
     /**
      * @var \Symplify\SmartFileSystem\Finder\SmartFinder
@@ -46,7 +46,7 @@ final class CheckActiveClassCommand extends \EasyCI20220607\Symfony\Component\Co
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\EasyCI20220607\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder $classNamesFinder, \Symplify\EasyCI\ActiveClass\UseImportsResolver $useImportsResolver, \Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter $possiblyUnusedClassesFilter, \Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter $unusedClassReporter, \EasyCI20220607\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(SmartFinder $smartFinder, ClassNamesFinder $classNamesFinder, UseImportsResolver $useImportsResolver, PossiblyUnusedClassesFilter $possiblyUnusedClassesFilter, UnusedClassReporter $unusedClassReporter, ParameterProvider $parameterProvider, SymfonyStyle $symfonyStyle)
     {
         $this->smartFinder = $smartFinder;
         $this->classNamesFinder = $classNamesFinder;
@@ -59,14 +59,14 @@ final class CheckActiveClassCommand extends \EasyCI20220607\Symfony\Component\Co
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Check classes that are not used in any config and in the code');
-        $this->addArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES, \EasyCI20220607\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220607\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'One or more paths with templates');
+        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One or more paths with templates');
     }
-    protected function execute(\EasyCI20220607\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $excludedCheckPaths = $this->parameterProvider->provideArrayParameter(\Symplify\EasyCI\ValueObject\Option::EXCLUDED_CHECK_PATHS);
-        $sources = (array) $input->getArgument(\Symplify\EasyCI\ValueObject\Option::SOURCES);
+        $excludedCheckPaths = $this->parameterProvider->provideArrayParameter(Option::EXCLUDED_CHECK_PATHS);
+        $sources = (array) $input->getArgument(Option::SOURCES);
         $phpFileInfos = $this->smartFinder->find($sources, '*.php', $excludedCheckPaths);
         $phpFilesCount = \count($phpFileInfos);
         $this->symfonyStyle->progressStart($phpFilesCount);

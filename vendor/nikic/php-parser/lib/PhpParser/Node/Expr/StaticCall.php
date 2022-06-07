@@ -8,7 +8,7 @@ use EasyCI20220607\PhpParser\Node\Arg;
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\Identifier;
 use EasyCI20220607\PhpParser\Node\VariadicPlaceholder;
-class StaticCall extends \EasyCI20220607\PhpParser\Node\Expr\CallLike
+class StaticCall extends CallLike
 {
     /** @var Node\Name|Expr Class name */
     public $class;
@@ -28,7 +28,7 @@ class StaticCall extends \EasyCI20220607\PhpParser\Node\Expr\CallLike
     {
         $this->attributes = $attributes;
         $this->class = $class;
-        $this->name = \is_string($name) ? new \EasyCI20220607\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new Identifier($name) : $name;
         $this->args = $args;
     }
     public function getSubNodeNames() : array

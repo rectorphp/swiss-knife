@@ -5,7 +5,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\Type;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
-class CallableTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class CallableTypeNode implements TypeNode
 {
     use NodeAttributes;
     /** @var IdentifierTypeNode */
@@ -14,7 +14,7 @@ class CallableTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\
     public $parameters;
     /** @var TypeNode */
     public $returnType;
-    public function __construct(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode $identifier, array $parameters, \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $returnType)
+    public function __construct(IdentifierTypeNode $identifier, array $parameters, TypeNode $returnType)
     {
         $this->identifier = $identifier;
         $this->parameters = $parameters;
@@ -22,7 +22,7 @@ class CallableTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\
     }
     public function __toString() : string
     {
-        $parameters = \implode(', ', $this->parameters);
+        $parameters = implode(', ', $this->parameters);
         return "{$this->identifier}({$parameters}): {$this->returnType}";
     }
 }

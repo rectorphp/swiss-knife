@@ -16,7 +16,7 @@ use EasyCI20220607\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
 /**
  * @api
  */
-abstract class AbstractSymplifyKernel implements \EasyCI20220607\Symplify\SymplifyKernel\Contract\LightKernelInterface
+abstract class AbstractSymplifyKernel implements LightKernelInterface
 {
     /**
      * @var \Symfony\Component\DependencyInjection\Container|null
@@ -27,11 +27,11 @@ abstract class AbstractSymplifyKernel implements \EasyCI20220607\Symplify\Sympli
      * @param CompilerPassInterface[] $compilerPasses
      * @param ExtensionInterface[] $extensions
      */
-    public function create(array $configFiles, array $compilerPasses = [], array $extensions = []) : \EasyCI20220607\Symfony\Component\DependencyInjection\ContainerInterface
+    public function create(array $configFiles, array $compilerPasses = [], array $extensions = []) : ContainerInterface
     {
-        $containerBuilderFactory = new \EasyCI20220607\Symplify\SymplifyKernel\ContainerBuilderFactory(new \EasyCI20220607\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
-        $compilerPasses[] = new \EasyCI20220607\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass();
-        $configFiles[] = \EasyCI20220607\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig::FILE_PATH;
+        $containerBuilderFactory = new ContainerBuilderFactory(new ParameterMergingLoaderFactory());
+        $compilerPasses[] = new AutowireArrayParameterCompilerPass();
+        $configFiles[] = SymplifyKernelConfig::FILE_PATH;
         $containerBuilder = $containerBuilderFactory->create($configFiles, $compilerPasses, $extensions);
         $containerBuilder->compile();
         $this->container = $containerBuilder;
@@ -39,8 +39,8 @@ abstract class AbstractSymplifyKernel implements \EasyCI20220607\Symplify\Sympli
     }
     public function getContainer() : \EasyCI20220607\Psr\Container\ContainerInterface
     {
-        if (!$this->container instanceof \EasyCI20220607\Symfony\Component\DependencyInjection\Container) {
-            throw new \EasyCI20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$this->container instanceof Container) {
+            throw new ShouldNotHappenException();
         }
         return $this->container;
     }

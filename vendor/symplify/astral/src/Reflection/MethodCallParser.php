@@ -23,7 +23,7 @@ final class MethodCallParser
      * @var \Symplify\Astral\Reflection\ReflectionParser
      */
     private $reflectionParser;
-    public function __construct(\EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220607\Symplify\Astral\Reflection\ReflectionParser $reflectionParser)
+    public function __construct(SimpleNameResolver $simpleNameResolver, ReflectionParser $reflectionParser)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->reflectionParser = $reflectionParser;
@@ -31,17 +31,17 @@ final class MethodCallParser
     /**
      * @return \PhpParser\Node\Stmt\ClassMethod|null
      */
-    public function parseMethodCall(\EasyCI20220607\PhpParser\Node\Expr\MethodCall $methodCall, \EasyCI20220607\PHPStan\Analyser\Scope $scope)
+    public function parseMethodCall(MethodCall $methodCall, Scope $scope)
     {
         $callerType = $scope->getType($methodCall->var);
-        if ($callerType instanceof \EasyCI20220607\PHPStan\Type\ThisType) {
+        if ($callerType instanceof ThisType) {
             $callerType = $callerType->getStaticObjectType();
         }
-        if (!$callerType instanceof \EasyCI20220607\PHPStan\Type\ObjectType) {
+        if (!$callerType instanceof ObjectType) {
             return null;
         }
         $classReflection = $callerType->getClassReflection();
-        if (!$classReflection instanceof \EasyCI20220607\PHPStan\Reflection\ClassReflection) {
+        if (!$classReflection instanceof ClassReflection) {
             return null;
         }
         $methodName = $this->simpleNameResolver->getName($methodCall->name);

@@ -10,9 +10,9 @@ use EasyCI20220607\PhpParser\NodeVisitorAbstract;
  *
  * This visitor is required to perform format-preserving pretty prints.
  */
-class CloningVisitor extends \EasyCI20220607\PhpParser\NodeVisitorAbstract
+class CloningVisitor extends NodeVisitorAbstract
 {
-    public function enterNode(\EasyCI20220607\PhpParser\Node $origNode)
+    public function enterNode(Node $origNode)
     {
         $node = clone $origNode;
         $node->setAttribute('origNode', $origNode);

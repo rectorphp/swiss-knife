@@ -5,7 +5,7 @@ namespace EasyCI20220607\PhpParser\Node\Expr;
 
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Expr;
-class FuncCall extends \EasyCI20220607\PhpParser\Node\Expr\CallLike
+class FuncCall extends CallLike
 {
     /** @var Node\Name|Expr Function name */
     public $name;

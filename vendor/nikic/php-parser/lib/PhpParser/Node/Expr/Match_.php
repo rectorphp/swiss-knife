@@ -5,7 +5,7 @@ namespace EasyCI20220607\PhpParser\Node\Expr;
 
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\MatchArm;
-class Match_ extends \EasyCI20220607\PhpParser\Node\Expr
+class Match_ extends Node\Expr
 {
     /** @var Node\Expr */
     public $cond;
@@ -14,7 +14,7 @@ class Match_ extends \EasyCI20220607\PhpParser\Node\Expr
     /**
      * @param MatchArm[] $arms
      */
-    public function __construct(\EasyCI20220607\PhpParser\Node\Expr $cond, array $arms = [], array $attributes = [])
+    public function __construct(Node\Expr $cond, array $arms = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->cond = $cond;

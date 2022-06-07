@@ -55,7 +55,7 @@ interface InputInterface
      *
      * @throws RuntimeException
      */
-    public function bind(\EasyCI20220607\Symfony\Component\Console\Input\InputDefinition $definition);
+    public function bind(InputDefinition $definition);
     /**
      * Validates the input.
      *

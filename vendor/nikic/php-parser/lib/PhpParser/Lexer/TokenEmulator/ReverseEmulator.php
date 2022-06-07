@@ -6,11 +6,11 @@ namespace EasyCI20220607\PhpParser\Lexer\TokenEmulator;
 /**
  * Reverses emulation direction of the inner emulator.
  */
-final class ReverseEmulator extends \EasyCI20220607\PhpParser\Lexer\TokenEmulator\TokenEmulator
+final class ReverseEmulator extends TokenEmulator
 {
     /** @var TokenEmulator Inner emulator */
     private $emulator;
-    public function __construct(\EasyCI20220607\PhpParser\Lexer\TokenEmulator\TokenEmulator $emulator)
+    public function __construct(TokenEmulator $emulator)
     {
         $this->emulator = $emulator;
     }

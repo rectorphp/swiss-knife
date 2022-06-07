@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node;
 
 use EasyCI20220607\PhpParser\NodeAbstract;
-class Name extends \EasyCI20220607\PhpParser\NodeAbstract
+class Name extends NodeAbstract
 {
     /** @var string[] Parts of the name */
     public $parts;

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Config\Contract;
+namespace EasyCI20220607\Symplify\EasyCI\Config\Contract;
 
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 interface ConfigFileAnalyzerInterface
 {

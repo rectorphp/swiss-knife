@@ -5,7 +5,7 @@ namespace EasyCI20220607\Symplify\PackageBuilder\DependencyInjection\CompilerPas
 
 use EasyCI20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class AutowireInterfacesCompilerPass implements \EasyCI20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class AutowireInterfacesCompilerPass implements CompilerPassInterface
 {
     /**
      * @var string[]
@@ -18,7 +18,7 @@ final class AutowireInterfacesCompilerPass implements \EasyCI20220607\Symfony\Co
     {
         $this->typesToAutowire = $typesToAutowire;
     }
-    public function process(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(ContainerBuilder $containerBuilder) : void
     {
         $definitions = $containerBuilder->getDefinitions();
         foreach ($definitions as $definition) {

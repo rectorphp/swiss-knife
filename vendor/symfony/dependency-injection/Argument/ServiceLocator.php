@@ -16,7 +16,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\ServiceLocator as BaseS
  *
  * @internal
  */
-class ServiceLocator extends \EasyCI20220607\Symfony\Component\DependencyInjection\ServiceLocator
+class ServiceLocator extends BaseServiceLocator
 {
     /**
      * @var \Closure

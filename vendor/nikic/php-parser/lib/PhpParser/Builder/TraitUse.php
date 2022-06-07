@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser\Builder;
 use EasyCI20220607\PhpParser\BuilderHelpers;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Stmt;
-class TraitUse implements \EasyCI20220607\PhpParser\Builder
+class TraitUse implements Builder
 {
     protected $traits = [];
     protected $adaptations = [];
@@ -31,7 +31,7 @@ class TraitUse implements \EasyCI20220607\PhpParser\Builder
      */
     public function and($trait)
     {
-        $this->traits[] = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeName($trait);
+        $this->traits[] = BuilderHelpers::normalizeName($trait);
         return $this;
     }
     /**
@@ -43,8 +43,8 @@ class TraitUse implements \EasyCI20220607\PhpParser\Builder
      */
     public function with($adaptation)
     {
-        $adaptation = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeNode($adaptation);
-        if (!$adaptation instanceof \EasyCI20220607\PhpParser\Node\Stmt\TraitUseAdaptation) {
+        $adaptation = BuilderHelpers::normalizeNode($adaptation);
+        if (!$adaptation instanceof Stmt\TraitUseAdaptation) {
             throw new \LogicException('Adaptation must have type TraitUseAdaptation');
         }
         $this->adaptations[] = $adaptation;
@@ -55,8 +55,8 @@ class TraitUse implements \EasyCI20220607\PhpParser\Builder
      *
      * @return Node The built node
      */
-    public function getNode() : \EasyCI20220607\PhpParser\Node
+    public function getNode() : Node
     {
-        return new \EasyCI20220607\PhpParser\Node\Stmt\TraitUse($this->traits, $this->adaptations);
+        return new Stmt\TraitUse($this->traits, $this->adaptations);
     }
 }

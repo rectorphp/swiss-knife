@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser\Node\Arg;
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\Identifier;
 use EasyCI20220607\PhpParser\Node\VariadicPlaceholder;
-class NullsafeMethodCall extends \EasyCI20220607\PhpParser\Node\Expr\CallLike
+class NullsafeMethodCall extends CallLike
 {
     /** @var Expr Variable holding object */
     public $var;
@@ -23,11 +23,11 @@ class NullsafeMethodCall extends \EasyCI20220607\PhpParser\Node\Expr\CallLike
      * @param array<Arg|VariadicPlaceholder> $args       Arguments
      * @param array                          $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220607\PhpParser\Node\Expr $var, $name, array $args = [], array $attributes = [])
+    public function __construct(Expr $var, $name, array $args = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->var = $var;
-        $this->name = \is_string($name) ? new \EasyCI20220607\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new Identifier($name) : $name;
         $this->args = $args;
     }
     public function getSubNodeNames() : array

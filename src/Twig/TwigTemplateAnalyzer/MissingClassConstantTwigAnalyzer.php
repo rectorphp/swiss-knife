@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
+namespace EasyCI20220607\Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
-use Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer\MissingClassConstantTwigAnalyzerTest
  */
-final class MissingClassConstantTwigAnalyzer implements \Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface
+final class MissingClassConstantTwigAnalyzer implements TwigTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/1Mt4ke/1
@@ -30,7 +30,7 @@ final class MissingClassConstantTwigAnalyzer implements \Symplify\EasyCI\Twig\Co
     {
         $templateErrors = [];
         foreach ($fileInfos as $fileInfo) {
-            $matches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
+            $matches = Strings::matchAll($fileInfo->getContents(), self::CLASS_CONSTANT_REGEX);
             if ($matches === []) {
                 continue;
             }
@@ -41,7 +41,7 @@ final class MissingClassConstantTwigAnalyzer implements \Symplify\EasyCI\Twig\Co
                     continue;
                 }
                 $errorMessage = \sprintf('Class constant "%s" not found', $classConstantName);
-                $templateErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $templateErrors[] = new FileError($errorMessage, $fileInfo);
             }
         }
         return $templateErrors;

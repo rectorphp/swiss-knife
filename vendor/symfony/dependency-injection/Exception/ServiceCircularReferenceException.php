@@ -15,7 +15,7 @@ namespace EasyCI20220607\Symfony\Component\DependencyInjection\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceCircularReferenceException extends \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class ServiceCircularReferenceException extends RuntimeException
 {
     /**
      * @var string

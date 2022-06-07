@@ -9,7 +9,7 @@ namespace EasyCI20220607\Nette\Neon\Node;
 
 use EasyCI20220607\Nette\Neon\Node;
 /** @internal */
-final class ArrayItemNode extends \EasyCI20220607\Nette\Neon\Node
+final class ArrayItemNode extends Node
 {
     /** @var ?Node */
     public $key;
@@ -46,7 +46,7 @@ final class ArrayItemNode extends \EasyCI20220607\Nette\Neon\Node
         $res = '';
         foreach ($items as $item) {
             $v = $item->value->toString();
-            $res .= ($item->key ? $item->key->toString() . ':' : '-') . ($item->value instanceof \EasyCI20220607\Nette\Neon\Node\BlockArrayNode && $item->value->items ? "\n" . $v . (\substr($v, -2, 1) === "\n" ? '' : "\n") : ' ' . $v . "\n");
+            $res .= ($item->key ? $item->key->toString() . ':' : '-') . ($item->value instanceof BlockArrayNode && $item->value->items ? "\n" . $v . (\substr($v, -2, 1) === "\n" ? '' : "\n") : ' ' . $v . "\n");
         }
         return $res;
     }

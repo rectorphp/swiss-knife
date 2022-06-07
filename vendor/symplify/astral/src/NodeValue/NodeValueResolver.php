@@ -52,34 +52,34 @@ final class NodeValueResolver
      * @var \Symplify\PackageBuilder\Php\TypeChecker
      */
     private $typeChecker;
-    public function __construct(\EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220607\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \EasyCI20220607\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
+    public function __construct(SimpleNameResolver $simpleNameResolver, TypeChecker $typeChecker, SimpleNodeFinder $simpleNodeFinder)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->typeChecker = $typeChecker;
-        $this->constExprEvaluator = new \EasyCI20220607\PhpParser\ConstExprEvaluator(function (\EasyCI20220607\PhpParser\Node\Expr $expr) {
+        $this->constExprEvaluator = new ConstExprEvaluator(function (Expr $expr) {
             return $this->resolveByNode($expr);
         });
-        $this->unionTypeValueResolver = new \EasyCI20220607\Symplify\Astral\NodeValue\UnionTypeValueResolver();
-        $this->nodeValueResolvers[] = new \EasyCI20220607\Symplify\Astral\NodeValue\NodeValueResolver\ClassConstFetchValueResolver($this->simpleNameResolver, $simpleNodeFinder);
-        $this->nodeValueResolvers[] = new \EasyCI20220607\Symplify\Astral\NodeValue\NodeValueResolver\ConstFetchValueResolver($this->simpleNameResolver);
-        $this->nodeValueResolvers[] = new \EasyCI20220607\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueResolver();
-        $this->nodeValueResolvers[] = new \EasyCI20220607\Symplify\Astral\NodeValue\NodeValueResolver\FuncCallValueResolver($this->simpleNameResolver, $this->constExprEvaluator);
+        $this->unionTypeValueResolver = new UnionTypeValueResolver();
+        $this->nodeValueResolvers[] = new ClassConstFetchValueResolver($this->simpleNameResolver, $simpleNodeFinder);
+        $this->nodeValueResolvers[] = new ConstFetchValueResolver($this->simpleNameResolver);
+        $this->nodeValueResolvers[] = new MagicConstValueResolver();
+        $this->nodeValueResolvers[] = new FuncCallValueResolver($this->simpleNameResolver, $this->constExprEvaluator);
     }
     /**
      * @return mixed
      */
-    public function resolveWithScope(\EasyCI20220607\PhpParser\Node\Expr $expr, \EasyCI20220607\PHPStan\Analyser\Scope $scope)
+    public function resolveWithScope(Expr $expr, Scope $scope)
     {
         $this->currentFilePath = $scope->getFile();
         try {
             return $this->constExprEvaluator->evaluateDirectly($expr);
-        } catch (\EasyCI20220607\PhpParser\ConstExprEvaluationException $exception) {
+        } catch (ConstExprEvaluationException $exception) {
         }
         $exprType = $scope->getType($expr);
-        if ($exprType instanceof \EasyCI20220607\PHPStan\Type\ConstantScalarType) {
+        if ($exprType instanceof ConstantScalarType) {
             return $exprType->getValue();
         }
-        if ($exprType instanceof \EasyCI20220607\PHPStan\Type\UnionType) {
+        if ($exprType instanceof UnionType) {
             return $this->unionTypeValueResolver->resolveConstantTypes($exprType);
         }
         return null;
@@ -87,22 +87,22 @@ final class NodeValueResolver
     /**
      * @return mixed
      */
-    public function resolve(\EasyCI20220607\PhpParser\Node\Expr $expr, string $filePath)
+    public function resolve(Expr $expr, string $filePath)
     {
         $this->currentFilePath = $filePath;
         try {
             return $this->constExprEvaluator->evaluateDirectly($expr);
-        } catch (\EasyCI20220607\PhpParser\ConstExprEvaluationException $exception) {
+        } catch (ConstExprEvaluationException $exception) {
             return null;
         }
     }
     /**
      * @return mixed
      */
-    private function resolveByNode(\EasyCI20220607\PhpParser\Node\Expr $expr)
+    private function resolveByNode(Expr $expr)
     {
         if ($this->currentFilePath === null) {
-            throw new \EasyCI20220607\Symplify\Astral\Exception\ShouldNotHappenException();
+            throw new ShouldNotHappenException();
         }
         foreach ($this->nodeValueResolvers as $nodeValueResolver) {
             if (\is_a($expr, $nodeValueResolver->getType(), \true)) {
@@ -110,8 +110,8 @@ final class NodeValueResolver
             }
         }
         // these values cannot be resolved in reliable way
-        if ($this->typeChecker->isInstanceOf($expr, [\EasyCI20220607\PhpParser\Node\Expr\Variable::class, \EasyCI20220607\PhpParser\Node\Expr\Cast::class, \EasyCI20220607\PhpParser\Node\Expr\MethodCall::class, \EasyCI20220607\PhpParser\Node\Expr\PropertyFetch::class, \EasyCI20220607\PhpParser\Node\Expr\Instanceof_::class])) {
-            throw new \EasyCI20220607\PhpParser\ConstExprEvaluationException();
+        if ($this->typeChecker->isInstanceOf($expr, [Variable::class, Cast::class, MethodCall::class, PropertyFetch::class, Instanceof_::class])) {
+            throw new ConstExprEvaluationException();
         }
         return null;
     }

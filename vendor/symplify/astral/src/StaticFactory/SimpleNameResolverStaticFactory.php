@@ -20,9 +20,9 @@ use EasyCI20220607\Symplify\Astral\NodeNameResolver\PropertyNodeNameResolver;
  */
 final class SimpleNameResolverStaticFactory
 {
-    public static function create() : \EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver
+    public static function create() : SimpleNameResolver
     {
-        $nameResolvers = [new \EasyCI20220607\Symplify\Astral\NodeNameResolver\ArgNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\AttributeNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\ClassLikeNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\ClassMethodNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\ConstFetchNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\FuncCallNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\IdentifierNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\NamespaceNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\ParamNodeNameResolver(), new \EasyCI20220607\Symplify\Astral\NodeNameResolver\PropertyNodeNameResolver()];
-        return new \EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver($nameResolvers);
+        $nameResolvers = [new ArgNodeNameResolver(), new AttributeNodeNameResolver(), new ClassLikeNodeNameResolver(), new ClassMethodNodeNameResolver(), new ConstFetchNodeNameResolver(), new FuncCallNodeNameResolver(), new IdentifierNodeNameResolver(), new NamespaceNodeNameResolver(), new ParamNodeNameResolver(), new PropertyNodeNameResolver()];
+        return new SimpleNameResolver($nameResolvers);
     }
 }

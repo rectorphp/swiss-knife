@@ -10,9 +10,9 @@ use EasyCI20220607\PhpParser\ErrorHandler;
  *
  * This is the default strategy used by all components.
  */
-class Throwing implements \EasyCI20220607\PhpParser\ErrorHandler
+class Throwing implements ErrorHandler
 {
-    public function handleError(\EasyCI20220607\PhpParser\Error $error)
+    public function handleError(Error $error)
     {
         throw $error;
     }

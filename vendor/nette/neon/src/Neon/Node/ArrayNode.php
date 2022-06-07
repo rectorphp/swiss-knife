@@ -9,14 +9,14 @@ namespace EasyCI20220607\Nette\Neon\Node;
 
 use EasyCI20220607\Nette\Neon\Node;
 /** @internal */
-abstract class ArrayNode extends \EasyCI20220607\Nette\Neon\Node
+abstract class ArrayNode extends Node
 {
     /** @var ArrayItemNode[] */
     public $items = [];
     /** @return mixed[] */
     public function toValue() : array
     {
-        return \EasyCI20220607\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->items);
+        return ArrayItemNode::itemsToArray($this->items);
     }
     public function &getIterator() : \Generator
     {

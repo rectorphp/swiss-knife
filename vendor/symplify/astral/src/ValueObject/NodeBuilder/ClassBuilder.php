@@ -8,6 +8,6 @@ use EasyCI20220607\PhpParser\Builder\Class_;
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class ClassBuilder extends \EasyCI20220607\PhpParser\Builder\Class_
+final class ClassBuilder extends Class_
 {
 }

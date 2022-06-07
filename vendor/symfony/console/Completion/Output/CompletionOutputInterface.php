@@ -19,5 +19,5 @@ use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
  */
 interface CompletionOutputInterface
 {
-    public function write(\EasyCI20220607\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface $output) : void;
+    public function write(CompletionSuggestions $suggestions, OutputInterface $output) : void;
 }

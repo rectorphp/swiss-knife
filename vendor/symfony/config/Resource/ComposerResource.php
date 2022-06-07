@@ -17,7 +17,7 @@ namespace EasyCI20220607\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class ComposerResource implements \EasyCI20220607\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ComposerResource implements SelfCheckingResourceInterface
 {
     /**
      * @var mixed[]

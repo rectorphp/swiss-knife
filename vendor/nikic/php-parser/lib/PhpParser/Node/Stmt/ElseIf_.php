@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class ElseIf_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class ElseIf_ extends Node\Stmt
 {
     /** @var Node\Expr Condition */
     public $cond;
@@ -17,7 +17,7 @@ class ElseIf_ extends \EasyCI20220607\PhpParser\Node\Stmt
      * @param Node\Stmt[] $stmts      Statements
      * @param array       $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220607\PhpParser\Node\Expr $cond, array $stmts = [], array $attributes = [])
+    public function __construct(Node\Expr $cond, array $stmts = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->cond = $cond;

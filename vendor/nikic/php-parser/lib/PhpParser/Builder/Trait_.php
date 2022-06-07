@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser;
 use EasyCI20220607\PhpParser\BuilderHelpers;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Stmt;
-class Trait_ extends \EasyCI20220607\PhpParser\Builder\Declaration
+class Trait_ extends Declaration
 {
     protected $name;
     protected $uses = [];
@@ -33,12 +33,12 @@ class Trait_ extends \EasyCI20220607\PhpParser\Builder\Declaration
      */
     public function addStmt($stmt)
     {
-        $stmt = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeNode($stmt);
-        if ($stmt instanceof \EasyCI20220607\PhpParser\Node\Stmt\Property) {
+        $stmt = BuilderHelpers::normalizeNode($stmt);
+        if ($stmt instanceof Stmt\Property) {
             $this->properties[] = $stmt;
-        } elseif ($stmt instanceof \EasyCI20220607\PhpParser\Node\Stmt\ClassMethod) {
+        } elseif ($stmt instanceof Stmt\ClassMethod) {
             $this->methods[] = $stmt;
-        } elseif ($stmt instanceof \EasyCI20220607\PhpParser\Node\Stmt\TraitUse) {
+        } elseif ($stmt instanceof Stmt\TraitUse) {
             $this->uses[] = $stmt;
         } else {
             throw new \LogicException(\sprintf('Unexpected node of type "%s"', $stmt->getType()));
@@ -54,7 +54,7 @@ class Trait_ extends \EasyCI20220607\PhpParser\Builder\Declaration
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -62,8 +62,8 @@ class Trait_ extends \EasyCI20220607\PhpParser\Builder\Declaration
      *
      * @return Stmt\Trait_ The built interface node
      */
-    public function getNode() : \EasyCI20220607\PhpParser\Node
+    public function getNode() : PhpParser\Node
     {
-        return new \EasyCI20220607\PhpParser\Node\Stmt\Trait_($this->name, ['stmts' => \array_merge($this->uses, $this->properties, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new Stmt\Trait_($this->name, ['stmts' => \array_merge($this->uses, $this->properties, $this->methods), 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

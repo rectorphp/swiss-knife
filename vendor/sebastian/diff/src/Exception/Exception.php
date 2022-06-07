@@ -12,6 +12,6 @@ declare (strict_types=1);
 namespace EasyCI20220607\SebastianBergmann\Diff;
 
 use Throwable;
-interface Exception extends \Throwable
+interface Exception extends Throwable
 {
 }

@@ -16,6 +16,6 @@ namespace EasyCI20220607\Symfony\Component\Config\Definition\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class UnsetKeyException extends \EasyCI20220607\Symfony\Component\Config\Definition\Exception\Exception
+class UnsetKeyException extends Exception
 {
 }

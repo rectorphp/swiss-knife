@@ -15,7 +15,7 @@ namespace EasyCI20220607\Symfony\Component\Finder\Comparator;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DateComparator extends \EasyCI20220607\Symfony\Component\Finder\Comparator\Comparator
+class DateComparator extends Comparator
 {
     /**
      * @param string $test A comparison string

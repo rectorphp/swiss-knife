@@ -13,6 +13,6 @@ namespace EasyCI20220607\Symfony\Component\Console\Exception;
 /**
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class LogicException extends \LogicException implements \EasyCI20220607\Symfony\Component\Console\Exception\ExceptionInterface
+class LogicException extends \LogicException implements ExceptionInterface
 {
 }

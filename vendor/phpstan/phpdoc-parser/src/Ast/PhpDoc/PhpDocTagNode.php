@@ -5,20 +5,20 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function trim;
-class PhpDocTagNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
+class PhpDocTagNode implements PhpDocChildNode
 {
     use NodeAttributes;
     /** @var string */
     public $name;
     /** @var PhpDocTagValueNode */
     public $value;
-    public function __construct(string $name, \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode $value)
+    public function __construct(string $name, PhpDocTagValueNode $value)
     {
         $this->name = $name;
         $this->value = $value;
     }
     public function __toString() : string
     {
-        return \trim("{$this->name} {$this->value}");
+        return trim("{$this->name} {$this->value}");
     }
 }

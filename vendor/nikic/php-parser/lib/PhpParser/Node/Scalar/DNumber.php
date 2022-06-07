@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Scalar;
 
 use EasyCI20220607\PhpParser\Node\Scalar;
-class DNumber extends \EasyCI20220607\PhpParser\Node\Scalar
+class DNumber extends Scalar
 {
     /** @var float Number value */
     public $value;
@@ -26,11 +26,11 @@ class DNumber extends \EasyCI20220607\PhpParser\Node\Scalar
     /**
      * @param mixed[] $attributes
      */
-    public static function fromString(string $str, array $attributes = []) : \EasyCI20220607\PhpParser\Node\Scalar\DNumber
+    public static function fromString(string $str, array $attributes = []) : DNumber
     {
         $attributes['rawValue'] = $str;
         $float = self::parse($str);
-        return new \EasyCI20220607\PhpParser\Node\Scalar\DNumber($float, $attributes);
+        return new DNumber($float, $attributes);
     }
     /**
      * @internal

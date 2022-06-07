@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Expr;
 
 use EasyCI20220607\PhpParser\Node\Expr;
-class List_ extends \EasyCI20220607\PhpParser\Node\Expr
+class List_ extends Expr
 {
     /** @var (ArrayItem|null)[] List of items to assign to */
     public $items;

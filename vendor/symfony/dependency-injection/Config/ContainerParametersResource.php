@@ -18,7 +18,7 @@ use EasyCI20220607\Symfony\Component\Config\Resource\ResourceInterface;
  *
  * @final
  */
-class ContainerParametersResource implements \EasyCI20220607\Symfony\Component\Config\Resource\ResourceInterface
+class ContainerParametersResource implements ResourceInterface
 {
     /**
      * @var mixed[]

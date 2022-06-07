@@ -21,7 +21,7 @@ use EasyCI20220607\Symfony\Component\Config\Resource\SelfCheckingResourceChecker
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCache extends \EasyCI20220607\Symfony\Component\Config\ResourceCheckerConfigCache
+class ConfigCache extends ResourceCheckerConfigCache
 {
     /**
      * @var bool
@@ -36,7 +36,7 @@ class ConfigCache extends \EasyCI20220607\Symfony\Component\Config\ResourceCheck
         $this->debug = $debug;
         $checkers = [];
         if (\true === $this->debug) {
-            $checkers = [new \EasyCI20220607\Symfony\Component\Config\Resource\SelfCheckingResourceChecker()];
+            $checkers = [new SelfCheckingResourceChecker()];
         }
         parent::__construct($file, $checkers);
     }

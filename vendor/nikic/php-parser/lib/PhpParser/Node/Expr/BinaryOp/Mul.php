@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Expr\BinaryOp;
 
 use EasyCI20220607\PhpParser\Node\Expr\BinaryOp;
-class Mul extends \EasyCI20220607\PhpParser\Node\Expr\BinaryOp
+class Mul extends BinaryOp
 {
     public function getOperatorSigil() : string
     {

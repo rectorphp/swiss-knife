@@ -25,7 +25,7 @@ use EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Output implements \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface
+abstract class Output implements OutputInterface
 {
     /**
      * @var int
@@ -37,23 +37,23 @@ abstract class Output implements \EasyCI20220607\Symfony\Component\Console\Outpu
      * @param bool                          $decorated Whether to decorate messages
      * @param OutputFormatterInterface|null $formatter Output formatter instance (null to use default OutputFormatter)
      */
-    public function __construct(?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = \false, \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
+    public function __construct(?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = \false, OutputFormatterInterface $formatter = null)
     {
         $this->verbosity = $verbosity ?? self::VERBOSITY_NORMAL;
-        $this->formatter = $formatter ?? new \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatter();
+        $this->formatter = $formatter ?? new OutputFormatter();
         $this->formatter->setDecorated($decorated);
     }
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(OutputFormatterInterface $formatter)
     {
         $this->formatter = $formatter;
     }
     /**
      * {@inheritdoc}
      */
-    public function getFormatter() : \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterInterface
+    public function getFormatter() : OutputFormatterInterface
     {
         return $this->formatter;
     }
@@ -139,12 +139,12 @@ abstract class Output implements \EasyCI20220607\Symfony\Component\Console\Outpu
         }
         foreach ($messages as $message) {
             switch ($type) {
-                case \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface::OUTPUT_NORMAL:
+                case OutputInterface::OUTPUT_NORMAL:
                     $message = $this->formatter->format($message);
                     break;
-                case \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface::OUTPUT_RAW:
+                case OutputInterface::OUTPUT_RAW:
                     break;
-                case \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface::OUTPUT_PLAIN:
+                case OutputInterface::OUTPUT_PLAIN:
                     $message = \strip_tags($this->formatter->format($message));
                     break;
             }

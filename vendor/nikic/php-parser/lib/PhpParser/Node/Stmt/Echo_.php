@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class Echo_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class Echo_ extends Node\Stmt
 {
     /** @var Node\Expr[] Expressions */
     public $exprs;

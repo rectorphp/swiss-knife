@@ -13,6 +13,6 @@ namespace EasyCI20220607\Symfony\Component\DependencyInjection\Exception;
 /**
  * Base BadMethodCallException for Dependency Injection component.
  */
-class BadMethodCallException extends \BadMethodCallException implements \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class BadMethodCallException extends \BadMethodCallException implements ExceptionInterface
 {
 }

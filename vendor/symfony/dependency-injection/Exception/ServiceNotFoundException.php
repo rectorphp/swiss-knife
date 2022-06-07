@@ -16,7 +16,7 @@ use EasyCI20220607\Psr\Container\NotFoundExceptionInterface;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceNotFoundException extends \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \EasyCI20220607\Psr\Container\NotFoundExceptionInterface
+class ServiceNotFoundException extends InvalidArgumentException implements NotFoundExceptionInterface
 {
     /**
      * @var string

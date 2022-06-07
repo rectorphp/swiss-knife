@@ -17,7 +17,7 @@ use EasyCI20220607\Symfony\Component\Console\Exception\CommandNotFoundException;
  *
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class FactoryCommandLoader implements \EasyCI20220607\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
+class FactoryCommandLoader implements CommandLoaderInterface
 {
     /**
      * @var mixed[]
@@ -40,10 +40,10 @@ class FactoryCommandLoader implements \EasyCI20220607\Symfony\Component\Console\
     /**
      * {@inheritdoc}
      */
-    public function get(string $name) : \EasyCI20220607\Symfony\Component\Console\Command\Command
+    public function get(string $name) : Command
     {
         if (!isset($this->factories[$name])) {
-            throw new \EasyCI20220607\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
+            throw new CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
         }
         $factory = $this->factories[$name];
         return $factory();

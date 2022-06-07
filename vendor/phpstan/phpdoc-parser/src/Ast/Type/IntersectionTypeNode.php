@@ -5,7 +5,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\Type;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
-class IntersectionTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class IntersectionTypeNode implements TypeNode
 {
     use NodeAttributes;
     /** @var TypeNode[] */
@@ -16,6 +16,6 @@ class IntersectionTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\T
     }
     public function __toString() : string
     {
-        return '(' . \implode(' & ', $this->types) . ')';
+        return '(' . implode(' & ', $this->types) . ')';
     }
 }

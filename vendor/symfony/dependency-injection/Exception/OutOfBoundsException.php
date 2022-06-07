@@ -13,6 +13,6 @@ namespace EasyCI20220607\Symfony\Component\DependencyInjection\Exception;
 /**
  * Base OutOfBoundsException for Dependency Injection component.
  */
-class OutOfBoundsException extends \OutOfBoundsException implements \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class OutOfBoundsException extends \OutOfBoundsException implements ExceptionInterface
 {
 }

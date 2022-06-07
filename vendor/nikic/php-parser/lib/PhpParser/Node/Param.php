@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node;
 
 use EasyCI20220607\PhpParser\NodeAbstract;
-class Param extends \EasyCI20220607\PhpParser\NodeAbstract
+class Param extends NodeAbstract
 {
     /** @var null|Identifier|Name|ComplexType Type declaration */
     public $type;
@@ -32,10 +32,10 @@ class Param extends \EasyCI20220607\PhpParser\NodeAbstract
      * @param int                                     $flags      Optional visibility flags
      * @param AttributeGroup[]                        $attrGroups PHP attribute groups
      */
-    public function __construct($var, \EasyCI20220607\PhpParser\Node\Expr $default = null, $type = null, bool $byRef = \false, bool $variadic = \false, array $attributes = [], int $flags = 0, array $attrGroups = [])
+    public function __construct($var, Expr $default = null, $type = null, bool $byRef = \false, bool $variadic = \false, array $attributes = [], int $flags = 0, array $attrGroups = [])
     {
         $this->attributes = $attributes;
-        $this->type = \is_string($type) ? new \EasyCI20220607\PhpParser\Node\Identifier($type) : $type;
+        $this->type = \is_string($type) ? new Identifier($type) : $type;
         $this->byRef = $byRef;
         $this->variadic = $variadic;
         $this->var = $var;

@@ -7,7 +7,7 @@ use EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\Node;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-class MethodTagValueParameterNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Node
+class MethodTagValueParameterNode implements Node
 {
     use NodeAttributes;
     /** @var TypeNode|null */
@@ -20,7 +20,7 @@ class MethodTagValueParameterNode implements \EasyCI20220607\PHPStan\PhpDocParse
     public $parameterName;
     /** @var ConstExprNode|null */
     public $defaultValue;
-    public function __construct(?\EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, bool $isReference, bool $isVariadic, string $parameterName, ?\EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $defaultValue)
+    public function __construct(?TypeNode $type, bool $isReference, bool $isVariadic, string $parameterName, ?ConstExprNode $defaultValue)
     {
         $this->type = $type;
         $this->isReference = $isReference;

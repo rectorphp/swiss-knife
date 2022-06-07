@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Contract\ValueObject;
+namespace EasyCI20220607\Symplify\EasyCI\Contract\ValueObject;
 
 interface FileErrorInterface
 {

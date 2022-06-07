@@ -5,7 +5,7 @@ namespace EasyCI20220607\PhpParser\Node;
 
 use EasyCI20220607\PhpParser\Node\VariadicPlaceholder;
 use EasyCI20220607\PhpParser\NodeAbstract;
-class Arg extends \EasyCI20220607\PhpParser\NodeAbstract
+class Arg extends NodeAbstract
 {
     /** @var Identifier|null Parameter name (for named parameters) */
     public $name;
@@ -24,7 +24,7 @@ class Arg extends \EasyCI20220607\PhpParser\NodeAbstract
      * @param array $attributes Additional attributes
      * @param Identifier|null $name Parameter name (for named parameters)
      */
-    public function __construct(\EasyCI20220607\PhpParser\Node\Expr $value, bool $byRef = \false, bool $unpack = \false, array $attributes = [], \EasyCI20220607\PhpParser\Node\Identifier $name = null)
+    public function __construct(Expr $value, bool $byRef = \false, bool $unpack = \false, array $attributes = [], Identifier $name = null)
     {
         $this->attributes = $attributes;
         $this->name = $name;

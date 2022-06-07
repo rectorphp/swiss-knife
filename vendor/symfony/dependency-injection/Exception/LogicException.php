@@ -13,6 +13,6 @@ namespace EasyCI20220607\Symfony\Component\DependencyInjection\Exception;
 /**
  * Base LogicException for Dependency Injection component.
  */
-class LogicException extends \LogicException implements \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class LogicException extends \LogicException implements ExceptionInterface
 {
 }

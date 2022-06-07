@@ -22,7 +22,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\LogicExceptio
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Extension implements \EasyCI20220607\Symfony\Component\DependencyInjection\Extension\ExtensionInterface, \EasyCI20220607\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface
+abstract class Extension implements ExtensionInterface, ConfigurationExtensionInterface
 {
     /**
      * @var mixed[]
@@ -64,18 +64,18 @@ abstract class Extension implements \EasyCI20220607\Symfony\Component\Dependency
     {
         $className = static::class;
         if (\substr_compare($className, 'Extension', -\strlen('Extension')) !== 0) {
-            throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('This extension does not follow the naming convention; you must overwrite the getAlias() method.');
+            throw new BadMethodCallException('This extension does not follow the naming convention; you must overwrite the getAlias() method.');
         }
         $classBaseName = \substr(\strrchr($className, '\\'), 1, -9);
-        return \EasyCI20220607\Symfony\Component\DependencyInjection\Container::underscore($classBaseName);
+        return Container::underscore($classBaseName);
     }
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration(array $config, \EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container)
     {
         $class = static::class;
-        if (\strpos($class, "\0") !== \false) {
+        if (\strpos($class, "\x00") !== \false) {
             return null;
             // ignore anonymous classes
         }
@@ -84,17 +84,17 @@ abstract class Extension implements \EasyCI20220607\Symfony\Component\Dependency
         if (!$class) {
             return null;
         }
-        if (!$class->implementsInterface(\EasyCI20220607\Symfony\Component\Config\Definition\ConfigurationInterface::class)) {
-            throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\LogicException(\sprintf('The extension configuration class "%s" must implement "%s".', $class->getName(), \EasyCI20220607\Symfony\Component\Config\Definition\ConfigurationInterface::class));
+        if (!$class->implementsInterface(ConfigurationInterface::class)) {
+            throw new LogicException(\sprintf('The extension configuration class "%s" must implement "%s".', $class->getName(), ConfigurationInterface::class));
         }
         if (!($constructor = $class->getConstructor()) || !$constructor->getNumberOfRequiredParameters()) {
             return $class->newInstance();
         }
         return null;
     }
-    protected final function processConfiguration(\EasyCI20220607\Symfony\Component\Config\Definition\ConfigurationInterface $configuration, array $configs) : array
+    protected final function processConfiguration(ConfigurationInterface $configuration, array $configs) : array
     {
-        $processor = new \EasyCI20220607\Symfony\Component\Config\Definition\Processor();
+        $processor = new Processor();
         return $this->processedConfigs[] = $processor->processConfiguration($configuration, $configs);
     }
     /**
@@ -111,10 +111,10 @@ abstract class Extension implements \EasyCI20220607\Symfony\Component\Dependency
     /**
      * @throws InvalidArgumentException When the config is not enableable
      */
-    protected function isConfigEnabled(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $config) : bool
+    protected function isConfigEnabled(ContainerBuilder $container, array $config) : bool
     {
         if (!\array_key_exists('enabled', $config)) {
-            throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException("The config array has no 'enabled' key.");
+            throw new InvalidArgumentException("The config array has no 'enabled' key.");
         }
         return (bool) $container->getParameterBag()->resolveValue($config['enabled']);
     }

@@ -13,9 +13,9 @@ use EasyCI20220607\Symplify\Astral\PhpDocParser\SimplePhpDocParser;
  */
 final class SimplePhpDocParserStaticFactory
 {
-    public static function create() : \EasyCI20220607\Symplify\Astral\PhpDocParser\SimplePhpDocParser
+    public static function create() : SimplePhpDocParser
     {
-        $phpDocParser = new \EasyCI20220607\PHPStan\PhpDocParser\Parser\PhpDocParser(new \EasyCI20220607\PHPStan\PhpDocParser\Parser\TypeParser(), new \EasyCI20220607\PHPStan\PhpDocParser\Parser\ConstExprParser());
-        return new \EasyCI20220607\Symplify\Astral\PhpDocParser\SimplePhpDocParser($phpDocParser, new \EasyCI20220607\PHPStan\PhpDocParser\Lexer\Lexer());
+        $phpDocParser = new PhpDocParser(new TypeParser(), new ConstExprParser());
+        return new SimplePhpDocParser($phpDocParser, new Lexer());
     }
 }

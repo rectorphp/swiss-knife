@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Psr4;
+namespace EasyCI20220607\Symplify\EasyCI\Psr4;
 
-use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
-use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class Psr4Filter
 {
     /**
@@ -20,7 +20,7 @@ final class Psr4Filter
             foreach ($psr4NamespacesToPaths as $psr4NamespaceToPath) {
                 $paths[] = $psr4NamespaceToPath->getPath();
             }
-            $psr4NamespaceToPaths[] = new \Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths($namespace, $paths);
+            $psr4NamespaceToPaths[] = new Psr4NamespaceToPaths($namespace, $paths);
         }
         return $psr4NamespaceToPaths;
     }

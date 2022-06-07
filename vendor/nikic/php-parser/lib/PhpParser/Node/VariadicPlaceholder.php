@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser\NodeAbstract;
 /**
  * Represents the "..." in "foo(...)" of the first-class callable syntax.
  */
-class VariadicPlaceholder extends \EasyCI20220607\PhpParser\NodeAbstract
+class VariadicPlaceholder extends NodeAbstract
 {
     /**
      * Create a variadic argument placeholder (first-class callable syntax).

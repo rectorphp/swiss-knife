@@ -8,6 +8,6 @@ use EasyCI20220607\PhpParser\Builder\Method;
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class MethodBuilder extends \EasyCI20220607\PhpParser\Builder\Method
+final class MethodBuilder extends Method
 {
 }

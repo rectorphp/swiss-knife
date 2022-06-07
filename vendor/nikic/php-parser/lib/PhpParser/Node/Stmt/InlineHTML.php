@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node\Stmt;
-class InlineHTML extends \EasyCI20220607\PhpParser\Node\Stmt
+class InlineHTML extends Stmt
 {
     /** @var string String */
     public $value;

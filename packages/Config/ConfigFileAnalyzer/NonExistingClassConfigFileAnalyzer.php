@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Config\ConfigFileAnalyzer;
+namespace EasyCI20220607\Symplify\EasyCI\Config\ConfigFileAnalyzer;
 
-use Symplify\EasyCI\Config\ClassExtractor;
-use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220607\Symplify\EasyCI\Config\ClassExtractor;
+use EasyCI20220607\Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfigFileAnalyzer\NonExistingClassConfigFileAnalyzerTest
  */
-final class NonExistingClassConfigFileAnalyzer implements \Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface
+final class NonExistingClassConfigFileAnalyzer implements ConfigFileAnalyzerInterface
 {
     /**
      * @var \Symplify\EasyCI\Config\ClassExtractor
@@ -22,7 +22,7 @@ final class NonExistingClassConfigFileAnalyzer implements \Symplify\EasyCI\Confi
      * @var \Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\Symplify\EasyCI\Config\ClassExtractor $classExtractor, \EasyCI20220607\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(ClassExtractor $classExtractor, ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->classExtractor = $classExtractor;
         $this->classLikeExistenceChecker = $classLikeExistenceChecker;
@@ -38,7 +38,7 @@ final class NonExistingClassConfigFileAnalyzer implements \Symplify\EasyCI\Confi
             $nonExistingClasses = $this->extractFromFileInfo($fileInfo);
             foreach ($nonExistingClasses as $nonExistingClass) {
                 $errorMessage = \sprintf('Class "%s" not found', $nonExistingClass);
-                $fileErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+                $fileErrors[] = new FileError($errorMessage, $fileInfo);
             }
         }
         return $fileErrors;
@@ -46,7 +46,7 @@ final class NonExistingClassConfigFileAnalyzer implements \Symplify\EasyCI\Confi
     /**
      * @return string[]
      */
-    private function extractFromFileInfo(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function extractFromFileInfo(SmartFileInfo $fileInfo) : array
     {
         $classes = $this->classExtractor->extractFromFileInfo($fileInfo);
         $nonExistingClasses = $this->filterNonExistingClasses($classes);

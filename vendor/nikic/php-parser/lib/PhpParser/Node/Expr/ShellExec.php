@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Expr;
 
 use EasyCI20220607\PhpParser\Node\Expr;
-class ShellExec extends \EasyCI20220607\PhpParser\Node\Expr
+class ShellExec extends Expr
 {
     /** @var array Encapsed string array */
     public $parts;

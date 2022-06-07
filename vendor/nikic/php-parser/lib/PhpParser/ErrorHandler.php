@@ -10,5 +10,5 @@ interface ErrorHandler
      *
      * @param Error $error The error that needs to be handled
      */
-    public function handleError(\EasyCI20220607\PhpParser\Error $error);
+    public function handleError(Error $error);
 }

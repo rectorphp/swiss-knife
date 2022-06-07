@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Psr4\Utils;
+namespace EasyCI20220607\Symplify\EasyCI\Psr4\Utils;
 
 use EasyCI20220607\Nette\Utils\Strings;
 /**
@@ -42,15 +42,15 @@ final class SymplifyStrings
     }
     public function subtractFromRight(string $mainString, string $stringToSubtract) : string
     {
-        return \EasyCI20220607\Nette\Utils\Strings::substring($mainString, 0, -\strlen($stringToSubtract));
+        return Strings::substring($mainString, 0, -\strlen($stringToSubtract));
     }
     public function subtractFromLeft(string $mainString, string $stringToSubtract) : string
     {
-        return \EasyCI20220607\Nette\Utils\Strings::substring($mainString, \strlen($stringToSubtract));
+        return Strings::substring($mainString, \strlen($stringToSubtract));
     }
     private function normalizePath(string $firstString) : string
     {
-        return \EasyCI20220607\Nette\Utils\Strings::replace($firstString, '#\\\\#', '/');
+        return Strings::replace($firstString, '#\\\\#', '/');
     }
     private function shouldIncludeChar(string $string, int $sBackPosition, string $first, int $firstBackPosition, int $i) : bool
     {

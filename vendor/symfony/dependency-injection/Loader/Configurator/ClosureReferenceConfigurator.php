@@ -10,6 +10,6 @@
  */
 namespace EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-class ClosureReferenceConfigurator extends \EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
+class ClosureReferenceConfigurator extends ReferenceConfigurator
 {
 }

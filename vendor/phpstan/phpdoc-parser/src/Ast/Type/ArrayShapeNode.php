@@ -5,7 +5,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\Type;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
-class ArrayShapeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ArrayShapeNode implements TypeNode
 {
     use NodeAttributes;
     /** @var ArrayShapeItemNode[] */
@@ -16,6 +16,6 @@ class ArrayShapeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\Ty
     }
     public function __toString() : string
     {
-        return 'array{' . \implode(', ', $this->items) . '}';
+        return 'array{' . implode(', ', $this->items) . '}';
     }
 }

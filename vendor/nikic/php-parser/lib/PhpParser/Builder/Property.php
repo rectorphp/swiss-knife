@@ -10,7 +10,7 @@ use EasyCI20220607\PhpParser\Node\Identifier;
 use EasyCI20220607\PhpParser\Node\Name;
 use EasyCI20220607\PhpParser\Node\Stmt;
 use EasyCI20220607\PhpParser\Node\ComplexType;
-class Property implements \EasyCI20220607\PhpParser\Builder
+class Property implements PhpParser\Builder
 {
     protected $name;
     protected $flags = 0;
@@ -36,7 +36,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function makePublic()
     {
-        $this->flags = \EasyCI20220607\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220607\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC);
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_PUBLIC);
         return $this;
     }
     /**
@@ -46,7 +46,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function makeProtected()
     {
-        $this->flags = \EasyCI20220607\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220607\PhpParser\Node\Stmt\Class_::MODIFIER_PROTECTED);
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_PROTECTED);
         return $this;
     }
     /**
@@ -56,7 +56,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function makePrivate()
     {
-        $this->flags = \EasyCI20220607\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220607\PhpParser\Node\Stmt\Class_::MODIFIER_PRIVATE);
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_PRIVATE);
         return $this;
     }
     /**
@@ -66,7 +66,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function makeStatic()
     {
-        $this->flags = \EasyCI20220607\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220607\PhpParser\Node\Stmt\Class_::MODIFIER_STATIC);
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_STATIC);
         return $this;
     }
     /**
@@ -76,7 +76,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function makeReadonly()
     {
-        $this->flags = \EasyCI20220607\PhpParser\BuilderHelpers::addModifier($this->flags, \EasyCI20220607\PhpParser\Node\Stmt\Class_::MODIFIER_READONLY);
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_READONLY);
         return $this;
     }
     /**
@@ -88,7 +88,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function setDefault($value)
     {
-        $this->default = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeValue($value);
+        $this->default = BuilderHelpers::normalizeValue($value);
         return $this;
     }
     /**
@@ -100,7 +100,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function setDocComment($docComment)
     {
-        $this->attributes = ['comments' => [\EasyCI20220607\PhpParser\BuilderHelpers::normalizeDocComment($docComment)]];
+        $this->attributes = ['comments' => [BuilderHelpers::normalizeDocComment($docComment)]];
         return $this;
     }
     /**
@@ -112,7 +112,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function setType($type)
     {
-        $this->type = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeType($type);
+        $this->type = BuilderHelpers::normalizeType($type);
         return $this;
     }
     /**
@@ -124,7 +124,7 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -132,8 +132,8 @@ class Property implements \EasyCI20220607\PhpParser\Builder
      *
      * @return Stmt\Property The built property node
      */
-    public function getNode() : \EasyCI20220607\PhpParser\Node
+    public function getNode() : PhpParser\Node
     {
-        return new \EasyCI20220607\PhpParser\Node\Stmt\Property($this->flags !== 0 ? $this->flags : \EasyCI20220607\PhpParser\Node\Stmt\Class_::MODIFIER_PUBLIC, [new \EasyCI20220607\PhpParser\Node\Stmt\PropertyProperty($this->name, $this->default)], $this->attributes, $this->type, $this->attributeGroups);
+        return new Stmt\Property($this->flags !== 0 ? $this->flags : Stmt\Class_::MODIFIER_PUBLIC, [new Stmt\PropertyProperty($this->name, $this->default)], $this->attributes, $this->type, $this->attributeGroups);
     }
 }

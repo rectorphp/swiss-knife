@@ -19,12 +19,12 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Definition;
  *
  * @author Marco Pivetta <ocramius@gmail.com>
  */
-class RealServiceInstantiator implements \EasyCI20220607\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
+class RealServiceInstantiator implements InstantiatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function instantiateProxy(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerInterface $container, \EasyCI20220607\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
+    public function instantiateProxy(ContainerInterface $container, Definition $definition, string $id, callable $realInstantiator) : object
     {
         return $realInstantiator();
     }

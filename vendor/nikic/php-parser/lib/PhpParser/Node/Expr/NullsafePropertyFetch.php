@@ -5,7 +5,7 @@ namespace EasyCI20220607\PhpParser\Node\Expr;
 
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\Identifier;
-class NullsafePropertyFetch extends \EasyCI20220607\PhpParser\Node\Expr
+class NullsafePropertyFetch extends Expr
 {
     /** @var Expr Variable holding object */
     public $var;
@@ -18,11 +18,11 @@ class NullsafePropertyFetch extends \EasyCI20220607\PhpParser\Node\Expr
      * @param string|Identifier|Expr $name       Property name
      * @param array                  $attributes Additional attributes
      */
-    public function __construct(\EasyCI20220607\PhpParser\Node\Expr $var, $name, array $attributes = [])
+    public function __construct(Expr $var, $name, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->var = $var;
-        $this->name = \is_string($name) ? new \EasyCI20220607\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new Identifier($name) : $name;
     }
     public function getSubNodeNames() : array
     {

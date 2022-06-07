@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Lexer\TokenEmulator;
 
 use EasyCI20220607\PhpParser\Lexer\Emulative;
-final class FnTokenEmulator extends \EasyCI20220607\PhpParser\Lexer\TokenEmulator\KeywordEmulator
+final class FnTokenEmulator extends KeywordEmulator
 {
     public function getPhpVersion() : string
     {
-        return \EasyCI20220607\PhpParser\Lexer\Emulative::PHP_7_4;
+        return Emulative::PHP_7_4;
     }
     public function getKeywordString() : string
     {

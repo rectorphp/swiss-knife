@@ -19,4 +19,4 @@ interface Translator
      */
     function translate($message, ...$parameters) : string;
 }
-\interface_exists(\EasyCI20220607\Nette\Localization\ITranslator::class);
+\interface_exists(ITranslator::class);

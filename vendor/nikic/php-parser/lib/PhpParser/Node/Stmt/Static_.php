@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node\Stmt;
-class Static_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class Static_ extends Stmt
 {
     /** @var StaticVar[] Variable definitions */
     public $vars;

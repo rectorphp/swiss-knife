@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Expr;
 
 use EasyCI20220607\PhpParser\Node\Expr;
-class Array_ extends \EasyCI20220607\PhpParser\Node\Expr
+class Array_ extends Expr
 {
     // For use in "kind" attribute
     const KIND_LONG = 1;

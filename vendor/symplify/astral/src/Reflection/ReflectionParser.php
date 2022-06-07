@@ -27,12 +27,12 @@ final class ReflectionParser
      * @var \PhpParser\NodeFinder
      */
     private $nodeFinder;
-    public function __construct(\EasyCI20220607\Symplify\Astral\PhpParser\SmartPhpParser $smartPhpParser, \EasyCI20220607\PhpParser\NodeFinder $nodeFinder)
+    public function __construct(SmartPhpParser $smartPhpParser, NodeFinder $nodeFinder)
     {
         $this->smartPhpParser = $smartPhpParser;
         $this->nodeFinder = $nodeFinder;
     }
-    public function parsePHPStanMethodReflection(\EasyCI20220607\PHPStan\Reflection\MethodReflection $methodReflection) : ?\EasyCI20220607\PhpParser\Node\Stmt\ClassMethod
+    public function parsePHPStanMethodReflection(MethodReflection $methodReflection) : ?ClassMethod
     {
         $classReflection = $methodReflection->getDeclaringClass();
         $fileName = $classReflection->getFileName();
@@ -40,28 +40,28 @@ final class ReflectionParser
             return null;
         }
         $class = $this->parseFilenameToClass($fileName);
-        if (!$class instanceof \EasyCI20220607\PhpParser\Node) {
+        if (!$class instanceof Node) {
             return null;
         }
         return $class->getMethod($methodReflection->getName());
     }
-    public function parseMethodReflection(\ReflectionMethod $reflectionMethod) : ?\EasyCI20220607\PhpParser\Node\Stmt\ClassMethod
+    public function parseMethodReflection(ReflectionMethod $reflectionMethod) : ?ClassMethod
     {
         $class = $this->parseNativeClassReflection($reflectionMethod->getDeclaringClass());
-        if (!$class instanceof \EasyCI20220607\PhpParser\Node\Stmt\Class_) {
+        if (!$class instanceof Class_) {
             return null;
         }
         return $class->getMethod($reflectionMethod->getName());
     }
-    public function parsePropertyReflection(\ReflectionProperty $reflectionProperty) : ?\EasyCI20220607\PhpParser\Node\Stmt\Property
+    public function parsePropertyReflection(ReflectionProperty $reflectionProperty) : ?Property
     {
         $class = $this->parseNativeClassReflection($reflectionProperty->getDeclaringClass());
-        if (!$class instanceof \EasyCI20220607\PhpParser\Node\Stmt\Class_) {
+        if (!$class instanceof Class_) {
             return null;
         }
         return $class->getProperty($reflectionProperty->getName());
     }
-    private function parseNativeClassReflection(\ReflectionClass $reflectionClass) : ?\EasyCI20220607\PhpParser\Node\Stmt\Class_
+    private function parseNativeClassReflection(ReflectionClass $reflectionClass) : ?Class_
     {
         $fileName = $reflectionClass->getFileName();
         if ($fileName === \false) {
@@ -76,12 +76,12 @@ final class ReflectionParser
     {
         try {
             $stmts = $this->smartPhpParser->parseFile($fileName);
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             // not reachable
             return null;
         }
-        $class = $this->nodeFinder->findFirstInstanceOf($stmts, \EasyCI20220607\PhpParser\Node\Stmt\Class_::class);
-        if (!$class instanceof \EasyCI20220607\PhpParser\Node\Stmt\Class_) {
+        $class = $this->nodeFinder->findFirstInstanceOf($stmts, Class_::class);
+        if (!$class instanceof Class_) {
             return null;
         }
         return $class;

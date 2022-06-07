@@ -6,16 +6,16 @@ namespace EasyCI20220607\Symplify\Astral\NodeNameResolver;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Stmt\Namespace_;
 use EasyCI20220607\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class NamespaceNodeNameResolver implements \EasyCI20220607\Symplify\Astral\Contract\NodeNameResolverInterface
+final class NamespaceNodeNameResolver implements NodeNameResolverInterface
 {
-    public function match(\EasyCI20220607\PhpParser\Node $node) : bool
+    public function match(Node $node) : bool
     {
-        return $node instanceof \EasyCI20220607\PhpParser\Node\Stmt\Namespace_;
+        return $node instanceof Namespace_;
     }
     /**
      * @param Namespace_ $node
      */
-    public function resolve(\EasyCI20220607\PhpParser\Node $node) : ?string
+    public function resolve(Node $node) : ?string
     {
         if ($node->name === null) {
             return null;

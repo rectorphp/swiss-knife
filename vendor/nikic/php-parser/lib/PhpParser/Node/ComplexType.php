@@ -9,6 +9,6 @@ use EasyCI20220607\PhpParser\NodeAbstract;
  *
  * It does not provide any shared behavior and exists only for type-checking purposes.
  */
-abstract class ComplexType extends \EasyCI20220607\PhpParser\NodeAbstract
+abstract class ComplexType extends NodeAbstract
 {
 }

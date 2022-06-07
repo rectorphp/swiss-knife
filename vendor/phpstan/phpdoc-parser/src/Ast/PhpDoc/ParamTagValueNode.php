@@ -6,7 +6,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use function trim;
-class ParamTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class ParamTagValueNode implements PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var TypeNode */
@@ -19,7 +19,7 @@ class ParamTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpD
     public $parameterName;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, bool $isVariadic, string $parameterName, string $description, bool $isReference = \false)
+    public function __construct(TypeNode $type, bool $isVariadic, string $parameterName, string $description, bool $isReference = \false)
     {
         $this->type = $type;
         $this->isReference = $isReference;
@@ -31,6 +31,6 @@ class ParamTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpD
     {
         $reference = $this->isReference ? '&' : '';
         $variadic = $this->isVariadic ? '...' : '';
-        return \trim("{$this->type} {$reference}{$variadic}{$this->parameterName} {$this->description}");
+        return trim("{$this->type} {$reference}{$variadic}{$this->parameterName} {$this->description}");
     }
 }

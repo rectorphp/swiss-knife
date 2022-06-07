@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser;
 use EasyCI20220607\PhpParser\BuilderHelpers;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Stmt;
-class Function_ extends \EasyCI20220607\PhpParser\Builder\FunctionLike
+class Function_ extends FunctionLike
 {
     protected $name;
     protected $stmts = [];
@@ -31,7 +31,7 @@ class Function_ extends \EasyCI20220607\PhpParser\Builder\FunctionLike
      */
     public function addStmt($stmt)
     {
-        $this->stmts[] = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeStmt($stmt);
+        $this->stmts[] = BuilderHelpers::normalizeStmt($stmt);
         return $this;
     }
     /**
@@ -43,7 +43,7 @@ class Function_ extends \EasyCI20220607\PhpParser\Builder\FunctionLike
      */
     public function addAttribute($attribute)
     {
-        $this->attributeGroups[] = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeAttribute($attribute);
+        $this->attributeGroups[] = BuilderHelpers::normalizeAttribute($attribute);
         return $this;
     }
     /**
@@ -51,8 +51,8 @@ class Function_ extends \EasyCI20220607\PhpParser\Builder\FunctionLike
      *
      * @return Stmt\Function_ The built function node
      */
-    public function getNode() : \EasyCI20220607\PhpParser\Node
+    public function getNode() : Node
     {
-        return new \EasyCI20220607\PhpParser\Node\Stmt\Function_($this->name, ['byRef' => $this->returnByRef, 'params' => $this->params, 'returnType' => $this->returnType, 'stmts' => $this->stmts, 'attrGroups' => $this->attributeGroups], $this->attributes);
+        return new Stmt\Function_($this->name, ['byRef' => $this->returnByRef, 'params' => $this->params, 'returnType' => $this->returnType, 'stmts' => $this->stmts, 'attrGroups' => $this->attributeGroups], $this->attributes);
     }
 }

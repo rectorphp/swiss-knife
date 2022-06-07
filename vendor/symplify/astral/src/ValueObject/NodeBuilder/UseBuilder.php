@@ -10,12 +10,12 @@ use EasyCI20220607\PhpParser\Node\Stmt\Use_ as UseStmt;
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class UseBuilder extends \EasyCI20220607\PhpParser\Builder\Use_
+final class UseBuilder extends Use_
 {
     /**
      * @param \PhpParser\Node\Name|string $name
      */
-    public function __construct($name, int $type = \EasyCI20220607\PhpParser\Node\Stmt\Use_::TYPE_NORMAL)
+    public function __construct($name, int $type = UseStmt::TYPE_NORMAL)
     {
         parent::__construct($name, $type);
     }

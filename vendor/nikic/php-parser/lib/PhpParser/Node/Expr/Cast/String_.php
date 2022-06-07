@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Expr\Cast;
 
 use EasyCI20220607\PhpParser\Node\Expr\Cast;
-class String_ extends \EasyCI20220607\PhpParser\Node\Expr\Cast
+class String_ extends Cast
 {
     public function getType() : string
     {

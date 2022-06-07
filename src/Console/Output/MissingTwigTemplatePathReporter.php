@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Console\Output;
+namespace EasyCI20220607\Symplify\EasyCI\Console\Output;
 
 use EasyCI20220607\Symfony\Component\Console\Command\Command;
 use EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle;
@@ -11,7 +11,7 @@ final class MissingTwigTemplatePathReporter
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\EasyCI20220607\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -22,13 +22,13 @@ final class MissingTwigTemplatePathReporter
     {
         if ($errorMessages === []) {
             $this->symfonyStyle->success('All templates exists');
-            return \EasyCI20220607\Symfony\Component\Console\Command\Command::SUCCESS;
+            return Command::SUCCESS;
         }
         foreach ($errorMessages as $errorMessage) {
             $this->symfonyStyle->note($errorMessage);
         }
         $missingTemplatesMessage = \sprintf('Found %d missing templates', \count($errorMessages));
         $this->symfonyStyle->error($missingTemplatesMessage);
-        return \EasyCI20220607\Symfony\Component\Console\Command\Command::FAILURE;
+        return Command::FAILURE;
     }
 }

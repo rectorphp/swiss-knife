@@ -6,16 +6,16 @@ namespace EasyCI20220607\Symplify\Astral\NodeNameResolver;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Stmt\ClassLike;
 use EasyCI20220607\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class ClassLikeNodeNameResolver implements \EasyCI20220607\Symplify\Astral\Contract\NodeNameResolverInterface
+final class ClassLikeNodeNameResolver implements NodeNameResolverInterface
 {
-    public function match(\EasyCI20220607\PhpParser\Node $node) : bool
+    public function match(Node $node) : bool
     {
-        return $node instanceof \EasyCI20220607\PhpParser\Node\Stmt\ClassLike;
+        return $node instanceof ClassLike;
     }
     /**
      * @param ClassLike $node
      */
-    public function resolve(\EasyCI20220607\PhpParser\Node $node) : ?string
+    public function resolve(Node $node) : ?string
     {
         if (\property_exists($node, 'namespacedName')) {
             return (string) $node->namespacedName;

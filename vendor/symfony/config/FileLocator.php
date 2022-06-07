@@ -16,7 +16,7 @@ use EasyCI20220607\Symfony\Component\Config\Exception\FileLocatorFileNotFoundExc
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FileLocator implements \EasyCI20220607\Symfony\Component\Config\FileLocatorInterface
+class FileLocator implements FileLocatorInterface
 {
     protected $paths;
     /**
@@ -36,7 +36,7 @@ class FileLocator implements \EasyCI20220607\Symfony\Component\Config\FileLocato
         }
         if ($this->isAbsolutePath($name)) {
             if (!\file_exists($name)) {
-                throw new \EasyCI20220607\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist.', $name), 0, null, [$name]);
+                throw new FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist.', $name), 0, null, [$name]);
             }
             return $name;
         }
@@ -57,7 +57,7 @@ class FileLocator implements \EasyCI20220607\Symfony\Component\Config\FileLocato
             }
         }
         if (!$filepaths) {
-            throw new \EasyCI20220607\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist (in: "%s").', $name, \implode('", "', $paths)), 0, null, $notfound);
+            throw new FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist (in: "%s").', $name, \implode('", "', $paths)), 0, null, $notfound);
         }
         return $filepaths;
     }

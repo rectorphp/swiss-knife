@@ -10,7 +10,7 @@ final class PharAutoloader
     private static $composerAutoloader;
     public static final function loadClass(string $class) : void
     {
-        if (!\extension_loaded('phar') || \defined('__PHPSTAN_RUNNING__')) {
+        if (!\extension_loaded('phar') || \defined('EasyCI20220607\\__PHPSTAN_RUNNING__')) {
             return;
         }
         if (\strpos($class, '_PHPStan_') === 0) {
@@ -49,4 +49,4 @@ final class PharAutoloader
         require $filepath;
     }
 }
-\spl_autoload_register([\EasyCI20220607\PHPStan\PharAutoloader::class, 'loadClass']);
+\spl_autoload_register([PharAutoloader::class, 'loadClass']);

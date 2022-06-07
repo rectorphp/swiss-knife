@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Psr4\Configuration;
+namespace EasyCI20220607\Symplify\EasyCI\Psr4\Configuration;
 
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
-use Symplify\EasyCI\Psr4\Exception\ConfigurationException;
-use Symplify\EasyCI\Psr4\ValueObject\Option;
+use EasyCI20220607\Symplify\EasyCI\Psr4\Exception\ConfigurationException;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220607\Symplify\SmartFileSystem\FileSystemGuard;
 final class Psr4SwitcherConfiguration
 {
@@ -21,7 +21,7 @@ final class Psr4SwitcherConfiguration
      * @var \Symplify\SmartFileSystem\FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\EasyCI20220607\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(FileSystemGuard $fileSystemGuard)
     {
         $this->fileSystemGuard = $fileSystemGuard;
     }
@@ -32,15 +32,15 @@ final class Psr4SwitcherConfiguration
     {
         $this->composerJsonPath = $composerJsonPath;
     }
-    public function loadFromInput(\EasyCI20220607\Symfony\Component\Console\Input\InputInterface $input) : void
+    public function loadFromInput(InputInterface $input) : void
     {
-        $composerJsonPath = (string) $input->getOption(\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON);
+        $composerJsonPath = (string) $input->getOption(Option::COMPOSER_JSON);
         if ($composerJsonPath === '') {
-            throw new \Symplify\EasyCI\Psr4\Exception\ConfigurationException(\sprintf('Provide composer.json via "--%s"', \Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON));
+            throw new ConfigurationException(\sprintf('Provide composer.json via "--%s"', Option::COMPOSER_JSON));
         }
         $this->fileSystemGuard->ensureFileExists($composerJsonPath, __METHOD__);
         $this->composerJsonPath = $composerJsonPath;
-        $this->source = (array) $input->getArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
+        $this->source = (array) $input->getArgument(Option::SOURCES);
     }
     /**
      * @return string[]
@@ -52,7 +52,7 @@ final class Psr4SwitcherConfiguration
     public function getComposerJsonPath() : string
     {
         if ($this->composerJsonPath === null) {
-            throw new \Symplify\EasyCI\Psr4\Exception\ConfigurationException();
+            throw new ConfigurationException();
         }
         return $this->composerJsonPath;
     }

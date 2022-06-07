@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Lexer\TokenEmulator;
 
-abstract class KeywordEmulator extends \EasyCI20220607\PhpParser\Lexer\TokenEmulator\TokenEmulator
+abstract class KeywordEmulator extends TokenEmulator
 {
     abstract function getKeywordString() : string;
     abstract function getKeywordToken() : int;

@@ -20,7 +20,7 @@ namespace EasyCI20220607\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class ClassExistenceResource implements \EasyCI20220607\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ClassExistenceResource implements SelfCheckingResourceInterface
 {
     /**
      * @var string

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Console;
+namespace EasyCI20220607\Symplify\EasyCI\Console;
 
 use EasyCI20220607\Symfony\Component\Console\Application;
 use EasyCI20220607\Symfony\Component\Console\Command\Command;
-final class EasyCIApplication extends \EasyCI20220607\Symfony\Component\Console\Application
+final class EasyCIApplication extends Application
 {
     /**
      * @param Command[] $commands

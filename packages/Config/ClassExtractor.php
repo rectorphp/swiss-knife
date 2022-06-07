@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Config;
+namespace EasyCI20220607\Symplify\EasyCI\Config;
 
 use EasyCI20220607\Nette\Neon\Encoder;
 use EasyCI20220607\Nette\Neon\Neon;
 use EasyCI20220607\Nette\Utils\Strings;
-use Symplify\EasyCI\Neon\NeonClassExtractor;
+use EasyCI20220607\Symplify\EasyCI\Neon\NeonClassExtractor;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ClassExtractor\ClassExtractorTest
@@ -39,14 +39,14 @@ final class ClassExtractor
      * @var \Symplify\EasyCI\Neon\NeonClassExtractor
      */
     private $neonClassExtractor;
-    public function __construct(\Symplify\EasyCI\Neon\NeonClassExtractor $neonClassExtractor)
+    public function __construct(NeonClassExtractor $neonClassExtractor)
     {
         $this->neonClassExtractor = $neonClassExtractor;
     }
     /**
      * @return string[]
      */
-    public function extractFromFileInfo(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    public function extractFromFileInfo(SmartFileInfo $fileInfo) : array
     {
         $classNames = [];
         $fileContent = $this->getFileContent($fileInfo);
@@ -54,7 +54,7 @@ final class ClassExtractor
             // use neon parser
             return $this->neonClassExtractor->extract($fileInfo);
         }
-        $classNameMatches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileContent, self::CLASS_NAME_REGEX);
+        $classNameMatches = Strings::matchAll($fileContent, self::CLASS_NAME_REGEX);
         foreach ($classNameMatches as $classNameMatch) {
             if (isset($classNameMatch[self::NEXT_CHAR]) && ($classNameMatch[self::NEXT_CHAR] === '\\' || $classNameMatch[self::NEXT_CHAR] === '\\:')) {
                 // is Symfony autodiscovery → skip
@@ -65,27 +65,27 @@ final class ClassExtractor
             }
             $classNames[] = $this->extractClassName($fileInfo, $classNameMatch);
         }
-        $staticCallsMatches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileContent, self::STATIC_CALL_CLASS_REGEX);
+        $staticCallsMatches = Strings::matchAll($fileContent, self::STATIC_CALL_CLASS_REGEX);
         foreach ($staticCallsMatches as $staticCallMatch) {
             $classNames[] = $this->extractClassName($fileInfo, $staticCallMatch);
         }
         return $classNames;
     }
-    private function getFileContent(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
+    private function getFileContent(SmartFileInfo $fileInfo) : string
     {
         if ($fileInfo->getSuffix() === 'neon') {
-            $neon = \EasyCI20220607\Nette\Neon\Neon::decode($fileInfo->getContents());
+            $neon = Neon::decode($fileInfo->getContents());
             // section with no classes that resemble classes
             unset($neon['application']['mapping']);
             unset($neon['mapping']);
-            return \EasyCI20220607\Nette\Neon\Neon::encode($neon, \EasyCI20220607\Nette\Neon\Encoder::BLOCK, '    ');
+            return Neon::encode($neon, Encoder::BLOCK, '    ');
         }
         return $fileInfo->getContents();
     }
     /**
      * @param array<string, string> $match
      */
-    private function extractClassName(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, array $match) : string
+    private function extractClassName(SmartFileInfo $fileInfo, array $match) : string
     {
         if ($fileInfo->getSuffix() === 'twig' && $match['quote'] !== '') {
             return \str_replace('\\\\', '\\', $match[self::CLASS_NAME_PART]);

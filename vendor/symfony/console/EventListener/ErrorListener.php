@@ -20,14 +20,14 @@ use EasyCI20220607\Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class ErrorListener implements \EasyCI20220607\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ErrorListener implements EventSubscriberInterface
 {
     private $logger;
-    public function __construct(\EasyCI20220607\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
-    public function onConsoleError(\EasyCI20220607\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
+    public function onConsoleError(ConsoleErrorEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -39,7 +39,7 @@ class ErrorListener implements \EasyCI20220607\Symfony\Component\EventDispatcher
         }
         $this->logger->critical('Error thrown while running command "{command}". Message: "{message}"', ['exception' => $error, 'command' => $inputString, 'message' => $error->getMessage()]);
     }
-    public function onConsoleTerminate(\EasyCI20220607\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
+    public function onConsoleTerminate(ConsoleTerminateEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -56,9 +56,9 @@ class ErrorListener implements \EasyCI20220607\Symfony\Component\EventDispatcher
     }
     public static function getSubscribedEvents() : array
     {
-        return [\EasyCI20220607\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \EasyCI20220607\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
+        return [ConsoleEvents::ERROR => ['onConsoleError', -128], ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
     }
-    private static function getInputString(\EasyCI20220607\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
+    private static function getInputString(ConsoleEvent $event) : ?string
     {
         $commandName = $event->getCommand() ? $event->getCommand()->getName() : null;
         $input = $event->getInput();

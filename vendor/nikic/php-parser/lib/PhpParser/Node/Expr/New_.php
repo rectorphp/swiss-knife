@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Arg;
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\VariadicPlaceholder;
-class New_ extends \EasyCI20220607\PhpParser\Node\Expr\CallLike
+class New_ extends CallLike
 {
     /** @var Node\Name|Expr|Node\Stmt\Class_ Class name */
     public $class;

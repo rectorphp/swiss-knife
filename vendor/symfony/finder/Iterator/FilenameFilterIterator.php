@@ -18,7 +18,7 @@ use EasyCI20220607\Symfony\Component\Finder\Glob;
  *
  * @extends MultiplePcreFilterIterator<string, \SplFileInfo>
  */
-class FilenameFilterIterator extends \EasyCI20220607\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
+class FilenameFilterIterator extends MultiplePcreFilterIterator
 {
     /**
      * Filters the iterator values.
@@ -37,6 +37,6 @@ class FilenameFilterIterator extends \EasyCI20220607\Symfony\Component\Finder\It
      */
     protected function toRegex(string $str) : string
     {
-        return $this->isRegex($str) ? $str : \EasyCI20220607\Symfony\Component\Finder\Glob::toRegex($str);
+        return $this->isRegex($str) ? $str : Glob::toRegex($str);
     }
 }

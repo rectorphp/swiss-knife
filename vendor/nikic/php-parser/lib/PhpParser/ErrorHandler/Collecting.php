@@ -10,11 +10,11 @@ use EasyCI20220607\PhpParser\ErrorHandler;
  *
  * This allows graceful handling of errors.
  */
-class Collecting implements \EasyCI20220607\PhpParser\ErrorHandler
+class Collecting implements ErrorHandler
 {
     /** @var Error[] Collected errors */
     private $errors = [];
-    public function handleError(\EasyCI20220607\PhpParser\Error $error)
+    public function handleError(Error $error)
     {
         $this->errors[] = $error;
     }

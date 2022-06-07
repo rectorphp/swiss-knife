@@ -3,6 +3,6 @@
 declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node;
 
-abstract class Scalar extends \EasyCI20220607\PhpParser\Node\Expr
+abstract class Scalar extends Expr
 {
 }

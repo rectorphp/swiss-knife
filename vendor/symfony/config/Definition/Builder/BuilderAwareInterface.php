@@ -20,5 +20,5 @@ interface BuilderAwareInterface
     /**
      * Sets a custom children builder.
      */
-    public function setBuilder(\EasyCI20220607\Symfony\Component\Config\Definition\Builder\NodeBuilder $builder);
+    public function setBuilder(NodeBuilder $builder);
 }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\StaticDetector\Strings;
+namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\Strings;
 
 /**
  * @see \Symplify\EasyCI\Tests\StaticDetector\Strings\StringsFilterTest

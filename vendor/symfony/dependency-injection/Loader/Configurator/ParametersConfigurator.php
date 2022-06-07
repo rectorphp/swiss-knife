@@ -16,11 +16,11 @@ use EasyCI20220607\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ParametersConfigurator extends \EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ParametersConfigurator extends AbstractConfigurator
 {
     public const FACTORY = 'parameters';
     private $container;
-    public function __construct(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(ContainerBuilder $container)
     {
         $this->container = $container;
     }
@@ -30,8 +30,8 @@ class ParametersConfigurator extends \EasyCI20220607\Symfony\Component\Dependenc
      */
     public final function set(string $name, $value)
     {
-        if ($value instanceof \EasyCI20220607\Symfony\Component\ExpressionLanguage\Expression) {
-            throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Using an expression in parameter "%s" is not allowed.', $name));
+        if ($value instanceof Expression) {
+            throw new InvalidArgumentException(\sprintf('Using an expression in parameter "%s" is not allowed.', $name));
         }
         $this->container->setParameter($name, static::processValue($value, \true));
         return $this;

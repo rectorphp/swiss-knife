@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\ActiveClass\NodeDecorator;
+namespace EasyCI20220607\Symplify\EasyCI\ActiveClass\NodeDecorator;
 
 use EasyCI20220607\PhpParser\Node\Stmt;
 use EasyCI20220607\PhpParser\NodeTraverser;
@@ -14,9 +14,9 @@ final class FullyQualifiedNameNodeDecorator
      */
     public function decorate(array $stmts) : void
     {
-        $nodeTraverser = new \EasyCI20220607\PhpParser\NodeTraverser();
-        $nodeTraverser->addVisitor(new \EasyCI20220607\PhpParser\NodeVisitor\NameResolver());
-        $nodeTraverser->addVisitor(new \EasyCI20220607\PhpParser\NodeVisitor\NodeConnectingVisitor());
+        $nodeTraverser = new NodeTraverser();
+        $nodeTraverser->addVisitor(new NameResolver());
+        $nodeTraverser->addVisitor(new NodeConnectingVisitor());
         $nodeTraverser->traverse($stmts);
     }
 }

@@ -96,7 +96,7 @@ interface Node
      *
      * @param Comment\Doc $docComment Doc comment to set
      */
-    public function setDocComment(\EasyCI20220607\PhpParser\Comment\Doc $docComment);
+    public function setDocComment(Comment\Doc $docComment);
     /**
      * Sets an attribute on a node.
      *

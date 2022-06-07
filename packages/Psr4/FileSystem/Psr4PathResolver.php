@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Psr4\FileSystem;
+namespace EasyCI20220607\Symplify\EasyCI\Psr4\FileSystem;
 
-use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class Psr4PathResolver
 {
     /**
      * @return mixed[]|string
      */
-    public function resolvePaths(\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths $psr4NamespaceToPaths)
+    public function resolvePaths(Psr4NamespaceToPaths $psr4NamespaceToPaths)
     {
         if (\count($psr4NamespaceToPaths->getPaths()) > 1) {
             $paths = $psr4NamespaceToPaths->getPaths();

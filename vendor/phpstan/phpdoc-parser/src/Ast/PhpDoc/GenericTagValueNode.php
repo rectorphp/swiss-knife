@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class GenericTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class GenericTagValueNode implements PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string (may be empty) */

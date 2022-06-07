@@ -10,5 +10,5 @@ interface Builder
      *
      * @return Node The built node
      */
-    public function getNode() : \EasyCI20220607\PhpParser\Node;
+    public function getNode() : Node;
 }

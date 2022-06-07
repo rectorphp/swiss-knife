@@ -17,5 +17,5 @@ interface NodeValueResolverInterface
      * @param TExpr $expr
      * @return mixed
      */
-    public function resolve(\EasyCI20220607\PhpParser\Node\Expr $expr, string $currentFilePath);
+    public function resolve(Expr $expr, string $currentFilePath);
 }

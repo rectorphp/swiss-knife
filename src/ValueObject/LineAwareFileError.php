@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\ValueObject;
+namespace EasyCI20220607\Symplify\EasyCI\ValueObject;
 
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
-final class LineAwareFileError implements \Symplify\EasyCI\Contract\ValueObject\FileErrorInterface
+final class LineAwareFileError implements FileErrorInterface
 {
     /**
      * @var string
@@ -19,7 +19,7 @@ final class LineAwareFileError implements \Symplify\EasyCI\Contract\ValueObject\
      * @var int
      */
     private $line;
-    public function __construct(string $errorMessage, \EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, int $line)
+    public function __construct(string $errorMessage, SmartFileInfo $smartFileInfo, int $line)
     {
         $this->errorMessage = $errorMessage;
         $this->smartFileInfo = $smartFileInfo;

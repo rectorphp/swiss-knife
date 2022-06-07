@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class Global_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class Global_ extends Node\Stmt
 {
     /** @var Node\Expr[] Variables */
     public $vars;

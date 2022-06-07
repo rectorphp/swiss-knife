@@ -6,7 +6,7 @@ namespace EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\FunctionLike;
-class Closure extends \EasyCI20220607\PhpParser\Node\Expr implements \EasyCI20220607\PhpParser\Node\FunctionLike
+class Closure extends Expr implements FunctionLike
 {
     /** @var bool Whether the closure is static */
     public $static;
@@ -43,7 +43,7 @@ class Closure extends \EasyCI20220607\PhpParser\Node\Expr implements \EasyCI2022
         $this->params = $subNodes['params'] ?? [];
         $this->uses = $subNodes['uses'] ?? [];
         $returnType = $subNodes['returnType'] ?? null;
-        $this->returnType = \is_string($returnType) ? new \EasyCI20220607\PhpParser\Node\Identifier($returnType) : $returnType;
+        $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
         $this->stmts = $subNodes['stmts'] ?? [];
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }

@@ -7,7 +7,7 @@ use EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
-class ArrayShapeItemNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ArrayShapeItemNode implements TypeNode
 {
     use NodeAttributes;
     /** @var ConstExprIntegerNode|ConstExprStringNode|IdentifierTypeNode|null */
@@ -19,7 +19,7 @@ class ArrayShapeItemNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Typ
     /**
      * @param ConstExprIntegerNode|ConstExprStringNode|IdentifierTypeNode|null $keyName
      */
-    public function __construct($keyName, bool $optional, \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $valueType)
+    public function __construct($keyName, bool $optional, TypeNode $valueType)
     {
         $this->keyName = $keyName;
         $this->optional = $optional;
@@ -28,7 +28,7 @@ class ArrayShapeItemNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Typ
     public function __toString() : string
     {
         if ($this->keyName !== null) {
-            return \sprintf('%s%s: %s', (string) $this->keyName, $this->optional ? '?' : '', (string) $this->valueType);
+            return sprintf('%s%s: %s', (string) $this->keyName, $this->optional ? '?' : '', (string) $this->valueType);
         }
         return (string) $this->valueType;
     }

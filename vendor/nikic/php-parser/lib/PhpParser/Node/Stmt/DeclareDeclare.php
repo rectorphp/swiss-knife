@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class DeclareDeclare extends \EasyCI20220607\PhpParser\Node\Stmt
+class DeclareDeclare extends Node\Stmt
 {
     /** @var Node\Identifier Key */
     public $key;
@@ -17,10 +17,10 @@ class DeclareDeclare extends \EasyCI20220607\PhpParser\Node\Stmt
      * @param Node\Expr              $value      Value
      * @param array                  $attributes Additional attributes
      */
-    public function __construct($key, \EasyCI20220607\PhpParser\Node\Expr $value, array $attributes = [])
+    public function __construct($key, Node\Expr $value, array $attributes = [])
     {
         $this->attributes = $attributes;
-        $this->key = \is_string($key) ? new \EasyCI20220607\PhpParser\Node\Identifier($key) : $key;
+        $this->key = \is_string($key) ? new Node\Identifier($key) : $key;
         $this->value = $value;
     }
     public function getSubNodeNames() : array

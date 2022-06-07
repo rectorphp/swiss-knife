@@ -15,16 +15,16 @@ use EasyCI20220607\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class OutputFormatterStyleStack implements \EasyCI20220607\Symfony\Contracts\Service\ResetInterface
+class OutputFormatterStyleStack implements ResetInterface
 {
     /**
      * @var OutputFormatterStyleInterface[]
      */
     private $styles = [];
     private $emptyStyle;
-    public function __construct(\EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
+    public function __construct(OutputFormatterStyleInterface $emptyStyle = null)
     {
-        $this->emptyStyle = $emptyStyle ?? new \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $this->emptyStyle = $emptyStyle ?? new OutputFormatterStyle();
         $this->reset();
     }
     /**
@@ -37,7 +37,7 @@ class OutputFormatterStyleStack implements \EasyCI20220607\Symfony\Contracts\Ser
     /**
      * Pushes a style in the stack.
      */
-    public function push(\EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
+    public function push(OutputFormatterStyleInterface $style)
     {
         $this->styles[] = $style;
     }
@@ -46,7 +46,7 @@ class OutputFormatterStyleStack implements \EasyCI20220607\Symfony\Contracts\Ser
      *
      * @throws InvalidArgumentException When style tags incorrectly nested
      */
-    public function pop(\EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null) : \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function pop(OutputFormatterStyleInterface $style = null) : OutputFormatterStyleInterface
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -60,12 +60,12 @@ class OutputFormatterStyleStack implements \EasyCI20220607\Symfony\Contracts\Ser
                 return $stackedStyle;
             }
         }
-        throw new \EasyCI20220607\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
+        throw new InvalidArgumentException('Incorrectly nested style tag found.');
     }
     /**
      * Computes current style with stacks top codes.
      */
-    public function getCurrent() : \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyle
+    public function getCurrent() : OutputFormatterStyle
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -75,12 +75,12 @@ class OutputFormatterStyleStack implements \EasyCI20220607\Symfony\Contracts\Ser
     /**
      * @return $this
      */
-    public function setEmptyStyle(\EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
+    public function setEmptyStyle(OutputFormatterStyleInterface $emptyStyle)
     {
         $this->emptyStyle = $emptyStyle;
         return $this;
     }
-    public function getEmptyStyle() : \EasyCI20220607\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function getEmptyStyle() : OutputFormatterStyleInterface
     {
         return $this->emptyStyle;
     }

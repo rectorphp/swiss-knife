@@ -1,27 +1,27 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
+namespace EasyCI20220607\Symplify\EasyCI\StaticDetector\NodeVisitor;
 
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\NodeVisitorAbstract;
-use Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
-use Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey;
-final class FilePathNodeVisitor extends \EasyCI20220607\PhpParser\NodeVisitorAbstract
+use EasyCI20220607\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
+use EasyCI20220607\Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey;
+final class FilePathNodeVisitor extends NodeVisitorAbstract
 {
     /**
      * @var \Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider
      */
     private $currentFileInfoProvider;
-    public function __construct(\Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider $currentFileInfoProvider)
+    public function __construct(CurrentFileInfoProvider $currentFileInfoProvider)
     {
         $this->currentFileInfoProvider = $currentFileInfoProvider;
     }
-    public function enterNode(\EasyCI20220607\PhpParser\Node $node)
+    public function enterNode(Node $node)
     {
         $smartFileInfo = $this->currentFileInfoProvider->getSmartFileInfo();
         $fileLine = $smartFileInfo->getRelativeFilePathFromCwd() . ':' . $node->getStartLine();
-        $node->setAttribute(\Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey::FILE_LINE, $fileLine);
+        $node->setAttribute(StaticDetectorAttributeKey::FILE_LINE, $fileLine);
         return null;
     }
 }

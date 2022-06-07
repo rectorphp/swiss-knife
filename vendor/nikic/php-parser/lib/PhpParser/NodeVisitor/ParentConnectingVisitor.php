@@ -13,7 +13,7 @@ use EasyCI20220607\PhpParser\NodeVisitorAbstract;
  * On the child node, the parent node can be accessed through
  * <code>$node->getAttribute('parent')</code>.
  */
-final class ParentConnectingVisitor extends \EasyCI20220607\PhpParser\NodeVisitorAbstract
+final class ParentConnectingVisitor extends NodeVisitorAbstract
 {
     /**
      * @var Node[]
@@ -23,15 +23,15 @@ final class ParentConnectingVisitor extends \EasyCI20220607\PhpParser\NodeVisito
     {
         $this->stack = [];
     }
-    public function enterNode(\EasyCI20220607\PhpParser\Node $node)
+    public function enterNode(Node $node)
     {
         if (!empty($this->stack)) {
-            $node->setAttribute('parent', $this->stack[\count($this->stack) - 1]);
+            $node->setAttribute('parent', $this->stack[count($this->stack) - 1]);
         }
         $this->stack[] = $node;
     }
-    public function leaveNode(\EasyCI20220607\PhpParser\Node $node)
+    public function leaveNode(Node $node)
     {
-        \array_pop($this->stack);
+        array_pop($this->stack);
     }
 }

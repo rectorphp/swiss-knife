@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\Type;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class IdentifierTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class IdentifierTypeNode implements TypeNode
 {
     use NodeAttributes;
     /** @var string */

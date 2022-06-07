@@ -17,7 +17,7 @@ namespace EasyCI20220607\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class DirectoryResource implements \EasyCI20220607\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class DirectoryResource implements SelfCheckingResourceInterface
 {
     /**
      * @var string

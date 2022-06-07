@@ -5,7 +5,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
-class ConstExprArrayNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
+class ConstExprArrayNode implements ConstExprNode
 {
     use NodeAttributes;
     /** @var ConstExprArrayItemNode[] */
@@ -19,6 +19,6 @@ class ConstExprArrayNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Con
     }
     public function __toString() : string
     {
-        return '[' . \implode(', ', $this->items) . ']';
+        return '[' . implode(', ', $this->items) . ']';
     }
 }

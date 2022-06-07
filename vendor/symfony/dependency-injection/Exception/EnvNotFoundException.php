@@ -15,6 +15,6 @@ namespace EasyCI20220607\Symfony\Component\DependencyInjection\Exception;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvNotFoundException extends \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
+class EnvNotFoundException extends InvalidArgumentException
 {
 }

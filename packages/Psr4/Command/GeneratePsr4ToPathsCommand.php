@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Psr4\Command;
+namespace EasyCI20220607\Symplify\EasyCI\Psr4\Command;
 
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Input\InputOption;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
-use Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
-use Symplify\EasyCI\Psr4\Json\JsonAutoloadPrinter;
-use Symplify\EasyCI\Psr4\Psr4Filter;
-use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
-use Symplify\EasyCI\Psr4\ValueObject\Option;
-use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
-use Symplify\EasyCI\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory;
+use EasyCI20220607\Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
+use EasyCI20220607\Symplify\EasyCI\Psr4\Json\JsonAutoloadPrinter;
+use EasyCI20220607\Symplify\EasyCI\Psr4\Psr4Filter;
+use EasyCI20220607\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Option;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class GeneratePsr4ToPathsCommand extends \EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+final class GeneratePsr4ToPathsCommand extends AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration
@@ -38,7 +38,7 @@ final class GeneratePsr4ToPathsCommand extends \EasyCI20220607\Symplify\PackageB
      * @var \Symplify\EasyCI\Psr4\Json\JsonAutoloadPrinter
      */
     private $jsonAutoloadPrinter;
-    public function __construct(\Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration $psr4SwitcherConfiguration, \Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader $phpClassLoader, \Symplify\EasyCI\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory $psr4NamespaceToPathFactory, \Symplify\EasyCI\Psr4\Psr4Filter $psr4Filter, \Symplify\EasyCI\Psr4\Json\JsonAutoloadPrinter $jsonAutoloadPrinter)
+    public function __construct(Psr4SwitcherConfiguration $psr4SwitcherConfiguration, PhpClassLoader $phpClassLoader, Psr4NamespaceToPathFactory $psr4NamespaceToPathFactory, Psr4Filter $psr4Filter, JsonAutoloadPrinter $jsonAutoloadPrinter)
     {
         $this->psr4SwitcherConfiguration = $psr4SwitcherConfiguration;
         $this->phpClassLoader = $phpClassLoader;
@@ -49,12 +49,12 @@ final class GeneratePsr4ToPathsCommand extends \EasyCI20220607\Symplify\PackageB
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Check if application is PSR-4 ready');
-        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220607\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220607\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source');
-        $this->addOption(\Symplify\EasyCI\Psr4\ValueObject\Option::COMPOSER_JSON, null, \EasyCI20220607\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to composer.json');
+        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source');
+        $this->addOption(Option::COMPOSER_JSON, null, InputOption::VALUE_REQUIRED, 'Path to composer.json');
     }
-    protected function execute(\EasyCI20220607\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $this->psr4SwitcherConfiguration->loadFromInput($input);
         $classesToFiles = $this->phpClassLoader->load($this->psr4SwitcherConfiguration->getSource());
@@ -62,7 +62,7 @@ final class GeneratePsr4ToPathsCommand extends \EasyCI20220607\Symplify\PackageB
         $classesToFilesWithMissedCommonNamespace = [];
         foreach ($classesToFiles as $class => $file) {
             $psr4NamespaceToPath = $this->psr4NamespaceToPathFactory->createFromClassAndFile($class, $file);
-            if (!$psr4NamespaceToPath instanceof \Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath) {
+            if (!$psr4NamespaceToPath instanceof Psr4NamespaceToPath) {
                 $classesToFilesWithMissedCommonNamespace[$class] = $file;
                 continue;
             }

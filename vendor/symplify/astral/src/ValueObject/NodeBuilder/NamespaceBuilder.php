@@ -8,6 +8,6 @@ use EasyCI20220607\PhpParser\Builder\Namespace_;
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class NamespaceBuilder extends \EasyCI20220607\PhpParser\Builder\Namespace_
+final class NamespaceBuilder extends Namespace_
 {
 }

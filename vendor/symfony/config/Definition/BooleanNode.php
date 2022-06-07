@@ -16,7 +16,7 @@ use EasyCI20220607\Symfony\Component\Config\Definition\Exception\InvalidTypeExce
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class BooleanNode extends \EasyCI20220607\Symfony\Component\Config\Definition\ScalarNode
+class BooleanNode extends ScalarNode
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ class BooleanNode extends \EasyCI20220607\Symfony\Component\Config\Definition\Sc
     protected function validateType($value)
     {
         if (!\is_bool($value)) {
-            $ex = new \EasyCI20220607\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "bool", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "bool", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

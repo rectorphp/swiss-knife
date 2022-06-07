@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Comments;
+namespace EasyCI20220607\Symplify\EasyCI\Comments;
 
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
@@ -12,7 +12,7 @@ final class CommentedCodeAnalyzer
     /**
      * @return int[]
      */
-    public function process(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, int $commentedLinesCountLimit) : array
+    public function process(SmartFileInfo $fileInfo, int $commentedLinesCountLimit) : array
     {
         $commentedLines = [];
         $fileLines = \explode(\PHP_EOL, $fileInfo->getContents());

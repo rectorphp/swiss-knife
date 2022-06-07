@@ -1,43 +1,43 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Psr4\Command;
+namespace EasyCI20220607\Symplify\EasyCI\Psr4\Command;
 
 use EasyCI20220607\Nette\Utils\Strings;
 use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
 use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
-use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
-use Symplify\EasyCI\Psr4\ValueObject\Option;
+use EasyCI20220607\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
+use EasyCI20220607\Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
-final class CheckFileClassNameCommand extends \EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+final class CheckFileClassNameCommand extends AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader
      */
     private $phpClassLoader;
-    public function __construct(\Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader $phpClassLoader)
+    public function __construct(PhpClassLoader $phpClassLoader)
     {
         $this->phpClassLoader = $phpClassLoader;
         parent::__construct();
     }
     protected function configure() : void
     {
-        $this->setName(\EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Check if short file name is same as class name');
-        $this->addArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES, \EasyCI20220607\Symfony\Component\Console\Input\InputArgument::REQUIRED | \EasyCI20220607\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Path to source');
+        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source');
     }
-    protected function execute(\EasyCI20220607\Symfony\Component\Console\Input\InputInterface $input, \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         /** @var string[] $sources */
-        $sources = (array) $input->getArgument(\Symplify\EasyCI\Psr4\ValueObject\Option::SOURCES);
+        $sources = (array) $input->getArgument(Option::SOURCES);
         $classesToFiles = $this->phpClassLoader->load($sources);
         $missMatchingClassNamesByFiles = [];
         foreach ($classesToFiles as $class => $file) {
             $fileBasename = \pathinfo($file, \PATHINFO_FILENAME);
-            $shortClassName = \EasyCI20220607\Nette\Utils\Strings::after($class, '\\', -1);
+            $shortClassName = Strings::after($class, '\\', -1);
             if ($shortClassName === $fileBasename) {
                 continue;
             }
@@ -48,7 +48,7 @@ final class CheckFileClassNameCommand extends \EasyCI20220607\Symplify\PackageBu
             return self::SUCCESS;
         }
         foreach ($missMatchingClassNamesByFiles as $file => $class) {
-            $fileInfo = new \EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $fileInfo = new SmartFileInfo($file);
             $message = \sprintf('Check "%s" file to match class name "%s"', $fileInfo->getRelativeFilePathFromCwd(), $class);
             $this->symfonyStyle->warning($message);
         }

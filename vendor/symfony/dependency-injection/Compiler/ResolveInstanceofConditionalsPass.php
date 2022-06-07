@@ -20,16 +20,16 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\RuntimeExcept
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveInstanceofConditionalsPass implements \EasyCI20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResolveInstanceofConditionalsPass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         foreach ($container->getAutoconfiguredInstanceof() as $interface => $definition) {
             if ($definition->getArguments()) {
-                throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Autoconfigured instanceof for type "%s" defines arguments but these are not supported and should be removed.', $interface));
+                throw new InvalidArgumentException(\sprintf('Autoconfigured instanceof for type "%s" defines arguments but these are not supported and should be removed.', $interface));
             }
         }
         $tagsToKeep = [];
@@ -43,7 +43,7 @@ class ResolveInstanceofConditionalsPass implements \EasyCI20220607\Symfony\Compo
             $container->getParameterBag()->remove('container.behavior_describing_tags');
         }
     }
-    private function processDefinition(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, \EasyCI20220607\Symfony\Component\DependencyInjection\Definition $definition, array $tagsToKeep) : \EasyCI20220607\Symfony\Component\DependencyInjection\Definition
+    private function processDefinition(ContainerBuilder $container, string $id, Definition $definition, array $tagsToKeep) : Definition
     {
         $instanceofConditionals = $definition->getInstanceofConditionals();
         $autoconfiguredInstanceof = $definition->isAutoconfigured() ? $container->getAutoconfiguredInstanceof() : [];
@@ -60,7 +60,7 @@ class ResolveInstanceofConditionalsPass implements \EasyCI20220607\Symfony\Compo
         $instanceofCalls = [];
         $instanceofBindings = [];
         $reflectionClass = null;
-        $parent = $definition instanceof \EasyCI20220607\Symfony\Component\DependencyInjection\ChildDefinition ? $definition->getParent() : null;
+        $parent = $definition instanceof ChildDefinition ? $definition->getParent() : null;
         foreach ($conditionals as $interface => $instanceofDefs) {
             if ($interface !== $class && !($reflectionClass ?? ($reflectionClass = $container->getReflectionClass($class, \false) ?: \false))) {
                 continue;
@@ -92,7 +92,7 @@ class ResolveInstanceofConditionalsPass implements \EasyCI20220607\Symfony\Compo
             $abstract = $container->setDefinition('.abstract.instanceof.' . $id, $definition);
             $definition->setBindings([]);
             $definition = \serialize($definition);
-            if (\EasyCI20220607\Symfony\Component\DependencyInjection\Definition::class === \get_class($abstract)) {
+            if (Definition::class === \get_class($abstract)) {
                 // cast Definition to ChildDefinition
                 $definition = \substr_replace($definition, '53', 2, 2);
                 $definition = \substr_replace($definition, 'Child', 44, 0);
@@ -124,7 +124,7 @@ class ResolveInstanceofConditionalsPass implements \EasyCI20220607\Symfony\Compo
         }
         return $definition;
     }
-    private function mergeConditionals(array $autoconfiguredInstanceof, array $instanceofConditionals, \EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container) : array
+    private function mergeConditionals(array $autoconfiguredInstanceof, array $instanceofConditionals, ContainerBuilder $container) : array
     {
         // make each value an array of ChildDefinition
         $conditionals = \array_map(function ($childDef) {
@@ -133,7 +133,7 @@ class ResolveInstanceofConditionalsPass implements \EasyCI20220607\Symfony\Compo
         foreach ($instanceofConditionals as $interface => $instanceofDef) {
             // make sure the interface/class exists (but don't validate automaticInstanceofConditionals)
             if (!$container->getReflectionClass($interface)) {
-                throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('"%s" is set as an "instanceof" conditional, but it does not exist.', $interface));
+                throw new RuntimeException(\sprintf('"%s" is set as an "instanceof" conditional, but it does not exist.', $interface));
             }
             if (!isset($autoconfiguredInstanceof[$interface])) {
                 $conditionals[$interface] = [];

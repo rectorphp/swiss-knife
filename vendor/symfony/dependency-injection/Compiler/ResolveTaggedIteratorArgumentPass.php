@@ -16,7 +16,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Argument\TaggedIterator
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class ResolveTaggedIteratorArgumentPass extends \EasyCI20220607\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveTaggedIteratorArgumentPass extends AbstractRecursivePass
 {
     use PriorityTaggedServiceTrait;
     /**
@@ -26,7 +26,7 @@ class ResolveTaggedIteratorArgumentPass extends \EasyCI20220607\Symfony\Componen
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if (!$value instanceof \EasyCI20220607\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument) {
+        if (!$value instanceof TaggedIteratorArgument) {
             return parent::processValue($value, $isRoot);
         }
         $value->setValues($this->findAndSortTaggedServices($value, $this->container));

@@ -17,7 +17,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\OutOfBoundsEx
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \EasyCI20220607\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends Definition
 {
     /**
      * @var string
@@ -85,7 +85,7 @@ class ChildDefinition extends \EasyCI20220607\Symfony\Component\DependencyInject
         } elseif (\strncmp($index, '$', \strlen('$')) === 0) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }

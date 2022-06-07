@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ConstExprStringNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode
+class ConstExprStringNode implements ConstExprNode
 {
     use NodeAttributes;
     /** @var string */

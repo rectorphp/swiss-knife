@@ -11,7 +11,7 @@
 namespace EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use EasyCI20220607\Symfony\Component\Config\Loader\ParamConfigurator;
-class EnvConfigurator extends \EasyCI20220607\Symfony\Component\Config\Loader\ParamConfigurator
+class EnvConfigurator extends ParamConfigurator
 {
     /**
      * @var string[]

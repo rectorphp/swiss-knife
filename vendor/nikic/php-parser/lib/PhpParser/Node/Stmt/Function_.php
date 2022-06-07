@@ -5,7 +5,7 @@ namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\FunctionLike;
-class Function_ extends \EasyCI20220607\PhpParser\Node\Stmt implements \EasyCI20220607\PhpParser\Node\FunctionLike
+class Function_ extends Node\Stmt implements FunctionLike
 {
     /** @var bool Whether function returns by reference */
     public $byRef;
@@ -37,10 +37,10 @@ class Function_ extends \EasyCI20220607\PhpParser\Node\Stmt implements \EasyCI20
     {
         $this->attributes = $attributes;
         $this->byRef = $subNodes['byRef'] ?? \false;
-        $this->name = \is_string($name) ? new \EasyCI20220607\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new Node\Identifier($name) : $name;
         $this->params = $subNodes['params'] ?? [];
         $returnType = $subNodes['returnType'] ?? null;
-        $this->returnType = \is_string($returnType) ? new \EasyCI20220607\PhpParser\Node\Identifier($returnType) : $returnType;
+        $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
         $this->stmts = $subNodes['stmts'] ?? [];
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }

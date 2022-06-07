@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class PhpDocTextNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode
+class PhpDocTextNode implements PhpDocChildNode
 {
     use NodeAttributes;
     /** @var string */

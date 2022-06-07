@@ -9,7 +9,7 @@ use EasyCI20220607\PhpParser\NodeVisitorAbstract;
  * This visitor can be used to find and collect all nodes satisfying some criterion determined by
  * a filter callback.
  */
-class FindingVisitor extends \EasyCI20220607\PhpParser\NodeVisitorAbstract
+class FindingVisitor extends NodeVisitorAbstract
 {
     /** @var callable Filter callback */
     protected $filterCallback;
@@ -35,7 +35,7 @@ class FindingVisitor extends \EasyCI20220607\PhpParser\NodeVisitorAbstract
         $this->foundNodes = [];
         return null;
     }
-    public function enterNode(\EasyCI20220607\PhpParser\Node $node)
+    public function enterNode(Node $node)
     {
         $filterCallback = $this->filterCallback;
         if ($filterCallback($node)) {

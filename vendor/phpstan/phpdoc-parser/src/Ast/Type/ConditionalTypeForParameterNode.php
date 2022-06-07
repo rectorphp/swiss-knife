@@ -5,7 +5,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\Type;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
-class ConditionalTypeForParameterNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ConditionalTypeForParameterNode implements TypeNode
 {
     use NodeAttributes;
     /** @var string */
@@ -18,7 +18,7 @@ class ConditionalTypeForParameterNode implements \EasyCI20220607\PHPStan\PhpDocP
     public $else;
     /** @var bool */
     public $negated;
-    public function __construct(string $parameterName, \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $targetType, \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $if, \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $else, bool $negated)
+    public function __construct(string $parameterName, TypeNode $targetType, TypeNode $if, TypeNode $else, bool $negated)
     {
         $this->parameterName = $parameterName;
         $this->targetType = $targetType;
@@ -28,6 +28,6 @@ class ConditionalTypeForParameterNode implements \EasyCI20220607\PHPStan\PhpDocP
     }
     public function __toString() : string
     {
-        return \sprintf('(%s %s %s ? %s : %s)', $this->parameterName, $this->negated ? 'is not' : 'is', $this->targetType, $this->if, $this->else);
+        return sprintf('(%s %s %s ? %s : %s)', $this->parameterName, $this->negated ? 'is not' : 'is', $this->targetType, $this->if, $this->else);
     }
 }

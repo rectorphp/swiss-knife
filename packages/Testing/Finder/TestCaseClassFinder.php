@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Testing\Finder;
+namespace EasyCI20220607\Symplify\EasyCI\Testing\Finder;
 
 use EasyCI20220607\Nette\Loaders\RobotLoader;
 final class TestCaseClassFinder
@@ -12,7 +12,7 @@ final class TestCaseClassFinder
      */
     public function findInDirectories(array $directories) : array
     {
-        $robotLoader = new \EasyCI20220607\Nette\Loaders\RobotLoader();
+        $robotLoader = new RobotLoader();
         $robotLoader->addDirectory(...$directories);
         $robotLoader->rebuild();
         $this->includeNonAutoloadedClasses($robotLoader->getIndexedClasses());

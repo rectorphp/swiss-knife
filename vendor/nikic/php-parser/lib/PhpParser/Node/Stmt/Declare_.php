@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-class Declare_ extends \EasyCI20220607\PhpParser\Node\Stmt
+class Declare_ extends Node\Stmt
 {
     /** @var DeclareDeclare[] List of declares */
     public $declares;

@@ -16,21 +16,21 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgume
 /**
  * Sets a service to be an alias of another one, given a format pattern.
  */
-class AutoAliasServicePass implements \EasyCI20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class AutoAliasServicePass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('auto_alias') as $serviceId => $tags) {
             foreach ($tags as $tag) {
                 if (!isset($tag['format'])) {
-                    throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Missing tag information "format" on auto_alias service "%s".', $serviceId));
+                    throw new InvalidArgumentException(\sprintf('Missing tag information "format" on auto_alias service "%s".', $serviceId));
                 }
                 $aliasId = $container->getParameterBag()->resolveValue($tag['format']);
                 if ($container->hasDefinition($aliasId) || $container->hasAlias($aliasId)) {
-                    $alias = new \EasyCI20220607\Symfony\Component\DependencyInjection\Alias($aliasId, $container->getDefinition($serviceId)->isPublic());
+                    $alias = new Alias($aliasId, $container->getDefinition($serviceId)->isPublic());
                     $container->setAlias($serviceId, $alias);
                 }
             }

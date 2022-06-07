@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node;
 
 use EasyCI20220607\PhpParser\NodeAbstract;
-class IntersectionType extends \EasyCI20220607\PhpParser\Node\ComplexType
+class IntersectionType extends ComplexType
 {
     /** @var (Identifier|Name)[] Types */
     public $types;

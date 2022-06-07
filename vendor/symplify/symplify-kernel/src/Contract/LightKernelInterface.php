@@ -12,6 +12,6 @@ interface LightKernelInterface
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs(array $configFiles) : \EasyCI20220607\Psr\Container\ContainerInterface;
-    public function getContainer() : \EasyCI20220607\Psr\Container\ContainerInterface;
+    public function createFromConfigs(array $configFiles) : ContainerInterface;
+    public function getContainer() : ContainerInterface;
 }

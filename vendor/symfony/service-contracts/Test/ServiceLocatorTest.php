@@ -13,11 +13,11 @@ namespace EasyCI20220607\Symfony\Contracts\Service\Test;
 use EasyCI20220607\PHPUnit\Framework\TestCase;
 use EasyCI20220607\Psr\Container\ContainerInterface;
 use EasyCI20220607\Symfony\Contracts\Service\ServiceLocatorTrait;
-abstract class ServiceLocatorTest extends \EasyCI20220607\PHPUnit\Framework\TestCase
+abstract class ServiceLocatorTest extends TestCase
 {
-    protected function getServiceLocator(array $factories) : \EasyCI20220607\Psr\Container\ContainerInterface
+    protected function getServiceLocator(array $factories) : ContainerInterface
     {
-        return new class($factories) implements \EasyCI20220607\Psr\Container\ContainerInterface
+        return new class($factories) implements ContainerInterface
         {
             use ServiceLocatorTrait;
         };

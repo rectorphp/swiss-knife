@@ -15,7 +15,7 @@ use EasyCI20220607\Symplify\Astral\NodeFinder\SimpleNodeFinder;
  *
  * @implements NodeValueResolverInterface<ClassConstFetch>
  */
-final class ClassConstFetchValueResolver implements \EasyCI20220607\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface
+final class ClassConstFetchValueResolver implements NodeValueResolverInterface
 {
     /**
      * @var \Symplify\Astral\Naming\SimpleNameResolver
@@ -25,25 +25,25 @@ final class ClassConstFetchValueResolver implements \EasyCI20220607\Symplify\Ast
      * @var \Symplify\Astral\NodeFinder\SimpleNodeFinder
      */
     private $simpleNodeFinder;
-    public function __construct(\EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \EasyCI20220607\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
+    public function __construct(SimpleNameResolver $simpleNameResolver, SimpleNodeFinder $simpleNodeFinder)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->simpleNodeFinder = $simpleNodeFinder;
     }
     public function getType() : string
     {
-        return \EasyCI20220607\PhpParser\Node\Expr\ClassConstFetch::class;
+        return ClassConstFetch::class;
     }
     /**
      * @param ClassConstFetch $expr
      * @return mixed
      */
-    public function resolve(\EasyCI20220607\PhpParser\Node\Expr $expr, string $currentFilePath)
+    public function resolve(Expr $expr, string $currentFilePath)
     {
         $className = $this->simpleNameResolver->getName($expr->class);
         if ($className === 'self') {
-            $classLike = $this->simpleNodeFinder->findFirstParentByType($expr, \EasyCI20220607\PhpParser\Node\Stmt\ClassLike::class);
-            if (!$classLike instanceof \EasyCI20220607\PhpParser\Node\Stmt\ClassLike) {
+            $classLike = $this->simpleNodeFinder->findFirstParentByType($expr, ClassLike::class);
+            if (!$classLike instanceof ClassLike) {
                 return null;
             }
             $className = $this->simpleNameResolver->getName($classLike);
@@ -61,7 +61,7 @@ final class ClassConstFetchValueResolver implements \EasyCI20220607\Symplify\Ast
         if (!\class_exists($className) && !\interface_exists($className)) {
             return null;
         }
-        $reflectionClassConstant = new \ReflectionClassConstant($className, $constantName);
+        $reflectionClassConstant = new ReflectionClassConstant($className, $constantName);
         return $reflectionClassConstant->getValue();
     }
 }

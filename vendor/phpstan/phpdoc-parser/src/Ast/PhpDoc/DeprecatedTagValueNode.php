@@ -5,7 +5,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function trim;
-class DeprecatedTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class DeprecatedTagValueNode implements PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var string (may be empty) */
@@ -16,6 +16,6 @@ class DeprecatedTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast
     }
     public function __toString() : string
     {
-        return \trim($this->description);
+        return trim($this->description);
     }
 }

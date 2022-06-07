@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace EasyCI20220607\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\LatteStaticCallAnalyzer\StaticCallLatteAnalyzerTest
  */
-final class StaticCallLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class StaticCallLatteAnalyzer implements LatteTemplateAnalyzerInterface
 {
     /**
      * @var string
@@ -42,14 +42,14 @@ final class StaticCallLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\L
     /**
      * @return FileErrorInterface[]
      */
-    private function analyzeFileInfo(\EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : array
+    private function analyzeFileInfo(SmartFileInfo $fileInfo) : array
     {
-        $matches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileInfo->getContents(), self::STATIC_CALL_REGEX);
+        $matches = Strings::matchAll($fileInfo->getContents(), self::STATIC_CALL_REGEX);
         $matches = $this->filterOutAllowedStaticClasses($matches);
         $templateErrors = [];
         foreach ($matches as $match) {
             $errorMessage = \sprintf('Static call "%s::%s()" should not be used in template, move to filter provider instead', $match[self::CLASS_NAME_PART], $match[self::METHOD_NAME_PART]);
-            $templateErrors[] = new \Symplify\EasyCI\ValueObject\FileError($errorMessage, $fileInfo);
+            $templateErrors[] = new FileError($errorMessage, $fileInfo);
         }
         return $templateErrors;
     }

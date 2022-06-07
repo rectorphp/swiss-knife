@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser\NodeAbstract;
 /**
  * Represents a non-namespaced name. Namespaced names are represented using Name nodes.
  */
-class Identifier extends \EasyCI20220607\PhpParser\NodeAbstract
+class Identifier extends NodeAbstract
 {
     /** @var string Identifier as string */
     public $name;

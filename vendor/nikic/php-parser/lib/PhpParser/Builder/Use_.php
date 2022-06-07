@@ -7,7 +7,7 @@ use EasyCI20220607\PhpParser\Builder;
 use EasyCI20220607\PhpParser\BuilderHelpers;
 use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Stmt;
-class Use_ implements \EasyCI20220607\PhpParser\Builder
+class Use_ implements Builder
 {
     protected $name;
     protected $type;
@@ -20,7 +20,7 @@ class Use_ implements \EasyCI20220607\PhpParser\Builder
      */
     public function __construct($name, int $type)
     {
-        $this->name = \EasyCI20220607\PhpParser\BuilderHelpers::normalizeName($name);
+        $this->name = BuilderHelpers::normalizeName($name);
         $this->type = $type;
     }
     /**
@@ -40,8 +40,8 @@ class Use_ implements \EasyCI20220607\PhpParser\Builder
      *
      * @return Stmt\Use_ The built node
      */
-    public function getNode() : \EasyCI20220607\PhpParser\Node
+    public function getNode() : Node
     {
-        return new \EasyCI20220607\PhpParser\Node\Stmt\Use_([new \EasyCI20220607\PhpParser\Node\Stmt\UseUse($this->name, $this->alias)], $this->type);
+        return new Stmt\Use_([new Stmt\UseUse($this->name, $this->alias)], $this->type);
     }
 }

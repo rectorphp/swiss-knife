@@ -17,13 +17,13 @@ use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
  *
  * @author Wouter J <waldio.webdesign@gmail.com>
  */
-abstract class InputAwareHelper extends \EasyCI20220607\Symfony\Component\Console\Helper\Helper implements \EasyCI20220607\Symfony\Component\Console\Input\InputAwareInterface
+abstract class InputAwareHelper extends Helper implements InputAwareInterface
 {
     protected $input;
     /**
      * {@inheritdoc}
      */
-    public function setInput(\EasyCI20220607\Symfony\Component\Console\Input\InputInterface $input)
+    public function setInput(InputInterface $input)
     {
         $this->input = $input;
     }

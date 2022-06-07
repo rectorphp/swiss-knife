@@ -5,12 +5,12 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\Type;
 
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
-class ConstTypeNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode
+class ConstTypeNode implements TypeNode
 {
     use NodeAttributes;
     /** @var ConstExprNode */
     public $constExpr;
-    public function __construct(\EasyCI20220607\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode $constExpr)
+    public function __construct(ConstExprNode $constExpr)
     {
         $this->constExpr = $constExpr;
     }

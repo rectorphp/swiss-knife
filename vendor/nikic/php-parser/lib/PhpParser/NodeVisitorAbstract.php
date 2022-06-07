@@ -6,17 +6,17 @@ namespace EasyCI20220607\PhpParser;
 /**
  * @codeCoverageIgnore
  */
-class NodeVisitorAbstract implements \EasyCI20220607\PhpParser\NodeVisitor
+class NodeVisitorAbstract implements NodeVisitor
 {
     public function beforeTraverse(array $nodes)
     {
         return null;
     }
-    public function enterNode(\EasyCI20220607\PhpParser\Node $node)
+    public function enterNode(Node $node)
     {
         return null;
     }
-    public function leaveNode(\EasyCI20220607\PhpParser\Node $node)
+    public function leaveNode(Node $node)
     {
         return null;
     }

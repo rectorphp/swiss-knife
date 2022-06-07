@@ -17,22 +17,22 @@ use EasyCI20220607\PHPStan\Parser\SimpleParser;
  */
 final class SmartPhpParserFactory
 {
-    public function create() : \EasyCI20220607\Symplify\Astral\PhpParser\SmartPhpParser
+    public function create() : SmartPhpParser
     {
         $nativePhpParser = $this->createNativePhpParser();
         $cachedParser = $this->createPHPStanParser($nativePhpParser);
-        return new \EasyCI20220607\Symplify\Astral\PhpParser\SmartPhpParser($cachedParser);
+        return new SmartPhpParser($cachedParser);
     }
-    private function createNativePhpParser() : \EasyCI20220607\PhpParser\Parser
+    private function createNativePhpParser() : Parser
     {
-        $parserFactory = new \EasyCI20220607\PhpParser\ParserFactory();
-        $lexerEmulative = new \EasyCI20220607\PhpParser\Lexer\Emulative();
-        return $parserFactory->create(\EasyCI20220607\PhpParser\ParserFactory::PREFER_PHP7, $lexerEmulative);
+        $parserFactory = new ParserFactory();
+        $lexerEmulative = new Emulative();
+        return $parserFactory->create(ParserFactory::PREFER_PHP7, $lexerEmulative);
     }
-    private function createPHPStanParser(\EasyCI20220607\PhpParser\Parser $parser) : \EasyCI20220607\PHPStan\Parser\CachedParser
+    private function createPHPStanParser(Parser $parser) : CachedParser
     {
-        $nameResolver = new \EasyCI20220607\PhpParser\NodeVisitor\NameResolver();
-        $simpleParser = new \EasyCI20220607\PHPStan\Parser\SimpleParser($parser, $nameResolver);
-        return new \EasyCI20220607\PHPStan\Parser\CachedParser($simpleParser, 1024);
+        $nameResolver = new NameResolver();
+        $simpleParser = new SimpleParser($parser, $nameResolver);
+        return new CachedParser($simpleParser, 1024);
     }
 }

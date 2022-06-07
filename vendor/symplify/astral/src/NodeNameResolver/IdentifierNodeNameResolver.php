@@ -7,19 +7,19 @@ use EasyCI20220607\PhpParser\Node;
 use EasyCI20220607\PhpParser\Node\Identifier;
 use EasyCI20220607\PhpParser\Node\Name;
 use EasyCI20220607\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class IdentifierNodeNameResolver implements \EasyCI20220607\Symplify\Astral\Contract\NodeNameResolverInterface
+final class IdentifierNodeNameResolver implements NodeNameResolverInterface
 {
-    public function match(\EasyCI20220607\PhpParser\Node $node) : bool
+    public function match(Node $node) : bool
     {
-        if ($node instanceof \EasyCI20220607\PhpParser\Node\Identifier) {
+        if ($node instanceof Identifier) {
             return \true;
         }
-        return $node instanceof \EasyCI20220607\PhpParser\Node\Name;
+        return $node instanceof Name;
     }
     /**
      * @param Identifier|Name $node
      */
-    public function resolve(\EasyCI20220607\PhpParser\Node $node) : ?string
+    public function resolve(Node $node) : ?string
     {
         return (string) $node;
     }

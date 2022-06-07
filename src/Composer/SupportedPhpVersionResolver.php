@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Composer;
+namespace EasyCI20220607\Symplify\EasyCI\Composer;
 
 use EasyCI20220607\Composer\Semver\Semver;
 use EasyCI20220607\Composer\Semver\VersionParser;
 use DateTimeInterface;
 use EasyCI20220607\Nette\Utils\DateTime;
 use EasyCI20220607\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use Symplify\EasyCI\Exception\ShouldNotHappenException;
-use Symplify\EasyCI\ValueObject\PhpVersionList;
+use EasyCI20220607\Symplify\EasyCI\Exception\ShouldNotHappenException;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\PhpVersionList;
 /**
  * @see \Symplify\EasyCI\Tests\Composer\SupportedPhpVersionResolverTest
  */
@@ -27,7 +27,7 @@ final class SupportedPhpVersionResolver
      * @var \Symplify\ComposerJsonManipulator\ComposerJsonFactory
      */
     private $composerJsonFactory;
-    public function __construct(\EasyCI20220607\Composer\Semver\VersionParser $versionParser, \EasyCI20220607\Composer\Semver\Semver $semver, \EasyCI20220607\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory)
+    public function __construct(VersionParser $versionParser, Semver $semver, ComposerJsonFactory $composerJsonFactory)
     {
         $this->versionParser = $versionParser;
         $this->semver = $semver;
@@ -42,24 +42,24 @@ final class SupportedPhpVersionResolver
         $requirePhpVersion = $composerJson->getRequirePhpVersion();
         if ($requirePhpVersion === null) {
             $message = \sprintf('PHP version was not found in "%s"', $composerJsonFilePath);
-            throw new \Symplify\EasyCI\Exception\ShouldNotHappenException($message);
+            throw new ShouldNotHappenException($message);
         }
-        return $this->resolveFromConstraints($requirePhpVersion, \EasyCI20220607\Nette\Utils\DateTime::from('now'));
+        return $this->resolveFromConstraints($requirePhpVersion, DateTime::from('now'));
     }
     /**
      * @return string[]
      */
-    public function resolveFromConstraints(string $phpVersionConstraints, \DateTimeInterface $todayDateTime) : array
+    public function resolveFromConstraints(string $phpVersionConstraints, DateTimeInterface $todayDateTime) : array
     {
         // to validate version
         $this->versionParser->parseConstraints($phpVersionConstraints);
         $supportedPhpVersion = [];
-        foreach (\Symplify\EasyCI\ValueObject\PhpVersionList::VERSIONS_BY_RELEASE_DATE as $releaseDate => $phpVersion) {
+        foreach (PhpVersionList::VERSIONS_BY_RELEASE_DATE as $releaseDate => $phpVersion) {
             if (!$this->semver->satisfies($phpVersion, $phpVersionConstraints)) {
                 continue;
             }
             // is in the future?
-            $relaseDateTime = \EasyCI20220607\Nette\Utils\DateTime::from($releaseDate);
+            $relaseDateTime = DateTime::from($releaseDate);
             if ($relaseDateTime > $todayDateTime) {
                 continue;
             }

@@ -13,6 +13,6 @@ final class StaticPHPUnitEnvironment
      */
     public static function isPHPUnitRun() : bool
     {
-        return \defined('PHPUNIT_COMPOSER_INSTALL') || \defined('__PHPUNIT_PHAR__');
+        return \defined('EasyCI20220607\\PHPUNIT_COMPOSER_INSTALL') || \defined('EasyCI20220607\\__PHPUNIT_PHAR__');
     }
 }

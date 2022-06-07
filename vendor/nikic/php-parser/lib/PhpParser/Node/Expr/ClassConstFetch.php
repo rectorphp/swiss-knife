@@ -6,7 +6,7 @@ namespace EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\Expr;
 use EasyCI20220607\PhpParser\Node\Identifier;
 use EasyCI20220607\PhpParser\Node\Name;
-class ClassConstFetch extends \EasyCI20220607\PhpParser\Node\Expr
+class ClassConstFetch extends Expr
 {
     /** @var Name|Expr Class name */
     public $class;
@@ -23,7 +23,7 @@ class ClassConstFetch extends \EasyCI20220607\PhpParser\Node\Expr
     {
         $this->attributes = $attributes;
         $this->class = $class;
-        $this->name = \is_string($name) ? new \EasyCI20220607\PhpParser\Node\Identifier($name) : $name;
+        $this->name = \is_string($name) ? new Identifier($name) : $name;
     }
     public function getSubNodeNames() : array
     {

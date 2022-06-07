@@ -22,7 +22,7 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ServiceCircul
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class CheckCircularReferencesPass implements \EasyCI20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class CheckCircularReferencesPass implements CompilerPassInterface
 {
     /**
      * @var mixed[]
@@ -35,7 +35,7 @@ class CheckCircularReferencesPass implements \EasyCI20220607\Symfony\Component\D
     /**
      * Checks the ContainerBuilder object for circular references.
      */
-    public function process(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         $graph = $container->getCompiler()->getServiceReferenceGraph();
         $this->checkedNodes = [];
@@ -62,7 +62,7 @@ class CheckCircularReferencesPass implements \EasyCI20220607\Symfony\Component\D
                     $searchKey = \array_search($id, $this->currentPath);
                     $this->currentPath[] = $id;
                     if (\false !== $searchKey) {
-                        throw new \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($this->currentPath, $searchKey));
+                        throw new ServiceCircularReferenceException($id, \array_slice($this->currentPath, $searchKey));
                     }
                     $this->checkOutEdges($node->getOutEdges());
                 }

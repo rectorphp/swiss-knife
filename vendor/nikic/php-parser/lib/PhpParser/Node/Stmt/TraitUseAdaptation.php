@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace EasyCI20220607\PhpParser\Node\Stmt;
 
 use EasyCI20220607\PhpParser\Node;
-abstract class TraitUseAdaptation extends \EasyCI20220607\PhpParser\Node\Stmt
+abstract class TraitUseAdaptation extends Node\Stmt
 {
     /** @var Node\Name|null Trait name */
     public $trait;

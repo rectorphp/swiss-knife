@@ -22,7 +22,7 @@ use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
  *
  * @internal
  */
-abstract class Descriptor implements \EasyCI20220607\Symfony\Component\Console\Descriptor\DescriptorInterface
+abstract class Descriptor implements DescriptorInterface
 {
     /**
      * @var OutputInterface
@@ -31,27 +31,27 @@ abstract class Descriptor implements \EasyCI20220607\Symfony\Component\Console\D
     /**
      * {@inheritdoc}
      */
-    public function describe(\EasyCI20220607\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = [])
+    public function describe(OutputInterface $output, object $object, array $options = [])
     {
         $this->output = $output;
         switch (\true) {
-            case $object instanceof \EasyCI20220607\Symfony\Component\Console\Input\InputArgument:
+            case $object instanceof InputArgument:
                 $this->describeInputArgument($object, $options);
                 break;
-            case $object instanceof \EasyCI20220607\Symfony\Component\Console\Input\InputOption:
+            case $object instanceof InputOption:
                 $this->describeInputOption($object, $options);
                 break;
-            case $object instanceof \EasyCI20220607\Symfony\Component\Console\Input\InputDefinition:
+            case $object instanceof InputDefinition:
                 $this->describeInputDefinition($object, $options);
                 break;
-            case $object instanceof \EasyCI20220607\Symfony\Component\Console\Command\Command:
+            case $object instanceof Command:
                 $this->describeCommand($object, $options);
                 break;
-            case $object instanceof \EasyCI20220607\Symfony\Component\Console\Application:
+            case $object instanceof Application:
                 $this->describeApplication($object, $options);
                 break;
             default:
-                throw new \EasyCI20220607\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Object of type "%s" is not describable.', \get_debug_type($object)));
+                throw new InvalidArgumentException(\sprintf('Object of type "%s" is not describable.', \get_debug_type($object)));
         }
     }
     /**
@@ -59,26 +59,26 @@ abstract class Descriptor implements \EasyCI20220607\Symfony\Component\Console\D
      */
     protected function write(string $content, bool $decorated = \false)
     {
-        $this->output->write($content, \false, $decorated ? \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface::OUTPUT_NORMAL : \EasyCI20220607\Symfony\Component\Console\Output\OutputInterface::OUTPUT_RAW);
+        $this->output->write($content, \false, $decorated ? OutputInterface::OUTPUT_NORMAL : OutputInterface::OUTPUT_RAW);
     }
     /**
      * Describes an InputArgument instance.
      */
-    protected abstract function describeInputArgument(\EasyCI20220607\Symfony\Component\Console\Input\InputArgument $argument, array $options = []);
+    protected abstract function describeInputArgument(InputArgument $argument, array $options = []);
     /**
      * Describes an InputOption instance.
      */
-    protected abstract function describeInputOption(\EasyCI20220607\Symfony\Component\Console\Input\InputOption $option, array $options = []);
+    protected abstract function describeInputOption(InputOption $option, array $options = []);
     /**
      * Describes an InputDefinition instance.
      */
-    protected abstract function describeInputDefinition(\EasyCI20220607\Symfony\Component\Console\Input\InputDefinition $definition, array $options = []);
+    protected abstract function describeInputDefinition(InputDefinition $definition, array $options = []);
     /**
      * Describes a Command instance.
      */
-    protected abstract function describeCommand(\EasyCI20220607\Symfony\Component\Console\Command\Command $command, array $options = []);
+    protected abstract function describeCommand(Command $command, array $options = []);
     /**
      * Describes an Application instance.
      */
-    protected abstract function describeApplication(\EasyCI20220607\Symfony\Component\Console\Application $application, array $options = []);
+    protected abstract function describeApplication(Application $application, array $options = []);
 }

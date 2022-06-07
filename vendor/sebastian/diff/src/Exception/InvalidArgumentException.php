@@ -11,6 +11,6 @@ declare (strict_types=1);
  */
 namespace EasyCI20220607\SebastianBergmann\Diff;
 
-class InvalidArgumentException extends \InvalidArgumentException implements \EasyCI20220607\SebastianBergmann\Diff\Exception
+class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {
 }

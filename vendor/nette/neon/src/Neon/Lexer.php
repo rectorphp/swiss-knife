@@ -12,14 +12,14 @@ final class Lexer
 {
     public const Patterns = [
         // strings
-        \EasyCI20220607\Nette\Neon\Token::String => '
+        Token::String => '
 			\'\'\'\\n (?:(?: [^\\n] | \\n(?![\\t\\ ]*+\'\'\') )*+ \\n)?[\\t\\ ]*+\'\'\' |
 			"""\\n (?:(?: [^\\n] | \\n(?![\\t\\ ]*+""") )*+ \\n)?[\\t\\ ]*+""" |
 			\' (?: \'\' | [^\'\\n] )*+ \' |
 			" (?: \\\\. | [^"\\\\\\n] )*+ "
 		',
         // literal / boolean / integer / float
-        \EasyCI20220607\Nette\Neon\Token::Literal => '
+        Token::Literal => '
 			(?: [^#"\',:=[\\]{}()\\n\\t\\ `-] | (?<!["\']) [:-] [^"\',=[\\]{}()\\n\\t\\ ] )
 			(?:
 				[^,:=\\]})(\\n\\t\\ ]++ |
@@ -28,21 +28,21 @@ final class Lexer
 			)*+
 		',
         // punctuation
-        \EasyCI20220607\Nette\Neon\Token::Char => '[,:=[\\]{}()-]',
+        Token::Char => '[,:=[\\]{}()-]',
         // comment
-        \EasyCI20220607\Nette\Neon\Token::Comment => '\\#.*+',
+        Token::Comment => '\\#.*+',
         // new line
-        \EasyCI20220607\Nette\Neon\Token::Newline => '\\n++',
+        Token::Newline => '\\n++',
         // whitespace
-        \EasyCI20220607\Nette\Neon\Token::Whitespace => '[\\t\\ ]++',
+        Token::Whitespace => '[\\t\\ ]++',
     ];
-    public function tokenize(string $input) : \EasyCI20220607\Nette\Neon\TokenStream
+    public function tokenize(string $input) : TokenStream
     {
         $input = \str_replace("\r", '', $input);
         $pattern = '~(' . \implode(')|(', self::Patterns) . ')~Amixu';
         $res = \preg_match_all($pattern, $input, $tokens, \PREG_SET_ORDER);
         if ($res === \false) {
-            throw new \EasyCI20220607\Nette\Neon\Exception('Invalid UTF-8 sequence.');
+            throw new Exception('Invalid UTF-8 sequence.');
         }
         $types = \array_keys(self::Patterns);
         $offset = 0;
@@ -53,16 +53,16 @@ final class Lexer
                     break;
                 } elseif ($token[$i] !== '') {
                     $type = $types[$i - 1];
-                    if ($type === \EasyCI20220607\Nette\Neon\Token::Char) {
+                    if ($type === Token::Char) {
                         $type = $token[0];
                     }
                     break;
                 }
             }
-            $token = new \EasyCI20220607\Nette\Neon\Token($token[0], $type);
+            $token = new Token($token[0], $type);
             $offset += \strlen($token->value);
         }
-        $stream = new \EasyCI20220607\Nette\Neon\TokenStream($tokens);
+        $stream = new TokenStream($tokens);
         if ($offset !== \strlen($input)) {
             $s = \str_replace("\n", '\\n', \substr($input, $offset, 40));
             $stream->error("Unexpected '{$s}'", \count($tokens));
@@ -71,6 +71,6 @@ final class Lexer
     }
     public static function requiresDelimiters(string $s) : bool
     {
-        return \preg_match('~[\\x00-\\x1F]|^[+-.]?\\d|^(true|false|yes|no|on|off|null)$~Di', $s) || !\preg_match('~^' . self::Patterns[\EasyCI20220607\Nette\Neon\Token::Literal] . '$~Dx', $s);
+        return \preg_match('~[\\x00-\\x1F]|^[+-.]?\\d|^(true|false|yes|no|on|off|null)$~Di', $s) || !\preg_match('~^' . self::Patterns[Token::Literal] . '$~Dx', $s);
     }
 }

@@ -15,7 +15,7 @@ namespace EasyCI20220607\Composer\Semver\Constraint;
  *
  * This constraint matches everything.
  */
-class MatchAllConstraint implements \EasyCI20220607\Composer\Semver\Constraint\ConstraintInterface
+class MatchAllConstraint implements ConstraintInterface
 {
     /** @var string|null */
     protected $prettyString;
@@ -24,7 +24,7 @@ class MatchAllConstraint implements \EasyCI20220607\Composer\Semver\Constraint\C
      *
      * @return bool
      */
-    public function matches(\EasyCI20220607\Composer\Semver\Constraint\ConstraintInterface $provider)
+    public function matches(ConstraintInterface $provider)
     {
         return \true;
     }
@@ -64,13 +64,13 @@ class MatchAllConstraint implements \EasyCI20220607\Composer\Semver\Constraint\C
      */
     public function getUpperBound()
     {
-        return \EasyCI20220607\Composer\Semver\Constraint\Bound::positiveInfinity();
+        return Bound::positiveInfinity();
     }
     /**
      * {@inheritDoc}
      */
     public function getLowerBound()
     {
-        return \EasyCI20220607\Composer\Semver\Constraint\Bound::zero();
+        return Bound::zero();
     }
 }

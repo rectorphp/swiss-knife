@@ -9,14 +9,14 @@ use EasyCI20220607\PHPStan\PhpDocParser\Ast\Node;
  */
 interface PhpDocNodeVisitorInterface
 {
-    public function beforeTraverse(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Node $node) : void;
+    public function beforeTraverse(Node $node) : void;
     /**
      * @return int|\PHPStan\PhpDocParser\Ast\Node|null
      */
-    public function enterNode(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Node $node);
+    public function enterNode(Node $node);
     /**
      * @return int|\PhpParser\Node|mixed[]|null Replacement node (or special return)
      */
-    public function leaveNode(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Node $node);
-    public function afterTraverse(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Node $node) : void;
+    public function leaveNode(Node $node);
+    public function afterTraverse(Node $node) : void;
 }

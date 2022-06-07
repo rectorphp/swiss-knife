@@ -13,8 +13,8 @@ namespace EasyCI20220607\Symfony\Contracts\Service;
 use EasyCI20220607\Psr\Container\ContainerExceptionInterface;
 use EasyCI20220607\Psr\Container\NotFoundExceptionInterface;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\EasyCI20220607\Psr\Container\ContainerExceptionInterface::class);
-\class_exists(\EasyCI20220607\Psr\Container\NotFoundExceptionInterface::class);
+\class_exists(ContainerExceptionInterface::class);
+\class_exists(NotFoundExceptionInterface::class);
 /**
  * A trait to help implement ServiceProviderInterface.
  *
@@ -89,7 +89,7 @@ trait ServiceLocatorTrait
         }
         return $this->providedTypes;
     }
-    private function createNotFoundException(string $id) : \EasyCI20220607\Psr\Container\NotFoundExceptionInterface
+    private function createNotFoundException(string $id) : NotFoundExceptionInterface
     {
         if (!($alternatives = \array_keys($this->factories))) {
             $message = 'is empty...';
@@ -106,13 +106,13 @@ trait ServiceLocatorTrait
         } else {
             $message = \sprintf('Service "%s" not found: the current service locator %s', $id, $message);
         }
-        return new class($message) extends \InvalidArgumentException implements \EasyCI20220607\Psr\Container\NotFoundExceptionInterface
+        return new class($message) extends \InvalidArgumentException implements NotFoundExceptionInterface
         {
         };
     }
-    private function createCircularReferenceException(string $id, array $path) : \EasyCI20220607\Psr\Container\ContainerExceptionInterface
+    private function createCircularReferenceException(string $id, array $path) : ContainerExceptionInterface
     {
-        return new class(\sprintf('Circular reference detected for service "%s", path: "%s".', $id, \implode(' -> ', $path))) extends \RuntimeException implements \EasyCI20220607\Psr\Container\ContainerExceptionInterface
+        return new class(\sprintf('Circular reference detected for service "%s", path: "%s".', $id, \implode(' -> ', $path))) extends \RuntimeException implements ContainerExceptionInterface
         {
         };
     }

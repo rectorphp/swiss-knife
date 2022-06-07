@@ -8,6 +8,6 @@ use EasyCI20220607\PhpParser\Builder\TraitUse;
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion
  */
-final class TraitUseBuilder extends \EasyCI20220607\PhpParser\Builder\TraitUse
+final class TraitUseBuilder extends TraitUse
 {
 }

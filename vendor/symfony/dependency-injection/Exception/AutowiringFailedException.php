@@ -13,7 +13,7 @@ namespace EasyCI20220607\Symfony\Component\DependencyInjection\Exception;
 /**
  * Thrown when a definition cannot be autowired.
  */
-class AutowiringFailedException extends \EasyCI20220607\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class AutowiringFailedException extends RuntimeException
 {
     /**
      * @var string

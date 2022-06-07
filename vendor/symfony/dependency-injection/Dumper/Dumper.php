@@ -16,10 +16,10 @@ use EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Dumper implements \EasyCI20220607\Symfony\Component\DependencyInjection\Dumper\DumperInterface
+abstract class Dumper implements DumperInterface
 {
     protected $container;
-    public function __construct(\EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(ContainerBuilder $container)
     {
         $this->container = $container;
     }

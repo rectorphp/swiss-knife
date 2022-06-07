@@ -15,7 +15,7 @@ namespace EasyCI20220607\Symfony\Component\Console\Helper;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TableSeparator extends \EasyCI20220607\Symfony\Component\Console\Helper\TableCell
+class TableSeparator extends TableCell
 {
     public function __construct(array $options = [])
     {

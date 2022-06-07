@@ -6,7 +6,7 @@ namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use function trim;
-class PropertyTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode
+class PropertyTagValueNode implements PhpDocTagValueNode
 {
     use NodeAttributes;
     /** @var TypeNode */
@@ -15,7 +15,7 @@ class PropertyTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\P
     public $propertyName;
     /** @var string (may be empty) */
     public $description;
-    public function __construct(\EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\TypeNode $type, string $propertyName, string $description)
+    public function __construct(TypeNode $type, string $propertyName, string $description)
     {
         $this->type = $type;
         $this->propertyName = $propertyName;
@@ -23,6 +23,6 @@ class PropertyTagValueNode implements \EasyCI20220607\PHPStan\PhpDocParser\Ast\P
     }
     public function __toString() : string
     {
-        return \trim("{$this->type} {$this->propertyName} {$this->description}");
+        return trim("{$this->type} {$this->propertyName} {$this->description}");
     }
 }

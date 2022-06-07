@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
+namespace EasyCI20220607\Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
 use EasyCI20220607\Nette\Utils\Strings;
-use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
-use Symplify\EasyCI\ValueObject\FileError;
+use EasyCI20220607\Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
+use EasyCI20220607\Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
+use EasyCI20220607\Symplify\EasyCI\ValueObject\FileError;
 use EasyCI20220607\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
 use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\MissingClassesLatteAnalyzer\MissingClassesLatteAnalyzerTest
  */
-final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface
+final class MissingClassesLatteAnalyzer implements LatteTemplateAnalyzerInterface
 {
     /**
      * @see https://regex101.com/r/Wrfff2/7
@@ -33,7 +33,7 @@ final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contra
      * @var \Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\EasyCI20220607\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->classLikeExistenceChecker = $classLikeExistenceChecker;
     }
@@ -46,9 +46,9 @@ final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contra
         $errors = [];
         foreach ($fileInfos as $fileInfo) {
             // clear content from javascript fiels
-            $fileContents = \EasyCI20220607\Nette\Utils\Strings::replace($fileInfo->getContents(), self::SCRIPT_CONTENTS_REGEX, '');
-            $classMatches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileContents, self::CLASS_REGEX);
-            $varTypeInstanceOfClassMatches = \EasyCI20220607\Nette\Utils\Strings::matchAll($fileContents, self::VARTYPE_INSTANCEOF_CLASS_REGEX);
+            $fileContents = Strings::replace($fileInfo->getContents(), self::SCRIPT_CONTENTS_REGEX, '');
+            $classMatches = Strings::matchAll($fileContents, self::CLASS_REGEX);
+            $varTypeInstanceOfClassMatches = Strings::matchAll($fileContents, self::VARTYPE_INSTANCEOF_CLASS_REGEX);
             $matches = \array_merge($classMatches, $varTypeInstanceOfClassMatches);
             if ($matches === []) {
                 continue;
@@ -58,7 +58,7 @@ final class MissingClassesLatteAnalyzer implements \Symplify\EasyCI\Latte\Contra
                 if ($this->classLikeExistenceChecker->doesClassLikeExist($class)) {
                     continue;
                 }
-                $errors[] = new \Symplify\EasyCI\ValueObject\FileError(\sprintf('Class "%s" not found', $class), $fileInfo);
+                $errors[] = new FileError(\sprintf('Class "%s" not found', $class), $fileInfo);
             }
         }
         return $errors;
