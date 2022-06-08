@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Kernel;
 
-use EasyCI20220607\Psr\Container\ContainerInterface;
-use EasyCI20220607\Symplify\Astral\ValueObject\AstralConfig;
-use EasyCI20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
-use EasyCI20220607\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use EasyCI20220608\Psr\Container\ContainerInterface;
+use EasyCI20220608\Symplify\Astral\ValueObject\AstralConfig;
+use EasyCI20220608\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
+use EasyCI20220608\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class EasyCIKernel extends AbstractSymplifyKernel
 {
     /**

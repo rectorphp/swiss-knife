@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220607\Symfony\Contracts\Service;
+namespace EasyCI20220608\Symfony\Contracts\Service;
 
-use EasyCI20220607\Psr\Container\ContainerExceptionInterface;
-use EasyCI20220607\Psr\Container\NotFoundExceptionInterface;
+use EasyCI20220608\Psr\Container\ContainerExceptionInterface;
+use EasyCI20220608\Psr\Container\NotFoundExceptionInterface;
 // Help opcache.preload discover always-needed symbols
 \class_exists(ContainerExceptionInterface::class);
 \class_exists(NotFoundExceptionInterface::class);

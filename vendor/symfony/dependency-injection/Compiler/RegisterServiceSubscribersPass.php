@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220607\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220608\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220607\Psr\Container\ContainerInterface as PsrContainerInterface;
-use EasyCI20220607\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI20220607\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Reference;
-use EasyCI20220607\Symfony\Component\DependencyInjection\TypedReference;
-use EasyCI20220607\Symfony\Component\HttpFoundation\Session\SessionInterface;
-use EasyCI20220607\Symfony\Contracts\Service\ServiceProviderInterface;
-use EasyCI20220607\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use EasyCI20220608\Psr\Container\ContainerInterface as PsrContainerInterface;
+use EasyCI20220608\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI20220608\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Reference;
+use EasyCI20220608\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI20220608\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use EasyCI20220608\Symfony\Contracts\Service\ServiceProviderInterface;
+use EasyCI20220608\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * Compiler pass to register tagged services that require a service locator.
  *

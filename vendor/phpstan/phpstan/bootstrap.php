@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\PHPStan;
+namespace EasyCI20220608\PHPStan;
 
-use EasyCI20220607\Composer\Autoload\ClassLoader;
+use EasyCI20220608\Composer\Autoload\ClassLoader;
 final class PharAutoloader
 {
     /** @var ClassLoader */
     private static $composerAutoloader;
     public static final function loadClass(string $class) : void
     {
-        if (!\extension_loaded('phar') || \defined('EasyCI20220607\\__PHPSTAN_RUNNING__')) {
+        if (!\extension_loaded('phar') || \defined('EasyCI20220608\\__PHPSTAN_RUNNING__')) {
             return;
         }
         if (\strpos($class, '_PHPStan_') === 0) {

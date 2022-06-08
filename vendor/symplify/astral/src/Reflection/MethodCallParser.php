@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\Astral\Reflection;
+namespace EasyCI20220608\Symplify\Astral\Reflection;
 
-use EasyCI20220607\PhpParser\Node\Expr\MethodCall;
-use EasyCI20220607\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220607\PHPStan\Analyser\Scope;
-use EasyCI20220607\PHPStan\Reflection\ClassReflection;
-use EasyCI20220607\PHPStan\Type\ObjectType;
-use EasyCI20220607\PHPStan\Type\ThisType;
-use EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220608\PhpParser\Node\Expr\MethodCall;
+use EasyCI20220608\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220608\PHPStan\Analyser\Scope;
+use EasyCI20220608\PHPStan\Reflection\ClassReflection;
+use EasyCI20220608\PHPStan\Type\ObjectType;
+use EasyCI20220608\PHPStan\Type\ThisType;
+use EasyCI20220608\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @api
  */

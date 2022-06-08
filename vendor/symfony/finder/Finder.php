@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220607\Symfony\Component\Finder;
+namespace EasyCI20220608\Symfony\Component\Finder;
 
-use EasyCI20220607\Symfony\Component\Finder\Comparator\DateComparator;
-use EasyCI20220607\Symfony\Component\Finder\Comparator\NumberComparator;
-use EasyCI20220607\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\CustomFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\LazyIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
-use EasyCI20220607\Symfony\Component\Finder\Iterator\SortableIterator;
+use EasyCI20220608\Symfony\Component\Finder\Comparator\DateComparator;
+use EasyCI20220608\Symfony\Component\Finder\Comparator\NumberComparator;
+use EasyCI20220608\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\CustomFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\LazyIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
+use EasyCI20220608\Symfony\Component\Finder\Iterator\SortableIterator;
 /**
  * Finder allows to build rules to find files and directories.
  *

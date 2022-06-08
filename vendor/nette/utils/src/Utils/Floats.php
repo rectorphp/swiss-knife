@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220607\Nette\Utils;
+namespace EasyCI20220608\Nette\Utils;
 
-use EasyCI20220607\Nette;
+use EasyCI20220608\Nette;
 /**
  * Floating-point numbers comparison.
  */

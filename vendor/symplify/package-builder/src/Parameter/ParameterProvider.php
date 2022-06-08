@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\PackageBuilder\Parameter;
+namespace EasyCI20220608\Symplify\PackageBuilder\Parameter;
 
-use EasyCI20220607\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use EasyCI20220607\Symfony\Component\HttpFoundation\ParameterBag;
+use EasyCI20220608\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use EasyCI20220608\Symfony\Component\HttpFoundation\ParameterBag;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Parameter\ParameterProviderTest

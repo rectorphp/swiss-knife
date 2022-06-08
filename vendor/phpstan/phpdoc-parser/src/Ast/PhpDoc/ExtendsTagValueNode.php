@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220608\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220607\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220607\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
+use EasyCI20220608\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220608\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
 use function trim;
 class ExtendsTagValueNode implements PhpDocTagValueNode
 {

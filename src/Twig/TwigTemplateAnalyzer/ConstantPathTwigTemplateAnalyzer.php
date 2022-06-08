@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
-use EasyCI20220607\Nette\Utils\Strings;
+use EasyCI20220608\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\LineAwareFileError;
-use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220608\Symplify\SmartFileSystem\SmartFileInfo;
 final class ConstantPathTwigTemplateAnalyzer implements TwigTemplateAnalyzerInterface
 {
     /**

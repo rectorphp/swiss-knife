@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\PhpParser\Node\Expr;
+namespace EasyCI20220608\PhpParser\Node\Expr;
 
-use EasyCI20220607\PhpParser\Node\Expr;
-use EasyCI20220607\PhpParser\Node\Name;
-use EasyCI20220607\PhpParser\Node\VarLikeIdentifier;
+use EasyCI20220608\PhpParser\Node\Expr;
+use EasyCI20220608\PhpParser\Node\Name;
+use EasyCI20220608\PhpParser\Node\VarLikeIdentifier;
 class StaticPropertyFetch extends Expr
 {
     /** @var Name|Expr Class name */

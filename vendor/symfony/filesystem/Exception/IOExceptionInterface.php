@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220607\Symfony\Component\Filesystem\Exception;
+namespace EasyCI20220608\Symfony\Component\Filesystem\Exception;
 
 /**
  * IOException interface for file and input/output stream related exceptions thrown by the component.

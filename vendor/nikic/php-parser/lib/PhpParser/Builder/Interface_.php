@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\PhpParser\Builder;
+namespace EasyCI20220608\PhpParser\Builder;
 
-use EasyCI20220607\PhpParser;
-use EasyCI20220607\PhpParser\BuilderHelpers;
-use EasyCI20220607\PhpParser\Node;
-use EasyCI20220607\PhpParser\Node\Name;
-use EasyCI20220607\PhpParser\Node\Stmt;
+use EasyCI20220608\PhpParser;
+use EasyCI20220608\PhpParser\BuilderHelpers;
+use EasyCI20220608\PhpParser\Node;
+use EasyCI20220608\PhpParser\Node\Name;
+use EasyCI20220608\PhpParser\Node\Stmt;
 class Interface_ extends Declaration
 {
     protected $name;

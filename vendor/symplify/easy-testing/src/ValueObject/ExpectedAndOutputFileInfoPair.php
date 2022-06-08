@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyTesting\ValueObject;
+namespace EasyCI20220608\Symplify\EasyTesting\ValueObject;
 
-use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI20220608\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220608\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ExpectedAndOutputFileInfoPair
 {
     /**

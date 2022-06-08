@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI20220608\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI20220607\PhpParser\Node\Expr;
-use EasyCI20220607\PhpParser\Node\Expr\ClassConstFetch;
-use EasyCI20220607\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220608\PhpParser\Node\Expr;
+use EasyCI20220608\PhpParser\Node\Expr\ClassConstFetch;
+use EasyCI20220608\PhpParser\Node\Stmt\ClassLike;
 use ReflectionClassConstant;
-use EasyCI20220607\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI20220607\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220607\Symplify\Astral\NodeFinder\SimpleNodeFinder;
+use EasyCI20220608\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI20220608\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220608\Symplify\Astral\NodeFinder\SimpleNodeFinder;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *

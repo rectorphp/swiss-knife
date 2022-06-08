@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\PhpParser\Node\Stmt;
+namespace EasyCI20220608\PhpParser\Node\Stmt;
 
-use EasyCI20220607\PhpParser\Node;
+use EasyCI20220608\PhpParser\Node;
 class Break_ extends Node\Stmt
 {
     /** @var null|Node\Expr Number of loops to break */

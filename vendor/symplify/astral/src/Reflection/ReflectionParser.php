@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\Astral\Reflection;
+namespace EasyCI20220608\Symplify\Astral\Reflection;
 
-use EasyCI20220607\PhpParser\Node;
-use EasyCI20220607\PhpParser\Node\Stmt\Class_;
-use EasyCI20220607\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI20220607\PhpParser\Node\Stmt\Property;
-use EasyCI20220607\PhpParser\NodeFinder;
-use EasyCI20220607\PHPStan\Reflection\MethodReflection;
+use EasyCI20220608\PhpParser\Node;
+use EasyCI20220608\PhpParser\Node\Stmt\Class_;
+use EasyCI20220608\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220608\PhpParser\Node\Stmt\Property;
+use EasyCI20220608\PhpParser\NodeFinder;
+use EasyCI20220608\PHPStan\Reflection\MethodReflection;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
-use EasyCI20220607\Symplify\Astral\PhpParser\SmartPhpParser;
+use EasyCI20220608\Symplify\Astral\PhpParser\SmartPhpParser;
 use Throwable;
 /**
  * @api

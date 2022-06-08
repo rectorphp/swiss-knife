@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyTesting\Finder;
+namespace EasyCI20220608\Symplify\EasyTesting\Finder;
 
-use EasyCI20220607\Symfony\Component\Finder\Finder;
-use EasyCI20220607\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220608\Symfony\Component\Finder\Finder;
+use EasyCI20220608\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use EasyCI20220608\Symplify\SmartFileSystem\SmartFileInfo;
 final class FixtureFinder
 {
     /**

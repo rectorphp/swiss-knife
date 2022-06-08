@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220607\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220608\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220607\Symfony\Component\DependencyInjection\Alias;
-use EasyCI20220607\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Alias;
+use EasyCI20220608\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI20220608\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

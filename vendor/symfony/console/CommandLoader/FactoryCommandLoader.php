@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220607\Symfony\Component\Console\CommandLoader;
+namespace EasyCI20220608\Symfony\Component\Console\CommandLoader;
 
-use EasyCI20220607\Symfony\Component\Console\Command\Command;
-use EasyCI20220607\Symfony\Component\Console\Exception\CommandNotFoundException;
+use EasyCI20220608\Symfony\Component\Console\Command\Command;
+use EasyCI20220608\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * A simple command loader using factories to instantiate commands lazily.
  *

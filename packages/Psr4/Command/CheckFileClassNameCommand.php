@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Command;
 
-use EasyCI20220607\Nette\Utils\Strings;
-use EasyCI20220607\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220607\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220607\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220608\Nette\Utils\Strings;
+use EasyCI20220608\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220608\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220608\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
-use EasyCI20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220607\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220608\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220608\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220608\Symplify\SmartFileSystem\SmartFileInfo;
 final class CheckFileClassNameCommand extends AbstractSymplifyCommand
 {
     /**

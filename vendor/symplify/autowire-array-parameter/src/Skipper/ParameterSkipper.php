@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\AutowireArrayParameter\Skipper;
+namespace EasyCI20220608\Symplify\AutowireArrayParameter\Skipper;
 
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
-use EasyCI20220607\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220607\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use EasyCI20220608\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220608\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 final class ParameterSkipper
 {
     /**
@@ -15,7 +15,7 @@ final class ParameterSkipper
      *
      * @var string[]
      */
-    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['EasyCI20220607\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI20220607\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI20220607\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI20220607\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI20220607\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI20220607\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI20220607\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI20220607\\Sonata\\Twig\\Extension\\TemplateExtension'];
+    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['EasyCI20220608\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI20220608\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI20220608\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI20220608\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI20220608\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI20220608\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI20220608\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI20220608\\Sonata\\Twig\\Extension\\TemplateExtension'];
     /**
      * @var string[]
      */

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\PhpParser\Node\Stmt\TraitUseAdaptation;
+namespace EasyCI20220608\PhpParser\Node\Stmt\TraitUseAdaptation;
 
-use EasyCI20220607\PhpParser\Node;
+use EasyCI20220608\PhpParser\Node;
 class Precedence extends Node\Stmt\TraitUseAdaptation
 {
     /** @var Node\Name[] Overwritten traits */

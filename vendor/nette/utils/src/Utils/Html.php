@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220607\Nette\Utils;
+namespace EasyCI20220608\Nette\Utils;
 
-use EasyCI20220607\Nette;
-use EasyCI20220607\Nette\HtmlStringable;
+use EasyCI20220608\Nette;
+use EasyCI20220608\Nette\HtmlStringable;
 use function is_array, is_float, is_object, is_string;
 /**
  * HTML helper.

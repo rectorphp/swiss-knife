@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220607\Symplify\EasyTesting\Kernel;
+namespace EasyCI20220608\Symplify\EasyTesting\Kernel;
 
-use EasyCI20220607\Psr\Container\ContainerInterface;
-use EasyCI20220607\Symplify\EasyTesting\ValueObject\EasyTestingConfig;
-use EasyCI20220607\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use EasyCI20220608\Psr\Container\ContainerInterface;
+use EasyCI20220608\Symplify\EasyTesting\ValueObject\EasyTestingConfig;
+use EasyCI20220608\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class EasyTestingKernel extends AbstractSymplifyKernel
 {
     /**
