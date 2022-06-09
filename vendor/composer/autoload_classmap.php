@@ -117,6 +117,7 @@ return array(
     'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ThrowsTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ThrowsTagValueNode.php',
     'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypeAliasImportTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypeAliasImportTagValueNode.php',
     'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypeAliasTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypeAliasTagValueNode.php',
+    'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypelessParamTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypelessParamTagValueNode.php',
     'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\UsesTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/UsesTagValueNode.php',
     'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\VarTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/VarTagValueNode.php',
     'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\Type\\ArrayShapeItemNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/Type/ArrayShapeItemNode.php',

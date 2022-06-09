@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5eccea89e8ce982446c61eb73ef5b2f2
+class ComposerStaticInitf33fe9c0a72a408d9360ed13dcb77dd8
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -243,6 +243,7 @@ class ComposerStaticInit5eccea89e8ce982446c61eb73ef5b2f2
         'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ThrowsTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ThrowsTagValueNode.php',
         'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypeAliasImportTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypeAliasImportTagValueNode.php',
         'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypeAliasTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypeAliasTagValueNode.php',
+        'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypelessParamTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypelessParamTagValueNode.php',
         'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\UsesTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/UsesTagValueNode.php',
         'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\VarTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/VarTagValueNode.php',
         'EasyCI20220609\\PHPStan\\PhpDocParser\\Ast\\Type\\ArrayShapeItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ArrayShapeItemNode.php',
@@ -1178,9 +1179,9 @@ class ComposerStaticInit5eccea89e8ce982446c61eb73ef5b2f2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5eccea89e8ce982446c61eb73ef5b2f2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5eccea89e8ce982446c61eb73ef5b2f2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5eccea89e8ce982446c61eb73ef5b2f2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf33fe9c0a72a408d9360ed13dcb77dd8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf33fe9c0a72a408d9360ed13dcb77dd8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf33fe9c0a72a408d9360ed13dcb77dd8::$classMap;
 
         }, null, ClassLoader::class);
     }
