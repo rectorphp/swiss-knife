@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI20220609\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI20220608\PhpParser\Lexer\Emulative;
+use EasyCI20220609\PhpParser\Lexer\Emulative;
 final class FlexibleDocStringEmulator extends TokenEmulator
 {
     const FLEXIBLE_DOC_STRING_REGEX = <<<'REGEX'

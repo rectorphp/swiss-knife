@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220608\Symfony\Component\Console\Tester;
+namespace EasyCI20220609\Symfony\Component\Console\Tester;
 
-use EasyCI20220608\PHPUnit\Framework\Assert;
-use EasyCI20220608\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220608\Symfony\Component\Console\Output\ConsoleOutput;
-use EasyCI20220608\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220608\Symfony\Component\Console\Output\StreamOutput;
-use EasyCI20220608\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful;
+use EasyCI20220609\PHPUnit\Framework\Assert;
+use EasyCI20220609\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220609\Symfony\Component\Console\Output\ConsoleOutput;
+use EasyCI20220609\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220609\Symfony\Component\Console\Output\StreamOutput;
+use EasyCI20220609\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful;
 /**
  * @author Amrouche Hamza <hamza.simperfit@gmail.com>
  */

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\CurrentProvider;
 
-use EasyCI20220608\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220609\Symplify\SmartFileSystem\SmartFileInfo;
 final class CurrentFileInfoProvider
 {
     /**

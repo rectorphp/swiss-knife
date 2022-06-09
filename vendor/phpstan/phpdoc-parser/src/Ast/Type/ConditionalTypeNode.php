@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220609\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220608\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220609\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
 class ConditionalTypeNode implements TypeNode
 {

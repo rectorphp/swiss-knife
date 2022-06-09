@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220608\Symfony\Component\DependencyInjection\ParameterBag;
+namespace EasyCI20220609\Symfony\Component\DependencyInjection\ParameterBag;
 
-use EasyCI20220608\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI20220609\Symfony\Component\DependencyInjection\Exception\LogicException;
 /**
  * Holds read-only parameters.
  *

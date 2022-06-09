@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220608\Symfony\Component\Console\Tester;
+namespace EasyCI20220609\Symfony\Component\Console\Tester;
 
-use EasyCI20220608\Symfony\Component\Console\Command\Command;
-use EasyCI20220608\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI20220608\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI20220609\Symfony\Component\Console\Command\Command;
+use EasyCI20220609\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI20220609\Symfony\Component\Console\Completion\CompletionSuggestions;
 /**
  * Eases the testing of command completion.
  *

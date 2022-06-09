@@ -1,8 +1,8 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Comment;
+namespace EasyCI20220609\PhpParser\Comment;
 
-class Doc extends \EasyCI20220608\PhpParser\Comment
+class Doc extends \EasyCI20220609\PhpParser\Comment
 {
 }

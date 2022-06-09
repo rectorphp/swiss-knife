@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220608\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace EasyCI20220609\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use EasyCI20220608\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI20220608\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
-use EasyCI20220608\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
+use EasyCI20220609\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI20220609\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
+use EasyCI20220609\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
 trait BindTrait
 {
     /**

@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser;
+namespace EasyCI20220609\PhpParser;
 
-use EasyCI20220608\PhpParser\Internal\DiffElem;
-use EasyCI20220608\PhpParser\Internal\PrintableNewAnonClassNode;
-use EasyCI20220608\PhpParser\Internal\TokenStream;
-use EasyCI20220608\PhpParser\Node\Expr;
-use EasyCI20220608\PhpParser\Node\Expr\AssignOp;
-use EasyCI20220608\PhpParser\Node\Expr\BinaryOp;
-use EasyCI20220608\PhpParser\Node\Expr\Cast;
-use EasyCI20220608\PhpParser\Node\Scalar;
-use EasyCI20220608\PhpParser\Node\Stmt;
+use EasyCI20220609\PhpParser\Internal\DiffElem;
+use EasyCI20220609\PhpParser\Internal\PrintableNewAnonClassNode;
+use EasyCI20220609\PhpParser\Internal\TokenStream;
+use EasyCI20220609\PhpParser\Node\Expr;
+use EasyCI20220609\PhpParser\Node\Expr\AssignOp;
+use EasyCI20220609\PhpParser\Node\Expr\BinaryOp;
+use EasyCI20220609\PhpParser\Node\Expr\Cast;
+use EasyCI20220609\PhpParser\Node\Scalar;
+use EasyCI20220609\PhpParser\Node\Stmt;
 abstract class PrettyPrinterAbstract
 {
     const FIXUP_PREC_LEFT = 0;

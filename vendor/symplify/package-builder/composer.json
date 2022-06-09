@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220608\\Symplify\\PackageBuilder\\": "src"
+            "EasyCI20220609\\Symplify\\PackageBuilder\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220608\\Symplify\\PackageBuilder\\Tests\\": "tests"
+            "EasyCI20220609\\Symplify\\PackageBuilder\\Tests\\": "tests"
         }
     },
     "extra": {

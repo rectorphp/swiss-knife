@@ -3,19 +3,19 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\Command;
 
-use EasyCI20220608\Symfony\Component\Console\Command\Command;
-use EasyCI20220608\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220608\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220608\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220608\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220609\Symfony\Component\Console\Command\Command;
+use EasyCI20220609\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220609\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220609\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220609\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\ActiveClass\Filtering\PossiblyUnusedClassesFilter;
 use Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder;
 use Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter;
 use Symplify\EasyCI\ActiveClass\UseImportsResolver;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220608\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220608\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use EasyCI20220608\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI20220609\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220609\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use EasyCI20220609\Symplify\SmartFileSystem\Finder\SmartFinder;
 final class CheckActiveClassCommand extends Command
 {
     /**

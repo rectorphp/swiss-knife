@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Node\Expr;
+namespace EasyCI20220609\PhpParser\Node\Expr;
 
-use EasyCI20220608\PhpParser\Node\Expr;
+use EasyCI20220609\PhpParser\Node\Expr;
 class YieldFrom extends Expr
 {
     /** @var Expr Expression to yield from */

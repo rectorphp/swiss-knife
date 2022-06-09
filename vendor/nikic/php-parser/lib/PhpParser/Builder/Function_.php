@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Builder;
+namespace EasyCI20220609\PhpParser\Builder;
 
-use EasyCI20220608\PhpParser;
-use EasyCI20220608\PhpParser\BuilderHelpers;
-use EasyCI20220608\PhpParser\Node;
-use EasyCI20220608\PhpParser\Node\Stmt;
+use EasyCI20220609\PhpParser;
+use EasyCI20220609\PhpParser\BuilderHelpers;
+use EasyCI20220609\PhpParser\Node;
+use EasyCI20220609\PhpParser\Node\Stmt;
 class Function_ extends FunctionLike
 {
     protected $name;

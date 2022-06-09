@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220608\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace EasyCI20220609\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use EasyCI20220608\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220608\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220609\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220609\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait DecorateTrait
 {
     /**

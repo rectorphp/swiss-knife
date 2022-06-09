@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser;
+namespace EasyCI20220609\PhpParser;
 
 class NodeTraverser implements NodeTraverserInterface
 {

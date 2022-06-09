@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220608\Nette;
+namespace EasyCI20220609\Nette;
 
-use EasyCI20220608\Nette\Utils\ObjectHelpers;
+use EasyCI20220609\Nette\Utils\ObjectHelpers;
 /**
  * Strict class for better experience.
  * - 'did you mean' hints

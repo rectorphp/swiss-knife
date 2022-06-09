@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI20220608\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220608\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220608\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220609\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220609\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220609\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Git\ConflictResolver;
-use EasyCI20220608\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220608\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use EasyCI20220608\Symplify\PackageBuilder\ValueObject\Option;
+use EasyCI20220609\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220609\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220609\Symplify\PackageBuilder\ValueObject\Option;
 final class CheckConflictsCommand extends AbstractSymplifyCommand
 {
     /**

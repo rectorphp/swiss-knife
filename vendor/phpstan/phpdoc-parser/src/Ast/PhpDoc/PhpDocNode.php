@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220609\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220608\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220608\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220609\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220609\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function array_column;
 use function array_filter;
 use function array_map;

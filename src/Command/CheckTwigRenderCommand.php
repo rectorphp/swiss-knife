@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI20220608\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220608\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220608\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220609\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220609\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220609\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Console\Output\MissingTwigTemplatePathReporter;
 use Symplify\EasyCI\Template\RenderMethodTemplateExtractor;
 use Symplify\EasyCI\Template\TemplatePathsResolver;
 use Symplify\EasyCI\Twig\TwigAnalyzer;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220608\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220608\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use EasyCI20220609\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220609\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CheckTwigRenderCommand extends AbstractSymplifyCommand
 {
     /**

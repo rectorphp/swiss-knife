@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220608\Symfony\Component\Console\Exception;
+namespace EasyCI20220609\Symfony\Component\Console\Exception;
 
 /**
  * Represents an incorrect option name typed in the console.

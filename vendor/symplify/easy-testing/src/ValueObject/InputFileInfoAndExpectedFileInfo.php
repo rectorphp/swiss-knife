@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\Symplify\EasyTesting\ValueObject;
+namespace EasyCI20220609\Symplify\EasyTesting\ValueObject;
 
-use EasyCI20220608\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220609\Symplify\SmartFileSystem\SmartFileInfo;
 final class InputFileInfoAndExpectedFileInfo
 {
     /**

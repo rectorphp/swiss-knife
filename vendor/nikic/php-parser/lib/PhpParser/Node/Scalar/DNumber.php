@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Node\Scalar;
+namespace EasyCI20220609\PhpParser\Node\Scalar;
 
-use EasyCI20220608\PhpParser\Node\Scalar;
+use EasyCI20220609\PhpParser\Node\Scalar;
 class DNumber extends Scalar
 {
     /** @var float Number value */

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Node\Stmt;
+namespace EasyCI20220609\PhpParser\Node\Stmt;
 
-use EasyCI20220608\PhpParser\Node\Name;
-use EasyCI20220608\PhpParser\Node\Stmt;
+use EasyCI20220609\PhpParser\Node\Name;
+use EasyCI20220609\PhpParser\Node\Stmt;
 class GroupUse extends Stmt
 {
     /** @var int Type of group use */

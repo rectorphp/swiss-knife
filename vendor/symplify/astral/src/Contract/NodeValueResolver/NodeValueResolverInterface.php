@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\Symplify\Astral\Contract\NodeValueResolver;
+namespace EasyCI20220609\Symplify\Astral\Contract\NodeValueResolver;
 
-use EasyCI20220608\PhpParser\Node\Expr;
+use EasyCI20220609\PhpParser\Node\Expr;
 /**
  * @template TExpr as Expr
  */

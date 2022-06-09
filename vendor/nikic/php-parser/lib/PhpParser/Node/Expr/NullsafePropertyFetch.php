@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220608\PhpParser\Node\Expr;
+namespace EasyCI20220609\PhpParser\Node\Expr;
 
-use EasyCI20220608\PhpParser\Node\Expr;
-use EasyCI20220608\PhpParser\Node\Identifier;
+use EasyCI20220609\PhpParser\Node\Expr;
+use EasyCI20220609\PhpParser\Node\Identifier;
 class NullsafePropertyFetch extends Expr
 {
     /** @var Expr Variable holding object */

@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
 
-use EasyCI20220608\PhpParser\Node;
-use EasyCI20220608\PhpParser\NodeVisitorAbstract;
+use EasyCI20220609\PhpParser\Node;
+use EasyCI20220609\PhpParser\NodeVisitorAbstract;
 use Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
 use Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey;
 final class FilePathNodeVisitor extends NodeVisitorAbstract
