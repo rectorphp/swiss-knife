@@ -6,6 +6,9 @@ namespace EasyCI20220609\Symplify\Astral\NodeFinder;
 use EasyCI20220609\PhpParser\Node;
 use EasyCI20220609\PhpParser\NodeFinder;
 use EasyCI20220609\Symplify\Astral\ValueObject\AttributeKey;
+/**
+ * @api
+ */
 final class SimpleNodeFinder
 {
     /**
