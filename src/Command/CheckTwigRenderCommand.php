@@ -12,7 +12,6 @@ use Symplify\EasyCI\Template\TemplatePathsResolver;
 use Symplify\EasyCI\Twig\TwigAnalyzer;
 use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CheckTwigRenderCommand extends AbstractSymplifyCommand
 {
     /**
@@ -41,7 +40,7 @@ final class CheckTwigRenderCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-twig-render');
         $this->setDescription('Validate template paths in $this->render(...)');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project directories');
     }

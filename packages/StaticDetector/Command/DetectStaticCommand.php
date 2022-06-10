@@ -11,7 +11,6 @@ use Symplify\EasyCI\StaticDetector\Output\StaticReportReporter;
 use Symplify\EasyCI\StaticDetector\StaticScanner;
 use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class DetectStaticCommand extends AbstractSymplifyCommand
 {
     /**
@@ -35,7 +34,7 @@ final class DetectStaticCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('detect-static');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One or more directories to detect static in');
         $this->setDescription('Show what static method calls are called where');
     }

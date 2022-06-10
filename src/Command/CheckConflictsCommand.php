@@ -8,7 +8,6 @@ use EasyCI20220610\Symfony\Component\Console\Input\InputInterface;
 use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Git\ConflictResolver;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220610\Symplify\PackageBuilder\ValueObject\Option;
 final class CheckConflictsCommand extends AbstractSymplifyCommand
 {
@@ -23,7 +22,7 @@ final class CheckConflictsCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-conflicts');
         $this->setDescription('Check files for missed git conflicts');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
     }

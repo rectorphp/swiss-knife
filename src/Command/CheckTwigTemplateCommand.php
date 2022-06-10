@@ -10,7 +10,6 @@ use Symplify\EasyCI\Console\Output\FileErrorsReporter;
 use Symplify\EasyCI\Twig\TwigTemplateProcessor;
 use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CheckTwigTemplateCommand extends AbstractSymplifyCommand
 {
     /**
@@ -29,7 +28,7 @@ final class CheckTwigTemplateCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-twig-template');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One or more paths with templates');
         $this->setDescription('Analyze missing classes, constant and static calls in Latte templates');
     }

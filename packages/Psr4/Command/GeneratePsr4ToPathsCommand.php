@@ -15,7 +15,6 @@ use Symplify\EasyCI\Psr4\ValueObject\Option;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
 use Symplify\EasyCI\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class GeneratePsr4ToPathsCommand extends AbstractSymplifyCommand
 {
     /**
@@ -49,7 +48,7 @@ final class GeneratePsr4ToPathsCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('generate-psr4-to-paths');
         $this->setDescription('Check if application is PSR-4 ready');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source');
         $this->addOption(Option::COMPOSER_JSON, null, InputOption::VALUE_REQUIRED, 'Path to composer.json');

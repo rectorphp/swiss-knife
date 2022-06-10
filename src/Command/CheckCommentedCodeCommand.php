@@ -10,7 +10,6 @@ use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Comments\CommentedCodeAnalyzer;
 use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
 {
     /**
@@ -28,7 +27,7 @@ final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-commented-code');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One or more paths to check');
         $this->setDescription('Checks code for commented snippets');
         $this->addOption(Option::LINE_LIMIT, null, InputOption::VALUE_REQUIRED | InputOption::VALUE_OPTIONAL, 'Amount of allowed comment lines in a row', self::DEFAULT_LINE_LIMIT);

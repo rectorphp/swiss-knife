@@ -13,7 +13,6 @@ use Symplify\EasyCI\ActiveClass\Finder\ClassNamesFinder;
 use Symplify\EasyCI\ActiveClass\Reporting\UnusedClassReporter;
 use Symplify\EasyCI\ActiveClass\UseImportsResolver;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220610\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use EasyCI20220610\Symplify\SmartFileSystem\Finder\SmartFinder;
 final class CheckActiveClassCommand extends Command
@@ -59,7 +58,7 @@ final class CheckActiveClassCommand extends Command
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-active-class');
         $this->setDescription('Check classes that are not used in any config and in the code');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One or more paths with templates');
     }

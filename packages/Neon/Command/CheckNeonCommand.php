@@ -10,7 +10,6 @@ use Symplify\EasyCI\Console\Output\FileErrorsReporter;
 use Symplify\EasyCI\Neon\Application\NeonFilesProcessor;
 use Symplify\EasyCI\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class CheckNeonCommand extends AbstractSymplifyCommand
 {
     /**
@@ -29,7 +28,7 @@ final class CheckNeonCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-neon');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One or more paths with templates');
         $this->setDescription('Analyze NEON files for complex syntax');
     }

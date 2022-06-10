@@ -9,7 +9,6 @@ use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class FindMultiClassesCommand extends AbstractSymplifyCommand
 {
     /**
@@ -23,7 +22,7 @@ final class FindMultiClassesCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('find-multi-classes');
         $this->setDescription('Find multiple classes in one file');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source to analyse');
     }

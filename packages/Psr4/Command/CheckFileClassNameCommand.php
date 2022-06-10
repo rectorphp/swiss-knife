@@ -10,7 +10,6 @@ use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
 use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use EasyCI20220610\Symplify\SmartFileSystem\SmartFileInfo;
 final class CheckFileClassNameCommand extends AbstractSymplifyCommand
 {
@@ -25,7 +24,7 @@ final class CheckFileClassNameCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('check-file-class-name');
         $this->setDescription('Check if short file name is same as class name');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source');
     }
