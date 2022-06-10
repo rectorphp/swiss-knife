@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220610\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220609\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220609\PHPStan\PhpDocParser\Parser\ParserException;
+use EasyCI20220610\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220610\PHPStan\PhpDocParser\Parser\ParserException;
 use function sprintf;
 use function trigger_error;
 use const E_USER_WARNING;

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220609\Symfony\Component\Config;
+namespace EasyCI20220610\Symfony\Component\Config;
 
-use EasyCI20220609\Symfony\Component\Config\Resource\ResourceInterface;
+use EasyCI20220610\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Interface for ConfigCache.
  *

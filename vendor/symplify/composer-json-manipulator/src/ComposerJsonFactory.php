@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\ComposerJsonManipulator;
+namespace EasyCI20220610\Symplify\ComposerJsonManipulator;
 
-use EasyCI20220609\Nette\Utils\Json;
-use EasyCI20220609\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use EasyCI20220609\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use EasyCI20220609\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use EasyCI20220609\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220610\Nette\Utils\Json;
+use EasyCI20220610\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use EasyCI20220610\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use EasyCI20220610\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use EasyCI20220610\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @api
  * @see \Symplify\ComposerJsonManipulator\Tests\ComposerJsonFactory\ComposerJsonFactoryTest

@@ -1,27 +1,27 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\Astral\NodeValue;
+namespace EasyCI20220610\Symplify\Astral\NodeValue;
 
-use EasyCI20220609\PhpParser\ConstExprEvaluationException;
-use EasyCI20220609\PhpParser\ConstExprEvaluator;
-use EasyCI20220609\PhpParser\Node\Expr;
-use EasyCI20220609\PhpParser\Node\Expr\Cast;
-use EasyCI20220609\PhpParser\Node\Expr\Instanceof_;
-use EasyCI20220609\PhpParser\Node\Expr\MethodCall;
-use EasyCI20220609\PhpParser\Node\Expr\PropertyFetch;
-use EasyCI20220609\PhpParser\Node\Expr\Variable;
-use EasyCI20220609\PHPStan\Analyser\Scope;
-use EasyCI20220609\PHPStan\Type\ConstantScalarType;
-use EasyCI20220609\PHPStan\Type\UnionType;
-use EasyCI20220609\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI20220609\Symplify\Astral\Exception\ShouldNotHappenException;
-use EasyCI20220609\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220609\Symplify\Astral\NodeValue\NodeValueResolver\ClassConstFetchValueResolver;
-use EasyCI20220609\Symplify\Astral\NodeValue\NodeValueResolver\ConstFetchValueResolver;
-use EasyCI20220609\Symplify\Astral\NodeValue\NodeValueResolver\FuncCallValueResolver;
-use EasyCI20220609\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueResolver;
-use EasyCI20220609\Symplify\PackageBuilder\Php\TypeChecker;
+use EasyCI20220610\PhpParser\ConstExprEvaluationException;
+use EasyCI20220610\PhpParser\ConstExprEvaluator;
+use EasyCI20220610\PhpParser\Node\Expr;
+use EasyCI20220610\PhpParser\Node\Expr\Cast;
+use EasyCI20220610\PhpParser\Node\Expr\Instanceof_;
+use EasyCI20220610\PhpParser\Node\Expr\MethodCall;
+use EasyCI20220610\PhpParser\Node\Expr\PropertyFetch;
+use EasyCI20220610\PhpParser\Node\Expr\Variable;
+use EasyCI20220610\PHPStan\Analyser\Scope;
+use EasyCI20220610\PHPStan\Type\ConstantScalarType;
+use EasyCI20220610\PHPStan\Type\UnionType;
+use EasyCI20220610\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI20220610\Symplify\Astral\Exception\ShouldNotHappenException;
+use EasyCI20220610\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220610\Symplify\Astral\NodeValue\NodeValueResolver\ClassConstFetchValueResolver;
+use EasyCI20220610\Symplify\Astral\NodeValue\NodeValueResolver\ConstFetchValueResolver;
+use EasyCI20220610\Symplify\Astral\NodeValue\NodeValueResolver\FuncCallValueResolver;
+use EasyCI20220610\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueResolver;
+use EasyCI20220610\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  */

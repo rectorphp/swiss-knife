@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Comments;
 
-use EasyCI20220609\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220610\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Comments\CommentedCodeAnalyzerTest
  */

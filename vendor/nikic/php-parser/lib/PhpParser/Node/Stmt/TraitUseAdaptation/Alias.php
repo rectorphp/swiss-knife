@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\PhpParser\Node\Stmt\TraitUseAdaptation;
+namespace EasyCI20220610\PhpParser\Node\Stmt\TraitUseAdaptation;
 
-use EasyCI20220609\PhpParser\Node;
+use EasyCI20220610\PhpParser\Node;
 class Alias extends Node\Stmt\TraitUseAdaptation
 {
     /** @var null|int New modifier */

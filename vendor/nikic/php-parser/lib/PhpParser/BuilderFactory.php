@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\PhpParser;
+namespace EasyCI20220610\PhpParser;
 
-use EasyCI20220609\PhpParser\Node\Arg;
-use EasyCI20220609\PhpParser\Node\Expr;
-use EasyCI20220609\PhpParser\Node\Expr\BinaryOp\Concat;
-use EasyCI20220609\PhpParser\Node\Identifier;
-use EasyCI20220609\PhpParser\Node\Name;
-use EasyCI20220609\PhpParser\Node\Scalar\String_;
-use EasyCI20220609\PhpParser\Node\Stmt\Use_;
+use EasyCI20220610\PhpParser\Node\Arg;
+use EasyCI20220610\PhpParser\Node\Expr;
+use EasyCI20220610\PhpParser\Node\Expr\BinaryOp\Concat;
+use EasyCI20220610\PhpParser\Node\Identifier;
+use EasyCI20220610\PhpParser\Node\Name;
+use EasyCI20220610\PhpParser\Node\Scalar\String_;
+use EasyCI20220610\PhpParser\Node\Stmt\Use_;
 class BuilderFactory
 {
     /**

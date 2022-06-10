@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\PackageBuilder\Console\Input;
+namespace EasyCI20220610\Symplify\PackageBuilder\Console\Input;
 
-use EasyCI20220609\Symfony\Component\Console\Input\ArgvInput;
+use EasyCI20220610\Symfony\Component\Console\Input\ArgvInput;
 /**
  * @api
  */

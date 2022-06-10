@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Json;
 
-use EasyCI20220609\Nette\Utils\Json;
-use EasyCI20220609\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use EasyCI20220610\Nette\Utils\Json;
+use EasyCI20220610\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class JsonAutoloadPrinter

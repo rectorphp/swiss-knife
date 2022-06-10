@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220609\Symfony\Component\Config\Resource;
+namespace EasyCI20220610\Symfony\Component\Config\Resource;
 
-use EasyCI20220609\Symfony\Component\Config\ResourceCheckerInterface;
+use EasyCI20220610\Symfony\Component\Config\ResourceCheckerInterface;
 /**
  * Resource checker for instances of SelfCheckingResourceInterface.
  *

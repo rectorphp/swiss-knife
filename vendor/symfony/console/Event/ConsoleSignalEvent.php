@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220609\Symfony\Component\Console\Event;
+namespace EasyCI20220610\Symfony\Component\Console\Event;
 
-use EasyCI20220609\Symfony\Component\Console\Command\Command;
-use EasyCI20220609\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220609\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220610\Symfony\Component\Console\Command\Command;
+use EasyCI20220610\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author marie <marie@users.noreply.github.com>
  */

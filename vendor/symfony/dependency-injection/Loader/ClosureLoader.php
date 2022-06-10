@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220609\Symfony\Component\DependencyInjection\Loader;
+namespace EasyCI20220610\Symfony\Component\DependencyInjection\Loader;
 
-use EasyCI20220609\Symfony\Component\Config\Loader\Loader;
-use EasyCI20220609\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220610\Symfony\Component\Config\Loader\Loader;
+use EasyCI20220610\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ClosureLoader loads service definitions from a PHP closure.
  *

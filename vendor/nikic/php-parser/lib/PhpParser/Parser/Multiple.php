@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\PhpParser\Parser;
+namespace EasyCI20220610\PhpParser\Parser;
 
-use EasyCI20220609\PhpParser\Error;
-use EasyCI20220609\PhpParser\ErrorHandler;
-use EasyCI20220609\PhpParser\Parser;
+use EasyCI20220610\PhpParser\Error;
+use EasyCI20220610\PhpParser\ErrorHandler;
+use EasyCI20220610\PhpParser\Parser;
 class Multiple implements Parser
 {
     /** @var Parser[] List of parsers to try, in order of preference */

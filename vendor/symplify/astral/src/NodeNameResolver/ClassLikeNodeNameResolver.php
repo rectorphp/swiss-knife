@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\Astral\NodeNameResolver;
+namespace EasyCI20220610\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220609\PhpParser\Node;
-use EasyCI20220609\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220609\Symplify\Astral\Contract\NodeNameResolverInterface;
+use EasyCI20220610\PhpParser\Node;
+use EasyCI20220610\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220610\Symplify\Astral\Contract\NodeNameResolverInterface;
 final class ClassLikeNodeNameResolver implements NodeNameResolverInterface
 {
     public function match(Node $node) : bool

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\EasyTesting\PHPUnit;
+namespace EasyCI20220610\Symplify\EasyTesting\PHPUnit;
 
 /**
  * @api
@@ -13,6 +13,6 @@ final class StaticPHPUnitEnvironment
      */
     public static function isPHPUnitRun() : bool
     {
-        return \defined('EasyCI20220609\\PHPUNIT_COMPOSER_INSTALL') || \defined('EasyCI20220609\\__PHPUNIT_PHAR__');
+        return \defined('EasyCI20220610\\PHPUNIT_COMPOSER_INSTALL') || \defined('EasyCI20220610\\__PHPUNIT_PHAR__');
     }
 }

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220609\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220610\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220609\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220609\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220609\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI20220609\Symfony\Component\DependencyInjection\Reference;
+use EasyCI20220610\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220610\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220610\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI20220610\Symfony\Component\DependencyInjection\Reference;
 /**
  * Replaces aliases with actual service definitions, effectively removing these
  * aliases.

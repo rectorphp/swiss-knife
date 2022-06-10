@@ -1,20 +1,20 @@
 <?php
 
-namespace EasyCI20220609\PhpParser\Parser;
+namespace EasyCI20220610\PhpParser\Parser;
 
-use EasyCI20220609\PhpParser\Error;
-use EasyCI20220609\PhpParser\Node;
-use EasyCI20220609\PhpParser\Node\Expr;
-use EasyCI20220609\PhpParser\Node\Name;
-use EasyCI20220609\PhpParser\Node\Scalar;
-use EasyCI20220609\PhpParser\Node\Stmt;
+use EasyCI20220610\PhpParser\Error;
+use EasyCI20220610\PhpParser\Node;
+use EasyCI20220610\PhpParser\Node\Expr;
+use EasyCI20220610\PhpParser\Node\Name;
+use EasyCI20220610\PhpParser\Node\Scalar;
+use EasyCI20220610\PhpParser\Node\Stmt;
 /* This is an automatically GENERATED file, which should not be manually edited.
  * Instead edit one of the following:
  *  * the grammar files grammar/php5.y or grammar/php7.y
  *  * the skeleton file grammar/parser.template
  *  * the preprocessing script grammar/rebuildParsers.php
  */
-class Php5 extends \EasyCI20220609\PhpParser\ParserAbstract
+class Php5 extends \EasyCI20220610\PhpParser\ParserAbstract
 {
     protected $tokenToSymbolMapSize = 396;
     protected $actionTableSize = 1093;

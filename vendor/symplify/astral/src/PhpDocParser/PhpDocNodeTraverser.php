@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\Astral\PhpDocParser;
+namespace EasyCI20220610\Symplify\Astral\PhpDocParser;
 
-use EasyCI20220609\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220609\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface;
-use EasyCI20220609\Symplify\Astral\PhpDocParser\Exception\InvalidTraverseException;
-use EasyCI20220609\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\CallablePhpDocNodeVisitor;
+use EasyCI20220610\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220610\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface;
+use EasyCI20220610\Symplify\Astral\PhpDocParser\Exception\InvalidTraverseException;
+use EasyCI20220610\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor\CallablePhpDocNodeVisitor;
 /**
  * @api
  *

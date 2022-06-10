@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\Astral\ValueObject\NodeBuilder;
+namespace EasyCI20220610\Symplify\Astral\ValueObject\NodeBuilder;
 
-use EasyCI20220609\PhpParser\Builder\Use_;
-use EasyCI20220609\PhpParser\Node\Name;
-use EasyCI20220609\PhpParser\Node\Stmt\Use_ as UseStmt;
+use EasyCI20220610\PhpParser\Builder\Use_;
+use EasyCI20220610\PhpParser\Node\Name;
+use EasyCI20220610\PhpParser\Node\Stmt\Use_ as UseStmt;
 /**
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion

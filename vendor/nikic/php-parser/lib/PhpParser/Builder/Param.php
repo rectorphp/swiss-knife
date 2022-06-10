@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\PhpParser\Builder;
+namespace EasyCI20220610\PhpParser\Builder;
 
-use EasyCI20220609\PhpParser;
-use EasyCI20220609\PhpParser\BuilderHelpers;
-use EasyCI20220609\PhpParser\Node;
+use EasyCI20220610\PhpParser;
+use EasyCI20220610\PhpParser\BuilderHelpers;
+use EasyCI20220610\PhpParser\Node;
 class Param implements PhpParser\Builder
 {
     protected $name;

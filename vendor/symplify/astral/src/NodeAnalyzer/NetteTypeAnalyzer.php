@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\Astral\NodeAnalyzer;
+namespace EasyCI20220610\Symplify\Astral\NodeAnalyzer;
 
-use EasyCI20220609\Nette\Application\UI\Template;
-use EasyCI20220609\PhpParser\Node\Expr;
-use EasyCI20220609\PhpParser\Node\Expr\PropertyFetch;
-use EasyCI20220609\PHPStan\Analyser\Scope;
-use EasyCI20220609\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220609\Symplify\Astral\TypeAnalyzer\ContainsTypeAnalyser;
+use EasyCI20220610\Nette\Application\UI\Template;
+use EasyCI20220610\PhpParser\Node\Expr;
+use EasyCI20220610\PhpParser\Node\Expr\PropertyFetch;
+use EasyCI20220610\PHPStan\Analyser\Scope;
+use EasyCI20220610\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI20220610\Symplify\Astral\TypeAnalyzer\ContainsTypeAnalyser;
 /**
  * @api
  */
@@ -17,7 +17,7 @@ final class NetteTypeAnalyzer
     /**
      * @var array<class-string<Template>>
      */
-    private const TEMPLATE_TYPES = ['EasyCI20220609\\Nette\\Application\\UI\\Template', 'EasyCI20220609\\Nette\\Application\\UI\\ITemplate', 'EasyCI20220609\\Nette\\Bridges\\ApplicationLatte\\Template', 'EasyCI20220609\\Nette\\Bridges\\ApplicationLatte\\DefaultTemplate'];
+    private const TEMPLATE_TYPES = ['EasyCI20220610\\Nette\\Application\\UI\\Template', 'EasyCI20220610\\Nette\\Application\\UI\\ITemplate', 'EasyCI20220610\\Nette\\Bridges\\ApplicationLatte\\Template', 'EasyCI20220610\\Nette\\Bridges\\ApplicationLatte\\DefaultTemplate'];
     /**
      * @var \Symplify\Astral\Naming\SimpleNameResolver
      */
@@ -61,7 +61,7 @@ final class NetteTypeAnalyzer
             return \false;
         }
         // this type has getComponent() method
-        return \is_a($className, 'EasyCI20220609\\Nette\\ComponentModel\\Container', \true);
+        return \is_a($className, 'EasyCI20220610\\Nette\\ComponentModel\\Container', \true);
     }
     public function isInsideControl(Scope $scope) : bool
     {
@@ -69,6 +69,6 @@ final class NetteTypeAnalyzer
         if ($className === null) {
             return \false;
         }
-        return \is_a($className, 'EasyCI20220609\\Nette\\Application\\UI\\Control', \true);
+        return \is_a($className, 'EasyCI20220610\\Nette\\Application\\UI\\Control', \true);
     }
 }

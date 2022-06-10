@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\Symplify\Astral\NodeValue;
+namespace EasyCI20220610\Symplify\Astral\NodeValue;
 
-use EasyCI20220609\PHPStan\Type\ConstantScalarType;
-use EasyCI20220609\PHPStan\Type\UnionType;
+use EasyCI20220610\PHPStan\Type\ConstantScalarType;
+use EasyCI20220610\PHPStan\Type\UnionType;
 final class UnionTypeValueResolver
 {
     /**

@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Config;
 
-use EasyCI20220609\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use EasyCI20220610\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220609\Webmozart\Assert\Assert;
+use EasyCI20220610\Webmozart\Assert\Assert;
 final class EasyCIConfig extends ContainerConfigurator
 {
     /**

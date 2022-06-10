@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220609\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220610\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220609\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
-use EasyCI20220609\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
-use EasyCI20220609\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220610\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
+use EasyCI20220610\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
+use EasyCI20220610\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
 class ArrayShapeItemNode implements TypeNode
 {
