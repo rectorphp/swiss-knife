@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\Symplify\Astral\NodeNameResolver;
+namespace EasyCI20220611\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220610\PhpParser\Node;
-use EasyCI20220610\PhpParser\Node\Stmt\Property;
-use EasyCI20220610\Symplify\Astral\Contract\NodeNameResolverInterface;
+use EasyCI20220611\PhpParser\Node;
+use EasyCI20220611\PhpParser\Node\Stmt\Property;
+use EasyCI20220611\Symplify\Astral\Contract\NodeNameResolverInterface;
 final class PropertyNodeNameResolver implements NodeNameResolverInterface
 {
     public function match(Node $node) : bool

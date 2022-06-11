@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\Symplify\Astral\Naming;
+namespace EasyCI20220611\Symplify\Astral\Naming;
 
-use EasyCI20220610\Nette\Utils\Strings;
-use EasyCI20220610\PhpParser\Node;
-use EasyCI20220610\PhpParser\Node\Expr\ClassConstFetch;
-use EasyCI20220610\PhpParser\Node\Expr\Variable;
-use EasyCI20220610\PhpParser\Node\Stmt\ClassLike;
-use EasyCI20220610\PhpParser\Node\Stmt\Property;
-use EasyCI20220610\PHPStan\Analyser\Scope;
-use EasyCI20220610\PHPStan\Reflection\ClassReflection;
-use EasyCI20220610\Symplify\Astral\Contract\NodeNameResolverInterface;
+use EasyCI20220611\Nette\Utils\Strings;
+use EasyCI20220611\PhpParser\Node;
+use EasyCI20220611\PhpParser\Node\Expr\ClassConstFetch;
+use EasyCI20220611\PhpParser\Node\Expr\Variable;
+use EasyCI20220611\PhpParser\Node\Stmt\ClassLike;
+use EasyCI20220611\PhpParser\Node\Stmt\Property;
+use EasyCI20220611\PHPStan\Analyser\Scope;
+use EasyCI20220611\PHPStan\Reflection\ClassReflection;
+use EasyCI20220611\Symplify\Astral\Contract\NodeNameResolverInterface;
 /**
  * @see \Symplify\Astral\Tests\Naming\SimpleNameResolverTest
  */

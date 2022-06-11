@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser\Node;
+namespace EasyCI20220611\PhpParser\Node;
 
-use EasyCI20220610\PhpParser\NodeAbstract;
+use EasyCI20220611\PhpParser\NodeAbstract;
 /**
  * Represents the "..." in "foo(...)" of the first-class callable syntax.
  */

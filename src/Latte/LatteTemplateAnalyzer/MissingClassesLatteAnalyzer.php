@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Latte\LatteTemplateAnalyzer;
 
-use EasyCI20220610\Nette\Utils\Strings;
+use EasyCI20220611\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Latte\Contract\LatteTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220610\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use EasyCI20220610\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220611\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use EasyCI20220611\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Latte\LatteTemplateAnalyzer\MissingClassesLatteAnalyzer\MissingClassesLatteAnalyzerTest
  */

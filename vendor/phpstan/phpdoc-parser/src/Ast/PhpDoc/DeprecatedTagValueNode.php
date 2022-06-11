@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220611\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220610\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220611\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function trim;
 class DeprecatedTagValueNode implements PhpDocTagValueNode
 {

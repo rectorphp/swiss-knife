@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\ValueObject;
 
-use EasyCI20220610\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220611\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileWithClass
 {
     /**

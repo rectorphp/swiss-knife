@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser;
+namespace EasyCI20220611\PhpParser;
 
-use EasyCI20220610\PhpParser\NodeVisitor\FindingVisitor;
-use EasyCI20220610\PhpParser\NodeVisitor\FirstFindingVisitor;
+use EasyCI20220611\PhpParser\NodeVisitor\FindingVisitor;
+use EasyCI20220611\PhpParser\NodeVisitor\FirstFindingVisitor;
 class NodeFinder
 {
     /**

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser\Node\Expr;
+namespace EasyCI20220611\PhpParser\Node\Expr;
 
-use EasyCI20220610\PhpParser\Node\Expr;
+use EasyCI20220611\PhpParser\Node\Expr;
 /**
  * Error node used during parsing with error recovery.
  *

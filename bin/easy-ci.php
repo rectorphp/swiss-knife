@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610;
+namespace EasyCI20220611;
 
 use Symplify\EasyCI\Kernel\EasyCIKernel;
-use EasyCI20220610\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use EasyCI20220611\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',

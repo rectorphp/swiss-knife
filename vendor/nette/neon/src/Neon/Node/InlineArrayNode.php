@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220610\Nette\Neon\Node;
+namespace EasyCI20220611\Nette\Neon\Node;
 
 /** @internal */
 final class InlineArrayNode extends ArrayNode

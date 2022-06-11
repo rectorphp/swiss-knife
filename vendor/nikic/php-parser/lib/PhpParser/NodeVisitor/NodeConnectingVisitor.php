@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser\NodeVisitor;
+namespace EasyCI20220611\PhpParser\NodeVisitor;
 
-use EasyCI20220610\PhpParser\Node;
-use EasyCI20220610\PhpParser\NodeVisitorAbstract;
+use EasyCI20220611\PhpParser\Node;
+use EasyCI20220611\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor that connects a child node to its parent node
  * as well as its sibling nodes.

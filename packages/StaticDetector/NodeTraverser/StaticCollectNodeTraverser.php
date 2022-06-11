@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeTraverser;
 
-use EasyCI20220610\PhpParser\NodeTraverser;
+use EasyCI20220611\PhpParser\NodeTraverser;
 /**
  * For specific type autowire
  */

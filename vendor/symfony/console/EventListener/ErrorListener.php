@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220610\Symfony\Component\Console\EventListener;
+namespace EasyCI20220611\Symfony\Component\Console\EventListener;
 
-use EasyCI20220610\Psr\Log\LoggerInterface;
-use EasyCI20220610\Symfony\Component\Console\ConsoleEvents;
-use EasyCI20220610\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use EasyCI20220610\Symfony\Component\Console\Event\ConsoleEvent;
-use EasyCI20220610\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use EasyCI20220610\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use EasyCI20220611\Psr\Log\LoggerInterface;
+use EasyCI20220611\Symfony\Component\Console\ConsoleEvents;
+use EasyCI20220611\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use EasyCI20220611\Symfony\Component\Console\Event\ConsoleEvent;
+use EasyCI20220611\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use EasyCI20220611\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>

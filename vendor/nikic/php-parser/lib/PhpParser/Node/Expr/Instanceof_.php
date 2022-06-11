@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser\Node\Expr;
+namespace EasyCI20220611\PhpParser\Node\Expr;
 
-use EasyCI20220610\PhpParser\Node\Expr;
-use EasyCI20220610\PhpParser\Node\Name;
+use EasyCI20220611\PhpParser\Node\Expr;
+use EasyCI20220611\PhpParser\Node\Name;
 class Instanceof_ extends Expr
 {
     /** @var Expr Expression */

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser\Builder;
+namespace EasyCI20220611\PhpParser\Builder;
 
-use EasyCI20220610\PhpParser\Builder;
-use EasyCI20220610\PhpParser\BuilderHelpers;
-use EasyCI20220610\PhpParser\Node;
-use EasyCI20220610\PhpParser\Node\Stmt;
+use EasyCI20220611\PhpParser\Builder;
+use EasyCI20220611\PhpParser\BuilderHelpers;
+use EasyCI20220611\PhpParser\Node;
+use EasyCI20220611\PhpParser\Node\Stmt;
 class Use_ implements Builder
 {
     protected $name;

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PHPStan\PhpDocParser\Parser;
+namespace EasyCI20220611\PHPStan\PhpDocParser\Parser;
 
 use Exception;
-use EasyCI20220610\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220611\PHPStan\PhpDocParser\Lexer\Lexer;
 use function assert;
 use function json_encode;
 use function sprintf;

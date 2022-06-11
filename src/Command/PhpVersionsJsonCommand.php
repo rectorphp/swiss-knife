@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI20220610\Nette\Utils\Json;
-use EasyCI20220610\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220610\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220611\Nette\Utils\Json;
+use EasyCI20220611\Symfony\Component\Console\Input\InputArgument;
+use EasyCI20220611\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220611\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Composer\SupportedPhpVersionResolver;
 use Symplify\EasyCI\Exception\ShouldNotHappenException;
-use EasyCI20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI20220611\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class PhpVersionsJsonCommand extends AbstractSymplifyCommand
 {
     /**

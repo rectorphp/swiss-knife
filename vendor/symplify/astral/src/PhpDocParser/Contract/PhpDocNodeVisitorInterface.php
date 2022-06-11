@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\Symplify\Astral\PhpDocParser\Contract;
+namespace EasyCI20220611\Symplify\Astral\PhpDocParser\Contract;
 
-use EasyCI20220610\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220611\PHPStan\PhpDocParser\Ast\Node;
 /**
  * Inspired by https://github.com/nikic/PHP-Parser/blob/master/lib/PhpParser/NodeVisitor.php
  */

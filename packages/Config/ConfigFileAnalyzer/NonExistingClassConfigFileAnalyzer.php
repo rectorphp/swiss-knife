@@ -7,8 +7,8 @@ use Symplify\EasyCI\Config\ClassExtractor;
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220610\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use EasyCI20220610\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220611\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use EasyCI20220611\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfigFileAnalyzer\NonExistingClassConfigFileAnalyzerTest
  */

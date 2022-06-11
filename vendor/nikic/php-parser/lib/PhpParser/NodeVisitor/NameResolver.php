@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\PhpParser\NodeVisitor;
+namespace EasyCI20220611\PhpParser\NodeVisitor;
 
-use EasyCI20220610\PhpParser\ErrorHandler;
-use EasyCI20220610\PhpParser\NameContext;
-use EasyCI20220610\PhpParser\Node;
-use EasyCI20220610\PhpParser\Node\Expr;
-use EasyCI20220610\PhpParser\Node\Name;
-use EasyCI20220610\PhpParser\Node\Name\FullyQualified;
-use EasyCI20220610\PhpParser\Node\Stmt;
-use EasyCI20220610\PhpParser\NodeVisitorAbstract;
+use EasyCI20220611\PhpParser\ErrorHandler;
+use EasyCI20220611\PhpParser\NameContext;
+use EasyCI20220611\PhpParser\Node;
+use EasyCI20220611\PhpParser\Node\Expr;
+use EasyCI20220611\PhpParser\Node\Name;
+use EasyCI20220611\PhpParser\Node\Name\FullyQualified;
+use EasyCI20220611\PhpParser\Node\Stmt;
+use EasyCI20220611\PhpParser\NodeVisitorAbstract;
 class NameResolver extends NodeVisitorAbstract
 {
     /** @var NameContext Naming context */

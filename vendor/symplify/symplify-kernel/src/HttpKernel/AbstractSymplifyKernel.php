@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\Symplify\SymplifyKernel\HttpKernel;
+namespace EasyCI20220611\Symplify\SymplifyKernel\HttpKernel;
 
-use EasyCI20220610\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI20220610\Symfony\Component\DependencyInjection\Container;
-use EasyCI20220610\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220610\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI20220610\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use EasyCI20220610\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
-use EasyCI20220610\Symplify\SymplifyKernel\ContainerBuilderFactory;
-use EasyCI20220610\Symplify\SymplifyKernel\Contract\LightKernelInterface;
-use EasyCI20220610\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-use EasyCI20220610\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
+use EasyCI20220611\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI20220611\Symfony\Component\DependencyInjection\Container;
+use EasyCI20220611\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220611\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI20220611\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use EasyCI20220611\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
+use EasyCI20220611\Symplify\SymplifyKernel\ContainerBuilderFactory;
+use EasyCI20220611\Symplify\SymplifyKernel\Contract\LightKernelInterface;
+use EasyCI20220611\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI20220611\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
 /**
  * @api
  */
@@ -37,7 +37,7 @@ abstract class AbstractSymplifyKernel implements LightKernelInterface
         $this->container = $containerBuilder;
         return $containerBuilder;
     }
-    public function getContainer() : \EasyCI20220610\Psr\Container\ContainerInterface
+    public function getContainer() : \EasyCI20220611\Psr\Container\ContainerInterface
     {
         if (!$this->container instanceof Container) {
             throw new ShouldNotHappenException();

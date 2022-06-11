@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\Symplify\SymplifyKernel\Config\Loader;
+namespace EasyCI20220611\Symplify\SymplifyKernel\Config\Loader;
 
-use EasyCI20220610\Symfony\Component\Config\FileLocator;
-use EasyCI20220610\Symfony\Component\Config\Loader\DelegatingLoader;
-use EasyCI20220610\Symfony\Component\Config\Loader\GlobFileLoader;
-use EasyCI20220610\Symfony\Component\Config\Loader\LoaderResolver;
-use EasyCI20220610\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220610\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader;
-use EasyCI20220610\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+use EasyCI20220611\Symfony\Component\Config\FileLocator;
+use EasyCI20220611\Symfony\Component\Config\Loader\DelegatingLoader;
+use EasyCI20220611\Symfony\Component\Config\Loader\GlobFileLoader;
+use EasyCI20220611\Symfony\Component\Config\Loader\LoaderResolver;
+use EasyCI20220611\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220611\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader;
+use EasyCI20220611\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
 final class ParameterMergingLoaderFactory implements LoaderFactoryInterface
 {
-    public function create(ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \EasyCI20220610\Symfony\Component\Config\Loader\LoaderInterface
+    public function create(ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \EasyCI20220611\Symfony\Component\Config\Loader\LoaderInterface
     {
         $fileLocator = new FileLocator([$currentWorkingDirectory]);
         $loaders = [new GlobFileLoader($fileLocator), new ParameterMergingPhpFileLoader($containerBuilder, $fileLocator)];

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\Output;
 
-use EasyCI20220610\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220611\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
 final class StaticReportReporter
 {

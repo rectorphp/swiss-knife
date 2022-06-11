@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220610\Symfony\Component\Config\Builder;
+namespace EasyCI20220611\Symfony\Component\Config\Builder;
 
-use EasyCI20220610\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI20220611\Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * Generates ConfigBuilders to help create valid config.
  *

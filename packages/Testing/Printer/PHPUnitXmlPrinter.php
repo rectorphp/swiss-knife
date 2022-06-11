@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing\Printer;
 
-use EasyCI20220610\Nette\Utils\Strings;
+use EasyCI20220611\Nette\Utils\Strings;
 final class PHPUnitXmlPrinter
 {
     /**

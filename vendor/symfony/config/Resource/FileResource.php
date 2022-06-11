@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220610\Symfony\Component\Config\Resource;
+namespace EasyCI20220611\Symfony\Component\Config\Resource;
 
 /**
  * FileResource represents a resource stored on the filesystem.

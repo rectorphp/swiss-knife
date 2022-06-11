@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220610\Symfony\Component\Console\Logger;
+namespace EasyCI20220611\Symfony\Component\Console\Logger;
 
-use EasyCI20220610\Psr\Log\AbstractLogger;
-use EasyCI20220610\Psr\Log\InvalidArgumentException;
-use EasyCI20220610\Psr\Log\LogLevel;
-use EasyCI20220610\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI20220610\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI20220611\Psr\Log\AbstractLogger;
+use EasyCI20220611\Psr\Log\InvalidArgumentException;
+use EasyCI20220611\Psr\Log\LogLevel;
+use EasyCI20220611\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI20220611\Symfony\Component\Console\Output\OutputInterface;
 /**
  * PSR-3 compliant console logger.
  *

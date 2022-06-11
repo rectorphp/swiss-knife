@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220610\Nette\Utils;
+namespace EasyCI20220611\Nette\Utils;
 
-use EasyCI20220610\Nette;
-use EasyCI20220610\Nette\MemberAccessException;
+use EasyCI20220611\Nette;
+use EasyCI20220611\Nette\MemberAccessException;
 /**
  * Nette\SmartObject helpers.
  */

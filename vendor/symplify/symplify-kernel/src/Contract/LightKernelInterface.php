@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220610\Symplify\SymplifyKernel\Contract;
+namespace EasyCI20220611\Symplify\SymplifyKernel\Contract;
 
-use EasyCI20220610\Psr\Container\ContainerInterface;
+use EasyCI20220611\Psr\Container\ContainerInterface;
 /**
  * @api
  */
