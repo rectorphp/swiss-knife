@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\DependencyInjection\Loader;
+namespace EasyCI20220612\Symfony\Component\DependencyInjection\Loader;
 
-use EasyCI20220611\Symfony\Component\Config\Util\XmlUtils;
-use EasyCI20220611\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220612\Symfony\Component\Config\Util\XmlUtils;
+use EasyCI20220612\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *

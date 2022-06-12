@@ -1,10 +1,10 @@
 <?php
 
-namespace EasyCI20220611\PhpParser;
+namespace EasyCI20220612\PhpParser;
 
 use function array_merge;
-use EasyCI20220611\PhpParser\Node\Expr;
-use EasyCI20220611\PhpParser\Node\Scalar;
+use EasyCI20220612\PhpParser\Node\Expr;
+use EasyCI20220612\PhpParser\Node\Scalar;
 /**
  * Evaluates constant expressions.
  *

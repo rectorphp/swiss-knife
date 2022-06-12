@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\Symplify\PackageBuilder\Strings;
+namespace EasyCI20220612\Symplify\PackageBuilder\Strings;
 
-use EasyCI20220611\Nette\Utils\Strings;
+use EasyCI20220612\Nette\Utils\Strings;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Strings\StringFormatConverterTest

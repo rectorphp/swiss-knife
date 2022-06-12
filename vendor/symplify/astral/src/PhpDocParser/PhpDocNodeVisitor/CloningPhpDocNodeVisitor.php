@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI20220612\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI20220611\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220611\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI20220612\Symplify\Astral\PhpDocParser\ValueObject\PhpDocAttributeKey;
 /**
  * @api
  *

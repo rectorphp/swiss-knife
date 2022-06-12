@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\Console\Question;
+namespace EasyCI20220612\Symfony\Component\Console\Question;
 
-use EasyCI20220611\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI20220611\Symfony\Component\Console\Exception\LogicException;
+use EasyCI20220612\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI20220612\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a Question.
  *

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PhpParser\Node\Expr;
+namespace EasyCI20220612\PhpParser\Node\Expr;
 
-use EasyCI20220611\PhpParser\Node;
-use EasyCI20220611\PhpParser\Node\Expr;
-use EasyCI20220611\PhpParser\Node\FunctionLike;
+use EasyCI20220612\PhpParser\Node;
+use EasyCI20220612\PhpParser\Node\Expr;
+use EasyCI20220612\PhpParser\Node\FunctionLike;
 class Closure extends Expr implements FunctionLike
 {
     /** @var bool Whether the closure is static */

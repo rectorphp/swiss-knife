@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\Symplify\Astral\PhpDocParser\ValueObject\Ast\PhpDoc;
+namespace EasyCI20220612\Symplify\Astral\PhpDocParser\ValueObject\Ast\PhpDoc;
 
-use EasyCI20220611\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
-use EasyCI20220611\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
-use EasyCI20220611\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast\Type\TypeNode;
 /**
  * @noRector final on purpose, so it can be extended by 3rd party
  */

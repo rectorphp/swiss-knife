@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PhpParser\Builder;
+namespace EasyCI20220612\PhpParser\Builder;
 
-use EasyCI20220611\PhpParser;
-use EasyCI20220611\PhpParser\BuilderHelpers;
-use EasyCI20220611\PhpParser\Node;
-use EasyCI20220611\PhpParser\Node\Const_;
-use EasyCI20220611\PhpParser\Node\Identifier;
-use EasyCI20220611\PhpParser\Node\Stmt;
+use EasyCI20220612\PhpParser;
+use EasyCI20220612\PhpParser\BuilderHelpers;
+use EasyCI20220612\PhpParser\Node;
+use EasyCI20220612\PhpParser\Node\Const_;
+use EasyCI20220612\PhpParser\Node\Identifier;
+use EasyCI20220612\PhpParser\Node\Stmt;
 class ClassConst implements PhpParser\Builder
 {
     protected $flags = 0;

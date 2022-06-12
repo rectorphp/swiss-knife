@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\Config\Definition;
+namespace EasyCI20220612\Symfony\Component\Config\Definition;
 
-use EasyCI20220611\Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
-use EasyCI20220611\Symfony\Component\Config\Definition\Exception\Exception;
-use EasyCI20220611\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use EasyCI20220611\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use EasyCI20220612\Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
+use EasyCI20220612\Symfony\Component\Config\Definition\Exception\Exception;
+use EasyCI20220612\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use EasyCI20220612\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents a prototyped Array node in the config tree.
  *

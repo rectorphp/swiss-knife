@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\Config;
+namespace EasyCI20220612\Symfony\Component\Config;
 
-use EasyCI20220611\Symfony\Component\Config\Resource\ResourceInterface;
-use EasyCI20220611\Symfony\Component\Filesystem\Exception\IOException;
-use EasyCI20220611\Symfony\Component\Filesystem\Filesystem;
+use EasyCI20220612\Symfony\Component\Config\Resource\ResourceInterface;
+use EasyCI20220612\Symfony\Component\Filesystem\Exception\IOException;
+use EasyCI20220612\Symfony\Component\Filesystem\Filesystem;
 /**
  * ResourceCheckerConfigCache uses instances of ResourceCheckerInterface
  * to check whether cached data is still fresh.

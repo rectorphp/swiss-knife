@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeTraverser;
 
-use EasyCI20220611\PhpParser\NodeVisitor\NameResolver;
+use EasyCI20220612\PhpParser\NodeVisitor\NameResolver;
 use Symplify\EasyCI\StaticDetector\NodeVisitor\FilePathNodeVisitor;
 use Symplify\EasyCI\StaticDetector\NodeVisitor\StaticCollectNodeVisitor;
 final class StaticCollectNodeTraverserFactory

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\ValueObject;
 
-use EasyCI20220611\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI20220612\PhpParser\Node\Stmt\ClassMethod;
 final class StaticClassMethod
 {
     /**

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PhpParser\Node\Stmt;
+namespace EasyCI20220612\PhpParser\Node\Stmt;
 
-use EasyCI20220611\PhpParser\Node;
+use EasyCI20220612\PhpParser\Node;
 abstract class TraitUseAdaptation extends Node\Stmt
 {
     /** @var Node\Name|null Trait name */

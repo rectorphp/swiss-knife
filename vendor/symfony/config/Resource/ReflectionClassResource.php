@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\Config\Resource;
+namespace EasyCI20220612\Symfony\Component\Config\Resource;
 
-use EasyCI20220611\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use EasyCI20220611\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use EasyCI20220611\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use EasyCI20220612\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use EasyCI20220612\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use EasyCI20220612\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *

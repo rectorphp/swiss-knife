@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\Symplify\EasyTesting\ValueObject;
+namespace EasyCI20220612\Symplify\EasyTesting\ValueObject;
 
-use EasyCI20220611\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220612\Symplify\SmartFileSystem\SmartFileInfo;
 final class IncorrectAndMissingSkips
 {
     /**

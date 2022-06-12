@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220611\Nette\Utils;
+namespace EasyCI20220612\Nette\Utils;
 
-use EasyCI20220611\Nette;
+use EasyCI20220612\Nette;
 /**
  * Provides the base class for a generic list (items can be accessed by index).
  * @template T

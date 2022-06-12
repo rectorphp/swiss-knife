@@ -1,24 +1,24 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611;
+namespace EasyCI20220612;
 
-use EasyCI20220611\Composer\Semver\Semver;
-use EasyCI20220611\Composer\Semver\VersionParser;
-use EasyCI20220611\Nette\Neon\Decoder;
-use EasyCI20220611\PhpParser\NodeFinder;
-use EasyCI20220611\PhpParser\Parser;
-use EasyCI20220611\PhpParser\ParserFactory;
-use EasyCI20220611\PhpParser\PrettyPrinter\Standard;
-use EasyCI20220611\Symfony\Component\Console\Application;
-use EasyCI20220611\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use EasyCI20220612\Composer\Semver\Semver;
+use EasyCI20220612\Composer\Semver\VersionParser;
+use EasyCI20220612\Nette\Neon\Decoder;
+use EasyCI20220612\PhpParser\NodeFinder;
+use EasyCI20220612\PhpParser\Parser;
+use EasyCI20220612\PhpParser\ParserFactory;
+use EasyCI20220612\PhpParser\PrettyPrinter\Standard;
+use EasyCI20220612\Symfony\Component\Console\Application;
+use EasyCI20220612\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCI\Console\EasyCIApplication;
 use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
 use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverserFactory;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220611\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use EasyCI20220611\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use function EasyCI20220611\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use EasyCI20220612\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use EasyCI20220612\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use function EasyCI20220612\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();

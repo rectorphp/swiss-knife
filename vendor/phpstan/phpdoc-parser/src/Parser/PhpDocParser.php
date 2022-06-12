@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PHPStan\PhpDocParser\Parser;
+namespace EasyCI20220612\PHPStan\PhpDocParser\Parser;
 
-use EasyCI20220611\PHPStan\PhpDocParser\Ast;
-use EasyCI20220611\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
-use EasyCI20220611\PHPStan\PhpDocParser\Lexer\Lexer;
-use EasyCI20220611\PHPStan\ShouldNotHappenException;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use EasyCI20220612\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220612\PHPStan\ShouldNotHappenException;
 use function array_values;
 use function count;
 use function trim;

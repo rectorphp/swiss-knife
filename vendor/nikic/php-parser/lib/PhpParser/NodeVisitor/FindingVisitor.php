@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PhpParser\NodeVisitor;
+namespace EasyCI20220612\PhpParser\NodeVisitor;
 
-use EasyCI20220611\PhpParser\Node;
-use EasyCI20220611\PhpParser\NodeVisitorAbstract;
+use EasyCI20220612\PhpParser\Node;
+use EasyCI20220612\PhpParser\NodeVisitorAbstract;
 /**
  * This visitor can be used to find and collect all nodes satisfying some criterion determined by
  * a filter callback.

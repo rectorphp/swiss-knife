@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Composer;
 
-use EasyCI20220611\Composer\Semver\Semver;
-use EasyCI20220611\Composer\Semver\VersionParser;
+use EasyCI20220612\Composer\Semver\Semver;
+use EasyCI20220612\Composer\Semver\VersionParser;
 use DateTimeInterface;
-use EasyCI20220611\Nette\Utils\DateTime;
-use EasyCI20220611\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use EasyCI20220612\Nette\Utils\DateTime;
+use EasyCI20220612\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\EasyCI\ValueObject\PhpVersionList;
 /**

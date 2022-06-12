@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\Symplify\PackageBuilder\Console\Command;
+namespace EasyCI20220612\Symplify\PackageBuilder\Console\Command;
 
-use EasyCI20220611\Symfony\Component\Console\Command\Command;
-use EasyCI20220611\Symfony\Component\Console\Input\InputOption;
-use EasyCI20220611\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI20220611\Symfony\Contracts\Service\Attribute\Required;
-use EasyCI20220611\Symplify\PackageBuilder\ValueObject\Option;
-use EasyCI20220611\Symplify\SmartFileSystem\FileSystemGuard;
-use EasyCI20220611\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI20220611\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI20220612\Symfony\Component\Console\Command\Command;
+use EasyCI20220612\Symfony\Component\Console\Input\InputOption;
+use EasyCI20220612\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220612\Symfony\Contracts\Service\Attribute\Required;
+use EasyCI20220612\Symplify\PackageBuilder\ValueObject\Option;
+use EasyCI20220612\Symplify\SmartFileSystem\FileSystemGuard;
+use EasyCI20220612\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI20220612\Symplify\SmartFileSystem\SmartFileSystem;
 abstract class AbstractSymplifyCommand extends Command
 {
     /**

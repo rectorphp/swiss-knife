@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220611\Nette\Neon\Node;
+namespace EasyCI20220612\Nette\Neon\Node;
 
-use EasyCI20220611\Nette\Neon\Node;
+use EasyCI20220612\Nette\Neon\Node;
 /** @internal */
 abstract class ArrayNode extends Node
 {

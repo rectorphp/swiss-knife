@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PhpParser\Node\Stmt;
+namespace EasyCI20220612\PhpParser\Node\Stmt;
 
-use EasyCI20220611\PhpParser\Node;
+use EasyCI20220612\PhpParser\Node;
 class Case_ extends Node\Stmt
 {
     /** @var null|Node\Expr Condition (null for default) */

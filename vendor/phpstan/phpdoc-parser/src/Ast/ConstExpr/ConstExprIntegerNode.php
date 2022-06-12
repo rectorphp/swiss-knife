@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220611\PHPStan\PhpDocParser\Ast\ConstExpr;
+namespace EasyCI20220612\PHPStan\PhpDocParser\Ast\ConstExpr;
 
-use EasyCI20220611\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220612\PHPStan\PhpDocParser\Ast\NodeAttributes;
 class ConstExprIntegerNode implements ConstExprNode
 {
     use NodeAttributes;

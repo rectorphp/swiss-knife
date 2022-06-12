@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\DependencyInjection\Config;
+namespace EasyCI20220612\Symfony\Component\DependencyInjection\Config;
 
-use EasyCI20220611\Symfony\Component\Config\Resource\ResourceInterface;
-use EasyCI20220611\Symfony\Component\Config\ResourceCheckerInterface;
-use EasyCI20220611\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI20220612\Symfony\Component\Config\Resource\ResourceInterface;
+use EasyCI20220612\Symfony\Component\Config\ResourceCheckerInterface;
+use EasyCI20220612\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */

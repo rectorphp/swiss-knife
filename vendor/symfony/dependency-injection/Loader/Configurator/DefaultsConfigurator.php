@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220611\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI20220612\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI20220611\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220611\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI20220612\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220612\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
