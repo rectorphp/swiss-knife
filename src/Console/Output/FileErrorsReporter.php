@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Console\Output;
 
-use EasyCI20220612\Symfony\Component\Console\Command\Command;
-use EasyCI20220612\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI20220613\Symfony\Component\Console\Command\Command;
+use EasyCI20220613\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 final class FileErrorsReporter
 {

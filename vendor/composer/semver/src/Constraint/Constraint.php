@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI20220612\Composer\Semver\Constraint;
+namespace EasyCI20220613\Composer\Semver\Constraint;
 
 /**
  * Defines a constraint.

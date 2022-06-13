@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Template;
 
-use EasyCI20220612\Nette\Utils\Strings;
-use EasyCI20220612\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI20220613\Nette\Utils\Strings;
+use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
 final class RenderMethodTemplateExtractor
 {
     /**

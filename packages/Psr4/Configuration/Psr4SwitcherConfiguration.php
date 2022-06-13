@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Configuration;
 
-use EasyCI20220612\Symfony\Component\Console\Input\InputInterface;
+use EasyCI20220613\Symfony\Component\Console\Input\InputInterface;
 use Symplify\EasyCI\Psr4\Exception\ConfigurationException;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
-use EasyCI20220612\Symplify\SmartFileSystem\FileSystemGuard;
+use EasyCI20220613\Symplify\SmartFileSystem\FileSystemGuard;
 final class Psr4SwitcherConfiguration
 {
     /**

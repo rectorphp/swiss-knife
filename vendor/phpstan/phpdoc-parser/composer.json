@@ -25,14 +25,14 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI20220612\\PHPStan\\PhpDocParser\\": [
+            "EasyCI20220613\\PHPStan\\PhpDocParser\\": [
                 "src\/"
             ]
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI20220612\\PHPStan\\PhpDocParser\\": [
+            "EasyCI20220613\\PHPStan\\PhpDocParser\\": [
                 "tests\/PHPStan"
             ]
         }

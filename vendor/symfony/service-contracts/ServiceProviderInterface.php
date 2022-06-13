@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220612\Symfony\Contracts\Service;
+namespace EasyCI20220613\Symfony\Contracts\Service;
 
-use EasyCI20220612\Psr\Container\ContainerInterface;
+use EasyCI20220613\Psr\Container\ContainerInterface;
 /**
  * A ServiceProviderInterface exposes the identifiers and the types of services provided by a container.
  *

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node;
+namespace EasyCI20220613\PhpParser\Node;
 
 class UnionType extends ComplexType
 {

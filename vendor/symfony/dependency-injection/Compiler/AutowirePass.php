@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220612\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI20220613\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220612\Symfony\Component\Config\Resource\ClassExistenceResource;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Attribute\Target;
-use EasyCI20220612\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
-use EasyCI20220612\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI20220612\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use EasyCI20220612\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI20220613\Symfony\Component\Config\Resource\ClassExistenceResource;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Attribute\Target;
+use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Definition;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
+use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI20220613\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
+use EasyCI20220613\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Inspects existing service definitions and wires the autowired ones using the type hints of their classes.
  *

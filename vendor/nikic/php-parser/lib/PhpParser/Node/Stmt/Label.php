@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node\Stmt;
+namespace EasyCI20220613\PhpParser\Node\Stmt;
 
-use EasyCI20220612\PhpParser\Node\Identifier;
-use EasyCI20220612\PhpParser\Node\Stmt;
+use EasyCI20220613\PhpParser\Node\Identifier;
+use EasyCI20220613\PhpParser\Node\Stmt;
 class Label extends Stmt
 {
     /** @var Identifier Name */

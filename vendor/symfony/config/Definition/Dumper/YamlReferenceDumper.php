@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220612\Symfony\Component\Config\Definition\Dumper;
+namespace EasyCI20220613\Symfony\Component\Config\Definition\Dumper;
 
-use EasyCI20220612\Symfony\Component\Config\Definition\ArrayNode;
-use EasyCI20220612\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI20220612\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI20220612\Symfony\Component\Config\Definition\EnumNode;
-use EasyCI20220612\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI20220612\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use EasyCI20220612\Symfony\Component\Config\Definition\ScalarNode;
-use EasyCI20220612\Symfony\Component\Config\Definition\VariableNode;
-use EasyCI20220612\Symfony\Component\Yaml\Inline;
+use EasyCI20220613\Symfony\Component\Config\Definition\ArrayNode;
+use EasyCI20220613\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI20220613\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI20220613\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI20220613\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI20220613\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use EasyCI20220613\Symfony\Component\Config\Definition\ScalarNode;
+use EasyCI20220613\Symfony\Component\Config\Definition\VariableNode;
+use EasyCI20220613\Symfony\Component\Yaml\Inline;
 /**
  * Dumps a Yaml reference configuration for the given configuration/node instance.
  *

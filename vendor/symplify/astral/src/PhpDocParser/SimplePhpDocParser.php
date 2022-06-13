@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\Symplify\Astral\PhpDocParser;
+namespace EasyCI20220613\Symplify\Astral\PhpDocParser;
 
-use EasyCI20220612\PhpParser\Comment\Doc;
-use EasyCI20220612\PhpParser\Node;
-use EasyCI20220612\PHPStan\PhpDocParser\Lexer\Lexer;
-use EasyCI20220612\PHPStan\PhpDocParser\Parser\PhpDocParser;
-use EasyCI20220612\PHPStan\PhpDocParser\Parser\TokenIterator;
-use EasyCI20220612\Symplify\Astral\PhpDocParser\ValueObject\Ast\PhpDoc\SimplePhpDocNode;
+use EasyCI20220613\PhpParser\Comment\Doc;
+use EasyCI20220613\PhpParser\Node;
+use EasyCI20220613\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220613\PHPStan\PhpDocParser\Parser\PhpDocParser;
+use EasyCI20220613\PHPStan\PhpDocParser\Parser\TokenIterator;
+use EasyCI20220613\Symplify\Astral\PhpDocParser\ValueObject\Ast\PhpDoc\SimplePhpDocNode;
 /**
  * @see \Symplify\Astral\Tests\PhpDocParser\SimplePhpDocParser\SimplePhpDocParserTest
  */

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220612\Symfony\Component\Config\Loader;
+namespace EasyCI20220613\Symfony\Component\Config\Loader;
 
-use EasyCI20220612\Symfony\Component\Config\Exception\LoaderLoadException;
+use EasyCI20220613\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * DelegatingLoader delegates loading to other loaders using a loader resolver.
  *

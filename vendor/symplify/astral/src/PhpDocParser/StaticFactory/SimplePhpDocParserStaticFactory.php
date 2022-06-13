@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\Symplify\Astral\PhpDocParser\StaticFactory;
+namespace EasyCI20220613\Symplify\Astral\PhpDocParser\StaticFactory;
 
-use EasyCI20220612\PHPStan\PhpDocParser\Lexer\Lexer;
-use EasyCI20220612\PHPStan\PhpDocParser\Parser\ConstExprParser;
-use EasyCI20220612\PHPStan\PhpDocParser\Parser\PhpDocParser;
-use EasyCI20220612\PHPStan\PhpDocParser\Parser\TypeParser;
-use EasyCI20220612\Symplify\Astral\PhpDocParser\SimplePhpDocParser;
+use EasyCI20220613\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220613\PHPStan\PhpDocParser\Parser\ConstExprParser;
+use EasyCI20220613\PHPStan\PhpDocParser\Parser\PhpDocParser;
+use EasyCI20220613\PHPStan\PhpDocParser\Parser\TypeParser;
+use EasyCI20220613\Symplify\Astral\PhpDocParser\SimplePhpDocParser;
 /**
  * @api
  */

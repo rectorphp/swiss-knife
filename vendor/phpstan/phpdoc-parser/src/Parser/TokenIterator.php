@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PHPStan\PhpDocParser\Parser;
+namespace EasyCI20220613\PHPStan\PhpDocParser\Parser;
 
-use EasyCI20220612\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI20220613\PHPStan\PhpDocParser\Lexer\Lexer;
 use function array_pop;
 use function assert;
 use function count;

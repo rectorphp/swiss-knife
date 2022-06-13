@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node\Expr\BinaryOp;
+namespace EasyCI20220613\PhpParser\Node\Expr\BinaryOp;
 
-use EasyCI20220612\PhpParser\Node\Expr\BinaryOp;
+use EasyCI20220613\PhpParser\Node\Expr\BinaryOp;
 class Equal extends BinaryOp
 {
     public function getOperatorSigil() : string

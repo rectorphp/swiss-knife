@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node\Expr;
+namespace EasyCI20220613\PhpParser\Node\Expr;
 
-use EasyCI20220612\PhpParser\Node;
-use EasyCI20220612\PhpParser\Node\MatchArm;
+use EasyCI20220613\PhpParser\Node;
+use EasyCI20220613\PhpParser\Node\MatchArm;
 class Match_ extends Node\Expr
 {
     /** @var Node\Expr */

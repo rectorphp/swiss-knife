@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\Symplify\ComposerJsonManipulator\Json;
+namespace EasyCI20220613\Symplify\ComposerJsonManipulator\Json;
 
-use EasyCI20220612\Nette\Utils\Strings;
-use EasyCI20220612\Symplify\ComposerJsonManipulator\ValueObject\Option;
-use EasyCI20220612\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use EasyCI20220613\Nette\Utils\Strings;
+use EasyCI20220613\Symplify\ComposerJsonManipulator\ValueObject\Option;
+use EasyCI20220613\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class JsonInliner
 {
     /**

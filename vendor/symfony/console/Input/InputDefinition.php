@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220612\Symfony\Component\Console\Input;
+namespace EasyCI20220613\Symfony\Component\Console\Input;
 
-use EasyCI20220612\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI20220612\Symfony\Component\Console\Exception\LogicException;
+use EasyCI20220613\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI20220613\Symfony\Component\Console\Exception\LogicException;
 /**
  * A InputDefinition represents a set of valid command line arguments and options.
  *

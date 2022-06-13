@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node\Stmt;
+namespace EasyCI20220613\PhpParser\Node\Stmt;
 
-use EasyCI20220612\PhpParser\Node;
-use EasyCI20220612\PhpParser\Node\FunctionLike;
+use EasyCI20220613\PhpParser\Node;
+use EasyCI20220613\PhpParser\Node\FunctionLike;
 class ClassMethod extends Node\Stmt implements FunctionLike
 {
     /** @var int Flags */

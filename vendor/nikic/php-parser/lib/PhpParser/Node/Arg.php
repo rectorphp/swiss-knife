@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node;
+namespace EasyCI20220613\PhpParser\Node;
 
-use EasyCI20220612\PhpParser\Node\VariadicPlaceholder;
-use EasyCI20220612\PhpParser\NodeAbstract;
+use EasyCI20220613\PhpParser\Node\VariadicPlaceholder;
+use EasyCI20220613\PhpParser\NodeAbstract;
 class Arg extends NodeAbstract
 {
     /** @var Identifier|null Parameter name (for named parameters) */

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\Symplify\Astral\NodeVisitor;
+namespace EasyCI20220613\Symplify\Astral\NodeVisitor;
 
-use EasyCI20220612\PhpParser\Node;
-use EasyCI20220612\PhpParser\Node\Expr;
-use EasyCI20220612\PhpParser\Node\Stmt;
-use EasyCI20220612\PhpParser\Node\Stmt\Expression;
-use EasyCI20220612\PhpParser\NodeVisitorAbstract;
+use EasyCI20220613\PhpParser\Node;
+use EasyCI20220613\PhpParser\Node\Expr;
+use EasyCI20220613\PhpParser\Node\Stmt;
+use EasyCI20220613\PhpParser\Node\Stmt\Expression;
+use EasyCI20220613\PhpParser\NodeVisitorAbstract;
 final class CallableNodeVisitor extends NodeVisitorAbstract
 {
     /**

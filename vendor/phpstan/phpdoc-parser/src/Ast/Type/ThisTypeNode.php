@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI20220613\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220612\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220613\PHPStan\PhpDocParser\Ast\NodeAttributes;
 class ThisTypeNode implements TypeNode
 {
     use NodeAttributes;

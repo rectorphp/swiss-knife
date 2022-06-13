@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\NodeVisitor;
+namespace EasyCI20220613\PhpParser\NodeVisitor;
 
-use EasyCI20220612\PhpParser\Node;
-use EasyCI20220612\PhpParser\NodeTraverser;
-use EasyCI20220612\PhpParser\NodeVisitorAbstract;
+use EasyCI20220613\PhpParser\Node;
+use EasyCI20220613\PhpParser\NodeTraverser;
+use EasyCI20220613\PhpParser\NodeVisitorAbstract;
 /**
  * This visitor can be used to find the first node satisfying some criterion determined by
  * a filter callback.

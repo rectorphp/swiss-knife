@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI20220613\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220612\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI20220613\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function trim;
 class TypelessParamTagValueNode implements PhpDocTagValueNode
 {

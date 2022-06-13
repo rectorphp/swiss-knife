@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220612\PhpParser\Node\Stmt;
+namespace EasyCI20220613\PhpParser\Node\Stmt;
 
-use EasyCI20220612\PhpParser\Node;
-use EasyCI20220612\PhpParser\Node\ComplexType;
-use EasyCI20220612\PhpParser\Node\Identifier;
-use EasyCI20220612\PhpParser\Node\Name;
+use EasyCI20220613\PhpParser\Node;
+use EasyCI20220613\PhpParser\Node\ComplexType;
+use EasyCI20220613\PhpParser\Node\Identifier;
+use EasyCI20220613\PhpParser\Node\Name;
 class Property extends Node\Stmt
 {
     /** @var int Modifiers */
