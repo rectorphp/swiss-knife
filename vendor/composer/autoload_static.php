@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1c745ab272a9e8526a449f78bf477931
+class ComposerStaticInitcd7e100d74ac0ca6f8bf7ff30bf5b071
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -1030,7 +1030,6 @@ class ComposerStaticInit1c745ab272a9e8526a449f78bf477931
         'EasyCI202206\\Symplify\\PackageBuilder\\Composer\\VendorDirProvider' => __DIR__ . '/..' . '/symplify/package-builder/src/Composer/VendorDirProvider.php',
         'EasyCI202206\\Symplify\\PackageBuilder\\Configuration\\StaticEolConfiguration' => __DIR__ . '/..' . '/symplify/package-builder/src/Configuration/StaticEolConfiguration.php',
         'EasyCI202206\\Symplify\\PackageBuilder\\Console\\Command\\AbstractSymplifyCommand' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/AbstractSymplifyCommand.php',
-        'EasyCI202206\\Symplify\\PackageBuilder\\Console\\Command\\CommandNaming' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/CommandNaming.php',
         'EasyCI202206\\Symplify\\PackageBuilder\\Console\\Formatter\\ColorConsoleDiffFormatter' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Formatter/ColorConsoleDiffFormatter.php',
         'EasyCI202206\\Symplify\\PackageBuilder\\Console\\Input\\StaticInputDetector' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Input/StaticInputDetector.php',
         'EasyCI202206\\Symplify\\PackageBuilder\\Console\\Output\\ConsoleDiffer' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Output/ConsoleDiffer.php',
@@ -1177,9 +1176,9 @@ class ComposerStaticInit1c745ab272a9e8526a449f78bf477931
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1c745ab272a9e8526a449f78bf477931::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1c745ab272a9e8526a449f78bf477931::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1c745ab272a9e8526a449f78bf477931::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcd7e100d74ac0ca6f8bf7ff30bf5b071::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcd7e100d74ac0ca6f8bf7ff30bf5b071::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitcd7e100d74ac0ca6f8bf7ff30bf5b071::$classMap;
 
         }, null, ClassLoader::class);
     }
