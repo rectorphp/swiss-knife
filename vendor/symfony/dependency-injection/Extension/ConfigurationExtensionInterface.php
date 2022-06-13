@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection\Extension;
+namespace EasyCI202206\Symfony\Component\DependencyInjection\Extension;
 
-use EasyCI20220613\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202206\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ConfigurationExtensionInterface is the interface implemented by container extension classes.
  *

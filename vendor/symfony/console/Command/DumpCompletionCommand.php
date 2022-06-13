@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\Console\Command;
+namespace EasyCI202206\Symfony\Component\Console\Command;
 
-use EasyCI20220613\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI20220613\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI20220613\Symfony\Component\Console\Input\InputArgument;
-use EasyCI20220613\Symfony\Component\Console\Input\InputInterface;
-use EasyCI20220613\Symfony\Component\Console\Input\InputOption;
-use EasyCI20220613\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI20220613\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220613\Symfony\Component\Process\Process;
+use EasyCI202206\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI202206\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI202206\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202206\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202206\Symfony\Component\Console\Input\InputOption;
+use EasyCI202206\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202206\Symfony\Component\Process\Process;
 /**
  * Dumps the completion script for the current shell.
  *

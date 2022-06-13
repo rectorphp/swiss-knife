@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI20220613\Composer\Semver;
+namespace EasyCI202206\Composer\Semver;
 
-use EasyCI20220613\Composer\Semver\Constraint\Constraint;
-use EasyCI20220613\Composer\Semver\Constraint\ConstraintInterface;
+use EasyCI202206\Composer\Semver\Constraint\Constraint;
+use EasyCI202206\Composer\Semver\Constraint\ConstraintInterface;
 /**
  * Helper class to evaluate constraint by compiling and reusing the code to evaluate
  */

@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Neon;
 
-use EasyCI20220613\Nette\Neon\Decoder;
-use EasyCI20220613\Nette\Neon\Node;
-use EasyCI20220613\Nette\Neon\Node\ArrayItemNode;
-use EasyCI20220613\Nette\Neon\Node\ArrayNode;
-use EasyCI20220613\Nette\Neon\Node\LiteralNode;
-use EasyCI20220613\Nette\Neon\Traverser;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Nette\Neon\Decoder;
+use EasyCI202206\Nette\Neon\Node;
+use EasyCI202206\Nette\Neon\Node\ArrayItemNode;
+use EasyCI202206\Nette\Neon\Node\ArrayNode;
+use EasyCI202206\Nette\Neon\Node\LiteralNode;
+use EasyCI202206\Nette\Neon\Traverser;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
 final class NeonClassExtractor
 {
     /**

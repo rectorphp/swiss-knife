@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection\Extension;
+namespace EasyCI202206\Symfony\Component\DependencyInjection\Extension;
 
-use EasyCI20220613\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI20220613\Symfony\Component\Config\Definition\Processor;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Container;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202206\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202206\Symfony\Component\Config\Definition\Processor;
+use EasyCI202206\Symfony\Component\DependencyInjection\Container;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\LogicException;
 /**
  * Provides useful features shared by many extensions.
  *

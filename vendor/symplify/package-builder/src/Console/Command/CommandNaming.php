@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\PackageBuilder\Console\Command;
+namespace EasyCI202206\Symplify\PackageBuilder\Console\Command;
 
-use EasyCI20220613\Nette\Utils\Strings;
-use EasyCI20220613\Symfony\Component\Console\Command\Command;
+use EasyCI202206\Nette\Utils\Strings;
+use EasyCI202206\Symfony\Component\Console\Command\Command;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Console\Command\CommandNamingTest

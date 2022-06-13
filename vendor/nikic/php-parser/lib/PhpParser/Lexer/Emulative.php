@@ -1,23 +1,23 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Lexer;
+namespace EasyCI202206\PhpParser\Lexer;
 
-use EasyCI20220613\PhpParser\Error;
-use EasyCI20220613\PhpParser\ErrorHandler;
-use EasyCI20220613\PhpParser\Lexer;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
-use EasyCI20220613\PhpParser\Lexer\TokenEmulator\TokenEmulator;
+use EasyCI202206\PhpParser\Error;
+use EasyCI202206\PhpParser\ErrorHandler;
+use EasyCI202206\PhpParser\Lexer;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
+use EasyCI202206\PhpParser\Lexer\TokenEmulator\TokenEmulator;
 class Emulative extends Lexer
 {
     const PHP_7_3 = '7.3dev';

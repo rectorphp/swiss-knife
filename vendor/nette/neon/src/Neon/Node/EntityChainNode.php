@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI20220613\Nette\Neon\Node;
+namespace EasyCI202206\Nette\Neon\Node;
 
-use EasyCI20220613\Nette\Neon;
-use EasyCI20220613\Nette\Neon\Node;
+use EasyCI202206\Nette\Neon;
+use EasyCI202206\Nette\Neon\Node;
 /** @internal */
 final class EntityChainNode extends Node
 {

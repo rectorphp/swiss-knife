@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI202206\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI20220613\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI20220613\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface;
+use EasyCI202206\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI202206\Symplify\Astral\PhpDocParser\Contract\PhpDocNodeVisitorInterface;
 /**
  * Inspired by https://github.com/nikic/PHP-Parser/blob/master/lib/PhpParser/NodeVisitorAbstract.php
  */

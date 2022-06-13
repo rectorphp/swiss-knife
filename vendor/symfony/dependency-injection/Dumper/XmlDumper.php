@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection\Dumper;
+namespace EasyCI202206\Symfony\Component\DependencyInjection\Dumper;
 
-use EasyCI20220613\Symfony\Component\DependencyInjection\Alias;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Parameter;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Reference;
-use EasyCI20220613\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202206\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Parameter;
+use EasyCI202206\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202206\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlDumper dumps a service container as an XML string.
  *

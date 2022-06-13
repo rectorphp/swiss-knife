@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\EasyTesting\DataProvider;
+namespace EasyCI202206\Symplify\EasyTesting\DataProvider;
 
 use Iterator;
-use EasyCI20220613\Nette\Utils\Strings;
-use EasyCI20220613\Symfony\Component\Finder\Finder;
-use EasyCI20220613\Symfony\Component\Finder\SplFileInfo;
-use EasyCI20220613\Symplify\SmartFileSystem\Exception\FileNotFoundException;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI20220613\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI202206\Nette\Utils\Strings;
+use EasyCI202206\Symfony\Component\Finder\Finder;
+use EasyCI202206\Symfony\Component\Finder\SplFileInfo;
+use EasyCI202206\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\EasyTesting\Tests\DataProvider\StaticFixtureFinder\StaticFixtureFinderTest

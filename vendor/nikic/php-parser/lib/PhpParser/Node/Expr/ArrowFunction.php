@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Node\Expr;
+namespace EasyCI202206\PhpParser\Node\Expr;
 
-use EasyCI20220613\PhpParser\Node;
-use EasyCI20220613\PhpParser\Node\Expr;
-use EasyCI20220613\PhpParser\Node\FunctionLike;
+use EasyCI202206\PhpParser\Node;
+use EasyCI202206\PhpParser\Node\Expr;
+use EasyCI202206\PhpParser\Node\FunctionLike;
 class ArrowFunction extends Expr implements FunctionLike
 {
     /** @var bool */

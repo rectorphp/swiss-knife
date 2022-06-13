@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI202206\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI20220613\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI20220613\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+use EasyCI202206\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI202206\PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use function trim;
 class MixinTagValueNode implements PhpDocTagValueNode
 {

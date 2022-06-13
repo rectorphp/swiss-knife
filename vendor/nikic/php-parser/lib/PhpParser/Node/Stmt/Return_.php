@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Node\Stmt;
+namespace EasyCI202206\PhpParser\Node\Stmt;
 
-use EasyCI20220613\PhpParser\Node;
+use EasyCI202206\PhpParser\Node;
 class Return_ extends Node\Stmt
 {
     /** @var null|Node\Expr Expression */

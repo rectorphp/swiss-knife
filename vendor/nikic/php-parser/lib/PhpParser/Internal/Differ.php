@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Internal;
+namespace EasyCI202206\PhpParser\Internal;
 
 /**
  * Implements the Myers diff algorithm.

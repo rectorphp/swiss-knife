@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection;
+namespace EasyCI202206\Symfony\Component\DependencyInjection;
 
-use EasyCI20220613\Psr\Container\ContainerExceptionInterface;
-use EasyCI20220613\Psr\Container\NotFoundExceptionInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI20220613\Symfony\Contracts\Service\ServiceLocatorTrait;
-use EasyCI20220613\Symfony\Contracts\Service\ServiceProviderInterface;
-use EasyCI20220613\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use EasyCI202206\Psr\Container\ContainerExceptionInterface;
+use EasyCI202206\Psr\Container\NotFoundExceptionInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI202206\Symfony\Contracts\Service\ServiceLocatorTrait;
+use EasyCI202206\Symfony\Contracts\Service\ServiceProviderInterface;
+use EasyCI202206\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>

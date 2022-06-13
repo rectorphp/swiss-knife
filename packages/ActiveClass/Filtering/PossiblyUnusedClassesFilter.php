@@ -5,7 +5,7 @@ namespace Symplify\EasyCI\ActiveClass\Filtering;
 
 use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI20220613\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use EasyCI202206\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PossiblyUnusedClassesFilter
 {
     /**

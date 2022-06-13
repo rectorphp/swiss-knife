@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser;
+namespace EasyCI202206\PhpParser;
 
-use EasyCI20220613\PhpParser\Node\Name;
-use EasyCI20220613\PhpParser\Node\Name\FullyQualified;
-use EasyCI20220613\PhpParser\Node\Stmt;
+use EasyCI202206\PhpParser\Node\Name;
+use EasyCI202206\PhpParser\Node\Name\FullyQualified;
+use EasyCI202206\PhpParser\Node\Stmt;
 class NameContext
 {
     /** @var null|Name Current namespace */

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\Console\Helper;
+namespace EasyCI202206\Symfony\Component\Console\Helper;
 
-use EasyCI20220613\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI20220613\Symfony\Component\VarDumper\Cloner\ClonerInterface;
-use EasyCI20220613\Symfony\Component\VarDumper\Cloner\VarCloner;
-use EasyCI20220613\Symfony\Component\VarDumper\Dumper\CliDumper;
+use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202206\Symfony\Component\VarDumper\Cloner\ClonerInterface;
+use EasyCI202206\Symfony\Component\VarDumper\Cloner\VarCloner;
+use EasyCI202206\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */

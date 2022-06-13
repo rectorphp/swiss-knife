@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection;
+namespace EasyCI202206\Symfony\Component\DependencyInjection;
 
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 class Alias
 {
     private const DEFAULT_DEPRECATION_TEMPLATE = 'The "%alias_id%" service alias is deprecated. You should stop using it, as it will be removed in the future.';

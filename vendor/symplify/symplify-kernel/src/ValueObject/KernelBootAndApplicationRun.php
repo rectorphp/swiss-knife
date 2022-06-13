@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\SymplifyKernel\ValueObject;
+namespace EasyCI202206\Symplify\SymplifyKernel\ValueObject;
 
-use EasyCI20220613\Symfony\Component\Console\Application;
-use EasyCI20220613\Symfony\Component\Console\Command\Command;
-use EasyCI20220613\Symfony\Component\HttpKernel\KernelInterface;
-use EasyCI20220613\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use EasyCI20220613\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use EasyCI20220613\Symplify\SymplifyKernel\Contract\LightKernelInterface;
-use EasyCI20220613\Symplify\SymplifyKernel\Exception\BootException;
+use EasyCI202206\Symfony\Component\Console\Application;
+use EasyCI202206\Symfony\Component\Console\Command\Command;
+use EasyCI202206\Symfony\Component\HttpKernel\KernelInterface;
+use EasyCI202206\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
+use EasyCI202206\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use EasyCI202206\Symplify\SymplifyKernel\Contract\LightKernelInterface;
+use EasyCI202206\Symplify\SymplifyKernel\Exception\BootException;
 use Throwable;
 /**
  * @api

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Contracts\Service\Test;
+namespace EasyCI202206\Symfony\Contracts\Service\Test;
 
-use EasyCI20220613\PHPUnit\Framework\TestCase;
-use EasyCI20220613\Psr\Container\ContainerInterface;
-use EasyCI20220613\Symfony\Contracts\Service\ServiceLocatorTrait;
+use EasyCI202206\PHPUnit\Framework\TestCase;
+use EasyCI202206\Psr\Container\ContainerInterface;
+use EasyCI202206\Symfony\Contracts\Service\ServiceLocatorTrait;
 abstract class ServiceLocatorTest extends TestCase
 {
     protected function getServiceLocator(array $factories) : ContainerInterface
@@ -59,7 +59,7 @@ abstract class ServiceLocatorTest extends TestCase
     public function testThrowsOnUndefinedInternalService()
     {
         if (!$this->getExpectedException()) {
-            $this->expectException(\EasyCI20220613\Psr\Container\NotFoundExceptionInterface::class);
+            $this->expectException(\EasyCI202206\Psr\Container\NotFoundExceptionInterface::class);
             $this->expectExceptionMessage('The service "foo" has a dependency on a non-existent service "bar". This locator only knows about the "foo" service.');
         }
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
@@ -69,7 +69,7 @@ abstract class ServiceLocatorTest extends TestCase
     }
     public function testThrowsOnCircularReference()
     {
-        $this->expectException(\EasyCI20220613\Psr\Container\ContainerExceptionInterface::class);
+        $this->expectException(\EasyCI202206\Psr\Container\ContainerExceptionInterface::class);
         $this->expectExceptionMessage('Circular reference detected for service "bar", path: "bar -> baz -> bar".');
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
             return $locator->get('bar');

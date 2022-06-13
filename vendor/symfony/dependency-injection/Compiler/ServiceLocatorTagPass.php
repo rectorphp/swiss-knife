@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202206\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220613\Symfony\Component\DependencyInjection\Alias;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Reference;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ServiceLocator;
+use EasyCI202206\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202206\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202206\Symfony\Component\DependencyInjection\ServiceLocator;
 /**
  * Applies the "container.service_locator" tag by wrapping references into ServiceClosureArgument instances.
  *

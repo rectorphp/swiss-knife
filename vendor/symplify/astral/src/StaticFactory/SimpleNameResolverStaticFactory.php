@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\Astral\StaticFactory;
+namespace EasyCI202206\Symplify\Astral\StaticFactory;
 
-use EasyCI20220613\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\ArgNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\AttributeNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\ClassLikeNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\ClassMethodNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\ConstFetchNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\FuncCallNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\IdentifierNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\NamespaceNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\ParamNodeNameResolver;
-use EasyCI20220613\Symplify\Astral\NodeNameResolver\PropertyNodeNameResolver;
+use EasyCI202206\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\ArgNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\AttributeNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\ClassLikeNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\ClassMethodNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\ConstFetchNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\FuncCallNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\IdentifierNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\NamespaceNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\ParamNodeNameResolver;
+use EasyCI202206\Symplify\Astral\NodeNameResolver\PropertyNodeNameResolver;
 /**
  * This would be normally handled by standard Symfony or Nette DI, but PHPStan does not use any of those, so we have to
  * make it manually.

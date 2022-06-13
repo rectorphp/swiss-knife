@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\Console\Completion;
+namespace EasyCI202206\Symfony\Component\Console\Completion;
 
-use EasyCI20220613\Symfony\Component\Console\Exception\RuntimeException;
-use EasyCI20220613\Symfony\Component\Console\Input\ArgvInput;
-use EasyCI20220613\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI20220613\Symfony\Component\Console\Input\InputOption;
+use EasyCI202206\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202206\Symfony\Component\Console\Input\ArgvInput;
+use EasyCI202206\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202206\Symfony\Component\Console\Input\InputOption;
 /**
  * An input specialized for shell completion.
  *

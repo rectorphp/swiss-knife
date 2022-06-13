@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\Console\DependencyInjection;
+namespace EasyCI202206\Symfony\Component\Console\DependencyInjection;
 
-use EasyCI20220613\Symfony\Component\Console\Command\Command;
-use EasyCI20220613\Symfony\Component\Console\Command\LazyCommand;
-use EasyCI20220613\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Reference;
-use EasyCI20220613\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202206\Symfony\Component\Console\Command\Command;
+use EasyCI202206\Symfony\Component\Console\Command\LazyCommand;
+use EasyCI202206\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use EasyCI202206\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202206\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202206\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Registers console commands.
  *

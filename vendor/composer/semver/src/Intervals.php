@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI20220613\Composer\Semver;
+namespace EasyCI202206\Composer\Semver;
 
-use EasyCI20220613\Composer\Semver\Constraint\Constraint;
-use EasyCI20220613\Composer\Semver\Constraint\ConstraintInterface;
-use EasyCI20220613\Composer\Semver\Constraint\MatchAllConstraint;
-use EasyCI20220613\Composer\Semver\Constraint\MatchNoneConstraint;
-use EasyCI20220613\Composer\Semver\Constraint\MultiConstraint;
+use EasyCI202206\Composer\Semver\Constraint\Constraint;
+use EasyCI202206\Composer\Semver\Constraint\ConstraintInterface;
+use EasyCI202206\Composer\Semver\Constraint\MatchAllConstraint;
+use EasyCI202206\Composer\Semver\Constraint\MatchNoneConstraint;
+use EasyCI202206\Composer\Semver\Constraint\MultiConstraint;
 /**
  * Helper class generating intervals from constraints
  *

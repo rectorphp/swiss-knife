@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Git;
 
-use EasyCI20220613\Nette\Utils\Strings;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Nette\Utils\Strings;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Git\ConflictResolver\ConflictResolverTest
  */

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202206\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220613\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI20220613\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI20220613\Symfony\Component\Config\Definition\Processor;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use EasyCI202206\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI202206\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202206\Symfony\Component\Config\Definition\Processor;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202206\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI202206\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 /**
  * Validates environment variable placeholders used in extension configuration with dummy values.
  *

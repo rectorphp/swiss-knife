@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\RobotLoader;
 
-use EasyCI20220613\Nette\Loaders\RobotLoader;
+use EasyCI202206\Nette\Loaders\RobotLoader;
 final class PhpClassLoader
 {
     /**

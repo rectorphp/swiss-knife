@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\Astral\ValueObject\NodeBuilder;
+namespace EasyCI202206\Symplify\Astral\ValueObject\NodeBuilder;
 
-use EasyCI20220613\PhpParser\Builder\TraitUse;
+use EasyCI202206\PhpParser\Builder\TraitUse;
 /**
  * @api
  * Fixed duplicated naming in php-parser and prevents confusion

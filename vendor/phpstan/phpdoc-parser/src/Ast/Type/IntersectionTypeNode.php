@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI202206\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI20220613\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI202206\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
 class IntersectionTypeNode implements TypeNode
 {

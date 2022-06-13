@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\SmartFileSystem\Finder;
+namespace EasyCI202206\Symplify\SmartFileSystem\Finder;
 
-use EasyCI20220613\Nette\Utils\Finder as NetteFinder;
+use EasyCI202206\Nette\Utils\Finder as NetteFinder;
 use SplFileInfo;
-use EasyCI20220613\Symfony\Component\Finder\Finder as SymfonyFinder;
-use EasyCI20220613\Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Symfony\Component\Finder\Finder as SymfonyFinder;
+use EasyCI202206\Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\SmartFileSystem\Tests\Finder\FinderSanitizer\FinderSanitizerTest
  */

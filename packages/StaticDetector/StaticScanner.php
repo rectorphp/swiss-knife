@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector;
 
-use EasyCI20220613\PhpParser\Parser;
-use EasyCI20220613\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202206\PhpParser\Parser;
+use EasyCI202206\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
 use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\StaticDetector\StaticScanner\StaticScannerTest
  */

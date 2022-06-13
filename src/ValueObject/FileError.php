@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\ValueObject;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileError implements FileErrorInterface
 {
     /**

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\Astral\NodeNameResolver;
+namespace EasyCI202206\Symplify\Astral\NodeNameResolver;
 
-use EasyCI20220613\PhpParser\Node;
-use EasyCI20220613\PhpParser\Node\Expr\ConstFetch;
-use EasyCI20220613\Symplify\Astral\Contract\NodeNameResolverInterface;
+use EasyCI202206\PhpParser\Node;
+use EasyCI202206\PhpParser\Node\Expr\ConstFetch;
+use EasyCI202206\Symplify\Astral\Contract\NodeNameResolverInterface;
 final class ConstFetchNodeNameResolver implements NodeNameResolverInterface
 {
     public function match(Node $node) : bool

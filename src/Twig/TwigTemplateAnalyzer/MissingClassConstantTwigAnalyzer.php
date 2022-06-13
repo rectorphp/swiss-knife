@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Twig\TwigTemplateAnalyzer;
 
-use EasyCI20220613\Nette\Utils\Strings;
+use EasyCI202206\Nette\Utils\Strings;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI20220613\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer\MissingClassConstantTwigAnalyzerTest
  */

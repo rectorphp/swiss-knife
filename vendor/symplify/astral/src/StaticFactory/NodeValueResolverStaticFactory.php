@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\Astral\StaticFactory;
+namespace EasyCI202206\Symplify\Astral\StaticFactory;
 
-use EasyCI20220613\Symplify\Astral\NodeValue\NodeValueResolver;
-use EasyCI20220613\Symplify\PackageBuilder\Php\TypeChecker;
+use EasyCI202206\Symplify\Astral\NodeValue\NodeValueResolver;
+use EasyCI202206\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @api
  */

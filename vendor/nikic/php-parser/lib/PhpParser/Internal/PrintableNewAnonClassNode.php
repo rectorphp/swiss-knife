@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Internal;
+namespace EasyCI202206\PhpParser\Internal;
 
-use EasyCI20220613\PhpParser\Node;
-use EasyCI20220613\PhpParser\Node\Expr;
+use EasyCI202206\PhpParser\Node;
+use EasyCI202206\PhpParser\Node\Expr;
 /**
  * This node is used internally by the format-preserving pretty printer to print anonymous classes.
  *

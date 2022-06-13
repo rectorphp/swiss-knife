@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI202206\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI20220613\PhpParser\Node\Expr;
-use EasyCI20220613\PhpParser\Node\Scalar\MagicConst;
-use EasyCI20220613\PhpParser\Node\Scalar\MagicConst\Dir;
-use EasyCI20220613\PhpParser\Node\Scalar\MagicConst\File;
-use EasyCI20220613\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI202206\PhpParser\Node\Expr;
+use EasyCI202206\PhpParser\Node\Scalar\MagicConst;
+use EasyCI202206\PhpParser\Node\Scalar\MagicConst\Dir;
+use EasyCI202206\PhpParser\Node\Scalar\MagicConst\File;
+use EasyCI202206\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Node\Expr\Cast;
+namespace EasyCI202206\PhpParser\Node\Expr\Cast;
 
-use EasyCI20220613\PhpParser\Node\Expr\Cast;
+use EasyCI202206\PhpParser\Node\Expr\Cast;
 class Object_ extends Cast
 {
     public function getType() : string

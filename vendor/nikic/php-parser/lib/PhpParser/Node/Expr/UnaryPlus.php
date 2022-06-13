@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI20220613\PhpParser\Node\Expr;
+namespace EasyCI202206\PhpParser\Node\Expr;
 
-use EasyCI20220613\PhpParser\Node\Expr;
+use EasyCI202206\PhpParser\Node\Expr;
 class UnaryPlus extends Expr
 {
     /** @var Expr Expression */

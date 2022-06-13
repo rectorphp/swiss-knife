@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI20220613\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202206\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI20220613\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI20220613\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Definition;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\ExceptionInterface;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI20220613\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI202206\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI202206\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\ExceptionInterface;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202206\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 /**
  * This replaces all ChildDefinition instances with their equivalent fully
  * merged Definition instance.
