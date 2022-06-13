@@ -9,7 +9,6 @@ use EasyCI202206\PhpParser\Node\Stmt;
 use EasyCI202206\PhpParser\Node\Stmt\ClassMethod;
 use EasyCI202206\PhpParser\Node\Stmt\Namespace_;
 use EasyCI202206\PhpParser\NodeVisitorAbstract;
-use EasyCI202206\Symplify\Astral\ValueObject\AttributeKey;
 final class UsedClassNodeVisitor extends NodeVisitorAbstract
 {
     /**
@@ -49,7 +48,7 @@ final class UsedClassNodeVisitor extends NodeVisitorAbstract
     private function isNonNameNode(Name $name) : bool
     {
         // skip nodes that are not part of class names
-        $parent = $name->getAttribute("parent");
+        $parent = $name->getAttribute('parent');
         if ($parent instanceof Namespace_) {
             return \true;
         }
