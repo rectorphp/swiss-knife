@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Console\Completion;
+namespace EasyCI202207\Symfony\Component\Console\Completion;
 
-use EasyCI202206\Symfony\Component\Console\Input\InputOption;
+use EasyCI202207\Symfony\Component\Console\Input\InputOption;
 /**
  * Stores all completion suggestions for the current input.
  *

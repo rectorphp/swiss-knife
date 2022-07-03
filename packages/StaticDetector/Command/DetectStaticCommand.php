@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\Command;
 
-use EasyCI202206\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202206\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202207\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
 use Symplify\EasyCI\StaticDetector\Output\StaticReportReporter;
 use Symplify\EasyCI\StaticDetector\StaticScanner;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI202206\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI202207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class DetectStaticCommand extends AbstractSymplifyCommand
 {
     /**

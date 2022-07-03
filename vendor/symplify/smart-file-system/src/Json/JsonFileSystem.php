@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\SmartFileSystem\Json;
+namespace EasyCI202207\Symplify\SmartFileSystem\Json;
 
-use EasyCI202206\Nette\Utils\Arrays;
-use EasyCI202206\Nette\Utils\Json;
-use EasyCI202206\Symplify\SmartFileSystem\FileSystemGuard;
-use EasyCI202206\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI202207\Nette\Utils\Arrays;
+use EasyCI202207\Nette\Utils\Json;
+use EasyCI202207\Symplify\SmartFileSystem\FileSystemGuard;
+use EasyCI202207\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @api
  * @see \Symplify\SmartFileSystem\Tests\Json\JsonFileSystem\JsonFileSystemTest

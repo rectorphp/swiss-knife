@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace EasyCI202207\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use EasyCI202206\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202207\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI202207\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait ParentTrait
 {
     /**

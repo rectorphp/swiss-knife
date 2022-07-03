@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI202206\\Psr\\Container\\": "src\/"
+            "EasyCI202207\\Psr\\Container\\": "src\/"
         }
     },
     "extra": {

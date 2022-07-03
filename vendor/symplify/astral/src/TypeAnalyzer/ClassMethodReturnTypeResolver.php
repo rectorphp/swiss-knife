@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\Astral\TypeAnalyzer;
+namespace EasyCI202207\Symplify\Astral\TypeAnalyzer;
 
-use EasyCI202206\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI202206\PHPStan\Analyser\Scope;
-use EasyCI202206\PHPStan\Reflection\ClassReflection;
-use EasyCI202206\PHPStan\Reflection\FunctionVariant;
-use EasyCI202206\PHPStan\Reflection\ParametersAcceptorSelector;
-use EasyCI202206\PHPStan\Type\MixedType;
-use EasyCI202206\PHPStan\Type\Type;
-use EasyCI202206\Symplify\Astral\Exception\ShouldNotHappenException;
-use EasyCI202206\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202207\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI202207\PHPStan\Analyser\Scope;
+use EasyCI202207\PHPStan\Reflection\ClassReflection;
+use EasyCI202207\PHPStan\Reflection\FunctionVariant;
+use EasyCI202207\PHPStan\Reflection\ParametersAcceptorSelector;
+use EasyCI202207\PHPStan\Type\MixedType;
+use EasyCI202207\PHPStan\Type\Type;
+use EasyCI202207\Symplify\Astral\Exception\ShouldNotHappenException;
+use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @api
  */

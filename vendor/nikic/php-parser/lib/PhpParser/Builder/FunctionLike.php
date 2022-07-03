@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Builder;
+namespace EasyCI202207\PhpParser\Builder;
 
-use EasyCI202206\PhpParser\BuilderHelpers;
-use EasyCI202206\PhpParser\Node;
+use EasyCI202207\PhpParser\BuilderHelpers;
+use EasyCI202207\PhpParser\Node;
 abstract class FunctionLike extends Declaration
 {
     protected $returnByRef = \false;

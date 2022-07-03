@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Node\Expr;
+namespace EasyCI202207\PhpParser\Node\Expr;
 
-use EasyCI202206\PhpParser\Node;
-use EasyCI202206\PhpParser\Node\Arg;
-use EasyCI202206\PhpParser\Node\Expr;
-use EasyCI202206\PhpParser\Node\Identifier;
-use EasyCI202206\PhpParser\Node\VariadicPlaceholder;
+use EasyCI202207\PhpParser\Node;
+use EasyCI202207\PhpParser\Node\Arg;
+use EasyCI202207\PhpParser\Node\Expr;
+use EasyCI202207\PhpParser\Node\Identifier;
+use EasyCI202207\PhpParser\Node\VariadicPlaceholder;
 class StaticCall extends CallLike
 {
     /** @var Node\Name|Expr Class name */

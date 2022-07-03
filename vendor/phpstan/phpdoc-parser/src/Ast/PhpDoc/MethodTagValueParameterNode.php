@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace EasyCI202207\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use EasyCI202206\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
-use EasyCI202206\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI202206\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use EasyCI202206\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+use EasyCI202207\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
+use EasyCI202207\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI202207\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI202207\PHPStan\PhpDocParser\Ast\Type\TypeNode;
 class MethodTagValueParameterNode implements Node
 {
     use NodeAttributes;

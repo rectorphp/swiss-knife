@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\SymplifyKernel;
+namespace EasyCI202207\Symplify\SymplifyKernel;
 
-use EasyCI202206\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202206\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI202206\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
-use EasyCI202206\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
-use EasyCI202206\Webmozart\Assert\Assert;
+use EasyCI202207\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI202207\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202207\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI202207\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+use EasyCI202207\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
+use EasyCI202207\Webmozart\Assert\Assert;
 /**
  * @see \Symplify\SymplifyKernel\Tests\ContainerBuilderFactory\ContainerBuilderFactoryTest
  */

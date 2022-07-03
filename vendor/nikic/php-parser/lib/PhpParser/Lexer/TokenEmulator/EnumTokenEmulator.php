@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI202207\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI202206\PhpParser\Lexer\Emulative;
+use EasyCI202207\PhpParser\Lexer\Emulative;
 final class EnumTokenEmulator extends KeywordEmulator
 {
     public function getPhpVersion() : string

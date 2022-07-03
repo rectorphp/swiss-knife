@@ -1,23 +1,23 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Lexer;
+namespace EasyCI202207\PhpParser\Lexer;
 
-use EasyCI202206\PhpParser\Error;
-use EasyCI202206\PhpParser\ErrorHandler;
-use EasyCI202206\PhpParser\Lexer;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
-use EasyCI202206\PhpParser\Lexer\TokenEmulator\TokenEmulator;
+use EasyCI202207\PhpParser\Error;
+use EasyCI202207\PhpParser\ErrorHandler;
+use EasyCI202207\PhpParser\Lexer;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
+use EasyCI202207\PhpParser\Lexer\TokenEmulator\TokenEmulator;
 class Emulative extends Lexer
 {
     const PHP_7_3 = '7.3dev';

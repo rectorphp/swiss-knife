@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\Collector;
 
-use EasyCI202206\PhpParser\Node\Expr;
-use EasyCI202206\PhpParser\Node\Expr\StaticCall;
-use EasyCI202206\PhpParser\Node\Name;
-use EasyCI202206\PhpParser\Node\Stmt\Class_;
-use EasyCI202206\PhpParser\Node\Stmt\ClassLike;
-use EasyCI202206\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI202206\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202207\PhpParser\Node\Expr;
+use EasyCI202207\PhpParser\Node\Expr\StaticCall;
+use EasyCI202207\PhpParser\Node\Name;
+use EasyCI202207\PhpParser\Node\Stmt\Class_;
+use EasyCI202207\PhpParser\Node\Stmt\ClassLike;
+use EasyCI202207\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
 use Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethod;
 use Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
 use Symplify\EasyCI\StaticDetector\ValueObject\StaticReport;
-use EasyCI202206\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI202207\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticNodeCollector
 {
     /**

@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Config;
 
-use EasyCI202206\Nette\Neon\Encoder;
-use EasyCI202206\Nette\Neon\Neon;
-use EasyCI202206\Nette\Utils\Strings;
+use EasyCI202207\Nette\Neon\Encoder;
+use EasyCI202207\Nette\Neon\Neon;
+use EasyCI202207\Nette\Utils\Strings;
 use Symplify\EasyCI\Neon\NeonClassExtractor;
-use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202207\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ClassExtractor\ClassExtractorTest
  */

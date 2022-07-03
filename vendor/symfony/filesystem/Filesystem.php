@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Filesystem;
+namespace EasyCI202207\Symfony\Component\Filesystem;
 
-use EasyCI202206\Symfony\Component\Filesystem\Exception\FileNotFoundException;
-use EasyCI202206\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
-use EasyCI202206\Symfony\Component\Filesystem\Exception\IOException;
+use EasyCI202207\Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use EasyCI202207\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use EasyCI202207\Symfony\Component\Filesystem\Exception\IOException;
 /**
  * Provides basic utility to manipulate the file system.
  *

@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Config\Builder;
+namespace EasyCI202207\Symfony\Component\Config\Builder;
 
-use EasyCI202206\Symfony\Component\Config\Definition\ArrayNode;
-use EasyCI202206\Symfony\Component\Config\Definition\BooleanNode;
-use EasyCI202206\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI202206\Symfony\Component\Config\Definition\EnumNode;
-use EasyCI202206\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use EasyCI202206\Symfony\Component\Config\Definition\FloatNode;
-use EasyCI202206\Symfony\Component\Config\Definition\IntegerNode;
-use EasyCI202206\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI202206\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use EasyCI202206\Symfony\Component\Config\Definition\ScalarNode;
-use EasyCI202206\Symfony\Component\Config\Definition\VariableNode;
-use EasyCI202206\Symfony\Component\Config\Loader\ParamConfigurator;
+use EasyCI202207\Symfony\Component\Config\Definition\ArrayNode;
+use EasyCI202207\Symfony\Component\Config\Definition\BooleanNode;
+use EasyCI202207\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202207\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI202207\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use EasyCI202207\Symfony\Component\Config\Definition\FloatNode;
+use EasyCI202207\Symfony\Component\Config\Definition\IntegerNode;
+use EasyCI202207\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI202207\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use EasyCI202207\Symfony\Component\Config\Definition\ScalarNode;
+use EasyCI202207\Symfony\Component\Config\Definition\VariableNode;
+use EasyCI202207\Symfony\Component\Config\Loader\ParamConfigurator;
 /**
  * Generate ConfigBuilders to help create valid config.
  *
@@ -48,7 +48,7 @@ class ConfigBuilderGenerator implements ConfigBuilderGeneratorInterface
     {
         $this->classes = [];
         $rootNode = $configuration->getConfigTreeBuilder()->buildTree();
-        $rootClass = new ClassBuilder('EasyCI202206\\Symfony\\Config', $rootNode->getName());
+        $rootClass = new ClassBuilder('EasyCI202207\\Symfony\\Config', $rootNode->getName());
         $path = $this->getFullPath($rootClass);
         if (!\is_file($path)) {
             // Generate the class if the file not exists

@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing;
 
-use EasyCI202206\PHPUnit\Framework\TestCase;
-use EasyCI202206\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use EasyCI202207\PHPUnit\Framework\TestCase;
+use EasyCI202207\Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 final class UnitTestFilter
 {
     /**
      * @var string[]|class-string<KernelTestCase>[]
      */
-    private const NON_UNIT_TEST_CASE_CLASSES = [KernelTestCase::class, 'EasyCI202206\\Symfony\\Component\\Form\\Test\\TypeTestCase'];
+    private const NON_UNIT_TEST_CASE_CLASSES = [KernelTestCase::class, 'EasyCI202207\\Symfony\\Component\\Form\\Test\\TypeTestCase'];
     /**
      * @param array<string, string> $testClassesToFilePaths
      * @return array<string, string>

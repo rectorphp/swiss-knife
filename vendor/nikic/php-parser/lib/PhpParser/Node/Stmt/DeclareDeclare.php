@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Node\Stmt;
+namespace EasyCI202207\PhpParser\Node\Stmt;
 
-use EasyCI202206\PhpParser\Node;
+use EasyCI202207\PhpParser\Node;
 class DeclareDeclare extends Node\Stmt
 {
     /** @var Node\Identifier Key */

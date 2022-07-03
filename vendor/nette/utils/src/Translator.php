@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI202206\Nette\Localization;
+namespace EasyCI202207\Nette\Localization;
 
 /**
  * Translator adapter.

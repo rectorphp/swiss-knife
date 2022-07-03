@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\Astral\NodeTraverser;
+namespace EasyCI202207\Symplify\Astral\NodeTraverser;
 
-use EasyCI202206\PhpParser\Node;
-use EasyCI202206\PhpParser\NodeTraverser;
-use EasyCI202206\Symplify\Astral\NodeVisitor\CallableNodeVisitor;
+use EasyCI202207\PhpParser\Node;
+use EasyCI202207\PhpParser\NodeTraverser;
+use EasyCI202207\Symplify\Astral\NodeVisitor\CallableNodeVisitor;
 /**
  * @api
  */

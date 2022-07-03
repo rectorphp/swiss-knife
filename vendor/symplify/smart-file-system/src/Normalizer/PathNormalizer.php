@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\SmartFileSystem\Normalizer;
+namespace EasyCI202207\Symplify\SmartFileSystem\Normalizer;
 
-use EasyCI202206\Nette\Utils\Strings;
+use EasyCI202207\Nette\Utils\Strings;
 /**
  * @api
  *

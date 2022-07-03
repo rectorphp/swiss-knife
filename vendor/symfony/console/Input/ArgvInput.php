@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Console\Input;
+namespace EasyCI202207\Symfony\Component\Console\Input;
 
-use EasyCI202206\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202207\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * ArgvInput represents an input coming from the CLI arguments.
  *

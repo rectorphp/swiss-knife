@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Node\Expr;
+namespace EasyCI202207\PhpParser\Node\Expr;
 
-use EasyCI202206\PhpParser\Node\Expr;
+use EasyCI202207\PhpParser\Node\Expr;
 class Clone_ extends Expr
 {
     /** @var Expr Expression */

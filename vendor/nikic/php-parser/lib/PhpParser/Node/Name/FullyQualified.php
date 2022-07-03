@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Node\Name;
+namespace EasyCI202207\PhpParser\Node\Name;
 
-class FullyQualified extends \EasyCI202206\PhpParser\Node\Name
+class FullyQualified extends \EasyCI202207\PhpParser\Node\Name
 {
     /**
      * Checks whether the name is unqualified. (E.g. Name)

@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Console\Command;
+namespace EasyCI202207\Symfony\Component\Console\Command;
 
-use EasyCI202206\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI202206\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI202206\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
-use EasyCI202206\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
-use EasyCI202206\Symfony\Component\Console\Exception\CommandNotFoundException;
-use EasyCI202206\Symfony\Component\Console\Exception\ExceptionInterface;
-use EasyCI202206\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202206\Symfony\Component\Console\Input\InputOption;
-use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202207\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI202207\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI202207\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
+use EasyCI202207\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
+use EasyCI202207\Symfony\Component\Console\Exception\CommandNotFoundException;
+use EasyCI202207\Symfony\Component\Console\Exception\ExceptionInterface;
+use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202207\Symfony\Component\Console\Input\InputOption;
+use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Responsible for providing the values to the shell completion.
  *

@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\Astral\TypeAnalyzer;
+namespace EasyCI202207\Symplify\Astral\TypeAnalyzer;
 
-use EasyCI202206\PhpParser\Node\Expr;
-use EasyCI202206\PHPStan\Analyser\Scope;
-use EasyCI202206\PHPStan\Type\ArrayType;
-use EasyCI202206\PHPStan\Type\IntersectionType;
-use EasyCI202206\PHPStan\Type\Type;
-use EasyCI202206\PHPStan\Type\TypeWithClassName;
-use EasyCI202206\PHPStan\Type\UnionType;
+use EasyCI202207\PhpParser\Node\Expr;
+use EasyCI202207\PHPStan\Analyser\Scope;
+use EasyCI202207\PHPStan\Type\ArrayType;
+use EasyCI202207\PHPStan\Type\IntersectionType;
+use EasyCI202207\PHPStan\Type\Type;
+use EasyCI202207\PHPStan\Type\TypeWithClassName;
+use EasyCI202207\PHPStan\Type\UnionType;
 final class ContainsTypeAnalyser
 {
     /**

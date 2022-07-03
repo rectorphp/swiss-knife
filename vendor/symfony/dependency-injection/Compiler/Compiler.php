@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202207\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202206\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202206\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
+use EasyCI202207\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202207\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
 /**
  * This class is used to remove circular dependencies between individual passes.
  *

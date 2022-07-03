@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Utils;
 
-use EasyCI202206\Nette\Utils\Strings;
+use EasyCI202207\Nette\Utils\Strings;
 /**
  * @see \Symplify\EasyCI\Tests\Psr4\Utils\SymplifyStringsTest
  */

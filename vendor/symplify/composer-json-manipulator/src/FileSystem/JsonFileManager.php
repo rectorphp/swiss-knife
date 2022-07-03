@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\ComposerJsonManipulator\FileSystem;
+namespace EasyCI202207\Symplify\ComposerJsonManipulator\FileSystem;
 
-use EasyCI202206\Nette\Utils\Json;
-use EasyCI202206\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
-use EasyCI202206\Symplify\ComposerJsonManipulator\Json\JsonInliner;
-use EasyCI202206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use EasyCI202206\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
-use EasyCI202206\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI202206\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI202207\Nette\Utils\Json;
+use EasyCI202207\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
+use EasyCI202207\Symplify\ComposerJsonManipulator\Json\JsonInliner;
+use EasyCI202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use EasyCI202207\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
+use EasyCI202207\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202207\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\FileSystem\JsonFileManager\JsonFileManagerTest
  */

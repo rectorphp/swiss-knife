@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Console\Event;
+namespace EasyCI202207\Symfony\Component\Console\Event;
 
-use EasyCI202206\Symfony\Component\Console\Command\Command;
-use EasyCI202206\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202207\Symfony\Component\Console\Command\Command;
+use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Allows to handle throwables thrown while running a command.
  *

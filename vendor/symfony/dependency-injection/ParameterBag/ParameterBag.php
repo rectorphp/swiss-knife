@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\DependencyInjection\ParameterBag;
+namespace EasyCI202207\Symfony\Component\DependencyInjection\ParameterBag;
 
-use EasyCI202206\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
-use EasyCI202206\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use EasyCI202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202207\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
+use EasyCI202207\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use EasyCI202207\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * Holds parameters.
  *

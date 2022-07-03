@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\Symplify\Astral\Contract;
+namespace EasyCI202207\Symplify\Astral\Contract;
 
-use EasyCI202206\PhpParser\Node;
+use EasyCI202207\PhpParser\Node;
 interface NodeNameResolverInterface
 {
     public function match(Node $node) : bool;

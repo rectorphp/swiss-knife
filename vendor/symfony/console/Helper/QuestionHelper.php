@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Console\Helper;
+namespace EasyCI202207\Symfony\Component\Console\Helper;
 
-use EasyCI202206\Symfony\Component\Console\Cursor;
-use EasyCI202206\Symfony\Component\Console\Exception\MissingInputException;
-use EasyCI202206\Symfony\Component\Console\Exception\RuntimeException;
-use EasyCI202206\Symfony\Component\Console\Formatter\OutputFormatter;
-use EasyCI202206\Symfony\Component\Console\Formatter\OutputFormatterStyle;
-use EasyCI202206\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202206\Symfony\Component\Console\Input\StreamableInputInterface;
-use EasyCI202206\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI202206\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202206\Symfony\Component\Console\Question\ChoiceQuestion;
-use EasyCI202206\Symfony\Component\Console\Question\Question;
-use EasyCI202206\Symfony\Component\Console\Terminal;
-use function EasyCI202206\Symfony\Component\String\s;
+use EasyCI202207\Symfony\Component\Console\Cursor;
+use EasyCI202207\Symfony\Component\Console\Exception\MissingInputException;
+use EasyCI202207\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202207\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202207\Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202207\Symfony\Component\Console\Input\StreamableInputInterface;
+use EasyCI202207\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202207\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202207\Symfony\Component\Console\Question\ChoiceQuestion;
+use EasyCI202207\Symfony\Component\Console\Question\Question;
+use EasyCI202207\Symfony\Component\Console\Terminal;
+use function EasyCI202207\Symfony\Component\String\s;
 /**
  * The QuestionHelper class provides helpers to interact with the user.
  *

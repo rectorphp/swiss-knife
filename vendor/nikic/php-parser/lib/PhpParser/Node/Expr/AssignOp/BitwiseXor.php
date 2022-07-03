@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202206\PhpParser\Node\Expr\AssignOp;
+namespace EasyCI202207\PhpParser\Node\Expr\AssignOp;
 
-use EasyCI202206\PhpParser\Node\Expr\AssignOp;
+use EasyCI202207\PhpParser\Node\Expr\AssignOp;
 class BitwiseXor extends AssignOp
 {
     public function getType() : string

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI202206\Composer\Semver;
+namespace EasyCI202207\Composer\Semver;
 
-use EasyCI202206\Composer\Semver\Constraint\ConstraintInterface;
-use EasyCI202206\Composer\Semver\Constraint\MatchAllConstraint;
-use EasyCI202206\Composer\Semver\Constraint\MultiConstraint;
-use EasyCI202206\Composer\Semver\Constraint\Constraint;
+use EasyCI202207\Composer\Semver\Constraint\ConstraintInterface;
+use EasyCI202207\Composer\Semver\Constraint\MatchAllConstraint;
+use EasyCI202207\Composer\Semver\Constraint\MultiConstraint;
+use EasyCI202207\Composer\Semver\Constraint\Constraint;
 /**
  * Version parser.
  *

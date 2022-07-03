@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Console\Output;
+namespace EasyCI202207\Symfony\Component\Console\Output;
 
-use EasyCI202206\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202206\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use EasyCI202207\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202207\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * StreamOutput writes the output to a given stream.
  *

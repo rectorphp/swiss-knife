@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Command;
 
-use EasyCI202206\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202206\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202206\Symfony\Component\Console\Input\InputOption;
-use EasyCI202206\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202207\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202207\Symfony\Component\Console\Input\InputOption;
+use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
 use Symplify\EasyCI\Psr4\Json\JsonAutoloadPrinter;
 use Symplify\EasyCI\Psr4\Psr4Filter;
@@ -14,7 +14,7 @@ use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
 use Symplify\EasyCI\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory;
-use EasyCI202206\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI202207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class GeneratePsr4ToPathsCommand extends AbstractSymplifyCommand
 {
     /**

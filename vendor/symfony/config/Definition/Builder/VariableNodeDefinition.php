@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202206\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI202207\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI202206\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI202206\Symfony\Component\Config\Definition\VariableNode;
+use EasyCI202207\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI202207\Symfony\Component\Config\Definition\VariableNode;
 /**
  * This class provides a fluent interface for defining a node.
  *
