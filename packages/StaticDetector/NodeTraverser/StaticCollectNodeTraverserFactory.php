@@ -21,6 +21,9 @@ final class StaticCollectNodeTraverserFactory
         $this->staticCollectNodeVisitor = $staticCollectNodeVisitor;
         $this->filePathNodeVisitor = $filePathNodeVisitor;
     }
+    /**
+     * @api
+     */
     public function create() : \Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser
     {
         $staticCollectNodeTraverser = new \Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser();

@@ -11,9 +11,6 @@ use EasyCI202207\PhpParser\Node\Expr\Instanceof_;
 use EasyCI202207\PhpParser\Node\Expr\MethodCall;
 use EasyCI202207\PhpParser\Node\Expr\PropertyFetch;
 use EasyCI202207\PhpParser\Node\Expr\Variable;
-use EasyCI202207\PHPStan\Analyser\Scope;
-use EasyCI202207\PHPStan\Type\ConstantScalarType;
-use EasyCI202207\PHPStan\Type\UnionType;
 use EasyCI202207\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
 use EasyCI202207\Symplify\Astral\Exception\ShouldNotHappenException;
 use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
@@ -36,10 +33,6 @@ final class NodeValueResolver
      */
     private $currentFilePath;
     /**
-     * @var \Symplify\Astral\NodeValue\UnionTypeValueResolver
-     */
-    private $unionTypeValueResolver;
-    /**
      * @var NodeValueResolverInterface[]
      */
     private $nodeValueResolvers = [];
@@ -53,30 +46,10 @@ final class NodeValueResolver
         $this->constExprEvaluator = new ConstExprEvaluator(function (Expr $expr) {
             return $this->resolveByNode($expr);
         });
-        $this->unionTypeValueResolver = new UnionTypeValueResolver();
         $this->nodeValueResolvers[] = new ClassConstFetchValueResolver($simpleNameResolver);
         $this->nodeValueResolvers[] = new ConstFetchValueResolver($simpleNameResolver);
         $this->nodeValueResolvers[] = new MagicConstValueResolver();
         $this->nodeValueResolvers[] = new FuncCallValueResolver($simpleNameResolver, $this->constExprEvaluator);
-    }
-    /**
-     * @return mixed
-     */
-    public function resolveWithScope(Expr $expr, Scope $scope)
-    {
-        $this->currentFilePath = $scope->getFile();
-        try {
-            return $this->constExprEvaluator->evaluateDirectly($expr);
-        } catch (ConstExprEvaluationException $exception) {
-        }
-        $exprType = $scope->getType($expr);
-        if ($exprType instanceof ConstantScalarType) {
-            return $exprType->getValue();
-        }
-        if ($exprType instanceof UnionType) {
-            return $this->unionTypeValueResolver->resolveConstantTypes($exprType);
-        }
-        return null;
     }
     /**
      * @return mixed

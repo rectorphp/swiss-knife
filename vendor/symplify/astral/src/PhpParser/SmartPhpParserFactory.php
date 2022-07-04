@@ -17,6 +17,9 @@ use EasyCI202207\PHPStan\Parser\SimpleParser;
  */
 final class SmartPhpParserFactory
 {
+    /**
+     * @api
+     */
     public function create() : SmartPhpParser
     {
         $nativePhpParser = $this->createNativePhpParser();
