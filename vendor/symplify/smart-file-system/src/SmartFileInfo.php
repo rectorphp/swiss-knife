@@ -10,6 +10,7 @@ use EasyCI202207\Symplify\EasyTesting\StaticFixtureSplitter;
 use EasyCI202207\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
 use EasyCI202207\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
+ * @api
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest
  */
 final class SmartFileInfo extends SplFileInfo
