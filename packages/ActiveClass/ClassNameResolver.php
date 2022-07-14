@@ -44,11 +44,12 @@ final class ClassNameResolver
         return $classNames;
     }
     /**
-     * @param \Symplify\SmartFileSystem\SmartFileInfo|\Symfony\Component\Finder\SplFileInfo $phpFileInfo
+     * @api
+     * @param \Symplify\SmartFileSystem\SmartFileInfo|\Symfony\Component\Finder\SplFileInfo $fileInfo
      */
-    public function resolveFromFromFileInfo($phpFileInfo) : ?string
+    public function resolveFromFromFileInfo($fileInfo) : ?string
     {
-        $stmts = $this->parser->parse($phpFileInfo->getContents());
+        $stmts = $this->parser->parse($fileInfo->getContents());
         if ($stmts === null) {
             return null;
         }
