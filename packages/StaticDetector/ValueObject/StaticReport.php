@@ -24,7 +24,7 @@ final class StaticReport
         }
         $this->staticCallsCount = $staticCallsCount;
         // sort from most called, to least called - the latter is easier to remove, so put low-hanging fruit first
-        \usort($staticClassMethodsWithStaticCalls, function (\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $firstStaticClassMethodWithStaticCalls, \Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $secondStaticClassMethodWithStaticCalls) : int {
+        \usort($staticClassMethodsWithStaticCalls, static function (\Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $firstStaticClassMethodWithStaticCalls, \Symplify\EasyCI\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls $secondStaticClassMethodWithStaticCalls) : int {
             return $secondStaticClassMethodWithStaticCalls->getStaticCallsCount() <=> $firstStaticClassMethodWithStaticCalls->getStaticCallsCount();
         });
         $this->staticClassMethodsWithStaticCalls = $staticClassMethodsWithStaticCalls;

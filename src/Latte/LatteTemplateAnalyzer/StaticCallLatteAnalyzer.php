@@ -59,7 +59,7 @@ final class StaticCallLatteAnalyzer implements LatteTemplateAnalyzerInterface
      */
     private function filterOutAllowedStaticClasses(array $matches) : array
     {
-        return \array_filter($matches, function (array $match) : bool {
+        return \array_filter($matches, static function (array $match) : bool {
             return !\in_array($match[self::CLASS_NAME_PART], [
                 // keep strings, to avoid prefixing
                 'Nette\\Utils\\Strings',

@@ -33,7 +33,7 @@ final class MultipleClassInOneFileFinder
         foreach ($fileByClasses as $class => $file) {
             $classesByFile[$file][] = $class;
         }
-        return \array_filter($classesByFile, function (array $classes) : bool {
+        return \array_filter($classesByFile, static function (array $classes) : bool {
             return \count($classes) >= 2;
         });
     }
