@@ -14,7 +14,23 @@ final class PossiblyUnusedClassesFilter
      *
      * @var string[]
      */
-    private const DEFAULT_TYPES_TO_SKIP = ['\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller', '\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController', '\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface', '\Symfony\\Component\\HttpKernel\\Bundle\\BundleInterface', '\Symfony\\Component\\HttpKernel\\KernelInterface', '\Symfony\\Component\\Console\\Command\\Command', '\Twig\\Extension\\ExtensionInterface', '\PhpCsFixer\\Fixer\\FixerInterface', '\PHPUnit\\Framework\\TestCase', '\PHPStan\\Rules\\Rule', '\PHPStan\\Command\\ErrorFormatter\\ErrorFormatter'];
+    private const DEFAULT_TYPES_TO_SKIP = [
+        // http-kernel
+        '\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller',
+        '\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController',
+        // events
+        '\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface',
+        // kernel
+        '\Symfony\\Component\\HttpKernel\\Bundle\\BundleInterface',
+        '\Symfony\\Component\\HttpKernel\\KernelInterface',
+        // console
+        '\Symfony\\Component\\Console\\Command\\Command',
+        '\Twig\\Extension\\ExtensionInterface',
+        '\PhpCsFixer\\Fixer\\FixerInterface',
+        '\PHPUnit\\Framework\\TestCase',
+        '\PHPStan\\Rules\\Rule',
+        '\PHPStan\\Command\\ErrorFormatter\\ErrorFormatter',
+    ];
     /**
      * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
      */
