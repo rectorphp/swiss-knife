@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f
+class ComposerStaticInit75fbba848a790f8edf1f0f3e75bc6f01
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -268,7 +268,6 @@ class ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f
         'EasyCI202207\\PHPStan\\PhpDocParser\\Parser\\PhpDocParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php',
         'EasyCI202207\\PHPStan\\PhpDocParser\\Parser\\TokenIterator' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TokenIterator.php',
         'EasyCI202207\\PHPStan\\PhpDocParser\\Parser\\TypeParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TypeParser.php',
-        'EasyCI202207\\PHPUnit_Framework_TestCase' => __DIR__ . '/../..' . '/stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
         'EasyCI202207\\PhpParser\\Builder' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder.php',
         'EasyCI202207\\PhpParser\\BuilderFactory' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderFactory.php',
         'EasyCI202207\\PhpParser\\BuilderHelpers' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderHelpers.php',
@@ -1075,6 +1074,7 @@ class ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f
         'EasyCI202207\\Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'EasyCI202207\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'EasyCI202207\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
+        'PHPUnit_Framework_TestCase' => __DIR__ . '/../..' . '/stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'Symplify\\EasyCI\\ActiveClass\\ClassNameResolver' => __DIR__ . '/../..' . '/packages/ActiveClass/ClassNameResolver.php',
@@ -1176,9 +1176,9 @@ class ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9bf7c4a9fef993a6fc71babf6724a46f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit75fbba848a790f8edf1f0f3e75bc6f01::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit75fbba848a790f8edf1f0f3e75bc6f01::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit75fbba848a790f8edf1f0f3e75bc6f01::$classMap;
 
         }, null, ClassLoader::class);
     }
