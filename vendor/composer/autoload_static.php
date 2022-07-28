@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf76595949cea262a813fe624d291734d
+class ComposerStaticInit1b164ad0de8e97e3fe8e8d2961723a2b
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -268,6 +268,7 @@ class ComposerStaticInitf76595949cea262a813fe624d291734d
         'EasyCI202207\\PHPStan\\PhpDocParser\\Parser\\PhpDocParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php',
         'EasyCI202207\\PHPStan\\PhpDocParser\\Parser\\TokenIterator' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TokenIterator.php',
         'EasyCI202207\\PHPStan\\PhpDocParser\\Parser\\TypeParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TypeParser.php',
+        'EasyCI202207\\PHPUnit_Framework_TestCase' => __DIR__ . '/../..' . '/stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
         'EasyCI202207\\PhpParser\\Builder' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder.php',
         'EasyCI202207\\PhpParser\\BuilderFactory' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderFactory.php',
         'EasyCI202207\\PhpParser\\BuilderHelpers' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderHelpers.php',
@@ -1155,7 +1156,6 @@ class ComposerStaticInitf76595949cea262a813fe624d291734d
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticReport' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticReport.php',
         'Symplify\\EasyCI\\Template\\RenderMethodTemplateExtractor' => __DIR__ . '/../..' . '/src/Template/RenderMethodTemplateExtractor.php',
         'Symplify\\EasyCI\\Template\\TemplatePathsResolver' => __DIR__ . '/../..' . '/src/Template/TemplatePathsResolver.php',
-        'Symplify\\EasyCI\\Testing\\Autoloading\\DualTestCaseAuloader' => __DIR__ . '/../..' . '/packages/Testing/Autoloading/DualTestCaseAuloader.php',
         'Symplify\\EasyCI\\Testing\\Command\\DetectUnitTestsCommand' => __DIR__ . '/../..' . '/packages/Testing/Command/DetectUnitTestsCommand.php',
         'Symplify\\EasyCI\\Testing\\Finder\\TestCaseClassFinder' => __DIR__ . '/../..' . '/packages/Testing/Finder/TestCaseClassFinder.php',
         'Symplify\\EasyCI\\Testing\\Printer\\PHPUnitXmlPrinter' => __DIR__ . '/../..' . '/packages/Testing/Printer/PHPUnitXmlPrinter.php',
@@ -1176,9 +1176,9 @@ class ComposerStaticInitf76595949cea262a813fe624d291734d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf76595949cea262a813fe624d291734d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf76595949cea262a813fe624d291734d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf76595949cea262a813fe624d291734d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1b164ad0de8e97e3fe8e8d2961723a2b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1b164ad0de8e97e3fe8e8d2961723a2b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1b164ad0de8e97e3fe8e8d2961723a2b::$classMap;
 
         }, null, ClassLoader::class);
     }
