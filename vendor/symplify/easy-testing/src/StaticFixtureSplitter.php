@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\EasyTesting;
+namespace EasyCI202208\Symplify\EasyTesting;
 
-use EasyCI202207\Nette\Utils\Strings;
-use EasyCI202207\Symplify\EasyTesting\ValueObject\InputAndExpected;
-use EasyCI202207\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpected;
-use EasyCI202207\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpectedFileInfo;
-use EasyCI202207\Symplify\EasyTesting\ValueObject\SplitLine;
-use EasyCI202207\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI202207\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI202208\Nette\Utils\Strings;
+use EasyCI202208\Symplify\EasyTesting\ValueObject\InputAndExpected;
+use EasyCI202208\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpected;
+use EasyCI202208\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpectedFileInfo;
+use EasyCI202208\Symplify\EasyTesting\ValueObject\SplitLine;
+use EasyCI202208\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202208\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @api
  */

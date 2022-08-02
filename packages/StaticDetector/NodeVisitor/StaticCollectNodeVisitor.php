@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\NodeVisitor;
 
-use EasyCI202207\PhpParser\Node;
-use EasyCI202207\PhpParser\Node\Expr\StaticCall;
-use EasyCI202207\PhpParser\Node\Stmt\ClassLike;
-use EasyCI202207\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI202207\PhpParser\NodeVisitorAbstract;
-use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202208\PhpParser\Node;
+use EasyCI202208\PhpParser\Node\Expr\StaticCall;
+use EasyCI202208\PhpParser\Node\Stmt\ClassLike;
+use EasyCI202208\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI202208\PhpParser\NodeVisitorAbstract;
+use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
 use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
-use EasyCI202207\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI202208\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticCollectNodeVisitor extends NodeVisitorAbstract
 {
     /**

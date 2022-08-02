@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202208\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202207\Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
-use EasyCI202207\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202207\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202207\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use EasyCI202208\Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use EasyCI202208\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202208\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * Reads #[Autoconfigure] attributes on definitions that are autoconfigured
  * and don't have the "container.ignore_attributes" tag.

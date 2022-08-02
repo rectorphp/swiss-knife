@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node\Expr\BinaryOp;
+namespace EasyCI202208\PhpParser\Node\Expr\BinaryOp;
 
-use EasyCI202207\PhpParser\Node\Expr\BinaryOp;
+use EasyCI202208\PhpParser\Node\Expr\BinaryOp;
 class BooleanOr extends BinaryOp
 {
     public function getOperatorSigil() : string

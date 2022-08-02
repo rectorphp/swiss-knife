@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node\Expr\Cast;
+namespace EasyCI202208\PhpParser\Node\Expr\Cast;
 
-use EasyCI202207\PhpParser\Node\Expr\Cast;
+use EasyCI202208\PhpParser\Node\Expr\Cast;
 class Double extends Cast
 {
     // For use in "kind" attribute

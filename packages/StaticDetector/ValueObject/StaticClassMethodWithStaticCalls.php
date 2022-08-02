@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\StaticDetector\ValueObject;
 
-use EasyCI202207\PhpParser\Node;
-use EasyCI202207\PhpParser\Node\Expr\StaticCall;
+use EasyCI202208\PhpParser\Node;
+use EasyCI202208\PhpParser\Node\Expr\StaticCall;
 final class StaticClassMethodWithStaticCalls
 {
     /**

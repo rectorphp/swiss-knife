@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\SmartFileSystem;
+namespace EasyCI202208\Symplify\SmartFileSystem;
 
-use EasyCI202207\Nette\Utils\Strings;
-use EasyCI202207\Symfony\Component\Finder\SplFileInfo;
-use EasyCI202207\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
-use EasyCI202207\Symplify\EasyTesting\StaticFixtureSplitter;
-use EasyCI202207\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
-use EasyCI202207\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use EasyCI202208\Nette\Utils\Strings;
+use EasyCI202208\Symfony\Component\Finder\SplFileInfo;
+use EasyCI202208\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
+use EasyCI202208\Symplify\EasyTesting\StaticFixtureSplitter;
+use EasyCI202208\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
+use EasyCI202208\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
  * @api
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest

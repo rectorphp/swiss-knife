@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PHPStan\PhpDocParser\Ast\Type;
+namespace EasyCI202208\PHPStan\PhpDocParser\Ast\Type;
 
-use EasyCI202207\PHPStan\PhpDocParser\Ast\Node;
-use EasyCI202207\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use EasyCI202208\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI202208\PHPStan\PhpDocParser\Ast\NodeAttributes;
 class CallableTypeParameterNode implements Node
 {
     use NodeAttributes;

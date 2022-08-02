@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
+namespace EasyCI202208\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
 
-use EasyCI202207\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202207\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202208\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
 /**
  * {@inheritdoc}
  *

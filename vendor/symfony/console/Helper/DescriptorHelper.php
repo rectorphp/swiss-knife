@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\Console\Helper;
+namespace EasyCI202208\Symfony\Component\Console\Helper;
 
-use EasyCI202207\Symfony\Component\Console\Descriptor\DescriptorInterface;
-use EasyCI202207\Symfony\Component\Console\Descriptor\JsonDescriptor;
-use EasyCI202207\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
-use EasyCI202207\Symfony\Component\Console\Descriptor\TextDescriptor;
-use EasyCI202207\Symfony\Component\Console\Descriptor\XmlDescriptor;
-use EasyCI202207\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202208\Symfony\Component\Console\Descriptor\DescriptorInterface;
+use EasyCI202208\Symfony\Component\Console\Descriptor\JsonDescriptor;
+use EasyCI202208\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
+use EasyCI202208\Symfony\Component\Console\Descriptor\TextDescriptor;
+use EasyCI202208\Symfony\Component\Console\Descriptor\XmlDescriptor;
+use EasyCI202208\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202208\Symfony\Component\Console\Output\OutputInterface;
 /**
  * This class adds helper method to describe objects in various formats.
  *

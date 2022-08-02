@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202208\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202207\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202207\Symfony\Component\DependencyInjection\EnvVarProcessor;
-use EasyCI202207\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
-use EasyCI202207\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202207\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI202207\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202208\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202208\Symfony\Component\DependencyInjection\EnvVarProcessor;
+use EasyCI202208\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
+use EasyCI202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202208\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI202208\Symfony\Component\DependencyInjection\Reference;
 /**
  * Creates the container.env_var_processors_locator service.
  *

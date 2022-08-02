@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace EasyCI202207\Composer\Semver;
+namespace EasyCI202208\Composer\Semver;
 
-use EasyCI202207\Composer\Semver\Constraint\Constraint;
+use EasyCI202208\Composer\Semver\Constraint\Constraint;
 class Semver
 {
     const SORT_ASC = 1;

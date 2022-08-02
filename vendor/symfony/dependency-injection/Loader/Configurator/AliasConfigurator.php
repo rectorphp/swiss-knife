@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI202208\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI202207\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202208\Symfony\Component\DependencyInjection\Alias;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

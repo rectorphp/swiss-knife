@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202208\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202207\Symfony\Component\DependencyInjection\Alias;
-use EasyCI202207\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202208\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
 /**
  * Represents a node in your service graph.
  *

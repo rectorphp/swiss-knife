@@ -1,24 +1,24 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\NodeValue;
+namespace EasyCI202208\Symplify\Astral\NodeValue;
 
-use EasyCI202207\PhpParser\ConstExprEvaluationException;
-use EasyCI202207\PhpParser\ConstExprEvaluator;
-use EasyCI202207\PhpParser\Node\Expr;
-use EasyCI202207\PhpParser\Node\Expr\Cast;
-use EasyCI202207\PhpParser\Node\Expr\Instanceof_;
-use EasyCI202207\PhpParser\Node\Expr\MethodCall;
-use EasyCI202207\PhpParser\Node\Expr\PropertyFetch;
-use EasyCI202207\PhpParser\Node\Expr\Variable;
-use EasyCI202207\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI202207\Symplify\Astral\Exception\ShouldNotHappenException;
-use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI202207\Symplify\Astral\NodeValue\NodeValueResolver\ClassConstFetchValueResolver;
-use EasyCI202207\Symplify\Astral\NodeValue\NodeValueResolver\ConstFetchValueResolver;
-use EasyCI202207\Symplify\Astral\NodeValue\NodeValueResolver\FuncCallValueResolver;
-use EasyCI202207\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueResolver;
-use EasyCI202207\Symplify\PackageBuilder\Php\TypeChecker;
+use EasyCI202208\PhpParser\ConstExprEvaluationException;
+use EasyCI202208\PhpParser\ConstExprEvaluator;
+use EasyCI202208\PhpParser\Node\Expr;
+use EasyCI202208\PhpParser\Node\Expr\Cast;
+use EasyCI202208\PhpParser\Node\Expr\Instanceof_;
+use EasyCI202208\PhpParser\Node\Expr\MethodCall;
+use EasyCI202208\PhpParser\Node\Expr\PropertyFetch;
+use EasyCI202208\PhpParser\Node\Expr\Variable;
+use EasyCI202208\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI202208\Symplify\Astral\Exception\ShouldNotHappenException;
+use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\ClassConstFetchValueResolver;
+use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\ConstFetchValueResolver;
+use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\FuncCallValueResolver;
+use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueResolver;
+use EasyCI202208\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  */

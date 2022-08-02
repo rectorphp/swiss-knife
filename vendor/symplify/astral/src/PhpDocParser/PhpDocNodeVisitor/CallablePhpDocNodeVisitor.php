@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
+namespace EasyCI202208\Symplify\Astral\PhpDocParser\PhpDocNodeVisitor;
 
-use EasyCI202207\PHPStan\PhpDocParser\Ast\Node;
+use EasyCI202208\PHPStan\PhpDocParser\Ast\Node;
 final class CallablePhpDocNodeVisitor extends AbstractPhpDocNodeVisitor
 {
     /**

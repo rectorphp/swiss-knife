@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\PackageBuilder\Console\Style;
+namespace EasyCI202208\Symplify\PackageBuilder\Console\Style;
 
-use EasyCI202207\Symfony\Component\Console\Application;
-use EasyCI202207\Symfony\Component\Console\Input\ArgvInput;
-use EasyCI202207\Symfony\Component\Console\Output\ConsoleOutput;
-use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202207\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI202207\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
-use EasyCI202207\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use EasyCI202208\Symfony\Component\Console\Application;
+use EasyCI202208\Symfony\Component\Console\Input\ArgvInput;
+use EasyCI202208\Symfony\Component\Console\Output\ConsoleOutput;
+use EasyCI202208\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202208\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202208\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
+use EasyCI202208\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 /**
  * @api
  */

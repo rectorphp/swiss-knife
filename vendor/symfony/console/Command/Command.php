@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\Console\Command;
+namespace EasyCI202208\Symfony\Component\Console\Command;
 
-use EasyCI202207\Symfony\Component\Console\Application;
-use EasyCI202207\Symfony\Component\Console\Attribute\AsCommand;
-use EasyCI202207\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI202207\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI202207\Symfony\Component\Console\Exception\ExceptionInterface;
-use EasyCI202207\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202207\Symfony\Component\Console\Exception\LogicException;
-use EasyCI202207\Symfony\Component\Console\Helper\HelperSet;
-use EasyCI202207\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202207\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202207\Symfony\Component\Console\Input\InputOption;
-use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202208\Symfony\Component\Console\Application;
+use EasyCI202208\Symfony\Component\Console\Attribute\AsCommand;
+use EasyCI202208\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI202208\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI202208\Symfony\Component\Console\Exception\ExceptionInterface;
+use EasyCI202208\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202208\Symfony\Component\Console\Exception\LogicException;
+use EasyCI202208\Symfony\Component\Console\Helper\HelperSet;
+use EasyCI202208\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202208\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202208\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202208\Symfony\Component\Console\Input\InputOption;
+use EasyCI202208\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Base class for all commands.
  *
@@ -233,7 +233,7 @@ class Command
      *
      * @return int The command exit code
      *
-     * @throws \Exception When binding input fails. Bypass this by calling {@link ignoreValidationErrors()}.
+     * @throws ExceptionInterface When input binding fails. Bypass this by calling {@link ignoreValidationErrors()}.
      *
      * @see setCode()
      * @see execute()
@@ -260,7 +260,7 @@ class Command
                         \cli_set_process_title($this->processTitle);
                     }
                 }
-            } elseif (\function_exists('EasyCI202207\\setproctitle')) {
+            } elseif (\function_exists('EasyCI202208\\setproctitle')) {
                 setproctitle($this->processTitle);
             } elseif (OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
                 $output->writeln('<comment>Install the proctitle PECL to be able to change the process title.</comment>');

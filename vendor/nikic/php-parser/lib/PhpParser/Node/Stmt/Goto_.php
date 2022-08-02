@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node\Stmt;
+namespace EasyCI202208\PhpParser\Node\Stmt;
 
-use EasyCI202207\PhpParser\Node\Identifier;
-use EasyCI202207\PhpParser\Node\Stmt;
+use EasyCI202208\PhpParser\Node\Identifier;
+use EasyCI202208\PhpParser\Node\Stmt;
 class Goto_ extends Stmt
 {
     /** @var Identifier Name of label to jump to */

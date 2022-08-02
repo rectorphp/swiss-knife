@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\PhpParser;
+namespace EasyCI202208\Symplify\Astral\PhpParser;
 
-use EasyCI202207\PhpParser\Lexer\Emulative;
-use EasyCI202207\PhpParser\NodeVisitor\NameResolver;
-use EasyCI202207\PhpParser\Parser;
-use EasyCI202207\PhpParser\ParserFactory;
-use EasyCI202207\PHPStan\Parser\CachedParser;
-use EasyCI202207\PHPStan\Parser\SimpleParser;
+use EasyCI202208\PhpParser\Lexer\Emulative;
+use EasyCI202208\PhpParser\NodeVisitor\NameResolver;
+use EasyCI202208\PhpParser\Parser;
+use EasyCI202208\PhpParser\ParserFactory;
+use EasyCI202208\PHPStan\Parser\CachedParser;
+use EasyCI202208\PHPStan\Parser\SimpleParser;
 /**
  * Based on PHPStan-based PHP-Parser best practices:
  *

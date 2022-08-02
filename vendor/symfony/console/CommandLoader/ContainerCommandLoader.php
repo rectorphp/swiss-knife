@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\Console\CommandLoader;
+namespace EasyCI202208\Symfony\Component\Console\CommandLoader;
 
-use EasyCI202207\Psr\Container\ContainerInterface;
-use EasyCI202207\Symfony\Component\Console\Command\Command;
-use EasyCI202207\Symfony\Component\Console\Exception\CommandNotFoundException;
+use EasyCI202208\Psr\Container\ContainerInterface;
+use EasyCI202208\Symfony\Component\Console\Command\Command;
+use EasyCI202208\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * Loads commands from a PSR-11 container.
  *

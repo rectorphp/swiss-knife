@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Command;
 
-use EasyCI202207\Symfony\Component\Console\Command\Command;
-use EasyCI202207\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202207\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202208\Symfony\Component\Console\Command\Command;
+use EasyCI202208\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202208\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202208\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202208\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Finder\ProjectFilesFinder;
 use Symplify\EasyCI\Resolver\TooLongFilesResolver;
-use EasyCI202207\Symplify\PackageBuilder\ValueObject\Option;
+use EasyCI202208\Symplify\PackageBuilder\ValueObject\Option;
 final class ValidateFileLengthCommand extends Command
 {
     /**

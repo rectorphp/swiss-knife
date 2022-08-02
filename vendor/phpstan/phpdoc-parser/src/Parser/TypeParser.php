@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PHPStan\PhpDocParser\Parser;
+namespace EasyCI202208\PHPStan\PhpDocParser\Parser;
 
 use LogicException;
-use EasyCI202207\PHPStan\PhpDocParser\Ast;
-use EasyCI202207\PHPStan\PhpDocParser\Lexer\Lexer;
+use EasyCI202208\PHPStan\PhpDocParser\Ast;
+use EasyCI202208\PHPStan\PhpDocParser\Lexer\Lexer;
 use function strpos;
 use function trim;
 class TypeParser

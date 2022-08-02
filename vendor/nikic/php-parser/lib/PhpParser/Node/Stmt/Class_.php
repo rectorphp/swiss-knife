@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node\Stmt;
+namespace EasyCI202208\PhpParser\Node\Stmt;
 
-use EasyCI202207\PhpParser\Error;
-use EasyCI202207\PhpParser\Node;
+use EasyCI202208\PhpParser\Error;
+use EasyCI202208\PhpParser\Node;
 class Class_ extends ClassLike
 {
     const MODIFIER_PUBLIC = 1;

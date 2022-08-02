@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI202207\Nette\Neon\Node;
+namespace EasyCI202208\Nette\Neon\Node;
 
-use EasyCI202207\Nette;
-use EasyCI202207\Nette\Neon\Node;
+use EasyCI202208\Nette;
+use EasyCI202208\Nette\Neon\Node;
 /** @internal */
 final class StringNode extends Node
 {

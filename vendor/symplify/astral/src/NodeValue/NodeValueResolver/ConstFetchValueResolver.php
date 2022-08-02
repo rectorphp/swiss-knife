@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI202207\PhpParser\Node\Expr;
-use EasyCI202207\PhpParser\Node\Expr\ConstFetch;
-use EasyCI202207\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202208\PhpParser\Node\Expr;
+use EasyCI202208\PhpParser\Node\Expr\ConstFetch;
+use EasyCI202208\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *

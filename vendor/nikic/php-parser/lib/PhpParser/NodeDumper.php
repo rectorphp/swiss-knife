@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser;
+namespace EasyCI202208\PhpParser;
 
-use EasyCI202207\PhpParser\Node\Expr\Include_;
-use EasyCI202207\PhpParser\Node\Stmt\Class_;
-use EasyCI202207\PhpParser\Node\Stmt\GroupUse;
-use EasyCI202207\PhpParser\Node\Stmt\Use_;
-use EasyCI202207\PhpParser\Node\Stmt\UseUse;
+use EasyCI202208\PhpParser\Node\Expr\Include_;
+use EasyCI202208\PhpParser\Node\Stmt\Class_;
+use EasyCI202208\PhpParser\Node\Stmt\GroupUse;
+use EasyCI202208\PhpParser\Node\Stmt\Use_;
+use EasyCI202208\PhpParser\Node\Stmt\UseUse;
 class NodeDumper
 {
     private $dumpComments;

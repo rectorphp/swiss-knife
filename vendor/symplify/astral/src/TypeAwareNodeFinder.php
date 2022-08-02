@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral;
+namespace EasyCI202208\Symplify\Astral;
 
-use EasyCI202207\PhpParser\Node;
-use EasyCI202207\PhpParser\NodeFinder;
+use EasyCI202208\PhpParser\Node;
+use EasyCI202208\PhpParser\NodeFinder;
 final class TypeAwareNodeFinder
 {
     /**

@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Neon\Command;
 
-use EasyCI202207\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202208\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202208\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202208\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Console\Output\FileErrorsReporter;
 use Symplify\EasyCI\Neon\Application\NeonFilesProcessor;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI202207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI202208\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class CheckNeonCommand extends AbstractSymplifyCommand
 {
     /**

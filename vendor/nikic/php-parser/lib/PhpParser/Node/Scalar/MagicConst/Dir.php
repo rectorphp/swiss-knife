@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node\Scalar\MagicConst;
+namespace EasyCI202208\PhpParser\Node\Scalar\MagicConst;
 
-use EasyCI202207\PhpParser\Node\Scalar\MagicConst;
+use EasyCI202208\PhpParser\Node\Scalar\MagicConst;
 class Dir extends MagicConst
 {
     public function getName() : string

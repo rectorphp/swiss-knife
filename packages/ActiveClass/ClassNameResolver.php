@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass;
 
-use EasyCI202207\PhpParser\NodeTraverser;
-use EasyCI202207\PhpParser\Parser;
-use EasyCI202207\Symfony\Component\Finder\SplFileInfo;
+use EasyCI202208\PhpParser\NodeTraverser;
+use EasyCI202208\PhpParser\Parser;
+use EasyCI202208\Symfony\Component\Finder\SplFileInfo;
 use Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
 use Symplify\EasyCI\ActiveClass\NodeVisitor\ClassNameNodeVisitor;
-use EasyCI202207\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202208\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\ActiveClass\ClassNameResolver\ClassNameResolverTest
  */

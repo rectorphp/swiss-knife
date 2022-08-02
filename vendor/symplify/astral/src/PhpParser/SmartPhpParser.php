@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\PhpParser;
+namespace EasyCI202208\Symplify\Astral\PhpParser;
 
-use EasyCI202207\PhpParser\Node\Stmt;
-use EasyCI202207\PHPStan\Parser\Parser;
+use EasyCI202208\PhpParser\Node\Stmt;
+use EasyCI202208\PHPStan\Parser\Parser;
 /**
  * @see \Symplify\Astral\PhpParser\SmartPhpParserFactory
  *

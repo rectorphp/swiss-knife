@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\PackageBuilder\Composer;
+namespace EasyCI202208\Symplify\PackageBuilder\Composer;
 
-use EasyCI202207\Composer\Autoload\ClassLoader;
+use EasyCI202208\Composer\Autoload\ClassLoader;
 use ReflectionClass;
 /**
  * @api

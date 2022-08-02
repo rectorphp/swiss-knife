@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202207\Symfony\Component\Console\Style;
+namespace EasyCI202208\Symfony\Component\Console\Style;
 
-use EasyCI202207\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202207\Symfony\Component\Console\Exception\RuntimeException;
-use EasyCI202207\Symfony\Component\Console\Formatter\OutputFormatter;
-use EasyCI202207\Symfony\Component\Console\Helper\Helper;
-use EasyCI202207\Symfony\Component\Console\Helper\ProgressBar;
-use EasyCI202207\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use EasyCI202207\Symfony\Component\Console\Helper\Table;
-use EasyCI202207\Symfony\Component\Console\Helper\TableCell;
-use EasyCI202207\Symfony\Component\Console\Helper\TableSeparator;
-use EasyCI202207\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202207\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI202207\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202207\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use EasyCI202207\Symfony\Component\Console\Question\ChoiceQuestion;
-use EasyCI202207\Symfony\Component\Console\Question\ConfirmationQuestion;
-use EasyCI202207\Symfony\Component\Console\Question\Question;
-use EasyCI202207\Symfony\Component\Console\Terminal;
+use EasyCI202208\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202208\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202208\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202208\Symfony\Component\Console\Helper\Helper;
+use EasyCI202208\Symfony\Component\Console\Helper\ProgressBar;
+use EasyCI202208\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use EasyCI202208\Symfony\Component\Console\Helper\Table;
+use EasyCI202208\Symfony\Component\Console\Helper\TableCell;
+use EasyCI202208\Symfony\Component\Console\Helper\TableSeparator;
+use EasyCI202208\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202208\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202208\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202208\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use EasyCI202208\Symfony\Component\Console\Question\ChoiceQuestion;
+use EasyCI202208\Symfony\Component\Console\Question\ConfirmationQuestion;
+use EasyCI202208\Symfony\Component\Console\Question\Question;
+use EasyCI202208\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *
@@ -376,16 +376,16 @@ class SymfonyStyle extends OutputStyle
         $chars = \substr(\str_replace(\PHP_EOL, "\n", $this->bufferedOutput->fetch()), -2);
         if (!isset($chars[0])) {
             $this->newLine();
-            //empty history, so we should start with a new line.
+            // empty history, so we should start with a new line.
             return;
         }
-        //Prepend new line for each non LF chars (This means no blank line was output before)
+        // Prepend new line for each non LF chars (This means no blank line was output before)
         $this->newLine(2 - \substr_count($chars, "\n"));
     }
     private function autoPrependText() : void
     {
         $fetched = $this->bufferedOutput->fetch();
-        //Prepend new line if last char isn't EOL:
+        // Prepend new line if last char isn't EOL:
         if (\substr_compare($fetched, "\n", -\strlen("\n")) !== 0) {
             $this->newLine();
         }

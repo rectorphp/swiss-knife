@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node\Scalar;
+namespace EasyCI202208\PhpParser\Node\Scalar;
 
-use EasyCI202207\PhpParser\Node\Scalar;
+use EasyCI202208\PhpParser\Node\Scalar;
 abstract class MagicConst extends Scalar
 {
     /**

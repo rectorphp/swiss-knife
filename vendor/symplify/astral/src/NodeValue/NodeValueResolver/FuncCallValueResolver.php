@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\NodeValue\NodeValueResolver;
+namespace EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver;
 
-use EasyCI202207\PhpParser\ConstExprEvaluator;
-use EasyCI202207\PhpParser\Node\Expr;
-use EasyCI202207\PhpParser\Node\Expr\FuncCall;
-use EasyCI202207\PhpParser\Node\Name;
-use EasyCI202207\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI202207\Symplify\Astral\Exception\ShouldNotHappenException;
-use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202208\PhpParser\ConstExprEvaluator;
+use EasyCI202208\PhpParser\Node\Expr;
+use EasyCI202208\PhpParser\Node\Expr\FuncCall;
+use EasyCI202208\PhpParser\Node\Name;
+use EasyCI202208\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
+use EasyCI202208\Symplify\Astral\Exception\ShouldNotHappenException;
+use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *

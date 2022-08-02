@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\PhpParser\Node;
+namespace EasyCI202208\PhpParser\Node;
 
-use EasyCI202207\PhpParser\NodeAbstract;
+use EasyCI202208\PhpParser\NodeAbstract;
 class Const_ extends NodeAbstract
 {
     /** @var Identifier Name */

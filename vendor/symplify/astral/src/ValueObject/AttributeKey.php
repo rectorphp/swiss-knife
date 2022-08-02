@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\ValueObject;
+namespace EasyCI202208\Symplify\Astral\ValueObject;
 
 /**
  * @api

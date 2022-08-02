@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202207\Symplify\Astral\NodeAnalyzer;
+namespace EasyCI202208\Symplify\Astral\NodeAnalyzer;
 
-use EasyCI202207\Latte\Engine;
-use EasyCI202207\Nette\Application\UI\Template;
-use EasyCI202207\PhpParser\Node\Expr;
-use EasyCI202207\PhpParser\Node\Expr\PropertyFetch;
-use EasyCI202207\PHPStan\Analyser\Scope;
-use EasyCI202207\Symplify\Astral\Naming\SimpleNameResolver;
-use EasyCI202207\Symplify\Astral\TypeAnalyzer\ContainsTypeAnalyser;
+use EasyCI202208\Latte\Engine;
+use EasyCI202208\Nette\Application\UI\Template;
+use EasyCI202208\PhpParser\Node\Expr;
+use EasyCI202208\PhpParser\Node\Expr\PropertyFetch;
+use EasyCI202208\PHPStan\Analyser\Scope;
+use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
+use EasyCI202208\Symplify\Astral\TypeAnalyzer\ContainsTypeAnalyser;
 /**
  * @api
  */
@@ -18,7 +18,7 @@ final class NetteTypeAnalyzer
     /**
      * @var array<class-string<Engine|Template>>
      */
-    private const TEMPLATE_TYPES = ['EasyCI202207\\Latte\\Engine', 'EasyCI202207\\Nette\\Application\\UI\\Template', 'EasyCI202207\\Nette\\Application\\UI\\ITemplate', 'EasyCI202207\\Nette\\Bridges\\ApplicationLatte\\Template', 'EasyCI202207\\Nette\\Bridges\\ApplicationLatte\\DefaultTemplate'];
+    private const TEMPLATE_TYPES = ['EasyCI202208\\Latte\\Engine', 'EasyCI202208\\Nette\\Application\\UI\\Template', 'EasyCI202208\\Nette\\Application\\UI\\ITemplate', 'EasyCI202208\\Nette\\Bridges\\ApplicationLatte\\Template', 'EasyCI202208\\Nette\\Bridges\\ApplicationLatte\\DefaultTemplate'];
     /**
      * @var \Symplify\Astral\Naming\SimpleNameResolver
      */
@@ -62,7 +62,7 @@ final class NetteTypeAnalyzer
             return \false;
         }
         // this type has getComponent() method
-        return \is_a($className, 'EasyCI202207\\Nette\\ComponentModel\\Container', \true);
+        return \is_a($className, 'EasyCI202208\\Nette\\ComponentModel\\Container', \true);
     }
     public function isInsideControl(Scope $scope) : bool
     {
@@ -70,6 +70,6 @@ final class NetteTypeAnalyzer
         if ($className === null) {
             return \false;
         }
-        return \is_a($className, 'EasyCI202207\\Nette\\Application\\UI\\Control', \true);
+        return \is_a($className, 'EasyCI202208\\Nette\\Application\\UI\\Control', \true);
     }
 }
