@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit98646ea71305694f85efeca6c55f346b
+class ComposerStaticInit9ee3d7cfff119f72fa4cfac8a7c09080
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -945,7 +945,6 @@ class ComposerStaticInit98646ea71305694f85efeca6c55f346b
         'EasyCI202208\\Symplify\\Astral\\Contract\\NodeValueResolver\\NodeValueResolverInterface' => __DIR__ . '/..' . '/symplify/astral/src/Contract/NodeValueResolver/NodeValueResolverInterface.php',
         'EasyCI202208\\Symplify\\Astral\\Exception\\ShouldNotHappenException' => __DIR__ . '/..' . '/symplify/astral/src/Exception/ShouldNotHappenException.php',
         'EasyCI202208\\Symplify\\Astral\\Naming\\SimpleNameResolver' => __DIR__ . '/..' . '/symplify/astral/src/Naming/SimpleNameResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeAnalyzer\\NetteTypeAnalyzer' => __DIR__ . '/..' . '/symplify/astral/src/NodeAnalyzer/NetteTypeAnalyzer.php',
         'EasyCI202208\\Symplify\\Astral\\NodeNameResolver\\ArgNodeNameResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeNameResolver/ArgNodeNameResolver.php',
         'EasyCI202208\\Symplify\\Astral\\NodeNameResolver\\AttributeNodeNameResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeNameResolver/AttributeNodeNameResolver.php',
         'EasyCI202208\\Symplify\\Astral\\NodeNameResolver\\ClassLikeNodeNameResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeNameResolver/ClassLikeNodeNameResolver.php',
@@ -1183,9 +1182,9 @@ class ComposerStaticInit98646ea71305694f85efeca6c55f346b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit98646ea71305694f85efeca6c55f346b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit98646ea71305694f85efeca6c55f346b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit98646ea71305694f85efeca6c55f346b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9ee3d7cfff119f72fa4cfac8a7c09080::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9ee3d7cfff119f72fa4cfac8a7c09080::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9ee3d7cfff119f72fa4cfac8a7c09080::$classMap;
 
         }, null, ClassLoader::class);
     }

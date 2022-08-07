@@ -10,6 +10,9 @@ use EasyCI202208\PHPStan\Type\IntersectionType;
 use EasyCI202208\PHPStan\Type\Type;
 use EasyCI202208\PHPStan\Type\TypeWithClassName;
 use EasyCI202208\PHPStan\Type\UnionType;
+/**
+ * @api
+ */
 final class ContainsTypeAnalyser
 {
     /**

@@ -819,7 +819,6 @@ return array(
     'EasyCI202208\\Symplify\\Astral\\Contract\\NodeValueResolver\\NodeValueResolverInterface' => $vendorDir . '/symplify/astral/src/Contract/NodeValueResolver/NodeValueResolverInterface.php',
     'EasyCI202208\\Symplify\\Astral\\Exception\\ShouldNotHappenException' => $vendorDir . '/symplify/astral/src/Exception/ShouldNotHappenException.php',
     'EasyCI202208\\Symplify\\Astral\\Naming\\SimpleNameResolver' => $vendorDir . '/symplify/astral/src/Naming/SimpleNameResolver.php',
-    'EasyCI202208\\Symplify\\Astral\\NodeAnalyzer\\NetteTypeAnalyzer' => $vendorDir . '/symplify/astral/src/NodeAnalyzer/NetteTypeAnalyzer.php',
     'EasyCI202208\\Symplify\\Astral\\NodeNameResolver\\ArgNodeNameResolver' => $vendorDir . '/symplify/astral/src/NodeNameResolver/ArgNodeNameResolver.php',
     'EasyCI202208\\Symplify\\Astral\\NodeNameResolver\\AttributeNodeNameResolver' => $vendorDir . '/symplify/astral/src/NodeNameResolver/AttributeNodeNameResolver.php',
     'EasyCI202208\\Symplify\\Astral\\NodeNameResolver\\ClassLikeNodeNameResolver' => $vendorDir . '/symplify/astral/src/NodeNameResolver/ClassLikeNodeNameResolver.php',
