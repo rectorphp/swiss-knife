@@ -20,6 +20,8 @@ use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueReso
 /**
  * @api
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
+ *
+ * @deprecated Use $scope->getType() instead
  */
 final class NodeValueResolver
 {
