@@ -5,6 +5,9 @@ namespace EasyCI202208\Symplify\Astral;
 
 use EasyCI202208\PhpParser\Node;
 use EasyCI202208\PhpParser\NodeFinder;
+/**
+ * @api
+ */
 final class TypeAwareNodeFinder
 {
     /**
