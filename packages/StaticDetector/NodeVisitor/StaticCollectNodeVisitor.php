@@ -8,7 +8,6 @@ use EasyCI202208\PhpParser\Node\Expr\StaticCall;
 use EasyCI202208\PhpParser\Node\Stmt\ClassLike;
 use EasyCI202208\PhpParser\Node\Stmt\ClassMethod;
 use EasyCI202208\PhpParser\NodeVisitorAbstract;
-use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
 use Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector;
 use EasyCI202208\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class StaticCollectNodeVisitor extends NodeVisitorAbstract
@@ -25,14 +24,9 @@ final class StaticCollectNodeVisitor extends NodeVisitorAbstract
      * @var \Symplify\EasyCI\StaticDetector\Collector\StaticNodeCollector
      */
     private $staticNodeCollector;
-    /**
-     * @var \Symplify\Astral\Naming\SimpleNameResolver
-     */
-    private $simpleNameResolver;
-    public function __construct(StaticNodeCollector $staticNodeCollector, SimpleNameResolver $simpleNameResolver)
+    public function __construct(StaticNodeCollector $staticNodeCollector)
     {
         $this->staticNodeCollector = $staticNodeCollector;
-        $this->simpleNameResolver = $simpleNameResolver;
     }
     public function enterNode(Node $node)
     {
@@ -67,10 +61,6 @@ final class StaticCollectNodeVisitor extends NodeVisitorAbstract
         if ($this->currentClassLike === null) {
             $errorMessage = \sprintf('Class not found for static call "%s"', $classMethodName);
             throw new ShouldNotHappenException($errorMessage);
-        }
-        $currentClassName = $this->simpleNameResolver->getName($this->currentClassLike);
-        if ($currentClassName === null) {
-            return;
         }
         $this->staticNodeCollector->addStaticClassMethod($classMethod, $this->currentClassLike);
     }

@@ -6,9 +6,10 @@ namespace EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver;
 use EasyCI202208\PhpParser\ConstExprEvaluationException;
 use EasyCI202208\PhpParser\Node\Expr;
 use EasyCI202208\PhpParser\Node\Expr\ClassConstFetch;
+use EasyCI202208\PhpParser\Node\Identifier;
+use EasyCI202208\PhpParser\Node\Name;
 use ReflectionClassConstant;
 use EasyCI202208\Symplify\Astral\Contract\NodeValueResolver\NodeValueResolverInterface;
-use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  *
@@ -16,14 +17,6 @@ use EasyCI202208\Symplify\Astral\Naming\SimpleNameResolver;
  */
 final class ClassConstFetchValueResolver implements NodeValueResolverInterface
 {
-    /**
-     * @var \Symplify\Astral\Naming\SimpleNameResolver
-     */
-    private $simpleNameResolver;
-    public function __construct(SimpleNameResolver $simpleNameResolver)
-    {
-        $this->simpleNameResolver = $simpleNameResolver;
-    }
     public function getType() : string
     {
         return ClassConstFetch::class;
@@ -34,18 +27,18 @@ final class ClassConstFetchValueResolver implements NodeValueResolverInterface
      */
     public function resolve(Expr $expr, string $currentFilePath)
     {
-        $className = $this->simpleNameResolver->getName($expr->class);
+        if (!$expr->class instanceof Name) {
+            return null;
+        }
+        $className = $expr->class->toString();
         if ($className === 'self') {
             // unable to resolve
             throw new ConstExprEvaluationException('Unable to resolve self class constant');
         }
-        if ($className === null) {
+        if (!$expr->name instanceof Identifier) {
             return null;
         }
-        $constantName = $this->simpleNameResolver->getName($expr->name);
-        if ($constantName === null) {
-            return null;
-        }
+        $constantName = $expr->name->toString();
         if ($constantName === 'class') {
             return $className;
         }
