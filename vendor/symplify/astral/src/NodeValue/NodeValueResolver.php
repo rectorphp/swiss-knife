@@ -19,6 +19,7 @@ use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\FuncCallValueResolv
 use EasyCI202208\Symplify\Astral\NodeValue\NodeValueResolver\MagicConstValueResolver;
 use EasyCI202208\Symplify\PackageBuilder\Php\TypeChecker;
 /**
+ * @api
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  */
 final class NodeValueResolver
