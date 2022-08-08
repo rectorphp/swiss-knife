@@ -6,6 +6,7 @@ namespace EasyCI202208\Symplify\Astral;
 use EasyCI202208\PhpParser\Node;
 use EasyCI202208\PhpParser\NodeFinder;
 /**
+ * @todo remove after https://github.com/nikic/PHP-Parser/pull/869 is released
  * @api
  */
 final class TypeAwareNodeFinder
