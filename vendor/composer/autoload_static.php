@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0415f11552c373aaeb035a18e0d6d0c1
+class ComposerStaticInit76b291222cee29995c180da9b05c9ffb
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -222,6 +222,8 @@ class ComposerStaticInit0415f11552c373aaeb035a18e0d6d0c1
         'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstFetchNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstFetchNode.php',
         'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Node' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Node.php',
         'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\NodeAttributes' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeAttributes.php',
+        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagMethodValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagMethodValueNode.php',
+        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagPropertyValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagPropertyValueNode.php',
         'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagValueNode.php',
         'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\DeprecatedTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/DeprecatedTagValueNode.php',
         'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ExtendsTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ExtendsTagValueNode.php',
@@ -1166,9 +1168,9 @@ class ComposerStaticInit0415f11552c373aaeb035a18e0d6d0c1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0415f11552c373aaeb035a18e0d6d0c1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0415f11552c373aaeb035a18e0d6d0c1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0415f11552c373aaeb035a18e0d6d0c1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit76b291222cee29995c180da9b05c9ffb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit76b291222cee29995c180da9b05c9ffb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit76b291222cee29995c180da9b05c9ffb::$classMap;
 
         }, null, ClassLoader::class);
     }

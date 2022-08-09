@@ -444,17 +444,17 @@
         },
         {
             "name": "phpstan\/phpdoc-parser",
-            "version": "1.6.4",
-            "version_normalized": "1.6.4.0",
+            "version": "1.7.0",
+            "version_normalized": "1.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/phpstan\/phpdoc-parser.git",
-                "reference": "135607f9ccc297d6923d49c2bcf309f509413215"
+                "reference": "367a8d9d5f7da2a0136422d27ce8840583926955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpdoc-parser\/zipball\/135607f9ccc297d6923d49c2bcf309f509413215",
-                "reference": "135607f9ccc297d6923d49c2bcf309f509413215",
+                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpdoc-parser\/zipball\/367a8d9d5f7da2a0136422d27ce8840583926955",
+                "reference": "367a8d9d5f7da2a0136422d27ce8840583926955",
                 "shasum": ""
             },
             "require": {
@@ -469,7 +469,7 @@
                 "phpunit\/phpunit": "^9.5",
                 "symfony\/process": "^5.2"
             },
-            "time": "2022-06-26T13:09:08+00:00",
+            "time": "2022-08-09T12:23:23+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -486,7 +486,7 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https:\/\/github.com\/phpstan\/phpdoc-parser\/issues",
-                "source": "https:\/\/github.com\/phpstan\/phpdoc-parser\/tree\/1.6.4"
+                "source": "https:\/\/github.com\/phpstan\/phpdoc-parser\/tree\/1.7.0"
             },
             "install-path": "..\/phpstan\/phpdoc-parser"
         },
@@ -1414,13 +1414,13 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/astral",
-                "reference": "ccb20f9f4cb4fa24edda7e3e92567d942b366a73"
+                "reference": "bb5983953ca44d68457d99a266d94d311c055be6"
             },
             "require": {
                 "nette\/utils": "^3.2",
                 "nikic\/php-parser": "^4.14.0",
                 "php": ">=8.0",
-                "phpstan\/phpdoc-parser": "^1.6.3",
+                "phpstan\/phpdoc-parser": "^1.7.0",
                 "phpstan\/phpstan": "^1.8.1",
                 "symplify\/package-builder": "dev-main"
             },

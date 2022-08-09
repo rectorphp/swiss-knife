@@ -96,6 +96,8 @@ return array(
     'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstFetchNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstFetchNode.php',
     'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Node' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/Node.php',
     'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\NodeAttributes' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/NodeAttributes.php',
+    'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagMethodValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagMethodValueNode.php',
+    'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagPropertyValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagPropertyValueNode.php',
     'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagValueNode.php',
     'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\DeprecatedTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/DeprecatedTagValueNode.php',
     'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ExtendsTagValueNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ExtendsTagValueNode.php',
