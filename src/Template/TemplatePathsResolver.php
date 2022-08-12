@@ -46,7 +46,7 @@ final class TemplatePathsResolver
         foreach ($twigTemplateFileInfos as $twigTemplateFileInfo) {
             $relativeTemplateFilepath = $this->resolveRelativeTemplateFilepath($twigTemplateFileInfo);
             $bundlePrefix = $this->findBundlePrefix($twigTemplateFileInfo);
-            $templatePathsWithBundle[] = ($bundlePrefix ? '@' . $bundlePrefix . '/' : '') . $relativeTemplateFilepath;
+            $templatePathsWithBundle[] = ($bundlePrefix !== '' && $bundlePrefix !== '0' ? '@' . $bundlePrefix . '/' : '') . $relativeTemplateFilepath;
         }
         \sort($templatePathsWithBundle);
         return $templatePathsWithBundle;
