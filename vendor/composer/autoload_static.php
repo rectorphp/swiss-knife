@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticIniteb113f427ec34ca87409c09e7cf16167
+class ComposerStaticInit86c504ee89912583c55d2971052f3de3
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -1074,7 +1074,6 @@ class ComposerStaticIniteb113f427ec34ca87409c09e7cf16167
         'Symplify\\EasyCI\\ActiveClass\\ValueObject\\FileWithClass' => __DIR__ . '/../..' . '/packages/ActiveClass/ValueObject/FileWithClass.php',
         'Symplify\\EasyCI\\Command\\CheckCommentedCodeCommand' => __DIR__ . '/../..' . '/src/Command/CheckCommentedCodeCommand.php',
         'Symplify\\EasyCI\\Command\\CheckConflictsCommand' => __DIR__ . '/../..' . '/src/Command/CheckConflictsCommand.php',
-        'Symplify\\EasyCI\\Command\\CheckLatteTemplateCommand' => __DIR__ . '/../..' . '/src/Command/CheckLatteTemplateCommand.php',
         'Symplify\\EasyCI\\Command\\CheckTwigRenderCommand' => __DIR__ . '/../..' . '/src/Command/CheckTwigRenderCommand.php',
         'Symplify\\EasyCI\\Command\\CheckTwigTemplateCommand' => __DIR__ . '/../..' . '/src/Command/CheckTwigTemplateCommand.php',
         'Symplify\\EasyCI\\Command\\PhpVersionsJsonCommand' => __DIR__ . '/../..' . '/src/Command/PhpVersionsJsonCommand.php',
@@ -1097,14 +1096,6 @@ class ComposerStaticIniteb113f427ec34ca87409c09e7cf16167
         'Symplify\\EasyCI\\Finder\\ProjectFilesFinder' => __DIR__ . '/../..' . '/src/Finder/ProjectFilesFinder.php',
         'Symplify\\EasyCI\\Git\\ConflictResolver' => __DIR__ . '/../..' . '/src/Git/ConflictResolver.php',
         'Symplify\\EasyCI\\Kernel\\EasyCIKernel' => __DIR__ . '/../..' . '/src/Kernel/EasyCIKernel.php',
-        'Symplify\\EasyCI\\Latte\\Contract\\LatteTemplateAnalyzerInterface' => __DIR__ . '/../..' . '/src/Latte/Contract/LatteTemplateAnalyzerInterface.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateAnalyzer\\ForbiddenVariableConstantOrCallAnalyzer' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateAnalyzer/ForbiddenVariableConstantOrCallAnalyzer.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateAnalyzer\\MissingClassConstantLatteAnalyzer' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateAnalyzer/MissingClassConstantLatteAnalyzer.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateAnalyzer\\MissingClassStaticCallLatteAnalyzer' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateAnalyzer/MissingClassStaticCallLatteAnalyzer.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateAnalyzer\\MissingClassesLatteAnalyzer' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateAnalyzer/MissingClassesLatteAnalyzer.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateAnalyzer\\SingleColonLatteAnalyzer' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateAnalyzer/SingleColonLatteAnalyzer.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateAnalyzer\\StaticCallLatteAnalyzer' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateAnalyzer/StaticCallLatteAnalyzer.php',
-        'Symplify\\EasyCI\\Latte\\LatteTemplateProcessor' => __DIR__ . '/../..' . '/src/Latte/LatteTemplateProcessor.php',
         'Symplify\\EasyCI\\Neon\\Application\\NeonFilesProcessor' => __DIR__ . '/../..' . '/packages/Neon/Application/NeonFilesProcessor.php',
         'Symplify\\EasyCI\\Neon\\Command\\CheckNeonCommand' => __DIR__ . '/../..' . '/packages/Neon/Command/CheckNeonCommand.php',
         'Symplify\\EasyCI\\Neon\\NeonClassExtractor' => __DIR__ . '/../..' . '/packages/Neon/NeonClassExtractor.php',
@@ -1168,9 +1159,9 @@ class ComposerStaticIniteb113f427ec34ca87409c09e7cf16167
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticIniteb113f427ec34ca87409c09e7cf16167::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticIniteb113f427ec34ca87409c09e7cf16167::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticIniteb113f427ec34ca87409c09e7cf16167::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit86c504ee89912583c55d2971052f3de3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit86c504ee89912583c55d2971052f3de3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit86c504ee89912583c55d2971052f3de3::$classMap;
 
         }, null, ClassLoader::class);
     }
