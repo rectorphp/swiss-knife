@@ -15,7 +15,6 @@ return array(
     'EasyCI202208\\Symplify\\EasyTesting\\' => array($vendorDir . '/symplify/easy-testing/src'),
     'EasyCI202208\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'EasyCI202208\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
-    'EasyCI202208\\Symplify\\Astral\\' => array($vendorDir . '/symplify/astral/src'),
     'EasyCI202208\\Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
     'EasyCI202208\\Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'EasyCI202208\\Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
@@ -25,6 +24,4 @@ return array(
     'EasyCI202208\\Symfony\\Component\\Config\\' => array($vendorDir . '/symfony/config'),
     'EasyCI202208\\Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'EasyCI202208\\PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
-    'EasyCI202208\\PHPStan\\PhpDocParser\\' => array($vendorDir . '/phpstan/phpdoc-parser/src'),
-    'EasyCI202208\\Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
 );

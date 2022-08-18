@@ -4,7 +4,6 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Json;
 
 use EasyCI202208\Nette\Utils\Json;
-use EasyCI202208\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\EasyCI\Psr4\FileSystem\Psr4PathNormalizer;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class JsonAutoloadPrinter
@@ -23,7 +22,7 @@ final class JsonAutoloadPrinter
     public function createJsonAutoloadContent(array $psr4NamespaceToPaths) : string
     {
         $normalizedJsonArray = $this->psr4PathNormalizer->normalizePsr4NamespaceToPathsToJsonsArray($psr4NamespaceToPaths);
-        $composerJson = [ComposerJsonSection::AUTOLOAD => ['psr-4' => $normalizedJsonArray]];
+        $composerJson = ['autoload' => ['psr-4' => $normalizedJsonArray]];
         return Json::encode($composerJson, Json::PRETTY);
     }
 }

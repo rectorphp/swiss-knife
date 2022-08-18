@@ -4,13 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit99055cc005179122b00fb454d482810d
+class ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -28,7 +27,6 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
             'EasyCI202208\\Symplify\\EasyTesting\\' => 34,
             'EasyCI202208\\Symplify\\ComposerJsonManipulator\\' => 46,
             'EasyCI202208\\Symplify\\AutowireArrayParameter\\' => 45,
-            'EasyCI202208\\Symplify\\Astral\\' => 29,
             'EasyCI202208\\Symfony\\Contracts\\Service\\' => 39,
             'EasyCI202208\\Symfony\\Component\\String\\' => 38,
             'EasyCI202208\\Symfony\\Component\\Finder\\' => 38,
@@ -38,8 +36,6 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
             'EasyCI202208\\Symfony\\Component\\Config\\' => 38,
             'EasyCI202208\\Psr\\Container\\' => 27,
             'EasyCI202208\\PhpParser\\' => 23,
-            'EasyCI202208\\PHPStan\\PhpDocParser\\' => 34,
-            'EasyCI202208\\Composer\\Semver\\' => 29,
         ),
     );
 
@@ -81,10 +77,6 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         array (
             0 => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src',
         ),
-        'EasyCI202208\\Symplify\\Astral\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symplify/astral/src',
-        ),
         'EasyCI202208\\Symfony\\Contracts\\Service\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
@@ -121,30 +113,10 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'EasyCI202208\\PHPStan\\PhpDocParser\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
-        ),
-        'EasyCI202208\\Composer\\Semver\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/semver/src',
-        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'EasyCI202208\\Composer\\Semver\\Comparator' => __DIR__ . '/..' . '/composer/semver/src/Comparator.php',
-        'EasyCI202208\\Composer\\Semver\\CompilingMatcher' => __DIR__ . '/..' . '/composer/semver/src/CompilingMatcher.php',
-        'EasyCI202208\\Composer\\Semver\\Constraint\\Bound' => __DIR__ . '/..' . '/composer/semver/src/Constraint/Bound.php',
-        'EasyCI202208\\Composer\\Semver\\Constraint\\Constraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/Constraint.php',
-        'EasyCI202208\\Composer\\Semver\\Constraint\\ConstraintInterface' => __DIR__ . '/..' . '/composer/semver/src/Constraint/ConstraintInterface.php',
-        'EasyCI202208\\Composer\\Semver\\Constraint\\MatchAllConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MatchAllConstraint.php',
-        'EasyCI202208\\Composer\\Semver\\Constraint\\MatchNoneConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MatchNoneConstraint.php',
-        'EasyCI202208\\Composer\\Semver\\Constraint\\MultiConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MultiConstraint.php',
-        'EasyCI202208\\Composer\\Semver\\Interval' => __DIR__ . '/..' . '/composer/semver/src/Interval.php',
-        'EasyCI202208\\Composer\\Semver\\Intervals' => __DIR__ . '/..' . '/composer/semver/src/Intervals.php',
-        'EasyCI202208\\Composer\\Semver\\Semver' => __DIR__ . '/..' . '/composer/semver/src/Semver.php',
-        'EasyCI202208\\Composer\\Semver\\VersionParser' => __DIR__ . '/..' . '/composer/semver/src/VersionParser.php',
         'EasyCI202208\\Nette\\ArgumentOutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'EasyCI202208\\Nette\\DeprecatedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'EasyCI202208\\Nette\\DirectoryNotFoundException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
@@ -191,66 +163,6 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         'EasyCI202208\\Nette\\Utils\\Type' => __DIR__ . '/..' . '/nette/utils/src/Utils/Type.php',
         'EasyCI202208\\Nette\\Utils\\UnknownImageFileException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'EasyCI202208\\Nette\\Utils\\Validators' => __DIR__ . '/..' . '/nette/utils/src/Utils/Validators.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayItemNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprFalseNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprFalseNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprFloatNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprFloatNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprIntegerNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprIntegerNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprNullNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprNullNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprStringNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprStringNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprTrueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprTrueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstFetchNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstFetchNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Node' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Node.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\NodeAttributes' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeAttributes.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagMethodValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagMethodValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagPropertyValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagPropertyValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\DeprecatedTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/DeprecatedTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ExtendsTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ExtendsTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\GenericTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/GenericTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ImplementsTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ImplementsTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\InvalidTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/InvalidTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\MethodTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/MethodTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\MethodTagValueParameterNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/MethodTagValueParameterNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\MixinTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/MixinTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ParamTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ParamTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\PhpDocChildNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/PhpDocChildNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\PhpDocNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/PhpDocNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\PhpDocTagNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/PhpDocTagNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\PhpDocTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/PhpDocTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\PhpDocTextNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/PhpDocTextNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\PropertyTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/PropertyTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ReturnTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ReturnTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TemplateTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TemplateTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\ThrowsTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/ThrowsTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypeAliasImportTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypeAliasImportTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypeAliasTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypeAliasTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\TypelessParamTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/TypelessParamTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\UsesTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/UsesTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\PhpDoc\\VarTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/VarTagValueNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ArrayShapeItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ArrayShapeItemNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ArrayShapeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ArrayShapeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ArrayTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ArrayTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\CallableTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/CallableTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\CallableTypeParameterNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/CallableTypeParameterNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ConditionalTypeForParameterNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ConditionalTypeForParameterNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ConditionalTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ConditionalTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ConstTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ConstTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\GenericTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/GenericTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\IdentifierTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/IdentifierTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\IntersectionTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/IntersectionTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\NullableTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/NullableTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\OffsetAccessTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/OffsetAccessTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\ThisTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ThisTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\TypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/TypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Ast\\Type\\UnionTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/UnionTypeNode.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Lexer\\Lexer' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Lexer/Lexer.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Parser\\ConstExprParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/ConstExprParser.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Parser\\ParserException' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/ParserException.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Parser\\PhpDocParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Parser\\TokenIterator' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TokenIterator.php',
-        'EasyCI202208\\PHPStan\\PhpDocParser\\Parser\\TypeParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TypeParser.php',
         'EasyCI202208\\PhpParser\\Builder' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder.php',
         'EasyCI202208\\PhpParser\\BuilderFactory' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderFactory.php',
         'EasyCI202208\\PhpParser\\BuilderHelpers' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderHelpers.php',
@@ -924,40 +836,6 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         'EasyCI202208\\Symfony\\Contracts\\Service\\ServiceSubscriberInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberInterface.php',
         'EasyCI202208\\Symfony\\Contracts\\Service\\ServiceSubscriberTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberTrait.php',
         'EasyCI202208\\Symfony\\Contracts\\Service\\Test\\ServiceLocatorTest' => __DIR__ . '/..' . '/symfony/service-contracts/Test/ServiceLocatorTest.php',
-        'EasyCI202208\\Symplify\\Astral\\Contract\\NodeValueResolver\\NodeValueResolverInterface' => __DIR__ . '/..' . '/symplify/astral/src/Contract/NodeValueResolver/NodeValueResolverInterface.php',
-        'EasyCI202208\\Symplify\\Astral\\Exception\\ShouldNotHappenException' => __DIR__ . '/..' . '/symplify/astral/src/Exception/ShouldNotHappenException.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeTraverser\\SimpleCallableNodeTraverser' => __DIR__ . '/..' . '/symplify/astral/src/NodeTraverser/SimpleCallableNodeTraverser.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeValue\\NodeValueResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeValue/NodeValueResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeValue\\NodeValueResolver\\ClassConstFetchValueResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeValue/NodeValueResolver/ClassConstFetchValueResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeValue\\NodeValueResolver\\ConstFetchValueResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeValue/NodeValueResolver/ConstFetchValueResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeValue\\NodeValueResolver\\FuncCallValueResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeValue/NodeValueResolver/FuncCallValueResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeValue\\NodeValueResolver\\MagicConstValueResolver' => __DIR__ . '/..' . '/symplify/astral/src/NodeValue/NodeValueResolver/MagicConstValueResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\NodeVisitor\\CallableNodeVisitor' => __DIR__ . '/..' . '/symplify/astral/src/NodeVisitor/CallableNodeVisitor.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\Contract\\PhpDocNodeVisitorInterface' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/Contract/PhpDocNodeVisitorInterface.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\Exception\\InvalidTraverseException' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/Exception/InvalidTraverseException.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\PhpDocNodeTraverser' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/PhpDocNodeTraverser.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\PhpDocNodeVisitor\\AbstractPhpDocNodeVisitor' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/PhpDocNodeVisitor/AbstractPhpDocNodeVisitor.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\PhpDocNodeVisitor\\CallablePhpDocNodeVisitor' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/PhpDocNodeVisitor/CallablePhpDocNodeVisitor.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\PhpDocNodeVisitor\\CloningPhpDocNodeVisitor' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/PhpDocNodeVisitor/CloningPhpDocNodeVisitor.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\PhpDocNodeVisitor\\ParentConnectingPhpDocNodeVisitor' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/PhpDocNodeVisitor/ParentConnectingPhpDocNodeVisitor.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\SimplePhpDocParser' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/SimplePhpDocParser.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\StaticFactory\\SimplePhpDocParserStaticFactory' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/StaticFactory/SimplePhpDocParserStaticFactory.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\ValueObject\\Ast\\PhpDoc\\SimplePhpDocNode' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/ValueObject/Ast/PhpDoc/SimplePhpDocNode.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpDocParser\\ValueObject\\PhpDocAttributeKey' => __DIR__ . '/..' . '/symplify/astral/src/PhpDocParser/ValueObject/PhpDocAttributeKey.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpParser\\SmartPhpParser' => __DIR__ . '/..' . '/symplify/astral/src/PhpParser/SmartPhpParser.php',
-        'EasyCI202208\\Symplify\\Astral\\PhpParser\\SmartPhpParserFactory' => __DIR__ . '/..' . '/symplify/astral/src/PhpParser/SmartPhpParserFactory.php',
-        'EasyCI202208\\Symplify\\Astral\\Reflection\\ReflectionParser' => __DIR__ . '/..' . '/symplify/astral/src/Reflection/ReflectionParser.php',
-        'EasyCI202208\\Symplify\\Astral\\TypeAnalyzer\\ClassMethodReturnTypeResolver' => __DIR__ . '/..' . '/symplify/astral/src/TypeAnalyzer/ClassMethodReturnTypeResolver.php',
-        'EasyCI202208\\Symplify\\Astral\\TypeAwareNodeFinder' => __DIR__ . '/..' . '/symplify/astral/src/TypeAwareNodeFinder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\AstralConfig' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/AstralConfig.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\AttributeKey' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/AttributeKey.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\ClassBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/ClassBuilder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\MethodBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/MethodBuilder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\NamespaceBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/NamespaceBuilder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\ParamBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/ParamBuilder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\PropertyBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/PropertyBuilder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\TraitUseBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/TraitUseBuilder.php',
-        'EasyCI202208\\Symplify\\Astral\\ValueObject\\NodeBuilder\\UseBuilder' => __DIR__ . '/..' . '/symplify/astral/src/ValueObject/NodeBuilder/UseBuilder.php',
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\DependencyInjection\\CompilerPass\\AutowireArrayParameterCompilerPass' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/CompilerPass/AutowireArrayParameterCompilerPass.php',
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\DependencyInjection\\DefinitionFinder' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/DefinitionFinder.php',
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\DocBlock\\ParamTypeDocBlockResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DocBlock/ParamTypeDocBlockResolver.php',
@@ -1057,10 +935,8 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         'Symplify\\EasyCI\\Command\\CheckConflictsCommand' => __DIR__ . '/../..' . '/src/Command/CheckConflictsCommand.php',
         'Symplify\\EasyCI\\Command\\CheckTwigRenderCommand' => __DIR__ . '/../..' . '/src/Command/CheckTwigRenderCommand.php',
         'Symplify\\EasyCI\\Command\\CheckTwigTemplateCommand' => __DIR__ . '/../..' . '/src/Command/CheckTwigTemplateCommand.php',
-        'Symplify\\EasyCI\\Command\\PhpVersionsJsonCommand' => __DIR__ . '/../..' . '/src/Command/PhpVersionsJsonCommand.php',
         'Symplify\\EasyCI\\Command\\ValidateFileLengthCommand' => __DIR__ . '/../..' . '/src/Command/ValidateFileLengthCommand.php',
         'Symplify\\EasyCI\\Comments\\CommentedCodeAnalyzer' => __DIR__ . '/../..' . '/src/Comments/CommentedCodeAnalyzer.php',
-        'Symplify\\EasyCI\\Composer\\SupportedPhpVersionResolver' => __DIR__ . '/../..' . '/src/Composer/SupportedPhpVersionResolver.php',
         'Symplify\\EasyCI\\Config\\Application\\ClassAndConstantExistanceFileProcessor' => __DIR__ . '/../..' . '/packages/Config/Application/ClassAndConstantExistanceFileProcessor.php',
         'Symplify\\EasyCI\\Config\\ClassExtractor' => __DIR__ . '/../..' . '/packages/Config/ClassExtractor.php',
         'Symplify\\EasyCI\\Config\\Command\\CheckConfigCommand' => __DIR__ . '/../..' . '/packages/Config/Command/CheckConfigCommand.php',
@@ -1073,7 +949,6 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         'Symplify\\EasyCI\\Console\\Output\\MissingTwigTemplatePathReporter' => __DIR__ . '/../..' . '/src/Console/Output/MissingTwigTemplatePathReporter.php',
         'Symplify\\EasyCI\\Contract\\Application\\FileProcessorInterface' => __DIR__ . '/../..' . '/src/Contract/Application/FileProcessorInterface.php',
         'Symplify\\EasyCI\\Contract\\ValueObject\\FileErrorInterface' => __DIR__ . '/../..' . '/src/Contract/ValueObject/FileErrorInterface.php',
-        'Symplify\\EasyCI\\Exception\\ShouldNotHappenException' => __DIR__ . '/../..' . '/src/Exception/ShouldNotHappenException.php',
         'Symplify\\EasyCI\\Finder\\ProjectFilesFinder' => __DIR__ . '/../..' . '/src/Finder/ProjectFilesFinder.php',
         'Symplify\\EasyCI\\Git\\ConflictResolver' => __DIR__ . '/../..' . '/src/Git/ConflictResolver.php',
         'Symplify\\EasyCI\\Kernel\\EasyCIKernel' => __DIR__ . '/../..' . '/src/Kernel/EasyCIKernel.php',
@@ -1131,15 +1006,14 @@ class ComposerStaticInit99055cc005179122b00fb454d482810d
         'Symplify\\EasyCI\\ValueObject\\FileError' => __DIR__ . '/../..' . '/src/ValueObject/FileError.php',
         'Symplify\\EasyCI\\ValueObject\\LineAwareFileError' => __DIR__ . '/../..' . '/src/ValueObject/LineAwareFileError.php',
         'Symplify\\EasyCI\\ValueObject\\Option' => __DIR__ . '/../..' . '/src/ValueObject/Option.php',
-        'Symplify\\EasyCI\\ValueObject\\PhpVersionList' => __DIR__ . '/../..' . '/src/ValueObject/PhpVersionList.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit99055cc005179122b00fb454d482810d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit99055cc005179122b00fb454d482810d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit99055cc005179122b00fb454d482810d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff::$classMap;
 
         }, null, ClassLoader::class);
     }
