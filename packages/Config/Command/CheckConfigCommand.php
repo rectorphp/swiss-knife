@@ -30,7 +30,7 @@ final class CheckConfigCommand extends AbstractSymplifyCommand
     protected function configure() : void
     {
         $this->setName('check-config');
-        $this->setDescription('Check NEON and YAML configs for existing classes and class constants');
+        $this->setDescription('Check YAML configs for existing classes and class constants');
         $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to directories or files to check');
     }
     protected function execute(InputInterface $input, OutputInterface $output) : int

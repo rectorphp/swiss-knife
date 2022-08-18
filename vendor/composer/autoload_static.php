@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit86c504ee89912583c55d2971052f3de3
+class ComposerStaticInit99055cc005179122b00fb454d482810d
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -159,25 +159,6 @@ class ComposerStaticInit86c504ee89912583c55d2971052f3de3
         'EasyCI202208\\Nette\\Localization\\ITranslator' => __DIR__ . '/..' . '/nette/utils/src/compatibility.php',
         'EasyCI202208\\Nette\\Localization\\Translator' => __DIR__ . '/..' . '/nette/utils/src/Translator.php',
         'EasyCI202208\\Nette\\MemberAccessException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
-        'EasyCI202208\\Nette\\Neon\\Decoder' => __DIR__ . '/..' . '/nette/neon/src/Neon/Decoder.php',
-        'EasyCI202208\\Nette\\Neon\\Encoder' => __DIR__ . '/..' . '/nette/neon/src/Neon/Encoder.php',
-        'EasyCI202208\\Nette\\Neon\\Entity' => __DIR__ . '/..' . '/nette/neon/src/Neon/Entity.php',
-        'EasyCI202208\\Nette\\Neon\\Exception' => __DIR__ . '/..' . '/nette/neon/src/Neon/Exception.php',
-        'EasyCI202208\\Nette\\Neon\\Lexer' => __DIR__ . '/..' . '/nette/neon/src/Neon/Lexer.php',
-        'EasyCI202208\\Nette\\Neon\\Neon' => __DIR__ . '/..' . '/nette/neon/src/Neon/Neon.php',
-        'EasyCI202208\\Nette\\Neon\\Node' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\ArrayItemNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/ArrayItemNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\ArrayNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/ArrayNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\BlockArrayNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/BlockArrayNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\EntityChainNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/EntityChainNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\EntityNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/EntityNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\InlineArrayNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/InlineArrayNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\LiteralNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/LiteralNode.php',
-        'EasyCI202208\\Nette\\Neon\\Node\\StringNode' => __DIR__ . '/..' . '/nette/neon/src/Neon/Node/StringNode.php',
-        'EasyCI202208\\Nette\\Neon\\Parser' => __DIR__ . '/..' . '/nette/neon/src/Neon/Parser.php',
-        'EasyCI202208\\Nette\\Neon\\Token' => __DIR__ . '/..' . '/nette/neon/src/Neon/Token.php',
-        'EasyCI202208\\Nette\\Neon\\TokenStream' => __DIR__ . '/..' . '/nette/neon/src/Neon/TokenStream.php',
-        'EasyCI202208\\Nette\\Neon\\Traverser' => __DIR__ . '/..' . '/nette/neon/src/Neon/Traverser.php',
         'EasyCI202208\\Nette\\NotImplementedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'EasyCI202208\\Nette\\NotSupportedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'EasyCI202208\\Nette\\OutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
@@ -1096,9 +1077,6 @@ class ComposerStaticInit86c504ee89912583c55d2971052f3de3
         'Symplify\\EasyCI\\Finder\\ProjectFilesFinder' => __DIR__ . '/../..' . '/src/Finder/ProjectFilesFinder.php',
         'Symplify\\EasyCI\\Git\\ConflictResolver' => __DIR__ . '/../..' . '/src/Git/ConflictResolver.php',
         'Symplify\\EasyCI\\Kernel\\EasyCIKernel' => __DIR__ . '/../..' . '/src/Kernel/EasyCIKernel.php',
-        'Symplify\\EasyCI\\Neon\\Application\\NeonFilesProcessor' => __DIR__ . '/../..' . '/packages/Neon/Application/NeonFilesProcessor.php',
-        'Symplify\\EasyCI\\Neon\\Command\\CheckNeonCommand' => __DIR__ . '/../..' . '/packages/Neon/Command/CheckNeonCommand.php',
-        'Symplify\\EasyCI\\Neon\\NeonClassExtractor' => __DIR__ . '/../..' . '/packages/Neon/NeonClassExtractor.php',
         'Symplify\\EasyCI\\Psr4\\Command\\CheckFileClassNameCommand' => __DIR__ . '/../..' . '/packages/Psr4/Command/CheckFileClassNameCommand.php',
         'Symplify\\EasyCI\\Psr4\\Command\\FindMultiClassesCommand' => __DIR__ . '/../..' . '/packages/Psr4/Command/FindMultiClassesCommand.php',
         'Symplify\\EasyCI\\Psr4\\Command\\GeneratePsr4ToPathsCommand' => __DIR__ . '/../..' . '/packages/Psr4/Command/GeneratePsr4ToPathsCommand.php',
@@ -1159,9 +1137,9 @@ class ComposerStaticInit86c504ee89912583c55d2971052f3de3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit86c504ee89912583c55d2971052f3de3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit86c504ee89912583c55d2971052f3de3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit86c504ee89912583c55d2971052f3de3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit99055cc005179122b00fb454d482810d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit99055cc005179122b00fb454d482810d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit99055cc005179122b00fb454d482810d::$classMap;
 
         }, null, ClassLoader::class);
     }
