@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff
+class ComposerStaticInit33c37b6967d11220ad9860f356d56031
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -983,13 +983,6 @@ class ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticClassMethodWithStaticCalls' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticClassMethodWithStaticCalls.php',
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticDetectorAttributeKey' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticDetectorAttributeKey.php',
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticReport' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticReport.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\AmbiguousServiceFilter' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/AmbiguousServiceFilter.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\Command\\NameToTypeServiceCommand' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/Command/NameToTypeServiceCommand.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\Exception\\LoadingXmlException' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/Exception/LoadingXmlException.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\Finder\\YamlConfigFinder' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/Finder/YamlConfigFinder.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\NameToTypeServiceReplacer' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/NameToTypeServiceReplacer.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\Option' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/Option.php',
-        'Symplify\\EasyCI\\SymfonyNameToTypeService\\XmlServiceMapFactory' => __DIR__ . '/../..' . '/packages/SymfonyNameToTypeService/XmlServiceMapFactory.php',
         'Symplify\\EasyCI\\Template\\RenderMethodTemplateExtractor' => __DIR__ . '/../..' . '/src/Template/RenderMethodTemplateExtractor.php',
         'Symplify\\EasyCI\\Template\\TemplatePathsResolver' => __DIR__ . '/../..' . '/src/Template/TemplatePathsResolver.php',
         'Symplify\\EasyCI\\Testing\\Command\\DetectUnitTestsCommand' => __DIR__ . '/../..' . '/packages/Testing/Command/DetectUnitTestsCommand.php',
@@ -1011,9 +1004,9 @@ class ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc23b6bb11d6b1ecc180339bf93c7d7ff::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit33c37b6967d11220ad9860f356d56031::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit33c37b6967d11220ad9860f356d56031::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit33c37b6967d11220ad9860f356d56031::$classMap;
 
         }, null, ClassLoader::class);
     }
