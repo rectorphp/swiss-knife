@@ -12,7 +12,6 @@ return array(
     'EasyCI202208\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'EasyCI202208\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
     'EasyCI202208\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
-    'EasyCI202208\\Symplify\\EasyTesting\\' => array($vendorDir . '/symplify/easy-testing/src'),
     'EasyCI202208\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'EasyCI202208\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
     'EasyCI202208\\Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
