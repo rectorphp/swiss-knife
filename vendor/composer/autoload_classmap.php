@@ -775,6 +775,7 @@ return array(
     'EasyCI202208\\Symplify\\PackageBuilder\\Exception\\HttpKernel\\MissingInterfaceException' => $vendorDir . '/symplify/package-builder/src/Exception/HttpKernel/MissingInterfaceException.php',
     'EasyCI202208\\Symplify\\PackageBuilder\\Exception\\InvalidPrivatePropertyTypeException' => $vendorDir . '/symplify/package-builder/src/Exception/InvalidPrivatePropertyTypeException.php',
     'EasyCI202208\\Symplify\\PackageBuilder\\Exception\\MissingPrivatePropertyException' => $vendorDir . '/symplify/package-builder/src/Exception/MissingPrivatePropertyException.php',
+    'EasyCI202208\\Symplify\\PackageBuilder\\Exception\\MissingServiceException' => $vendorDir . '/symplify/package-builder/src/Exception/MissingServiceException.php',
     'EasyCI202208\\Symplify\\PackageBuilder\\Parameter\\ParameterProvider' => $vendorDir . '/symplify/package-builder/src/Parameter/ParameterProvider.php',
     'EasyCI202208\\Symplify\\PackageBuilder\\Php\\TypeChecker' => $vendorDir . '/symplify/package-builder/src/Php/TypeChecker.php',
     'EasyCI202208\\Symplify\\PackageBuilder\\Reflection\\ClassLikeExistenceChecker' => $vendorDir . '/symplify/package-builder/src/Reflection/ClassLikeExistenceChecker.php',
