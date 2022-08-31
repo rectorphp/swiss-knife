@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e
+class ComposerStaticInit3e8b016de78329fd80e1ec230c3f99ff
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -24,7 +24,6 @@ class ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e
             'EasyCI202208\\Symplify\\SymplifyKernel\\' => 37,
             'EasyCI202208\\Symplify\\SmartFileSystem\\' => 38,
             'EasyCI202208\\Symplify\\PackageBuilder\\' => 37,
-            'EasyCI202208\\Symplify\\ComposerJsonManipulator\\' => 46,
             'EasyCI202208\\Symplify\\AutowireArrayParameter\\' => 45,
             'EasyCI202208\\Symfony\\Contracts\\Service\\' => 39,
             'EasyCI202208\\Symfony\\Component\\String\\' => 38,
@@ -63,10 +62,6 @@ class ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e
         'EasyCI202208\\Symplify\\PackageBuilder\\' => 
         array (
             0 => __DIR__ . '/..' . '/symplify/package-builder/src',
-        ),
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src',
         ),
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\' => 
         array (
@@ -837,16 +832,6 @@ class ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\Exception\\DependencyInjection\\DefinitionForTypeNotFoundException' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/Exception/DependencyInjection/DefinitionForTypeNotFoundException.php',
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\Skipper\\ParameterSkipper' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/Skipper/ParameterSkipper.php',
         'EasyCI202208\\Symplify\\AutowireArrayParameter\\TypeResolver\\ParameterTypeResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/TypeResolver/ParameterTypeResolver.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\ComposerJsonFactory' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ComposerJsonFactory.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\FileSystem\\JsonFileManager' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/FileSystem/JsonFileManager.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\Json\\JsonCleaner' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Json/JsonCleaner.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\Json\\JsonInliner' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Json/JsonInliner.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\Printer\\ComposerJsonPrinter' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Printer/ComposerJsonPrinter.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\Sorter\\ComposerPackageSorter' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Sorter/ComposerPackageSorter.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJson' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJson.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonManipulatorConfig' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonManipulatorConfig.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonSection.php',
-        'EasyCI202208\\Symplify\\ComposerJsonManipulator\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/Option.php',
         'EasyCI202208\\Symplify\\PackageBuilder\\Composer\\VendorDirProvider' => __DIR__ . '/..' . '/symplify/package-builder/src/Composer/VendorDirProvider.php',
         'EasyCI202208\\Symplify\\PackageBuilder\\Configuration\\StaticEolConfiguration' => __DIR__ . '/..' . '/symplify/package-builder/src/Configuration/StaticEolConfiguration.php',
         'EasyCI202208\\Symplify\\PackageBuilder\\Console\\Command\\AbstractSymplifyCommand' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/AbstractSymplifyCommand.php',
@@ -980,9 +965,9 @@ class ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0bfcf41418dc99aafc81ed41b997008e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3e8b016de78329fd80e1ec230c3f99ff::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3e8b016de78329fd80e1ec230c3f99ff::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3e8b016de78329fd80e1ec230c3f99ff::$classMap;
 
         }, null, ClassLoader::class);
     }
