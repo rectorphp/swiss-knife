@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI202209\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI202208\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI202209\Symfony\Component\Config\Definition\EnumNode;
 /**
  * Enum Node Definition.
  *
@@ -39,7 +39,7 @@ class EnumNodeDefinition extends ScalarNodeDefinition
      *
      * @throws \RuntimeException
      */
-    protected function instantiateNode() : \EasyCI202208\Symfony\Component\Config\Definition\ScalarNode
+    protected function instantiateNode() : \EasyCI202209\Symfony\Component\Config\Definition\ScalarNode
     {
         if (!isset($this->values)) {
             throw new \RuntimeException('You must call ->values() on enum nodes.');

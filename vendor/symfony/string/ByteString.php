@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\String;
+namespace EasyCI202209\Symfony\Component\String;
 
-use EasyCI202208\Symfony\Component\String\Exception\ExceptionInterface;
-use EasyCI202208\Symfony\Component\String\Exception\InvalidArgumentException;
-use EasyCI202208\Symfony\Component\String\Exception\RuntimeException;
+use EasyCI202209\Symfony\Component\String\Exception\ExceptionInterface;
+use EasyCI202209\Symfony\Component\String\Exception\InvalidArgumentException;
+use EasyCI202209\Symfony\Component\String\Exception\RuntimeException;
 /**
  * Represents a binary-safe string of bytes.
  *
@@ -334,7 +334,7 @@ class ByteString extends AbstractString
     public function snake()
     {
         $str = $this->camel();
-        $str->string = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'EasyCI202208\\1_\\2', $str->string));
+        $str->string = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'EasyCI202209\\1_\\2', $str->string));
         return $str;
     }
     /**

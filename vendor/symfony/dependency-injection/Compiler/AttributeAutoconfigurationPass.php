@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202208\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI202208\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\LogicException;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202209\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI202209\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202209\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * @author Alexander M. Turek <me@derrabus.de>
  */

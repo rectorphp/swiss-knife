@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Exception;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Exception;
 
-use EasyCI202208\Psr\Container\NotFoundExceptionInterface;
+use EasyCI202209\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent parameter is used.
  *

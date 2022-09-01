@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Config;
 
-use EasyCI202208\Nette\Neon\Encoder;
-use EasyCI202208\Nette\Neon\Neon;
-use EasyCI202208\Nette\Utils\Strings;
-use EasyCI202208\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202209\Nette\Neon\Encoder;
+use EasyCI202209\Nette\Neon\Neon;
+use EasyCI202209\Nette\Utils\Strings;
+use EasyCI202209\Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassExtractor
 {
     /**

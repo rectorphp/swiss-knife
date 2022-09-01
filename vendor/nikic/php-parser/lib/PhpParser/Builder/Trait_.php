@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\Builder;
+namespace EasyCI202209\PhpParser\Builder;
 
-use EasyCI202208\PhpParser;
-use EasyCI202208\PhpParser\BuilderHelpers;
-use EasyCI202208\PhpParser\Node;
-use EasyCI202208\PhpParser\Node\Stmt;
+use EasyCI202209\PhpParser;
+use EasyCI202209\PhpParser\BuilderHelpers;
+use EasyCI202209\PhpParser\Node;
+use EasyCI202209\PhpParser\Node\Stmt;
 class Trait_ extends Declaration
 {
     protected $name;

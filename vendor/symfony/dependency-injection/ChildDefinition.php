@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection;
+namespace EasyCI202209\Symfony\Component\DependencyInjection;
 
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * This definition extends another definition.
  *

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\Finder\Iterator;
+namespace EasyCI202209\Symfony\Component\Finder\Iterator;
 
-use EasyCI202208\Symfony\Component\Finder\Gitignore;
+use EasyCI202209\Symfony\Component\Finder\Gitignore;
 final class VcsIgnoredFilterIterator extends \FilterIterator
 {
     /**

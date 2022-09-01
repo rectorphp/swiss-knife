@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI202208\Nette;
+namespace EasyCI202209\Nette;
 
 interface HtmlStringable
 {

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\String;
+namespace EasyCI202209\Symfony\Component\String;
 
-use EasyCI202208\Symfony\Component\String\Exception\ExceptionInterface;
-use EasyCI202208\Symfony\Component\String\Exception\InvalidArgumentException;
+use EasyCI202209\Symfony\Component\String\Exception\ExceptionInterface;
+use EasyCI202209\Symfony\Component\String\Exception\InvalidArgumentException;
 /**
  * Represents a string of Unicode code points encoded as UTF-8.
  *

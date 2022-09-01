@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI202208\Psr\Container;
+namespace EasyCI202209\Psr\Container;
 
 /**
  * No entry was found in the container.

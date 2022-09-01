@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI202209\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI202208\PhpParser\Lexer\Emulative;
+use EasyCI202209\PhpParser\Lexer\Emulative;
 final class CoaleseEqualTokenEmulator extends TokenEmulator
 {
     public function getPhpVersion() : string

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\Node\Expr;
+namespace EasyCI202209\PhpParser\Node\Expr;
 
-use EasyCI202208\PhpParser\Node\Expr;
+use EasyCI202209\PhpParser\Node\Expr;
 class PreDec extends Expr
 {
     /** @var Expr Variable */

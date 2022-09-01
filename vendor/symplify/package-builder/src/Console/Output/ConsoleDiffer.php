@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\Symplify\PackageBuilder\Console\Output;
+namespace EasyCI202209\Symplify\PackageBuilder\Console\Output;
 
-use EasyCI202208\SebastianBergmann\Diff\Differ;
-use EasyCI202208\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
+use EasyCI202209\SebastianBergmann\Diff\Differ;
+use EasyCI202209\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
 /**
  * @api
  */

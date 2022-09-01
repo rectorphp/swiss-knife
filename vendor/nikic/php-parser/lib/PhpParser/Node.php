@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser;
+namespace EasyCI202209\PhpParser;
 
 interface Node
 {

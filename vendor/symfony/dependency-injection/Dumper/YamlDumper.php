@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Dumper;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Dumper;
 
-use EasyCI202208\Symfony\Component\DependencyInjection\Alias;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\LogicException;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202208\Symfony\Component\DependencyInjection\Parameter;
-use EasyCI202208\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202208\Symfony\Component\ExpressionLanguage\Expression;
-use EasyCI202208\Symfony\Component\Yaml\Dumper as YmlDumper;
-use EasyCI202208\Symfony\Component\Yaml\Parser;
-use EasyCI202208\Symfony\Component\Yaml\Tag\TaggedValue;
-use EasyCI202208\Symfony\Component\Yaml\Yaml;
+use EasyCI202209\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202209\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Parameter;
+use EasyCI202209\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202209\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202209\Symfony\Component\Yaml\Dumper as YmlDumper;
+use EasyCI202209\Symfony\Component\Yaml\Parser;
+use EasyCI202209\Symfony\Component\Yaml\Tag\TaggedValue;
+use EasyCI202209\Symfony\Component\Yaml\Yaml;
 /**
  * YamlDumper dumps a service container as a YAML string.
  *

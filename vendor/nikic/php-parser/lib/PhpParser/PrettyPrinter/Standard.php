@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\PrettyPrinter;
+namespace EasyCI202209\PhpParser\PrettyPrinter;
 
-use EasyCI202208\PhpParser\Node;
-use EasyCI202208\PhpParser\Node\Expr;
-use EasyCI202208\PhpParser\Node\Expr\AssignOp;
-use EasyCI202208\PhpParser\Node\Expr\BinaryOp;
-use EasyCI202208\PhpParser\Node\Expr\Cast;
-use EasyCI202208\PhpParser\Node\Name;
-use EasyCI202208\PhpParser\Node\Scalar;
-use EasyCI202208\PhpParser\Node\Scalar\MagicConst;
-use EasyCI202208\PhpParser\Node\Stmt;
-use EasyCI202208\PhpParser\PrettyPrinterAbstract;
+use EasyCI202209\PhpParser\Node;
+use EasyCI202209\PhpParser\Node\Expr;
+use EasyCI202209\PhpParser\Node\Expr\AssignOp;
+use EasyCI202209\PhpParser\Node\Expr\BinaryOp;
+use EasyCI202209\PhpParser\Node\Expr\Cast;
+use EasyCI202209\PhpParser\Node\Name;
+use EasyCI202209\PhpParser\Node\Scalar;
+use EasyCI202209\PhpParser\Node\Scalar\MagicConst;
+use EasyCI202209\PhpParser\Node\Stmt;
+use EasyCI202209\PhpParser\PrettyPrinterAbstract;
 class Standard extends PrettyPrinterAbstract
 {
     // Special nodes

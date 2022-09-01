@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI202208\Symfony\Component\Config\Loader\ParamConfigurator;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202208\Symfony\Component\DependencyInjection\Parameter;
-use EasyCI202208\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202208\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202209\Symfony\Component\Config\Loader\ParamConfigurator;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Parameter;
+use EasyCI202209\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202209\Symfony\Component\ExpressionLanguage\Expression;
 abstract class AbstractConfigurator
 {
     public const FACTORY = 'unknown';

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Dumper;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Dumper;
 
-use EasyCI202208\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202209\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Dumper is the abstract class for all built-in dumpers.
  *

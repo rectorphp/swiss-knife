@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\Node\Scalar\MagicConst;
+namespace EasyCI202209\PhpParser\Node\Scalar\MagicConst;
 
-use EasyCI202208\PhpParser\Node\Scalar\MagicConst;
+use EasyCI202209\PhpParser\Node\Scalar\MagicConst;
 class Trait_ extends MagicConst
 {
     public function getName() : string

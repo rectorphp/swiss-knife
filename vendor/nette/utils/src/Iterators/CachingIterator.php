@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI202208\Nette\Iterators;
+namespace EasyCI202209\Nette\Iterators;
 
-use EasyCI202208\Nette;
+use EasyCI202209\Nette;
 /**
  * Smarter caching iterator.
  *

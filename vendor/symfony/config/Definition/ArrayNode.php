@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\Config\Definition;
+namespace EasyCI202209\Symfony\Component\Config\Definition;
 
-use EasyCI202208\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use EasyCI202208\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use EasyCI202208\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use EasyCI202209\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use EasyCI202209\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use EasyCI202209\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents an Array node in the config tree.
  *

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\Node\Expr\BinaryOp;
+namespace EasyCI202209\PhpParser\Node\Expr\BinaryOp;
 
-use EasyCI202208\PhpParser\Node\Expr\BinaryOp;
+use EasyCI202209\PhpParser\Node\Expr\BinaryOp;
 class LogicalAnd extends BinaryOp
 {
     public function getOperatorSigil() : string

@@ -5,7 +5,7 @@ namespace Symplify\EasyCI\Twig;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\Twig\Contract\TwigTemplateAnalyzerInterface;
-use EasyCI202208\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202209\Symplify\SmartFileSystem\SmartFileInfo;
 final class TwigTemplateProcessor
 {
     /**

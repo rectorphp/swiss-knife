@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI202208;
+namespace EasyCI202209;
 
 ///////////////////////////////
 /// Utility regex constants ///
@@ -26,10 +26,10 @@ function preprocessGrammar($code)
 }
 function resolveNodes($code)
 {
-    return \preg_replace_callback('~\\b(?<name>[A-Z][a-zA-Z_\\\\]++)\\s*' . \EasyCI202208\PARAMS . '~', function ($matches) {
+    return \preg_replace_callback('~\\b(?<name>[A-Z][a-zA-Z_\\\\]++)\\s*' . \EasyCI202209\PARAMS . '~', function ($matches) {
         // recurse
         $matches['params'] = resolveNodes($matches['params']);
-        $params = magicSplit('(?:' . \EasyCI202208\PARAMS . '|' . \EasyCI202208\ARGS . ')(*SKIP)(*FAIL)|,', $matches['params']);
+        $params = magicSplit('(?:' . \EasyCI202209\PARAMS . '|' . \EasyCI202209\ARGS . ')(*SKIP)(*FAIL)|,', $matches['params']);
         $paramCode = '';
         foreach ($params as $param) {
             $paramCode .= $param . ', ';
@@ -39,11 +39,11 @@ function resolveNodes($code)
 }
 function resolveMacros($code)
 {
-    return \preg_replace_callback('~\\b(?<!::|->)(?!array\\()(?<name>[a-z][A-Za-z]++)' . \EasyCI202208\ARGS . '~', function ($matches) {
+    return \preg_replace_callback('~\\b(?<!::|->)(?!array\\()(?<name>[a-z][A-Za-z]++)' . \EasyCI202209\ARGS . '~', function ($matches) {
         // recurse
         $matches['args'] = resolveMacros($matches['args']);
         $name = $matches['name'];
-        $args = magicSplit('(?:' . \EasyCI202208\PARAMS . '|' . \EasyCI202208\ARGS . ')(*SKIP)(*FAIL)|,', $matches['args']);
+        $args = magicSplit('(?:' . \EasyCI202209\PARAMS . '|' . \EasyCI202209\ARGS . ')(*SKIP)(*FAIL)|,', $matches['args']);
         if ('attributes' === $name) {
             assertArgs(0, $args, $name);
             return '$this->startAttributeStack[#1] + $this->endAttributes';
@@ -113,7 +113,7 @@ function removeTrailingWhitespace($code)
 //////////////////////////////
 function regex($regex)
 {
-    return '~' . \EasyCI202208\LIB . '(?:' . \str_replace('~', '\\~', $regex) . ')~';
+    return '~' . \EasyCI202209\LIB . '(?:' . \str_replace('~', '\\~', $regex) . ')~';
 }
 function magicSplit($regex, $string)
 {

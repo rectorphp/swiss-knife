@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing\Finder;
 
-use EasyCI202208\Nette\Loaders\RobotLoader;
+use EasyCI202209\Nette\Loaders\RobotLoader;
 final class TestCaseClassFinder
 {
     /**

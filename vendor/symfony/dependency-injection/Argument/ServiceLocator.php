@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Argument;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Argument;
 
-use EasyCI202208\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
+use EasyCI202209\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *

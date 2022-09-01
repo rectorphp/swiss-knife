@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI202208\\Symplify\\SymplifyKernel\\": "src"
+            "EasyCI202209\\Symplify\\SymplifyKernel\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasyCI202208\\Symplify\\SymplifyKernel\\Tests\\": "tests"
+            "EasyCI202209\\Symplify\\SymplifyKernel\\Tests\\": "tests"
         }
     },
     "extra": {

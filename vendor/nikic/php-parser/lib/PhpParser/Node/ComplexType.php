@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202208\PhpParser\Node;
+namespace EasyCI202209\PhpParser\Node;
 
-use EasyCI202208\PhpParser\NodeAbstract;
+use EasyCI202209\PhpParser\NodeAbstract;
 /**
  * This is a base class for complex types, including nullable types and union types.
  *

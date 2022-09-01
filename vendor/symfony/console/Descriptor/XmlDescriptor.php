@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\Console\Descriptor;
+namespace EasyCI202209\Symfony\Component\Console\Descriptor;
 
-use EasyCI202208\Symfony\Component\Console\Application;
-use EasyCI202208\Symfony\Component\Console\Command\Command;
-use EasyCI202208\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202208\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202208\Symfony\Component\Console\Input\InputOption;
+use EasyCI202209\Symfony\Component\Console\Application;
+use EasyCI202209\Symfony\Component\Console\Command\Command;
+use EasyCI202209\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202209\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202209\Symfony\Component\Console\Input\InputOption;
 /**
  * XML descriptor.
  *

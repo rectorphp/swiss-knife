@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass;
 
-use EasyCI202208\PhpParser\NodeTraverser;
-use EasyCI202208\PhpParser\Parser;
+use EasyCI202209\PhpParser\NodeTraverser;
+use EasyCI202209\PhpParser\Parser;
 use Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
 use Symplify\EasyCI\ActiveClass\NodeVisitor\UsedClassNodeVisitor;
-use EasyCI202208\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202209\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\ActiveClass\UseImportsResolver\UseImportsResolverTest
  */

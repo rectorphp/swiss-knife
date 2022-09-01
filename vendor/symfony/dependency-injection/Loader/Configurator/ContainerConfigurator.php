@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202208\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace EasyCI202209\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EasyCI202208\Symfony\Component\Config\Loader\ParamConfigurator;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202208\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202208\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202208\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI202208\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use EasyCI202208\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202209\Symfony\Component\Config\Loader\ParamConfigurator;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202209\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202209\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI202209\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use EasyCI202209\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -105,7 +105,7 @@ class ContainerConfigurator extends AbstractConfigurator
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-\class_alias('EasyCI202208\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
+\class_alias('EasyCI202209\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
 /**
  * Creates a parameter.
  */
