@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202210\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202209\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI202209\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\LogicException;
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202209\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use EasyCI202209\Symfony\Component\DependencyInjection\Extension\Extension;
-use EasyCI202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI202209\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use EasyCI202209\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI202209\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use EasyCI202210\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202210\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use EasyCI202210\Symfony\Component\DependencyInjection\Extension\Extension;
+use EasyCI202210\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI202210\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use EasyCI202210\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI202210\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 /**
  * Merges extension configs into the container builder.
  *

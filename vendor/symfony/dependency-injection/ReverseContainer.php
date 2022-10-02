@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\DependencyInjection;
+namespace EasyCI202210\Symfony\Component\DependencyInjection;
 
-use EasyCI202209\Psr\Container\ContainerInterface;
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI202210\Psr\Container\ContainerInterface;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * Turns public and "container.reversible" services back to their ids.
  *

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\DependencyInjection\Argument;
+namespace EasyCI202210\Symfony\Component\DependencyInjection\Argument;
 
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202209\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202210\Symfony\Component\DependencyInjection\Reference;
 /**
  * Represents a service wrapped in a memoizing closure.
  *

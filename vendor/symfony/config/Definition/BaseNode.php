@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Config\Definition;
+namespace EasyCI202210\Symfony\Component\Config\Definition;
 
-use EasyCI202209\Symfony\Component\Config\Definition\Exception\Exception;
-use EasyCI202209\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
-use EasyCI202209\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use EasyCI202209\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use EasyCI202209\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use EasyCI202210\Symfony\Component\Config\Definition\Exception\Exception;
+use EasyCI202210\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
+use EasyCI202210\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use EasyCI202210\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use EasyCI202210\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * The base node class.
  *

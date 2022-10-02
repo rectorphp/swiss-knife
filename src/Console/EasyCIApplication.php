@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Console;
 
-use EasyCI202209\Symfony\Component\Console\Application;
-use EasyCI202209\Symfony\Component\Console\Command\Command;
+use EasyCI202210\Symfony\Component\Console\Application;
+use EasyCI202210\Symfony\Component\Console\Command\Command;
 final class EasyCIApplication extends Application
 {
     /**

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\String;
+namespace EasyCI202210\Symfony\Component\String;
 
-use EasyCI202209\Symfony\Component\String\Exception\ExceptionInterface;
-use EasyCI202209\Symfony\Component\String\Exception\InvalidArgumentException;
-use EasyCI202209\Symfony\Component\String\Exception\RuntimeException;
+use EasyCI202210\Symfony\Component\String\Exception\ExceptionInterface;
+use EasyCI202210\Symfony\Component\String\Exception\InvalidArgumentException;
+use EasyCI202210\Symfony\Component\String\Exception\RuntimeException;
 /**
  * Represents a binary-safe string of bytes.
  *
@@ -95,7 +95,9 @@ class ByteString extends AbstractString
     public function camel()
     {
         $str = clone $this;
-        $str->string = \lcfirst(\str_replace(' ', '', \ucwords(\preg_replace('/[^a-zA-Z0-9\\x7f-\\xff]++/', ' ', $this->string))));
+        $parts = \explode(' ', \trim(\ucwords(\preg_replace('/[^a-zA-Z0-9\\x7f-\\xff]++/', ' ', $this->string))));
+        $parts[0] = 1 !== \strlen($parts[0]) && \ctype_upper($parts[0]) ? $parts[0] : \lcfirst($parts[0]);
+        $str->string = \implode('', $parts);
         return $str;
     }
     public function chunk(int $length = 1) : array
@@ -334,7 +336,7 @@ class ByteString extends AbstractString
     public function snake()
     {
         $str = $this->camel();
-        $str->string = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'EasyCI202209\\1_\\2', $str->string));
+        $str->string = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'EasyCI202210\\1_\\2', $str->string));
         return $str;
     }
     /**

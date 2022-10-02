@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\SebastianBergmann\Diff\Output;
+namespace EasyCI202210\SebastianBergmann\Diff\Output;
 
 use function array_merge;
 use function array_splice;
@@ -25,8 +25,8 @@ use function min;
 use function sprintf;
 use function stream_get_contents;
 use function substr;
-use EasyCI202209\SebastianBergmann\Diff\ConfigurationException;
-use EasyCI202209\SebastianBergmann\Diff\Differ;
+use EasyCI202210\SebastianBergmann\Diff\ConfigurationException;
+use EasyCI202210\SebastianBergmann\Diff\Differ;
 /**
  * Strict Unified diff output builder.
  *

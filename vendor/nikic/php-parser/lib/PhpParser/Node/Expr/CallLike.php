@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202209\PhpParser\Node\Expr;
+namespace EasyCI202210\PhpParser\Node\Expr;
 
-use EasyCI202209\PhpParser\Node\Arg;
-use EasyCI202209\PhpParser\Node\Expr;
-use EasyCI202209\PhpParser\Node\VariadicPlaceholder;
+use EasyCI202210\PhpParser\Node\Arg;
+use EasyCI202210\PhpParser\Node\Expr;
+use EasyCI202210\PhpParser\Node\VariadicPlaceholder;
 abstract class CallLike extends Expr
 {
     /**

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Command;
+namespace EasyCI202210\Symfony\Component\Console\Command;
 
-use EasyCI202209\Symfony\Component\Console\Application;
-use EasyCI202209\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI202209\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI202209\Symfony\Component\Console\Helper\HelperSet;
-use EasyCI202209\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202209\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202209\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202210\Symfony\Component\Console\Application;
+use EasyCI202210\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI202210\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI202210\Symfony\Component\Console\Helper\HelperSet;
+use EasyCI202210\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202210\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

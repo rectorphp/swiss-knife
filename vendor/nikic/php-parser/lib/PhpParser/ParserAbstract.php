@@ -1,29 +1,29 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202209\PhpParser;
+namespace EasyCI202210\PhpParser;
 
 /*
  * This parser is based on a skeleton written by Moriyoshi Koizumi, which in
  * turn is based on work by Masato Bito.
  */
-use EasyCI202209\PhpParser\Node\Expr;
-use EasyCI202209\PhpParser\Node\Expr\Cast\Double;
-use EasyCI202209\PhpParser\Node\Name;
-use EasyCI202209\PhpParser\Node\Param;
-use EasyCI202209\PhpParser\Node\Scalar\Encapsed;
-use EasyCI202209\PhpParser\Node\Scalar\LNumber;
-use EasyCI202209\PhpParser\Node\Scalar\String_;
-use EasyCI202209\PhpParser\Node\Stmt\Class_;
-use EasyCI202209\PhpParser\Node\Stmt\ClassConst;
-use EasyCI202209\PhpParser\Node\Stmt\ClassMethod;
-use EasyCI202209\PhpParser\Node\Stmt\Enum_;
-use EasyCI202209\PhpParser\Node\Stmt\Interface_;
-use EasyCI202209\PhpParser\Node\Stmt\Namespace_;
-use EasyCI202209\PhpParser\Node\Stmt\Property;
-use EasyCI202209\PhpParser\Node\Stmt\TryCatch;
-use EasyCI202209\PhpParser\Node\Stmt\UseUse;
-use EasyCI202209\PhpParser\Node\VarLikeIdentifier;
+use EasyCI202210\PhpParser\Node\Expr;
+use EasyCI202210\PhpParser\Node\Expr\Cast\Double;
+use EasyCI202210\PhpParser\Node\Name;
+use EasyCI202210\PhpParser\Node\Param;
+use EasyCI202210\PhpParser\Node\Scalar\Encapsed;
+use EasyCI202210\PhpParser\Node\Scalar\LNumber;
+use EasyCI202210\PhpParser\Node\Scalar\String_;
+use EasyCI202210\PhpParser\Node\Stmt\Class_;
+use EasyCI202210\PhpParser\Node\Stmt\ClassConst;
+use EasyCI202210\PhpParser\Node\Stmt\ClassMethod;
+use EasyCI202210\PhpParser\Node\Stmt\Enum_;
+use EasyCI202210\PhpParser\Node\Stmt\Interface_;
+use EasyCI202210\PhpParser\Node\Stmt\Namespace_;
+use EasyCI202210\PhpParser\Node\Stmt\Property;
+use EasyCI202210\PhpParser\Node\Stmt\TryCatch;
+use EasyCI202210\PhpParser\Node\Stmt\UseUse;
+use EasyCI202210\PhpParser\Node\VarLikeIdentifier;
 abstract class ParserAbstract implements Parser
 {
     const SYMBOL_NONE = -1;

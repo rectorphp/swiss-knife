@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Command;
+namespace EasyCI202210\Symfony\Component\Console\Command;
 
-use EasyCI202209\Symfony\Component\Console\Exception\LogicException;
-use EasyCI202209\Symfony\Component\Lock\LockFactory;
-use EasyCI202209\Symfony\Component\Lock\Store\FlockStore;
-use EasyCI202209\Symfony\Component\Lock\Store\SemaphoreStore;
+use EasyCI202210\Symfony\Component\Console\Exception\LogicException;
+use EasyCI202210\Symfony\Component\Lock\LockFactory;
+use EasyCI202210\Symfony\Component\Lock\Store\FlockStore;
+use EasyCI202210\Symfony\Component\Lock\Store\SemaphoreStore;
 /**
  * Basic lock feature for commands.
  *

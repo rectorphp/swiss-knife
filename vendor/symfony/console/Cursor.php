@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console;
+namespace EasyCI202210\Symfony\Component\Console;
 
-use EasyCI202209\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Pierre du Plessis <pdples@gmail.com>
  */

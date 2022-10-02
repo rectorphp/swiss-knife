@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\DependencyInjection\Loader;
+namespace EasyCI202210\Symfony\Component\DependencyInjection\Loader;
 
-use EasyCI202209\Symfony\Component\DependencyInjection\Alias;
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI202209\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202209\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202209\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI202209\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202209\Symfony\Component\ExpressionLanguage\Expression;
-use EasyCI202209\Symfony\Component\Yaml\Exception\ParseException;
-use EasyCI202209\Symfony\Component\Yaml\Parser as YamlParser;
-use EasyCI202209\Symfony\Component\Yaml\Tag\TaggedValue;
-use EasyCI202209\Symfony\Component\Yaml\Yaml;
+use EasyCI202210\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202210\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202210\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202210\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI202210\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202210\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202210\Symfony\Component\Yaml\Exception\ParseException;
+use EasyCI202210\Symfony\Component\Yaml\Parser as YamlParser;
+use EasyCI202210\Symfony\Component\Yaml\Tag\TaggedValue;
+use EasyCI202210\Symfony\Component\Yaml\Yaml;
 /**
  * YamlFileLoader loads YAML files service definitions.
  *
@@ -553,7 +553,7 @@ class YamlFileLoader extends FileLoader
      */
     protected function loadFile(string $file) : ?array
     {
-        if (!\class_exists(\EasyCI202209\Symfony\Component\Yaml\Parser::class)) {
+        if (!\class_exists(\EasyCI202210\Symfony\Component\Yaml\Parser::class)) {
             throw new RuntimeException('Unable to load YAML config files as the Symfony Yaml Component is not installed.');
         }
         if (!\stream_is_local($file)) {

@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Helper;
+namespace EasyCI202210\Symfony\Component\Console\Helper;
 
-use EasyCI202209\Symfony\Component\Console\Formatter\OutputFormatter;
-use EasyCI202209\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202209\Symfony\Component\Console\Question\ChoiceQuestion;
-use EasyCI202209\Symfony\Component\Console\Question\ConfirmationQuestion;
-use EasyCI202209\Symfony\Component\Console\Question\Question;
-use EasyCI202209\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202210\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202210\Symfony\Component\Console\Question\ChoiceQuestion;
+use EasyCI202210\Symfony\Component\Console\Question\ConfirmationQuestion;
+use EasyCI202210\Symfony\Component\Console\Question\Question;
+use EasyCI202210\Symfony\Component\Console\Style\SymfonyStyle;
 /**
  * Symfony Style Guide compliant question helper.
  *

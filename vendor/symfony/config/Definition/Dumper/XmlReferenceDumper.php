@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Config\Definition\Dumper;
+namespace EasyCI202210\Symfony\Component\Config\Definition\Dumper;
 
-use EasyCI202209\Symfony\Component\Config\Definition\ArrayNode;
-use EasyCI202209\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI202209\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI202209\Symfony\Component\Config\Definition\EnumNode;
-use EasyCI202209\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI202209\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use EasyCI202210\Symfony\Component\Config\Definition\ArrayNode;
+use EasyCI202210\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI202210\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202210\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI202210\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI202210\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * Dumps an XML reference configuration for the given configuration/node instance.
  *

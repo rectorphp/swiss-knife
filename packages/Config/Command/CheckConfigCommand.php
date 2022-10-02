@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Config\Command;
 
-use EasyCI202209\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202209\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202209\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202210\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202210\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Config\Application\ClassAndConstantExistanceFileProcessor;
 use Symplify\EasyCI\Console\Output\FileErrorsReporter;
 use Symplify\EasyCI\ValueObject\ConfigFileSuffixes;
-use EasyCI202209\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use EasyCI202209\Symplify\PackageBuilder\ValueObject\Option;
+use EasyCI202210\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI202210\Symplify\PackageBuilder\ValueObject\Option;
 final class CheckConfigCommand extends AbstractSymplifyCommand
 {
     /**

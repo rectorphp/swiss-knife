@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Helper;
+namespace EasyCI202210\Symfony\Component\Console\Helper;
 
-use EasyCI202209\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202209\Symfony\Component\Console\Exception\RuntimeException;
-use EasyCI202209\Symfony\Component\Console\Formatter\OutputFormatter;
-use EasyCI202209\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface;
-use EasyCI202209\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use EasyCI202209\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202210\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202210\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202210\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202210\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface;
+use EasyCI202210\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Provides helpers to display a table.
  *

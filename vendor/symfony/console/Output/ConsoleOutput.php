@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Output;
+namespace EasyCI202210\Symfony\Component\Console\Output;
 
-use EasyCI202209\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use EasyCI202210\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * ConsoleOutput is the default class for all CLI output. It uses STDOUT and STDERR.
  *

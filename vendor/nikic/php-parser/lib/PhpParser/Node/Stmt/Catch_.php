@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202209\PhpParser\Node\Stmt;
+namespace EasyCI202210\PhpParser\Node\Stmt;
 
-use EasyCI202209\PhpParser\Node;
-use EasyCI202209\PhpParser\Node\Expr;
+use EasyCI202210\PhpParser\Node;
+use EasyCI202210\PhpParser\Node\Expr;
 class Catch_ extends Node\Stmt
 {
     /** @var Node\Name[] Types of exceptions to catch */

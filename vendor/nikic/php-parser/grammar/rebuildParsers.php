@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCI202209;
+namespace EasyCI202210;
 
 require __DIR__ . '/phpyLang.php';
 $grammarFileToName = [__DIR__ . '/php5.y' => 'Php5', __DIR__ . '/php7.y' => 'Php7'];

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Input;
+namespace EasyCI202210\Symfony\Component\Console\Input;
 
-use EasyCI202209\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202209\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202210\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202210\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * Input is the base class for all concrete Input classes.
  *

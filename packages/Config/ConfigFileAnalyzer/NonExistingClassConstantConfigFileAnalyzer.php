@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Config\ConfigFileAnalyzer;
 
-use EasyCI202209\Nette\Utils\Strings;
+use EasyCI202210\Nette\Utils\Strings;
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\EasyCI\ValueObject\FileError;
-use EasyCI202209\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202210\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConstantExtractor\NonExistingClassConstantExtractorTest
  */

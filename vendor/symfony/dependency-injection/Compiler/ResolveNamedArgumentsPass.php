@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202210\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202209\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202209\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use EasyCI202209\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202210\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202210\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202210\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
+use EasyCI202210\Symfony\Component\DependencyInjection\Reference;
 /**
  * Resolves named arguments to their corresponding numeric index.
  *

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Contracts\Service;
+namespace EasyCI202210\Symfony\Contracts\Service;
 
-use EasyCI202209\Psr\Container\ContainerInterface;
-use EasyCI202209\Symfony\Contracts\Service\Attribute\SubscribedService;
+use EasyCI202210\Psr\Container\ContainerInterface;
+use EasyCI202210\Symfony\Contracts\Service\Attribute\SubscribedService;
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from
  * method return types. Service ids are available as "ClassName::methodName".

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202209\PhpParser\Node\Expr;
+namespace EasyCI202210\PhpParser\Node\Expr;
 
-use EasyCI202209\PhpParser\Node;
+use EasyCI202210\PhpParser\Node;
 class Throw_ extends Node\Expr
 {
     /** @var Node\Expr Expression */

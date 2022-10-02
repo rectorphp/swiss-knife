@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202209\Symfony\Component\Console\Style;
+namespace EasyCI202210\Symfony\Component\Console\Style;
 
-use EasyCI202209\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use EasyCI202209\Symfony\Component\Console\Helper\ProgressBar;
-use EasyCI202209\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI202209\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202210\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use EasyCI202210\Symfony\Component\Console\Helper\ProgressBar;
+use EasyCI202210\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Decorates output to add console style guide helpers.
  *
