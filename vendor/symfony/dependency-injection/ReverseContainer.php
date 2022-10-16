@@ -19,7 +19,13 @@ use EasyCI202210\Symfony\Component\DependencyInjection\Exception\ServiceNotFound
  */
 final class ReverseContainer
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\Container
+     */
     private $serviceContainer;
+    /**
+     * @var \Psr\Container\ContainerInterface
+     */
     private $reversibleLocator;
     /**
      * @var string

@@ -11,6 +11,7 @@
 namespace EasyCI202210\Symfony\Contracts\Service;
 
 use EasyCI202210\Psr\Container\ContainerInterface;
+use EasyCI202210\Symfony\Contracts\Service\Attribute\Required;
 use EasyCI202210\Symfony\Contracts\Service\Attribute\SubscribedService;
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from

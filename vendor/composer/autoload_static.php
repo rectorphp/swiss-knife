@@ -4,11 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit024022b450308b56b05e343f4d0f556d
+class ComposerStaticInit0cddab6f376d9275017b2f61a36fc86a
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
     );
 
@@ -16,7 +15,6 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'S' => 
         array (
             'Symplify\\EasyCI\\' => 16,
-            'Symfony\\Polyfill\\Php81\\' => 23,
         ),
         'E' => 
         array (
@@ -42,10 +40,6 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         array (
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/packages',
-        ),
-        'Symfony\\Polyfill\\Php81\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
         'EasyCI202210\\Webmozart\\Assert\\' => 
         array (
@@ -471,7 +465,10 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Builder\\TreeBuilder' => __DIR__ . '/..' . '/symfony/config/Definition/Builder/TreeBuilder.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Builder\\ValidationBuilder' => __DIR__ . '/..' . '/symfony/config/Definition/Builder/ValidationBuilder.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Builder\\VariableNodeDefinition' => __DIR__ . '/..' . '/symfony/config/Definition/Builder/VariableNodeDefinition.php',
+        'EasyCI202210\\Symfony\\Component\\Config\\Definition\\ConfigurableInterface' => __DIR__ . '/..' . '/symfony/config/Definition/ConfigurableInterface.php',
+        'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Configuration' => __DIR__ . '/..' . '/symfony/config/Definition/Configuration.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\ConfigurationInterface' => __DIR__ . '/..' . '/symfony/config/Definition/ConfigurationInterface.php',
+        'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Configurator\\DefinitionConfigurator' => __DIR__ . '/..' . '/symfony/config/Definition/Configurator/DefinitionConfigurator.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Dumper\\XmlReferenceDumper' => __DIR__ . '/..' . '/symfony/config/Definition/Dumper/XmlReferenceDumper.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Dumper\\YamlReferenceDumper' => __DIR__ . '/..' . '/symfony/config/Definition/Dumper/YamlReferenceDumper.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\EnumNode' => __DIR__ . '/..' . '/symfony/config/Definition/EnumNode.php',
@@ -484,6 +481,7 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Exception\\UnsetKeyException' => __DIR__ . '/..' . '/symfony/config/Definition/Exception/UnsetKeyException.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\FloatNode' => __DIR__ . '/..' . '/symfony/config/Definition/FloatNode.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\IntegerNode' => __DIR__ . '/..' . '/symfony/config/Definition/IntegerNode.php',
+        'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Loader\\DefinitionFileLoader' => __DIR__ . '/..' . '/symfony/config/Definition/Loader/DefinitionFileLoader.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\NodeInterface' => __DIR__ . '/..' . '/symfony/config/Definition/NodeInterface.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\NumericNode' => __DIR__ . '/..' . '/symfony/config/Definition/NumericNode.php',
         'EasyCI202210\\Symfony\\Component\\Config\\Definition\\Processor' => __DIR__ . '/..' . '/symfony/config/Definition/Processor.php',
@@ -539,6 +537,7 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Component\\Console\\Completion\\CompletionSuggestions' => __DIR__ . '/..' . '/symfony/console/Completion/CompletionSuggestions.php',
         'EasyCI202210\\Symfony\\Component\\Console\\Completion\\Output\\BashCompletionOutput' => __DIR__ . '/..' . '/symfony/console/Completion/Output/BashCompletionOutput.php',
         'EasyCI202210\\Symfony\\Component\\Console\\Completion\\Output\\CompletionOutputInterface' => __DIR__ . '/..' . '/symfony/console/Completion/Output/CompletionOutputInterface.php',
+        'EasyCI202210\\Symfony\\Component\\Console\\Completion\\Output\\FishCompletionOutput' => __DIR__ . '/..' . '/symfony/console/Completion/Output/FishCompletionOutput.php',
         'EasyCI202210\\Symfony\\Component\\Console\\Completion\\Suggestion' => __DIR__ . '/..' . '/symfony/console/Completion/Suggestion.php',
         'EasyCI202210\\Symfony\\Component\\Console\\ConsoleEvents' => __DIR__ . '/..' . '/symfony/console/ConsoleEvents.php',
         'EasyCI202210\\Symfony\\Component\\Console\\Cursor' => __DIR__ . '/..' . '/symfony/console/Cursor.php',
@@ -636,9 +635,12 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Argument\\ServiceLocator' => __DIR__ . '/..' . '/symfony/dependency-injection/Argument/ServiceLocator.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Argument\\ServiceLocatorArgument' => __DIR__ . '/..' . '/symfony/dependency-injection/Argument/ServiceLocatorArgument.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Argument\\TaggedIteratorArgument' => __DIR__ . '/..' . '/symfony/dependency-injection/Argument/TaggedIteratorArgument.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\AsDecorator' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/AsDecorator.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\AsTaggedItem' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/AsTaggedItem.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\Autoconfigure' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/Autoconfigure.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\AutoconfigureTag' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/AutoconfigureTag.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\Autowire' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/Autowire.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\MapDecorated' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/MapDecorated.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\TaggedIterator' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/TaggedIterator.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\TaggedLocator' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/TaggedLocator.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Attribute\\Target' => __DIR__ . '/..' . '/symfony/dependency-injection/Attribute/Target.php',
@@ -649,6 +651,7 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AnalyzeServiceReferencesPass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AnalyzeServiceReferencesPass.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AttributeAutoconfigurationPass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AttributeAutoconfigurationPass.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AutoAliasServicePass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AutoAliasServicePass.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AutowireAsDecoratorPass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AutowireAsDecoratorPass.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AutowirePass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AutowirePass.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AutowireRequiredMethodsPass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AutowireRequiredMethodsPass.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Compiler\\AutowireRequiredPropertiesPass' => __DIR__ . '/..' . '/symfony/dependency-injection/Compiler/AutowireRequiredPropertiesPass.php',
@@ -729,9 +732,12 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Exception\\ServiceNotFoundException' => __DIR__ . '/..' . '/symfony/dependency-injection/Exception/ServiceNotFoundException.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\ExpressionLanguage' => __DIR__ . '/..' . '/symfony/dependency-injection/ExpressionLanguage.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\ExpressionLanguageProvider' => __DIR__ . '/..' . '/symfony/dependency-injection/ExpressionLanguageProvider.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\AbstractExtension' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/AbstractExtension.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\ConfigurableExtensionInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/ConfigurableExtensionInterface.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\ConfigurationExtensionInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/ConfigurationExtensionInterface.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\Extension' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/Extension.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\ExtensionInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/ExtensionInterface.php',
+        'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\ExtensionTrait' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/ExtensionTrait.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\Extension\\PrependExtensionInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/PrependExtensionInterface.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\LazyProxy\\Instantiator\\InstantiatorInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/Instantiator/InstantiatorInterface.php',
         'EasyCI202210\\Symfony\\Component\\DependencyInjection\\LazyProxy\\Instantiator\\RealServiceInstantiator' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/Instantiator/RealServiceInstantiator.php',
@@ -844,7 +850,6 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Symfony\\Contracts\\Service\\ServiceProviderInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceProviderInterface.php',
         'EasyCI202210\\Symfony\\Contracts\\Service\\ServiceSubscriberInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberInterface.php',
         'EasyCI202210\\Symfony\\Contracts\\Service\\ServiceSubscriberTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberTrait.php',
-        'EasyCI202210\\Symfony\\Contracts\\Service\\Test\\ServiceLocatorTest' => __DIR__ . '/..' . '/symfony/service-contracts/Test/ServiceLocatorTest.php',
         'EasyCI202210\\Symplify\\AutowireArrayParameter\\DependencyInjection\\CompilerPass\\AutowireArrayParameterCompilerPass' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/CompilerPass/AutowireArrayParameterCompilerPass.php',
         'EasyCI202210\\Symplify\\AutowireArrayParameter\\DependencyInjection\\DefinitionFinder' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/DefinitionFinder.php',
         'EasyCI202210\\Symplify\\AutowireArrayParameter\\DocBlock\\ParamTypeDocBlockResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DocBlock/ParamTypeDocBlockResolver.php',
@@ -899,8 +904,6 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
         'EasyCI202210\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'EasyCI202210\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
         'PHPUnit_Framework_TestCase' => __DIR__ . '/../..' . '/stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
-        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
-        'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'Symplify\\EasyCI\\ActiveClass\\ClassNameResolver' => __DIR__ . '/../..' . '/packages/ActiveClass/ClassNameResolver.php',
         'Symplify\\EasyCI\\ActiveClass\\Command\\CheckActiveClassCommand' => __DIR__ . '/../..' . '/packages/ActiveClass/Command/CheckActiveClassCommand.php',
         'Symplify\\EasyCI\\ActiveClass\\Filtering\\PossiblyUnusedClassesFilter' => __DIR__ . '/../..' . '/packages/ActiveClass/Filtering/PossiblyUnusedClassesFilter.php',
@@ -984,9 +987,9 @@ class ComposerStaticInit024022b450308b56b05e343f4d0f556d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit024022b450308b56b05e343f4d0f556d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit024022b450308b56b05e343f4d0f556d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit024022b450308b56b05e343f4d0f556d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0cddab6f376d9275017b2f61a36fc86a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0cddab6f376d9275017b2f61a36fc86a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0cddab6f376d9275017b2f61a36fc86a::$classMap;
 
         }, null, ClassLoader::class);
     }

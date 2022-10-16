@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symplify\\EasyCI\\' => array($baseDir . '/src', $baseDir . '/packages'),
-    'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'EasyCI202210\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'EasyCI202210\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'EasyCI202210\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),

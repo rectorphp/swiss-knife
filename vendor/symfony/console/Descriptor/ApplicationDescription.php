@@ -21,6 +21,9 @@ use EasyCI202210\Symfony\Component\Console\Exception\CommandNotFoundException;
 class ApplicationDescription
 {
     public const GLOBAL_NAMESPACE = '_global';
+    /**
+     * @var \Symfony\Component\Console\Application
+     */
     private $application;
     /**
      * @var string|null
