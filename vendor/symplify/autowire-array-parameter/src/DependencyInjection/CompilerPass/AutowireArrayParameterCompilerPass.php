@@ -32,7 +32,7 @@ final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
      * @var string[]
      * @noRector
      */
-    private $excludedFatalClasses = ['EasyCI202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202210\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private array $excludedFatalClasses = ['EasyCI202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202210\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */
