@@ -30,9 +30,10 @@ final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
      * Classes that create circular dependencies
      *
      * @var string[]
-     * @noRector
+     * @noRector \Rector\Privatization\Rector\Property\ChangeReadOnlyPropertyWithDefaultValueToConstantRector
+     * @noRector \Rector\Php55\Rector\String_\StringClassNameToClassConstantRector
      */
-    private array $excludedFatalClasses = ['EasyCI202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202210\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private $excludedFatalClasses = ['EasyCI202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202210\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */
