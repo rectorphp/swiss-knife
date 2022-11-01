@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202210\Psr\Container\ContainerInterface as PsrContainerInterface;
-use EasyCI202210\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202210\Symfony\Component\DependencyInjection\TypedReference;
-use EasyCI202210\Symfony\Component\HttpFoundation\Session\SessionInterface;
-use EasyCI202210\Symfony\Contracts\Service\ServiceProviderInterface;
-use EasyCI202210\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use EasyCI202211\Psr\Container\ContainerInterface as PsrContainerInterface;
+use EasyCI202211\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202211\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202211\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use EasyCI202211\Symfony\Contracts\Service\ServiceProviderInterface;
+use EasyCI202211\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * Compiler pass to register tagged services that require a service locator.
  *

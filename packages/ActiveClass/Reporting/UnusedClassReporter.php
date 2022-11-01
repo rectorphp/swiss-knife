@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\Reporting;
 
-use EasyCI202210\Symfony\Component\Console\Command\Command;
-use EasyCI202210\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
+use EasyCI202211\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 final class UnusedClassReporter
 {

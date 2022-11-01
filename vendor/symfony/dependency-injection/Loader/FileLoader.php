@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection\Loader;
+namespace EasyCI202211\Symfony\Component\DependencyInjection\Loader;
 
-use EasyCI202210\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use EasyCI202210\Symfony\Component\Config\Exception\LoaderLoadException;
-use EasyCI202210\Symfony\Component\Config\FileLocatorInterface;
-use EasyCI202210\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
-use EasyCI202210\Symfony\Component\Config\Loader\Loader;
-use EasyCI202210\Symfony\Component\Config\Resource\GlobResource;
-use EasyCI202210\Symfony\Component\DependencyInjection\Attribute\When;
-use EasyCI202210\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI202210\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202210\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use EasyCI202211\Symfony\Component\Config\Exception\LoaderLoadException;
+use EasyCI202211\Symfony\Component\Config\FileLocatorInterface;
+use EasyCI202211\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
+use EasyCI202211\Symfony\Component\Config\Loader\Loader;
+use EasyCI202211\Symfony\Component\Config\Resource\GlobResource;
+use EasyCI202211\Symfony\Component\DependencyInjection\Attribute\When;
+use EasyCI202211\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *

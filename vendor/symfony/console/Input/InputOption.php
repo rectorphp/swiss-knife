@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\Input;
+namespace EasyCI202211\Symfony\Component\Console\Input;
 
-use EasyCI202210\Symfony\Component\Console\Command\Command;
-use EasyCI202210\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI202210\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI202210\Symfony\Component\Console\Completion\Suggestion;
-use EasyCI202210\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\Console\Exception\LogicException;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
+use EasyCI202211\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI202211\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI202211\Symfony\Component\Console\Completion\Suggestion;
+use EasyCI202211\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a command line option.
  *

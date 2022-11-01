@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection\Extension;
+namespace EasyCI202211\Symfony\Component\DependencyInjection\Extension;
 
-use EasyCI202210\Symfony\Component\Config\Definition\Configuration;
-use EasyCI202210\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI202210\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202210\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use EasyCI202211\Symfony\Component\Config\Definition\Configuration;
+use EasyCI202211\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202211\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202211\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 /**
  * An Extension that provides configuration hooks.
  *

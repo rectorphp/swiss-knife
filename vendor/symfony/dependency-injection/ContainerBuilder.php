@@ -8,42 +8,42 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection;
+namespace EasyCI202211\Symfony\Component\DependencyInjection;
 
-use EasyCI202210\Composer\InstalledVersions;
-use EasyCI202210\Symfony\Component\Config\Resource\ClassExistenceResource;
-use EasyCI202210\Symfony\Component\Config\Resource\ComposerResource;
-use EasyCI202210\Symfony\Component\Config\Resource\DirectoryResource;
-use EasyCI202210\Symfony\Component\Config\Resource\FileExistenceResource;
-use EasyCI202210\Symfony\Component\Config\Resource\FileResource;
-use EasyCI202210\Symfony\Component\Config\Resource\GlobResource;
-use EasyCI202210\Symfony\Component\Config\Resource\ReflectionClassResource;
-use EasyCI202210\Symfony\Component\Config\Resource\ResourceInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Attribute\Target;
-use EasyCI202210\Symfony\Component\DependencyInjection\Compiler\Compiler;
-use EasyCI202210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use EasyCI202210\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\LogicException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
-use EasyCI202210\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI202210\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use EasyCI202210\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use EasyCI202210\Symfony\Component\ExpressionLanguage\Expression;
-use EasyCI202210\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use EasyCI202211\Composer\InstalledVersions;
+use EasyCI202211\Symfony\Component\Config\Resource\ClassExistenceResource;
+use EasyCI202211\Symfony\Component\Config\Resource\ComposerResource;
+use EasyCI202211\Symfony\Component\Config\Resource\DirectoryResource;
+use EasyCI202211\Symfony\Component\Config\Resource\FileExistenceResource;
+use EasyCI202211\Symfony\Component\Config\Resource\FileResource;
+use EasyCI202211\Symfony\Component\Config\Resource\GlobResource;
+use EasyCI202211\Symfony\Component\Config\Resource\ReflectionClassResource;
+use EasyCI202211\Symfony\Component\Config\Resource\ResourceInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Attribute\Target;
+use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\Compiler;
+use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
+use EasyCI202211\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI202211\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use EasyCI202211\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use EasyCI202211\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202211\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * ContainerBuilder is a DI container that provides an API to easily describe services.
  *

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Stmt;
+namespace EasyCI202211\PhpParser\Node\Stmt;
 
-use EasyCI202210\PhpParser\Node;
+use EasyCI202211\PhpParser\Node;
 class Unset_ extends Node\Stmt
 {
     /** @var Node\Expr[] Variables to unset */

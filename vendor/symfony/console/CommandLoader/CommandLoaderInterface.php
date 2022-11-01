@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\CommandLoader;
+namespace EasyCI202211\Symfony\Component\Console\CommandLoader;
 
-use EasyCI202210\Symfony\Component\Console\Command\Command;
-use EasyCI202210\Symfony\Component\Console\Exception\CommandNotFoundException;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
+use EasyCI202211\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  */

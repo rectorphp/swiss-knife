@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Config\Loader;
+namespace EasyCI202211\Symfony\Component\Config\Loader;
 
-use EasyCI202210\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
-use EasyCI202210\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use EasyCI202210\Symfony\Component\Config\Exception\LoaderLoadException;
-use EasyCI202210\Symfony\Component\Config\FileLocatorInterface;
-use EasyCI202210\Symfony\Component\Config\Resource\FileExistenceResource;
-use EasyCI202210\Symfony\Component\Config\Resource\GlobResource;
+use EasyCI202211\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
+use EasyCI202211\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use EasyCI202211\Symfony\Component\Config\Exception\LoaderLoadException;
+use EasyCI202211\Symfony\Component\Config\FileLocatorInterface;
+use EasyCI202211\Symfony\Component\Config\Resource\FileExistenceResource;
+use EasyCI202211\Symfony\Component\Config\Resource\GlobResource;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *

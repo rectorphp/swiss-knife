@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection;
+namespace EasyCI202211\Symfony\Component\DependencyInjection;
 
-use EasyCI202210\Psr\Container\ContainerInterface as PsrContainerInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI202211\Psr\Container\ContainerInterface as PsrContainerInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *

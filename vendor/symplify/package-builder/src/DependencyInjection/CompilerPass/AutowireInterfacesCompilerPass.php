@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
+namespace EasyCI202211\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
 
-use EasyCI202210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
 final class AutowireInterfacesCompilerPass implements CompilerPassInterface
 {
     /**

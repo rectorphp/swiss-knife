@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202210\Symfony\Component\DependencyInjection\Attribute\AsDecorator;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202210\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202211\Symfony\Component\DependencyInjection\Attribute\AsDecorator;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
 /**
  * Reads #[AsDecorator] attributes on definitions that are autowired
  * and don't have the "container.ignore_attributes" tag.

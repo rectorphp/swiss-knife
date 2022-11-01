@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\Command;
+namespace EasyCI202211\Symfony\Component\Console\Command;
 
-use EasyCI202210\Symfony\Component\Console\Attribute\AsCommand;
-use EasyCI202210\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202210\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202210\Symfony\Component\Console\Input\InputOption;
-use EasyCI202210\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202210\Symfony\Component\Process\Process;
+use EasyCI202211\Symfony\Component\Console\Attribute\AsCommand;
+use EasyCI202211\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202211\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202211\Symfony\Component\Console\Input\InputOption;
+use EasyCI202211\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202211\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202211\Symfony\Component\Process\Process;
 /**
  * Dumps the completion script for the current shell.
  *

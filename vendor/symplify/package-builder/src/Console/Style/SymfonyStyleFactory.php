@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\Symplify\PackageBuilder\Console\Style;
+namespace EasyCI202211\Symplify\PackageBuilder\Console\Style;
 
-use EasyCI202210\Symfony\Component\Console\Application;
-use EasyCI202210\Symfony\Component\Console\Input\ArgvInput;
-use EasyCI202210\Symfony\Component\Console\Output\ConsoleOutput;
-use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202210\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI202210\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use EasyCI202211\Symfony\Component\Console\Application;
+use EasyCI202211\Symfony\Component\Console\Input\ArgvInput;
+use EasyCI202211\Symfony\Component\Console\Output\ConsoleOutput;
+use EasyCI202211\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202211\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202211\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 /**
  * @api
  */
@@ -47,6 +47,6 @@ final class SymfonyStyleFactory
      */
     private function isPHPUnitRun() : bool
     {
-        return \defined('EasyCI202210\\PHPUNIT_COMPOSER_INSTALL') || \defined('EasyCI202210\\__PHPUNIT_PHAR__');
+        return \defined('EasyCI202211\\PHPUNIT_COMPOSER_INSTALL') || \defined('EasyCI202211\\__PHPUNIT_PHAR__');
     }
 }

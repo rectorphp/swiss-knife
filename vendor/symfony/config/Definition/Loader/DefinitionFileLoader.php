@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Config\Definition\Loader;
+namespace EasyCI202211\Symfony\Component\Config\Definition\Loader;
 
-use EasyCI202210\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use EasyCI202210\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use EasyCI202210\Symfony\Component\Config\FileLocatorInterface;
-use EasyCI202210\Symfony\Component\Config\Loader\FileLoader;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202211\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use EasyCI202211\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use EasyCI202211\Symfony\Component\Config\FileLocatorInterface;
+use EasyCI202211\Symfony\Component\Config\Loader\FileLoader;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * DefinitionFileLoader loads config definitions from a PHP file.
  *

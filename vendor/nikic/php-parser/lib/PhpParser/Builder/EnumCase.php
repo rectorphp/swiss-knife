@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Builder;
+namespace EasyCI202211\PhpParser\Builder;
 
-use EasyCI202210\PhpParser;
-use EasyCI202210\PhpParser\BuilderHelpers;
-use EasyCI202210\PhpParser\Node;
-use EasyCI202210\PhpParser\Node\Identifier;
-use EasyCI202210\PhpParser\Node\Stmt;
+use EasyCI202211\PhpParser;
+use EasyCI202211\PhpParser\BuilderHelpers;
+use EasyCI202211\PhpParser\Node;
+use EasyCI202211\PhpParser\Node\Identifier;
+use EasyCI202211\PhpParser\Node\Stmt;
 class EnumCase implements PhpParser\Builder
 {
     protected $name;

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Config\Util;
+namespace EasyCI202211\Symfony\Component\Config\Util;
 
-use EasyCI202210\Symfony\Component\Config\Util\Exception\InvalidXmlException;
-use EasyCI202210\Symfony\Component\Config\Util\Exception\XmlParsingException;
+use EasyCI202211\Symfony\Component\Config\Util\Exception\InvalidXmlException;
+use EasyCI202211\Symfony\Component\Config\Util\Exception\XmlParsingException;
 /**
  * XMLUtils is a bunch of utility methods to XML operations.
  *

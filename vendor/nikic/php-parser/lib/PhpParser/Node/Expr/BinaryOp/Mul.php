@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Expr\BinaryOp;
+namespace EasyCI202211\PhpParser\Node\Expr\BinaryOp;
 
-use EasyCI202210\PhpParser\Node\Expr\BinaryOp;
+use EasyCI202211\PhpParser\Node\Expr\BinaryOp;
 class Mul extends BinaryOp
 {
     public function getOperatorSigil() : string

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Scalar;
+namespace EasyCI202211\PhpParser\Node\Scalar;
 
-use EasyCI202210\PhpParser\Node\Scalar;
+use EasyCI202211\PhpParser\Node\Scalar;
 class EncapsedStringPart extends Scalar
 {
     /** @var string String value */

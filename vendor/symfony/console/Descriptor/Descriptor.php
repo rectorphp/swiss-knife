@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\Descriptor;
+namespace EasyCI202211\Symfony\Component\Console\Descriptor;
 
-use EasyCI202210\Symfony\Component\Console\Application;
-use EasyCI202210\Symfony\Component\Console\Command\Command;
-use EasyCI202210\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202210\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202210\Symfony\Component\Console\Input\InputOption;
-use EasyCI202210\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202211\Symfony\Component\Console\Application;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
+use EasyCI202211\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202211\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202211\Symfony\Component\Console\Input\InputOption;
+use EasyCI202211\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
  *

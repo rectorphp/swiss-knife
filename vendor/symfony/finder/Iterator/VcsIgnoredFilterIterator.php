@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Finder\Iterator;
+namespace EasyCI202211\Symfony\Component\Finder\Iterator;
 
-use EasyCI202210\Symfony\Component\Finder\Gitignore;
+use EasyCI202211\Symfony\Component\Finder\Gitignore;
 /**
  * @extends \FilterIterator<string, \SplFileInfo>
  */

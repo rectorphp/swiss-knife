@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Console\Output;
 
-use EasyCI202210\Symfony\Component\Console\Command\Command;
-use EasyCI202210\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
+use EasyCI202211\Symfony\Component\Console\Style\SymfonyStyle;
 final class MissingTwigTemplatePathReporter
 {
     /**

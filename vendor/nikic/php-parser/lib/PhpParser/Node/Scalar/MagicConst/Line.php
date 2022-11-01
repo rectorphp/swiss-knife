@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Scalar\MagicConst;
+namespace EasyCI202211\PhpParser\Node\Scalar\MagicConst;
 
-use EasyCI202210\PhpParser\Node\Scalar\MagicConst;
+use EasyCI202211\PhpParser\Node\Scalar\MagicConst;
 class Line extends MagicConst
 {
     public function getName() : string

@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202210\Symfony\Component\DependencyInjection\Attribute\Target;
-use EasyCI202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202210\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202210\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use EasyCI202210\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202210\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202211\Symfony\Component\DependencyInjection\Attribute\Target;
+use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202211\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
+use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202211\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * @author Guilhem Niot <guilhem.niot@gmail.com>
  */

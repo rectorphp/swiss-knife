@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Filesystem;
+namespace EasyCI202211\Symfony\Component\Filesystem;
 
-use EasyCI202210\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
-use EasyCI202210\Symfony\Component\Filesystem\Exception\RuntimeException;
+use EasyCI202211\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\Filesystem\Exception\RuntimeException;
 /**
  * Contains utility methods for handling path strings.
  *

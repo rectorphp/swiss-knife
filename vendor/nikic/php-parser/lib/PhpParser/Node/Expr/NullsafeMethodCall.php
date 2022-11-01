@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Expr;
+namespace EasyCI202211\PhpParser\Node\Expr;
 
-use EasyCI202210\PhpParser\Node\Arg;
-use EasyCI202210\PhpParser\Node\Expr;
-use EasyCI202210\PhpParser\Node\Identifier;
-use EasyCI202210\PhpParser\Node\VariadicPlaceholder;
+use EasyCI202211\PhpParser\Node\Arg;
+use EasyCI202211\PhpParser\Node\Expr;
+use EasyCI202211\PhpParser\Node\Identifier;
+use EasyCI202211\PhpParser\Node\VariadicPlaceholder;
 class NullsafeMethodCall extends CallLike
 {
     /** @var Expr Variable holding object */

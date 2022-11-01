@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser;
+namespace EasyCI202211\PhpParser;
 
 interface NodeTraverserInterface
 {

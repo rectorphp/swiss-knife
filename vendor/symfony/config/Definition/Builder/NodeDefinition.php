@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI202211\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI202210\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI202210\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use EasyCI202210\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI202211\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI202211\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use EasyCI202211\Symfony\Component\Config\Definition\NodeInterface;
 /**
  * This class provides a fluent interface for defining a node.
  *

@@ -40,7 +40,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyCI202210\\Symfony\\Component\\String\\": ""
+            "EasyCI202211\\Symfony\\Component\\String\\": ""
         },
         "files": [
             "Resources\/functions.php"

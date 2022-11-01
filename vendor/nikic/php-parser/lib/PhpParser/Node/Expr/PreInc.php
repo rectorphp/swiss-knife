@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Expr;
+namespace EasyCI202211\PhpParser\Node\Expr;
 
-use EasyCI202210\PhpParser\Node\Expr;
+use EasyCI202211\PhpParser\Node\Expr;
 class PreInc extends Expr
 {
     /** @var Expr Variable */

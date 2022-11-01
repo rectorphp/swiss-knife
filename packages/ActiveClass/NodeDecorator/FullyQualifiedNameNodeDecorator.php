@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\NodeDecorator;
 
-use EasyCI202210\PhpParser\Node\Stmt;
-use EasyCI202210\PhpParser\NodeTraverser;
-use EasyCI202210\PhpParser\NodeVisitor\NameResolver;
-use EasyCI202210\PhpParser\NodeVisitor\NodeConnectingVisitor;
+use EasyCI202211\PhpParser\Node\Stmt;
+use EasyCI202211\PhpParser\NodeTraverser;
+use EasyCI202211\PhpParser\NodeVisitor\NameResolver;
+use EasyCI202211\PhpParser\NodeVisitor\NodeConnectingVisitor;
 final class FullyQualifiedNameNodeDecorator
 {
     /**

@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Config\Definition\Dumper;
+namespace EasyCI202211\Symfony\Component\Config\Definition\Dumper;
 
-use EasyCI202210\Symfony\Component\Config\Definition\ArrayNode;
-use EasyCI202210\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI202210\Symfony\Component\Config\Definition\BooleanNode;
-use EasyCI202210\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI202210\Symfony\Component\Config\Definition\EnumNode;
-use EasyCI202210\Symfony\Component\Config\Definition\FloatNode;
-use EasyCI202210\Symfony\Component\Config\Definition\IntegerNode;
-use EasyCI202210\Symfony\Component\Config\Definition\NodeInterface;
-use EasyCI202210\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use EasyCI202210\Symfony\Component\Config\Definition\ScalarNode;
+use EasyCI202211\Symfony\Component\Config\Definition\ArrayNode;
+use EasyCI202211\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI202211\Symfony\Component\Config\Definition\BooleanNode;
+use EasyCI202211\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202211\Symfony\Component\Config\Definition\EnumNode;
+use EasyCI202211\Symfony\Component\Config\Definition\FloatNode;
+use EasyCI202211\Symfony\Component\Config\Definition\IntegerNode;
+use EasyCI202211\Symfony\Component\Config\Definition\NodeInterface;
+use EasyCI202211\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use EasyCI202211\Symfony\Component\Config\Definition\ScalarNode;
 /**
  * Dumps an XML reference configuration for the given configuration/node instance.
  *

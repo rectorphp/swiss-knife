@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\Symplify\PackageBuilder\Console\Formatter;
+namespace EasyCI202211\Symplify\PackageBuilder\Console\Formatter;
 
-use EasyCI202210\Nette\Utils\Strings;
-use EasyCI202210\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202211\Nette\Utils\Strings;
+use EasyCI202211\Symfony\Component\Console\Formatter\OutputFormatter;
 /**
  * Inspired by @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/src/Differ/DiffConsoleFormatter.php to be
  * used as standalone class, without need to require whole package by Dariusz Rumiński <dariusz.ruminski@gmail.com>

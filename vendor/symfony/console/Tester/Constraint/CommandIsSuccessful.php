@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\Tester\Constraint;
+namespace EasyCI202211\Symfony\Component\Console\Tester\Constraint;
 
-use EasyCI202210\PHPUnit\Framework\Constraint\Constraint;
-use EasyCI202210\Symfony\Component\Console\Command\Command;
+use EasyCI202211\PHPUnit\Framework\Constraint\Constraint;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
 final class CommandIsSuccessful extends Constraint
 {
     /**

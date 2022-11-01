@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\Descriptor;
+namespace EasyCI202211\Symfony\Component\Console\Descriptor;
 
-use EasyCI202210\Symfony\Component\Console\Application;
-use EasyCI202210\Symfony\Component\Console\Command\Command;
-use EasyCI202210\Symfony\Component\Console\Formatter\OutputFormatter;
-use EasyCI202210\Symfony\Component\Console\Helper\Helper;
-use EasyCI202210\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202210\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202210\Symfony\Component\Console\Input\InputOption;
+use EasyCI202211\Symfony\Component\Console\Application;
+use EasyCI202211\Symfony\Component\Console\Command\Command;
+use EasyCI202211\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202211\Symfony\Component\Console\Helper\Helper;
+use EasyCI202211\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202211\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202211\Symfony\Component\Console\Input\InputOption;
 /**
  * Text descriptor.
  *

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node\Expr;
+namespace EasyCI202211\PhpParser\Node\Expr;
 
-use EasyCI202210\PhpParser\Node\Expr;
+use EasyCI202211\PhpParser\Node\Expr;
 class List_ extends Expr
 {
     /** @var (ArrayItem|null)[] List of items to assign to */

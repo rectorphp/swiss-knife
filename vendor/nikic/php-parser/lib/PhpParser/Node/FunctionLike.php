@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Node;
+namespace EasyCI202211\PhpParser\Node;
 
-use EasyCI202210\PhpParser\Node;
+use EasyCI202211\PhpParser\Node;
 interface FunctionLike extends Node
 {
     /**

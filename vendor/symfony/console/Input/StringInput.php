@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202210\Symfony\Component\Console\Input;
+namespace EasyCI202211\Symfony\Component\Console\Input;
 
-use EasyCI202210\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202211\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * StringInput represents an input provided as a string.
  *

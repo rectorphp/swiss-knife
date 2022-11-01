@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202210\PhpParser\Builder;
+namespace EasyCI202211\PhpParser\Builder;
 
-use EasyCI202210\PhpParser;
-use EasyCI202210\PhpParser\BuilderHelpers;
+use EasyCI202211\PhpParser;
+use EasyCI202211\PhpParser\BuilderHelpers;
 abstract class Declaration implements PhpParser\Builder
 {
     protected $attributes = [];

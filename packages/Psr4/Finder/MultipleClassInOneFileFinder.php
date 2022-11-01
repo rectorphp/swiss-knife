@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Finder;
 
-use EasyCI202210\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202211\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 final class MultipleClassInOneFileFinder
 {
