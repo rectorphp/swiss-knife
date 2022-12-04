@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\Config\Definition;
+namespace EasyCI202212\Symfony\Component\Config\Definition;
 
-use EasyCI202211\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use EasyCI202212\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * This node represents a float value in the config tree.
  *
@@ -19,7 +19,6 @@ use EasyCI202211\Symfony\Component\Config\Definition\Exception\InvalidTypeExcept
 class FloatNode extends NumericNode
 {
     /**
-     * {@inheritdoc}
      * @param mixed $value
      */
     protected function validateType($value)
@@ -37,9 +36,6 @@ class FloatNode extends NumericNode
             throw $ex;
         }
     }
-    /**
-     * {@inheritdoc}
-     */
     protected function getValidPlaceholderTypes() : array
     {
         return ['float'];

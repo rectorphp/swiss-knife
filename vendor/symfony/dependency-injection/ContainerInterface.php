@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection;
+namespace EasyCI202212\Symfony\Component\DependencyInjection;
 
-use EasyCI202211\Psr\Container\ContainerInterface as PsrContainerInterface;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI202212\Psr\Container\ContainerInterface as PsrContainerInterface;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *
@@ -43,7 +43,7 @@ interface ContainerInterface extends PsrContainerInterface
     /**
      * @return array|bool|string|int|float|\UnitEnum|null
      *
-     * @throws InvalidArgumentException if the parameter is not defined
+     * @throws ParameterNotFoundException if the parameter is not defined
      */
     public function getParameter(string $name);
     public function hasParameter(string $name) : bool;

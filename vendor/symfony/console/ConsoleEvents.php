@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\Console;
+namespace EasyCI202212\Symfony\Component\Console;
 
-use EasyCI202211\Symfony\Component\Console\Event\ConsoleCommandEvent;
-use EasyCI202211\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use EasyCI202211\Symfony\Component\Console\Event\ConsoleSignalEvent;
-use EasyCI202211\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use EasyCI202212\Symfony\Component\Console\Event\ConsoleCommandEvent;
+use EasyCI202212\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use EasyCI202212\Symfony\Component\Console\Event\ConsoleSignalEvent;
+use EasyCI202212\Symfony\Component\Console\Event\ConsoleTerminateEvent;
 /**
  * Contains all events dispatched by an Application.
  *

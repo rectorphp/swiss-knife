@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Attribute\Target;
-use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202211\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202211\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Attribute\Target;
+use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202212\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202212\Symfony\Component\VarExporter\ProxyHelper;
 /**
  * @author Guilhem Niot <guilhem.niot@gmail.com>
  */
@@ -38,9 +38,6 @@ class ResolveBindingsPass extends AbstractRecursivePass
      * @var mixed[]
      */
     private $errorMessages = [];
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         $this->usedBindings = $container->getRemovedBindingIds();
@@ -87,7 +84,6 @@ class ResolveBindingsPass extends AbstractRecursivePass
         }
     }
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */
@@ -162,9 +158,9 @@ class ResolveBindingsPass extends AbstractRecursivePass
                 if (\array_key_exists($key, $arguments) && '' !== $arguments[$key]) {
                     continue;
                 }
-                $typeHint = ProxyHelper::getTypeHint($reflectionMethod, $parameter);
+                $typeHint = \ltrim(ProxyHelper::exportType($parameter) ?? '', '?');
                 $name = Target::parseName($parameter);
-                if ($typeHint && \array_key_exists($k = \ltrim($typeHint, '\\') . ' $' . $name, $bindings)) {
+                if ($typeHint && \array_key_exists($k = \preg_replace('/(^|[(|&])\\\\/', '\\1', $typeHint) . ' $' . $name, $bindings)) {
                     $arguments[$key] = $this->getBindingValue($bindings[$k]);
                     continue;
                 }

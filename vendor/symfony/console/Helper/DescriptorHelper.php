@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\Console\Helper;
+namespace EasyCI202212\Symfony\Component\Console\Helper;
 
-use EasyCI202211\Symfony\Component\Console\Descriptor\DescriptorInterface;
-use EasyCI202211\Symfony\Component\Console\Descriptor\JsonDescriptor;
-use EasyCI202211\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
-use EasyCI202211\Symfony\Component\Console\Descriptor\TextDescriptor;
-use EasyCI202211\Symfony\Component\Console\Descriptor\XmlDescriptor;
-use EasyCI202211\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202212\Symfony\Component\Console\Descriptor\DescriptorInterface;
+use EasyCI202212\Symfony\Component\Console\Descriptor\JsonDescriptor;
+use EasyCI202212\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
+use EasyCI202212\Symfony\Component\Console\Descriptor\TextDescriptor;
+use EasyCI202212\Symfony\Component\Console\Descriptor\XmlDescriptor;
+use EasyCI202212\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
 /**
  * This class adds helper method to describe objects in various formats.
  *
@@ -60,9 +60,6 @@ class DescriptorHelper extends Helper
         $this->descriptors[$format] = $descriptor;
         return $this;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function getName() : string
     {
         return 'descriptor';

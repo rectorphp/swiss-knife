@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202211\PhpParser\Node;
+namespace EasyCI202212\PhpParser\Node;
 
 class NullableType extends ComplexType
 {

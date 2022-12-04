@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202211\PhpParser\Builder;
+namespace EasyCI202212\PhpParser\Builder;
 
-use EasyCI202211\PhpParser;
-use EasyCI202211\PhpParser\BuilderHelpers;
-use EasyCI202211\PhpParser\Node;
-use EasyCI202211\PhpParser\Node\Identifier;
-use EasyCI202211\PhpParser\Node\Name;
-use EasyCI202211\PhpParser\Node\Stmt;
-use EasyCI202211\PhpParser\Node\ComplexType;
+use EasyCI202212\PhpParser;
+use EasyCI202212\PhpParser\BuilderHelpers;
+use EasyCI202212\PhpParser\Node;
+use EasyCI202212\PhpParser\Node\Identifier;
+use EasyCI202212\PhpParser\Node\Name;
+use EasyCI202212\PhpParser\Node\Stmt;
+use EasyCI202212\PhpParser\Node\ComplexType;
 class Property implements PhpParser\Builder
 {
     protected $name;

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
-use EasyCI202211\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
+use EasyCI202212\Symfony\Component\ExpressionLanguage\Expression;
 trait FactoryTrait
 {
     /**

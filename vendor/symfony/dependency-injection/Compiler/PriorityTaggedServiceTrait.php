@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
-use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202211\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
+use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202212\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Trait that allows a generic method to find and sort service by priority option in the tag.
  *

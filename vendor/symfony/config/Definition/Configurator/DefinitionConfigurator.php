@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\Config\Definition\Configurator;
+namespace EasyCI202212\Symfony\Component\Config\Definition\Configurator;
 
-use EasyCI202211\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use EasyCI202211\Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use EasyCI202211\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use EasyCI202211\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
+use EasyCI202212\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use EasyCI202212\Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use EasyCI202212\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use EasyCI202212\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
 /**
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */

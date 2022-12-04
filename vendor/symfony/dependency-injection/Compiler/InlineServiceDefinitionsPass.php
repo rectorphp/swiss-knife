@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
 /**
  * Inline service definitions where this is possible.
  *
@@ -116,7 +116,6 @@ class InlineServiceDefinitionsPass extends AbstractRecursivePass
         }
     }
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */

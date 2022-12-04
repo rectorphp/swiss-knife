@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202211\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
+namespace EasyCI202212\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
-use EasyCI202211\Nette\Utils\Strings;
+use EasyCI202212\Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
-use EasyCI202211\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202211\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
-use EasyCI202211\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
-use EasyCI202211\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
-use EasyCI202211\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use EasyCI202212\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202212\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
+use EasyCI202212\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use EasyCI202212\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
+use EasyCI202212\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 /**
  * @inspiration https://github.com/nette/di/pull/178
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
@@ -30,10 +30,8 @@ final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
      * Classes that create circular dependencies
      *
      * @var string[]
-     * @noRector \Rector\Privatization\Rector\Property\ChangeReadOnlyPropertyWithDefaultValueToConstantRector
-     * @noRector \Rector\Php55\Rector\String_\StringClassNameToClassConstantRector
      */
-    private $excludedFatalClasses = ['EasyCI202211\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202211\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202211\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202211\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202211\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202211\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202211\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202211\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI202211\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private $excludedFatalClasses = ['EasyCI202212\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202212\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202212\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202212\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202212\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202212\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202212\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202212\\Sonata\\Twig\\Extension\\TemplateExtension', 'EasyCI202212\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */

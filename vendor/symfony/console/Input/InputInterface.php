@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\Console\Input;
+namespace EasyCI202212\Symfony\Component\Console\Input;
 
-use EasyCI202211\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202212\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * InputInterface is the interface implemented by all input classes.
  *

@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Dumper;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Dumper;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Alias;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202211\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\LogicException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202211\Symfony\Component\DependencyInjection\Parameter;
-use EasyCI202211\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202211\Symfony\Component\ExpressionLanguage\Expression;
-use EasyCI202211\Symfony\Component\Yaml\Dumper as YmlDumper;
-use EasyCI202211\Symfony\Component\Yaml\Parser;
-use EasyCI202211\Symfony\Component\Yaml\Tag\TaggedValue;
-use EasyCI202211\Symfony\Component\Yaml\Yaml;
+use EasyCI202212\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202212\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Parameter;
+use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202212\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202212\Symfony\Component\Yaml\Dumper as YmlDumper;
+use EasyCI202212\Symfony\Component\Yaml\Parser;
+use EasyCI202212\Symfony\Component\Yaml\Tag\TaggedValue;
+use EasyCI202212\Symfony\Component\Yaml\Yaml;
 /**
  * YamlDumper dumps a service container as a YAML string.
  *
@@ -224,6 +224,12 @@ class YamlDumper extends Dumper
                     if (null !== $tag->getDefaultPriorityMethod()) {
                         $content['default_priority_method'] = $tag->getDefaultPriorityMethod();
                     }
+                }
+                if ($excludes = $tag->getExclude()) {
+                    if (!\is_array($content)) {
+                        $content = ['tag' => $content];
+                    }
+                    $content['exclude'] = 1 === \count($excludes) ? $excludes[0] : $excludes;
                 }
                 return new TaggedValue($value instanceof TaggedIteratorArgument ? 'tagged_iterator' : 'tagged_locator', $content);
             }

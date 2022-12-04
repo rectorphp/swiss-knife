@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\NodeVisitor;
 
-use EasyCI202211\Nette\Utils\Strings;
-use EasyCI202211\PhpParser\Comment\Doc;
-use EasyCI202211\PhpParser\Node;
-use EasyCI202211\PhpParser\Node\Stmt\ClassLike;
-use EasyCI202211\PhpParser\NodeTraverser;
-use EasyCI202211\PhpParser\NodeVisitorAbstract;
+use EasyCI202212\Nette\Utils\Strings;
+use EasyCI202212\PhpParser\Comment\Doc;
+use EasyCI202212\PhpParser\Node;
+use EasyCI202212\PhpParser\Node\Stmt\ClassLike;
+use EasyCI202212\PhpParser\NodeTraverser;
+use EasyCI202212\PhpParser\NodeVisitorAbstract;
 final class ClassNameNodeVisitor extends NodeVisitorAbstract
 {
     /**

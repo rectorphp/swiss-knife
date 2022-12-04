@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * Checks if arguments of methods are properly configured.
  *
@@ -29,7 +29,6 @@ class CheckArgumentsValidityPass extends AbstractRecursivePass
         $this->throwExceptions = $throwExceptions;
     }
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */

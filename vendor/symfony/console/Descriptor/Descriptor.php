@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\Console\Descriptor;
+namespace EasyCI202212\Symfony\Component\Console\Descriptor;
 
-use EasyCI202211\Symfony\Component\Console\Application;
-use EasyCI202211\Symfony\Component\Console\Command\Command;
-use EasyCI202211\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202211\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202211\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202211\Symfony\Component\Console\Input\InputOption;
-use EasyCI202211\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202212\Symfony\Component\Console\Application;
+use EasyCI202212\Symfony\Component\Console\Command\Command;
+use EasyCI202212\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202212\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202212\Symfony\Component\Console\Input\InputOption;
+use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
  *
@@ -28,9 +28,6 @@ abstract class Descriptor implements DescriptorInterface
      * @var OutputInterface
      */
     protected $output;
-    /**
-     * {@inheritdoc}
-     */
     public function describe(OutputInterface $output, object $object, array $options = [])
     {
         $this->output = $output;

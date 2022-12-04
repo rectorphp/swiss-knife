@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Argument;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Argument;
 
-use EasyCI202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * Represents a service wrapped in a memoizing closure.
  *
@@ -29,16 +29,10 @@ class ServiceClosureArgument implements ArgumentInterface
     {
         $this->values = [$value];
     }
-    /**
-     * {@inheritdoc}
-     */
     public function getValues() : array
     {
         return $this->values;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function setValues(array $values)
     {
         if ([0] !== \array_keys($values)) {

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202211\PhpParser\Node\Stmt;
+namespace EasyCI202212\PhpParser\Node\Stmt;
 
-use EasyCI202211\PhpParser\Node;
-use EasyCI202211\PhpParser\Node\Identifier;
+use EasyCI202212\PhpParser\Node;
+use EasyCI202212\PhpParser\Node\Identifier;
 class UseUse extends Node\Stmt
 {
     /** @var int One of the Stmt\Use_::TYPE_* constants. Will only differ from TYPE_UNKNOWN for mixed group uses */

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202211\PhpParser;
+namespace EasyCI202212\PhpParser;
 
 abstract class NodeAbstract implements Node, \JsonSerializable
 {

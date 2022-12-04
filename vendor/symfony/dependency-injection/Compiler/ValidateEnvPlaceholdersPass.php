@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202211\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202211\Symfony\Component\Config\Definition\BaseNode;
-use EasyCI202211\Symfony\Component\Config\Definition\ConfigurationInterface;
-use EasyCI202211\Symfony\Component\Config\Definition\Processor;
-use EasyCI202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202211\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use EasyCI202211\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI202211\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use EasyCI202212\Symfony\Component\Config\Definition\BaseNode;
+use EasyCI202212\Symfony\Component\Config\Definition\ConfigurationInterface;
+use EasyCI202212\Symfony\Component\Config\Definition\Processor;
+use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202212\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use EasyCI202212\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI202212\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 /**
  * Validates environment variable placeholders used in extension configuration with dummy values.
  *
@@ -29,9 +29,6 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
      * @var mixed[]
      */
     private $extensionConfig = [];
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         $this->extensionConfig = [];
