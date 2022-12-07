@@ -33,7 +33,7 @@ final class ConflictResolver
                 continue;
             }
             // test fixtures, that should be ignored
-            if ($fileInfo->getRealPath() === \realpath(__DIR__ . '/../../tests/Git/ConflictResolver/Fixture/some_file.txt')) {
+            if (\strpos($fileInfo->getRealPath(), '/tests/Git/ConflictResolver/Fixture') !== \false) {
                 continue;
             }
             $conflictCountsByFilePath[$fileInfo->getRelativeFilePathFromCwd()] = $conflictCount;
