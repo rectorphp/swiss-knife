@@ -18,6 +18,9 @@ use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgument
  */
 class ResolveClassPass implements CompilerPassInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $id => $definition) {

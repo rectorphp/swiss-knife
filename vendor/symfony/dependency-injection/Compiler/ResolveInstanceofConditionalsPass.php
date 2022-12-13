@@ -22,6 +22,9 @@ use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeExceptio
  */
 class ResolveInstanceofConditionalsPass implements CompilerPassInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->getAutoconfiguredInstanceof() as $interface => $definition) {

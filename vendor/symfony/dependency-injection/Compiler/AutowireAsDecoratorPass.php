@@ -19,6 +19,9 @@ use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
  */
 final class AutowireAsDecoratorPass implements CompilerPassInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $definition) {

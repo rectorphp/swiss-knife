@@ -23,6 +23,7 @@ use EasyCI202212\Symfony\Contracts\Service\Attribute\Required;
 class AutowireRequiredPropertiesPass extends AbstractRecursivePass
 {
     /**
+     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */

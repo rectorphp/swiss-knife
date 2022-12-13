@@ -13,7 +13,6 @@ return array(
     'EasyCI202212\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
     'EasyCI202212\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
     'EasyCI202212\\Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
-    'EasyCI202212\\Symfony\\Component\\VarExporter\\' => array($vendorDir . '/symfony/var-exporter'),
     'EasyCI202212\\Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'EasyCI202212\\Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'EasyCI202212\\Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
