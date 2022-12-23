@@ -871,7 +871,6 @@ return array(
     'Symplify\\EasyCI\\StaticDetector\\NodeVisitor\\StaticCollectNodeVisitor' => $baseDir . '/packages/StaticDetector/NodeVisitor/StaticCollectNodeVisitor.php',
     'Symplify\\EasyCI\\StaticDetector\\Output\\StaticReportReporter' => $baseDir . '/packages/StaticDetector/Output/StaticReportReporter.php',
     'Symplify\\EasyCI\\StaticDetector\\StaticScanner' => $baseDir . '/packages/StaticDetector/StaticScanner.php',
-    'Symplify\\EasyCI\\StaticDetector\\Strings\\StringsFilter' => $baseDir . '/packages/StaticDetector/Strings/StringsFilter.php',
     'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticClassMethod' => $baseDir . '/packages/StaticDetector/ValueObject/StaticClassMethod.php',
     'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticClassMethodWithStaticCalls' => $baseDir . '/packages/StaticDetector/ValueObject/StaticClassMethodWithStaticCalls.php',
     'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticDetectorAttributeKey' => $baseDir . '/packages/StaticDetector/ValueObject/StaticDetectorAttributeKey.php',

@@ -26,6 +26,7 @@ final class Psr4SwitcherConfiguration
         $this->fileSystemGuard = $fileSystemGuard;
     }
     /**
+     * @api
      * For testing
      */
     public function loadForTest(string $composerJsonPath) : void

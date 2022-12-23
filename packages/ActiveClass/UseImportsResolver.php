@@ -27,6 +27,7 @@ final class UseImportsResolver
         $this->fullyQualifiedNameNodeDecorator = $fullyQualifiedNameNodeDecorator;
     }
     /**
+     * @api
      * @param SmartFileInfo[] $phpFileInfos
      * @return string[]
      */

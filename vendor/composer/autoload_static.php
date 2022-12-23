@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit342f7a7ce54cd6bcb1ab0efa25229589
+class ComposerStaticInit3b2ac83b32a1feaa315ff71ba96ba1f3
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -965,7 +965,6 @@ class ComposerStaticInit342f7a7ce54cd6bcb1ab0efa25229589
         'Symplify\\EasyCI\\StaticDetector\\NodeVisitor\\StaticCollectNodeVisitor' => __DIR__ . '/../..' . '/packages/StaticDetector/NodeVisitor/StaticCollectNodeVisitor.php',
         'Symplify\\EasyCI\\StaticDetector\\Output\\StaticReportReporter' => __DIR__ . '/../..' . '/packages/StaticDetector/Output/StaticReportReporter.php',
         'Symplify\\EasyCI\\StaticDetector\\StaticScanner' => __DIR__ . '/../..' . '/packages/StaticDetector/StaticScanner.php',
-        'Symplify\\EasyCI\\StaticDetector\\Strings\\StringsFilter' => __DIR__ . '/../..' . '/packages/StaticDetector/Strings/StringsFilter.php',
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticClassMethod' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticClassMethod.php',
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticClassMethodWithStaticCalls' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticClassMethodWithStaticCalls.php',
         'Symplify\\EasyCI\\StaticDetector\\ValueObject\\StaticDetectorAttributeKey' => __DIR__ . '/../..' . '/packages/StaticDetector/ValueObject/StaticDetectorAttributeKey.php',
@@ -991,9 +990,9 @@ class ComposerStaticInit342f7a7ce54cd6bcb1ab0efa25229589
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit342f7a7ce54cd6bcb1ab0efa25229589::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit342f7a7ce54cd6bcb1ab0efa25229589::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit342f7a7ce54cd6bcb1ab0efa25229589::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3b2ac83b32a1feaa315ff71ba96ba1f3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3b2ac83b32a1feaa315ff71ba96ba1f3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3b2ac83b32a1feaa315ff71ba96ba1f3::$classMap;
 
         }, null, ClassLoader::class);
     }
