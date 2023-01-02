@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Command;
+namespace EasyCI202301\Symfony\Component\Console\Command;
 
-use EasyCI202212\Symfony\Component\Console\Application;
-use EasyCI202212\Symfony\Component\Console\Attribute\AsCommand;
-use EasyCI202212\Symfony\Component\Console\Completion\CompletionInput;
-use EasyCI202212\Symfony\Component\Console\Completion\CompletionSuggestions;
-use EasyCI202212\Symfony\Component\Console\Completion\Suggestion;
-use EasyCI202212\Symfony\Component\Console\Exception\ExceptionInterface;
-use EasyCI202212\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202212\Symfony\Component\Console\Exception\LogicException;
-use EasyCI202212\Symfony\Component\Console\Helper\HelperInterface;
-use EasyCI202212\Symfony\Component\Console\Helper\HelperSet;
-use EasyCI202212\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202212\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202212\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202212\Symfony\Component\Console\Input\InputOption;
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Console\Application;
+use EasyCI202301\Symfony\Component\Console\Attribute\AsCommand;
+use EasyCI202301\Symfony\Component\Console\Completion\CompletionInput;
+use EasyCI202301\Symfony\Component\Console\Completion\CompletionSuggestions;
+use EasyCI202301\Symfony\Component\Console\Completion\Suggestion;
+use EasyCI202301\Symfony\Component\Console\Exception\ExceptionInterface;
+use EasyCI202301\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202301\Symfony\Component\Console\Exception\LogicException;
+use EasyCI202301\Symfony\Component\Console\Helper\HelperInterface;
+use EasyCI202301\Symfony\Component\Console\Helper\HelperSet;
+use EasyCI202301\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202301\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202301\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202301\Symfony\Component\Console\Input\InputOption;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Base class for all commands.
  *
@@ -289,7 +289,7 @@ class Command
                         \cli_set_process_title($this->processTitle);
                     }
                 }
-            } elseif (\function_exists('EasyCI202212\\setproctitle')) {
+            } elseif (\function_exists('EasyCI202301\\setproctitle')) {
                 setproctitle($this->processTitle);
             } elseif (OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
                 $output->writeln('<comment>Install the proctitle PECL to be able to change the process title.</comment>');

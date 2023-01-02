@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Node\Scalar;
+namespace EasyCI202301\PhpParser\Node\Scalar;
 
-use EasyCI202212\PhpParser\Error;
-use EasyCI202212\PhpParser\Node\Scalar;
+use EasyCI202301\PhpParser\Error;
+use EasyCI202301\PhpParser\Node\Scalar;
 class LNumber extends Scalar
 {
     /* For use in "kind" attribute */

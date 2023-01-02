@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\ErrorHandler;
+namespace EasyCI202301\PhpParser\ErrorHandler;
 
-use EasyCI202212\PhpParser\Error;
-use EasyCI202212\PhpParser\ErrorHandler;
+use EasyCI202301\PhpParser\Error;
+use EasyCI202301\PhpParser\ErrorHandler;
 /**
  * Error handler that collects all errors into an array.
  *

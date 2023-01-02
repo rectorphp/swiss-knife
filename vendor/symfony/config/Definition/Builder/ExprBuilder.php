@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Config\Definition\Builder;
+namespace EasyCI202301\Symfony\Component\Config\Definition\Builder;
 
-use EasyCI202212\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use EasyCI202301\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * This class builds an if expression.
  *

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202301\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202212\Psr\Container\ContainerInterface;
-use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202212\Symfony\Contracts\Service\ServiceProviderInterface;
+use EasyCI202301\Psr\Container\ContainerInterface;
+use EasyCI202301\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202301\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202301\Symfony\Contracts\Service\ServiceProviderInterface;
 /**
  * Compiler pass to inject their service locator to service subscribers.
  *

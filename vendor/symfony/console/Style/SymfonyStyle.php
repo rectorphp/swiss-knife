@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Style;
+namespace EasyCI202301\Symfony\Component\Console\Style;
 
-use EasyCI202212\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202212\Symfony\Component\Console\Exception\RuntimeException;
-use EasyCI202212\Symfony\Component\Console\Formatter\OutputFormatter;
-use EasyCI202212\Symfony\Component\Console\Helper\Helper;
-use EasyCI202212\Symfony\Component\Console\Helper\OutputWrapper;
-use EasyCI202212\Symfony\Component\Console\Helper\ProgressBar;
-use EasyCI202212\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use EasyCI202212\Symfony\Component\Console\Helper\Table;
-use EasyCI202212\Symfony\Component\Console\Helper\TableCell;
-use EasyCI202212\Symfony\Component\Console\Helper\TableSeparator;
-use EasyCI202212\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202212\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202212\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use EasyCI202212\Symfony\Component\Console\Question\ChoiceQuestion;
-use EasyCI202212\Symfony\Component\Console\Question\ConfirmationQuestion;
-use EasyCI202212\Symfony\Component\Console\Question\Question;
-use EasyCI202212\Symfony\Component\Console\Terminal;
+use EasyCI202301\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202301\Symfony\Component\Console\Exception\RuntimeException;
+use EasyCI202301\Symfony\Component\Console\Formatter\OutputFormatter;
+use EasyCI202301\Symfony\Component\Console\Helper\Helper;
+use EasyCI202301\Symfony\Component\Console\Helper\OutputWrapper;
+use EasyCI202301\Symfony\Component\Console\Helper\ProgressBar;
+use EasyCI202301\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use EasyCI202301\Symfony\Component\Console\Helper\Table;
+use EasyCI202301\Symfony\Component\Console\Helper\TableCell;
+use EasyCI202301\Symfony\Component\Console\Helper\TableSeparator;
+use EasyCI202301\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use EasyCI202301\Symfony\Component\Console\Question\ChoiceQuestion;
+use EasyCI202301\Symfony\Component\Console\Question\ConfirmationQuestion;
+use EasyCI202301\Symfony\Component\Console\Question\Question;
+use EasyCI202301\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *

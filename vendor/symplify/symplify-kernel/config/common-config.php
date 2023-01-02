@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212;
+namespace EasyCI202301;
 
-use EasyCI202212\Symfony\Component\Console\Style\SymfonyStyle;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI202212\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use EasyCI202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use EasyCI202212\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use EasyCI202212\Symplify\SmartFileSystem\FileSystemFilter;
-use EasyCI202212\Symplify\SmartFileSystem\FileSystemGuard;
-use EasyCI202212\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use EasyCI202212\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI202212\Symplify\SmartFileSystem\SmartFileSystem;
-use function EasyCI202212\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use EasyCI202301\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use EasyCI202301\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use EasyCI202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use EasyCI202301\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use EasyCI202301\Symplify\SmartFileSystem\FileSystemFilter;
+use EasyCI202301\Symplify\SmartFileSystem\FileSystemGuard;
+use EasyCI202301\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use EasyCI202301\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI202301\Symplify\SmartFileSystem\SmartFileSystem;
+use function EasyCI202301\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();

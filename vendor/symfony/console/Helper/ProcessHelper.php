@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Helper;
+namespace EasyCI202301\Symfony\Component\Console\Helper;
 
-use EasyCI202212\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202212\Symfony\Component\Process\Exception\ProcessFailedException;
-use EasyCI202212\Symfony\Component\Process\Process;
+use EasyCI202301\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Process\Exception\ProcessFailedException;
+use EasyCI202301\Symfony\Component\Process\Process;
 /**
  * The ProcessHelper class provides helpers to run external processes.
  *

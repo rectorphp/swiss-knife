@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Template;
 
-use EasyCI202212\Nette\Utils\Strings;
-use EasyCI202212\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI202212\Symplify\SmartFileSystem\SmartFileInfo;
-use EasyCI202212\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use EasyCI202301\Nette\Utils\Strings;
+use EasyCI202301\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI202301\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202301\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class TemplatePathsResolver
 {
     /**

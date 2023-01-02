@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection;
+namespace EasyCI202301\Symfony\Component\DependencyInjection;
 
-use EasyCI202212\Psr\Cache\CacheItemPoolInterface;
-use EasyCI202212\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
+use EasyCI202301\Psr\Cache\CacheItemPoolInterface;
+use EasyCI202301\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
 if (!\class_exists(BaseExpressionLanguage::class)) {
     return;
 }

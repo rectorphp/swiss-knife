@@ -5,7 +5,7 @@ namespace Symplify\EasyCI\ActiveClass\Finder;
 
 use Symplify\EasyCI\ActiveClass\ClassNameResolver;
 use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
-use EasyCI202212\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202301\Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassNamesFinder
 {
     /**

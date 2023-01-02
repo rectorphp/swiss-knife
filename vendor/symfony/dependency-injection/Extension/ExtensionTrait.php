@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection\Extension;
+namespace EasyCI202301\Symfony\Component\DependencyInjection\Extension;
 
-use EasyCI202212\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
-use EasyCI202212\Symfony\Component\Config\FileLocator;
-use EasyCI202212\Symfony\Component\Config\Loader\DelegatingLoader;
-use EasyCI202212\Symfony\Component\Config\Loader\LoaderResolver;
-use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\ClosureLoader;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\IniFileLoader;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use EasyCI202212\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use EasyCI202301\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
+use EasyCI202301\Symfony\Component\Config\FileLocator;
+use EasyCI202301\Symfony\Component\Config\Loader\DelegatingLoader;
+use EasyCI202301\Symfony\Component\Config\Loader\LoaderResolver;
+use EasyCI202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\ClosureLoader;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\IniFileLoader;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use EasyCI202301\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */

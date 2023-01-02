@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Kernel;
 
-use EasyCI202212\Psr\Container\ContainerInterface;
-use EasyCI202212\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use EasyCI202301\Psr\Container\ContainerInterface;
+use EasyCI202301\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class EasyCIKernel extends AbstractSymplifyKernel
 {
     /**

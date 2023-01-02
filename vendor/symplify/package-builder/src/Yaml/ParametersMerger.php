@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\Symplify\PackageBuilder\Yaml;
+namespace EasyCI202301\Symplify\PackageBuilder\Yaml;
 
 final class ParametersMerger
 {

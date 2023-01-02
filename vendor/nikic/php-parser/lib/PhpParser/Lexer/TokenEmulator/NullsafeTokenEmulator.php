@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI202301\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI202212\PhpParser\Lexer\Emulative;
+use EasyCI202301\PhpParser\Lexer\Emulative;
 final class NullsafeTokenEmulator extends TokenEmulator
 {
     public function getPhpVersion() : string

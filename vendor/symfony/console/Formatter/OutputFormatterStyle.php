@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Formatter;
+namespace EasyCI202301\Symfony\Component\Console\Formatter;
 
-use EasyCI202212\Symfony\Component\Console\Color;
+use EasyCI202301\Symfony\Component\Console\Color;
 /**
  * Formatter style class for defining styles.
  *

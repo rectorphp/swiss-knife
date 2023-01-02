@@ -335,7 +335,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\PhpParser\\": "lib\/PhpParser"
+                    "EasyCI202301\\PhpParser\\": "lib\/PhpParser"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -386,7 +386,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Psr\\Container\\": "src\/"
+                    "EasyCI202301\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -522,7 +522,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Component\\Config\\": ""
+                    "EasyCI202301\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -615,7 +615,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Component\\Console\\": ""
+                    "EasyCI202301\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -716,7 +716,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Component\\DependencyInjection\\": ""
+                    "EasyCI202301\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -852,7 +852,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Component\\Filesystem\\": ""
+                    "EasyCI202301\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -919,7 +919,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Component\\Finder\\": ""
+                    "EasyCI202301\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -999,7 +999,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Contracts\\Service\\": ""
+                    "EasyCI202301\\Symfony\\Contracts\\Service\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Test\/"
@@ -1088,7 +1088,7 @@
                     "Resources\/functions.php"
                 ],
                 "psr-4": {
-                    "EasyCI202212\\Symfony\\Component\\String\\": ""
+                    "EasyCI202301\\Symfony\\Component\\String\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1183,12 +1183,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\AutowireArrayParameter\\": "src"
+                    "EasyCI202301\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+                    "EasyCI202301\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1250,12 +1250,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\PackageBuilder\\": "src"
+                    "EasyCI202301\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\PackageBuilder\\Tests\\": "tests"
+                    "EasyCI202301\\Symplify\\PackageBuilder\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1313,12 +1313,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\SmartFileSystem\\": "src"
+                    "EasyCI202301\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+                    "EasyCI202301\\Symplify\\SmartFileSystem\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1376,12 +1376,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\SymplifyKernel\\": "src"
+                    "EasyCI202301\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "EasyCI202212\\Symplify\\SymplifyKernel\\Tests\\": "tests"
+                    "EasyCI202301\\Symplify\\SymplifyKernel\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1430,7 +1430,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "EasyCI202212\\Webmozart\\Assert\\": "src\/"
+                    "EasyCI202301\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",

@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Finder;
 
-use EasyCI202212\Symplify\SmartFileSystem\Finder\SmartFinder;
-use EasyCI202212\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202301\Symplify\SmartFileSystem\Finder\SmartFinder;
+use EasyCI202301\Symplify\SmartFileSystem\SmartFileInfo;
 final class ProjectFilesFinder
 {
     /**

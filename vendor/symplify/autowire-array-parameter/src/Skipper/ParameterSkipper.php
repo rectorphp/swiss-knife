@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\Symplify\AutowireArrayParameter\Skipper;
+namespace EasyCI202301\Symplify\AutowireArrayParameter\Skipper;
 
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
-use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202212\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use EasyCI202301\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202301\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 final class ParameterSkipper
 {
     /**
@@ -15,7 +15,7 @@ final class ParameterSkipper
      *
      * @var string[]
      */
-    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['EasyCI202212\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202212\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202212\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202212\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202212\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202212\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202212\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202212\\Sonata\\Twig\\Extension\\TemplateExtension'];
+    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['EasyCI202301\\Symfony\\Component\\Form\\FormExtensionInterface', 'EasyCI202301\\Symfony\\Component\\Asset\\PackageInterface', 'EasyCI202301\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'EasyCI202301\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'EasyCI202301\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'EasyCI202301\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'EasyCI202301\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'EasyCI202301\\Sonata\\Twig\\Extension\\TemplateExtension'];
     /**
      * @var string[]
      */

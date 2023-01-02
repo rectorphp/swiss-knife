@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\Symplify\PackageBuilder\Diff\Output;
+namespace EasyCI202301\Symplify\PackageBuilder\Diff\Output;
 
-use EasyCI202212\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
-use EasyCI202212\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use EasyCI202301\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use EasyCI202301\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 /**
  * @api
  * Creates @see UnifiedDiffOutputBuilder with "$contextLines = 1000;"

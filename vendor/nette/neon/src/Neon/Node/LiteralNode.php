@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI202212\Nette\Neon\Node;
+namespace EasyCI202301\Nette\Neon\Node;
 
-use EasyCI202212\Nette\Neon\Node;
+use EasyCI202301\Nette\Neon\Node;
 /** @internal */
 final class LiteralNode extends Node
 {

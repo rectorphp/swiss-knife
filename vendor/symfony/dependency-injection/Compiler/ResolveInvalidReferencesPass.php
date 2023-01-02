@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202301\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202212\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202212\Symfony\Component\DependencyInjection\TypedReference;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202301\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202301\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202301\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Emulates the invalid behavior if the reference is not found within the
  * container.

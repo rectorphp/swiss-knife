@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection\Attribute;
+namespace EasyCI202301\Symfony\Component\DependencyInjection\Attribute;
 
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\LogicException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202212\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\LogicException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202301\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Attribute to tell a parameter how to be autowired.
  *

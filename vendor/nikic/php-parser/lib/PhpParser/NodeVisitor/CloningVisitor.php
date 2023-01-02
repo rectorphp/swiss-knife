@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\NodeVisitor;
+namespace EasyCI202301\PhpParser\NodeVisitor;
 
-use EasyCI202212\PhpParser\Node;
-use EasyCI202212\PhpParser\NodeVisitorAbstract;
+use EasyCI202301\PhpParser\Node;
+use EasyCI202301\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor cloning all nodes and linking to the original nodes using an attribute.
  *

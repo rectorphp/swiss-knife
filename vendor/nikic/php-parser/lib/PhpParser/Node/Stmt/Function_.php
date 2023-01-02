@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Node\Stmt;
+namespace EasyCI202301\PhpParser\Node\Stmt;
 
-use EasyCI202212\PhpParser\Node;
-use EasyCI202212\PhpParser\Node\FunctionLike;
+use EasyCI202301\PhpParser\Node;
+use EasyCI202301\PhpParser\Node\FunctionLike;
 class Function_ extends Node\Stmt implements FunctionLike
 {
     /** @var bool Whether function returns by reference */

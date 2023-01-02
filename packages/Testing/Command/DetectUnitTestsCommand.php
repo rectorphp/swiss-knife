@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Testing\Command;
 
-use EasyCI202212\Symfony\Component\Console\Command\Command;
-use EasyCI202212\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202212\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
-use EasyCI202212\Symfony\Component\Console\Style\SymfonyStyle;
+use EasyCI202301\Symfony\Component\Console\Command\Command;
+use EasyCI202301\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202301\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter;
 use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
 use Symplify\EasyCI\ValueObject\Option;
-use EasyCI202212\Symplify\SmartFileSystem\SmartFileSystem;
-use EasyCI202212\Webmozart\Assert\Assert;
+use EasyCI202301\Symplify\SmartFileSystem\SmartFileSystem;
+use EasyCI202301\Webmozart\Assert\Assert;
 final class DetectUnitTestsCommand extends Command
 {
     /**

@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace EasyCI202212\Nette\Loaders;
+namespace EasyCI202301\Nette\Loaders;
 
-use EasyCI202212\Nette;
+use EasyCI202301\Nette;
 use SplFileInfo;
 /**
  * Nette auto loader is responsible for loading classes and interfaces.

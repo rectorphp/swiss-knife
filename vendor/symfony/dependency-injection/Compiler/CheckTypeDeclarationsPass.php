@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection\Compiler;
+namespace EasyCI202301\Symfony\Component\DependencyInjection\Compiler;
 
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Container;
-use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202212\Symfony\Component\DependencyInjection\ExpressionLanguage;
-use EasyCI202212\Symfony\Component\DependencyInjection\Parameter;
-use EasyCI202212\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202212\Symfony\Component\DependencyInjection\ServiceLocator;
-use EasyCI202212\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Container;
+use EasyCI202301\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202301\Symfony\Component\DependencyInjection\ExpressionLanguage;
+use EasyCI202301\Symfony\Component\DependencyInjection\Parameter;
+use EasyCI202301\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use EasyCI202301\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202301\Symfony\Component\DependencyInjection\ServiceLocator;
+use EasyCI202301\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Checks whether injected parameters are compatible with type declarations.
  *

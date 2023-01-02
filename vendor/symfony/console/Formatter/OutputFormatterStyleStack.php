@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Formatter;
+namespace EasyCI202301\Symfony\Component\Console\Formatter;
 
-use EasyCI202212\Symfony\Component\Console\Exception\InvalidArgumentException;
-use EasyCI202212\Symfony\Contracts\Service\ResetInterface;
+use EasyCI202301\Symfony\Component\Console\Exception\InvalidArgumentException;
+use EasyCI202301\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */

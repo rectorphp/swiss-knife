@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\EasyCI\Psr4\Command;
 
-use EasyCI202212\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202212\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202301\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\EasyCI\Psr4\Finder\MultipleClassInOneFileFinder;
 use Symplify\EasyCI\Psr4\ValueObject\Option;
-use EasyCI202212\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use EasyCI202301\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class FindMultiClassesCommand extends AbstractSymplifyCommand
 {
     /**

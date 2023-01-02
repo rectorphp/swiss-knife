@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Node\Expr;
+namespace EasyCI202301\PhpParser\Node\Expr;
 
-use EasyCI202212\PhpParser\Node\Expr;
+use EasyCI202301\PhpParser\Node\Expr;
 class Array_ extends Expr
 {
     // For use in "kind" attribute

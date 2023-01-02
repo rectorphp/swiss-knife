@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\CI;
+namespace EasyCI202301\Symfony\Component\Console\CI;
 
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Utility class for Github actions.
  *

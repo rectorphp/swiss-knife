@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Command;
+namespace EasyCI202301\Symfony\Component\Console\Command;
 
-use EasyCI202212\Symfony\Component\Console\Descriptor\ApplicationDescription;
-use EasyCI202212\Symfony\Component\Console\Helper\DescriptorHelper;
-use EasyCI202212\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202212\Symfony\Component\Console\Input\InputInterface;
-use EasyCI202212\Symfony\Component\Console\Input\InputOption;
-use EasyCI202212\Symfony\Component\Console\Output\OutputInterface;
+use EasyCI202301\Symfony\Component\Console\Descriptor\ApplicationDescription;
+use EasyCI202301\Symfony\Component\Console\Helper\DescriptorHelper;
+use EasyCI202301\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202301\Symfony\Component\Console\Input\InputInterface;
+use EasyCI202301\Symfony\Component\Console\Input\InputOption;
+use EasyCI202301\Symfony\Component\Console\Output\OutputInterface;
 /**
  * ListCommand displays the list of all available commands for the application.
  *

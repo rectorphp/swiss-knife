@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\DependencyInjection\Loader;
+namespace EasyCI202301\Symfony\Component\DependencyInjection\Loader;
 
-use EasyCI202212\Symfony\Component\Config\Util\XmlUtils;
-use EasyCI202212\Symfony\Component\DependencyInjection\Alias;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use EasyCI202212\Symfony\Component\DependencyInjection\ChildDefinition;
-use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use EasyCI202212\Symfony\Component\DependencyInjection\ContainerInterface;
-use EasyCI202212\Symfony\Component\DependencyInjection\Definition;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use EasyCI202212\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use EasyCI202212\Symfony\Component\DependencyInjection\Reference;
-use EasyCI202212\Symfony\Component\ExpressionLanguage\Expression;
+use EasyCI202301\Symfony\Component\Config\Util\XmlUtils;
+use EasyCI202301\Symfony\Component\DependencyInjection\Alias;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use EasyCI202301\Symfony\Component\DependencyInjection\ChildDefinition;
+use EasyCI202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202301\Symfony\Component\DependencyInjection\ContainerInterface;
+use EasyCI202301\Symfony\Component\DependencyInjection\Definition;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use EasyCI202301\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use EasyCI202301\Symfony\Component\DependencyInjection\Reference;
+use EasyCI202301\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlFileLoader loads XML files service definitions.
  *

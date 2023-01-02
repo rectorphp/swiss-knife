@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\NodeVisitor;
+namespace EasyCI202301\PhpParser\NodeVisitor;
 
 use function array_pop;
 use function count;
-use EasyCI202212\PhpParser\Node;
-use EasyCI202212\PhpParser\NodeVisitorAbstract;
+use EasyCI202301\PhpParser\Node;
+use EasyCI202301\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor that connects a child node to its parent node.
  *

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Config\Definition;
+namespace EasyCI202301\Symfony\Component\Config\Definition;
 
-use EasyCI202212\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use EasyCI202212\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use EasyCI202212\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
-use EasyCI202212\Symfony\Component\Config\FileLocator;
-use EasyCI202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use EasyCI202301\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use EasyCI202301\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use EasyCI202301\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
+use EasyCI202301\Symfony\Component\Config\FileLocator;
+use EasyCI202301\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  *

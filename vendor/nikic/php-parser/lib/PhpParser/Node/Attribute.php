@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Node;
+namespace EasyCI202301\PhpParser\Node;
 
-use EasyCI202212\PhpParser\Node;
-use EasyCI202212\PhpParser\NodeAbstract;
+use EasyCI202301\PhpParser\Node;
+use EasyCI202301\PhpParser\NodeAbstract;
 class Attribute extends NodeAbstract
 {
     /** @var Name Attribute name */

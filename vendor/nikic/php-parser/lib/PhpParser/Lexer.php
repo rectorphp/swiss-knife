@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser;
+namespace EasyCI202301\PhpParser;
 
-use EasyCI202212\PhpParser\Parser\Tokens;
+use EasyCI202301\PhpParser\Parser\Tokens;
 class Lexer
 {
     protected $code;
@@ -435,12 +435,12 @@ class Lexer
             }
         }
         // HHVM uses a special token for numbers that overflow to double
-        if (\defined('EasyCI202212\\T_ONUMBER')) {
-            $tokenMap[\EasyCI202212\T_ONUMBER] = Tokens::T_DNUMBER;
+        if (\defined('EasyCI202301\\T_ONUMBER')) {
+            $tokenMap[\EasyCI202301\T_ONUMBER] = Tokens::T_DNUMBER;
         }
         // HHVM also has a separate token for the __COMPILER_HALT_OFFSET__ constant
-        if (\defined('EasyCI202212\\T_COMPILER_HALT_OFFSET')) {
-            $tokenMap[\EasyCI202212\T_COMPILER_HALT_OFFSET] = Tokens::T_STRING;
+        if (\defined('EasyCI202301\\T_COMPILER_HALT_OFFSET')) {
+            $tokenMap[\EasyCI202301\T_COMPILER_HALT_OFFSET] = Tokens::T_STRING;
         }
         // Assign tokens for which we define compatibility constants, as token_name() does not know them.
         $tokenMap[\T_FN] = Tokens::T_FN;

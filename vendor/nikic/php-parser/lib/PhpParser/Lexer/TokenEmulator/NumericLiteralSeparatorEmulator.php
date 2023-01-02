@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Lexer\TokenEmulator;
+namespace EasyCI202301\PhpParser\Lexer\TokenEmulator;
 
-use EasyCI202212\PhpParser\Lexer\Emulative;
+use EasyCI202301\PhpParser\Lexer\Emulative;
 final class NumericLiteralSeparatorEmulator extends TokenEmulator
 {
     const BIN = '(?:0b[01]+(?:_[01]+)*)';

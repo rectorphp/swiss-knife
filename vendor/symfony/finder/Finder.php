@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Finder;
+namespace EasyCI202301\Symfony\Component\Finder;
 
-use EasyCI202212\Symfony\Component\Finder\Comparator\DateComparator;
-use EasyCI202212\Symfony\Component\Finder\Comparator\NumberComparator;
-use EasyCI202212\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
-use EasyCI202212\Symfony\Component\Finder\Iterator\CustomFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\LazyIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
-use EasyCI202212\Symfony\Component\Finder\Iterator\SortableIterator;
+use EasyCI202301\Symfony\Component\Finder\Comparator\DateComparator;
+use EasyCI202301\Symfony\Component\Finder\Comparator\NumberComparator;
+use EasyCI202301\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
+use EasyCI202301\Symfony\Component\Finder\Iterator\CustomFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\LazyIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
+use EasyCI202301\Symfony\Component\Finder\Iterator\SortableIterator;
 /**
  * Finder allows to build rules to find files and directories.
  *

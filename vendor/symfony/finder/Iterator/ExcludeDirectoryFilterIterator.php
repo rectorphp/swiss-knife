@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Finder\Iterator;
+namespace EasyCI202301\Symfony\Component\Finder\Iterator;
 
-use EasyCI202212\Symfony\Component\Finder\SplFileInfo;
+use EasyCI202301\Symfony\Component\Finder\SplFileInfo;
 /**
  * ExcludeDirectoryFilterIterator filters out directories.
  *

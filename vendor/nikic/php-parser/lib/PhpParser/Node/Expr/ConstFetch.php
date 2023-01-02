@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Node\Expr;
+namespace EasyCI202301\PhpParser\Node\Expr;
 
-use EasyCI202212\PhpParser\Node\Expr;
-use EasyCI202212\PhpParser\Node\Name;
+use EasyCI202301\PhpParser\Node\Expr;
+use EasyCI202301\PhpParser\Node\Name;
 class ConstFetch extends Expr
 {
     /** @var Name Constant name */

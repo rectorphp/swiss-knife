@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace EasyCI202212\PhpParser\Node\Stmt;
+namespace EasyCI202301\PhpParser\Node\Stmt;
 
-use EasyCI202212\PhpParser\Node\Stmt;
+use EasyCI202301\PhpParser\Node\Stmt;
 class Static_ extends Stmt
 {
     /** @var StaticVar[] Variable definitions */

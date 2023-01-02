@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace EasyCI202212\Symfony\Component\Console\Descriptor;
+namespace EasyCI202301\Symfony\Component\Console\Descriptor;
 
-use EasyCI202212\Symfony\Component\Console\Application;
-use EasyCI202212\Symfony\Component\Console\Command\Command;
-use EasyCI202212\Symfony\Component\Console\Input\InputArgument;
-use EasyCI202212\Symfony\Component\Console\Input\InputDefinition;
-use EasyCI202212\Symfony\Component\Console\Input\InputOption;
+use EasyCI202301\Symfony\Component\Console\Application;
+use EasyCI202301\Symfony\Component\Console\Command\Command;
+use EasyCI202301\Symfony\Component\Console\Input\InputArgument;
+use EasyCI202301\Symfony\Component\Console\Input\InputDefinition;
+use EasyCI202301\Symfony\Component\Console\Input\InputOption;
 /**
  * JSON descriptor.
  *

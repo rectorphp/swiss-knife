@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\EasyCI\Config\Contract;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI202212\Symplify\SmartFileSystem\SmartFileInfo;
+use EasyCI202301\Symplify\SmartFileSystem\SmartFileInfo;
 interface ConfigFileAnalyzerInterface
 {
     /**
