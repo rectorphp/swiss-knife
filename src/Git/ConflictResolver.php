@@ -1,10 +1,12 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Symplify\EasyCI\Git;
 
-use EasyCI202301\Nette\Utils\Strings;
-use EasyCI202301\Symplify\SmartFileSystem\SmartFileInfo;
+use Nette\Utils\Strings;
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 /**
  * @see \Symplify\EasyCI\Tests\Git\ConflictResolver\ConflictResolverTest
  */
@@ -15,32 +17,39 @@ final class ConflictResolver
      * @var string
      */
     private const CONFLICT_REGEX = '#^<<<<<<<#';
+
     /**
      * @api
      */
-    public function extractFromFileInfo(SmartFileInfo $fileInfo) : int
+    public function extractFromFileInfo(SmartFileInfo $fileInfo): int
     {
         $conflictsMatch = Strings::matchAll($fileInfo->getContents(), self::CONFLICT_REGEX);
-        return \count($conflictsMatch);
+
+        return count($conflictsMatch);
     }
+
     /**
      * @param SmartFileInfo[] $fileInfos
      * @return int[]
      */
-    public function extractFromFileInfos(array $fileInfos) : array
+    public function extractFromFileInfos(array $fileInfos): array
     {
         $conflictCountsByFilePath = [];
+
         foreach ($fileInfos as $fileInfo) {
             $conflictCount = $this->extractFromFileInfo($fileInfo);
             if ($conflictCount === 0) {
                 continue;
             }
+
             // test fixtures, that should be ignored
-            if (\strpos($fileInfo->getRealPath(), '/tests/Git/ConflictResolver/Fixture') !== \false) {
+            if (str_contains($fileInfo->getRealPath(), '/tests/Git/ConflictResolver/Fixture')) {
                 continue;
             }
+
             $conflictCountsByFilePath[$fileInfo->getRelativeFilePathFromCwd()] = $conflictCount;
         }
+
         return $conflictCountsByFilePath;
     }
 }

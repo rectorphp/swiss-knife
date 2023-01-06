@@ -1,9 +1,11 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Symplify\EasyCI\Testing\Printer;
 
-use EasyCI202301\Nette\Utils\Strings;
+use Nette\Utils\Strings;
+
 final class PHPUnitXmlPrinter
 {
     /**
@@ -11,14 +13,17 @@ final class PHPUnitXmlPrinter
      *
      * @param string[] $filePaths
      */
-    public function printFiles(array $filePaths, string $rootDirectory) : string
+    public function printFiles(array $filePaths, string $rootDirectory): string
     {
-        $rootDirectory = \realpath($rootDirectory);
+        $rootDirectory = realpath($rootDirectory);
+
         $fileContents = '';
         foreach ($filePaths as $filePath) {
             $relativeFilePath = Strings::after($filePath, $rootDirectory . '/');
-            $fileContents .= '<file>' . $relativeFilePath . '</file>' . \PHP_EOL;
+
+            $fileContents .= '<file>' . $relativeFilePath . '</file>' . PHP_EOL;
         }
+
         return $fileContents;
     }
 }
