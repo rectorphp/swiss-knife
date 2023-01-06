@@ -11,5 +11,7 @@ return static function (EasyCIConfig $easyCIConfig): void {
         \Symplify\EasyCI\Twig\TwigTemplateAnalyzer\ConstantPathTwigTemplateAnalyzer::class,
         \Symplify\EasyCI\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer::class,
         \Symplify\EasyCI\ValueObject\ConfigFileSuffixes::class,
+        \Symplify\EasyCI\Console\EasyCIApplication::class,
+        \Symplify\EasyCI\Kernel\EasyCIKernel::class,
     ]);
 };
