@@ -1,15 +1,17 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Symplify\EasyCI\Config\Contract;
 
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
-use EasyCI202301\Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 interface ConfigFileAnalyzerInterface
 {
     /**
      * @param SmartFileInfo[] $fileInfos
      * @return FileErrorInterface[]
      */
-    public function processFileInfos(array $fileInfos) : array;
+    public function processFileInfos(array $fileInfos): array;
 }
