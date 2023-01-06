@@ -35,7 +35,7 @@ php -d memory_limit=-1 php-scoper.phar add-prefix bin config src packages vendor
 
 # the output code is in "/scoped-code", lets move it up
 # the local directories have to be empty to move easily
-rm -r bin config src vendor composer.json packages
+rm -r bin config src vendor composer.json packages stubs
 mv scoped-code/* .
 
 note "Dumping Composer Autoload"
