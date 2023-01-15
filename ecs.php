@@ -16,8 +16,5 @@ return static function (ECSConfig $ecsConfig): void {
         __DIR__ . '/tests',
     ]);
 
-    $ecsConfig->sets([
-        SetList::COMMON,
-        SetList::PSR_12,
-    ]);
+    $ecsConfig->sets([SetList::COMMON, SetList::PSR_12, SetList::SYMPLIFY]);
 };

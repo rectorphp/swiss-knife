@@ -35,10 +35,7 @@ final class PhpFilesFinder
 
         $fileInfos = $this->smartFinder->find($paths, '*.php', $excludedCheckPaths);
 
-        $filePaths = array_map(
-            static fn (SplFileInfo $fileInfo): string => $fileInfo->getRealPath(),
-            $fileInfos
-        );
+        $filePaths = array_map(static fn (SplFileInfo $fileInfo): string => $fileInfo->getRealPath(), $fileInfos);
 
         Assert::allString($filePaths);
         return $filePaths;

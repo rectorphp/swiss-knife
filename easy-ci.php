@@ -8,11 +8,7 @@ use Symplify\EasyCI\Twig\TwigTemplateAnalyzer\ConstantPathTwigTemplateAnalyzer;
 use Symplify\EasyCI\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer;
 
 return static function (EasyCIConfig $easyCIConfig): void {
-    $easyCIConfig->paths([
-        __DIR__ . '/src',
-        __DIR__ . '/packages',
-        __DIR__ . '/config',
-    ]);
+    $easyCIConfig->paths([__DIR__ . '/src', __DIR__ . '/packages', __DIR__ . '/config']);
 
     $easyCIConfig->typesToSkip([
         ConstantPathTwigTemplateAnalyzer::class,

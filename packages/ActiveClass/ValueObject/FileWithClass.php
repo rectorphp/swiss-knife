@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\ActiveClass\ValueObject;
 
+use Symplify\EasyCI\FileSystem\StaticRelativeFilePathHelper;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class FileWithClass
@@ -21,6 +22,6 @@ final class FileWithClass
 
     public function getFilePath(): string
     {
-        return $this->filePath;
+        return StaticRelativeFilePathHelper::resolveFromCwd($this->filePath);
     }
 }
