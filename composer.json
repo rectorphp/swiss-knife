@@ -26,6 +26,7 @@
         "phpunit/phpunit": "^9.5.26",
         "rector/rector": "*",
         "symplify/easy-coding-standard": "11.1.29.72",
+        "symplify/monorepo-builder": "11.1.30.72",
         "symplify/phpstan-extensions": "^11.1",
         "tomasvotruba/cognitive-complexity": "^0.0.5",
         "tomasvotruba/type-coverage": "^0.0.9",
