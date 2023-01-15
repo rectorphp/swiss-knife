@@ -14,7 +14,7 @@ use Symplify\PackageBuilder\ValueObject\Option;
 final class CheckConflictsCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ConflictResolver $conflictResolver
+        private readonly ConflictResolver $conflictResolver
     ) {
         parent::__construct();
     }

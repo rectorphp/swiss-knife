@@ -18,7 +18,7 @@ final class ClassAndConstantExistanceFileProcessor implements FileProcessorInter
      * @param ConfigFileAnalyzerInterface[] $configFileAnalyzers
      */
     public function __construct(
-        private array $configFileAnalyzers
+        private readonly array $configFileAnalyzers
     ) {
     }
 

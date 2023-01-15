@@ -5,3 +5,30 @@ parameters:
         - src
         - config
         - tests
+        - packages
+        - packages-tests
+
+    unused_public:
+        methods: true
+        properties: true
+        constants: true
+
+    type_coverage:
+        return_type: 99
+        param_type: 99
+        property_type: 99
+        print_suggestions: true
+
+    cognitive_complexity:
+        class: 30
+        function: 10
+
+    excludePaths:
+        - */Fixture/*
+        - */Source/*
+
+    # ignore errors
+    ignoreErrors:
+        -
+            message: '#Strict comparison using \!\=\= between null and null will always evaluate to false#'
+            path: packages/Psr4/Utils/SymplifyStrings.php

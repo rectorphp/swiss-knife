@@ -23,10 +23,10 @@ final class DetectUnitTestsCommand extends Command
     private const OUTPUT_FILENAME = 'phpunit-unit-files.xml';
 
     public function __construct(
-        private PHPUnitXmlPrinter $phpunitXmlPrinter,
-        private SmartFileSystem $smartFileSystem,
-        private SymfonyStyle $symfonyStyle,
-        private UnitTestFilePathsFinder $unitTestFilePathsFinder,
+        private readonly PHPUnitXmlPrinter $phpunitXmlPrinter,
+        private readonly SmartFileSystem $smartFileSystem,
+        private readonly SymfonyStyle $symfonyStyle,
+        private readonly UnitTestFilePathsFinder $unitTestFilePathsFinder,
     ) {
         parent::__construct();
     }

@@ -11,7 +11,7 @@ use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 final class FileErrorsReporter
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle
+        private readonly SymfonyStyle $symfonyStyle
     ) {
     }
 

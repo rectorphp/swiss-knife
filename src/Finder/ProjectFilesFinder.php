@@ -10,7 +10,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class ProjectFilesFinder
 {
     public function __construct(
-        private SmartFinder $smartFinder
+        private readonly SmartFinder $smartFinder
     ) {
     }
 

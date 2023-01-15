@@ -16,9 +16,9 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class DetectStaticCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private StaticScanner $staticScanner,
-        private StaticNodeCollector $staticNodeCollector,
-        private StaticReportReporter $staticReportReporter,
+        private readonly StaticScanner $staticScanner,
+        private readonly StaticNodeCollector $staticNodeCollector,
+        private readonly StaticReportReporter $staticReportReporter,
     ) {
         parent::__construct();
     }

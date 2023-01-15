@@ -9,7 +9,7 @@ use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class Psr4PathNormalizer
 {
     public function __construct(
-        private Psr4PathResolver $psr4PathResolver
+        private readonly Psr4PathResolver $psr4PathResolver
     ) {
     }
 

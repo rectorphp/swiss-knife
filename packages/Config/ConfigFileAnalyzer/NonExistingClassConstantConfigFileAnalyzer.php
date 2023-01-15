@@ -57,7 +57,7 @@ final class NonExistingClassConstantConfigFileAnalyzer implements ConfigFileAnal
             $classConstantName = $foundMatch['class_constant_name'];
 
             if ($fileInfo->getSuffix() === 'twig' && $foundMatch['quote'] !== '') {
-                $classConstantName = str_replace('\\\\', '\\', $classConstantName);
+                $classConstantName = str_replace('\\\\', '\\', (string) $classConstantName);
             }
 
             if (defined($classConstantName)) {

@@ -11,8 +11,8 @@ use Symplify\EasyCI\StaticDetector\NodeVisitor\StaticCollectNodeVisitor;
 final class StaticCollectNodeTraverserFactory
 {
     public function __construct(
-        private StaticCollectNodeVisitor $staticCollectNodeVisitor,
-        private FilePathNodeVisitor $filePathNodeVisitor
+        private readonly StaticCollectNodeVisitor $staticCollectNodeVisitor,
+        private readonly FilePathNodeVisitor $filePathNodeVisitor
     ) {
     }
 

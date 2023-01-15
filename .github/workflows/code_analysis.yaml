@@ -42,7 +42,7 @@ jobs:
 
                     -
                         name: 'Check Active Classes'
-                        run: bin/easy-ci check-active-class src --ansi
+                        run: bin/easy-ci check-active-class --ansi
 
         name: ${{ matrix.actions.name }}
         runs-on: ubuntu-latest

@@ -13,6 +13,15 @@ final class EasyCIConfig extends ContainerConfigurator
     /**
      * @param string[] $paths
      */
+    public function paths(array $paths): void
+    {
+        $parameters = $this->parameters();
+        $parameters->set(Option::PATHS, $paths);
+    }
+
+    /**
+     * @param string[] $paths
+     */
     public function excludeCheckPaths(array $paths): void
     {
         Assert::allString($paths);

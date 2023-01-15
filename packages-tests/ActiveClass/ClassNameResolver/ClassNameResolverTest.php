@@ -23,19 +23,17 @@ final class ClassNameResolverTest extends AbstractKernelTestCase
 
     /**
      * @dataProvider provideData()
+     *
      * @param class-string $expectedClassName
      */
-    public function test(SmartFileInfo $fileInfo, string $expectedClassName): void
+    public function test(string $filePath, string $expectedClassName): void
     {
-        $resolvedClassName = $this->classNameResolver->resolveFromFromFileInfo($fileInfo);
+        $resolvedClassName = $this->classNameResolver->resolveFromFromFilePath($filePath);
         $this->assertSame($expectedClassName, $resolvedClassName);
     }
 
-    /**
-     * @return Iterator<array<class-string<SomeClass>>|SmartFileInfo[]>
-     */
     public function provideData(): Iterator
     {
-        yield [new SmartFileInfo(__DIR__ . '/Fixture/SomeClass.php'), SomeClass::class];
+        yield [__DIR__ . '/Fixture/SomeClass.php', SomeClass::class];
     }
 }

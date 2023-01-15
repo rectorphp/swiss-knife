@@ -14,7 +14,7 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class FindMultiClassesCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private MultipleClassInOneFileFinder $multipleClassInOneFileFinder
+        private readonly MultipleClassInOneFileFinder $multipleClassInOneFileFinder
     ) {
         parent::__construct();
     }

@@ -14,7 +14,7 @@ final class TwigTemplateProcessor
      * @param TwigTemplateAnalyzerInterface[] $twigTemplateAnalyzers
      */
     public function __construct(
-        private array $twigTemplateAnalyzers
+        private readonly array $twigTemplateAnalyzers
     ) {
     }
 

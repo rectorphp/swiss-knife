@@ -18,8 +18,8 @@ final class StaticClassMethodWithStaticCalls
      * @param StaticCall[] $staticCalls
      */
     public function __construct(
-        private StaticClassMethod $staticClassMethod,
-        private array $staticCalls
+        private readonly StaticClassMethod $staticClassMethod,
+        private readonly array $staticCalls
     ) {
         $this->staticCallsFilePathsWithLines = $this->createFilePathsWithLinesFromNodes($staticCalls);
     }

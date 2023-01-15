@@ -15,8 +15,8 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class CheckTwigTemplateCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private TwigTemplateProcessor $twigTemplateProcessor,
-        private FileErrorsReporter $fileErrorsReporter
+        private readonly TwigTemplateProcessor $twigTemplateProcessor,
+        private readonly FileErrorsReporter $fileErrorsReporter
     ) {
         parent::__construct();
     }

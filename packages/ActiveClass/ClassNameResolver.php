@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\ActiveClass;
 
+use Nette\Utils\FileSystem;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 use Symfony\Component\Finder\SplFileInfo;
@@ -17,17 +18,19 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassNameResolver
 {
     public function __construct(
-        private Parser $parser,
-        private FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator
+        private readonly Parser $parser,
+        private readonly FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator
     ) {
     }
 
     /**
      * @api
      */
-    public function resolveFromFromFileInfo(SmartFileInfo|SplFileInfo $fileInfo): ?string
+    public function resolveFromFromFilePath(string $filePath): ?string
     {
-        $stmts = $this->parser->parse($fileInfo->getContents());
+        $fileContents = FileSystem::read($filePath);
+
+        $stmts = $this->parser->parse($fileContents);
         if ($stmts === null) {
             return null;
         }

@@ -111,11 +111,11 @@ final class ClassExtractor
 
         // indented argument
         $indentSpaces = $classNameMatch[self::INDENT_SPACES];
-        if (substr_count($indentSpaces, "\t") >= 3) {
+        if (substr_count((string) $indentSpaces, "\t") >= 3) {
             return true;
         }
 
         // in case of spaces
-        return substr_count($indentSpaces, ' ') >= 12;
+        return substr_count((string) $indentSpaces, ' ') >= 12;
     }
 }

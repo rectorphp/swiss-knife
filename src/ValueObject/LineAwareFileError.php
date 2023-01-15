@@ -10,9 +10,9 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class LineAwareFileError implements FileErrorInterface
 {
     public function __construct(
-        private string $errorMessage,
-        private SmartFileInfo $smartFileInfo,
-        private int $line
+        private readonly string $errorMessage,
+        private readonly SmartFileInfo $smartFileInfo,
+        private readonly int $line
     ) {
     }
 

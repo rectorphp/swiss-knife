@@ -20,11 +20,11 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class GeneratePsr4ToPathsCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private Psr4SwitcherConfiguration $psr4SwitcherConfiguration,
-        private PhpClassLoader $phpClassLoader,
-        private Psr4NamespaceToPathFactory $psr4NamespaceToPathFactory,
-        private Psr4Filter $psr4Filter,
-        private JsonAutoloadPrinter $jsonAutoloadPrinter
+        private readonly Psr4SwitcherConfiguration $psr4SwitcherConfiguration,
+        private readonly PhpClassLoader $phpClassLoader,
+        private readonly Psr4NamespaceToPathFactory $psr4NamespaceToPathFactory,
+        private readonly Psr4Filter $psr4Filter,
+        private readonly JsonAutoloadPrinter $jsonAutoloadPrinter
     ) {
         parent::__construct();
     }

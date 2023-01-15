@@ -20,7 +20,7 @@ final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
     private const DEFAULT_LINE_LIMIT = 5;
 
     public function __construct(
-        private CommentedCodeAnalyzer $commentedCodeAnalyzer
+        private readonly CommentedCodeAnalyzer $commentedCodeAnalyzer
     ) {
         parent::__construct();
     }

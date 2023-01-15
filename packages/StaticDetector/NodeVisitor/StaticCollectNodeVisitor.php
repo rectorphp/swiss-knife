@@ -22,7 +22,7 @@ final class StaticCollectNodeVisitor extends NodeVisitorAbstract
     private ?ClassLike $currentClassLike = null;
 
     public function __construct(
-        private StaticNodeCollector $staticNodeCollector,
+        private readonly StaticNodeCollector $staticNodeCollector,
     ) {
     }
 

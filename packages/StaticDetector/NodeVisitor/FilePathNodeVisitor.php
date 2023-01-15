@@ -12,17 +12,17 @@ use Symplify\EasyCI\StaticDetector\ValueObject\StaticDetectorAttributeKey;
 final class FilePathNodeVisitor extends NodeVisitorAbstract
 {
     public function __construct(
-        private CurrentFileInfoProvider $currentFileInfoProvider
+        private readonly CurrentFileInfoProvider $currentFileInfoProvider
     ) {
     }
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): Node
     {
         $smartFileInfo = $this->currentFileInfoProvider->getSmartFileInfo();
 
         $fileLine = $smartFileInfo->getRelativeFilePathFromCwd() . ':' . $node->getStartLine();
         $node->setAttribute(StaticDetectorAttributeKey::FILE_LINE, $fileLine);
 
-        return null;
+        return $node;
     }
 }

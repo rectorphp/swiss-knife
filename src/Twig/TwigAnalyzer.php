@@ -10,7 +10,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class TwigAnalyzer
 {
     public function __construct(
-        private RenderMethodTemplateExtractor $renderMethodTemplateExtractor
+        private readonly RenderMethodTemplateExtractor $renderMethodTemplateExtractor
     ) {
     }
 

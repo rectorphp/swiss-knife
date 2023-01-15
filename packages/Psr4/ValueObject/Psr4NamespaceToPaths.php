@@ -10,8 +10,8 @@ final class Psr4NamespaceToPaths
      * @param string[] $paths
      */
     public function __construct(
-        private string $namespace,
-        private array $paths
+        private readonly string $namespace,
+        private readonly array $paths
     ) {
     }
 

@@ -16,9 +16,9 @@ use Symplify\PackageBuilder\ValueObject\Option;
 final class ValidateFileLengthCommand extends Command
 {
     public function __construct(
-        private ProjectFilesFinder $projectFilesFinder,
-        private SymfonyStyle $symfonyStyle,
-        private TooLongFilesResolver $tooLongFilesResolver
+        private readonly ProjectFilesFinder $projectFilesFinder,
+        private readonly SymfonyStyle $symfonyStyle,
+        private readonly TooLongFilesResolver $tooLongFilesResolver
     ) {
         parent::__construct();
     }

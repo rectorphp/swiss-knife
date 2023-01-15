@@ -9,8 +9,8 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class FileWithClass
 {
     public function __construct(
-        private SmartFileInfo $fileInfo,
-        private string $className
+        private readonly string $filePath,
+        private readonly string $className
     ) {
     }
 
@@ -19,8 +19,8 @@ final class FileWithClass
         return $this->className;
     }
 
-    public function getRelativeFilepath(): string
+    public function getFilePath(): string
     {
-        return $this->fileInfo->getRelativeFilePathFromCwd();
+        return $this->filePath;
     }
 }

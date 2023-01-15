@@ -19,7 +19,7 @@ final class Psr4SwitcherConfiguration
     private ?string $composerJsonPath = null;
 
     public function __construct(
-        private FileSystemGuard $fileSystemGuard
+        private readonly FileSystemGuard $fileSystemGuard
     ) {
     }
 

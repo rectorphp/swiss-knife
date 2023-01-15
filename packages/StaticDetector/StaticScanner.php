@@ -16,10 +16,10 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class StaticScanner
 {
     public function __construct(
-        private StaticCollectNodeTraverser $staticCollectNodeTraverser,
-        private Parser $parser,
-        private SymfonyStyle $symfonyStyle,
-        private CurrentFileInfoProvider $currentFileInfoProvider
+        private readonly StaticCollectNodeTraverser $staticCollectNodeTraverser,
+        private readonly Parser $parser,
+        private readonly SymfonyStyle $symfonyStyle,
+        private readonly CurrentFileInfoProvider $currentFileInfoProvider
     ) {
     }
 

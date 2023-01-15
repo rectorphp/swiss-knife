@@ -11,7 +11,7 @@ use Symplify\EasyCI\ActiveClass\ValueObject\FileWithClass;
 final class UnusedClassReporter
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle
+        private readonly SymfonyStyle $symfonyStyle
     ) {
     }
 
@@ -34,7 +34,7 @@ final class UnusedClassReporter
 
         foreach ($unusedFilesWithClasses as $unusedFileWithClass) {
             $this->symfonyStyle->writeln(' * ' . $unusedFileWithClass->getClassName());
-            $this->symfonyStyle->writeln($unusedFileWithClass->getRelativeFilepath());
+            $this->symfonyStyle->writeln($unusedFileWithClass->getFilePath());
             $this->symfonyStyle->newLine();
         }
 

@@ -9,9 +9,9 @@ use PhpParser\Node\Stmt\ClassMethod;
 final class StaticClassMethod
 {
     public function __construct(
-        private string $class,
-        private string $method,
-        private ClassMethod $classMethod
+        private readonly string $class,
+        private readonly string $method,
+        private readonly ClassMethod $classMethod
     ) {
     }
 

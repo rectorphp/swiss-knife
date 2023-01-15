@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\ActiveClass;
 
+use Nette\Utils\FileSystem;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 use Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
@@ -16,22 +17,22 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class UseImportsResolver
 {
     public function __construct(
-        private Parser $parser,
-        private FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator,
+        private readonly Parser $parser,
+        private readonly FullyQualifiedNameNodeDecorator $fullyQualifiedNameNodeDecorator,
     ) {
     }
 
     /**
-     * @api
-     * @param SmartFileInfo[] $phpFileInfos
+     * @param string[] $filePaths
      * @return string[]
+     *@api
      */
-    public function resolveFromFileInfos(array $phpFileInfos): array
+    public function resolveFromFilePaths(array $filePaths): array
     {
         $usedNames = [];
 
-        foreach ($phpFileInfos as $phpFileInfo) {
-            $usedNames = array_merge($usedNames, $this->resolve($phpFileInfo));
+        foreach ($filePaths as $filePath) {
+            $usedNames = array_merge($usedNames, $this->resolve($filePath));
         }
 
         $usedNames = array_unique($usedNames);
@@ -43,9 +44,11 @@ final class UseImportsResolver
     /**
      * @return string[]
      */
-    public function resolve(SmartFileInfo $phpFileInfo): array
+    public function resolve(string $filePath): array
     {
-        $stmts = $this->parser->parse($phpFileInfo->getContents());
+        $fileContents = FileSystem::read($filePath);
+
+        $stmts = $this->parser->parse($fileContents);
         if ($stmts === null) {
             return [];
         }

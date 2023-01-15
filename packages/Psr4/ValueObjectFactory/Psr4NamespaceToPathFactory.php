@@ -15,8 +15,8 @@ use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
 final class Psr4NamespaceToPathFactory
 {
     public function __construct(
-        private SymplifyStrings $symplifyStrings,
-        private Psr4SwitcherConfiguration $psr4SwitcherConfiguration
+        private readonly SymplifyStrings $symplifyStrings,
+        private readonly Psr4SwitcherConfiguration $psr4SwitcherConfiguration
     ) {
     }
 

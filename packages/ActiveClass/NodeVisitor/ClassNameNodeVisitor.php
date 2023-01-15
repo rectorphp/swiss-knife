@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\ActiveClass\NodeVisitor;
 
+use PhpParser\Node\Name;
 use Nette\Utils\Strings;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
@@ -42,6 +43,10 @@ final class ClassNameNodeVisitor extends NodeVisitorAbstract
         }
 
         if ($this->hasApiTag($node)) {
+            return null;
+        }
+
+        if (! $node->namespacedName instanceof Name) {
             return null;
         }
 

@@ -6,7 +6,7 @@ namespace Symplify\EasyCI\StaticDetector\ValueObject;
 
 final class StaticReport
 {
-    private int $staticCallsCount;
+    private readonly int $staticCallsCount;
 
     /**
      * @var StaticClassMethodWithStaticCalls[]

@@ -11,7 +11,7 @@ use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPaths;
 final class JsonAutoloadPrinter
 {
     public function __construct(
-        private Psr4PathNormalizer $psr4PathNormalizer
+        private readonly Psr4PathNormalizer $psr4PathNormalizer
     ) {
     }
 

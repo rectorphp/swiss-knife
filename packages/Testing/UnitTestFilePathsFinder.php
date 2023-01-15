@@ -12,8 +12,8 @@ use Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
 final class UnitTestFilePathsFinder
 {
     public function __construct(
-        private TestCaseClassFinder $testCaseClassFinder,
-        private UnitTestFilter $unitTestFilter,
+        private readonly TestCaseClassFinder $testCaseClassFinder,
+        private readonly UnitTestFilter $unitTestFilter,
     ) {
     }
 

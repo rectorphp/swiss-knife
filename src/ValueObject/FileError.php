@@ -10,8 +10,8 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class FileError implements FileErrorInterface
 {
     public function __construct(
-        private string $errorMessage,
-        private SmartFileInfo $smartFileInfo
+        private readonly string $errorMessage,
+        private readonly SmartFileInfo $smartFileInfo
     ) {
     }
 

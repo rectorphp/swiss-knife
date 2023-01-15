@@ -17,10 +17,10 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class CheckTwigRenderCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private TemplatePathsResolver $templatePathsResolver,
-        private RenderMethodTemplateExtractor $renderMethodTemplateExtractor,
-        private TwigAnalyzer $twigAnalyzer,
-        private MissingTwigTemplatePathReporter $missingTwigTemplatePathReporter
+        private readonly TemplatePathsResolver $templatePathsResolver,
+        private readonly RenderMethodTemplateExtractor $renderMethodTemplateExtractor,
+        private readonly TwigAnalyzer $twigAnalyzer,
+        private readonly MissingTwigTemplatePathReporter $missingTwigTemplatePathReporter
     ) {
         parent::__construct();
     }

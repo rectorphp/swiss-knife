@@ -28,7 +28,7 @@ final class UsedClassNodeVisitor extends NodeVisitorAbstract
         return $nodes;
     }
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): ?Node
     {
         if (! $node instanceof Name) {
             return null;
@@ -42,7 +42,7 @@ final class UsedClassNodeVisitor extends NodeVisitorAbstract
 
         $this->usedNames[] = $node->toString();
 
-        return null;
+        return $node;
     }
 
     /**

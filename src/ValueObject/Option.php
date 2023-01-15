@@ -27,4 +27,10 @@ final class Option
      * @var string
      */
     public const EXCLUDED_CHECK_PATHS = 'excluded_check_paths';
+
+    /**
+     * @deprecated Use EasyCIConfig instead
+     * @var string
+     */
+    public const PATHS = 'paths';
 }

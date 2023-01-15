@@ -16,8 +16,8 @@ use Symplify\PackageBuilder\ValueObject\Option;
 final class CheckConfigCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ClassAndConstantExistanceFileProcessor $classAndConstantExistanceFileProcessor,
-        private FileErrorsReporter $fileErrorsReporter
+        private readonly ClassAndConstantExistanceFileProcessor $classAndConstantExistanceFileProcessor,
+        private readonly FileErrorsReporter $fileErrorsReporter
     ) {
         parent::__construct();
     }

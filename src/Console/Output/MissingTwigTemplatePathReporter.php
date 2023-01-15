@@ -10,7 +10,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 final class MissingTwigTemplatePathReporter
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle
+        private readonly SymfonyStyle $symfonyStyle
     ) {
     }
 

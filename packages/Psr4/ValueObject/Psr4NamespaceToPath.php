@@ -9,8 +9,8 @@ use Stringable;
 final class Psr4NamespaceToPath implements Stringable
 {
     public function __construct(
-        private string $namespace,
-        private string $path
+        private readonly string $namespace,
+        private readonly string $path
     ) {
     }
 

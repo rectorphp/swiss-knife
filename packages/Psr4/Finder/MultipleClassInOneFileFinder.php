@@ -10,8 +10,8 @@ use Symplify\EasyCI\Psr4\RobotLoader\PhpClassLoader;
 final class MultipleClassInOneFileFinder
 {
     public function __construct(
-        private PhpClassLoader $phpClassLoader,
-        private SymfonyStyle $symfonyStyle,
+        private readonly PhpClassLoader $phpClassLoader,
+        private readonly SymfonyStyle $symfonyStyle,
     ) {
     }
 

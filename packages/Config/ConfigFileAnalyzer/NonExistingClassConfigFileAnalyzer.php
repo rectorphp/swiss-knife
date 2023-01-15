@@ -17,8 +17,8 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class NonExistingClassConfigFileAnalyzer implements ConfigFileAnalyzerInterface
 {
     public function __construct(
-        private ClassExtractor $classExtractor,
-        private ClassLikeExistenceChecker $classLikeExistenceChecker
+        private readonly ClassExtractor $classExtractor,
+        private readonly ClassLikeExistenceChecker $classLikeExistenceChecker
     ) {
     }
 
