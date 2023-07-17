@@ -9,7 +9,6 @@ use Symplify\EasyCI\ActiveClass\ClassNameResolver;
 use Symplify\EasyCI\Kernel\EasyCIKernel;
 use Symplify\EasyCI\Tests\ActiveClass\ClassNameResolver\Fixture\SomeClass;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class ClassNameResolverTest extends AbstractKernelTestCase
 {

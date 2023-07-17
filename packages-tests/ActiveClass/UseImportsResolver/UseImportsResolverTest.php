@@ -10,7 +10,6 @@ use Symplify\EasyCI\Kernel\EasyCIKernel;
 use Symplify\EasyCI\Tests\ActiveClass\UseImportsResolver\Source\FirstUsedClass;
 use Symplify\EasyCI\Tests\ActiveClass\UseImportsResolver\Source\SecondUsedClass;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class UseImportsResolverTest extends AbstractKernelTestCase
 {

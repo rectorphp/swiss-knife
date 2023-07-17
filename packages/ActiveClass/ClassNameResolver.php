@@ -7,10 +7,8 @@ namespace Symplify\EasyCI\ActiveClass;
 use Nette\Utils\FileSystem;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
-use Symfony\Component\Finder\SplFileInfo;
 use Symplify\EasyCI\ActiveClass\NodeDecorator\FullyQualifiedNameNodeDecorator;
 use Symplify\EasyCI\ActiveClass\NodeVisitor\ClassNameNodeVisitor;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
  * @see \Symplify\EasyCI\Tests\ActiveClass\ClassNameResolver\ClassNameResolverTest

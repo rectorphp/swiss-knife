@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Symplify\EasyCI\ActiveClass\ValueObject;
 
 use Symplify\EasyCI\FileSystem\StaticRelativeFilePathHelper;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class FileWithClass
 {
