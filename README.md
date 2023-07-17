@@ -66,15 +66,7 @@ final class SomeController
 
 <br>
 
-### 4. Detect Static Calls in Your Code
-
-```bash
-vendor/bin/easy-ci detect-static src
-```
-
-<br>
-
-### 5. Detect Commented Code
+### 4. Detect Commented Code
 
 Have you ever forgot commented code in your code?
 

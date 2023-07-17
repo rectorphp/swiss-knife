@@ -12,8 +12,6 @@ use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCI\Console\EasyCIApplication;
-use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
-use Symplify\EasyCI\StaticDetector\NodeTraverser\StaticCollectNodeTraverserFactory;
 use Symplify\EasyCI\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
@@ -62,9 +60,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::TYPES_TO_SKIP, []);
     $parameters->set(Option::EXCLUDED_CHECK_PATHS, []);
-
-    $services->set(StaticCollectNodeTraverser::class)
-        ->factory([service(StaticCollectNodeTraverserFactory::class), 'create']);
 
     $services->set(ParserFactory::class);
     $services->set(Parser::class)

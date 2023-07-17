@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\ActiveClass\NodeVisitor;
 
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use Nette\Utils\Strings;
 use PhpParser\Comment\Doc;
@@ -38,7 +39,7 @@ final class ClassNameNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        if ($node->name === null) {
+        if (!$node->name instanceof Identifier) {
             return null;
         }
 
