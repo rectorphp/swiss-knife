@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Config;
 
-use Nette\Neon\Encoder;
-use Nette\Neon\Neon;
 use Nette\Utils\Strings;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
@@ -43,13 +41,13 @@ final class ClassExtractor
      */
     public function extractFromFileInfo(SmartFileInfo $fileInfo): array
     {
-        $classNames = [];
-        $fileContent = $this->getFileContent($fileInfo);
-
         if ($fileInfo->getSuffix() === 'neon') {
             return [];
         }
 
+        $classNames = [];
+
+        $fileContent = $fileInfo->getContents();
         $classNameMatches = Strings::matchAll($fileContent, self::CLASS_NAME_REGEX);
 
         foreach ($classNameMatches as $classNameMatch) {
@@ -71,21 +69,6 @@ final class ClassExtractor
         }
 
         return $classNames;
-    }
-
-    private function getFileContent(SmartFileInfo $fileInfo): string
-    {
-        if ($fileInfo->getSuffix() === 'neon') {
-            $neon = Neon::decode($fileInfo->getContents());
-
-            // section with no classes that resemble classes
-            unset($neon['application']['mapping']);
-            unset($neon['mapping']);
-
-            return Neon::encode($neon, Encoder::BLOCK, '    ');
-        }
-
-        return $fileInfo->getContents();
     }
 
     /**

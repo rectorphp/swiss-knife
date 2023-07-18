@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Config\Application;
 
+use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\SmartFileSystem\SmartFileInfo;
@@ -14,11 +15,16 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassAndConstantExistanceFileProcessor
 {
     /**
-     * @param ConfigFileAnalyzerInterface[] $configFileAnalyzers
+     * @var ConfigFileAnalyzerInterface[]
      */
-    public function __construct(
-        private readonly array $configFileAnalyzers
-    ) {
+    private readonly array $configFileAnalyzers;
+
+    /**
+     * @param RewindableGenerator<int, ConfigFileAnalyzerInterface> $configFileAnalyzers
+     */
+    public function __construct(iterable $configFileAnalyzers)
+    {
+        $this->configFileAnalyzers = iterator_to_array($configFileAnalyzers->getIterator());
     }
 
     /**
