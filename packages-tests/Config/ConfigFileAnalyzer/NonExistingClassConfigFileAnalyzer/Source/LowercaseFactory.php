@@ -6,5 +6,4 @@ namespace lowercase;
 
 final class LowercaseFactory
 {
-
 }

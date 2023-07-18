@@ -8,5 +8,4 @@ use PHPUnit_Framework_TestCase;
 
 final class OldSchoolTest extends PHPUnit_Framework_TestCase
 {
-
 }

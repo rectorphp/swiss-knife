@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\EasyCI\Tests\Psr4\ValueObjectFactory\Psr4NamespaceToPathFactory;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyCI\Kernel\EasyCIKernel;
 use Symplify\EasyCI\Psr4\Configuration\Psr4SwitcherConfiguration;
 use Symplify\EasyCI\Psr4\ValueObject\Psr4NamespaceToPath;
@@ -25,9 +26,7 @@ final class Psr4NamespaceToPathFactoryTest extends AbstractKernelTestCase
         $psr4SwitcherConfiguration->loadForTest(__DIR__ . '/Source/some_composer.json');
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function test(string $class, string $file, string $expectedNamespace, string $expectedPath): void
     {
         $psr4NamespaceToPath = $this->psr4NamespaceToPathFactory->createFromClassAndFile($class, $file);
@@ -38,7 +37,7 @@ final class Psr4NamespaceToPathFactoryTest extends AbstractKernelTestCase
         $this->assertSame($expectedPath, $psr4NamespaceToPath->getPath());
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [
             'App\Utils\CustomMacros', '../project/project-nested/libs/My/CustomMacros.php',

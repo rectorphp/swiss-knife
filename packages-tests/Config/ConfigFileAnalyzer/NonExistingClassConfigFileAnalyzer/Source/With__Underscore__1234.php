@@ -6,5 +6,4 @@ namespace Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfig
 
 final class With__Underscore__1234
 {
-
 }

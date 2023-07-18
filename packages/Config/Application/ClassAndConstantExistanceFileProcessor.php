@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Symplify\EasyCI\Config\Application;
 
 use Symplify\EasyCI\Config\Contract\ConfigFileAnalyzerInterface;
-use Symplify\EasyCI\Contract\Application\FileProcessorInterface;
 use Symplify\EasyCI\Contract\ValueObject\FileErrorInterface;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
  * @see \Symplify\EasyCI\Tests\Config\ConfigFileAnalyzer\NonExistingClassConfigFileAnalyzer\NonExistingClassConfigFileAnalyzerTest
  */
-final class ClassAndConstantExistanceFileProcessor implements FileProcessorInterface
+final class ClassAndConstantExistanceFileProcessor
 {
     /**
      * @param ConfigFileAnalyzerInterface[] $configFileAnalyzers

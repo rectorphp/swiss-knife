@@ -8,5 +8,4 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class IntegrationTest extends KernelTestCase
 {
-
 }

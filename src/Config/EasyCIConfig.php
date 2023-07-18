@@ -31,6 +31,7 @@ final class EasyCIConfig extends ContainerConfigurator
     }
 
     /**
+     * @deprecated Use https://github.com/TomasVotruba/class-leak instead
      * @param string[] $typesToSkip
      */
     public function typesToSkip(array $typesToSkip): void

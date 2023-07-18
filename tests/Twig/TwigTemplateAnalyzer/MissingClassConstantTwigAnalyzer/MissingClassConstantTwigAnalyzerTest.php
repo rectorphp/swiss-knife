@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\EasyCI\Tests\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyCI\Kernel\EasyCIKernel;
 use Symplify\EasyCI\Twig\TwigTemplateAnalyzer\MissingClassConstantTwigAnalyzer;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
@@ -20,9 +21,7 @@ final class MissingClassConstantTwigAnalyzerTest extends AbstractKernelTestCase
         $this->missingClassConstantTwigAnalyzer = $this->getService(MissingClassConstantTwigAnalyzer::class);
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function test(SmartFileInfo $inputFileInfo, int $expectedErrorCount): void
     {
         $templateErrors = $this->missingClassConstantTwigAnalyzer->analyze([$inputFileInfo]);
@@ -32,7 +31,7 @@ final class MissingClassConstantTwigAnalyzerTest extends AbstractKernelTestCase
     /**
      * @return Iterator<int[]|SmartFileInfo[]>
      */
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [new SmartFileInfo(__DIR__ . '/Fixture/missing_constant.twig'), 1];
         yield [new SmartFileInfo(__DIR__ . '/Fixture/existing_constant.twig'), 0];

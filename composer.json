@@ -11,8 +11,8 @@
         "nette/neon": "^3.3",
         "nette/robot-loader": "^3.4",
         "nette/utils": "^3.2",
-        "nikic/php-parser": "^4.15.2",
-        "symfony/console": "^6.2",
+        "nikic/php-parser": "^4.16",
+        "symfony/console": "^6.3",
         "symfony/dependency-injection": "6.1.*",
         "symplify/package-builder": "^11.2",
         "symplify/smart-file-system": "^11.2",
@@ -27,6 +27,7 @@
         "rector/rector": "*",
         "symplify/easy-coding-standard": "^11.2",
         "symplify/phpstan-extensions": "^11.1",
+        "tomasvotruba/class-leak": "0.0.6",
         "tomasvotruba/cognitive-complexity": "^0.1",
         "tomasvotruba/type-coverage": "^0.2",
         "tomasvotruba/unused-public": "^0.1"

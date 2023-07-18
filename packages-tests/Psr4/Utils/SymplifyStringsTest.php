@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\EasyCI\Tests\Psr4\Utils;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyCI\Kernel\EasyCIKernel;
 use Symplify\EasyCI\Psr4\Utils\SymplifyStrings;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
@@ -20,16 +21,16 @@ final class SymplifyStringsTest extends AbstractKernelTestCase
     }
 
     /**
-     * @dataProvider provideData()
      * @param string[] $values
      */
+    #[DataProvider('provideData')]
     public function test(array $values, string $expectedSharedSuffix): void
     {
         $sharedSuffix = $this->symplifyStrings->findSharedSlashedSuffix($values);
         $this->assertSame($expectedSharedSuffix, $sharedSuffix);
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [['Car', 'BusCar'], 'Car'];
         yield [['Apple\Pie', 'LikeAn\Apple\Pie'], 'Apple/Pie'];
