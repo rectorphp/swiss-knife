@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Command;
 
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symplify\EasyCI\Finder\FilesFinder;
 use Symplify\EasyCI\Git\ConflictResolver;
-use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\PackageBuilder\ValueObject\Option;
 
-final class CheckConflictsCommand extends AbstractSymplifyCommand
+final class CheckConflictsCommand extends Command
 {
     public function __construct(
-        private readonly ConflictResolver $conflictResolver
+        private readonly ConflictResolver $conflictResolver,
+        private readonly SymfonyStyle $symfonyStyle,
     ) {
         parent::__construct();
     }
@@ -24,17 +26,21 @@ final class CheckConflictsCommand extends AbstractSymplifyCommand
         $this->setName('check-conflicts');
 
         $this->setDescription('Check files for missed git conflicts');
-        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
+        $this->addArgument('sources', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var string[] $source */
-        $source = (array) $input->getArgument(Option::SOURCES);
+        /** @var string[] $sources */
+        $sources = (array) $input->getArgument('sources');
 
-        $fileInfos = $this->smartFinder->find($source, '*', ['vendor']);
+        $fileInfos = FilesFinder::find($sources);
+        $filePaths = [];
+        foreach ($fileInfos as $fileInfo) {
+            $filePaths[] = $fileInfo->getRealPath();
+        }
 
-        $conflictsCountByFilePath = $this->conflictResolver->extractFromFileInfos($fileInfos);
+        $conflictsCountByFilePath = $this->conflictResolver->extractFromFileInfos($filePaths);
         if ($conflictsCountByFilePath === []) {
             $message = sprintf('No conflicts found in %d files', count($fileInfos));
             $this->symfonyStyle->success($message);

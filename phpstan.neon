@@ -3,14 +3,9 @@ parameters:
 
     paths:
         - src
-        - config
         - tests
         - packages
         - packages-tests
-
-    cognitive_complexity:
-        class: 30
-        function: 10
 
     excludePaths:
         - */Fixture/*

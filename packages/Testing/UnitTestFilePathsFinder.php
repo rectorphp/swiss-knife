@@ -9,11 +9,11 @@ use Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
 /**
  * @see \Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\UnitTestFilePathsFinderTest
  */
-final class UnitTestFilePathsFinder
+final readonly class UnitTestFilePathsFinder
 {
     public function __construct(
-        private readonly TestCaseClassFinder $testCaseClassFinder,
-        private readonly UnitTestFilter $unitTestFilter,
+        private TestCaseClassFinder $testCaseClassFinder,
+        private UnitTestFilter $unitTestFilter,
     ) {
     }
 

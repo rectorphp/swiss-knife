@@ -9,14 +9,13 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\EasyCI\Finder\ProjectFilesFinder;
+use Symplify\EasyCI\Finder\FilesFinder;
 use Symplify\EasyCI\Resolver\TooLongFilesResolver;
-use Symplify\PackageBuilder\ValueObject\Option;
 
 final class ValidateFileLengthCommand extends Command
 {
     public function __construct(
-        private readonly ProjectFilesFinder $projectFilesFinder,
+        private readonly FilesFinder $projectFilesFinder,
         private readonly SymfonyStyle $symfonyStyle,
         private readonly TooLongFilesResolver $tooLongFilesResolver
     ) {
@@ -27,14 +26,14 @@ final class ValidateFileLengthCommand extends Command
     {
         $this->setName('validate-file-length');
 
-        $this->setDescription('[CI] Make sure the file path length are not breaking normal Windows max length');
-        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
+        $this->setDescription('Make sure the file path length are not breaking normal Windows max length');
+        $this->addArgument('sources', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var string[] $sources */
-        $sources = (array) $input->getArgument(Option::SOURCES);
+        $sources = (array) $input->getArgument('sources');
 
         $fileInfos = $this->projectFilesFinder->find($sources);
         $tooLongFileInfos = $this->tooLongFilesResolver->resolve($fileInfos);

@@ -4,28 +4,25 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Tests\Comments;
 
+use PHPUnit\Framework\TestCase;
 use Symplify\EasyCI\Comments\CommentedCodeAnalyzer;
-use Symplify\EasyCI\Kernel\EasyCIKernel;
-use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class CommentedCodeAnalyzerTest extends AbstractKernelTestCase
+final class CommentedCodeAnalyzerTest extends TestCase
 {
     private CommentedCodeAnalyzer $commentedCodeAnalyzer;
 
     protected function setUp(): void
     {
-        $this->bootKernel(EasyCIKernel::class);
-        $this->commentedCodeAnalyzer = $this->getService(CommentedCodeAnalyzer::class);
+        $this->commentedCodeAnalyzer = new CommentedCodeAnalyzer();
     }
 
     public function test(): void
     {
-        $fileInfo = new SmartFileInfo(__DIR__ . '/Fixture/some_commented_code.php.inc');
-        $commentedLines = $this->commentedCodeAnalyzer->process($fileInfo, 4);
+        $filePath = __DIR__ . '/Fixture/some_commented_code.php.inc';
+        $commentedLines = $this->commentedCodeAnalyzer->process($filePath, 4);
         $this->assertSame([], $commentedLines);
 
-        $commentedLines = $this->commentedCodeAnalyzer->process($fileInfo, 2);
+        $commentedLines = $this->commentedCodeAnalyzer->process($filePath, 2);
         $this->assertSame([5], $commentedLines);
     }
 }

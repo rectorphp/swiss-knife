@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Comments;
 
-use Symplify\SmartFileSystem\SmartFileInfo;
+use Nette\Utils\FileSystem;
 
 /**
  * @see \Symplify\EasyCI\Tests\Comments\CommentedCodeAnalyzerTest
@@ -14,11 +14,11 @@ final class CommentedCodeAnalyzer
     /**
      * @return int[]
      */
-    public function process(SmartFileInfo $fileInfo, int $commentedLinesCountLimit): array
+    public function process(string $filePath, int $commentedLinesCountLimit): array
     {
         $commentedLines = [];
 
-        $fileLines = explode(PHP_EOL, $fileInfo->getContents());
+        $fileLines = explode(PHP_EOL, FileSystem::read($filePath));
 
         $commentLinesCount = 0;
 
@@ -27,7 +27,7 @@ final class CommentedCodeAnalyzer
             if ($isCommentLine) {
                 ++$commentLinesCount;
             } else {
-                // crossed the treshold?
+                // crossed the threshold?
                 if ($commentLinesCount >= $commentedLinesCountLimit) {
                     $commentedLines[] = $key;
                 }

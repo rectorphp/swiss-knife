@@ -4,20 +4,23 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder;
 
-use Symplify\EasyCI\Kernel\EasyCIKernel;
+use PHPUnit\Framework\TestCase;
+use Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
 use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
+use Symplify\EasyCI\Testing\UnitTestFilter;
 use Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\Fixture\OldSchoolTest;
 use Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\Fixture\RandomTest;
-use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 
-final class UnitTestFilePathsFinderTest extends AbstractKernelTestCase
+final class UnitTestFilePathsFinderTest extends TestCase
 {
     private UnitTestFilePathsFinder $unitTestFilePathsFinder;
 
     protected function setup(): void
     {
-        $this->bootKernel(EasyCIKernel::class);
-        $this->unitTestFilePathsFinder = $this->getService(UnitTestFilePathsFinder::class);
+        $this->unitTestFilePathsFinder = new UnitTestFilePathsFinder(
+            new TestCaseClassFinder(),
+            new UnitTestFilter(),
+        );
     }
 
     public function test(): void

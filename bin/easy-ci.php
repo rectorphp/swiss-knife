@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-use Symplify\EasyCI\Kernel\EasyCIKernel;
-use Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symplify\EasyCI\DependencyInjection\ContainerFactory;
 
 $possibleAutoloadPaths = [
     // dependency
@@ -21,18 +23,15 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
     }
 }
 
-$extraConfigs = [];
-
-$easyCIFilePath = getcwd() . DIRECTORY_SEPARATOR . 'easy-ci.php';
-if (file_exists($easyCIFilePath)) {
-    $extraConfigs[] = $easyCIFilePath;
-}
-
-
 $scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
 if (file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
 
-$kernelBootAndApplicationRun = new KernelBootAndApplicationRun(EasyCIKernel::class, $extraConfigs);
-$kernelBootAndApplicationRun->run();
+$containerFactory = new ContainerFactory();
+$container = $containerFactory->create();
+
+$application = $container->make(Application::class);
+
+$exitCode = $application->run(new ArgvInput(), new ConsoleOutput());
+exit($exitCode);

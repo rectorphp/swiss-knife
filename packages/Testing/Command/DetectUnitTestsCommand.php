@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Testing\Command;
 
+use Nette\Utils\FileSystem;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,7 +13,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter;
 use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
 use Symplify\EasyCI\ValueObject\Option;
-use Symplify\SmartFileSystem\SmartFileSystem;
 use Webmozart\Assert\Assert;
 
 final class DetectUnitTestsCommand extends Command
@@ -24,7 +24,6 @@ final class DetectUnitTestsCommand extends Command
 
     public function __construct(
         private readonly PHPUnitXmlPrinter $phpunitXmlPrinter,
-        private readonly SmartFileSystem $smartFileSystem,
         private readonly SymfonyStyle $symfonyStyle,
         private readonly UnitTestFilePathsFinder $unitTestFilePathsFinder,
     ) {
@@ -60,7 +59,7 @@ They depend only on bare PHPUnit test case, but not on KernelTestCase. Move the 
 
         $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths, getcwd());
 
-        $this->smartFileSystem->dumpFile(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
+        FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
 
         $successMessage = sprintf(
             'List of %d unit tests was dumped into "%s"',

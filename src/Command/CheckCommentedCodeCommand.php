@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Command;
 
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Comments\CommentedCodeAnalyzer;
+use Symplify\EasyCI\Finder\FilesFinder;
 use Symplify\EasyCI\ValueObject\Option;
-use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 
-final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
+final class CheckCommentedCodeCommand extends Command
 {
     /**
      * @var int
@@ -20,7 +22,8 @@ final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
     private const DEFAULT_LINE_LIMIT = 5;
 
     public function __construct(
-        private readonly CommentedCodeAnalyzer $commentedCodeAnalyzer
+        private readonly CommentedCodeAnalyzer $commentedCodeAnalyzer,
+        private readonly SymfonyStyle $symfonyStyle,
     ) {
         parent::__construct();
     }
@@ -48,7 +51,7 @@ final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $sources = (array) $input->getArgument(Option::SOURCES);
-        $phpFileInfos = $this->smartFinder->find($sources, '*.php');
+        $phpFileInfos = FilesFinder::findPhpFiles($sources);
 
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
         $this->symfonyStyle->note($message);
@@ -57,13 +60,13 @@ final class CheckCommentedCodeCommand extends AbstractSymplifyCommand
 
         $commentedLinesByFilePaths = [];
         foreach ($phpFileInfos as $phpFileInfo) {
-            $commentedLines = $this->commentedCodeAnalyzer->process($phpFileInfo, $lineLimit);
+            $commentedLines = $this->commentedCodeAnalyzer->process($phpFileInfo->getRealPath(), $lineLimit);
 
             if ($commentedLines === []) {
                 continue;
             }
 
-            $commentedLinesByFilePaths[$phpFileInfo->getRelativeFilePathFromCwd()] = $commentedLines;
+            $commentedLinesByFilePaths[$phpFileInfo->getRealPath()] = $commentedLines;
         }
 
         if ($commentedLinesByFilePaths === []) {

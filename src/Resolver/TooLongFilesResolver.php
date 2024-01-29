@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCI\Resolver;
 
-use Symplify\SmartFileSystem\SmartFileInfo;
+use Symfony\Component\Finder\SplFileInfo;
 
 final class TooLongFilesResolver
 {
@@ -16,18 +16,18 @@ final class TooLongFilesResolver
     public const MAX_FILE_LENGTH = 200;
 
     /**
-     * @param SmartFileInfo[] $fileInfos
-     * @return SmartFileInfo[]
+     * @param SplFileInfo[] $fileInfos
+     * @return SplFileInfo[]
      */
     public function resolve(array $fileInfos): array
     {
         return array_filter(
             $fileInfos,
-            fn (SmartFileInfo $fileInfo): bool => $this->isFileContentLongerThan($fileInfo, self::MAX_FILE_LENGTH)
+            fn (SplFileInfo $fileInfo): bool => $this->isFileContentLongerThan($fileInfo, self::MAX_FILE_LENGTH)
         );
     }
 
-    private function isFileContentLongerThan(SmartFileInfo $fileInfo, int $maxFileLenght): bool
+    private function isFileContentLongerThan(SplFileInfo $fileInfo, int $maxFileLenght): bool
     {
         $filePathLength = strlen($fileInfo->getRealPath());
         return $filePathLength > $maxFileLenght;
