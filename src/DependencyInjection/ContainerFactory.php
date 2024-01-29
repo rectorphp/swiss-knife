@@ -11,6 +11,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Command\CheckCommentedCodeCommand;
 use Symplify\EasyCI\Command\CheckConflictsCommand;
+use Symplify\EasyCI\Command\FindMultiClassesCommand;
 use Symplify\EasyCI\Command\ValidateFileLengthCommand;
 use Symplify\EasyCI\Testing\Command\DetectUnitTestsCommand;
 
@@ -37,7 +38,9 @@ final class ContainerFactory
                 $container->make(CheckConflictsCommand::class),
                 $container->make(ValidateFileLengthCommand::class),
                 $container->make(DetectUnitTestsCommand::class),
+                $container->make(FindMultiClassesCommand::class),
             ];
+
             $application->addCommands($commands);
 
             // remove basic command to make output clear
