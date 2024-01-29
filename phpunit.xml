@@ -6,9 +6,10 @@
     colors="true"
     cacheDirectory=".phpunit.cache"
 >
-  <testsuites>
-    <testsuite name="unit">
-      <directory>tests</directory>
-    </testsuite>
-  </testsuites>
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests</directory>
+            <exclude>tests/Testing/UnitTestFilePathsFinder/Fixture</exclude>
+        </testsuite>
+    </testsuites>
 </phpunit>

@@ -26,10 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Symplify\\EasyCI\\": [
-                "src",
-                "packages"
-            ]
+            "Symplify\\EasyCI\\": "src"
         },
         "classmap": [
             "stubs"
@@ -37,10 +34,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Symplify\\EasyCI\\Tests\\": [
-                "tests",
-                "packages-tests"
-            ]
+            "Symplify\\EasyCI\\Tests\\": "tests"
         }
     },
     "replace": {
@@ -60,7 +54,6 @@
         "check-cs": "vendor/bin/ecs check --ansi",
         "fix-cs": "vendor/bin/ecs check --fix --ansi",
         "phpstan": "vendor/bin/phpstan analyse --ansi  --error-format symplify",
-        "rector": "vendor/bin/rector process --dry-run --ansi",
-        "release": "vendor/bin/monorepo-builder release patch --ansi"
+        "rector": "vendor/bin/rector process --dry-run --ansi"
     }
 }

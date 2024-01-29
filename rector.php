@@ -18,12 +18,7 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::EARLY_RETURN,
     ]);
 
-    $rectorConfig->paths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-        __DIR__ . '/packages',
-        __DIR__ . '/packages-tests',
-    ]);
+    $rectorConfig->paths([__DIR__ . '/src', __DIR__ . '/tests']);
 
     $rectorConfig->importNames();
     $rectorConfig->removeUnusedImports();

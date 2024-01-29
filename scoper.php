@@ -13,10 +13,6 @@ use Nette\Utils\Strings;
 // see https://github.com/humbug/php-scoper
 return [
     'prefix' => 'EasyCI' . $timestamp,
-    'expose-classes' => [
-        // part of public interface of configs.php
-        'Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator',
-    ],
     'expose-constants' => ['#^SYMFONY\_[\p{L}_]+$#'],
     'exclude-namespaces' => ['#^Symplify\\\\EasyCI#', '#^Symfony\\\\Polyfill#'],
     'exclude-files' => [
@@ -26,29 +22,6 @@ return [
         'stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
     ],
     'patchers' => [
-        // scope symfony configs
-        function (string $filePath, string $prefix, string $content): string {
-            if (! Strings::match($filePath, '#(packages|config|services)\.php$#')) {
-                return $content;
-            }
-
-            // fix symfony config load scoping, except EasyCI
-            $content = Strings::replace(
-                $content,
-                '#load\(\'Symplify\\\\\\\\(?<package_name>[A-Za-z]+)#',
-                function (array $match) use ($prefix) {
-                    if (in_array($match['package_name'], ['EasyCI'], true)) {
-                        // skip
-                        return $match[0];
-                    }
-
-                    return 'load(\'' . $prefix . '\Symplify\\' . $match['package_name'];
-                }
-            );
-
-            return $content;
-        },
-
         // unprefix test case class names
         function (string $filePath, string $prefix, string $content): string {
             if (! str_ends_with($filePath, 'packages/Testing/UnitTestFilter.php')) {
@@ -85,21 +58,6 @@ return [
                 '#' . $prefix . '\\\\Symfony\\\\Component\\\\Form\\\\Test\\\\TypeTestCase',
                 'Symfony\Component\Form\Test\TypeTestCase'
             );
-        },
-
-        // unprefix string class names to ignore, to keep original class names
-        function (string $filePath, string $prefix, string $content): string {
-            if (! str_ends_with($filePath, 'packages/ActiveClass/Filtering/PossiblyUnusedClassesFilter.php')) {
-                return $content;
-            }
-
-            return Strings::replace($content, '#DEFAULT_TYPES_TO_SKIP = (?<content>.*?)\;#ms', function (array $match) use (
-                $prefix
-            ) {
-                // remove prefix from there
-                return 'DEFAULT_TYPES_TO_SKIP = ' .
-                    Strings::replace($match['content'], '#' . $prefix . '\\\\#', '') . ';';
-            });
         },
     ],
 ];

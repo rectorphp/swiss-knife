@@ -4,8 +4,6 @@ parameters:
     paths:
         - src
         - tests
-        - packages
-        - packages-tests
 
     excludePaths:
         - */Fixture/*

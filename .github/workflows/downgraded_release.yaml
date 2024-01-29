@@ -33,7 +33,7 @@ jobs:
             -   run: composer require rector/rector --working-dir rector-local --ansi
 
             # downgrade to PHP 7.2
-            -   run: rector-local/vendor/bin/rector process bin src packages config vendor --config build/rector-downgrade-php-72.php --ansi
+            -   run: rector-local/vendor/bin/rector process bin src vendor --config build/rector-downgrade-php-72.php --ansi
 
             # clear the dev files
             -   run: rm -rf tests ecs.php phpstan.neon phpunit.xml .gitignore .editorconfig
@@ -45,7 +45,7 @@ jobs:
             -   run: cp -r build/target-repository/. .
 
             # clear the dev files
-            -   run: rm -rf build prefix-code.sh monorepo-builder.php full-tool-build.sh easy-ci.php scoper.php rector.php rector-local packages-tests
+            -   run: rm -rf build prefix-code.sh full-tool-build.sh easy-ci.php scoper.php rector.php rector-local
 
             # setup git user
             -
@@ -60,5 +60,7 @@ jobs:
                     # separate a "git add" to add untracked (new) files too
                     git add --all
                     git commit -m "release PHP 7.2 downgraded"
-                    git tag "${GITHUB_REF#refs/tags/}.72"
-                    git push origin "${GITHUB_REF#refs/tags/}.72"
+
+                    # force push tag, so there is only 1 version
+                    git tag "${GITHUB_REF#refs/tags/}" --force
+                    git push origin "${GITHUB_REF#refs/tags/}" --force
