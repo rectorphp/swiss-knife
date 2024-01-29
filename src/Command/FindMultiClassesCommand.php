@@ -45,8 +45,11 @@ final class FindMultiClassesCommand extends Command
             return self::SUCCESS;
         }
 
-        foreach ($multipleClassesByFile as $file => $classes) {
-            $message = sprintf('File "%s" has %d classes', $file, count($classes));
+        foreach ($multipleClassesByFile as $filePath => $classes) {
+            // get relative path to getcwd()
+            $relativeFilePath = str_replace(getcwd() . '/', '', $filePath);
+
+            $message = sprintf('File "%s" contains %d classes', $relativeFilePath, count($classes));
             $this->symfonyStyle->section($message);
             $this->symfonyStyle->listing($classes);
         }
