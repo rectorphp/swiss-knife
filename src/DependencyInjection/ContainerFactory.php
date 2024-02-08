@@ -11,6 +11,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Command\CheckCommentedCodeCommand;
 use Symplify\EasyCI\Command\CheckConflictsCommand;
+use Symplify\EasyCI\Command\DumpEditorconfigCommand;
 use Symplify\EasyCI\Command\FindMultiClassesCommand;
 use Symplify\EasyCI\Command\NamespaceToPSR4Command;
 use Symplify\EasyCI\Command\ValidateFileLengthCommand;
@@ -26,11 +27,6 @@ final class ContainerFactory
         $container = new Container();
 
         // console
-        $container->singleton(
-            SymfonyStyle::class,
-            static fn (): SymfonyStyle => new SymfonyStyle(new ArrayInput([]), new ConsoleOutput())
-        );
-
         $container->singleton(Application::class, function (Container $container): Application {
             $application = new Application('Easy CI toolkit');
 
@@ -41,6 +37,7 @@ final class ContainerFactory
                 $container->make(DetectUnitTestsCommand::class),
                 $container->make(FindMultiClassesCommand::class),
                 $container->make(NamespaceToPSR4Command::class),
+                $container->make(DumpEditorconfigCommand::class),
             ];
 
             $application->addCommands($commands);
@@ -50,6 +47,11 @@ final class ContainerFactory
 
             return $application;
         });
+
+        $container->singleton(
+            SymfonyStyle::class,
+            static fn (): SymfonyStyle => new SymfonyStyle(new ArrayInput([]), new ConsoleOutput())
+        );
 
         return $container;
     }

@@ -1,6 +1,6 @@
 {
     "name": "symplify/easy-ci",
-    "description": "Toolkit of commands that should not be missed in you CI",
+    "description": "Swiss knife in pocket of every upgrade architect",
     "license": "MIT",
     "bin": [
         "bin/easy-ci"
