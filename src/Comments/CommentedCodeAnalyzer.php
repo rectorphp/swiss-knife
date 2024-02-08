@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Comments;
+namespace Rector\SwissKnife\Comments;
 
 use Nette\Utils\FileSystem;
 
 /**
- * @see \Symplify\EasyCI\Tests\Comments\CommentedCodeAnalyzerTest
+ * @see \Rector\SwissKnife\Tests\Comments\CommentedCodeAnalyzerTest
  */
 final class CommentedCodeAnalyzer
 {

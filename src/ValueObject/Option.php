@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\ValueObject;
+namespace Rector\SwissKnife\ValueObject;
 
 final class Option
 {

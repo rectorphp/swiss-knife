@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Tests\Comments;
+namespace Rector\SwissKnife\Tests\Comments;
 
 use PHPUnit\Framework\TestCase;
-use Symplify\EasyCI\Comments\CommentedCodeAnalyzer;
+use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 
 final class CommentedCodeAnalyzerTest extends TestCase
 {

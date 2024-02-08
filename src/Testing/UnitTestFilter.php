@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Testing;
+namespace Rector\SwissKnife\Testing;
 
 final class UnitTestFilter
 {

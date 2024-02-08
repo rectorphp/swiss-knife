@@ -1,9 +1,9 @@
 {
-    "name": "symplify/easy-ci",
+    "name": "rector/swiss-knife",
     "description": "Swiss knife in pocket of every upgrade architect",
     "license": "MIT",
     "bin": [
-        "bin/easy-ci"
+        "bin/swiss-knife"
     ],
     "require": {
         "php": ">=8.2",
@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Symplify\\EasyCI\\": "src"
+            "Rector\\SwissKnife\\": "src"
         },
         "classmap": [
             "stubs"
@@ -32,7 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Symplify\\EasyCI\\Tests\\": "tests"
+            "Rector\\SwissKnife\\Tests\\": "tests"
         }
     },
     "replace": {

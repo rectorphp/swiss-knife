@@ -1,6 +1,6 @@
 <?php
 
-namespace Symplify\EasyCI\RobotLoader;
+namespace Rector\SwissKnife\RobotLoader;
 
 use Nette\Loaders\RobotLoader;
 

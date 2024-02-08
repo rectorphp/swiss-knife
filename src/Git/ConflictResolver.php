@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Git;
+namespace Rector\SwissKnife\Git;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 
 /**
- * @see \Symplify\EasyCI\Tests\Git\ConflictResolver\ConflictResolverTest
+ * @see \Rector\SwissKnife\Tests\Git\ConflictResolver\ConflictResolverTest
  */
 final class ConflictResolver
 {

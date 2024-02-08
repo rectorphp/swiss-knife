@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Testing\Printer;
+namespace Rector\SwissKnife\Testing\Printer;
 
 use Nette\Utils\Strings;
 

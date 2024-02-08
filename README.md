@@ -1,6 +1,6 @@
-# Easy CI
+# Swiss Knife for Upgrades
 
-[![Downloads total](https://img.shields.io/packagist/dt/symplify/easy-ci.svg?style=flat-square)](https://packagist.org/packages/symplify/easy-ci/stats)
+[![Downloads total](https://img.shields.io/packagist/dt/rector/swiss-knife.svg?style=flat-square)](https://packagist.org/packages/rector/swiss-knife/stats)
 
 Swiss knife in pocket of every upgrade architect!
 
@@ -9,7 +9,7 @@ Swiss knife in pocket of every upgrade architect!
 ## Install
 
 ```bash
-composer require symplify/easy-ci --dev
+composer require rector/swiss-knife --dev
 ```
 
 ## Usage
@@ -84,10 +84,4 @@ This will update all files in your `/src` directory, to starts with `App\\` and 
 
 <br>
 
-## Report Issues
-
-In case you are experiencing a bug or want to request a new feature head over to the [Symplify monorepo issue tracker](https://github.com/symplify/symplify/issues)
-
-## Contribute
-
-The sources of this package are contained in the Symplify monorepo. We welcome contributions for this package on [symplify/symplify](https://github.com/symplify/symplify).
+Happy coding!

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\DependencyInjection;
+namespace Rector\SwissKnife\DependencyInjection;
 
 use Illuminate\Container\Container;
+use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
+use Rector\SwissKnife\Command\CheckConflictsCommand;
+use Rector\SwissKnife\Command\DumpEditorconfigCommand;
+use Rector\SwissKnife\Command\FindMultiClassesCommand;
+use Rector\SwissKnife\Command\NamespaceToPSR4Command;
+use Rector\SwissKnife\Command\ValidateFileLengthCommand;
+use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\EasyCI\Command\CheckCommentedCodeCommand;
-use Symplify\EasyCI\Command\CheckConflictsCommand;
-use Symplify\EasyCI\Command\DumpEditorconfigCommand;
-use Symplify\EasyCI\Command\FindMultiClassesCommand;
-use Symplify\EasyCI\Command\NamespaceToPSR4Command;
-use Symplify\EasyCI\Command\ValidateFileLengthCommand;
-use Symplify\EasyCI\Testing\Command\DetectUnitTestsCommand;
 
 final class ContainerFactory
 {

@@ -13,6 +13,6 @@ final class SomeMethodFilterProvider implements \App\Contract\Latte\FilterProvid
     }
     public function __invoke(string $name) : int
     {
-        return \Symplify\EasyCI\Tests\PhpParser\LatteFilterProviderGenerator\Source\SomeHelper::someMethod($name);
+        return \Rector\SwissKnife\Tests\PhpParser\LatteFilterProviderGenerator\Source\SomeHelper::someMethod($name);
     }
 }

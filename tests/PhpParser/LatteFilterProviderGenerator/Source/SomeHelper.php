@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Tests\PhpParser\LatteFilterProviderGenerator\Source;
+namespace Rector\SwissKnife\Tests\PhpParser\LatteFilterProviderGenerator\Source;
 
 final class SomeHelper
 {

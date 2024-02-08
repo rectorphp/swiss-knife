@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Testing\Command;
+namespace Rector\SwissKnife\Testing\Command;
 
 use Nette\Utils\FileSystem;
+use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
+use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
+use Rector\SwissKnife\ValueObject\Option;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\EasyCI\Testing\Printer\PHPUnitXmlPrinter;
-use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
-use Symplify\EasyCI\ValueObject\Option;
 use Webmozart\Assert\Assert;
 
 final class DetectUnitTestsCommand extends Command

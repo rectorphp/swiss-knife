@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Command;
+namespace Rector\SwissKnife\Command;
 
+use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\EasyCI\Finder\MultipleClassInOneFileFinder;
 
 final class FindMultiClassesCommand extends Command
 {

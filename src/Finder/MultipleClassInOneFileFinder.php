@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Finder;
+namespace Rector\SwissKnife\Finder;
 
-use Symplify\EasyCI\RobotLoader\PhpClassLoader;
+use Rector\SwissKnife\RobotLoader\PhpClassLoader;
 
 final readonly class MultipleClassInOneFileFinder
 {

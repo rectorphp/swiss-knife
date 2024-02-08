@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Tests\Git\ConflictResolver;
+namespace Rector\SwissKnife\Tests\Git\ConflictResolver;
 
 use Iterator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Symplify\EasyCI\Git\ConflictResolver;
+use Rector\SwissKnife\Git\ConflictResolver;
 
 final class ConflictResolverTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Tests\SomeBundle;
+namespace Rector\SwissKnife\Tests\SomeBundle;
 
 /**
  * To determine bundle prefix

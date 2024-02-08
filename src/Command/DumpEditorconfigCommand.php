@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Command;
+namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Symfony\Component\Console\Command\Command;

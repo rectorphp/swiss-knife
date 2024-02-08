@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder;
+namespace Rector\SwissKnife\Tests\Testing\UnitTestFilePathsFinder;
 
 use PHPUnit\Framework\TestCase;
-use Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
-use Symplify\EasyCI\Testing\UnitTestFilePathsFinder;
-use Symplify\EasyCI\Testing\UnitTestFilter;
-use Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\Fixture\OldSchoolTest;
-use Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\Fixture\RandomTest;
+use Rector\SwissKnife\Testing\Finder\TestCaseClassFinder;
+use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
+use Rector\SwissKnife\Testing\UnitTestFilter;
+use Rector\SwissKnife\Tests\Testing\UnitTestFilePathsFinder\Fixture\OldSchoolTest;
+use Rector\SwissKnife\Tests\Testing\UnitTestFilePathsFinder\Fixture\RandomTest;
 
 final class UnitTestFilePathsFinderTest extends TestCase
 {

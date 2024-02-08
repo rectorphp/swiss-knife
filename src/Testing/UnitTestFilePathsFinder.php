@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Testing;
+namespace Rector\SwissKnife\Testing;
 
-use Symplify\EasyCI\Testing\Finder\TestCaseClassFinder;
+use Rector\SwissKnife\Testing\Finder\TestCaseClassFinder;
 
 /**
- * @see \Symplify\EasyCI\Tests\Testing\UnitTestFilePathsFinder\UnitTestFilePathsFinderTest
+ * @see \Rector\SwissKnife\Tests\Testing\UnitTestFilePathsFinder\UnitTestFilePathsFinderTest
  */
 final readonly class UnitTestFilePathsFinder
 {

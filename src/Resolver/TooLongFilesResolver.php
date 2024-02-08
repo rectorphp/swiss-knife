@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Resolver;
+namespace Rector\SwissKnife\Resolver;
 
 use Symfony\Component\Finder\SplFileInfo;
 

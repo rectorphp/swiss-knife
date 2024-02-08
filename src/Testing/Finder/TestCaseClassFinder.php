@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\EasyCI\Testing\Finder;
+namespace Rector\SwissKnife\Testing\Finder;
 
 use Nette\Loaders\RobotLoader;
 
