@@ -34,7 +34,7 @@ jobs:
 
                     -
                         name: 'Check Commented Code'
-                        run: bin/easy-ci check-commented-code src tests --ansi
+                        run: bin/swiss-knife check-commented-code src tests --ansi
 
                     -
                         name: 'Check Active Classes'

@@ -20,4 +20,4 @@ jobs:
                     php-version: ${{ matrix.php_version }}
                     coverage: none
 
-            -   run: php bin/easy-ci list --ansi
+            -   run: php bin/swiss-knife list --ansi

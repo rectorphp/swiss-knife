@@ -6,6 +6,6 @@
         "php": ">=7.2"
     },
     "bin": [
-        "bin/easy-ci"
+        "bin/swiss-knife"
     ]
 }
