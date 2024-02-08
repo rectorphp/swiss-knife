@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\Command;
 
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\FilesFinder;
-use Rector\SwissKnife\ValueObject\Option;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -33,14 +32,14 @@ final class CheckCommentedCodeCommand extends Command
         $this->setName('check-commented-code');
 
         $this->addArgument(
-            Option::SOURCES,
+            'sources',
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
             'One or more paths to check'
         );
         $this->setDescription('Checks code for commented snippets');
 
         $this->addOption(
-            Option::LINE_LIMIT,
+            'line-limit',
             null,
             InputOption::VALUE_REQUIRED | InputOption::VALUE_OPTIONAL,
             'Amount of allowed comment lines in a row',
@@ -50,13 +49,13 @@ final class CheckCommentedCodeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $sources = (array) $input->getArgument(Option::SOURCES);
+        $sources = (array) $input->getArgument('sources');
         $phpFileInfos = FilesFinder::findPhpFiles($sources);
 
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
         $this->symfonyStyle->note($message);
 
-        $lineLimit = (int) $input->getOption(Option::LINE_LIMIT);
+        $lineLimit = (int) $input->getOption('line-limit');
 
         $commentedLinesByFilePaths = [];
         foreach ($phpFileInfos as $phpFileInfo) {

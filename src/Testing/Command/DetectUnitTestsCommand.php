@@ -7,7 +7,6 @@ namespace Rector\SwissKnife\Testing\Command;
 use Nette\Utils\FileSystem;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
 use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
-use Rector\SwissKnife\ValueObject\Option;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -37,7 +36,7 @@ final class DetectUnitTestsCommand extends Command
         $this->setDescription('Get list of tests in specific directory, that are considered "unit"');
 
         $this->addArgument(
-            Option::SOURCES,
+            'sources',
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
             'Path to directory with tests'
         );
@@ -45,7 +44,7 @@ final class DetectUnitTestsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $sources = (array) $input->getArgument(Option::SOURCES);
+        $sources = (array) $input->getArgument('sources');
         Assert::isArray($sources);
         Assert::allString($sources);
 
