@@ -1,70 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI202402\Rector\SwissKnife\DependencyInjection;
 
-namespace Rector\SwissKnife\DependencyInjection;
-
-use Illuminate\Container\Container;
-use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
-use Rector\SwissKnife\Command\CheckConflictsCommand;
-use Rector\SwissKnife\Command\DumpEditorconfigCommand;
-use Rector\SwissKnife\Command\FindMultiClassesCommand;
-use Rector\SwissKnife\Command\NamespaceToPSR4Command;
-use Rector\SwissKnife\Command\SpeedRunToolCommand;
-use Rector\SwissKnife\Command\ValidateFileLengthCommand;
-use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Style\SymfonyStyle;
-
+use EasyCI202402\Illuminate\Container\Container;
+use EasyCI202402\Rector\SwissKnife\Command\CheckCommentedCodeCommand;
+use EasyCI202402\Rector\SwissKnife\Command\CheckConflictsCommand;
+use EasyCI202402\Rector\SwissKnife\Command\DumpEditorconfigCommand;
+use EasyCI202402\Rector\SwissKnife\Command\FindMultiClassesCommand;
+use EasyCI202402\Rector\SwissKnife\Command\NamespaceToPSR4Command;
+use EasyCI202402\Rector\SwissKnife\Command\SpeedRunToolCommand;
+use EasyCI202402\Rector\SwissKnife\Command\ValidateFileLengthCommand;
+use EasyCI202402\Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
+use EasyCI202402\Symfony\Component\Console\Application;
+use EasyCI202402\Symfony\Component\Console\Input\ArrayInput;
+use EasyCI202402\Symfony\Component\Console\Output\ConsoleOutput;
+use EasyCI202402\Symfony\Component\Console\Style\SymfonyStyle;
 final class ContainerFactory
 {
     /**
      * @api used in bin and tests
      */
-    public function create(): Container
+    public function create() : Container
     {
         $container = new Container();
-
         // console
-        $container->singleton(Application::class, function (Container $container): Application {
+        $container->singleton(Application::class, function (Container $container) : Application {
             $application = new Application('Easy CI toolkit');
-
-            $commands = [
-                $container->make(CheckCommentedCodeCommand::class),
-                $container->make(CheckConflictsCommand::class),
-                $container->make(ValidateFileLengthCommand::class),
-                $container->make(DetectUnitTestsCommand::class),
-                $container->make(FindMultiClassesCommand::class),
-                $container->make(NamespaceToPSR4Command::class),
-                $container->make(DumpEditorconfigCommand::class),
-                $container->make(SpeedRunToolCommand::class),
-            ];
-
+            $commands = [$container->make(CheckCommentedCodeCommand::class), $container->make(CheckConflictsCommand::class), $container->make(ValidateFileLengthCommand::class), $container->make(DetectUnitTestsCommand::class), $container->make(FindMultiClassesCommand::class), $container->make(NamespaceToPSR4Command::class), $container->make(DumpEditorconfigCommand::class), $container->make(SpeedRunToolCommand::class)];
             $application->addCommands($commands);
-
             // remove basic command to make output clear
             $this->hideDefaultCommands($application);
-
             return $application;
         });
-
-        $container->singleton(
-            SymfonyStyle::class,
-            static fn (): SymfonyStyle => new SymfonyStyle(new ArrayInput([]), new ConsoleOutput())
-        );
-
+        $container->singleton(SymfonyStyle::class, static function () : SymfonyStyle {
+            return new SymfonyStyle(new ArrayInput([]), new ConsoleOutput());
+        });
         return $container;
     }
-
-    public function hideDefaultCommands(Application $application): void
+    public function hideDefaultCommands(Application $application) : void
     {
-        $application->get('list')
-            ->setHidden(true);
-        $application->get('completion')
-            ->setHidden(true);
-        $application->get('help')
-            ->setHidden(true);
+        $application->get('list')->setHidden(\true);
+        $application->get('completion')->setHidden(\true);
+        $application->get('help')->setHidden(\true);
     }
 }
