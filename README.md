@@ -84,4 +84,27 @@ This will update all files in your `/src` directory, to starts with `App\\` and 
 
 <br>
 
+### 4. Dependency tools speed testing
+
+Do you want to test speed of your dependency tools? E.g. if PHPStan or Rector got slower after upgrade?
+
+1. Prepare a script in `composer.json`
+
+```json
+{
+    "scripts": {
+        "phpstan": "vendor/bin/phpstan analyse src --level 8"
+    }
+}
+```
+
+2. Run past X versions and measure time and memory
+
+
+```bash
+vendor/bin/swiss-knife speed-run-tool phpstan/phpstan --script-name phpstan --run-count 5
+```
+
+<br>
+
 Happy coding!
