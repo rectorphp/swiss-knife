@@ -5,7 +5,6 @@
 Tools that make easy to setup CI.
 
 - Check git conflicts in CI
-- Check YAML configs for the same
 
 ## Install
 
