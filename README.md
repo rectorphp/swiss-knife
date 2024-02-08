@@ -25,7 +25,7 @@ Do you use Git? Then merge conflicts is not what you want in your code ever to s
 Add this command to CI to spot these:
 
 ```bash
-vendor/bin/easy-ci check-conflicts .
+vendor/bin/swiss-knife check-conflicts .
 ```
 
 *Note: The `/vendor` directory is excluded by default.*
@@ -45,8 +45,8 @@ Have you ever forgot commented code in your code?
 No more! Add this command to CI to spot these:
 
 ```bash
-vendor/bin/easy-ci check-commented-code <directory>
-vendor/bin/easy-ci check-commented-code packages --line-limit 5
+vendor/bin/swiss-knife check-commented-code <directory>
+vendor/bin/swiss-knife check-commented-code packages --line-limit 5
 ```
 
 <br>
@@ -58,7 +58,7 @@ vendor/bin/easy-ci check-commented-code packages --line-limit 5
 To make PSR-4 work properly, each class must be in its own file. This command makes it easy to spot multiple classes in single file:
 
 ```bash
-vendor/bin/easy-ci find-multi-classes src
+vendor/bin/swiss-knife find-multi-classes src
 ```
 
 <br>
@@ -68,7 +68,7 @@ vendor/bin/easy-ci find-multi-classes src
 Is your class in wrong namespace? Make it match your PSR-4 root:
 
 ```bash
-vendor/bin/easy-ci namespace-to-psr-4 src --namespace-root "App\\"
+vendor/bin/swiss-knife namespace-to-psr-4 src --namespace-root "App\\"
 ```
 
 This will update all files in your `/src` directory, to starts with `App\\` and follow full PSR-4 path:
