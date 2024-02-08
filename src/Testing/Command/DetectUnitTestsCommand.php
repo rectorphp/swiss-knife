@@ -57,7 +57,10 @@ They depend only on bare PHPUnit test case, but not on KernelTestCase. Move the 
             return self::SUCCESS;
         }
 
-        $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths, getcwd());
+        $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles(
+            $unitTestCasesClassesToFilePaths,
+            (string) getcwd()
+        );
 
         FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
 

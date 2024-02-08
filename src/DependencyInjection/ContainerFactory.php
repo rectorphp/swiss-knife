@@ -12,6 +12,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\EasyCI\Command\CheckCommentedCodeCommand;
 use Symplify\EasyCI\Command\CheckConflictsCommand;
 use Symplify\EasyCI\Command\FindMultiClassesCommand;
+use Symplify\EasyCI\Command\NamespaceToPSR4Command;
 use Symplify\EasyCI\Command\ValidateFileLengthCommand;
 use Symplify\EasyCI\Testing\Command\DetectUnitTestsCommand;
 
@@ -31,7 +32,7 @@ final class ContainerFactory
         );
 
         $container->singleton(Application::class, function (Container $container): Application {
-            $application = new Application();
+            $application = new Application('Easy CI toolkit');
 
             $commands = [
                 $container->make(CheckCommentedCodeCommand::class),
@@ -39,6 +40,7 @@ final class ContainerFactory
                 $container->make(ValidateFileLengthCommand::class),
                 $container->make(DetectUnitTestsCommand::class),
                 $container->make(FindMultiClassesCommand::class),
+                $container->make(NamespaceToPSR4Command::class),
             ];
 
             $application->addCommands($commands);

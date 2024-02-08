@@ -56,6 +56,37 @@ vendor/bin/easy-ci check-commented-code packages --line-limit 5
 
 <br>
 
+### 3. Find multiple classes in single file
+
+To make PSR-4 work properly, each class must be in its own file. This command makes it easy to spot multiple classes in single file:
+
+```bash
+vendor/bin/easy-ci find-multi-classes src
+```
+
+<br>
+
+### 4. Update Namespace to match PSR-4 Root
+
+Is your class in wrong namespace? Make it match your PSR-4 root:
+
+```bash
+vendor/bin/easy-ci namespace-to-psr-4 src --namespace-root "App\\"
+```
+
+This will update all files in your `/src` directory, to starts with `App\\` and follow full PSR-4 path:
+
+```diff
+ # file path: src/Repository/TalkRepository.php
+
+-namespace Model;
++namespace App\Repository;
+
+ ...
+```
+
+<br>
+
 ## Report Issues
 
 In case you are experiencing a bug or want to request a new feature head over to the [Symplify monorepo issue tracker](https://github.com/symplify/symplify/issues)
