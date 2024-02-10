@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\EntityClassResolver;
-use Rector\SwissKnife\FileSystem\PhpFilesFinder;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Symfony\Component\Console\Command\Command;
@@ -47,9 +49,9 @@ final class FinalizeClassesCommand extends Command
     {
         $paths = (array) $input->getArgument('paths');
 
-        $phpFileInfos = PhpFilesFinder::findPhpFileInfos($paths);
-
         $this->symfonyStyle->title('1. Detecting parent and entity classes');
+
+        $phpFileInfos = PhpFilesFinder::findPhpFileInfos($paths);
 
         // double to count for both parent and entity resolver
         $this->symfonyStyle->progressStart(2 * count($phpFileInfos));

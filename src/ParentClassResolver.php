@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Rector\SwissKnife;
 
 use PhpParser\NodeTraverser;
@@ -11,16 +10,6 @@ use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor
 use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class ParentClassResolver
-=======
-namespace TomasVotruba\Finalize;
-
-use PhpParser\NodeTraverser;
-use Symfony\Component\Finder\SplFileInfo;
-use TomasVotruba\Finalize\NodeVisitor\ParentClassNameCollectingNodeVisitor;
-use TomasVotruba\Finalize\PhpParser\CachedPhpParser;
-
-final class ParentClassResolver
->>>>>>> d1cceb0f6 (misc)
 {
     public function __construct(
         private CachedPhpParser $cachedPhpParser
@@ -31,11 +20,7 @@ final class ParentClassResolver
      * @param SplFileInfo[] $phpFileInfos
      * @return string[]
      */
-<<<<<<< HEAD
     public function resolve(array $phpFileInfos, callable $progressClosure): array
-=======
-    public function resolve(array $phpFileInfos, \Closure $progressClosure): array
->>>>>>> d1cceb0f6 (misc)
     {
         $parentClassNameCollectingNodeVisitor = new ParentClassNameCollectingNodeVisitor();
 
