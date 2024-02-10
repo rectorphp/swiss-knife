@@ -22,8 +22,8 @@ final class NeedForFinalizeNodeVisitor extends NodeVisitorAbstract
     }
 
     /**
-     * @param \PhpParser\Node[] $nodes
-     * @return \PhpParser\Node[]
+     * @param Node[] $nodes
+     * @return Node[]
      */
     public function beforeTraverse(array $nodes): array
     {

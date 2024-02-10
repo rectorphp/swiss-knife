@@ -11,9 +11,9 @@ use Webmozart\Assert\Assert;
 
 final class NeedsFinalizeAnalyzer
 {
-    private NodeTraverser $finalizingNodeTraverser;
+    private readonly NodeTraverser $finalizingNodeTraverser;
 
-    private NeedForFinalizeNodeVisitor $needForFinalizeNodeVisitor;
+    private readonly NeedForFinalizeNodeVisitor $needForFinalizeNodeVisitor;
 
     /**
      * @param string[] $excludedClasses

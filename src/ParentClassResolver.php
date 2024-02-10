@@ -9,7 +9,7 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class ParentClassResolver
+final readonly class ParentClassResolver
 {
     public function __construct(
         private CachedPhpParser $cachedPhpParser

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
+use Closure;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class EntityClassResolver
+final readonly class EntityClassResolver
 {
     public function __construct(
         private CachedPhpParser $cachedPhpParser
@@ -20,7 +21,7 @@ final class EntityClassResolver
      * @param SplFileInfo[] $phpFileInfos
      * @return string[]
      */
-    public function resolve(array $phpFileInfos, \Closure $progressClosure): array
+    public function resolve(array $phpFileInfos, Closure $progressClosure): array
     {
         $entityClassNameCollectingNodeVisitor = new EntityClassNameCollectingNodeVisitor();
 

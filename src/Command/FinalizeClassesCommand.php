@@ -54,7 +54,7 @@ final class FinalizeClassesCommand extends Command
         // double to count for both parent and entity resolver
         $this->symfonyStyle->progressStart(2 * count($phpFileInfos));
 
-        $progressClosure = function () {
+        $progressClosure = function (): void {
             $this->symfonyStyle->progressAdvance();
         };
 

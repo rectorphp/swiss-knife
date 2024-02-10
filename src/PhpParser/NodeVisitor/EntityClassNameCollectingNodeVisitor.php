@@ -47,9 +47,9 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         return $uniqueEntityClassNames;
     }
 
-    private function hasEntityDocBlock(Class_ $node): bool
+    private function hasEntityDocBlock(Class_ $class): bool
     {
-        $docComment = $node->getDocComment();
+        $docComment = $class->getDocComment();
         if ($docComment instanceof Doc) {
             // dummy check
             if (! str_contains($docComment->getText(), '@')) {
