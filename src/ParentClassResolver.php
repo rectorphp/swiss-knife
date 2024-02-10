@@ -20,7 +20,7 @@ final class ParentClassResolver
      * @param SplFileInfo[] $phpFileInfos
      * @return string[]
      */
-    public function resolve(array $phpFileInfos, \Closure $progressClosure): array
+    public function resolve(array $phpFileInfos, callable $progressClosure): array
     {
         $parentClassNameCollectingNodeVisitor = new ParentClassNameCollectingNodeVisitor();
 
