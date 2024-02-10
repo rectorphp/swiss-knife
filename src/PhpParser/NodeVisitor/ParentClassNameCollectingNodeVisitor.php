@@ -46,7 +46,7 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         );
 
         // remove obviously vendor names
-        $namespacedClassNames = array_filter($namespacedClassNames, static function (string $className) : bool {
+        $namespacedClassNames = array_filter($namespacedClassNames, static function (string $className): bool {
             if (str_contains($className, 'Symfony\\')) {
                 return false;
             }
