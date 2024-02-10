@@ -8,6 +8,7 @@ use Illuminate\Container\Container;
 use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
 use Rector\SwissKnife\Command\CheckConflictsCommand;
 use Rector\SwissKnife\Command\DumpEditorconfigCommand;
+use Rector\SwissKnife\Command\FinalizeClassesCommand;
 use Rector\SwissKnife\Command\FindMultiClassesCommand;
 use Rector\SwissKnife\Command\NamespaceToPSR4Command;
 use Rector\SwissKnife\Command\SpeedRunToolCommand;
@@ -40,6 +41,7 @@ final class ContainerFactory
                 $container->make(NamespaceToPSR4Command::class),
                 $container->make(DumpEditorconfigCommand::class),
                 $container->make(SpeedRunToolCommand::class),
+                $container->make(FinalizeClassesCommand::class),
             ];
 
             $application->addCommands($commands);
