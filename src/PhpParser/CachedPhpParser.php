@@ -1,50 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace EasyCI202402\Rector\SwissKnife\PhpParser;
 
-namespace Rector\SwissKnife\PhpParser;
-
-use Nette\Utils\FileSystem;
-use PhpParser\Node\Stmt;
-use PhpParser\NodeTraverser;
-use PhpParser\NodeVisitor\NameResolver;
-use PhpParser\Parser;
-
+use EasyCI202402\Nette\Utils\FileSystem;
+use EasyCI202402\PhpParser\Node\Stmt;
+use EasyCI202402\PhpParser\NodeTraverser;
+use EasyCI202402\PhpParser\NodeVisitor\NameResolver;
+use EasyCI202402\PhpParser\Parser;
 /**
  * Parse file just once
  */
 final class CachedPhpParser
 {
     /**
+     * @readonly
+     * @var \PhpParser\Parser
+     */
+    private $phpParser;
+    /**
      * @var array<string, Stmt[]>
      */
-    private array $cachedStmts = [];
-
-    public function __construct(
-        private readonly Parser $phpParser
-    ) {
+    private $cachedStmts = [];
+    public function __construct(Parser $phpParser)
+    {
+        $this->phpParser = $phpParser;
     }
-
     /**
      * @return Stmt[]
      */
-    public function parseFile(string $filePath): array
+    public function parseFile(string $filePath) : array
     {
         if (isset($this->cachedStmts[$filePath])) {
             return $this->cachedStmts[$filePath];
         }
-
         $fileContents = FileSystem::read($filePath);
         $stmts = $this->phpParser->parse($fileContents);
-
-        if (is_array($stmts)) {
+        if (\is_array($stmts)) {
             $nodeTraverser = new NodeTraverser();
             $nodeTraverser->addVisitor(new NameResolver());
             $nodeTraverser->traverse($stmts);
         }
-
         $this->cachedStmts[$filePath] = $stmts ?? [];
-
         return $stmts ?? [];
     }
 }
