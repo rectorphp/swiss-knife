@@ -84,7 +84,17 @@ This will update all files in your `/src` directory, to starts with `App\\` and 
 
 <br>
 
-### 4. Dependency tools speed testing
+### 4. Finalize classes without children
+
+Do you want to finalize all classes that don't have children?
+
+```bash
+vendor/bin/swiss-knife finalize-classes src
+```
+
+<br>
+
+### 5. Dependency tools speed testing
 
 Do you want to test speed of your dependency tools? E.g. if PHPStan or Rector got slower after upgrade?
 

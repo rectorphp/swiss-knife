@@ -27,6 +27,7 @@ final class NeedForFinalizeNodeVisitor extends NodeVisitorAbstract
      */
     public function beforeTraverse(array $nodes): array
     {
+        // reset
         $this->isNeeded = false;
 
         return $nodes;

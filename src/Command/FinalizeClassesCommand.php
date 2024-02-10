@@ -4,19 +4,18 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use PhpParser\NodeTraverser;
+use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\EntityClassResolver;
 use Rector\SwissKnife\FileSystem\PhpFilesFinder;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
-use Rector\SwissKnife\PhpParser\NodeVisitor\NeedForFinalizeNodeVisitor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class FinalizeCommand extends Command
+final class FinalizeClassesCommand extends Command
 {
     /**
      * @see https://regex101.com/r/Q5Nfbo/1
@@ -34,9 +33,9 @@ final class FinalizeCommand extends Command
 
     protected function configure(): void
     {
-        $this->setName('finalize');
+        $this->setName('finalize-classes');
 
-        $this->setDescription('Generate class family tree and make all safe classes final');
+        $this->setDescription('Finalize classes without children');
 
         $this->addArgument('paths', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Directories to finalize');
     }
@@ -74,22 +73,14 @@ final class FinalizeCommand extends Command
 
         $this->symfonyStyle->title('2. Finalizing safe classes');
 
-        // @todo create a simple service returning bool
-        $finalizingNodeTraverser = new NodeTraverser();
-        $needForFinalizeNodeVisitor = new NeedForFinalizeNodeVisitor(
-            array_merge($parentClassNames, $entityClassNames)
-        );
-
-        $finalizingNodeTraverser->addVisitor($needForFinalizeNodeVisitor);
+        $excludedClasses = array_merge($parentClassNames, $entityClassNames);
+        $needsFinalizeAnalyzer = new NeedsFinalizeAnalyzer($excludedClasses, $this->cachedPhpParser);
 
         $finalizedFilePaths = [];
 
         foreach ($phpFileInfos as $phpFileInfo) {
             // should be file be finalize, is not and is not excluded?
-            $stmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-            $finalizingNodeTraverser->traverse($stmts);
-
-            if (! $needForFinalizeNodeVisitor->isNeeded()) {
+            if (! $needsFinalizeAnalyzer->isNeeded($phpFileInfo->getRealPath())) {
                 continue;
             }
 
