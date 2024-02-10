@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Rector\SwissKnife\PhpParser;
+=======
+namespace TomasVotruba\Finalize\PhpParser;
+>>>>>>> d1cceb0f6 (misc)
 
 use Nette\Utils\FileSystem;
 use PhpParser\Node\Stmt;

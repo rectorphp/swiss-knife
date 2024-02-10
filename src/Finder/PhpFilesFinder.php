@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Rector\SwissKnife\FileSystem;
+=======
+namespace TomasVotruba\Finalize\FileSystem;
+>>>>>>> d1cceb0f6 (misc)
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;

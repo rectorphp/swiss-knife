@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Rector\SwissKnife;
 
 use Closure;
@@ -11,6 +12,16 @@ use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor
 use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class EntityClassResolver
+=======
+namespace TomasVotruba\Finalize;
+
+use PhpParser\NodeTraverser;
+use Symfony\Component\Finder\SplFileInfo;
+use TomasVotruba\Finalize\NodeVisitor\EntityClassNameCollectingNodeVisitor;
+use TomasVotruba\Finalize\PhpParser\CachedPhpParser;
+
+final class EntityClassResolver
+>>>>>>> d1cceb0f6 (misc)
 {
     public function __construct(
         private CachedPhpParser $cachedPhpParser
@@ -21,7 +32,11 @@ final readonly class EntityClassResolver
      * @param SplFileInfo[] $phpFileInfos
      * @return string[]
      */
+<<<<<<< HEAD
     public function resolve(array $phpFileInfos, Closure $progressClosure): array
+=======
+    public function resolve(array $phpFileInfos, \Closure $progressClosure): array
+>>>>>>> d1cceb0f6 (misc)
     {
         $entityClassNameCollectingNodeVisitor = new EntityClassNameCollectingNodeVisitor();
 
