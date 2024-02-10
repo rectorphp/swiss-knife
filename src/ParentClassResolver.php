@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TomasVotruba\Finalize;
+namespace Rector\SwissKnife;
 
 use PhpParser\NodeTraverser;
+use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
-use TomasVotruba\Finalize\NodeVisitor\ParentClassNameCollectingNodeVisitor;
-use TomasVotruba\Finalize\PhpParser\CachedPhpParser;
 
 final class ParentClassResolver
 {

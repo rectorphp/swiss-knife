@@ -5,16 +5,16 @@ namespace Rector\SwissKnife\Command;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use PhpParser\NodeTraverser;
+use Rector\SwissKnife\EntityClassResolver;
+use Rector\SwissKnife\FileSystem\PhpFilesFinder;
+use Rector\SwissKnife\ParentClassResolver;
+use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeVisitor\NeedForFinalizeNodeVisitor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TomasVotruba\Finalize\EntityClassResolver;
-use TomasVotruba\Finalize\FileSystem\PhpFilesFinder;
-use TomasVotruba\Finalize\NodeVisitor\NeedForFinalizeNodeVisitor;
-use TomasVotruba\Finalize\ParentClassResolver;
-use TomasVotruba\Finalize\PhpParser\CachedPhpParser;
 
 final class FinalizeCommand extends Command
 {
