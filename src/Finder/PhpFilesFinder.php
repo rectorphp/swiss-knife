@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\FileSystem;
+namespace Rector\SwissKnife\Finder;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\DependencyInjection;
 
 use Illuminate\Container\Container;
+use PhpParser\Parser;
+use PhpParser\ParserFactory;
 use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
 use Rector\SwissKnife\Command\CheckConflictsCommand;
 use Rector\SwissKnife\Command\DumpEditorconfigCommand;
@@ -50,6 +52,12 @@ final class ContainerFactory
             $this->hideDefaultCommands($application);
 
             return $application;
+        });
+
+        // parser
+        $container->singleton(Parser::class, static function (): Parser {
+            $phpParserFactory = new ParserFactory();
+            return $phpParserFactory->create(ParserFactory::PREFER_PHP7);
         });
 
         $container->singleton(

@@ -42,7 +42,7 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         // remove native classes
         $namespacedClassNames = array_filter(
             $uniqueParentClassNames,
-            static fn(string $parentClassName): bool => str_contains($parentClassName, '\\')
+            static fn (string $parentClassName): bool => str_contains($parentClassName, '\\')
         );
 
         // remove obviously vendor names
@@ -50,11 +50,10 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             if (str_contains($className, 'Symfony\\')) {
                 return false;
             }
-            
             if (str_contains($className, 'PHPStan\\')) {
                 return false;
             }
-            return !str_contains($className, 'PhpParser\\');
+            return ! str_contains($className, 'PhpParser\\');
         });
 
         return array_values($namespacedClassNames);
