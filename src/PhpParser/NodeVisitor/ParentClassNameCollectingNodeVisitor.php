@@ -50,9 +50,11 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             if (str_contains($className, 'Symfony\\')) {
                 return false;
             }
+
             if (str_contains($className, 'PHPStan\\')) {
                 return false;
             }
+
             return ! str_contains($className, 'PhpParser\\');
         });
 
