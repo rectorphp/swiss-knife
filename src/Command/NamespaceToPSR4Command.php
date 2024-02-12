@@ -46,7 +46,7 @@ final class NamespaceToPSR4Command extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $path = (string) $input->getArgument('path');
-        $namespaceRoot = (string) $input->getArgument('namespace-root');
+        $namespaceRoot = (string) $input->getOption('namespace-root');
 
         $fileInfos = $this->findFilesInPath($path);
 
