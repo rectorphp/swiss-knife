@@ -86,7 +86,7 @@ final class FinalizeClassesCommand extends Command
                 continue;
             }
 
-            $this->symfonyStyle->writeln(sprintf('File "%s" was finalized', $phpFileInfo->getRelativePath()));
+            $this->symfonyStyle->writeln(sprintf('File "%s" was finalized', $phpFileInfo->getRelativePathname()));
 
             $finalizedContents = Strings::replace(
                 $phpFileInfo->getContents(),
@@ -103,7 +103,6 @@ final class FinalizeClassesCommand extends Command
             return self::SUCCESS;
         }
 
-        $this->symfonyStyle->listing($finalizedFilePaths);
         $this->symfonyStyle->success(sprintf('%d classes were finalized', count($finalizedFilePaths)));
 
         return Command::SUCCESS;
