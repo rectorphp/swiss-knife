@@ -14,6 +14,7 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -40,6 +41,12 @@ final class FinalizeClassesCommand extends Command
         $this->setDescription('Finalize classes without children');
 
         $this->addArgument('paths', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Directories to finalize');
+        $this->addOption(
+            'dry-run',
+            null,
+            InputOption::VALUE_NONE,
+            'Do no change anything, only list classes about to be finalized'
+        );
     }
 
     /**
@@ -48,6 +55,7 @@ final class FinalizeClassesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $paths = (array) $input->getArgument('paths');
+        $isDryRun = (bool) $input->getOption('dry-run');
 
         $this->symfonyStyle->title('1. Detecting parent and entity classes');
 
@@ -86,7 +94,11 @@ final class FinalizeClassesCommand extends Command
                 continue;
             }
 
-            $this->symfonyStyle->writeln(sprintf('File "%s" was finalized', $phpFileInfo->getRelativePathname()));
+            $this->symfonyStyle->writeln(sprintf(
+                'File "%s" %s finalized',
+                $phpFileInfo->getRelativePathname(),
+                $isDryRun ? 'would be' : 'was'
+            ));
 
             $finalizedContents = Strings::replace(
                 $phpFileInfo->getContents(),
@@ -95,15 +107,22 @@ final class FinalizeClassesCommand extends Command
             );
 
             $finalizedFilePaths[] = $phpFileInfo->getRelativePath();
-            FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents);
+
+            if ($isDryRun === false) {
+                FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents);
+            }
         }
 
         if ($finalizedFilePaths === []) {
-            $this->symfonyStyle->success('Nothign to finalize');
+            $this->symfonyStyle->success('Nothing to finalize');
             return self::SUCCESS;
         }
 
-        $this->symfonyStyle->success(sprintf('%d classes were finalized', count($finalizedFilePaths)));
+        $this->symfonyStyle->success(sprintf(
+            '%d classes %s finalized',
+            count($finalizedFilePaths),
+            $isDryRun ? 'would be' : 'were'
+        ));
 
         return Command::SUCCESS;
     }
