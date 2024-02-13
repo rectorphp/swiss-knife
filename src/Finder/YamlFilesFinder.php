@@ -8,7 +8,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
-final class PhpFilesFinder
+final class YamlFilesFinder
 {
     /**
      * @param string[] $paths
@@ -22,7 +22,8 @@ final class PhpFilesFinder
         $finder = Finder::create()
             ->files()
             ->in($paths)
-            ->name('*.php');
+            ->name('*.yml')
+            ->name('*.yaml');
 
         return iterator_to_array($finder);
     }

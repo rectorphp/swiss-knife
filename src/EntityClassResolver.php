@@ -4,36 +4,56 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
-use Closure;
 use PhpParser\NodeTraverser;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
+use Rector\SwissKnife\Finder\YamlFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
+use Webmozart\Assert\Assert;
 
 /**
  * @see \Rector\SwissKnife\Tests\EntityClassResolver\EntityClassResolverTest
  */
 final readonly class EntityClassResolver
 {
+    /**
+     * @var string
+     * @see https://regex101.com/r/YFbH1x/1
+     */
+    private const YAML_ENTITY_CLASS_NAME_REGEX = '#^(?<class_name>[\w+\\\\]+)\:\n#m';
+
     public function __construct(
         private CachedPhpParser $cachedPhpParser
     ) {
     }
 
     /**
-     * @param SplFileInfo[] $phpFileInfos
+     * @param string[] $paths
      * @return string[]
      */
-    public function resolve(array $phpFileInfos, Closure $progressClosure): array
+    public function resolve(array $paths, ?callable $progressClosure = null): array
     {
+        Assert::allString($paths);
+        Assert::allFileExists($paths);
+
+        // 1. resolve from yaml annotations
+        $yamlEntityClassNames = $this->resolveYamlEntityClassNames($paths);
+
+        // 2. resolve from direct class names with namespace parts, doctrine annotation or docblock
+        $phpFileInfos = PhpFilesFinder::find($paths);
         $entityClassNameCollectingNodeVisitor = new EntityClassNameCollectingNodeVisitor();
 
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($entityClassNameCollectingNodeVisitor);
-
         $this->traverseFileInfos($phpFileInfos, $nodeTraverser, $progressClosure);
 
-        return $entityClassNameCollectingNodeVisitor->getEntityClassNames();
+        $markedEntityClassNames = $entityClassNameCollectingNodeVisitor->getEntityClassNames();
+
+        $entityClassNames = array_merge($yamlEntityClassNames, $markedEntityClassNames);
+        sort($entityClassNames);
+
+        return array_unique($entityClassNames);
     }
 
     /**
@@ -42,13 +62,38 @@ final readonly class EntityClassResolver
     private function traverseFileInfos(
         array $phpFileInfos,
         NodeTraverser $nodeTraverser,
-        callable $progressClosure
+        ?callable $progressClosure = null
     ): void {
         foreach ($phpFileInfos as $phpFileInfo) {
             $stmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
 
             $nodeTraverser->traverse($stmts);
-            $progressClosure();
+
+            if (is_callable($progressClosure)) {
+                $progressClosure();
+            }
         }
+    }
+
+    /**
+     * @param string[] $paths
+     * @return string[]
+     */
+    private function resolveYamlEntityClassNames(array $paths): array
+    {
+        $yamlFileInfos = YamlFilesFinder::find($paths);
+
+        $yamlEntityClassNames = [];
+
+        /** @var SplFileInfo $yamlFileInfo */
+        foreach ($yamlFileInfos as $yamlFileInfo) {
+            $matches = \Nette\Utils\Strings::matchAll($yamlFileInfo->getContents(), self::YAML_ENTITY_CLASS_NAME_REGEX);
+
+            foreach ($matches as $match) {
+                $yamlEntityClassNames[] = $match['class_name'];
+            }
+        }
+
+        return $yamlEntityClassNames;
     }
 }
