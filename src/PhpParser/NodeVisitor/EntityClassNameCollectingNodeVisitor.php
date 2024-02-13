@@ -28,6 +28,12 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
+        // dummy check for entity namespace
+        if (array_intersect(['Entity', 'Entities'], $node->namespacedName->getParts())) {
+            $this->entityClassNames[] = $node->namespacedName->toString();
+            return null;
+        }
+
         if ($this->hasEntityDocBlock($node) || $this->hasEntityAttribute($node)) {
             $this->entityClassNames[] = $node->namespacedName->toString();
             return null;

@@ -10,6 +10,9 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 
+/**
+ * @see \Rector\SwissKnife\Tests\EntityClassResolver\EntityClassResolverTest
+ */
 final readonly class EntityClassResolver
 {
     public function __construct(
