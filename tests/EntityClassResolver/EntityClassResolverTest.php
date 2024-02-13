@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Tests\EntityClassResolver;
 
 use Rector\SwissKnife\EntityClassResolver;
-use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\Tests\EntityClassResolver\Fixture\Entity\SomeEntity;
 
@@ -22,10 +21,12 @@ final class EntityClassResolverTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fileInfos = PhpFilesFinder::findPhpFileInfos([__DIR__ . '/Fixture']);
-        $entityClasses = $this->entityClassResolver->resolve($fileInfos, function () {
+        $entityClasses = $this->entityClassResolver->resolve([__DIR__ . '/Fixture'], function () {
         });
 
-        $this->assertSame([SomeEntity::class], $entityClasses);
+        $this->assertSame(
+            ['App\Some\Entity\Conference', 'App\Some\Entity\Project', 'App\Some\Entity\Talk', SomeEntity::class],
+            $entityClasses
+        );
     }
 }

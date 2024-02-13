@@ -59,7 +59,7 @@ final class FinalizeClassesCommand extends Command
 
         $this->symfonyStyle->title('1. Detecting parent and entity classes');
 
-        $phpFileInfos = PhpFilesFinder::findPhpFileInfos($paths);
+        $phpFileInfos = PhpFilesFinder::find($paths);
 
         // double to count for both parent and entity resolver
         $this->symfonyStyle->progressStart(2 * count($phpFileInfos));
@@ -69,7 +69,7 @@ final class FinalizeClassesCommand extends Command
         };
 
         $parentClassNames = $this->parentClassResolver->resolve($phpFileInfos, $progressClosure);
-        $entityClassNames = $this->entityClassResolver->resolve($phpFileInfos, $progressClosure);
+        $entityClassNames = $this->entityClassResolver->resolve($paths, $progressClosure);
 
         $this->symfonyStyle->progressFinish();
 
