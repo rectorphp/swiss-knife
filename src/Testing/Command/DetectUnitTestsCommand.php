@@ -56,8 +56,7 @@ final class DetectUnitTestsCommand extends Command
         }
 
         $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles(
-            $unitTestCasesClassesToFilePaths,
-            (string) getcwd()
+            $unitTestCasesClassesToFilePaths
         );
 
         FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);

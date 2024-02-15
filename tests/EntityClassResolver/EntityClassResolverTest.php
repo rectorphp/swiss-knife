@@ -21,7 +21,7 @@ final class EntityClassResolverTest extends AbstractTestCase
 
     public function test(): void
     {
-        $entityClasses = $this->entityClassResolver->resolve([__DIR__ . '/Fixture'], function () {
+        $entityClasses = $this->entityClassResolver->resolve([__DIR__ . '/Fixture'], static function () : void {
         });
 
         $this->assertSame(
