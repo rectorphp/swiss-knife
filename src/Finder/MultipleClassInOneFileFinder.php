@@ -15,11 +15,12 @@ final readonly class MultipleClassInOneFileFinder
 
     /**
      * @param string[] $directories
+     * @param string[] $excludedPaths
      * @return array<string, string[]>
      */
-    public function findInDirectories(array $directories): array
+    public function findInDirectories(array $directories, array $excludedPaths): array
     {
-        $fileByClasses = $this->phpClassLoader->load($directories);
+        $fileByClasses = $this->phpClassLoader->load($directories, $excludedPaths);
 
         $classesByFile = [];
         foreach ($fileByClasses as $class => $filePath) {

@@ -10,6 +10,7 @@ use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -33,6 +34,13 @@ final class FindMultiClassesCommand extends Command
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
             'Path to source to analyse'
         );
+
+        $this->addOption(
+            'exclude-path',
+            null,
+            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
+            'Path to exclude'
+        );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -40,9 +48,11 @@ final class FindMultiClassesCommand extends Command
         /** @var string[] $source */
         $source = $input->getArgument('sources');
 
-        $phpFileInfos = PhpFilesFinder::find($source);
+        $excludedPaths = (array) $input->getOption('exclude-path');
 
-        $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($source);
+        $phpFileInfos = PhpFilesFinder::find($source, $excludedPaths);
+
+        $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($source, $excludedPaths);
         if ($multipleClassesByFile === []) {
             $this->symfonyStyle->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
 
