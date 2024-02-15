@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Command;
 
 use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,9 +39,11 @@ final class FindMultiClassesCommand extends Command
         /** @var string[] $source */
         $source = $input->getArgument('sources');
 
+        $phpFileInfos = PhpFilesFinder::find($source);
+
         $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($source);
         if ($multipleClassesByFile === []) {
-            $this->symfonyStyle->success('No files with 2+ classes found');
+            $this->symfonyStyle->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
 
             return self::SUCCESS;
         }
