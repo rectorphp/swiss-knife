@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Command\Command;
@@ -50,7 +51,7 @@ final class FindMultiClassesCommand extends Command
 
         foreach ($multipleClassesByFile as $filePath => $classes) {
             // get relative path to getcwd()
-            $relativeFilePath = str_replace(getcwd() . '/', '', $filePath);
+            $relativeFilePath = PathHelper::relativeToCwd($filePath);
 
             $message = sprintf('File "%s" contains %d classes', $relativeFilePath, count($classes));
             $this->symfonyStyle->section($message);

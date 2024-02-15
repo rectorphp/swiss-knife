@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
+use Nette\Utils\Strings;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Finder\YamlFilesFinder;
@@ -87,7 +88,7 @@ final readonly class EntityClassResolver
 
         /** @var SplFileInfo $yamlFileInfo */
         foreach ($yamlFileInfos as $yamlFileInfo) {
-            $matches = \Nette\Utils\Strings::matchAll($yamlFileInfo->getContents(), self::YAML_ENTITY_CLASS_NAME_REGEX);
+            $matches = Strings::matchAll($yamlFileInfo->getContents(), self::YAML_ENTITY_CLASS_NAME_REGEX);
 
             foreach ($matches as $match) {
                 $yamlEntityClassNames[] = $match['class_name'];

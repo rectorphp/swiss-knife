@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Testing\Printer;
 
-use Nette\Utils\Strings;
+use Rector\SwissKnife\FileSystem\PathHelper;
 
 final class PHPUnitXmlPrinter
 {
@@ -13,14 +13,11 @@ final class PHPUnitXmlPrinter
      *
      * @param string[] $filePaths
      */
-    public function printFiles(array $filePaths, string $rootDirectory): string
+    public function printFiles(array $filePaths): string
     {
-        $rootDirectory = realpath($rootDirectory);
-
         $fileContents = '';
         foreach ($filePaths as $filePath) {
-            $relativeFilePath = Strings::after($filePath, $rootDirectory . '/');
-
+            $relativeFilePath = PathHelper::relativeToCwd($filePath);
             $fileContents .= '<file>' . $relativeFilePath . '</file>' . PHP_EOL;
         }
 

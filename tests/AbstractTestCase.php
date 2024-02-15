@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests;
 
+use Illuminate\Container\Container;
 use PHPUnit\Framework\TestCase;
 use Rector\SwissKnife\DependencyInjection\ContainerFactory;
 
 abstract class AbstractTestCase extends TestCase
 {
-    private \Illuminate\Container\Container $container;
+    private Container $container;
 
     protected function setUp(): void
     {
