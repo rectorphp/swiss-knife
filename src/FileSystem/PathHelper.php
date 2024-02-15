@@ -16,6 +16,6 @@ final class PathHelper
         $filePath = self::normalize($filePath);
 
         // get relative path from getcwd()
-        return str_replace(self::normalize(getcwd()) . '/', '', $filePath);
+        return str_replace(self::normalize((string) getcwd()) . '/', '', $filePath);
     }
 }
