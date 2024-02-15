@@ -2,6 +2,6 @@
 
 namespace Rector\SwissKnife\Tests\EntityClassResolver\Fixture;
 
-class SomeClass
+final class SomeClass
 {
 }

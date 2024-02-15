@@ -8,6 +8,7 @@ use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\EntityClassResolver;
+use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
@@ -94,19 +95,13 @@ final class FinalizeClassesCommand extends Command
                 continue;
             }
 
-            $this->symfonyStyle->writeln(sprintf(
-                'File "%s" %s finalized',
-                $phpFileInfo->getRelativePathname(),
-                $isDryRun ? 'would be' : 'was'
-            ));
-
             $finalizedContents = Strings::replace(
                 $phpFileInfo->getContents(),
                 self::NEWLINE_CLASS_START_REGEX,
                 'final class '
             );
 
-            $finalizedFilePaths[] = $phpFileInfo->getRelativePath();
+            $finalizedFilePaths[] = PathHelper::relativeToCwd($phpFileInfo->getRealPath());
 
             if ($isDryRun === false) {
                 FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents);
@@ -117,6 +112,8 @@ final class FinalizeClassesCommand extends Command
             $this->symfonyStyle->success('Nothing to finalize');
             return self::SUCCESS;
         }
+
+        $this->symfonyStyle->listing($finalizedFilePaths);
 
         $this->symfonyStyle->success(sprintf(
             '%d classes %s finalized',
