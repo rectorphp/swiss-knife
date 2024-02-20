@@ -1,51 +1,36 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\Finder;
 
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
-
+use SwissKnife202402\Symfony\Component\Finder\Finder;
+use SwissKnife202402\Symfony\Component\Finder\SplFileInfo;
 final class FilesFinder
 {
     /**
      * @param string[] $sources
      * @return SplFileInfo[]
      */
-    public static function find(array $sources): array
+    public static function find(array $sources) : array
     {
         $paths = [];
         foreach ($sources as $source) {
-            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
+            $paths[] = \getcwd() . \DIRECTORY_SEPARATOR . $source;
         }
-
-        $finder = Finder::create()
-            ->files()
-            ->in($paths)
-            ->sortByName();
-
-        return iterator_to_array($finder->getIterator());
+        $finder = Finder::create()->files()->in($paths)->sortByName();
+        return \iterator_to_array($finder->getIterator());
     }
-
     /**
      * @param string[] $sources
      * @return SplFileInfo[]
      */
-    public static function findPhpFiles(array $sources): array
+    public static function findPhpFiles(array $sources) : array
     {
         $paths = [];
         foreach ($sources as $source) {
-            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
+            $paths[] = \getcwd() . \DIRECTORY_SEPARATOR . $source;
         }
-
-        $finder = Finder::create()
-            ->files()
-            ->in($paths)
-            ->name('*.php')
-            ->notPath('vendor')
-            ->sortByName();
-
-        return iterator_to_array($finder->getIterator());
+        $finder = Finder::create()->files()->in($paths)->name('*.php')->notPath('vendor')->sortByName();
+        return \iterator_to_array($finder->getIterator());
     }
 }
