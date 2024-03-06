@@ -10,15 +10,14 @@
         "illuminate/container": "^10.43",
         "nette/robot-loader": "^3.4",
         "nette/utils": "^3.2",
-        "phpstan/phpstan": "^1.10.53",
-        "symfony/console": "^6.3",
-        "symfony/finder": "^7.0",
-        "symfony/process": "^7.0",
-        "symfony/stopwatch": "^7.0",
-        "webmozart/assert": "^1.11",
-        "nikic/php-parser": "^4.18"
+        "nikic/php-parser": "^4.18",
+        "symfony/console": "^6.4",
+        "symfony/finder": "^6.4",
+        "webmozart/assert": "^1.11"
     },
     "require-dev": {
+        "icanhazstring/composer-unused": "^0.8.11",
+        "composer-unused/symbol-parser": "0.2.1",
         "phpunit/phpunit": "^10.5",
         "rector/rector": "^1.0",
         "symplify/easy-coding-standard": "^12.1",

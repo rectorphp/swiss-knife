@@ -28,13 +28,12 @@ final class PhpFilesFinder
             ->in($paths)
             ->name('*.php')
             // exclude paths, as notPaths() does no work
-            ->filter(function (SplFileInfo $splFileInfo) use ($excludedPaths): bool {
+            ->filter(static function (SplFileInfo $splFileInfo) use ($excludedPaths) : bool {
                 foreach ($excludedPaths as $excludedPath) {
                     if (str_contains($splFileInfo->getRealPath(), $excludedPath)) {
                         return false;
                     }
                 }
-
                 return true;
             });
 

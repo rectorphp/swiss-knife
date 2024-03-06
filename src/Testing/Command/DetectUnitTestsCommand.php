@@ -55,9 +55,7 @@ final class DetectUnitTestsCommand extends Command
             return self::SUCCESS;
         }
 
-        $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles(
-            $unitTestCasesClassesToFilePaths
-        );
+        $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths);
 
         FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
 
