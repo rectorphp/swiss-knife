@@ -13,8 +13,6 @@
         "nikic/php-parser": "^4.18",
         "symfony/console": "^6.4",
         "symfony/finder": "^6.4",
-        "symfony/process": "^7.0",
-        "symfony/stopwatch": "^7.0",
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
