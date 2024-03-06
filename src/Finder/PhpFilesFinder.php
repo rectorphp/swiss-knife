@@ -34,6 +34,7 @@ final class PhpFilesFinder
                         return false;
                     }
                 }
+
                 return true;
             });
 
