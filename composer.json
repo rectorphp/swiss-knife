@@ -19,6 +19,7 @@
         "nikic/php-parser": "^4.18"
     },
     "require-dev": {
+        "icanhazstring/composer-unused": "^0.8.11",
         "phpunit/phpunit": "^10.5",
         "rector/rector": "^1.0",
         "symplify/easy-coding-standard": "^12.1",
