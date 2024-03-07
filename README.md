@@ -89,8 +89,16 @@ This will update all files in your `/src` directory, to starts with `App\\` and 
 Do you want to finalize all classes that don't have children?
 
 ```bash
-vendor/bin/swiss-knife finalize-classes src
+vendor/bin/swiss-knife finalize-classes src tests
 ```
+
+Do you use mocks but not [bypass final](https://tomasvotruba.com/blog/2019/03/28/how-to-mock-final-classes-in-phpunit) yet?
+
+```bash
+vendor/bin/swiss-knife finalize-classes src tests --skip-mocked
+```
+
+This will keep mocked classes non-final, so PHPUnit can extend them internally.
 
 <br>
 
