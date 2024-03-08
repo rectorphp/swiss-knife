@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser\NodeVisitor;
 
-use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node;
+use PhpParser\Node\Arg;
+use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
@@ -34,7 +35,10 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        $mockedClassArg = $node->getArgs()[0];
+        $mockedClassArg = $node->getArgs()[0] ?? null;
+        if (! $mockedClassArg instanceof Arg) {
+            return null;
+        }
 
         // get class name
         if ($mockedClassArg->value instanceof ClassConstFetch) {
