@@ -40,6 +40,7 @@ final class FinalizeClassesCommand extends Command
     protected function configure(): void
     {
         $this->setName('finalize-classes');
+        $this->setAliases(['finalise', 'finalise-classes']);
 
         $this->setDescription('Finalize classes without children');
 
