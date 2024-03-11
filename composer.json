@@ -17,7 +17,6 @@
     },
     "require-dev": {
         "icanhazstring/composer-unused": "^0.8.11",
-        "composer-unused/symbol-parser": "0.2.1",
         "phpunit/phpunit": "^10.5",
         "rector/rector": "^1.0",
         "symplify/easy-coding-standard": "^12.1",
