@@ -58,7 +58,9 @@ final class AnalyseCommand extends Command
         $alreadyRegistered = $this->filterAlreadyRegisteredServices($serviceClassNames, $namespaceToPaths);
 
         if ($alreadyRegistered !== []) {
-            $this->symfonyStyle->warning(sprintf('Found %d duplicate service registration', count($alreadyRegistered)));
+            $this->symfonyStyle->warning(
+                sprintf('1. Found %d duplicate service registration', count($alreadyRegistered))
+            );
 
             $this->symfonyStyle->listing($alreadyRegistered);
         }
