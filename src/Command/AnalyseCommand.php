@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TomasVotruba\Lemonade\Command;
 
-use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
 use Symfony\Component\Console\Command\Command;
@@ -12,7 +11,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TomasVotruba\Lemonade\FileSystem\PathHelper;
 use TomasVotruba\Lemonade\Finder\ConfigFilesFinder;
 use TomasVotruba\Lemonade\NodeFinder\ServiceMethodCallsFinder;
 use TomasVotruba\Lemonade\Resolver\BareRegisteredServicesResolver;
@@ -59,7 +57,10 @@ final class AnalyseCommand extends Command
 
         $servicesToFiles = $this->bareRegisteredServicesResolver->resolveNameToConfigFile($bareSetMethodCalls);
 
-        $alreadyRegisteredServicesToFile = $this->filterAlreadyRegisteredServicesToFile($servicesToFiles, $namespaceToPaths);
+        $alreadyRegisteredServicesToFile = $this->filterAlreadyRegisteredServicesToFile(
+            $servicesToFiles,
+            $namespaceToPaths
+        );
 
         if ($alreadyRegisteredServicesToFile !== []) {
             $this->symfonyStyle->warning(
@@ -67,7 +68,7 @@ final class AnalyseCommand extends Command
             );
 
             foreach ($alreadyRegisteredServicesToFile as $service => $file) {
-                $this->symfonyStyle->writeln(sprintf(' * %s in config file:',  $service));
+                $this->symfonyStyle->writeln(sprintf(' * %s in config file:', $service));
                 $this->symfonyStyle->write($file);
 
                 $this->symfonyStyle->newLine(2);
