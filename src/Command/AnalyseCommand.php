@@ -55,16 +55,7 @@ final class AnalyseCommand extends Command
         $this->symfonyStyle->listing($namespaceToPaths);
 
         $serviceClassNames = $this->resolveServiceClassNames($bareSetMethodCalls);
-
-        $alreadyRegistered = [];
-
-        foreach ($serviceClassNames as $serviceClassName) {
-            foreach ($namespaceToPaths as $namespaceToPath) {
-                if (str_starts_with($serviceClassName, $namespaceToPath)) {
-                    $alreadyRegistered[] = $serviceClassName;
-                }
-            }
-        }
+        $alreadyRegistered = $this->filterAlreadyRegisteredServices($serviceClassNames, $namespaceToPaths);
 
         if ($alreadyRegistered !== []) {
             $this->symfonyStyle->warning(sprintf('Found %d duplicate service registration', count($alreadyRegistered)));
@@ -122,5 +113,24 @@ final class AnalyseCommand extends Command
         }
 
         return $serviceClassNames;
+    }
+
+    /**
+     * @param string[] $serviceClassNames
+     * @param string[] $loadedNamespaces
+     * @return string[]
+     */
+    private function filterAlreadyRegisteredServices(array $serviceClassNames, array $loadedNamespaces): array
+    {
+        $alreadyRegistered = [];
+
+        foreach ($serviceClassNames as $serviceClassName) {
+            foreach ($loadedNamespaces as $loadedNamespace) {
+                if (str_starts_with($serviceClassName, $loadedNamespace)) {
+                    $alreadyRegistered[] = $serviceClassName;
+                }
+            }
+        }
+        return $alreadyRegistered;
     }
 }
