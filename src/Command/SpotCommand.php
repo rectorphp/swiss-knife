@@ -9,13 +9,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Finder\SplFileInfo;
 use TomasVotruba\Lemonade\Finder\ConfigFilesFinder;
 
 final class SpotCommand extends Command
 {
     public function __construct(
-        private readonly ConfigFilesFinder $configFilesFinder,
         private readonly SymfonyStyle $symfonyStyle,
     ) {
         parent::__construct();
