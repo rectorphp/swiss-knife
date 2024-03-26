@@ -6,6 +6,7 @@ namespace TomasVotruba\Lemonade\Command;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Scalar\String_;
 use PhpParser\NodeFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -50,8 +51,6 @@ final class AnalyseCommand extends Command
 
         $namespaceToPaths = $this->resolveLoadedNamespaces($loadMethodCalls);
 
-        sort($namespaceToPaths);
-
         $this->symfonyStyle->success(
             sprintf('Found %d bare "->set()" service registration calls', count($bareSetMethodCalls))
         );
@@ -59,20 +58,7 @@ final class AnalyseCommand extends Command
         $this->symfonyStyle->success(sprintf('Found %d loaded namespaces', count($namespaceToPaths)));
         $this->symfonyStyle->listing($namespaceToPaths);
 
-        $serviceClassNames = [];
-
-        foreach ($bareSetMethodCalls as $bareSetMethodCall) {
-            $serviceArg = $bareSetMethodCall->getArgs()[0];
-
-            if ($serviceArg->value instanceof Node\Expr\ClassConstFetch) {
-                $classConstFetch = $serviceArg->value;
-                if ($classConstFetch->class instanceof Node\Name) {
-                    $serviceClassNames[] = $classConstFetch->class->toString();
-                }
-            }
-        }
-
-        $foundDuplicateCount = 0;
+        $serviceClassNames = $this->resolveServiceClassNames($bareSetMethodCalls);
 
         $alreadyRegistered = [];
 
@@ -103,7 +89,7 @@ final class AnalyseCommand extends Command
 
         foreach ($loadMethodCalls as $loadMethodCall) {
             $loadedNamespaceArg = $loadMethodCall->getArgs()[0];
-            if (! $loadedNamespaceArg->value instanceof Node\Scalar\String_) {
+            if (! $loadedNamespaceArg->value instanceof String_) {
                 continue;
             }
 
@@ -111,6 +97,34 @@ final class AnalyseCommand extends Command
             $namespaceToPaths[] = $string->value;
         }
 
+        sort($namespaceToPaths);
+
         return $namespaceToPaths;
+    }
+
+    /**
+     * @param MethodCall[] $bareSetMethodCalls
+     * @return string[]
+     */
+    private function resolveServiceClassNames(array $bareSetMethodCalls): array
+    {
+        $serviceClassNames = [];
+
+        foreach ($bareSetMethodCalls as $bareSetMethodCall) {
+            $serviceArg = $bareSetMethodCall->getArgs()[0];
+
+            if (! $serviceArg->value instanceof Node\Expr\ClassConstFetch) {
+                continue;
+            }
+
+            $classConstFetch = $serviceArg->value;
+            if (! $classConstFetch->class instanceof Node\Name) {
+                continue;
+            }
+
+            $serviceClassNames[] = $classConstFetch->class->toString();
+        }
+
+        return $serviceClassNames;
     }
 }
