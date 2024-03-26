@@ -11,6 +11,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TomasVotruba\Lemonade\Command\AnalyseCommand;
 use TomasVotruba\Lemonade\Command\SpotCommand;
 
 final class ContainerFactory
@@ -25,13 +26,14 @@ final class ContainerFactory
         // console
         $container->singleton(Application::class, function (Container $container): Application {
             $application = new Application('Lemonade');
+            $this->hideDefaultCommands($application);
 
-            $commands = [$container->make(SpotCommand::class)];
+            $commands = [
+                $container->make(SpotCommand::class),
+                $container->make(AnalyseCommand::class),
+            ];
 
             $application->addCommands($commands);
-
-            // remove basic command to make output clear
-            $this->hideDefaultCommands($application);
 
             return $application;
         });
