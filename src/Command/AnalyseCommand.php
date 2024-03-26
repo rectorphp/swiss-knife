@@ -36,7 +36,7 @@ final class AnalyseCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $projectDirectory = (string) $input->getArgument('sources');
-        $projectDirectory = realpath($projectDirectory);
+        $projectDirectory = (string) realpath($projectDirectory);
 
         $serviceConfigFileInfos = ConfigFilesFinder::findServices($projectDirectory);
 
