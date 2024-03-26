@@ -10,4 +10,4 @@ parameters:
         - */Source/*
 
     ignoreErrors:
-        - '#Method TomasVotruba\\Lemonade\\Command\\AnalyseCommand::find(.*?) should return (.*?) but returns array<PhpParser\\(.*?)>#'
+        - '#Method TomasVotruba\\Lemonade\\NodeFinder\\ServiceMethodCallsFinder::find(.*?) should return (.*?) but returns array<PhpParser\\(.*?)>#'
