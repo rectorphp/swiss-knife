@@ -26,6 +26,7 @@ final class ConfigFilesFinder
             ->name('*.php')
             ->path(['config'])
             ->notName('routing*')
+            ->notName('bootstrap.php')
             ->notPath(['vendor','utils', 'var', 'packages'])
             ->sortByName();
 
