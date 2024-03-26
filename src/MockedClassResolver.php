@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace TomasVotruba\Lemonade;
 
 use PhpParser\NodeTraverser;
+use Symfony\Component\Finder\SplFileInfo;
 use TomasVotruba\Lemonade\Finder\PhpFilesFinder;
 use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
 use TomasVotruba\Lemonade\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
-use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 final readonly class MockedClassResolver
