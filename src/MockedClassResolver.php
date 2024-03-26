@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife;
+namespace TomasVotruba\Lemonade;
 
 use PhpParser\NodeTraverser;
-use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Rector\SwissKnife\PhpParser\CachedPhpParser;
-use Rector\SwissKnife\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
+use TomasVotruba\Lemonade\Finder\PhpFilesFinder;
+use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
+use TomasVotruba\Lemonade\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 

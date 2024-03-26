@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\Finder;
+namespace TomasVotruba\Lemonade\Finder;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class FilesFinder
+final class ConfigFilesFinder
 {
     /**
      * @param string[] $sources
@@ -23,27 +23,10 @@ final class FilesFinder
         $finder = Finder::create()
             ->files()
             ->in($paths)
-            ->sortByName();
-
-        return iterator_to_array($finder->getIterator());
-    }
-
-    /**
-     * @param string[] $sources
-     * @return SplFileInfo[]
-     */
-    public static function findPhpFiles(array $sources): array
-    {
-        $paths = [];
-        foreach ($sources as $source) {
-            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
-        }
-
-        $finder = Finder::create()
-            ->files()
-            ->in($paths)
             ->name('*.php')
-            ->notPath('vendor')
+            ->path(['config'])
+            ->notName('routing*')
+            ->notPath(['vendor','utils', 'var', 'packages'])
             ->sortByName();
 
         return iterator_to_array($finder->getIterator());

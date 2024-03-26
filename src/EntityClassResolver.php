@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife;
+namespace TomasVotruba\Lemonade;
 
 use Nette\Utils\Strings;
 use PhpParser\NodeTraverser;
-use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Rector\SwissKnife\Finder\YamlFilesFinder;
-use Rector\SwissKnife\PhpParser\CachedPhpParser;
-use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
+use TomasVotruba\Lemonade\Finder\PhpFilesFinder;
+use TomasVotruba\Lemonade\Finder\YamlFilesFinder;
+use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
+use TomasVotruba\Lemonade\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 /**
- * @see \Rector\SwissKnife\Tests\EntityClassResolver\EntityClassResolverTest
+ * @see \TomasVotruba\Lemonade\Tests\EntityClassResolver\EntityClassResolverTest
  */
 final readonly class EntityClassResolver
 {

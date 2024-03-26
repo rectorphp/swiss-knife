@@ -2,19 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\DependencyInjection;
+namespace TomasVotruba\Lemonade\DependencyInjection;
 
 use Illuminate\Container\Container;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
-use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
-use Rector\SwissKnife\Command\CheckConflictsCommand;
-use Rector\SwissKnife\Command\DumpEditorconfigCommand;
-use Rector\SwissKnife\Command\FinalizeClassesCommand;
-use Rector\SwissKnife\Command\FindMultiClassesCommand;
-use Rector\SwissKnife\Command\NamespaceToPSR4Command;
-use Rector\SwissKnife\Command\ValidateFileLengthCommand;
-use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
+use TomasVotruba\Lemonade\Command\SpotCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
@@ -31,17 +24,10 @@ final class ContainerFactory
 
         // console
         $container->singleton(Application::class, function (Container $container): Application {
-            $application = new Application('Easy CI toolkit');
+            $application = new Application('Lemonade');
 
             $commands = [
-                $container->make(CheckCommentedCodeCommand::class),
-                $container->make(CheckConflictsCommand::class),
-                $container->make(ValidateFileLengthCommand::class),
-                $container->make(DetectUnitTestsCommand::class),
-                $container->make(FindMultiClassesCommand::class),
-                $container->make(NamespaceToPSR4Command::class),
-                $container->make(DumpEditorconfigCommand::class),
-                $container->make(FinalizeClassesCommand::class),
+                $container->make(SpotCommand::class),
             ];
 
             $application->addCommands($commands);

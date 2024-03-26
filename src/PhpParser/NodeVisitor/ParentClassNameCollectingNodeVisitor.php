@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\PhpParser\NodeVisitor;
+namespace TomasVotruba\Lemonade\PhpParser\NodeVisitor;
 
 use PhpParser\Node;
 use PhpParser\Node\Name;

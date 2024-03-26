@@ -1,6 +1,6 @@
 # Swiss Knife for Upgrades
 
-[![Downloads total](https://img.shields.io/packagist/dt/rector/swiss-knife.svg?style=flat-square)](https://packagist.org/packages/rector/swiss-knife/stats)
+[![Downloads total](https://img.shields.io/packagist/dt/tomasvotruba/lemonade.svg?style=flat-square)](https://packagist.org/packages/tomasvotruba/lemonade/stats)
 
 Swiss knife in pocket of every upgrade architect!
 
@@ -9,7 +9,7 @@ Swiss knife in pocket of every upgrade architect!
 ## Install
 
 ```bash
-composer require rector/swiss-knife --dev
+composer require tomasvotruba/lemonade --dev
 ```
 
 ## Usage

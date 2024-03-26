@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Rector\SwissKnife\DependencyInjection\ContainerFactory;
+use TomasVotruba\Lemonade\DependencyInjection\ContainerFactory;
 
 $possibleAutoloadPaths = [
     // dependency

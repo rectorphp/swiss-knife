@@ -20,4 +20,4 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: none
 
-            -   run: composer require rector/swiss-knife --dev --ansi
+            -   run: composer require tomasvotruba/lemonade --dev --ansi

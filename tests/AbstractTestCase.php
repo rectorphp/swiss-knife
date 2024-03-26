@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\Tests;
+namespace TomasVotruba\Lemonade\Tests;
 
 use Illuminate\Container\Container;
 use PHPUnit\Framework\TestCase;
-use Rector\SwissKnife\DependencyInjection\ContainerFactory;
+use TomasVotruba\Lemonade\DependencyInjection\ContainerFactory;
 
 abstract class AbstractTestCase extends TestCase
 {
