@@ -29,9 +29,10 @@ final class SpotCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $projectDirectory = (string) $input->getArgument('sources');
+        /** @var string[] $sources */
+        $sources = (array) $input->getArgument('sources');
 
-        $serviceConfigFileInfos = ConfigFilesFinder::findServices($projectDirectory);
+        $serviceConfigFileInfos = ConfigFilesFinder::findServices($sources);
 
         foreach ($serviceConfigFileInfos as $serviceConfigFileInfo) {
             $this->symfonyStyle->writeln(' * ' . $serviceConfigFileInfo->getRelativePathname());

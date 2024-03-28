@@ -16,7 +16,7 @@ final class PathHelper
 
     public static function relativeToCwd(string $filePath): string
     {
-        return self::relativeToDirectory($filePath, (string) getcwd());
+        return self::relativeToDirectory($filePath, getcwd());
     }
 
     private static function normalize(string $filePath): string
