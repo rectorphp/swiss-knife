@@ -10,20 +10,6 @@ use Symfony\Component\Finder\SplFileInfo;
 final class ConfigFilesFinder
 {
     /**
-     * @return SplFileInfo[]
-     */
-    public static function findServices(string $projectDirectory): array
-    {
-        $fileInfos = self::find([$projectDirectory]);
-
-        // exclude extension configuration configs
-        return array_filter(
-            $fileInfos,
-            fn (SplFileInfo $fileInfo): bool => str_contains($fileInfo->getContents(), 'ContainerConfigurator')
-        );
-    }
-
-    /**
      * @param string[] $sources
      * @return SplFileInfo[]
      */
@@ -38,5 +24,20 @@ final class ConfigFilesFinder
             ->sortByName();
 
         return iterator_to_array($finder->getIterator());
+    }
+
+    /**
+     * @param string[] $sources
+     * @return SplFileInfo[]
+     */
+    public static function findServices(string $projectDirectory): array
+    {
+        $fileInfos = self::find([$projectDirectory]);
+
+        // exclude extension configuration configs
+        return array_filter(
+            $fileInfos,
+            fn (SplFileInfo $fileInfo): bool => str_contains($fileInfo->getContents(), 'ContainerConfigurator')
+        );
     }
 }
