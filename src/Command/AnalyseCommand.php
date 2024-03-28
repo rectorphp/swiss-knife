@@ -20,7 +20,9 @@ use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
 final class AnalyseCommand extends Command
 {
     public function __construct(
+        private readonly NodeFinder $nodeFinder,
         private readonly SymfonyStyle $symfonyStyle,
+        private readonly CachedPhpParser $cachedPhpParser,
         private readonly ServiceMethodCallsFinder $serviceMethodCallsFinder,
     ) {
         parent::__construct();
