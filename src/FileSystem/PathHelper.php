@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TomasVotruba\Lemonade\FileSystem;
+namespace Rector\SwissKnife\FileSystem;
 
 final class PathHelper
 {

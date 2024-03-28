@@ -1,6 +1,6 @@
 <?php
 
-namespace TomasVotruba\Lemonade\RobotLoader;
+namespace Rector\SwissKnife\RobotLoader;
 
 use Nette\Loaders\RobotLoader;
 

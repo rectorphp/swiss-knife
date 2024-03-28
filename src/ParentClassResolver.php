@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TomasVotruba\Lemonade;
+namespace Rector\SwissKnife;
 
 use PhpParser\NodeTraverser;
-use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
-use TomasVotruba\Lemonade\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
+use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class ParentClassResolver

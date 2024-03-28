@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TomasVotruba\Lemonade\PhpParser;
+namespace Rector\SwissKnife\PhpParser;
 
 use Nette\Utils\FileSystem;
 use PhpParser\Node\Stmt;
