@@ -16,6 +16,7 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
+        "icanhazstring/composer-unused": "^0.8.11",
         "phpunit/phpunit": "^10.5",
         "rector/rector": "^1.0",
         "symplify/easy-coding-standard": "^12.1",
