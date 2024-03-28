@@ -6,17 +6,12 @@ namespace TomasVotruba\Lemonade\FileSystem;
 
 final class PathHelper
 {
-    public static function relativeToDirectory(string $filePath, string $directory): string
+    public static function relativeToCwd(string $filePath): string
     {
         $filePath = self::normalize($filePath);
 
         // get relative path from getcwd()
-        return str_replace(self::normalize($directory) . '/', '', $filePath);
-    }
-
-    public static function relativeToCwd(string $filePath): string
-    {
-        return self::relativeToDirectory($filePath, getcwd());
+        return str_replace(self::normalize((string) getcwd()) . '/', '', $filePath);
     }
 
     private static function normalize(string $filePath): string

@@ -12,17 +12,14 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TomasVotruba\Lemonade\FileSystem\PathHelper;
 use TomasVotruba\Lemonade\Finder\ConfigFilesFinder;
 use TomasVotruba\Lemonade\NodeFinder\ServiceMethodCallsFinder;
-use TomasVotruba\Lemonade\Resolver\BareRegisteredServicesResolver;
 
 final class AnalyseCommand extends Command
 {
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
         private readonly ServiceMethodCallsFinder $serviceMethodCallsFinder,
-        private readonly BareRegisteredServicesResolver $bareRegisteredServicesResolver,
     ) {
         parent::__construct();
     }
@@ -37,10 +34,10 @@ final class AnalyseCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $projectDirectory = (string) $input->getArgument('sources');
-        $projectDirectory = realpath($projectDirectory);
+        /** @var string[] $sources */
+        $sources = (array) $input->getArgument('sources');
 
-        $serviceConfigFileInfos = ConfigFilesFinder::findServices($projectDirectory);
+        $serviceConfigFileInfos = ConfigFilesFinder::findServices($sources);
 
         // 1. find bare set() method calls
         $bareSetMethodCalls = $this->serviceMethodCallsFinder->findSetMethodCalls($serviceConfigFileInfos);
@@ -57,21 +54,15 @@ final class AnalyseCommand extends Command
         $this->symfonyStyle->success(sprintf('Found %d loaded namespaces', count($namespaceToPaths)));
         $this->symfonyStyle->listing($namespaceToPaths);
 
-        $servicesToFiles = $this->bareRegisteredServicesResolver->resolveNameToConfigFile($bareSetMethodCalls);
+        $serviceClassNames = $this->resolveServiceClassNames($bareSetMethodCalls);
+        $alreadyRegistered = $this->filterAlreadyRegisteredServicesToFile($serviceClassNames, $namespaceToPaths);
 
-        $alreadyRegisteredServicesToFile = $this->filterAlreadyRegisteredServicesToFile($servicesToFiles, $namespaceToPaths);
-
-        if ($alreadyRegisteredServicesToFile !== []) {
+        if ($alreadyRegistered !== []) {
             $this->symfonyStyle->warning(
-                sprintf('1. Found %d duplicate service registration', count($alreadyRegisteredServicesToFile))
+                sprintf('1. Found %d duplicate service registration', count($alreadyRegistered))
             );
 
-            foreach ($alreadyRegisteredServicesToFile as $service => $file) {
-                $this->symfonyStyle->writeln(sprintf(' * %s in config file:',  $service));
-                $this->symfonyStyle->write($file);
-
-                $this->symfonyStyle->newLine(2);
-            }
+            $this->symfonyStyle->listing($alreadyRegistered);
 
             return self::FAILURE;
         }
@@ -103,22 +94,51 @@ final class AnalyseCommand extends Command
     }
 
     /**
-     * @param array<string, string> $servicesToFiles
+     * @param MethodCall[] $bareSetMethodCalls
+     * @return string[]
+     */
+    private function resolveServiceClassNames(array $bareSetMethodCalls): array
+    {
+        $serviceClassNames = [];
+
+        foreach ($bareSetMethodCalls as $bareSetMethodCall) {
+            dump($bareSetMethodCall);
+            die;
+
+
+            $serviceArg = $bareSetMethodCall->getArgs()[0];
+
+            if (! $serviceArg->value instanceof Node\Expr\ClassConstFetch) {
+                continue;
+            }
+
+            $classConstFetch = $serviceArg->value;
+            if (! $classConstFetch->class instanceof Node\Name) {
+                continue;
+            }
+
+            $serviceClassNames[] = $classConstFetch->class->toString();
+        }
+
+        return $serviceClassNames;
+    }
+
+    /**
+     * @param string[] $serviceClassNames
      * @param string[] $loadedNamespaces
      * @return array<string, string>
      */
-    private function filterAlreadyRegisteredServicesToFile(array $servicesToFiles, array $loadedNamespaces): array
+    private function filterAlreadyRegisteredServicesToFile(array $serviceClassNames, array $loadedNamespaces): array
     {
         $alreadyRegistered = [];
 
-        foreach ($servicesToFiles as $service => $file) {
+        foreach ($serviceClassNames as $serviceClassName) {
             foreach ($loadedNamespaces as $loadedNamespace) {
-                if (str_starts_with($service, $loadedNamespace)) {
-                    $alreadyRegistered[$service] = $file;
+                if (str_starts_with($serviceClassName, $loadedNamespace)) {
+                    $alreadyRegistered[] = $serviceClassName;
                 }
             }
         }
-
         return $alreadyRegistered;
     }
 }

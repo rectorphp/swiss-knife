@@ -13,11 +13,16 @@ final class ConfigFilesFinder
      * @param string[] $sources
      * @return SplFileInfo[]
      */
-    private static function find(array $sources): array
+    public static function find(array $sources): array
     {
+        $paths = [];
+        foreach ($sources as $source) {
+            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
+        }
+
         $finder = Finder::create()
             ->files()
-            ->in($sources)
+            ->in($paths)
             ->name('*.php')
             ->path(['config'])
             ->notPath(['vendor', 'utils', 'var', 'packages'])
@@ -30,9 +35,9 @@ final class ConfigFilesFinder
      * @param string[] $sources
      * @return SplFileInfo[]
      */
-    public static function findServices(string $projectDirectory): array
+    public static function findServices(array $sources): array
     {
-        $fileInfos = self::find([$projectDirectory]);
+        $fileInfos = self::find($sources);
 
         // exclude extension configuration configs
         return array_filter(

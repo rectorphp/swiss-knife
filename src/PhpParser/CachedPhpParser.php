@@ -9,7 +9,6 @@ use PhpParser\Node\Stmt;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\Parser;
-use TomasVotruba\Lemonade\PhpParser\NodeVisitor\FilePathNodeVisitor;
 
 /**
  * Parse file just once
@@ -41,7 +40,6 @@ final class CachedPhpParser
         if (is_array($stmts)) {
             $nodeTraverser = new NodeTraverser();
             $nodeTraverser->addVisitor(new NameResolver());
-            $nodeTraverser->addVisitor(new FilePathNodeVisitor($filePath));
             $nodeTraverser->traverse($stmts);
         }
 
