@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TomasVotruba\Lemonade\Command;
 
-use PhpParser\ConstExprEvaluator;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
@@ -12,7 +11,6 @@ use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\NodeFinder;
-use Rector\PhpParser\Node\Value\ValueResolver;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -49,10 +47,7 @@ final class AnalyseCommand extends Command
         // 1. find bare set() method calls
         // 2. find load() method calls
 
-        /** @var MethodCall[] $bareSetMethodCalls */
         $bareSetMethodCalls = [];
-
-        /** @var MethodCall[] $loadMethodCalls */
         $loadMethodCalls = [];
 
         foreach ($serviceConfigFileInfos as $serviceConfigFileInfo) {
@@ -65,54 +60,8 @@ final class AnalyseCommand extends Command
             $loadMethodCalls = array_merge($loadMethodCalls, $currentLoadMethodCalls);
         }
 
-        $namespaceToPaths = [];
-
-        foreach ($loadMethodCalls as $loadMethodCall) {
-            $loadedNamespaceArg = $loadMethodCall->getArgs()[0];
-            if (! $loadedNamespaceArg->value instanceof Node\Scalar\String_) {
-                continue;
-            }
-
-            $namespaceToPaths[] = $loadedNamespaceArg->value->value;
-        }
-
-        sort($namespaceToPaths);
-
-        $this->symfonyStyle->success(sprintf('Found %d bare "->set()" service registration calls', count($bareSetMethodCalls)));
-
-        $this->symfonyStyle->success(sprintf('Found %d loaded namespaces', count($namespaceToPaths)));
-        $this->symfonyStyle->listing($namespaceToPaths);
-
-        $serviceClassNames = [];
-
-        foreach ($bareSetMethodCalls as $bareSetMethodCall) {
-            $serviceArg = $bareSetMethodCall->getArgs()[0];
-
-            if ($serviceArg->value instanceof Node\Expr\ClassConstFetch) {
-                $classConstFetch = $serviceArg->value;
-                if ($classConstFetch->class instanceof Node\Name) {
-                    $serviceClassNames[] = $classConstFetch->class->toString();
-                }
-            }
-        }
-
-        $foundDuplicateCount = 0;
-
-        $alreadyRegistered = [];
-
-        foreach ($serviceClassNames as $serviceClassName) {
-            foreach ($namespaceToPaths as $namespaceToPath) {
-                if (str_starts_with($serviceClassName, $namespaceToPath)) {
-                    $alreadyRegistered[] = $serviceClassName;
-                }
-            }
-        }
-
-        if ($alreadyRegistered !== []) {
-            $this->symfonyStyle->warning(sprintf('Found %d duplicate service registration', count($alreadyRegistered)));
-
-            $this->symfonyStyle->listing($alreadyRegistered);
-        }
+        $this->symfonyStyle->note(sprintf('Found %d bare set() method calls', count($bareSetMethodCalls)));
+        $this->symfonyStyle->note(sprintf('Found %d load() method calls', count($loadMethodCalls)));
 
         return self::SUCCESS;
     }
@@ -146,11 +95,6 @@ final class AnalyseCommand extends Command
                 return false;
             }
 
-            // must have exactly one argument
-            if (count($methodCall->getArgs()) !== 1) {
-                return false;
-            }
-
             return true;
         });
 
@@ -165,20 +109,25 @@ final class AnalyseCommand extends Command
 
     /**
      * @param Stmt[] $stmts
-     * @return MethodCall[]
+     * @return Expression[]
      */
     private function findLoadMethodCalls(array $stmts): array
     {
         return $this->nodeFinder->find($stmts, function (Node $node) {
-            if (! $node instanceof MethodCall) {
+            if (! $node instanceof Expression) {
                 return false;
             }
 
-            if (! $node->name instanceof Identifier) {
+            if (! $node->expr instanceof MethodCall) {
                 return false;
             }
 
-            return $node->name->name === 'load';
+            $methodCall = $node->expr;
+            if (! $methodCall->name instanceof Identifier) {
+                return false;
+            }
+
+            return $methodCall->name->name === 'load';
         });
     }
 }
