@@ -4,16 +4,21 @@ declare(strict_types=1);
 
 namespace TomasVotruba\Lemonade\Command;
 
+use PhpParser\ConstExprEvaluator;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Expr\Variable;
+use PhpParser\Node\Identifier;
+use PhpParser\Node\Stmt;
+use PhpParser\Node\Stmt\Expression;
 use PhpParser\NodeFinder;
+use Rector\PhpParser\Node\Value\ValueResolver;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TomasVotruba\Lemonade\Finder\ConfigFilesFinder;
-use TomasVotruba\Lemonade\NodeFinder\ServiceMethodCallsFinder;
 use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
 
 final class AnalyseCommand extends Command
@@ -22,7 +27,6 @@ final class AnalyseCommand extends Command
         private readonly NodeFinder $nodeFinder,
         private readonly SymfonyStyle $symfonyStyle,
         private readonly CachedPhpParser $cachedPhpParser,
-        private readonly ServiceMethodCallsFinder $serviceMethodCallsFinder,
     ) {
         parent::__construct();
     }
@@ -43,18 +47,38 @@ final class AnalyseCommand extends Command
         $serviceConfigFileInfos = ConfigFilesFinder::findServices($sources);
 
         // 1. find bare set() method calls
-        $bareSetMethodCalls = $this->serviceMethodCallsFinder->findSetMethodCalls($serviceConfigFileInfos);
-
         // 2. find load() method calls
-        $loadMethodCalls = $this->serviceMethodCallsFinder->findLoadMethodCalls($serviceConfigFileInfos);
 
-        $namespaceToPaths = $this->resolveLoadedNamespaces($loadMethodCalls);
+        /** @var MethodCall[] $bareSetMethodCalls */
+        $bareSetMethodCalls = [];
+
+        /** @var MethodCall[] $loadMethodCalls */
+        $loadMethodCalls = [];
+
+        foreach ($serviceConfigFileInfos as $serviceConfigFileInfo) {
+            $stmts = $this->cachedPhpParser->parseFile($serviceConfigFileInfo->getRealPath());
+
+            $currentBareSetMethodCalls = $this->findBareSetServiceMethodCalls($stmts);
+            $bareSetMethodCalls = array_merge($bareSetMethodCalls, $currentBareSetMethodCalls);
+
+            $currentLoadMethodCalls = $this->findLoadMethodCalls($stmts);
+            $loadMethodCalls = array_merge($loadMethodCalls, $currentLoadMethodCalls);
+        }
+
+        $namespaceToPaths = [];
+
+        foreach ($loadMethodCalls as $loadMethodCall) {
+            $loadedNamespaceArg = $loadMethodCall->getArgs()[0];
+            if (! $loadedNamespaceArg->value instanceof Node\Scalar\String_) {
+                continue;
+            }
+
+            $namespaceToPaths[] = $loadedNamespaceArg->value->value;
+        }
 
         sort($namespaceToPaths);
 
-        $this->symfonyStyle->success(
-            sprintf('Found %d bare "->set()" service registration calls', count($bareSetMethodCalls))
-        );
+        $this->symfonyStyle->success(sprintf('Found %d bare "->set()" service registration calls', count($bareSetMethodCalls)));
 
         $this->symfonyStyle->success(sprintf('Found %d loaded namespaces', count($namespaceToPaths)));
         $this->symfonyStyle->listing($namespaceToPaths);
@@ -94,23 +118,67 @@ final class AnalyseCommand extends Command
     }
 
     /**
-     * @param MethodCall[] $loadMethodCalls
-     * @return string[]
+     * @param Stmt[] $stmts
+     * @return array<MethodCall>
      */
-    private function resolveLoadedNamespaces(array $loadMethodCalls): array
+    private function findBareSetServiceMethodCalls(array $stmts): array
     {
-        $namespaceToPaths = [];
-
-        foreach ($loadMethodCalls as $loadMethodCall) {
-            $loadedNamespaceArg = $loadMethodCall->getArgs()[0];
-            if (! $loadedNamespaceArg->value instanceof Node\Scalar\String_) {
-                continue;
+        /** @var Expression[] $expressions */
+        $expressions = $this->nodeFinder->find($stmts, function (Node $node): bool {
+            if (! $node instanceof Expression) {
+                return false;
             }
 
-            $string = $loadedNamespaceArg->value;
-            $namespaceToPaths[] = $string->value;
+            if (! $node->expr instanceof MethodCall) {
+                return false;
+            }
+
+            $methodCall = $node->expr;
+            if (! $methodCall->name instanceof Identifier) {
+                return false;
+            }
+
+            if ($methodCall->name->name !== 'set') {
+                return false;
+            }
+
+            if (! $methodCall->var instanceof Variable) {
+                return false;
+            }
+
+            // must have exactly one argument
+            if (count($methodCall->getArgs()) !== 1) {
+                return false;
+            }
+
+            return true;
+        });
+
+        /** @var MethodCall[] $methodCalls */
+        $methodCalls = [];
+        foreach ($expressions as $expression) {
+            $methodCalls[] = $expression->expr;
         }
 
-        return $namespaceToPaths;
+        return $methodCalls;
+    }
+
+    /**
+     * @param Stmt[] $stmts
+     * @return MethodCall[]
+     */
+    private function findLoadMethodCalls(array $stmts): array
+    {
+        return $this->nodeFinder->find($stmts, function (Node $node) {
+            if (! $node instanceof MethodCall) {
+                return false;
+            }
+
+            if (! $node->name instanceof Identifier) {
+                return false;
+            }
+
+            return $node->name->name === 'load';
+        });
     }
 }
