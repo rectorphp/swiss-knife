@@ -63,8 +63,6 @@ final class AnalyseCommand extends Command
             );
 
             $this->symfonyStyle->listing($alreadyRegistered);
-
-            return self::FAILURE;
         }
 
         return self::SUCCESS;
