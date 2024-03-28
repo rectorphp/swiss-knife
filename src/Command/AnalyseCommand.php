@@ -7,6 +7,7 @@ namespace TomasVotruba\Lemonade\Command;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
+use PhpParser\NodeFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,6 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TomasVotruba\Lemonade\Finder\ConfigFilesFinder;
 use TomasVotruba\Lemonade\NodeFinder\ServiceMethodCallsFinder;
+use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
 
 final class AnalyseCommand extends Command
 {
