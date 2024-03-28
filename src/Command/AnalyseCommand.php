@@ -47,6 +47,7 @@ final class AnalyseCommand extends Command
         // 1. find bare set() method calls
         // 2. find load() method calls
 
+
         $bareSetMethodCalls = [];
         $loadMethodCalls = [];
 
@@ -74,11 +75,11 @@ final class AnalyseCommand extends Command
     {
         /** @var Expression[] $expressions */
         $expressions = $this->nodeFinder->find($stmts, function (Node $node): bool {
-            if (! $node instanceof Expression) {
+            if (!$node instanceof Expression) {
                 return false;
             }
 
-            if (! $node->expr instanceof MethodCall) {
+            if (!$node->expr instanceof MethodCall) {
                 return false;
             }
 
@@ -91,7 +92,7 @@ final class AnalyseCommand extends Command
                 return false;
             }
 
-            if (! $methodCall->var instanceof Variable) {
+            if (!$methodCall->var instanceof Variable) {
                 return false;
             }
 
@@ -114,16 +115,16 @@ final class AnalyseCommand extends Command
     private function findLoadMethodCalls(array $stmts): array
     {
         return $this->nodeFinder->find($stmts, function (Node $node) {
-            if (! $node instanceof Expression) {
+            if (!$node instanceof Expression) {
                 return false;
             }
 
-            if (! $node->expr instanceof MethodCall) {
+            if (!$node->expr instanceof MethodCall) {
                 return false;
             }
 
             $methodCall = $node->expr;
-            if (! $methodCall->name instanceof Identifier) {
+            if (!$methodCall->name instanceof Identifier) {
                 return false;
             }
 

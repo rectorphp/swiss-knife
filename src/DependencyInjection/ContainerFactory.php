@@ -28,7 +28,10 @@ final class ContainerFactory
             $application = new Application('Lemonade');
             $this->hideDefaultCommands($application);
 
-            $commands = [$container->make(SpotCommand::class), $container->make(AnalyseCommand::class)];
+            $commands = [
+                $container->make(SpotCommand::class),
+                $container->make(AnalyseCommand::class),
+            ];
 
             $application->addCommands($commands);
 
