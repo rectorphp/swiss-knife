@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace TomasVotruba\Lemonade;
 
 use PhpParser\NodeTraverser;
-use Symfony\Component\Finder\SplFileInfo;
 use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
 use TomasVotruba\Lemonade\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
+use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class ParentClassResolver
 {

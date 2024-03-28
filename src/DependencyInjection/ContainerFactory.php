@@ -7,11 +7,11 @@ namespace TomasVotruba\Lemonade\DependencyInjection;
 use Illuminate\Container\Container;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
+use TomasVotruba\Lemonade\Command\SpotCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TomasVotruba\Lemonade\Command\SpotCommand;
 
 final class ContainerFactory
 {
@@ -26,7 +26,9 @@ final class ContainerFactory
         $container->singleton(Application::class, function (Container $container): Application {
             $application = new Application('Lemonade');
 
-            $commands = [$container->make(SpotCommand::class)];
+            $commands = [
+                $container->make(SpotCommand::class),
+            ];
 
             $application->addCommands($commands);
 

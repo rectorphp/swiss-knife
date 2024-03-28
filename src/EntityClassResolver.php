@@ -6,11 +6,11 @@ namespace TomasVotruba\Lemonade;
 
 use Nette\Utils\Strings;
 use PhpParser\NodeTraverser;
-use Symfony\Component\Finder\SplFileInfo;
 use TomasVotruba\Lemonade\Finder\PhpFilesFinder;
 use TomasVotruba\Lemonade\Finder\YamlFilesFinder;
 use TomasVotruba\Lemonade\PhpParser\CachedPhpParser;
 use TomasVotruba\Lemonade\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
+use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 /**
