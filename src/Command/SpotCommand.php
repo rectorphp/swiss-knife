@@ -34,7 +34,10 @@ final class SpotCommand extends Command
         /** @var string[] $sources */
         $sources = (array) $input->getArgument('sources');
 
-        $serviceConfigFileInfos = ConfigFilesFinder::findServices($sources);
+        $fileInfos = $this->configFilesFinder->find($sources);
+
+        // exclude extension configuration configs
+        $serviceConfigFileInfos = array_filter($fileInfos, fn (SplFileInfo $fileInfo): bool => str_contains($fileInfo->getContents(), 'ContainerConfigurator'));
 
         foreach ($serviceConfigFileInfos as $serviceConfigFileInfo) {
             $this->symfonyStyle->writeln(' * ' . $serviceConfigFileInfo->getRelativePathname());
