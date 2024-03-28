@@ -55,7 +55,7 @@ final class AnalyseCommand extends Command
         $this->symfonyStyle->listing($namespaceToPaths);
 
         $serviceClassNames = $this->resolveServiceClassNames($bareSetMethodCalls);
-        $alreadyRegistered = $this->filterAlreadyRegisteredServicesToFile($serviceClassNames, $namespaceToPaths);
+        $alreadyRegistered = $this->filterAlreadyRegisteredServices($serviceClassNames, $namespaceToPaths);
 
         if ($alreadyRegistered !== []) {
             $this->symfonyStyle->warning(
@@ -102,10 +102,6 @@ final class AnalyseCommand extends Command
         $serviceClassNames = [];
 
         foreach ($bareSetMethodCalls as $bareSetMethodCall) {
-            dump($bareSetMethodCall);
-            die;
-
-
             $serviceArg = $bareSetMethodCall->getArgs()[0];
 
             if (! $serviceArg->value instanceof Node\Expr\ClassConstFetch) {
@@ -126,9 +122,9 @@ final class AnalyseCommand extends Command
     /**
      * @param string[] $serviceClassNames
      * @param string[] $loadedNamespaces
-     * @return array<string, string>
+     * @return string[]
      */
-    private function filterAlreadyRegisteredServicesToFile(array $serviceClassNames, array $loadedNamespaces): array
+    private function filterAlreadyRegisteredServices(array $serviceClassNames, array $loadedNamespaces): array
     {
         $alreadyRegistered = [];
 
