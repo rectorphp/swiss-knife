@@ -8,6 +8,3 @@ parameters:
     excludePaths:
         - */Fixture/*
         - */Source/*
-
-    ignoreErrors:
-        - '#Method TomasVotruba\\Lemonade\\Command\\AnalyseCommand::find(.*?) should return (.*?) but returns array<PhpParser\\(.*?)>#'
