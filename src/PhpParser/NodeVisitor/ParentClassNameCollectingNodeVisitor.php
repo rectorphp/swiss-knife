@@ -40,10 +40,19 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         sort($uniqueParentClassNames);
 
         // remove native classes
-        $namespacedClassNames = array_filter(
-            $uniqueParentClassNames,
-            static fn (string $parentClassName): bool => str_contains($parentClassName, '\\')
-        );
+        $namespacedClassNames = [];
+        foreach($uniqueParentClassNames as $className) {
+            try {
+                // @phpstan-ignore-next-line
+                $reflectionClass = new \ReflectionClass($className);
+                if ($reflectionClass->isInternal()) {
+                    continue;
+                }
+                $namespacedClassNames[] = $className;
+            } catch (\ReflectionException $e) {
+                $namespacedClassNames[] = $className;
+            }
+        }
 
         // remove obviously vendor names
         $namespacedClassNames = array_filter($namespacedClassNames, static function (string $className): bool {
