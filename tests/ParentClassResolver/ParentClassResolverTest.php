@@ -7,9 +7,7 @@ namespace Rector\SwissKnife\Tests\ParentClassResolver;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\Tests\AbstractTestCase;
-use Rector\SwissKnife\Tests\ParentClassResolver\Fixture\AbstractParentClass;
-use Rector\SwissKnife\Tests\ParentClassResolver\Fixture\ParentClass;
-use Rector\SwissKnife\Tests\ParentClassResolver\Fixture\ParentClassInSeparateNamespace;
+use Rector\SwissKnife\Tests\ParentClassResolver\Fixture\SomeParentClass;
 
 final class ParentClassResolverTest extends AbstractTestCase
 {
@@ -24,14 +22,17 @@ final class ParentClassResolverTest extends AbstractTestCase
 
     public function test(): void
     {
-        $parentClasses = $this->parentClassResolver->resolve(
-            PhpFilesFinder::find([__DIR__ . '/Fixture']),
-            static function (): void {
-            }
-        );
+        $parentClasses = $this->parentClassResolver->resolve(PhpFilesFinder::find([__DIR__ . '/Fixture']), static function (): void {
+        });
 
         $this->assertSame(
-            [AbstractParentClass::class, ParentClass::class, ParentClassInSeparateNamespace::class],
+            [
+                'Rector\SwissKnife\Tests\ParentClassResolver\Fixture\AbstractParentClass',
+                'Rector\SwissKnife\Tests\ParentClassResolver\Fixture\ParentClass',
+                'Rector\SwissKnife\Tests\ParentClassResolver\Fixture\ParentClassInSeparateNamespace',
+                SomeParentClass::class,
+                \SomeUnknownRootNamespaceClass::class, // @phpstan-ignore-line
+            ],
             $parentClasses
         );
     }
