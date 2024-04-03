@@ -39,13 +39,13 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         $uniqueParentClassNames = array_unique($this->parentClassNames);
         sort($uniqueParentClassNames);
 
-        // remove native classes
         $namespacedClassNames = [];
         foreach($uniqueParentClassNames as $className) {
             try {
                 // @phpstan-ignore-next-line
                 $reflectionClass = new \ReflectionClass($className);
                 if ($reflectionClass->isInternal()) {
+                    // remove native classes
                     continue;
                 }
                 $namespacedClassNames[] = $className;
