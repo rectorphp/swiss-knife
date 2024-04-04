@@ -27,6 +27,7 @@ final class ParentClassResolverTest extends AbstractTestCase
 
         $this->assertSame(
             [
+                'ArrayObject',
                 'Rector\SwissKnife\Tests\ParentClassResolver\Fixture\AbstractParentClass',
                 'Rector\SwissKnife\Tests\ParentClassResolver\Fixture\ParentClass',
                 'Rector\SwissKnife\Tests\ParentClassResolver\Fixture\ParentClassInSeparateNamespace',
