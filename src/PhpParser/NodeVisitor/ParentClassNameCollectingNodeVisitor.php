@@ -39,23 +39,8 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         $uniqueParentClassNames = array_unique($this->parentClassNames);
         sort($uniqueParentClassNames);
 
-        $namespacedClassNames = [];
-        foreach($uniqueParentClassNames as $className) {
-            try {
-                // @phpstan-ignore-next-line
-                $reflectionClass = new \ReflectionClass($className);
-                if ($reflectionClass->isInternal()) {
-                    // remove native classes
-                    continue;
-                }
-                $namespacedClassNames[] = $className;
-            } catch (\ReflectionException $e) {
-                $namespacedClassNames[] = $className;
-            }
-        }
-
         // remove obviously vendor names
-        $namespacedClassNames = array_filter($namespacedClassNames, static function (string $className): bool {
+        $namespacedClassNames = array_filter($uniqueParentClassNames, static function (string $className): bool {
             if (str_contains($className, 'Symfony\\')) {
                 return false;
             }
