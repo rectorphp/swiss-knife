@@ -35,7 +35,6 @@ final class ParentClassResolverTest extends AbstractTestCase
                 ParentClass::class,
                 ParentClassInSeparateNamespace::class,
                 SomeParentClass::class,
-                \SomeUnknownRootNamespaceClass::class, // @phpstan-ignore-line
             ],
             $parentClasses
         );
