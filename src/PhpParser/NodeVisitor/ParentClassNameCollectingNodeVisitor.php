@@ -39,14 +39,8 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         $uniqueParentClassNames = array_unique($this->parentClassNames);
         sort($uniqueParentClassNames);
 
-        // remove native classes
-        $namespacedClassNames = array_filter(
-            $uniqueParentClassNames,
-            static fn (string $parentClassName): bool => str_contains($parentClassName, '\\')
-        );
-
         // remove obviously vendor names
-        $namespacedClassNames = array_filter($namespacedClassNames, static function (string $className): bool {
+        $namespacedClassNames = array_filter($uniqueParentClassNames, static function (string $className): bool {
             if (str_contains($className, 'Symfony\\')) {
                 return false;
             }
