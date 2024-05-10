@@ -21,8 +21,11 @@ final class ParentClassResolverTest extends AbstractTestCase
 
     public function test(): void
     {
-        $parentClasses = $this->parentClassResolver->resolve(PhpFilesFinder::find([__DIR__ . '/Fixture']), static function (): void {
-        });
+        $parentClasses = $this->parentClassResolver->resolve(
+            PhpFilesFinder::find([__DIR__ . '/Fixture']),
+            static function (): void {
+            }
+        );
 
         $this->assertSame(
             [
