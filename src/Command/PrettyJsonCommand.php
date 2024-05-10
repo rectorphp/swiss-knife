@@ -53,6 +53,7 @@ final class PrettyJsonCommand extends Command
 
             // nothing to convert
             if ($prettyJsonContent === $jsonContent) {
+                $this->symfonyStyle->writeln(sprintf('The "%s" file is already pretty', $jsonFileInfo->getRealPath()));
                 continue;
             }
 
