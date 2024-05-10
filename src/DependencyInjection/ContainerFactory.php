@@ -13,6 +13,7 @@ use Rector\SwissKnife\Command\DumpEditorconfigCommand;
 use Rector\SwissKnife\Command\FinalizeClassesCommand;
 use Rector\SwissKnife\Command\FindMultiClassesCommand;
 use Rector\SwissKnife\Command\NamespaceToPSR4Command;
+use Rector\SwissKnife\Command\PrettyJsonCommand;
 use Rector\SwissKnife\Command\ValidateFileLengthCommand;
 use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
@@ -34,6 +35,7 @@ final class ContainerFactory
             $application = new Application('Easy CI toolkit');
 
             $commands = [
+                $container->make(PrettyJsonCommand::class),
                 $container->make(CheckCommentedCodeCommand::class),
                 $container->make(CheckConflictsCommand::class),
                 $container->make(ValidateFileLengthCommand::class),

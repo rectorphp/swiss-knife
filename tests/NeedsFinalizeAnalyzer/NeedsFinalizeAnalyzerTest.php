@@ -18,9 +18,7 @@ final class NeedsFinalizeAnalyzerTest extends AbstractTestCase
         parent::setUp();
 
         $this->needsFinalizeAnalyzer = new NeedsFinalizeAnalyzer(
-            excludedClasses: [
-                'Rector\SwissKnife\Tests\NeedsFinalizeAnalyzer\Fixture\ExcludedClass',
-            ],
+            excludedClasses: ['Rector\SwissKnife\Tests\NeedsFinalizeAnalyzer\Fixture\ExcludedClass'],
             cachedPhpParser: $this->make(CachedPhpParser::class),
         );
     }
