@@ -31,7 +31,7 @@ final class CommentedCodeAnalyzer
         $commentLinesCount = 0;
 
         foreach ($fileLines as $key => $fileLine) {
-            $isCommentLine = str_starts_with(trim($fileLine), '//');
+            $isCommentLine = str_starts_with(trim((string) $fileLine), '//');
             if ($isCommentLine) {
                 ++$commentLinesCount;
             } else {
