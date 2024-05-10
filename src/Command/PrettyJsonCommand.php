@@ -38,7 +38,7 @@ final class PrettyJsonCommand extends Command
         $sources = (array) $input->getArgument('sources');
         $jsonFileInfos = FilesFinder::findJsonFiles($sources);
 
-        if (count($jsonFileInfos) === 0) {
+        if ($jsonFileInfos === []) {
             $this->symfonyStyle->error('No *.json files found');
             return self::FAILURE;
         }
