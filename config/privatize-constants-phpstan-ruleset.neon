@@ -1,0 +1,5 @@
+rules:
+    - PHPStan\Rules\Classes\ClassConstantRule
+
+parameters:
+    customRulesetUsed: true
