@@ -5,16 +5,25 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
+use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\FilesFinder;
+use Rector\SwissKnife\ValueObject\ClassConstMatch;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Process\Process;
 
 final class PrivatizeConstantsCommand extends Command
 {
+    /**
+     * @var string
+     * @see https://regex101.com/r/VR8VUD/1
+     */
+    private const CONSTANT_MESSAGE_REGEX = '#constant (?<constant_name>.*?) of class (?<class_name>[\w\\\\]+)#';
+
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle
     ) {
@@ -34,115 +43,117 @@ final class PrivatizeConstantsCommand extends Command
     }
 
     /**
-     * @return self::*
+     * @return Command::*
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        // 1. find all constants with public or no type
-        // 2. make them private
-        // 3. run phsptan with not accessible constnat rule
-        // 4. turn those reported to public again
-
         $sources = (array) $input->getArgument('sources');
         $phpFileInfos = FilesFinder::findPhpFiles($sources);
 
-        foreach ($phpFileInfos as $phpFileInfo) {
-            // parse and update with node visitor
-            // use str_replace?
-            $originalFileContent = $phpFileInfo->getContents();
+        $this->privatizeClassConstants($phpFileInfos);
 
-            // turn all constants to private ones
-            $fileContent = preg_replace('#^    const#', 'private const', $originalFileContent);
-            $fileContent = str_replace('public const ', 'private const ', $fileContent);
-
-            // has changed?
-            if ($originalFileContent === $fileContent) {
-                continue;
-            }
-
-            // store new version
-            FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
-            $this->symfonyStyle->note(
-                sprintf('Constants in "%s" file privatized', $phpFileInfo->getRelativePathname())
-            );
-        }
-
-        // 2. run PHPStan result
-        $phpStanExtensionsConfig = getcwd() . '/vendor/phpstan/extension-installer/src/GeneratedConfig.php';
-
-        // disable phpstan extensions for this run
-        $hasProjectPHPStanExtensionInstallerConfig = file_exists($phpStanExtensionsConfig);
-
-        if ($hasProjectPHPStanExtensionInstallerConfig) {
-            $changedFileContents = str_replace(
-                'public const EXTENSIONS = array (',
-                'public const EXTENSIONS = array (); public const EXTENSIONS_BACKUP = array (',
-                FileSystem::read($phpStanExtensionsConfig)
-            );
-            FileSystem::write($phpStanExtensionsConfig, $changedFileContents);
-        }
-
-        $phpStanAnalyseProcess = new Process([
-            'vendor/bin/phpstan',
-            'analyse',
-            'src',
-            '--configuration',
-            'config/privatize-constants-phpstan-ruleset.neon',
-            '--error-format',
-            'json',
-        ]);
-        $phpStanAnalyseProcess->run();
-
-        // restore phpstan extensions for this run
-        if ($hasProjectPHPStanExtensionInstallerConfig) {
-            $changedFileContents = str_replace(
-                'public const EXTENSIONS = array (); public const EXTENSIONS_BACKUP = array (',
-                'public const EXTENSIONS = array (',
-                file_get_contents($phpStanExtensionsConfig)
-            );
-            FileSystem::write($phpStanExtensionsConfig, $changedFileContents);
-        }
-
-        $phpstanResultOutput = $phpStanAnalyseProcess->getOutput() ?: $phpStanAnalyseProcess->getErrorOutput();
-        $phpstanResult = json_decode($phpstanResultOutput, true);
+        $phpstanResult = $this->runPHPStanAnalyse($sources);
 
         foreach ($phpstanResult['files'] as $detail) {
             foreach ($detail['messages'] as $messageError) {
-                if (! str_contains($messageError['message'], 'Access to private constant')) {
+                // @todo check non-existing constants on child/parent access as well
+
+                // resolve errorMessage error details
+                $classConstMatch = $this->resolveClassConstMatch($messageError['errorMessage']);
+                if (! $classConstMatch instanceof ClassConstMatch) {
                     continue;
                 }
 
-                // resolve message erorr details
-                $match = \Nette\Utils\Strings::match(
-                    $messageError['message'],
-                    '#constant (?<constant_name>.*?) of class (?<class_name>[\w\\\\]+)#'
-                );
-                $constantName = $match['constant_name'];
-                $class = $match['class_name'];
-
-                $classReflection = new \ReflectionClass($class);
-                $classFileContents = FileSystem::read($classReflection->getFileName());
+                $classFileContents = FileSystem::read($classConstMatch->getClassFileName());
 
                 // replace "private const NAME" with "public const NAME"
                 $changedFileContent = str_replace(
-                    'private const ' . $constantName,
-                    'public const ' . $constantName,
+                    'private const ' . $classConstMatch->getConstantName(),
+                    'public const ' . $classConstMatch->getConstantName(),
                     $classFileContents
                 );
+
                 if ($changedFileContent === $classFileContents) {
                     continue;
                 }
 
-                FileSystem::write($classReflection->getFileName(), $changedFileContent);
+                FileSystem::write($classConstMatch->getClassFileName(), $changedFileContent);
 
                 $this->symfonyStyle->note(sprintf(
                     'Updated "%s" constant in "%s" file to public as used outside',
-                    $constantName,
-                    $classReflection->getFileName()
+                    $classConstMatch->getConstantName(),
+                    $classConstMatch->getClassFileName()
                 ));
             }
         }
 
         return self::SUCCESS;
+    }
+
+    /**
+     * @param SplFileInfo[] $phpFileInfos
+     */
+    private function privatizeClassConstants(array $phpFileInfos): void
+    {
+        foreach ($phpFileInfos as $phpFileInfo) {
+            $originalFileContent = $phpFileInfo->getContents();
+
+            $fileContent = $this->makeClassConstantsPrivate($originalFileContent);
+            if ($originalFileContent === $fileContent) {
+                continue;
+            }
+
+            FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
+
+            $this->symfonyStyle->note(
+                sprintf('Constants in "%s" file privatized', $phpFileInfo->getRelativePathname())
+            );
+        }
+    }
+
+    private function makeClassConstantsPrivate(string $fileContents): string
+    {
+        $fileContent = Strings::replace($fileContents, '#^(    |\t)const #', '$1private const ');
+
+        return str_replace('public const ', 'private const ', $fileContent);
+    }
+
+    /**
+     * @param string[] $paths
+     * @return array<string, mixed>
+     */
+    private function runPHPStanAnalyse(array $paths): array
+    {
+        $phpStanAnalyseProcess = new Process([
+            'vendor/bin/phpstan',
+            'analyse',
+            ...$paths,
+            '--configuration',
+            __DIR__ . '/../../config/privatize-constants-phpstan-ruleset.neon',
+            '--error-format',
+            'json',
+        ]);
+        $phpStanAnalyseProcess->run();
+
+        $resultOutput = $phpStanAnalyseProcess->getOutput() ?: $phpStanAnalyseProcess->getErrorOutput();
+        return json_decode($resultOutput, true);
+    }
+
+    private function resolveClassConstMatch(string $errorMessage): ?ClassConstMatch
+    {
+        if (! str_contains($errorMessage, 'Access to private constant')) {
+            return null;
+        }
+
+        $match = Strings::match($errorMessage, self::CONSTANT_MESSAGE_REGEX);
+
+        if (! isset($match['constant_name'], $match['class_name'])) {
+            return null;
+        }
+
+        /** @var class-string $className */
+        $className = (string) $match['class_name'];
+
+        return new ClassConstMatch($className, (string) $match['constant_name']);
     }
 }
