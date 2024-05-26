@@ -14,6 +14,7 @@ use Rector\SwissKnife\Command\FinalizeClassesCommand;
 use Rector\SwissKnife\Command\FindMultiClassesCommand;
 use Rector\SwissKnife\Command\NamespaceToPSR4Command;
 use Rector\SwissKnife\Command\PrettyJsonCommand;
+use Rector\SwissKnife\Command\PrivatizeConstantsCommand;
 use Rector\SwissKnife\Command\ValidateFileLengthCommand;
 use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
@@ -44,6 +45,7 @@ final class ContainerFactory
                 $container->make(NamespaceToPSR4Command::class),
                 $container->make(DumpEditorconfigCommand::class),
                 $container->make(FinalizeClassesCommand::class),
+                $container->make(PrivatizeConstantsCommand::class),
             ];
 
             $application->addCommands($commands);
