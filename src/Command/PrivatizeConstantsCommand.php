@@ -59,7 +59,7 @@ final class PrivatizeConstantsCommand extends Command
                 // @todo check non-existing constants on child/parent access as well
 
                 // resolve errorMessage error details
-                $classConstMatch = $this->resolveClassConstMatch($messageError['errorMessage']);
+                $classConstMatch = $this->resolveClassConstMatch($messageError['message']);
                 if (! $classConstMatch instanceof ClassConstMatch) {
                     continue;
                 }
@@ -124,6 +124,8 @@ final class PrivatizeConstantsCommand extends Command
      */
     private function runPHPStanAnalyse(array $paths): array
     {
+        $this->symfonyStyle->note('Running PHPStan to spot false-private class constants');
+
         $phpStanAnalyseProcess = new Process([
             'vendor/bin/phpstan',
             'analyse',
