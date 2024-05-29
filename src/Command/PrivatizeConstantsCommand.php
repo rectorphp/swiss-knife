@@ -24,6 +24,12 @@ final class PrivatizeConstantsCommand extends Command
      */
     private const CONSTANT_MESSAGE_REGEX = '#constant (?<constant_name>.*?) of class (?<class_name>[\w\\\\]+)#';
 
+    /**
+     * @var string
+     * @see https://regex101.com/r/wkHZwX/1
+     */
+    private const CONST_REGEX = '#(    |\t|    public )const #ms';
+
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle
     ) {
@@ -113,7 +119,7 @@ final class PrivatizeConstantsCommand extends Command
 
     private function makeClassConstantsPrivate(string $fileContents): string
     {
-        $fileContent = Strings::replace($fileContents, '#^(    |\t)const #', '$1private const ');
+        $fileContent = Strings::replace($fileContents, self::CONST_REGEX, '$1private const ');
 
         return str_replace('public const ', 'private const ', $fileContent);
     }
