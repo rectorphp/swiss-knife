@@ -127,6 +127,13 @@ final class PrivatizeConstantsCommand extends Command
         ]);
         $phpStanAnalyseProcess->run();
 
+        $this->symfonyStyle->success('PHPStan analysis finished');
+
+        // process output message
+        sleep(1);
+
+        $this->symfonyStyle->newLine();
+
         $resultOutput = $phpStanAnalyseProcess->getOutput() ?: $phpStanAnalyseProcess->getErrorOutput();
         return json_decode($resultOutput, true);
     }
