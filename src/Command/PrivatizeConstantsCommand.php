@@ -22,13 +22,19 @@ final class PrivatizeConstantsCommand extends Command
      * @var string
      * @see https://regex101.com/r/VR8VUD/1
      */
-    private const CONSTANT_MESSAGE_REGEX = '#constant (?<constant_name>.*?) of class (?<class_name>[\w\\\\]+)#';
+    private const PRIVATE_CONSTANT_MESSAGE_REGEX = '#constant (?<constant_name>.*?) of class (?<class_name>[\w\\\\]+)#';
+
+    /**
+     * @var string
+     * @see https://regex101.com/r/VR8VUD/1
+     */
+    private const PROTECTED_CONSTANT_MESSAGE_REGEX = '#Access to undefined constant (?<class_name>[\w\\\\]+)::(?<constant_name>.*?)#';
 
     /**
      * @var string
      * @see https://regex101.com/r/wkHZwX/1
      */
-    private const CONST_REGEX = '#(    |\t|    public )const #ms';
+    private const CONST_REGEX = '#(    |\t)(public )?const #ms';
 
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle
@@ -60,7 +66,7 @@ final class PrivatizeConstantsCommand extends Command
 
         $phpstanResult = $this->runPHPStanAnalyse($sources);
 
-        foreach ($phpstanResult['files'] as $detail) {
+        foreach ($phpstanResult['files'] as $filePath => $detail) {
             foreach ($detail['messages'] as $messageError) {
                 // @todo check non-existing constants on child/parent access as well
 
@@ -70,7 +76,7 @@ final class PrivatizeConstantsCommand extends Command
                     continue;
                 }
 
-                $classFileContents = FileSystem::read($classConstMatch->getClassFileName());
+                $classFileContents = FileSystem::read($filePath);
 
                 // replace "private const NAME" with "public const NAME"
                 $changedFileContent = str_replace(
@@ -83,12 +89,12 @@ final class PrivatizeConstantsCommand extends Command
                     continue;
                 }
 
-                FileSystem::write($classConstMatch->getClassFileName(), $changedFileContent);
+                FileSystem::write($filePath, $changedFileContent);
 
                 $this->symfonyStyle->note(sprintf(
                     'Updated "%s" constant in "%s" file to public as used outside',
                     $classConstMatch->getConstantName(),
-                    $classConstMatch->getClassFileName()
+                    $filePath
                 ));
             }
         }
