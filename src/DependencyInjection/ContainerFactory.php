@@ -15,7 +15,6 @@ use Rector\SwissKnife\Command\FindMultiClassesCommand;
 use Rector\SwissKnife\Command\NamespaceToPSR4Command;
 use Rector\SwissKnife\Command\PrettyJsonCommand;
 use Rector\SwissKnife\Command\PrivatizeConstantsCommand;
-use Rector\SwissKnife\Command\ValidateFileLengthCommand;
 use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
