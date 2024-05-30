@@ -87,6 +87,8 @@ final class PrivatizeConstantsCommand extends Command
      */
     private function privatizeClassConstants(array $phpFileInfos): void
     {
+        $this->symfonyStyle->note(sprintf('Found %d PHP files, turning constants to private', count($phpFileInfos)));
+
         foreach ($phpFileInfos as $phpFileInfo) {
             $originalFileContent = $phpFileInfo->getContents();
 
@@ -97,8 +99,8 @@ final class PrivatizeConstantsCommand extends Command
 
             FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
 
-            $this->symfonyStyle->note(
-                sprintf('Constants in "%s" file privatized', $phpFileInfo->getRelativePathname())
+            $this->symfonyStyle->writeln(
+                sprintf(' * Constants in "%s" file privatized', $phpFileInfo->getRelativePathname())
             );
         }
     }
