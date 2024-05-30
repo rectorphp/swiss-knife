@@ -15,7 +15,6 @@ use Rector\SwissKnife\Command\FindMultiClassesCommand;
 use Rector\SwissKnife\Command\NamespaceToPSR4Command;
 use Rector\SwissKnife\Command\PrettyJsonCommand;
 use Rector\SwissKnife\Command\PrivatizeConstantsCommand;
-use Rector\SwissKnife\Command\ValidateFileLengthCommand;
 use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -33,13 +32,12 @@ final class ContainerFactory
 
         // console
         $container->singleton(Application::class, function (Container $container): Application {
-            $application = new Application('Easy CI toolkit');
+            $application = new Application('Rector Swiss Knife');
 
             $commands = [
                 $container->make(PrettyJsonCommand::class),
                 $container->make(CheckCommentedCodeCommand::class),
                 $container->make(CheckConflictsCommand::class),
-                $container->make(ValidateFileLengthCommand::class),
                 $container->make(DetectUnitTestsCommand::class),
                 $container->make(FindMultiClassesCommand::class),
                 $container->make(NamespaceToPSR4Command::class),
