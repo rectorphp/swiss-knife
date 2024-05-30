@@ -146,6 +146,10 @@ final class PrivatizeConstantsCommand extends Command
 
         // @todo handle case when "AppBundle\Rpc\BEItem\BeItemPackage::ITEM_TYPE_NAME_PACKAGE" constant is in parent class
         $parentClassConstMatch = $publicClassConstMatch->getParentClassConstMatch();
+        if (! $parentClassConstMatch instanceof ClassConstMatch) {
+            return;
+        }
+
         $this->replacePrivateConstWith($parentClassConstMatch, $replaceString);
     }
 }
