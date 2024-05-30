@@ -134,6 +134,7 @@ final class PrivatizeConstantsCommand extends Command
     private function replacePrivateConstWith(ClassConstMatch $publicClassConstMatch, string $replaceString): void
     {
         $classFileContents = FileSystem::read($publicClassConstMatch->getClassFileName());
+
         // replace "private const NAME" with "private const NAME"
         $classFileContents = str_replace(
             'private const ' . $publicClassConstMatch->getConstantName(),
@@ -142,5 +143,9 @@ final class PrivatizeConstantsCommand extends Command
         );
 
         FileSystem::write($publicClassConstMatch->getClassFileName(), $classFileContents);
+
+        // @todo handle case when "AppBundle\Rpc\BEItem\BeItemPackage::ITEM_TYPE_NAME_PACKAGE" constant is in parent class
+        $parentClassConstMatch = $publicClassConstMatch->getParentClassConstMatch();
+        $this->replacePrivateConstWith($parentClassConstMatch, $replaceString);
     }
 }

@@ -36,4 +36,14 @@ final readonly class ClassConstMatch
         $classReflection = new ReflectionClass($this->className);
         return (string) $classReflection->getFileName();
     }
+
+    public function getParentClassConstMatch(): ?self
+    {
+        $classReflection = new ReflectionClass($this->className);
+        if ($classReflection->getParentClass() === false) {
+            return null;
+        }
+
+        return new self($classReflection->getParentClass()->getName(), $this->constantName);
+    }
 }
