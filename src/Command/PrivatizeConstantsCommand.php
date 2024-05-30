@@ -26,7 +26,7 @@ final class PrivatizeConstantsCommand extends Command
 
     /**
      * @var string
-     * @see https://regex101.com/r/VR8VUD/1
+     * @see https://regex101.com/r/pRzdnw/1
      */
     private const PROTECTED_CONSTANT_MESSAGE_REGEX = '#Access to undefined constant (?<class_name>[\w\\\\]+)::(?<constant_name>.*?)#';
 
