@@ -33,13 +33,12 @@ final class ContainerFactory
 
         // console
         $container->singleton(Application::class, function (Container $container): Application {
-            $application = new Application('Easy CI toolkit');
+            $application = new Application('Rector Swiss Knife');
 
             $commands = [
                 $container->make(PrettyJsonCommand::class),
                 $container->make(CheckCommentedCodeCommand::class),
                 $container->make(CheckConflictsCommand::class),
-                $container->make(ValidateFileLengthCommand::class),
                 $container->make(DetectUnitTestsCommand::class),
                 $container->make(FindMultiClassesCommand::class),
                 $container->make(NamespaceToPSR4Command::class),
