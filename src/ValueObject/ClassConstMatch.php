@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\ValueObject;
 
-use Rector\SwissKnife\Command\FinalizeClassesCommand;
 use ReflectionClass;
 
 final readonly class ClassConstMatch

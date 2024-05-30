@@ -72,8 +72,12 @@ final class PrivatizeConstantsCommand extends Command
             $this->replacePrivateConstWith($publicClassConstMatch, 'protected const');
         }
 
-        $this->symfonyStyle->success(sprintf('%d constant made public', $publicAndProtectedClassConstants->getPublicCount()));
-        $this->symfonyStyle->success(sprintf('%d constant made protected', $publicAndProtectedClassConstants->getProtectedCount()));
+        $this->symfonyStyle->success(
+            sprintf('%d constant made public', $publicAndProtectedClassConstants->getPublicCount())
+        );
+        $this->symfonyStyle->success(
+            sprintf('%d constant made protected', $publicAndProtectedClassConstants->getProtectedCount())
+        );
 
         return self::SUCCESS;
     }
