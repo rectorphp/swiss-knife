@@ -26,10 +26,4 @@ final readonly class ClassConstMatch
     {
         return $this->constantName;
     }
-
-    public function getClassFileName(): string
-    {
-        $classReflection = new ReflectionClass($this->className);
-        return (string) $classReflection->getFileName();
-    }
 }
