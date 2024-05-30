@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\ValueObject;
 
+use Rector\SwissKnife\Command\FinalizeClassesCommand;
 use ReflectionClass;
 
 final readonly class ClassConstMatch
@@ -25,5 +26,15 @@ final readonly class ClassConstMatch
     public function getConstantName(): string
     {
         return $this->constantName;
+    }
+
+    /**
+     * We have to use class const file path,
+     * as error file path only report use, does not contain the constant
+     */
+    public function getClassFileName(): string
+    {
+        $classReflection = new ReflectionClass($this->className);
+        return (string) $classReflection->getFileName();
     }
 }

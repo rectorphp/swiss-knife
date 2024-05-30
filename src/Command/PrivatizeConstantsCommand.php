@@ -7,6 +7,7 @@ namespace Rector\SwissKnife\Command;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\FilesFinder;
+use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
 use Rector\SwissKnife\ValueObject\ClassConstMatch;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -20,42 +21,15 @@ final class PrivatizeConstantsCommand extends Command
 {
     /**
      * @var string
-     * @see https://regex101.com/r/VR8VUD/1
-     */
-    private const PRIVATE_CONSTANT_MESSAGE_REGEX = '#constant (?<constant_name>.*?) of class (?<class_name>[\w\\\\]+)#';
-
-    /**
-     * @var string
-     * @see https://regex101.com/r/pRzdnw/1
-     */
-    private const PROTECTED_CONSTANT_MESSAGE_REGEX = '#Access to undefined constant (?<class_name>[\w\\\\]+)::(?<constant_name>.*?)#';
-
-    /**
-     * @var string
      * @see https://regex101.com/r/wkHZwX/1
      */
-    private const CONST_REGEX = '#(    |\t)(public )?const #ms';
+    private const PUBLIC_CONST_REGEX = '#(    |\t)(public )?const #ms';
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle
+        private readonly SymfonyStyle $symfonyStyle,
+        private readonly ClassConstantResultAnalyser $classConstantResultAnalyser,
     ) {
         parent::__construct();
-    }
-
-    public function resolveProtectedClassConstMatch(string $errorMessage): ?ClassConstMatch
-    {
-        if (! str_contains($errorMessage, 'Access to undefined constant')) {
-            return null;
-        }
-
-        $match = \Nette\Utils\Strings::match($errorMessage, self::PROTECTED_CONSTANT_MESSAGE_REGEX);
-        if (! isset($match['constant_name'], $match['class_name'])) {
-            return null;
-        }
-
-        /** @var class-string $className */
-        $className = (string) $match['class_name'];
-        return new ClassConstMatch($className, (string) $match['constant_name']);
     }
 
     protected function configure(): void
@@ -65,8 +39,9 @@ final class PrivatizeConstantsCommand extends Command
         $this->addArgument(
             'sources',
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'One or more paths to check'
+            'One or more paths to check, include tests directory as well'
         );
+
         $this->setDescription('Make class constants private if not used outside');
     }
 
@@ -82,38 +57,23 @@ final class PrivatizeConstantsCommand extends Command
 
         $phpstanResult = $this->runPHPStanAnalyse($sources);
 
-        foreach ($phpstanResult['files'] as $filePath => $detail) {
-            foreach ($detail['messages'] as $messageError) {
-                // resolve errorMessage error details
-                $publicClassConstMatch = $this->resolvePublicClassConstMatch($messageError['message']);
-                $protectedClassConstMatch = $this->resolveProtectedClassConstMatch($messageError['message']);
-                if (! $publicClassConstMatch instanceof ClassConstMatch && ! $protectedClassConstMatch instanceof ClassConstMatch) {
-                    continue;
-                }
-
-                $classFileContents = FileSystem::read($filePath);
-
-                if ($publicClassConstMatch instanceof ClassConstMatch) {
-                    // replace "private const NAME" with "public const NAME"
-                    $classFileContents = str_replace(
-                        'private const ' . $publicClassConstMatch->getConstantName(),
-                        'public const ' . $publicClassConstMatch->getConstantName(),
-                        $classFileContents
-                    );
-                }
-
-                if ($protectedClassConstMatch instanceof ClassConstMatch) {
-                    // replace "private const NAME" with "protected const NAME"
-                    $classFileContents = str_replace(
-                        'private const ' . $protectedClassConstMatch->getConstantName(),
-                        'protected const ' . $protectedClassConstMatch->getConstantName(),
-                        $classFileContents
-                    );
-                }
-
-                FileSystem::write($filePath, $classFileContents);
-            }
+        $publicAndProtectedClassConstants = $this->classConstantResultAnalyser->analyseResult($phpstanResult);
+        if ($publicAndProtectedClassConstants->isEmpty()) {
+            $this->symfonyStyle->success('No class constant visibility to change');
+            return self::SUCCESS;
         }
+
+        // make public first, to avoid override to protected
+        foreach ($publicAndProtectedClassConstants->getPublicClassConstMatch() as $publicClassConstMatch) {
+            $this->replacePrivateConstWith($publicClassConstMatch, 'public const');
+        }
+
+        foreach ($publicAndProtectedClassConstants->getProtectedClassConstMatch() as $publicClassConstMatch) {
+            $this->replacePrivateConstWith($publicClassConstMatch, 'protected const');
+        }
+
+        $this->symfonyStyle->success(sprintf('%d constant made public', $publicAndProtectedClassConstants->getPublicCount()));
+        $this->symfonyStyle->success(sprintf('%d constant made protected', $publicAndProtectedClassConstants->getProtectedCount()));
 
         return self::SUCCESS;
     }
@@ -141,9 +101,7 @@ final class PrivatizeConstantsCommand extends Command
 
     private function makeClassConstantsPrivate(string $fileContents): string
     {
-        $fileContent = Strings::replace($fileContents, self::CONST_REGEX, '$1private const ');
-
-        return str_replace('public const ', 'private const ', $fileContent);
+        return Strings::replace($fileContents, self::PUBLIC_CONST_REGEX, '$1private const ');
     }
 
     /**
@@ -169,20 +127,16 @@ final class PrivatizeConstantsCommand extends Command
         return json_decode($resultOutput, true);
     }
 
-    private function resolvePublicClassConstMatch(string $errorMessage): ?ClassConstMatch
+    private function replacePrivateConstWith(ClassConstMatch $publicClassConstMatch, string $replaceString): void
     {
-        if (! str_contains($errorMessage, 'Access to private constant')) {
-            return null;
-        }
+        $classFileContents = FileSystem::read($publicClassConstMatch->getClassFileName());
+        // replace "private const NAME" with "private const NAME"
+        $classFileContents = str_replace(
+            'private const ' . $publicClassConstMatch->getConstantName(),
+            $replaceString . ' ' . $publicClassConstMatch->getConstantName(),
+            $classFileContents
+        );
 
-        $match = Strings::match($errorMessage, self::PRIVATE_CONSTANT_MESSAGE_REGEX);
-        if (! isset($match['constant_name'], $match['class_name'])) {
-            return null;
-        }
-
-        /** @var class-string $className */
-        $className = (string) $match['class_name'];
-
-        return new ClassConstMatch($className, (string) $match['constant_name']);
+        FileSystem::write($publicClassConstMatch->getClassFileName(), $classFileContents);
     }
 }
