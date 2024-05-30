@@ -52,6 +52,11 @@ final class PrivatizeConstantsCommand extends Command
     {
         $sources = (array) $input->getArgument('sources');
         $phpFileInfos = FilesFinder::findPhpFiles($sources);
+        if ($phpFileInfos === []) {
+            $this->symfonyStyle->warning('No PHP files found in provided paths');
+
+            return self::SUCCESS;
+        }
 
         $this->privatizeClassConstants($phpFileInfos);
 
