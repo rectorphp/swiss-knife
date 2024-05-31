@@ -6,6 +6,7 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
+use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Helpers\ClassNameResolver;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
@@ -123,6 +124,8 @@ final class PrivatizeConstantsCommand extends Command
     {
         $this->symfonyStyle->note(sprintf('Found %d PHP files, turning constants to private', count($phpFileInfos)));
 
+        $this->symfonyStyle->title('Files with privatized constants');
+
         foreach ($phpFileInfos as $phpFileInfo) {
             $originalFileContent = $phpFileInfo->getContents();
 
@@ -132,11 +135,10 @@ final class PrivatizeConstantsCommand extends Command
             }
 
             FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
-
-            $this->symfonyStyle->writeln(
-                sprintf(' * Constants in "%s" file privatized', $phpFileInfo->getRelativePathname())
-            );
+            $this->symfonyStyle->writeln(sprintf(' * ' .  PathHelper::relativeToCwd($phpFileInfo->getRealPath());
         }
+
+        $this->symfonyStyle->newLine();
     }
 
     private function makeClassConstantsPrivate(string $fileContents): string
