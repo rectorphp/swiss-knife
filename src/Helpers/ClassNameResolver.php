@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Helpers;
 
 use Nette\Utils\Strings;
-use Rector\PhpParser\Parser\SimplePhpParser;
 
 /**
  * @see \Rector\SwissKnife\Tests\Helpers\ClassNameResolverTest
