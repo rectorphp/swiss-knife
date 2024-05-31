@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Helpers;
 
 use Nette\Utils\Strings;
+use Rector\PhpParser\Parser\SimplePhpParser;
 
 /**
  * @see \Rector\SwissKnife\Tests\Helpers\ClassNameResolverTest
@@ -28,8 +29,7 @@ final class ClassNameResolver
      */
     public static function resolveFromFileContents(string $fileContents): ?string
     {
-        // @todo use php-parser .)
-
+        // @todo use php-parser to make more reliable?
 
         $namespaceMatch = Strings::match($fileContents, self::NAMESPACE_REGEX);
         $classMatch = Strings::match($fileContents, self::SHORT_CLASS_NAME_REGEX);
