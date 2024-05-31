@@ -6,6 +6,9 @@ namespace Rector\SwissKnife\Helpers;
 
 use Nette\Utils\Strings;
 
+/**
+ * @see \Rector\SwissKnife\Tests\Helpers\ClassNameResolverTest
+ */
 final class ClassNameResolver
 {
     /**
@@ -25,6 +28,9 @@ final class ClassNameResolver
      */
     public static function resolveFromFileContents(string $fileContents): ?string
     {
+        // @todo use php-parser .)
+
+
         $namespaceMatch = Strings::match($fileContents, self::NAMESPACE_REGEX);
         $classMatch = Strings::match($fileContents, self::SHORT_CLASS_NAME_REGEX);
 
@@ -33,6 +39,6 @@ final class ClassNameResolver
             return null;
         }
 
-        return ($namespaceMatch['namespace'] ?? '') . $classMatch['short_class_name'];
+        return ($namespaceMatch['namespace'] ?? '') . '\\' . $classMatch['short_class_name'];
     }
 }
