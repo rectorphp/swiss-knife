@@ -9,6 +9,7 @@ use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Helpers\ClassNameResolver;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
+use Rector\SwissKnife\Resolver\StaticClassConstResolver;
 use Rector\SwissKnife\ValueObject\ClassConstMatch;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -27,15 +28,10 @@ final class PrivatizeConstantsCommand extends Command
      */
     private const PUBLIC_CONST_REGEX = '#(    |\t)(public )?const #ms';
 
-    /**
-     * @var string
-     * @see https://regex101.com/r/aNpvq7/1
-     */
-    private const STATIC_CONST_CALL_REGEX = '#static::(?<constant_name>[A-Z\_]+)#ms';
-
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
         private readonly ClassConstantResultAnalyser $classConstantResultAnalyser,
+        private readonly StaticClassConstResolver $staticClassConstResolver,
     ) {
         parent::__construct();
     }
@@ -78,7 +74,7 @@ final class PrivatizeConstantsCommand extends Command
         $this->privatizeClassConstants($phpFileInfos);
 
         // special case of self::NAME, that should be protected - their children too
-        $staticClassConstsMatches = $this->findStaticClassConstMatches($phpFileInfos);
+        $staticClassConstsMatches = $this->staticClassConstResolver->resolve($phpFileInfos);
 
         $phpstanResult = $this->runPHPStanAnalyse($sources);
 
@@ -236,32 +232,8 @@ final class PrivatizeConstantsCommand extends Command
                     $staticClassConstsMatch->getClassName(),
                 ));
 
-                \Nette\Utils\FileSystem::write($phpFileInfo->getRealPath(), $classFileContents);
+                FileSystem::write($phpFileInfo->getRealPath(), $classFileContents);
             }
         }
-    }
-
-    /**
-     * @param SplFileInfo[] $phpFileInfos
-     * @return ClassConstMatch[]
-     */
-    private function findStaticClassConstMatches(array $phpFileInfos): array
-    {
-        $staticConstMatches = [];
-        foreach ($phpFileInfos as $phpFileInfo) {
-            $match = Strings::match($phpFileInfo->getContents(), self::STATIC_CONST_CALL_REGEX);
-            if ($match === null) {
-                continue;
-            }
-
-            $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
-            if ($fullyQualifiedClassName === null) {
-                continue;
-            }
-
-            $staticConstMatches[] = new ClassConstMatch($fullyQualifiedClassName, $match['constant_name']);
-        }
-
-        return $staticConstMatches;
     }
 }
