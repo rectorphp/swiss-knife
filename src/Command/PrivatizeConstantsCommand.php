@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
 use Rector\SwissKnife\ValueObject\ClassConstMatch;

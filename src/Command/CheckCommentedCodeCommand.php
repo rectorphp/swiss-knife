@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Command;
 
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
-use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
