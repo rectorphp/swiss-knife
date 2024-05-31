@@ -8,3 +8,7 @@ parameters:
     excludePaths:
         - */Fixture/*
         - */Source/*
+
+    ignoreErrors:
+        # known class-string type
+        - '#Method Rector\\SwissKnife\\Helpers\\ClassNameResolver::resolveFromFileContents\(\) should return class-string\|null but returns string#'

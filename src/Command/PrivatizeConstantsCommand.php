@@ -7,6 +7,7 @@ namespace Rector\SwissKnife\Command;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
+use Rector\SwissKnife\Helpers\ClassNameResolver;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
 use Rector\SwissKnife\ValueObject\ClassConstMatch;
 use Symfony\Component\Console\Command\Command;
@@ -25,6 +26,12 @@ final class PrivatizeConstantsCommand extends Command
      * @see https://regex101.com/r/wkHZwX/1
      */
     private const PUBLIC_CONST_REGEX = '#(    |\t)(public )?const #ms';
+
+    /**
+     * @var string
+     * @see https://regex101.com/r/aNpvq7/1
+     */
+    private const STATIC_CONST_CALL_REGEX = '#static::(?<constant_name>[A-Z\_]+)#ms';
 
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
@@ -70,6 +77,9 @@ final class PrivatizeConstantsCommand extends Command
 
         $this->privatizeClassConstants($phpFileInfos);
 
+        // special case of self::NAME, that should be protected - their children too
+        $staticClassConstsMatches = $this->findStaticClassConstMatches($phpFileInfos);
+
         $phpstanResult = $this->runPHPStanAnalyse($sources);
 
         $publicAndProtectedClassConstants = $this->classConstantResultAnalyser->analyseResult($phpstanResult);
@@ -87,12 +97,25 @@ final class PrivatizeConstantsCommand extends Command
             $this->replacePrivateConstWith($publicClassConstMatch, 'protected const');
         }
 
-        $this->symfonyStyle->success(
-            sprintf('%d constant made public', $publicAndProtectedClassConstants->getPublicCount())
-        );
-        $this->symfonyStyle->success(
-            sprintf('%d constant made protected', $publicAndProtectedClassConstants->getProtectedCount())
-        );
+        $this->replaceClassAndChildWithProtected($phpFileInfos, $staticClassConstsMatches);
+
+        if ($publicAndProtectedClassConstants->getPublicCount() !== 0) {
+            $this->symfonyStyle->success(
+                sprintf('%d constant made public', $publicAndProtectedClassConstants->getPublicCount())
+            );
+        }
+
+        if ($publicAndProtectedClassConstants->getProtectedCount() !== 0) {
+            $this->symfonyStyle->success(
+                sprintf('%d constant made protected', $publicAndProtectedClassConstants->getProtectedCount())
+            );
+        }
+
+        if ($staticClassConstsMatches !== []) {
+            $this->symfonyStyle->success(
+                \sprintf('%d constants made protected for static access', count($staticClassConstsMatches))
+            );
+        }
 
         return self::SUCCESS;
     }
@@ -175,5 +198,70 @@ final class PrivatizeConstantsCommand extends Command
         }
 
         $this->replacePrivateConstWith($parentClassConstMatch, $replaceString);
+    }
+
+    /**
+     * @param SplFileInfo[] $phpFileInfos
+     * @param ClassConstMatch[] $staticClassConstsMatches
+     */
+    private function replaceClassAndChildWithProtected(array $phpFileInfos, array $staticClassConstsMatches): void
+    {
+        if ($staticClassConstsMatches === []) {
+            return;
+        }
+
+        foreach ($phpFileInfos as $phpFileInfo) {
+            $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
+
+            if ($fullyQualifiedClassName === null) {
+                // no class to process
+                continue;
+            }
+
+            foreach ($staticClassConstsMatches as $staticClassConstsMatch) {
+                // update current and all hcildren
+                if (! is_a($fullyQualifiedClassName, $staticClassConstsMatch->getClassName(), true)) {
+                    continue;
+                }
+
+                $classFileContents = \str_replace(
+                    'private const ' . $staticClassConstsMatch->getConstantName(),
+                    'protected const ' . $staticClassConstsMatch->getConstantName(),
+                    $phpFileInfo->getContents()
+                );
+
+                $this->symfonyStyle->warning(sprintf(
+                    'The "%s" constant in "%s" made protected to allow static access. Consider refactoring to better design',
+                    $staticClassConstsMatch->getConstantName(),
+                    $staticClassConstsMatch->getClassName(),
+                ));
+
+                \Nette\Utils\FileSystem::write($phpFileInfo->getRealPath(), $classFileContents);
+            }
+        }
+    }
+
+    /**
+     * @param SplFileInfo[] $phpFileInfos
+     * @return ClassConstMatch[]
+     */
+    private function findStaticClassConstMatches(array $phpFileInfos): array
+    {
+        $staticConstMatches = [];
+        foreach ($phpFileInfos as $phpFileInfo) {
+            $match = Strings::match($phpFileInfo->getContents(), self::STATIC_CONST_CALL_REGEX);
+            if ($match === null) {
+                continue;
+            }
+
+            $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
+            if ($fullyQualifiedClassName === null) {
+                continue;
+            }
+
+            $staticConstMatches[] = new ClassConstMatch($fullyQualifiedClassName, $match['constant_name']);
+        }
+
+        return $staticConstMatches;
     }
 }
