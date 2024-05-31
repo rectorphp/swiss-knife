@@ -7,43 +7,43 @@ namespace Rector\SwissKnife\ValueObject;
 final readonly class PublicAndProtectedClassConstants
 {
     /**
-     * @param ClassConstMatch[] $publicClassConstMatch
-     * @param ClassConstMatch[] $protectedClassConstMatch
+     * @param ClassConstMatch[] $publicClassConstMatches
+     * @param ClassConstMatch[] $protectedClassConstMatches
      */
     public function __construct(
-        private array $publicClassConstMatch,
-        private array $protectedClassConstMatch
+        private array $publicClassConstMatches,
+        private array $protectedClassConstMatches
     ) {
     }
 
     /**
      * @return ClassConstMatch[]
      */
-    public function getPublicClassConstMatch(): array
+    public function getPublicClassConstMatches(): array
     {
-        return $this->publicClassConstMatch;
+        return $this->publicClassConstMatches;
     }
 
     /**
      * @return ClassConstMatch[]
      */
-    public function getProtectedClassConstMatch(): array
+    public function getProtectedClassConstMatches(): array
     {
-        return $this->protectedClassConstMatch;
+        return $this->protectedClassConstMatches;
     }
 
     public function getProtectedCount(): int
     {
-        return count($this->protectedClassConstMatch);
+        return count($this->protectedClassConstMatches);
     }
 
     public function getPublicCount(): int
     {
-        return count($this->publicClassConstMatch);
+        return count($this->publicClassConstMatches);
     }
 
     public function isEmpty(): bool
     {
-        return $this->publicClassConstMatch === [] && $this->protectedClassConstMatch === [];
+        return $this->publicClassConstMatches === [] && $this->protectedClassConstMatches === [];
     }
 }

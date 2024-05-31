@@ -7,7 +7,11 @@ namespace Rector\SwissKnife\PHPStan;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\ValueObject\ClassConstMatch;
 use Rector\SwissKnife\ValueObject\PublicAndProtectedClassConstants;
+use Webmozart\Assert\Assert;
 
+/**
+ * @see \Rector\SwissKnife\Tests\PHPStan\ClassConstantResultAnalyserTest
+ */
 final class ClassConstantResultAnalyser
 {
     /**
@@ -18,9 +22,9 @@ final class ClassConstantResultAnalyser
 
     /**
      * @var string
-     * @see https://regex101.com/r/pRzdnw/1
+     * @see https://regex101.com/r/V1QOPN/1
      */
-    private const PROTECTED_CONSTANT_MESSAGE_REGEX = '#Access to undefined constant (?<class_name>[\w\\\\]+)::(?<constant_name>.*?)#';
+    private const PROTECTED_CONSTANT_MESSAGE_REGEX = '#Access to undefined constant (?<class_name>[\w\\\\]+)::(?<constant_name>[\w\_]+)#';
 
     /**
      * @param mixed[] $phpstanResult
@@ -30,8 +34,14 @@ final class ClassConstantResultAnalyser
         $publicClassConstMatches = [];
         $protectedClassConstMatches = [];
 
+        Assert::keyExists($phpstanResult, 'files');
+
         foreach ($phpstanResult['files'] as $fileDetail) {
+            Assert::keyExists($fileDetail, 'messages');
+
             foreach ($fileDetail['messages'] as $messageError) {
+                Assert::keyExists($messageError, 'message');
+
                 $publicClassConstMatch = $this->matchPublicClassConstMatch($messageError['message']);
                 if ($publicClassConstMatch instanceof ClassConstMatch) {
                     $publicClassConstMatches[] = $publicClassConstMatch;

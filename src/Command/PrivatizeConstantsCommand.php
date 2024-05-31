@@ -85,11 +85,11 @@ final class PrivatizeConstantsCommand extends Command
         }
 
         // make public first, to avoid override to protected
-        foreach ($publicAndProtectedClassConstants->getPublicClassConstMatch() as $publicClassConstMatch) {
+        foreach ($publicAndProtectedClassConstants->getPublicClassConstMatches() as $publicClassConstMatch) {
             $this->replacePrivateConstWith($publicClassConstMatch, 'public const');
         }
 
-        foreach ($publicAndProtectedClassConstants->getProtectedClassConstMatch() as $publicClassConstMatch) {
+        foreach ($publicAndProtectedClassConstants->getProtectedClassConstMatches() as $publicClassConstMatch) {
             $this->replacePrivateConstWith($publicClassConstMatch, 'protected const');
         }
 

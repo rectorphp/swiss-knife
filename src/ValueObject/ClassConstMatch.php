@@ -6,6 +6,7 @@ namespace Rector\SwissKnife\ValueObject;
 
 use ReflectionClass;
 use Stringable;
+use Webmozart\Assert\Assert;
 
 final readonly class ClassConstMatch implements Stringable
 {
@@ -16,6 +17,8 @@ final readonly class ClassConstMatch implements Stringable
         private string $className,
         private string $constantName
     ) {
+        Assert::notEmpty($constantName);
+        Assert::notEmpty($className);
     }
 
     /**
