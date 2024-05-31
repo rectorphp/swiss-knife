@@ -135,7 +135,7 @@ final class PrivatizeConstantsCommand extends Command
             }
 
             FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
-            $this->symfonyStyle->writeln(sprintf(' * ' .  PathHelper::relativeToCwd($phpFileInfo->getRealPath());
+            $this->symfonyStyle->writeln(' * ' .  PathHelper::relativeToCwd($phpFileInfo->getRealPath()));
         }
 
         $this->symfonyStyle->newLine();
