@@ -1,4 +1,5 @@
 #!/usr/bin/env php
-<?php
+<?php 
+namespace SwissKnife202405;
 
 require __DIR__ . '/swiss-knife.php';

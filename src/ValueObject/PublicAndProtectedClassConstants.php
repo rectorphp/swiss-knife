@@ -1,48 +1,52 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\ValueObject;
 
-final readonly class PublicAndProtectedClassConstants
+final class PublicAndProtectedClassConstants
 {
+    /**
+     * @var ClassConstMatch[]
+     * @readonly
+     */
+    private $publicClassConstMatch;
+    /**
+     * @var ClassConstMatch[]
+     * @readonly
+     */
+    private $protectedClassConstMatch;
     /**
      * @param ClassConstMatch[] $publicClassConstMatch
      * @param ClassConstMatch[] $protectedClassConstMatch
      */
-    public function __construct(
-        private array $publicClassConstMatch,
-        private array $protectedClassConstMatch
-    ) {
+    public function __construct(array $publicClassConstMatch, array $protectedClassConstMatch)
+    {
+        $this->publicClassConstMatch = $publicClassConstMatch;
+        $this->protectedClassConstMatch = $protectedClassConstMatch;
     }
-
     /**
      * @return ClassConstMatch[]
      */
-    public function getPublicClassConstMatch(): array
+    public function getPublicClassConstMatch() : array
     {
         return $this->publicClassConstMatch;
     }
-
     /**
      * @return ClassConstMatch[]
      */
-    public function getProtectedClassConstMatch(): array
+    public function getProtectedClassConstMatch() : array
     {
         return $this->protectedClassConstMatch;
     }
-
-    public function getProtectedCount(): int
+    public function getProtectedCount() : int
     {
-        return count($this->protectedClassConstMatch);
+        return \count($this->protectedClassConstMatch);
     }
-
-    public function getPublicCount(): int
+    public function getPublicCount() : int
     {
-        return count($this->publicClassConstMatch);
+        return \count($this->publicClassConstMatch);
     }
-
-    public function isEmpty(): bool
+    public function isEmpty() : bool
     {
         return $this->publicClassConstMatch === [] && $this->protectedClassConstMatch === [];
     }
