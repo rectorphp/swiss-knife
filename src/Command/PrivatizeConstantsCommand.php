@@ -7,11 +7,13 @@ namespace Rector\SwissKnife\Command;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\FilesFinder;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
 use Rector\SwissKnife\ValueObject\ClassConstMatch;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
@@ -42,6 +44,13 @@ final class PrivatizeConstantsCommand extends Command
             'One or more paths to check, include tests directory as well'
         );
 
+        $this->addOption(
+            'exclude-path',
+            null,
+            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
+            'Path to exclude'
+        );
+
         $this->setDescription('Make class constants private if not used outside');
     }
 
@@ -51,7 +60,9 @@ final class PrivatizeConstantsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $sources = (array) $input->getArgument('sources');
-        $phpFileInfos = FilesFinder::findPhpFiles($sources);
+        $excludedPaths = (array) $input->getOption('exclude-path');
+
+        $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
         if ($phpFileInfos === []) {
             $this->symfonyStyle->warning('No PHP files found in provided paths');
 

@@ -32,27 +32,6 @@ final class FilesFinder
      * @param string[] $sources
      * @return SplFileInfo[]
      */
-    public static function findPhpFiles(array $sources): array
-    {
-        $paths = [];
-        foreach ($sources as $source) {
-            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
-        }
-
-        $finder = Finder::create()
-            ->files()
-            ->in($paths)
-            ->name('*.php')
-            ->notPath('vendor')
-            ->sortByName();
-
-        return iterator_to_array($finder->getIterator());
-    }
-
-    /**
-     * @param string[] $sources
-     * @return SplFileInfo[]
-     */
     public static function findJsonFiles(array $sources): array
     {
         $jsonFileInfos = [];

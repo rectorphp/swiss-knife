@@ -27,6 +27,7 @@ final class PhpFilesFinder
             ->files()
             ->in($paths)
             ->name('*.php')
+            ->notPath('vendor')
             // exclude paths, as notPaths() does no work
             ->filter(static function (SplFileInfo $splFileInfo) use ($excludedPaths): bool {
                 foreach ($excludedPaths as $excludedPath) {

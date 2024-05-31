@@ -6,6 +6,7 @@ namespace Rector\SwissKnife\Command;
 
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\FilesFinder;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -50,7 +51,7 @@ final class CheckCommentedCodeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $sources = (array) $input->getArgument('sources');
-        $phpFileInfos = FilesFinder::findPhpFiles($sources);
+        $phpFileInfos = PhpFilesFinder::find($sources);
 
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
         $this->symfonyStyle->note($message);
