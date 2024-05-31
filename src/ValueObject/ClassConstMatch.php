@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\ValueObject;
 
 use ReflectionClass;
+use Stringable;
 
-final readonly class ClassConstMatch implements \Stringable
+final readonly class ClassConstMatch implements Stringable
 {
     /**
      * @param class-string $className
@@ -41,17 +42,17 @@ final readonly class ClassConstMatch implements \Stringable
      */
     public function getClassFileName(): string
     {
-        $classReflection = new ReflectionClass($this->className);
-        return (string) $classReflection->getFileName();
+        $reflectionClass = new ReflectionClass($this->className);
+        return (string) $reflectionClass->getFileName();
     }
 
     public function getParentClassConstMatch(): ?self
     {
-        $classReflection = new ReflectionClass($this->className);
-        if ($classReflection->getParentClass() === false) {
+        $reflectionClass = new ReflectionClass($this->className);
+        if ($reflectionClass->getParentClass() === false) {
             return null;
         }
 
-        return new self($classReflection->getParentClass()->getName(), $this->constantName);
+        return new self($reflectionClass->getParentClass()->getName(), $this->constantName);
     }
 }

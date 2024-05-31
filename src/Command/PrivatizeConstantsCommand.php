@@ -216,22 +216,22 @@ final class PrivatizeConstantsCommand extends Command
                 continue;
             }
 
-            foreach ($staticClassConstsMatches as $staticClassConstsMatch) {
+            foreach ($staticClassConstsMatches as $staticClassConstMatch) {
                 // update current and all hcildren
-                if (! is_a($fullyQualifiedClassName, $staticClassConstsMatch->getClassName(), true)) {
+                if (! is_a($fullyQualifiedClassName, $staticClassConstMatch->getClassName(), true)) {
                     continue;
                 }
 
                 $classFileContents = \str_replace(
-                    'private const ' . $staticClassConstsMatch->getConstantName(),
-                    'protected const ' . $staticClassConstsMatch->getConstantName(),
+                    'private const ' . $staticClassConstMatch->getConstantName(),
+                    'protected const ' . $staticClassConstMatch->getConstantName(),
                     $phpFileInfo->getContents()
                 );
 
                 $this->symfonyStyle->warning(sprintf(
                     'The "%s" constant in "%s" made protected to allow static access. Consider refactoring to better design',
-                    $staticClassConstsMatch->getConstantName(),
-                    $staticClassConstsMatch->getClassName(),
+                    $staticClassConstMatch->getConstantName(),
+                    $staticClassConstMatch->getClassName(),
                 ));
 
                 FileSystem::write($phpFileInfo->getRealPath(), $classFileContents);

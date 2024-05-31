@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\ValueObject;
 
-final class PublicAndProtectedClassConstants
+final readonly class PublicAndProtectedClassConstants
 {
     /**
      * @param ClassConstMatch[] $publicClassConstMatch

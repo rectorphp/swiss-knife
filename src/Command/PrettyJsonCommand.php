@@ -70,7 +70,7 @@ final class PrettyJsonCommand extends Command
             $printedFilePaths[] = $jsonFileInfo->getRelativePathname();
 
             // nothing will be changed
-            if ($isDryRun === true) {
+            if ($isDryRun) {
                 continue;
             }
 
