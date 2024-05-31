@@ -6,7 +6,7 @@ namespace Rector\SwissKnife\ValueObject;
 
 use ReflectionClass;
 
-final readonly class ClassConstMatch
+final readonly class ClassConstMatch implements \Stringable
 {
     /**
      * @param class-string $className
@@ -15,6 +15,14 @@ final readonly class ClassConstMatch
         private string $className,
         private string $constantName
     ) {
+    }
+
+    /**
+     * For array_unique
+     */
+    public function __toString(): string
+    {
+        return $this->className . '_' . $this->constantName;
     }
 
     public function getClassName(): string

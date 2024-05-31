@@ -44,6 +44,9 @@ final class ClassConstantResultAnalyser
             }
         }
 
+        $publicClassConstMatches = array_unique($publicClassConstMatches);
+        $protectedClassConstMatches = array_unique($protectedClassConstMatches);
+
         return new PublicAndProtectedClassConstants($publicClassConstMatches, $protectedClassConstMatches);
     }
 
