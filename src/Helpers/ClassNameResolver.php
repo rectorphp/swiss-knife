@@ -29,7 +29,7 @@ final class ClassNameResolver
         $classMatch = Strings::match($fileContents, self::SHORT_CLASS_NAME_REGEX);
 
         // short class must exist
-        if (!isset($classMatch['short_class_name'])) {
+        if (! isset($classMatch['short_class_name'])) {
             return null;
         }
 
