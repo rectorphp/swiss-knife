@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Helpers\ClassNameResolver;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
@@ -75,7 +74,7 @@ final class PrivatizeConstantsCommand extends Command
         $this->privatizeClassConstants($phpFileInfos);
 
         // special case of self::NAME, that should be protected - their children too
-        $staticClassConstsMatches = $this->staticClassConstResolver->resolve($phpFileInfos);
+        $staticClassConstMatches = $this->staticClassConstResolver->resolve($phpFileInfos);
 
         $phpstanResult = $this->runPHPStanAnalyse($sources);
 
@@ -94,7 +93,7 @@ final class PrivatizeConstantsCommand extends Command
             $this->replacePrivateConstWith($publicClassConstMatch, 'protected const');
         }
 
-        $this->replaceClassAndChildWithProtected($phpFileInfos, $staticClassConstsMatches);
+        $this->replaceClassAndChildWithProtected($phpFileInfos, $staticClassConstMatches);
 
         if ($publicAndProtectedClassConstants->getPublicCount() !== 0) {
             $this->symfonyStyle->success(
@@ -108,9 +107,9 @@ final class PrivatizeConstantsCommand extends Command
             );
         }
 
-        if ($staticClassConstsMatches !== []) {
+        if ($staticClassConstMatches !== []) {
             $this->symfonyStyle->success(
-                \sprintf('%d constants made protected for static access', count($staticClassConstsMatches))
+                \sprintf('%d constants made protected for static access', count($staticClassConstMatches))
             );
         }
 

@@ -11,6 +11,8 @@ use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * Resolve all "static::SOME_CONST" calls
+ *
+ * @see \Rector\SwissKnife\Tests\Resolver\StaticClassConstResolver\StaticClassConstResolverTest
  */
 final class StaticClassConstResolver
 {
@@ -28,17 +30,19 @@ final class StaticClassConstResolver
     {
         $staticConstMatches = [];
         foreach ($phpFileInfos as $phpFileInfo) {
-            $match = Strings::match($phpFileInfo->getContents(), self::STATIC_CONST_CALL_REGEX);
-            if ($match === null) {
-                continue;
-            }
+            $matches = Strings::matchAll($phpFileInfo->getContents(), self::STATIC_CONST_CALL_REGEX);
+            foreach ($matches as $match) {
+                if ($match === null) {
+                    continue;
+                }
 
-            $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
-            if ($fullyQualifiedClassName === null) {
-                continue;
-            }
+                $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
+                if ($fullyQualifiedClassName === null) {
+                    continue;
+                }
 
-            $staticConstMatches[] = new ClassConstMatch($fullyQualifiedClassName, $match['constant_name']);
+                $staticConstMatches[] = new ClassConstMatch($fullyQualifiedClassName, $match['constant_name']);
+            }
         }
 
         return $staticConstMatches;
