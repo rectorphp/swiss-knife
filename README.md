@@ -104,7 +104,7 @@ This will keep mocked classes non-final, so PHPUnit can extend them internally.
 
 ### 5. Privatize local class constants
 
-PHPStan can report unused private clsas constants, but it skips all the public ones.
+PHPStan can report unused private class constants, but it skips all the public ones.
 Do you have lots of class constants, all of them public but want to narrow scope to privates?
 
 ```bash
