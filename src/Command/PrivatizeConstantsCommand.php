@@ -70,7 +70,7 @@ final class PrivatizeConstantsCommand extends Command
             static fn (SplFileInfo $splFileInfo): bool => ! str_ends_with(
                 $splFileInfo->getFilenameWithoutExtension(),
                 'Interface'
-            )
+            ) || ! preg_match('/^interface /m', $splFileInfo->getContents())
         );
         if ($phpFileInfos === []) {
             $this->symfonyStyle->warning('No PHP files found in provided paths');
