@@ -64,7 +64,14 @@ final class PrivatizeConstantsCommand extends Command
         $sources = (array) $input->getArgument('sources');
         $excludedPaths = (array) $input->getOption('exclude-path');
 
-        $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
+        $phpFileInfos = PhpFilesFinder::find(
+            $sources,
+            $excludedPaths,
+            static fn (SplFileInfo $splFileInfo): bool => ! str_ends_with(
+                $splFileInfo->getFilenameWithoutExtension(),
+                'Interface'
+            )
+        );
         if ($phpFileInfos === []) {
             $this->symfonyStyle->warning('No PHP files found in provided paths');
 
