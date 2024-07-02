@@ -8,6 +8,7 @@ use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\NodeVisitorAbstract;
@@ -21,7 +22,7 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
 
     public function enterNode(Node $node)
     {
-        if (! $node instanceof MethodCall) {
+        if (! $node instanceof MethodCall && ! $node instanceof StaticCall) {
             return null;
         }
 
@@ -31,7 +32,7 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         }
 
         $methodName = $node->name->toString();
-        if (! in_array($methodName, ['getMock', 'createMock'], true)) {
+        if (! in_array($methodName, ['getMock', 'createMock', 'mock'], true)) {
             return null;
         }
 
