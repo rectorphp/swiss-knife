@@ -9,18 +9,18 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeVisitor\NeedForFinalizeNodeVisitor;
 use Webmozart\Assert\Assert;
 
-final class NeedsFinalizeAnalyzer
+final readonly class NeedsFinalizeAnalyzer
 {
-    private readonly NodeTraverser $finalizingNodeTraverser;
+    private NodeTraverser $finalizingNodeTraverser;
 
-    private readonly NeedForFinalizeNodeVisitor $needForFinalizeNodeVisitor;
+    private NeedForFinalizeNodeVisitor $needForFinalizeNodeVisitor;
 
     /**
      * @param string[] $excludedClasses
      */
     public function __construct(
         array $excludedClasses,
-        private readonly CachedPhpParser $cachedPhpParser
+        private CachedPhpParser $cachedPhpParser
     ) {
         Assert::allString($excludedClasses);
 

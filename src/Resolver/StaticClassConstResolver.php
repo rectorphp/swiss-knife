@@ -32,10 +32,6 @@ final class StaticClassConstResolver
         foreach ($phpFileInfos as $phpFileInfo) {
             $matches = Strings::matchAll($phpFileInfo->getContents(), self::STATIC_CONST_CALL_REGEX);
             foreach ($matches as $match) {
-                if ($match === null) {
-                    continue;
-                }
-
                 $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
                 if ($fullyQualifiedClassName === null) {
                     continue;

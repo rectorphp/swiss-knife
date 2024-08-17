@@ -20,7 +20,7 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
      */
     private array $mockedClassNames = [];
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): ?Node
     {
         if (! $node instanceof MethodCall && ! $node instanceof StaticCall) {
             return null;
@@ -49,7 +49,7 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             }
         }
 
-        return null;
+        return $node;
     }
 
     /**

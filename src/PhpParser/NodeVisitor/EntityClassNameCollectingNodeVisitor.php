@@ -17,7 +17,7 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
      */
     private array $entityClassNames = [];
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): ?Node
     {
         if (! $node instanceof Class_) {
             return null;
@@ -28,8 +28,8 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        // dummy check for entity namespace
-        if (array_intersect(['Entity', 'Entities'], $node->namespacedName->getParts())) {
+        // dummy check for entity namespace + odm
+        if (array_intersect(['Entity', 'Entities', 'Document'], $node->namespacedName->getParts())) {
             $this->entityClassNames[] = $node->namespacedName->toString();
             return null;
         }
@@ -39,7 +39,7 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        return null;
+        return $node;
     }
 
     /**

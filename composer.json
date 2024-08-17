@@ -7,21 +7,24 @@
     ],
     "require": {
         "php": ">=8.2",
-        "illuminate/container": "^10.43",
-        "nette/robot-loader": "^3.4",
-        "nette/utils": "^3.2",
-        "nikic/php-parser": "^4.18",
+        "illuminate/container": "^11.0",
+        "nette/robot-loader": "^4.0",
+        "nette/utils": "^4.0",
+        "nikic/php-parser": "^4.19",
         "symfony/console": "^6.4",
         "symfony/process": "^6.4",
         "symfony/finder": "^6.4",
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "icanhazstring/composer-unused": "^0.8.11",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "^10.5",
         "rector/rector": "^1.0",
-        "symplify/easy-coding-standard": "^12.1",
+        "shipmonk/composer-dependency-analyser": "^1.7",
+        "symplify/easy-coding-standard": "^12.3",
         "tomasvotruba/class-leak": "^0.2",
+        "tomasvotruba/type-coverage": "^0.3.1",
         "tracy/tracy": "^2.10"
     },
     "autoload": {

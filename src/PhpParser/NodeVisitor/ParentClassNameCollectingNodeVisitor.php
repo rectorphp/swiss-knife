@@ -16,7 +16,7 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
      */
     private array $parentClassNames = [];
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): ?Node
     {
         if (! $node instanceof Class_) {
             return null;
@@ -28,7 +28,7 @@ final class ParentClassNameCollectingNodeVisitor extends NodeVisitorAbstract
 
         $this->parentClassNames[] = $node->extends->toString();
 
-        return null;
+        return $node;
     }
 
     /**
