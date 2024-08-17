@@ -9,6 +9,12 @@ parameters:
         - */Fixture/*
         - */Source/*
 
+    type_coverage:
+        return: 99
+        param: 99
+        property: 99
+        constant: 99
+
     ignoreErrors:
         # known class-string type
         - '#Method Rector\\SwissKnife\\Helpers\\ClassNameResolver::resolveFromFileContents\(\) should return class-string\|null but returns string#'

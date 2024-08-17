@@ -33,7 +33,7 @@ final class NeedForFinalizeNodeVisitor extends NodeVisitorAbstract
         return $nodes;
     }
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): ?Node
     {
         if (! $node instanceof Class_) {
             return null;
@@ -56,7 +56,7 @@ final class NeedForFinalizeNodeVisitor extends NodeVisitorAbstract
 
         $this->isNeeded = true;
 
-        return null;
+        return $node;
     }
 
     public function isNeeded(): bool
