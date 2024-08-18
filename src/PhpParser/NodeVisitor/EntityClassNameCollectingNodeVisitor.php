@@ -9,9 +9,20 @@ use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\NodeVisitorAbstract;
+use Webmozart\Assert\Assert;
 
 final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
 {
+    /**
+     * @var string[]
+     */
+    private const ODM_SUFFIXES = ['Document', 'EmbeddedDocument'];
+
+    /**
+     * @var string[]
+     */
+    private const ORM_SUFFIXES = ['Entity', 'Embeddable'];
+
     /**
      * @var string[]
      */
@@ -28,13 +39,7 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        // dummy check for entity namespace + odm
-        if (array_intersect(['Entity', 'Entities', 'Document'], $node->namespacedName->getParts())) {
-            $this->entityClassNames[] = $node->namespacedName->toString();
-            return null;
-        }
-
-        if ($this->hasEntityDocBlock($node) || $this->hasEntityAttribute($node)) {
+        if ($this->hasEntityAnnotation($node) || $this->hasEntityAttribute($node)) {
             $this->entityClassNames[] = $node->namespacedName->toString();
             return null;
         }
@@ -53,8 +58,13 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         return $uniqueEntityClassNames;
     }
 
-    private function hasEntityDocBlock(Class_ $class): bool
+    /**
+     * @param string[] $suffixes
+     */
+    private function hasDocBlockSuffixes(Class_ $class, array $suffixes): bool
     {
+        Assert::allString($suffixes);
+
         $docComment = $class->getDocComment();
         if ($docComment instanceof Doc) {
             // dummy check
@@ -62,32 +72,51 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
                 return false;
             }
 
-            if (str_contains($docComment->getText(), 'Entity')) {
-                return true;
-            }
-
-            if (str_contains($docComment->getText(), 'Embeddable')) {
-                return true;
+            foreach ($suffixes as $suffix) {
+                if (str_contains($docComment->getText(), $suffix)) {
+                    return true;
+                }
             }
         }
 
         return false;
     }
 
-    private function hasEntityAttribute(Class_ $class): bool
+    /**
+     * @param string[] $suffixes
+     */
+    private function hasAttributeSuffixes(Class_ $class, array $suffixes): bool
     {
+        Assert::allString($suffixes);
+
         foreach ($class->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attr) {
-                if (str_ends_with($attr->name->toString(), 'Entity')) {
-                    return true;
-                }
-
-                if (str_ends_with($attr->name->toString(), 'Embeddable')) {
-                    return true;
+                foreach ($suffixes as $suffix) {
+                    if (str_ends_with($attr->name->toString(), $suffix)) {
+                        return true;
+                    }
                 }
             }
         }
 
         return false;
+    }
+
+    private function hasEntityAnnotation(Class_ $class): bool
+    {
+        if ($this->hasDocBlockSuffixes($class, self::ODM_SUFFIXES)) {
+            return true;
+        }
+
+        return $this->hasDocBlockSuffixes($class, self::ORM_SUFFIXES);
+    }
+
+    private function hasEntityAttribute(Class_ $class): bool
+    {
+        if ($this->hasAttributeSuffixes($class, self::ODM_SUFFIXES)) {
+            return true;
+        }
+
+        return $this->hasAttributeSuffixes($class, self::ORM_SUFFIXES);
     }
 }
