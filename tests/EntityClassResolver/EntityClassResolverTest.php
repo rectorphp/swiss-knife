@@ -29,4 +29,15 @@ final class EntityClassResolverTest extends AbstractTestCase
             $entityClasses
         );
     }
+
+    public function testODMDocument(): void
+    {
+        $documentClasses = $this->entityClassResolver->resolve([__DIR__ . '/Fixture/Anything'], static function (): void {
+        });
+
+        $this->assertSame(
+            ['Rector\SwissKnife\Tests\EntityClassResolver\Fixture\Anything\SomeDocument'],
+            $documentClasses
+        );
+    }
 }
