@@ -1,16 +1,15 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\PhpParser\NodeVisitor;
 
-use PhpParser\Node;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Expr\ClassConstFetch;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt\Class_;
-use PhpParser\NodeTraverser;
-use PhpParser\NodeVisitorAbstract;
+use SwissKnife202409\PhpParser\Node;
+use SwissKnife202409\PhpParser\Node\Expr;
+use SwissKnife202409\PhpParser\Node\Expr\ClassConstFetch;
+use SwissKnife202409\PhpParser\Node\Name;
+use SwissKnife202409\PhpParser\Node\Stmt\Class_;
+use SwissKnife202409\PhpParser\NodeTraverser;
+use SwissKnife202409\PhpParser\NodeVisitorAbstract;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
@@ -18,47 +17,43 @@ use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ParentClassConstantFetch;
 use ReflectionClass;
-use Webmozart\Assert\Assert;
-
+use SwissKnife202409\Webmozart\Assert\Assert;
 final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
 {
-    private ?Class_ $currentClass = null;
-
+    /**
+     * @var \PhpParser\Node\Stmt\Class_|null
+     */
+    private $currentClass;
     /**
      * @var ClassConstantFetchInterface[]
      */
-    private array $classConstantFetches = [];
-
-    public function enterNode(Node $node): Node|int|null
+    private $classConstantFetches = [];
+    /**
+     * @return \PhpParser\Node|int|null
+     */
+    public function enterNode(Node $node)
     {
         if ($node instanceof Class_) {
             // skip anonymous classes as problematic
             if ($node->isAnonymous()) {
                 return NodeTraverser::DONT_TRAVERSE_CURRENT_AND_CHILDREN;
             }
-
             $this->currentClass = $node;
             return null;
         }
-
-        if (! $node instanceof ClassConstFetch) {
+        if (!$node instanceof ClassConstFetch) {
             return null;
         }
-
         // unable to resolve → skip
-        if (! $node->class instanceof Name) {
+        if (!$node->class instanceof Name) {
             return null;
         }
-
         $className = $node->class->toString();
-
         if ($node->name instanceof Expr) {
             // unable to resolve → skip
             return null;
         }
-
         $constantName = $node->name->toString();
-
         // always public magic
         if ($constantName === 'class') {
             return null;
@@ -80,91 +75,74 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             $this->classConstantFetches[] = new ParentClassConstantFetch($currentClassName, $constantName);
             return $node;
         }
-
         if ($className === 'static') {
             throw new NotImplementedYetException('@todo');
         }
-
         if ($this->doesClassExist($className)) {
             // is class from /vendor? we can skip it
             if ($this->isVendorClassName($className)) {
                 return null;
             }
-
             // is vendor fetch? skip
             $this->classConstantFetches[] = new ExternalClassAccessConstantFetch($className, $constantName);
             return null;
         }
-
         throw new NotImplementedYetException($className . '::' . $constantName);
     }
-
-    public function leaveNode(Node $node): ?Node
+    public function leaveNode(Node $node) : ?Node
     {
-        if (! $node instanceof Class_) {
+        if (!$node instanceof Class_) {
             return null;
         }
-
         // we've left class, lets reset its value
         $this->currentClass = null;
         return $node;
     }
-
     /**
      * @return ClassConstantFetchInterface[]
      */
-    public function getClassConstantFetches(): array
+    public function getClassConstantFetches() : array
     {
         return $this->classConstantFetches;
     }
-
-    private function isVendorClassName(string $className): bool
+    private function isVendorClassName(string $className) : bool
     {
-        if (! $this->doesClassExist($className)) {
-            throw new ShouldNotHappenException(sprintf('Class "%s" could not be found', $className));
+        if (!$this->doesClassExist($className)) {
+            throw new ShouldNotHappenException(\sprintf('Class "%s" could not be found', $className));
         }
-
         $reflectionClass = new ReflectionClass($className);
-        return str_contains((string) $reflectionClass->getFileName(), 'vendor');
+        return \strpos((string) $reflectionClass->getFileName(), 'vendor') !== \false;
     }
-
-    private function isCurrentClassConstant(Class_ $currentClass, string $constantName): bool
+    private function isCurrentClassConstant(Class_ $currentClass, string $constantName) : bool
     {
         foreach ($currentClass->getConstants() as $classConstant) {
             foreach ($classConstant->consts as $const) {
                 if ($const->name->toString() === $constantName) {
-                    return true;
+                    return \true;
                 }
             }
         }
-
-        return false;
+        return \false;
     }
-
-    private function getClassName(): string
+    private function getClassName() : string
     {
-        if (! $this->currentClass instanceof Class_) {
+        if (!$this->currentClass instanceof Class_) {
             throw new ShouldNotHappenException();
         }
-
         $namespaceName = $this->currentClass->namespacedName;
-        if (! $namespaceName instanceof Name) {
+        if (!$namespaceName instanceof Name) {
             throw new ShouldNotHappenException();
         }
-
         return $namespaceName->toString();
     }
-
-    private function doesClassExist(string $className): bool
+    private function doesClassExist(string $className) : bool
     {
-        if (class_exists($className)) {
-            return true;
+        if (\class_exists($className)) {
+            return \true;
         }
-
-        if (interface_exists($className)) {
-            return true;
+        if (\interface_exists($className)) {
+            return \true;
         }
-
-        return trait_exists($className);
+        return \trait_exists($className);
     }
 }
