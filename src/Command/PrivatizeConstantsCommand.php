@@ -6,11 +6,13 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
+use PhpParser\NodeTraverser;
+use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Rector\SwissKnife\Helpers\ClassNameResolver;
-use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
-use Rector\SwissKnife\Resolver\StaticClassConstResolver;
-use Rector\SwissKnife\ValueObject\ClassConstMatch;
+use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
+use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
+use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,20 +20,12 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Process\Process;
 
 final class PrivatizeConstantsCommand extends Command
 {
-    /**
-     * @var string
-     * @see https://regex101.com/r/wkHZwX/1
-     */
-    private const PUBLIC_CONST_REGEX = '#(    |\t)(public )?const #ms';
-
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
-        private readonly ClassConstantResultAnalyser $classConstantResultAnalyser,
-        private readonly StaticClassConstResolver $staticClassConstResolver,
+        private readonly CachedPhpParser $cachedPhpParser
     ) {
         parent::__construct();
     }
@@ -71,46 +65,15 @@ final class PrivatizeConstantsCommand extends Command
             return self::SUCCESS;
         }
 
-        $this->privatizeClassConstants($phpFileInfos);
+        $this->symfonyStyle->note('1. Finding class const fetches...');
+        $classConstantFetches = $this->findClassConstantFetches($phpFileInfos);
 
-        // special case of self::NAME, that should be protected - their children too
-        $staticClassConstMatches = $this->staticClassConstResolver->resolve($phpFileInfos);
+        $this->symfonyStyle->newLine(2);
+        $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
 
-        $phpstanResult = $this->runPHPStanAnalyse($sources);
-
-        $publicAndProtectedClassConstants = $this->classConstantResultAnalyser->analyseResult($phpstanResult);
-        if ($publicAndProtectedClassConstants->isEmpty()) {
-            $this->symfonyStyle->success('No class constant visibility to change');
-            return self::SUCCESS;
-        }
-
-        // make public first, to avoid override to protected
-        foreach ($publicAndProtectedClassConstants->getPublicClassConstMatches() as $publicClassConstMatch) {
-            $this->replacePrivateConstWith($publicClassConstMatch, 'public const');
-        }
-
-        foreach ($publicAndProtectedClassConstants->getProtectedClassConstMatches() as $publicClassConstMatch) {
-            $this->replacePrivateConstWith($publicClassConstMatch, 'protected const');
-        }
-
-        $this->replaceClassAndChildWithProtected($phpFileInfos, $staticClassConstMatches);
-
-        if ($publicAndProtectedClassConstants->getPublicCount() !== 0) {
-            $this->symfonyStyle->success(
-                sprintf('%d constant made public', $publicAndProtectedClassConstants->getPublicCount())
-            );
-        }
-
-        if ($publicAndProtectedClassConstants->getProtectedCount() !== 0) {
-            $this->symfonyStyle->success(
-                sprintf('%d constant made protected', $publicAndProtectedClassConstants->getProtectedCount())
-            );
-        }
-
-        if ($staticClassConstMatches !== []) {
-            $this->symfonyStyle->success(
-                \sprintf('%d constants made protected for static access', count($staticClassConstMatches))
-            );
+        // go file by file and deal with public + protected constants
+        foreach ($phpFileInfos as $phpFileInfo) {
+            $this->processFileInfo($phpFileInfo, $classConstantFetches);
         }
 
         return self::SUCCESS;
@@ -118,123 +81,85 @@ final class PrivatizeConstantsCommand extends Command
 
     /**
      * @param SplFileInfo[] $phpFileInfos
+     * @return ClassConstantFetchInterface[]
      */
-    private function privatizeClassConstants(array $phpFileInfos): void
+    private function findClassConstantFetches(array $phpFileInfos): array
     {
-        $this->symfonyStyle->note(sprintf('Found %d PHP files, turning constants to private', count($phpFileInfos)));
+        $nodeTraverser = new NodeTraverser();
 
-        $privatizedFileCount = 0;
+        $findClassConstFetchNodeVisitor = new FindClassConstFetchNodeVisitor();
+        $nodeTraverser->addVisitor($findClassConstFetchNodeVisitor);
 
+        $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
         foreach ($phpFileInfos as $phpFileInfo) {
-            $originalFileContent = $phpFileInfo->getContents();
-
-            $fileContent = $this->makeClassConstantsPrivate($originalFileContent);
-            if ($originalFileContent === $fileContent) {
-                continue;
-            }
-
-            FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
-            ++$privatizedFileCount;
+            $this->parseAndTraverseFile($phpFileInfo, $nodeTraverser);
+            $progressBar->advance();
         }
 
-        $this->symfonyStyle->success(sprintf('Constants in %d files turned to private', $privatizedFileCount));
+        $progressBar->finish();
+
+        return $findClassConstFetchNodeVisitor->getClassConstantFetches();
     }
 
-    private function makeClassConstantsPrivate(string $fileContents): string
+    private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
     {
-        return Strings::replace($fileContents, self::PUBLIC_CONST_REGEX, '$1private const ');
+        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
+        $nodeTraverser->traverse($fileStmts);
     }
 
     /**
-     * @param string[] $paths
-     * @return array<string, mixed>
+     * @param ClassConstantFetchInterface[] $classConstantFetches
      */
-    private function runPHPStanAnalyse(array $paths): array
+    private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches): void
     {
-        $this->symfonyStyle->note('Running PHPStan to spot false-private class constants');
+        $nodeTraverser = new NodeTraverser();
+        $findNonPrivateClassConstNodeVisitor = new FindNonPrivateClassConstNodeVisitor();
+        $nodeTraverser->addVisitor($findNonPrivateClassConstNodeVisitor);
 
-        $phpStanAnalyseProcess = new Process([
-            'vendor/bin/phpstan',
-            'analyse',
-            ...$paths,
-            '--configuration',
-            __DIR__ . '/../../config/privatize-constants-phpstan-ruleset.neon',
-            '--error-format',
-            'json',
-        ]);
-        $phpStanAnalyseProcess->run();
+        $this->parseAndTraverseFile($phpFileInfo, $nodeTraverser);
 
-        $this->symfonyStyle->success('PHPStan analysis finished');
-
-        // process output message
-        sleep(1);
-
-        $this->symfonyStyle->newLine();
-
-        $resultOutput = $phpStanAnalyseProcess->getOutput() ?: $phpStanAnalyseProcess->getErrorOutput();
-        return json_decode($resultOutput, true);
-    }
-
-    private function replacePrivateConstWith(ClassConstMatch $publicClassConstMatch, string $replaceString): void
-    {
-        $classFileContents = FileSystem::read($publicClassConstMatch->getClassFileName());
-
-        // replace "private const NAME" with "private const NAME"
-        $classFileContents = str_replace(
-            'private const ' . $publicClassConstMatch->getConstantName(),
-            $replaceString . ' ' . $publicClassConstMatch->getConstantName(),
-            $classFileContents
-        );
-
-        FileSystem::write($publicClassConstMatch->getClassFileName(), $classFileContents);
-
-        // @todo handle case when "AppBundle\Rpc\BEItem\BeItemPackage::ITEM_TYPE_NAME_PACKAGE" constant is in parent class
-        $parentClassConstMatch = $publicClassConstMatch->getParentClassConstMatch();
-        if (! $parentClassConstMatch instanceof ClassConstMatch) {
+        // nothing found
+        if ($findNonPrivateClassConstNodeVisitor->getClassConstants() === []) {
             return;
         }
 
-        $this->replacePrivateConstWith($parentClassConstMatch, $replaceString);
-    }
-
-    /**
-     * @param SplFileInfo[] $phpFileInfos
-     * @param ClassConstMatch[] $staticClassConstsMatches
-     */
-    private function replaceClassAndChildWithProtected(array $phpFileInfos, array $staticClassConstsMatches): void
-    {
-        if ($staticClassConstsMatches === []) {
-            return;
-        }
-
-        foreach ($phpFileInfos as $phpFileInfo) {
-            $fullyQualifiedClassName = ClassNameResolver::resolveFromFileContents($phpFileInfo->getContents());
-
-            if ($fullyQualifiedClassName === null) {
-                // no class to process
-                continue;
-            }
-
-            foreach ($staticClassConstsMatches as $staticClassConstMatch) {
-                // update current and all hcildren
-                if (! is_a($fullyQualifiedClassName, $staticClassConstMatch->getClassName(), true)) {
+        foreach ($findNonPrivateClassConstNodeVisitor->getClassConstants() as $classConstant) {
+            $isPublic = false;
+            foreach ($classConstantFetches as $classConstantFetch) {
+                if (! $classConstantFetch->isClassConstantMatch($classConstant)) {
                     continue;
                 }
 
-                $classFileContents = \str_replace(
-                    'private const ' . $staticClassConstMatch->getConstantName(),
-                    'protected const ' . $staticClassConstMatch->getConstantName(),
-                    $phpFileInfo->getContents()
+                if ($classConstantFetch instanceof CurrentClassConstantFetch) {
+                    continue;
+                }
+
+                // used externally, make public
+                $isPublic = true;
+            }
+
+            if ($isPublic) {
+                $changedFileContents = Strings::replace(
+                    $phpFileInfo->getContents(),
+                    '#(public\s+)?const\s+' . $classConstant->getConstantName() . '#',
+                    'public const ' . $classConstant->getConstantName()
                 );
 
-                $this->symfonyStyle->warning(sprintf(
-                    'The "%s" constant in "%s" made protected to allow static access. Consider refactoring to better design',
-                    $staticClassConstMatch->getConstantName(),
-                    $staticClassConstMatch->getClassName(),
-                ));
+                FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
-                FileSystem::write($phpFileInfo->getRealPath(), $classFileContents);
+                $this->symfonyStyle->note(sprintf('Constant %s changed to public', $classConstant->getConstantName()));
+                continue;
             }
+
+            // make private
+            $changedFileContents = Strings::replace(
+                $phpFileInfo->getContents(),
+                '#(public\s+)?const\s+' . $classConstant->getConstantName() . '#',
+                'private const ' . $classConstant->getConstantName()
+            );
+            FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
+
+            $this->symfonyStyle->note(sprintf('Constant %s changed to private', $classConstant->getConstantName()));
         }
     }
 }

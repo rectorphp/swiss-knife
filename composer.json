@@ -7,12 +7,11 @@
     ],
     "require": {
         "php": ">=8.2",
-        "illuminate/container": "^11.0",
+        "illuminate/container": "^11.20",
         "nette/robot-loader": "^4.0",
         "nette/utils": "^4.0",
         "nikic/php-parser": "^4.19",
         "symfony/console": "^6.4",
-        "symfony/process": "^6.4",
         "symfony/finder": "^6.4",
         "webmozart/assert": "^1.11"
     },
