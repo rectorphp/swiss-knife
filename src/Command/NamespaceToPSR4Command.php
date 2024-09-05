@@ -43,7 +43,10 @@ final class NamespaceToPSR4Command extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    /**
+     * @return self::*
+     */
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $path = (string) $input->getArgument('path');
         $namespaceRoot = (string) $input->getOption('namespace-root');

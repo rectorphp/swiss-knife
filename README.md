@@ -113,9 +113,9 @@ vendor/bin/swiss-knife privatize-constants src test
 
 This command will:
 
-* make all constants private
-* runs PHPStan to find out, which of them are used
-* restores only the used constants back to `public`
+* find all class constant usages
+* scans classes and constants
+* makes those constant used locally `private`
 
 That way all the constants not used outside will be made `private` safely.
 
