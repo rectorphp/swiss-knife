@@ -108,7 +108,7 @@ PHPStan can report unused private class constants, but it skips all the public o
 Do you have lots of class constants, all of them public but want to narrow scope to privates?
 
 ```bash
-vendor/bin/swiss-knife privatize-constants src
+vendor/bin/swiss-knife privatize-constants src test
 ```
 
 This command will:

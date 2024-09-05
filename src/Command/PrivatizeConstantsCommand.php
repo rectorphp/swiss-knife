@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Helpers\ClassNameResolver;
 use Rector\SwissKnife\PHPStan\ClassConstantResultAnalyser;
@@ -76,7 +75,10 @@ final class PrivatizeConstantsCommand extends Command
             return self::SUCCESS;
         }
 
-        $this->privatizeClassConstants($phpFileInfos);
+        $this->symfonyStyle->success('1. Finding all class constants...');
+
+        dump('testing');
+        die;
 
         // special case of self::NAME, that should be protected - their children too
         $staticClassConstMatches = $this->staticClassConstResolver->resolve($phpFileInfos);
@@ -119,67 +121,6 @@ final class PrivatizeConstantsCommand extends Command
         }
 
         return self::SUCCESS;
-    }
-
-    /**
-     * @param SplFileInfo[] $phpFileInfos
-     */
-    private function privatizeClassConstants(array $phpFileInfos): void
-    {
-        $this->symfonyStyle->note(sprintf('Found %d PHP files, turning constants to private', count($phpFileInfos)));
-
-        $privatizedFileCount = 0;
-
-        foreach ($phpFileInfos as $phpFileInfo) {
-            $originalFileContent = $phpFileInfo->getContents();
-
-            $fileContent = $this->makeClassConstantsPrivate($originalFileContent);
-            if ($originalFileContent === $fileContent) {
-                continue;
-            }
-
-            FileSystem::write($phpFileInfo->getRealPath(), $fileContent);
-            ++$privatizedFileCount;
-        }
-
-        $this->symfonyStyle->success(sprintf('Constants in %d files turned to private', $privatizedFileCount));
-    }
-
-    private function makeClassConstantsPrivate(string $fileContents): string
-    {
-        return Strings::replace($fileContents, self::PUBLIC_CONST_REGEX, '$1private const ');
-    }
-
-    /**
-     * @param string[] $paths
-     * @return array<string, mixed>
-     */
-    private function runPHPStanAnalyse(array $paths): array
-    {
-        $this->symfonyStyle->note('Running PHPStan to spot false-private class constants');
-
-        $commandOptions = [
-            'vendor/bin/phpstan',
-            'analyse',
-            ...$paths,
-            '--configuration',
-            __DIR__ . '/../../config/privatize-constants-phpstan-ruleset.neon',
-            '--error-format',
-            'json',
-        ];
-
-        $phpStanAnalyseProcess = new Process($commandOptions, null, null, null, self::TIMEOUT_IN_SECONDS);
-        $phpStanAnalyseProcess->run();
-
-        $this->symfonyStyle->success('PHPStan analysis finished');
-
-        // process output message
-        sleep(1);
-
-        $this->symfonyStyle->newLine();
-
-        $resultOutput = $phpStanAnalyseProcess->getOutput() ?: $phpStanAnalyseProcess->getErrorOutput();
-        return json_decode($resultOutput, true);
     }
 
     private function replacePrivateConstWith(ClassConstMatch $publicClassConstMatch, string $replaceString): void
