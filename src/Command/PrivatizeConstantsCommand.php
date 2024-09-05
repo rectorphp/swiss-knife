@@ -28,6 +28,11 @@ final class PrivatizeConstantsCommand extends Command
      */
     private const PUBLIC_CONST_REGEX = '#(    |\t)(public )?const #ms';
 
+    /**
+     * @var int
+     */
+    private const TIMEOUT_IN_SECONDS = 300;
+
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
         private readonly ClassConstantResultAnalyser $classConstantResultAnalyser,
@@ -153,7 +158,7 @@ final class PrivatizeConstantsCommand extends Command
     {
         $this->symfonyStyle->note('Running PHPStan to spot false-private class constants');
 
-        $phpStanAnalyseProcess = new Process([
+        $commandOptions = [
             'vendor/bin/phpstan',
             'analyse',
             ...$paths,
@@ -161,7 +166,9 @@ final class PrivatizeConstantsCommand extends Command
             __DIR__ . '/../../config/privatize-constants-phpstan-ruleset.neon',
             '--error-format',
             'json',
-        ]);
+        ];
+
+        $phpStanAnalyseProcess = new Process($commandOptions, null, null, null, self::TIMEOUT_IN_SECONDS);
         $phpStanAnalyseProcess->run();
 
         $this->symfonyStyle->success('PHPStan analysis finished');
