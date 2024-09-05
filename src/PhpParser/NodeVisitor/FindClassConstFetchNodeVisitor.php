@@ -85,7 +85,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             throw new NotImplementedYetException('@todo');
         }
 
-        if (class_exists($className) || interface_exists($className)) {
+        if ($this->doesClassExist($className)) {
             // is class from /vendor? we can skip it
             if ($this->isVendorClassName($className)) {
                 return null;
@@ -96,7 +96,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        throw new NotImplementedYetException();
+        throw new NotImplementedYetException($className . '::' . $constantName);
     }
 
     public function leaveNode(Node $node): ?Node
@@ -120,8 +120,8 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
 
     private function isVendorClassName(string $className): bool
     {
-        if (! class_exists($className) && ! interface_exists($className) && ! trait_exists($className)) {
-            throw new ShouldNotHappenException();
+        if (! $this->doesClassExist($className)) {
+            throw new ShouldNotHappenException(sprintf('Class "%s" could not be found', $className));
         }
 
         $reflectionClass = new ReflectionClass($className);
@@ -153,5 +153,18 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
         }
 
         return $namespaceName->toString();
+    }
+
+    private function doesClassExist(string $className): bool
+    {
+        if (class_exists($className)) {
+            return true;
+        }
+
+        if (interface_exists($className)) {
+            return true;
+        }
+
+        return trait_exists($className);
     }
 }
