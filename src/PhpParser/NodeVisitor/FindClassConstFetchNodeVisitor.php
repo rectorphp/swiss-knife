@@ -96,7 +96,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        throw new NotImplementedYetException();
+        throw new NotImplementedYetException($className . '::' . $constantName);
     }
 
     public function leaveNode(Node $node): ?Node
