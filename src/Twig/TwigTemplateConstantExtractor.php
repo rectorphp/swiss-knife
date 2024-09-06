@@ -46,7 +46,14 @@ final class TwigTemplateConstantExtractor
 
         $externalClassAccessConstantFetches = [];
         foreach ($constantMatches as $constantMatch) {
-            [$className, $constantName] = explode('::', $constantMatch['constant']);
+            $constantMatchValue = $constantMatch['constant'];
+
+            // global constant → skip
+            if (! str_contains($constantMatchValue, '::')) {
+                continue;
+            }
+
+            [$className, $constantName] = explode('::', $constantMatchValue);
             $className = str_replace('\\\\', '\\', $className);
 
             $externalClassAccessConstantFetches[] = new ExternalClassAccessConstantFetch($className, $constantName);
