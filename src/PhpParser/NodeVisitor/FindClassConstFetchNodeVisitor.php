@@ -17,6 +17,7 @@ use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ParentClassConstantFetch;
+use Rector\SwissKnife\ValueObject\ClassConstantFetch\StaticClassConstantFetch;
 use ReflectionClass;
 use Webmozart\Assert\Assert;
 
@@ -64,8 +65,9 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             return null;
         }
         if ($className === 'self') {
-            $currentClassName = $this->getClassName();
             Assert::isInstanceOf($this->currentClass, Class_::class);
+
+            $currentClassName = $this->getClassName();
             if ($this->isCurrentClassConstant($this->currentClass, $constantName)) {
                 $this->classConstantFetches[] = new CurrentClassConstantFetch($currentClassName, $constantName);
                 return $node;
@@ -82,7 +84,17 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
         }
 
         if ($className === 'static') {
-            throw new NotImplementedYetException('@todo');
+            Assert::isInstanceOf($this->currentClass, Class_::class);
+
+            $currentClassName = $this->getClassName();
+
+            if ($this->isCurrentClassConstant($this->currentClass, $constantName)) {
+                $this->classConstantFetches[] = new CurrentClassConstantFetch($currentClassName, $constantName);
+                return $node;
+            }
+
+            $this->classConstantFetches[] = new StaticClassConstantFetch($currentClassName, $constantName);
+            return $node;
         }
 
         if ($this->doesClassExist($className)) {
