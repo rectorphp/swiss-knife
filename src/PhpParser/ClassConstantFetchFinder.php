@@ -11,7 +11,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**
- * @see \PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
+ * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
  */
 final class ClassConstantFetchFinder
 {
