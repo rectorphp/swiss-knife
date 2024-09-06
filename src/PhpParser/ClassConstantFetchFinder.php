@@ -28,7 +28,7 @@ final class ClassConstantFetchFinder
      * @param SplFileInfo[] $phpFileInfos
      * @return ClassConstantFetchInterface[]
      */
-    public function find(array $phpFileInfos, ProgressBar $progressBar): array
+    public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug): array
     {
         $nodeTraverser = new NodeTraverser();
 
@@ -36,7 +36,7 @@ final class ClassConstantFetchFinder
         $nodeTraverser->addVisitor($findClassConstFetchNodeVisitor);
 
         foreach ($phpFileInfos as $phpFileInfo) {
-            if ($this->symfonyStyle->isVerbose()) {
+            if ($isDebug) {
                 $this->symfonyStyle->writeln('Processing ' . $phpFileInfo->getRealPath());
             }
 
@@ -46,15 +46,19 @@ final class ClassConstantFetchFinder
                 $nodeTraverser->traverse($fileStmts);
             } catch (ShouldNotHappenException|NotImplementedYetException $exception) {
                 // render debug contents if verbose
-                if ($this->symfonyStyle->isVerbose()) {
+                if ($isDebug) {
                     $this->symfonyStyle->error($exception->getMessage());
                 }
             }
 
-            $progressBar->advance();
+            if ($isDebug === false) {
+                $progressBar->advance();
+            }
         }
 
-        $progressBar->finish();
+        if ($isDebug === false) {
+            $progressBar->finish();
+        }
 
         return $findClassConstFetchNodeVisitor->getClassConstantFetches();
     }

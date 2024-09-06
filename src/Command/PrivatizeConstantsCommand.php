@@ -48,6 +48,8 @@ final class PrivatizeConstantsCommand extends Command
             'Path to exclude'
         );
 
+        $this->addOption('debug', null, InputOption::VALUE_NONE, 'Debug output');
+
         $this->setDescription('Make class constants private if not used outside');
     }
 
@@ -58,6 +60,7 @@ final class PrivatizeConstantsCommand extends Command
     {
         $sources = (array) $input->getArgument('sources');
         $excludedPaths = (array) $input->getOption('exclude-path');
+        $isDebug = (bool) $input->getOption('debug');
 
         $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
         if ($phpFileInfos === []) {
@@ -69,7 +72,7 @@ final class PrivatizeConstantsCommand extends Command
         $this->symfonyStyle->note('1. Finding class const fetches...');
 
         $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
-        $classConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar);
+        $classConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar, $isDebug);
 
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
