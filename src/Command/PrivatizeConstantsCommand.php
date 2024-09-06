@@ -10,7 +10,7 @@ use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
-use Rector\SwissKnife\PhpParser\ClassConstantFetchFinder;
+use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
 use Rector\SwissKnife\ValueObject\ClassConstant;
@@ -87,11 +87,11 @@ final class PrivatizeConstantsCommand extends Command
         return self::SUCCESS;
     }
 
-    private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
-    {
-        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-        $nodeTraverser->traverse($fileStmts);
-    }
+//    private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
+//    {
+//        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
+//        $nodeTraverser->traverse($fileStmts);
+//    }
 
     /**
      * @param ClassConstantFetchInterface[] $classConstantFetches

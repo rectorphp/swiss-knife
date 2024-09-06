@@ -32,6 +32,11 @@ final class FindNonPrivateClassConstNodeVisitor extends NodeVisitorAbstract
 
         $className = $node->namespacedName->toString();
 
+        // has parent class? return only constant that are not in parent class
+        if ($node->extends instanceof \PhpParser\Node) {
+
+        }
+
         foreach ($node->getConstants() as $classConst) {
             foreach ($classConst->consts as $constConst) {
                 $constantName = $constConst->name->toString();

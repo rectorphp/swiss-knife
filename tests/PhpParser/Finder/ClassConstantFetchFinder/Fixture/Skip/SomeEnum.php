@@ -1,8 +1,8 @@
 <?php
 
-namespace Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\Fixture\Skip;
+namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstantFetchFinder\Fixture\Skip;
 
-trait SomeTrait
+enum SomeEnum
 {
     public const VALUE = 1000;
 

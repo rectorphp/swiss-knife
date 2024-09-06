@@ -1,6 +1,6 @@
 <?php
 
-namespace Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\Fixture\Standard;
+namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstantFetchFinder\Fixture\Standard;
 
 final class AnotherClassWithConstant
 {
