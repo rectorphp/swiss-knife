@@ -108,21 +108,7 @@ final class PrivatizeConstantsCommand extends Command
         }
 
         foreach ($findNonPrivateClassConstNodeVisitor->getClassConstants() as $classConstant) {
-            $isPublic = false;
-            foreach ($classConstantFetches as $classConstantFetch) {
-                if (! $classConstantFetch->isClassConstantMatch($classConstant)) {
-                    continue;
-                }
-
-                if ($classConstantFetch instanceof CurrentClassConstantFetch) {
-                    continue;
-                }
-
-                // used externally, make public
-                $isPublic = true;
-            }
-
-            if ($isPublic) {
+            if ($this->isClassConstantUsedPublicly($classConstantFetches, $classConstant)) {
                 $changedFileContents = Strings::replace(
                     $phpFileInfo->getContents(),
                     '#(public\s+)?const\s+' . $classConstant->getConstantName() . '#',
@@ -138,12 +124,32 @@ final class PrivatizeConstantsCommand extends Command
             // make private
             $changedFileContents = Strings::replace(
                 $phpFileInfo->getContents(),
-                '#(public\s+)?const\s+' . $classConstant->getConstantName() . '#',
+                '#((public|protected)\s+)?const\s+' . $classConstant->getConstantName() . '#',
                 'private const ' . $classConstant->getConstantName()
             );
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
             $this->symfonyStyle->note(sprintf('Constant %s changed to private', $classConstant->getConstantName()));
         }
+    }
+
+    private function isClassConstantUsedPublicly(
+        array $classConstantFetches,
+        \Rector\SwissKnife\ValueObject\ClassConstant $classConstant
+    ): bool {
+        foreach ($classConstantFetches as $classConstantFetch) {
+            if (! $classConstantFetch->isClassConstantMatch($classConstant)) {
+                continue;
+            }
+
+            if ($classConstantFetch instanceof CurrentClassConstantFetch) {
+                continue;
+            }
+
+            // used externally, make public
+            return true;
+        }
+
+        return false;
     }
 }
