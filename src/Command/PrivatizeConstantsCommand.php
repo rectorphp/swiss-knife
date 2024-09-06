@@ -127,7 +127,7 @@ final class PrivatizeConstantsCommand extends Command
             // make private
             $changedFileContents = Strings::replace(
                 $phpFileInfo->getContents(),
-                '#((public|protected)\s+)?const\s+' . $classConstant->getConstantName() . '#',
+                '#((private|public|protected)\s+)?const\s+' . $classConstant->getConstantName() . '#',
                 'private const ' . $classConstant->getConstantName()
             );
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
