@@ -1,9 +1,6 @@
-name: Bare Run on various PHP versions
+name: Bare Run
 
-on:
-    push:
-        tags:
-            - '*'
+on: [pull_request, push]
 
 jobs:
     bare_run:
@@ -12,12 +9,15 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php_version: ['7.2', '7.3', '7.4', '8.0', '8.1']
+                php_version: ['7.2', '7.3', '7.4', '8.0', '8.2']
 
         steps:
-            -   uses: shivammathur/setup-php@v2
+            -   uses: actions/checkout@v2
+
+            -
+                uses: shivammathur/setup-php@v2
                 with:
-                    php-version: ${{ matrix.php }}
+                    php-version: ${{ matrix.php_version }}
                     coverage: none
 
-            -   run: composer require rector/swiss-knife --dev --ansi
+            -   run: php bin/swiss-knife list --ansi
