@@ -10,6 +10,7 @@ use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstFinder;
+use Rector\SwissKnife\Twig\TwigTemplateConstantExtractor;
 use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
@@ -27,6 +28,7 @@ final class PrivatizeConstantsCommand extends Command
         private readonly SymfonyStyle $symfonyStyle,
         private readonly ClassConstantFetchFinder $classConstantFetchFinder,
         private readonly ClassConstFinder $classConstFinder,
+        private readonly TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
     ) {
         parent::__construct();
     }
@@ -72,7 +74,11 @@ final class PrivatizeConstantsCommand extends Command
         $this->symfonyStyle->title('Finding class const fetches...');
 
         $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
-        $classConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar, $isDebug);
+        $phpClassConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar, $isDebug);
+
+        // find usage in twig files
+        $twigClassConstantFetches = $this->twigTemplateConstantExtractor->extractFromDirs($sources);
+        $classConstantFetches = array_merge($phpClassConstantFetches, $twigClassConstantFetches);
 
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
