@@ -8,7 +8,6 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
 use Rector\SwissKnife\ValueObject\ClassConstant;
-use SplFileInfo;
 
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstFinder\ClassConstFinderTest
@@ -23,12 +22,12 @@ final class ClassConstFinder
     /**
      * @return ClassConstant[]
      */
-    public function find(SplFileInfo $phpFileInfo): array
+    public function find(string $filePath): array
     {
         $findNonPrivateClassConstNodeVisitor = new FindNonPrivateClassConstNodeVisitor();
         $nodeTraverser = NodeTraverserFactory::create($findNonPrivateClassConstNodeVisitor);
 
-        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
+        $fileStmts = $this->cachedPhpParser->parseFile($filePath);
         $nodeTraverser->traverse($fileStmts);
 
         return $findNonPrivateClassConstNodeVisitor->getClassConstants();

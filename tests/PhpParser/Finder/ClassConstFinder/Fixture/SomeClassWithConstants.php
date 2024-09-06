@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpParser\Finder\ClassConstFinder\Fixture;
+namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstFinder\Fixture;
 
 final class SomeClassWithConstants extends AbstractParentClass
 {

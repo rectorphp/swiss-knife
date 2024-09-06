@@ -6,13 +6,10 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
-use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
-use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
+use Rector\SwissKnife\PhpParser\Finder\ClassConstFinder;
 use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Symfony\Component\Console\Command\Command;
@@ -27,8 +24,8 @@ final class PrivatizeConstantsCommand extends Command
 {
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
-        private readonly CachedPhpParser $cachedPhpParser,
         private readonly ClassConstantFetchFinder $classConstantFetchFinder,
+        private readonly ClassConstFinder $classConstFinder,
     ) {
         parent::__construct();
     }
@@ -87,28 +84,17 @@ final class PrivatizeConstantsCommand extends Command
         return self::SUCCESS;
     }
 
-    //    private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
-    //    {
-    //        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-    //        $nodeTraverser->traverse($fileStmts);
-    //    }
-
     /**
      * @param ClassConstantFetchInterface[] $classConstantFetches
      */
     private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches): void
     {
-        $findNonPrivateClassConstNodeVisitor = new FindNonPrivateClassConstNodeVisitor();
-        $nodeTraverser = NodeTraverserFactory::create($findNonPrivateClassConstNodeVisitor);
-
-        $this->parseAndTraverseFile($phpFileInfo, $nodeTraverser);
-
-        // nothing found
-        if ($findNonPrivateClassConstNodeVisitor->getClassConstants() === []) {
+        $classConstants = $this->classConstFinder->find($phpFileInfo->getRealPath());
+        if ($classConstants === []) {
             return;
         }
 
-        foreach ($findNonPrivateClassConstNodeVisitor->getClassConstants() as $classConstant) {
+        foreach ($classConstants as $classConstant) {
             if ($this->isClassConstantUsedPublicly($classConstantFetches, $classConstant)) {
                 $changedFileContents = Strings::replace(
                     $phpFileInfo->getContents(),
