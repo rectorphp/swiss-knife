@@ -15,6 +15,7 @@ use PhpParser\Node\Stmt\Trait_;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
+use Rector\SwissKnife\Enum\StaticAccessor;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
@@ -71,7 +72,8 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
         if ($constantName === 'class') {
             return null;
         }
-        if ($className === 'self') {
+
+        if ($className === StaticAccessor::SELF) {
             Assert::isInstanceOf($this->currentClass, Class_::class);
 
             $currentClassName = $this->getClassName();
@@ -90,7 +92,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             return $node;
         }
 
-        if ($className === 'static') {
+        if ($className === StaticAccessor::STATIC) {
             Assert::isInstanceOf($this->currentClass, Class_::class);
 
             $currentClassName = $this->getClassName();
@@ -163,7 +165,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
     private function getClassName(): string
     {
         if (! $this->currentClass instanceof Class_) {
-            throw new ShouldNotHappenException();
+            throw new ShouldNotHappenException('Class_ node is missing');
         }
 
         $namespaceName = $this->currentClass->namespacedName;
