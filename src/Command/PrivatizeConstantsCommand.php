@@ -82,6 +82,7 @@ final class PrivatizeConstantsCommand extends Command
 
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
+        $this->symfonyStyle->success(sprintf('Found %d constants in Twig templates', count($twigClassConstantFetches)));
 
         $this->symfonyStyle->title('Changing class constant visibility based on use...');
 
