@@ -87,11 +87,11 @@ final class PrivatizeConstantsCommand extends Command
         return self::SUCCESS;
     }
 
-//    private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
-//    {
-//        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-//        $nodeTraverser->traverse($fileStmts);
-//    }
+    //    private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
+    //    {
+    //        $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
+    //        $nodeTraverser->traverse($fileStmts);
+    //    }
 
     /**
      * @param ClassConstantFetchInterface[] $classConstantFetches
