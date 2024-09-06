@@ -12,6 +12,7 @@ use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstFinder;
 use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
+use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -76,10 +77,27 @@ final class PrivatizeConstantsCommand extends Command
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
 
+        $visibilityChangeStats = new VisibilityChangeStats();
+
         // go file by file and deal with public + protected constants
         foreach ($phpFileInfos as $phpFileInfo) {
-            $this->processFileInfo($phpFileInfo, $classConstantFetches);
+            $currentVisibilityChangeStats = $this->processFileInfo($phpFileInfo, $classConstantFetches);
+            $visibilityChangeStats->merge($currentVisibilityChangeStats);
         }
+
+        if (! $visibilityChangeStats->hasAnyChange()) {
+            $this->symfonyStyle->warning('No constants were privatized');
+            return self::SUCCESS;
+        }
+
+        $this->symfonyStyle->newLine(2);
+
+        $this->symfonyStyle->success(
+            sprintf('Totally %d constants were made public', $visibilityChangeStats->getPublicCount())
+        );
+        $this->symfonyStyle->success(
+            sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
+        );
 
         return self::SUCCESS;
     }
@@ -87,11 +105,13 @@ final class PrivatizeConstantsCommand extends Command
     /**
      * @param ClassConstantFetchInterface[] $classConstantFetches
      */
-    private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches): void
+    private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches): VisibilityChangeStats
     {
+        $visibilityChangeStats = new VisibilityChangeStats();
+
         $classConstants = $this->classConstFinder->find($phpFileInfo->getRealPath());
         if ($classConstants === []) {
-            return;
+            return $visibilityChangeStats;
         }
 
         foreach ($classConstants as $classConstant) {
@@ -107,6 +127,7 @@ final class PrivatizeConstantsCommand extends Command
                 $this->symfonyStyle->note(
                     sprintf('Constant "%s" changed to public', $classConstant->getConstantName())
                 );
+                $visibilityChangeStats->countPublic();
                 continue;
             }
 
@@ -119,7 +140,10 @@ final class PrivatizeConstantsCommand extends Command
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
             $this->symfonyStyle->note(sprintf('Constant "%s" changed to private', $classConstant->getConstantName()));
+            $visibilityChangeStats->countPrivate();
         }
+
+        return $visibilityChangeStats;
     }
 
     /**
