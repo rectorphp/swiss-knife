@@ -10,7 +10,7 @@ use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
-use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
+use Rector\SwissKnife\PhpParser\ClassConstantFetchFinder;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Symfony\Component\Console\Command\Command;
@@ -25,7 +25,8 @@ final class PrivatizeConstantsCommand extends Command
 {
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
-        private readonly CachedPhpParser $cachedPhpParser
+        private readonly CachedPhpParser $cachedPhpParser,
+        private readonly ClassConstantFetchFinder $classConstantFetchFinder,
     ) {
         parent::__construct();
     }
@@ -66,7 +67,9 @@ final class PrivatizeConstantsCommand extends Command
         }
 
         $this->symfonyStyle->note('1. Finding class const fetches...');
-        $classConstantFetches = $this->findClassConstantFetches($phpFileInfos);
+
+        $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
+        $classConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar);
 
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
@@ -77,28 +80,6 @@ final class PrivatizeConstantsCommand extends Command
         }
 
         return self::SUCCESS;
-    }
-
-    /**
-     * @param SplFileInfo[] $phpFileInfos
-     * @return ClassConstantFetchInterface[]
-     */
-    private function findClassConstantFetches(array $phpFileInfos): array
-    {
-        $nodeTraverser = new NodeTraverser();
-
-        $findClassConstFetchNodeVisitor = new FindClassConstFetchNodeVisitor();
-        $nodeTraverser->addVisitor($findClassConstFetchNodeVisitor);
-
-        $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
-        foreach ($phpFileInfos as $phpFileInfo) {
-            $this->parseAndTraverseFile($phpFileInfo, $nodeTraverser);
-            $progressBar->advance();
-        }
-
-        $progressBar->finish();
-
-        return $findClassConstFetchNodeVisitor->getClassConstantFetches();
     }
 
     private function parseAndTraverseFile(SplFileInfo $phpFileInfo, NodeTraverser $nodeTraverser): void
