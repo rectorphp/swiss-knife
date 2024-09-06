@@ -42,7 +42,7 @@ final class TwigTemplateConstantExtractor
     {
         $fileContents = FileSystem::read($filePath);
 
-        $constantMatches = Strings::matchAll($fileContents, '#{{\s*constant\(\s*([\'"])(?<constant>.*?)\1#');
+        $constantMatches = Strings::matchAll($fileContents, '#{{.*?\s*constant\(\s*([\'"])(?<constant>.*?)\1#');
 
         $externalClassAccessConstantFetches = [];
         foreach ($constantMatches as $constantMatch) {
