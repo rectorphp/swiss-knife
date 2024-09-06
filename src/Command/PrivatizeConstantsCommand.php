@@ -13,6 +13,7 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\ClassConstantFetchFinder;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
+use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -117,7 +118,9 @@ final class PrivatizeConstantsCommand extends Command
 
                 FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
-                $this->symfonyStyle->note(sprintf('Constant %s changed to public', $classConstant->getConstantName()));
+                $this->symfonyStyle->note(
+                    sprintf('Constant "%s" changed to public', $classConstant->getConstantName())
+                );
                 continue;
             }
 
@@ -129,19 +132,21 @@ final class PrivatizeConstantsCommand extends Command
             );
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
-            $this->symfonyStyle->note(sprintf('Constant %s changed to private', $classConstant->getConstantName()));
+            $this->symfonyStyle->note(sprintf('Constant "%s" changed to private', $classConstant->getConstantName()));
         }
     }
 
-    private function isClassConstantUsedPublicly(
-        array $classConstantFetches,
-        \Rector\SwissKnife\ValueObject\ClassConstant $classConstant
-    ): bool {
+    /**
+     * @param ClassConstantFetchInterface[] $classConstantFetches
+     */
+    private function isClassConstantUsedPublicly(array $classConstantFetches, ClassConstant $classConstant): bool
+    {
         foreach ($classConstantFetches as $classConstantFetch) {
             if (! $classConstantFetch->isClassConstantMatch($classConstant)) {
                 continue;
             }
 
+            // used only locally, can stay private
             if ($classConstantFetch instanceof CurrentClassConstantFetch) {
                 continue;
             }
