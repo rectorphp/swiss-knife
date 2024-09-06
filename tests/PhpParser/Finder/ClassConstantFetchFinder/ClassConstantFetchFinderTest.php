@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder;
+namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstantFetchFinder;
 
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Rector\SwissKnife\PhpParser\ClassConstantFetchFinder;
+use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;

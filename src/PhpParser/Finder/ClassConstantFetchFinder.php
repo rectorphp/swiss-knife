@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\PhpParser;
+namespace Rector\SwissKnife\PhpParser\Finder;
 
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
+use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Style\SymfonyStyle;
