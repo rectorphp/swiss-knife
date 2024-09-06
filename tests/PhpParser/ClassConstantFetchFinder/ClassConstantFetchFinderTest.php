@@ -29,7 +29,7 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
 
         $fileInfos = PhpFilesFinder::find([__DIR__ . '/Fixture']);
 
-        $classConstantFetches = $this->classConstantsFetchFinder->find($fileInfos, $progressBar);
+        $classConstantFetches = $this->classConstantsFetchFinder->find($fileInfos, $progressBar, false);
         $this->assertCount(2, $classConstantFetches);
 
         $firstClassConstantFetch = $classConstantFetches[0];
