@@ -7,6 +7,7 @@ namespace Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\ClassConstantFetchFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
+use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\NullOutput;
@@ -29,9 +30,12 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
         $fileInfos = PhpFilesFinder::find([__DIR__ . '/Fixture']);
 
         $classConstantFetches = $this->classConstantsFetchFinder->find($fileInfos, $progressBar);
-        $this->assertCount(1, $classConstantFetches);
+        $this->assertCount(2, $classConstantFetches);
 
         $firstClassConstantFetch = $classConstantFetches[0];
-        $this->assertInstanceOf(ExternalClassAccessConstantFetch::class, $firstClassConstantFetch);
+        $this->assertInstanceOf(CurrentClassConstantFetch::class, $firstClassConstantFetch);
+
+        $secondClassConstantFetch = $classConstantFetches[1];
+        $this->assertInstanceOf(ExternalClassAccessConstantFetch::class, $secondClassConstantFetch);
     }
 }
