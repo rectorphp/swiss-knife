@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\Fixture;
+namespace Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\Fixture\Standard;
 
 final class SomeFileWithConstants
 {
