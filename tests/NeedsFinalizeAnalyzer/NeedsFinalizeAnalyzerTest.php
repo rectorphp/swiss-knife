@@ -40,5 +40,6 @@ final class NeedsFinalizeAnalyzerTest extends AbstractTestCase
         yield [__DIR__ . '/Fixture/anonymous_class.php.inc', false];
 
         yield [__DIR__ . '/Fixture/non_final_class.php.inc', true];
+        yield [__DIR__ . '/Fixture/non_final_readonly_class.php.inc', true];
     }
 }
