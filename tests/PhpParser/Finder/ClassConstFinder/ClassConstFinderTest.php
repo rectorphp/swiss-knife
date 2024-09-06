@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstFinder;
 
+use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 
@@ -18,17 +20,17 @@ final class ClassConstFinderTest extends AbstractTestCase
         $this->classConstFinder = $this->make(ClassConstFinder::class);
     }
 
-    public function testSkipParentConstant(): void
+    #[DataProvider('provideData')]
+    public function test(string $filePath, int $expectedClassConstantCount): void
     {
-        $classConstants = $this->classConstFinder->find(__DIR__ . '/Fixture/SomeClassWithConstants.php');
-
-        $this->assertCount(1, $classConstants);
+        $classConstants = $this->classConstFinder->find($filePath);
+        $this->assertCount($expectedClassConstantCount, $classConstants);
     }
 
-    public function testSkipAbstract(): void
+    public static function provideData(): Iterator
     {
-        $classConstants = $this->classConstFinder->find(__DIR__ . '/Fixture/AbstractParentClass.php');
-
-        $this->assertCount(0, $classConstants);
+        yield [__DIR__ . '/Fixture/SomeClassWithConstants.php', 1];
+        yield [__DIR__ . '/Fixture/AbstractParentClass.php', 0];
+        yield [__DIR__ . '/Fixture/SomeClassWithInterfaceImplemented.php', 0];
     }
 }

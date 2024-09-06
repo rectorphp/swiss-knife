@@ -62,18 +62,29 @@ final class FindNonPrivateClassConstNodeVisitor extends NodeVisitorAbstract
 
     private function isConstantDefinedInParentClassAlso(Class_ $class, string $constantName): bool
     {
-        if (! $class->extends instanceof Node) {
-            return false;
+        if ($class->extends instanceof Node) {
+            $parentClassName = $class->extends->toString();
+            if (class_exists($parentClassName)) {
+                return in_array($constantName, $this->getClassConstantNames($parentClassName), true);
+            }
         }
 
-        $parentClassName = $class->extends->toString();
-        if (! class_exists($parentClassName)) {
-            return false;
+        foreach ($class->implements as $implement) {
+            if (in_array($constantName, $this->getClassConstantNames($implement->toString()), true)) {
+                return true;
+            }
         }
 
-        $parentReflectionClass = new ReflectionClass($parentClassName);
-        $parentClassConstantNames = array_keys($parentReflectionClass->getConstants());
+        return false;
+    }
 
-        return in_array($constantName, $parentClassConstantNames);
+    /**
+     * @return string[]
+     */
+    private function getClassConstantNames(string $className): array
+    {
+        $reflectionClass = new ReflectionClass($className);
+
+        return array_keys($reflectionClass->getConstants());
     }
 }
