@@ -10,6 +10,9 @@ use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Finder\SplFileInfo;
 
+/**
+ * @see \PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
+ */
 final class ClassConstantFetchFinder
 {
     public function __construct(

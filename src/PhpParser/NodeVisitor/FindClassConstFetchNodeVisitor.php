@@ -108,7 +108,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        throw new NotImplementedYetException($className . '::' . $constantName);
+        throw new NotImplementedYetException(sprintf('Class "%s" was not found', $className));
     }
 
     public function leaveNode(Node $node): ?Node
