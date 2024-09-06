@@ -11,6 +11,7 @@ use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\ClassConstantFetchFinder;
+use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindNonPrivateClassConstNodeVisitor;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Symfony\Component\Console\Command\Command;
@@ -96,9 +97,8 @@ final class PrivatizeConstantsCommand extends Command
      */
     private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches): void
     {
-        $nodeTraverser = new NodeTraverser();
         $findNonPrivateClassConstNodeVisitor = new FindNonPrivateClassConstNodeVisitor();
-        $nodeTraverser->addVisitor($findNonPrivateClassConstNodeVisitor);
+        $nodeTraverser = NodeTraverserFactory::create($findNonPrivateClassConstNodeVisitor);
 
         $this->parseAndTraverseFile($phpFileInfo, $nodeTraverser);
 

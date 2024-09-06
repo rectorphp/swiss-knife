@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser;
 
-use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
@@ -30,10 +29,8 @@ final class ClassConstantFetchFinder
      */
     public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug): array
     {
-        $nodeTraverser = new NodeTraverser();
-
         $findClassConstFetchNodeVisitor = new FindClassConstFetchNodeVisitor();
-        $nodeTraverser->addVisitor($findClassConstFetchNodeVisitor);
+        $nodeTraverser = NodeTraverserFactory::create($findClassConstFetchNodeVisitor);
 
         foreach ($phpFileInfos as $phpFileInfo) {
             if ($isDebug) {

@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\PhpParser;
 
 use Nette\Utils\FileSystem;
 use PhpParser\Node\Stmt;
-use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\Parser;
 
@@ -38,8 +37,7 @@ final class CachedPhpParser
         $stmts = $this->phpParser->parse($fileContents);
 
         if (is_array($stmts)) {
-            $nodeTraverser = new NodeTraverser();
-            $nodeTraverser->addVisitor(new NameResolver());
+            $nodeTraverser = NodeTraverserFactory::create(new NameResolver());
             $nodeTraverser->traverse($stmts);
         }
 

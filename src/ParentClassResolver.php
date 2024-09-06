@@ -6,6 +6,7 @@ namespace Rector\SwissKnife;
 
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -23,9 +24,7 @@ final readonly class ParentClassResolver
     public function resolve(array $phpFileInfos, callable $progressClosure): array
     {
         $parentClassNameCollectingNodeVisitor = new ParentClassNameCollectingNodeVisitor();
-
-        $nodeTraverser = new NodeTraverser();
-        $nodeTraverser->addVisitor($parentClassNameCollectingNodeVisitor);
+        $nodeTraverser = NodeTraverserFactory::create($parentClassNameCollectingNodeVisitor);
 
         $this->traverseFileInfos($phpFileInfos, $nodeTraverser, $progressClosure);
 

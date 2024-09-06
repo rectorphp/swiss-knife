@@ -9,6 +9,7 @@ use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Finder\YamlFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
@@ -45,8 +46,7 @@ final readonly class EntityClassResolver
         $phpFileInfos = PhpFilesFinder::find($paths);
         $entityClassNameCollectingNodeVisitor = new EntityClassNameCollectingNodeVisitor();
 
-        $nodeTraverser = new NodeTraverser();
-        $nodeTraverser->addVisitor($entityClassNameCollectingNodeVisitor);
+        $nodeTraverser = NodeTraverserFactory::create($entityClassNameCollectingNodeVisitor);
         $this->traverseFileInfos($phpFileInfos, $nodeTraverser, $progressClosure);
 
         $markedEntityClassNames = $entityClassNameCollectingNodeVisitor->getEntityClassNames();

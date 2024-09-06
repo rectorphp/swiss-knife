@@ -6,6 +6,7 @@ namespace Rector\SwissKnife\Analyzer;
 
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\NeedForFinalizeNodeVisitor;
 use Webmozart\Assert\Assert;
 
@@ -24,9 +25,8 @@ final readonly class NeedsFinalizeAnalyzer
     ) {
         Assert::allString($excludedClasses);
 
-        $finalizingNodeTraverser = new NodeTraverser();
         $this->needForFinalizeNodeVisitor = new NeedForFinalizeNodeVisitor($excludedClasses);
-        $finalizingNodeTraverser->addVisitor($this->needForFinalizeNodeVisitor);
+        $finalizingNodeTraverser = NodeTraverserFactory::create($this->needForFinalizeNodeVisitor);
 
         $this->finalizingNodeTraverser = $finalizingNodeTraverser;
     }

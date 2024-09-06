@@ -7,6 +7,7 @@ namespace Rector\SwissKnife;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
@@ -30,8 +31,7 @@ final readonly class MockedClassResolver
         $phpFileInfos = PhpFilesFinder::find($paths);
         $mockedClassNameCollectingNodeVisitor = new MockedClassNameCollectingNodeVisitor();
 
-        $nodeTraverser = new NodeTraverser();
-        $nodeTraverser->addVisitor($mockedClassNameCollectingNodeVisitor);
+        $nodeTraverser = NodeTraverserFactory::create($mockedClassNameCollectingNodeVisitor);
         $this->traverseFileInfos($phpFileInfos, $nodeTraverser, $progressClosure);
 
         $mockedClassNames = $mockedClassNameCollectingNodeVisitor->getMockedClassNames();
