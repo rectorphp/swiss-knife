@@ -69,13 +69,15 @@ final class PrivatizeConstantsCommand extends Command
             return self::SUCCESS;
         }
 
-        $this->symfonyStyle->note('1. Finding class const fetches...');
+        $this->symfonyStyle->title('Finding class const fetches...');
 
         $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
         $classConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar, $isDebug);
 
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
+
+        $this->symfonyStyle->title('Changing class constant visibility based on use...');
 
         $visibilityChangeStats = new VisibilityChangeStats();
 
