@@ -9,6 +9,8 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
+use PhpParser\Node\Stmt\Interface_;
+use PhpParser\Node\Stmt\Trait_;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
@@ -32,6 +34,10 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
 
     public function enterNode(Node $node): Node|int|null
     {
+        if ($node instanceof Interface_ || $node instanceof Trait_) {
+            return NodeTraverser::DONT_TRAVERSE_CHILDREN;
+        }
+
         if ($node instanceof Class_) {
             // skip anonymous classes as problematic
             if ($node->isAnonymous()) {
