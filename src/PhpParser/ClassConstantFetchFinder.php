@@ -6,8 +6,11 @@ namespace Rector\SwissKnife\PhpParser;
 
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
+use Rector\SwissKnife\Exception\NotImplementedYetException;
+use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
 use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**
@@ -16,7 +19,8 @@ use Symfony\Component\Finder\SplFileInfo;
 final class ClassConstantFetchFinder
 {
     public function __construct(
-        private CachedPhpParser $cachedPhpParser
+        private CachedPhpParser $cachedPhpParser,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 
@@ -32,8 +36,20 @@ final class ClassConstantFetchFinder
         $nodeTraverser->addVisitor($findClassConstFetchNodeVisitor);
 
         foreach ($phpFileInfos as $phpFileInfo) {
+            if ($this->symfonyStyle->isVerbose()) {
+                $this->symfonyStyle->writeln('Processing ' . $phpFileInfo->getRealPath());
+            }
+
             $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-            $nodeTraverser->traverse($fileStmts);
+
+            try {
+                $nodeTraverser->traverse($fileStmts);
+            } catch (ShouldNotHappenException|NotImplementedYetException $exception) {
+                // render debug contents if verbose
+                if ($this->symfonyStyle->isVerbose()) {
+                    $this->symfonyStyle->error($exception->getMessage());
+                }
+            }
 
             $progressBar->advance();
         }
