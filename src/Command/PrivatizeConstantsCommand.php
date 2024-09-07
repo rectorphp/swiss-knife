@@ -14,6 +14,7 @@ use Rector\SwissKnife\Twig\TwigTemplateConstantExtractor;
 use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
+use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -29,6 +30,7 @@ final class PrivatizeConstantsCommand extends Command
         private readonly ClassConstantFetchFinder $classConstantFetchFinder,
         private readonly ClassConstFinder $classConstFinder,
         private readonly TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
+        private readonly YamlConfigConstantExtractor $yamlConfigConstantExtractor
     ) {
         parent::__construct();
     }
@@ -52,7 +54,7 @@ final class PrivatizeConstantsCommand extends Command
 
         $this->addOption('debug', null, InputOption::VALUE_NONE, 'Debug output');
 
-        $this->setDescription('Make class constants private if not used outside');
+        $this->setDescription('Make class constants private if not used outside in PHP, Twig and YAML files');
     }
 
     /**
@@ -78,7 +80,13 @@ final class PrivatizeConstantsCommand extends Command
 
         // find usage in twig files
         $twigClassConstantFetches = $this->twigTemplateConstantExtractor->extractFromDirs($sources);
-        $classConstantFetches = array_merge($phpClassConstantFetches, $twigClassConstantFetches);
+        $yamlClassConstantFetches = $this->yamlConfigConstantExtractor->extractFromDirs($sources);
+
+        $classConstantFetches = array_merge(
+            $phpClassConstantFetches,
+            $twigClassConstantFetches,
+            $yamlClassConstantFetches
+        );
 
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));

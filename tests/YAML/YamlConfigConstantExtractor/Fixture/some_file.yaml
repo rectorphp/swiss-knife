@@ -1,0 +1,2 @@
+some_config:
+    value: <(\Rector\SwissKnife\Tests\YAML\YamlConfigConstantExtractor\Fixture\SomeClassWithConstant::USE_ME_IN_YAML)>
