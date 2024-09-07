@@ -6,6 +6,7 @@ namespace Rector\SwissKnife\Finder;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use Webmozart\Assert\Assert;
 
 final class FilesFinder
 {
@@ -26,6 +27,24 @@ final class FilesFinder
             ->sortByName();
 
         return iterator_to_array($finder->getIterator());
+    }
+
+    /**
+     * @param string[] $directories
+     * @return SplFileInfo[]
+     */
+    public static function findTwigFiles(array $directories): array
+    {
+        Assert::allString($directories);
+        Assert::allDirectory($directories);
+
+        $twigFinder = Finder::create()
+            ->files()
+            ->name('*.twig')
+            ->in($directories)
+            ->sortByName();
+
+        return iterator_to_array($twigFinder->getIterator());
     }
 
     /**

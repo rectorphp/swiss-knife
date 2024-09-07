@@ -7,10 +7,8 @@ namespace Rector\SwissKnife\Twig;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
+use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
-use Webmozart\Assert\Assert;
 
 /**
  * @see \Rector\SwissKnife\Tests\Twig\TwigTemplateConstantExtractor\TwigTemplateConstantExtractorTest
@@ -23,7 +21,7 @@ final class TwigTemplateConstantExtractor
      */
     public function extractFromDirs(array $directories): array
     {
-        $twigFileInfos = $this->findTwigFileInfosInDirectories($directories);
+        $twigFileInfos = FilesFinder::findTwigFiles($directories);
 
         $classConstantFetches = [];
         foreach ($twigFileInfos as $twigFileInfo) {
@@ -62,18 +60,18 @@ final class TwigTemplateConstantExtractor
         return $externalClassAccessConstantFetches;
     }
 
-    /**
-     * @param string[] $directories
-     * @return SplFileInfo[]
-     */
-    private function findTwigFileInfosInDirectories(array $directories): array
-    {
-        Assert::allString($directories);
-        Assert::allDirectory($directories);
-
-        $twigFinder = Finder::create()->files()->name('*.twig')
-            ->in($directories);
-
-        return iterator_to_array($twigFinder->getIterator());
-    }
+    //    /**
+    //     * @param string[] $directories
+    //     * @return SplFileInfo[]
+    //     */
+    //    private function findTwigFileInfosInDirectories(array $directories): array
+    //    {
+    //        Assert::allString($directories);
+    //        Assert::allDirectory($directories);
+    //
+    //        $twigFinder = Finder::create()->files()->name('*.twig')
+    //            ->in($directories);
+    //
+    //        return iterator_to_array($twigFinder->getIterator());
+    //    }
 }
