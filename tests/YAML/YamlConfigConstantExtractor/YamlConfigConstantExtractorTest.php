@@ -20,6 +20,20 @@ final class YamlConfigConstantExtractorTest extends AbstractTestCase
     public function test(): void
     {
         $classConstantFetches = $this->yamlConfigConstantExtractor->extractFromDirs([__DIR__ . '/Fixture']);
-        $this->assertCount(1, $classConstantFetches);
+        $this->assertCount(2, $classConstantFetches);
+
+        $firstClassConstant = $classConstantFetches[0];
+        $this->assertSame(
+            \Rector\SwissKnife\Tests\YAML\YamlConfigConstantExtractor\Fixture\SomeClassWithConstant::class,
+            $firstClassConstant->getClassName()
+        );
+        $this->assertSame('USE_ME_IN_YAML', $firstClassConstant->getConstantName());
+
+        $secondClassConstant = $classConstantFetches[1];
+        $this->assertSame(
+            \Rector\SwissKnife\Tests\YAML\YamlConfigConstantExtractor\Fixture\SomeClassWithConstant::class,
+            $secondClassConstant->getClassName()
+        );
+        $this->assertSame('NO_REAL', $secondClassConstant->getConstantName());
     }
 }
