@@ -127,7 +127,7 @@ final class PrivatizeConstantsCommand extends Command
             if ($this->isClassConstantUsedPublicly($classConstantFetches, $classConstant)) {
                 $changedFileContents = Strings::replace(
                     $phpFileInfo->getContents(),
-                    '#(public\s+)?const\s+' . $classConstant->getConstantName() . '#',
+                    '#(public |    |\t)const\\s+' . $classConstant->getConstantName() . '#',
                     'public const ' . $classConstant->getConstantName()
                 );
 
