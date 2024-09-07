@@ -76,4 +76,22 @@ final class FilesFinder
 
         return $jsonFileInfos;
     }
+
+    /**
+     * @param string[] $paths
+     * @return SplFileInfo[]
+     */
+    public static function findYamlFiles(array $paths): array
+    {
+        Assert::allString($paths);
+        Assert::allFileExists($paths);
+
+        $finder = Finder::create()
+            ->files()
+            ->in($paths)
+            ->name('*.yml')
+            ->name('*.yaml');
+
+        return iterator_to_array($finder);
+    }
 }
