@@ -59,19 +59,4 @@ final class TwigTemplateConstantExtractor
 
         return $externalClassAccessConstantFetches;
     }
-
-    //    /**
-    //     * @param string[] $directories
-    //     * @return SplFileInfo[]
-    //     */
-    //    private function findTwigFileInfosInDirectories(array $directories): array
-    //    {
-    //        Assert::allString($directories);
-    //        Assert::allDirectory($directories);
-    //
-    //        $twigFinder = Finder::create()->files()->name('*.twig')
-    //            ->in($directories);
-    //
-    //        return iterator_to_array($twigFinder->getIterator());
-    //    }
 }
