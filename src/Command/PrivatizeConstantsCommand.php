@@ -91,6 +91,9 @@ final class PrivatizeConstantsCommand extends Command
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
         $this->symfonyStyle->success(sprintf('Found %d constants in Twig templates', count($twigClassConstantFetches)));
+        $this->symfonyStyle->success(sprintf('Found %d constants in YAML configs', count($yamlClassConstantFetches)));
+
+        $this->symfonyStyle->newLine(2);
 
         $this->symfonyStyle->title('Changing class constant visibility based on use...');
 
@@ -109,9 +112,6 @@ final class PrivatizeConstantsCommand extends Command
 
         $this->symfonyStyle->newLine(2);
 
-        $this->symfonyStyle->success(
-            sprintf('Totally %d constants were made public', $visibilityChangeStats->getPublicCount())
-        );
         $this->symfonyStyle->success(
             sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
         );
@@ -133,18 +133,7 @@ final class PrivatizeConstantsCommand extends Command
 
         foreach ($classConstants as $classConstant) {
             if ($this->isClassConstantUsedPublicly($classConstantFetches, $classConstant)) {
-                $changedFileContents = Strings::replace(
-                    $phpFileInfo->getContents(),
-                    '#(public |    |\t)const\\s+' . $classConstant->getConstantName() . '#',
-                    'public const ' . $classConstant->getConstantName()
-                );
-
-                FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
-
-                $this->symfonyStyle->note(
-                    sprintf('Constant "%s" changed to public', $classConstant->getConstantName())
-                );
-                $visibilityChangeStats->countPublic();
+                // keep it public
                 continue;
             }
 
@@ -156,7 +145,9 @@ final class PrivatizeConstantsCommand extends Command
             );
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
-            $this->symfonyStyle->note(sprintf('Constant "%s" changed to private', $classConstant->getConstantName()));
+            $this->symfonyStyle->writeln(
+                sprintf('Constant "%s" changed to private', $classConstant->getConstantName())
+            );
             $visibilityChangeStats->countPrivate();
         }
 

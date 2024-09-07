@@ -8,16 +8,9 @@ final class VisibilityChangeStats
 {
     private int $privateCount = 0;
 
-    private int $publicCount = 0;
-
     public function countPrivate(): void
     {
         ++$this->privateCount;
-    }
-
-    public function countPublic(): void
-    {
-        ++$this->publicCount;
     }
 
     public function getPrivateCount(): int
@@ -25,19 +18,13 @@ final class VisibilityChangeStats
         return $this->privateCount;
     }
 
-    public function getPublicCount(): int
-    {
-        return $this->publicCount;
-    }
-
     public function merge(self $currentVisibilityChangeStats): void
     {
-        $this->publicCount += $currentVisibilityChangeStats->getPublicCount();
         $this->privateCount += $currentVisibilityChangeStats->getPrivateCount();
     }
 
     public function hasAnyChange(): bool
     {
-        return $this->privateCount > 0 || $this->publicCount > 0;
+        return $this->privateCount > 0;
     }
 }
