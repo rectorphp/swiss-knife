@@ -14,7 +14,6 @@ final readonly class ClassConstant
     public function __construct(
         private string $className,
         private string $constantName,
-        private int $line
     ) {
         Assert::notEmpty($constantName);
         Assert::notEmpty($className);
@@ -28,10 +27,5 @@ final readonly class ClassConstant
     public function getConstantName(): string
     {
         return $this->constantName;
-    }
-
-    public function getLine(): int
-    {
-        return $this->line;
     }
 }

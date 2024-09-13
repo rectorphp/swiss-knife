@@ -20,10 +20,12 @@
         "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "^10.5",
         "rector/rector": "^1.0",
+        "rector/type-perfect": "^0.2.0",
         "shipmonk/composer-dependency-analyser": "^1.7",
         "symplify/easy-coding-standard": "^12.3",
         "tomasvotruba/class-leak": "^0.2.16",
         "tomasvotruba/type-coverage": "^0.3.1",
+        "tomasvotruba/unused-public": "^0.3.11",
         "tracy/tracy": "^2.10"
     },
     "autoload": {
