@@ -45,7 +45,7 @@ final class FindNonPrivateClassConstNodeVisitor extends NodeVisitorAbstract
                     continue;
                 }
 
-                $this->classConstants[] = new ClassConstant($className, $constantName, $classConst->getLine());
+                $this->classConstants[] = new ClassConstant($className, $constantName);
             }
         }
 
