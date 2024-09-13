@@ -102,6 +102,14 @@ This will keep mocked classes non-final, so PHPUnit can extend them internally.
 
 <br>
 
+Do you want to skip file or two?
+
+```bash
+vendor/bin/swiss-knife finalize-classes src tests --skip-file src/SpecialProxy.php
+```
+
+<br>
+
 ### 5. Privatize local class constants
 
 PHPStan can report unused private class constants, but it skips all the public ones.

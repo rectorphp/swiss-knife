@@ -54,6 +54,13 @@ final class FinalizeClassesCommand extends Command
         );
 
         $this->addOption(
+            'skip-file',
+            null,
+            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
+            'Skip file or files by path'
+        );
+
+        $this->addOption(
             'dry-run',
             null,
             InputOption::VALUE_NONE,
@@ -72,7 +79,8 @@ final class FinalizeClassesCommand extends Command
 
         $this->symfonyStyle->title('1. Detecting parent and entity classes');
 
-        $phpFileInfos = PhpFilesFinder::find($paths);
+        $skippedFiles = $input->getOption('skip-file');
+        $phpFileInfos = PhpFilesFinder::find($paths, $skippedFiles);
 
         // double to count for both parent and entity resolver
         $stepRatio = $areMockedSkipped ? 3 : 2;
