@@ -149,6 +149,11 @@ final class FinalizeClassesCommand extends Command
             $isDryRun ? 'would be' : 'were'
         ));
 
+        // to make it fail in CI
+        if ($isDryRun && count($finalizedFilePaths)) {
+            return self::FAILURE;
+        }
+
         return Command::SUCCESS;
     }
 }
