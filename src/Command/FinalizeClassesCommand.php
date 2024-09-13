@@ -150,7 +150,7 @@ final class FinalizeClassesCommand extends Command
         ));
 
         // to make it fail in CI
-        if ($isDryRun && count($finalizedFilePaths)) {
+        if ($isDryRun) {
             return self::FAILURE;
         }
 
