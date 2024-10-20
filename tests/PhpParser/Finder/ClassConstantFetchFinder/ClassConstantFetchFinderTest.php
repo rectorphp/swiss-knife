@@ -42,6 +42,19 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
         $this->assertInstanceOf(ExternalClassAccessConstantFetch::class, $secondClassConstantFetch);
     }
 
+    public function testParseError(): void
+    {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage(
+            'Could not parse file "' . __DIR__ . '/Fixture/Error/ParseError.php": Syntax error, unexpected T_STRING on line 6'
+        );
+
+        $directory = __DIR__ . '/Fixture/Error';
+        $progressBar = new ProgressBar(new NullOutput());
+        $fileInfos = PhpFilesFinder::find([$directory]);
+        $this->classConstantsFetchFinder->find($fileInfos, $progressBar, false);
+    }
+
     /**
      * @return ClassConstantFetchInterface[]
      */
