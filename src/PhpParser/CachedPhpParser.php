@@ -34,7 +34,15 @@ final class CachedPhpParser
         }
 
         $fileContents = FileSystem::read($filePath);
-        $stmts = $this->phpParser->parse($fileContents);
+        try {
+            $stmts = $this->phpParser->parse($fileContents);
+        } catch (\Throwable $throwable) {
+            throw new \RuntimeException(sprintf(
+                'Could not parse file "%s": %s',
+                $filePath,
+                $throwable->getMessage()
+            ), $throwable->getCode(), $throwable);
+        }
 
         if (is_array($stmts)) {
             $nodeTraverser = NodeTraverserFactory::create(new NameResolver());
