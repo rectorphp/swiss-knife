@@ -3,7 +3,7 @@ name: Downgraded Release
 on:
     push:
         tags:
-            # avoid infinite looping, skip tags that ends with ".72"
+            # avoid infinite looping, skip tags that ends with ".74"
             # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-and-excluding-branches
             - '*'
 
@@ -32,8 +32,8 @@ jobs:
             -   run: mkdir rector-local
             -   run: composer require rector/rector --working-dir rector-local --ansi
 
-            # downgrade to PHP 7.2
-            -   run: rector-local/vendor/bin/rector process bin src vendor --config build/rector-downgrade-php-72.php --ansi
+            # downgrade to PHP 7.4
+            -   run: rector-local/vendor/bin/rector process bin src vendor --config build/rector-downgrade-php-74.php --ansi
 
             # clear the dev files
             -   run: rm -rf tests ecs.php phpstan.neon phpunit.xml .gitignore .editorconfig
@@ -41,7 +41,7 @@ jobs:
             # prefix and scope
             -   run: sh prefix-code.sh
 
-            # copy PHP 7.2 composer + workflows
+            # copy PHP 7.4 composer + workflows
             -   run: cp -r build/target-repository/. .
 
             # clear the dev files
@@ -59,7 +59,7 @@ jobs:
                 run: |
                     # separate a "git add" to add untracked (new) files too
                     git add --all
-                    git commit -m "release PHP 7.2 downgraded"
+                    git commit -m "release PHP 7.4 downgraded"
 
                     # force push tag, so there is only 1 version
                     git tag "${GITHUB_REF#refs/tags/}" --force
