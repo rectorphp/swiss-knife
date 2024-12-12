@@ -53,7 +53,7 @@ jobs:
                     git config user.email "action@github.com"
                     git config user.name "GitHub Action"
             # publish to the same repository with a new tag
-            # see https://tomasvotruba.com/blog/how-to-release-php-81-and-74-package-in-the-same-repository/
+            # see https://tomasvotruba.com/blog/how-to-release-php-81-and-72-package-in-the-same-repository/
             -
                 name: "Tag Downgraded Code"
                 run: |
