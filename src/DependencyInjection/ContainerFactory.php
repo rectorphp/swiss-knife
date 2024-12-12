@@ -57,7 +57,7 @@ final class ContainerFactory
         // parser
         $container->singleton(Parser::class, static function (): Parser {
             $phpParserFactory = new ParserFactory();
-            return $phpParserFactory->create(ParserFactory::PREFER_PHP7);
+            return $phpParserFactory->createForNewestSupportedVersion();
         });
 
         $container->singleton(
