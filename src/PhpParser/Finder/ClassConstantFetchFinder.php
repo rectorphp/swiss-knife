@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\PhpParser\Finder;
 
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
@@ -10,37 +9,34 @@ use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Finder\SplFileInfo;
-
+use SwissKnife202412\Symfony\Component\Console\Helper\ProgressBar;
+use SwissKnife202412\Symfony\Component\Console\Style\SymfonyStyle;
+use SwissKnife202412\Symfony\Component\Finder\SplFileInfo;
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
  */
 final class ClassConstantFetchFinder
 {
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser,
-        private SymfonyStyle $symfonyStyle,
-    ) {
+    private CachedPhpParser $cachedPhpParser;
+    private SymfonyStyle $symfonyStyle;
+    public function __construct(CachedPhpParser $cachedPhpParser, SymfonyStyle $symfonyStyle)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
+        $this->symfonyStyle = $symfonyStyle;
     }
-
     /**
      * @param SplFileInfo[] $phpFileInfos
      * @return ClassConstantFetchInterface[]
      */
-    public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug): array
+    public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug) : array
     {
         $findClassConstFetchNodeVisitor = new FindClassConstFetchNodeVisitor();
         $nodeTraverser = NodeTraverserFactory::create($findClassConstFetchNodeVisitor);
-
         foreach ($phpFileInfos as $phpFileInfo) {
             if ($isDebug) {
                 $this->symfonyStyle->writeln('Processing ' . $phpFileInfo->getRealPath());
             }
-
             $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-
             try {
                 $nodeTraverser->traverse($fileStmts);
             } catch (ShouldNotHappenException|NotImplementedYetException $exception) {
@@ -49,16 +45,13 @@ final class ClassConstantFetchFinder
                     $this->symfonyStyle->error($exception->getMessage());
                 }
             }
-
-            if ($isDebug === false) {
+            if ($isDebug === \false) {
                 $progressBar->advance();
             }
         }
-
-        if ($isDebug === false) {
+        if ($isDebug === \false) {
             $progressBar->finish();
         }
-
         return $findClassConstFetchNodeVisitor->getClassConstantFetches();
     }
 }
