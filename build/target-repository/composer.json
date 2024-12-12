@@ -3,7 +3,7 @@
     "description": "Swiss knife in pocket of every upgrade architect",
     "license": "MIT",
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.4"
     },
     "bin": [
         "bin/swiss-knife"
