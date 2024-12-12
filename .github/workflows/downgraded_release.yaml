@@ -59,7 +59,7 @@ jobs:
                 run: |
                     # separate a "git add" to add untracked (new) files too
                     git add --all
-                    git commit -m "release PHP 7.4 downgraded"
+                    git commit -m "release PHP 7.2 downgraded"
 
                     # force push tag, so there is only 1 version
                     git tag "${GITHUB_REF#refs/tags/}" --force
