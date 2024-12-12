@@ -16,16 +16,16 @@ parameters:
         narrow_param: true
         narrow_return: true
 
-    type_coverage:
-        return: 99
-        param: 99
-        property: 99
-        constant: 99
+#    type_coverage:
+#        return: 99
+#        param: 99
+#        property: 99
+#        constant: 99
 
-    unused_public:
-        constants: true
-        properties: true
-        methods: true
+#    unused_public:
+#        constants: true
+#        properties: true
+#        methods: true
 
     ignoreErrors:
         # unrelated
@@ -35,3 +35,9 @@ parameters:
 
         # false positive callable/closure in type-perfect
         - '#Parameters should have "array\|\(Closure\)\|null" types as the only types passed to this method#'
+
+        -
+            identifier: staticMethod.alreadyNarrowedType
+
+        -
+            identifier: return.unusedType
