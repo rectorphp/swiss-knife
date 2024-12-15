@@ -1,22 +1,19 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\PhpParser;
 
-use PhpParser\NodeTraverser;
-use PhpParser\NodeVisitor;
-
+use SwissKnife202412\PhpParser\NodeTraverser;
+use SwissKnife202412\PhpParser\NodeVisitor;
 /**
  * To avoid dynamic count of node visitors in single node traverser
  */
 final class NodeTraverserFactory
 {
-    public static function create(NodeVisitor $nodeVisitor): NodeTraverser
+    public static function create(NodeVisitor $nodeVisitor) : NodeTraverser
     {
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($nodeVisitor);
-
         return $nodeTraverser;
     }
 }
