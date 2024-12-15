@@ -36,6 +36,7 @@ final class CheckCommentedCodeCommand extends Command
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
             'One or more paths to check'
         );
+        $this->addOption('skip-file', null, InputOption::VALUE_REQUIRED, 'Skip file path');
         $this->setDescription('Checks code for commented snippets');
 
         $this->addOption(
@@ -50,7 +51,9 @@ final class CheckCommentedCodeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $sources = (array) $input->getArgument('sources');
-        $phpFileInfos = PhpFilesFinder::find($sources);
+        $skipFiles = (array) $input->getOption('skip-file');
+
+        $phpFileInfos = PhpFilesFinder::find($sources, $skipFiles);
 
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
         $this->symfonyStyle->note($message);
