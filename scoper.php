@@ -20,11 +20,17 @@ return [
         // these paths are relative to this file location, so it should be in the root directory
         'vendor/symfony/deprecation-contracts/function.php',
         'stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
+
+        // uses native PHPUnit TestCase class in the project
+        'src/Testing/PHPUnitMocker.php',
     ],
     'patchers' => [
         // unprefix test case class names
         function (string $filePath, string $prefix, string $content): string {
-            if (! str_ends_with($filePath, 'packages/Testing/UnitTestFilter.php')) {
+            if (! str_ends_with($filePath, 'packages/Testing/UnitTestFilter.php')
+                &&
+                ! str_ends_with($filePath, 'src/Testing/MockWire.php')
+            ) {
                 return $content;
             }
 
