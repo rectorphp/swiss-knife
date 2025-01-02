@@ -5,6 +5,8 @@ parameters:
         - src
         - tests
 
+    treatPhpDocTypesAsCertain: false
+
     excludePaths:
         - */Fixture/*
         - */Source/*
@@ -25,11 +27,10 @@ parameters:
         # false positive callable/closure in type-perfect
         - '#Parameters should have "array\|\(Closure\)\|null" types as the only types passed to this method#'
 
-        -
-            identifier: staticMethod.alreadyNarrowedType
-
+        # command status enum
         -
             identifier: return.unusedType
+            path: src/Command/
 
         # testing on purpose
         -
