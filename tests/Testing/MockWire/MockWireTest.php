@@ -46,4 +46,16 @@ final class MockWireTest extends TestCase
         $this->assertSame($secondDependencyMock, $providedSecondDependencyMock);
         $this->assertSame(self::SECOND_VALUE, $secondDependencyMock->getName());
     }
+
+    public function testTypeArguments(): void
+    {
+        $secondDependencyMock = $this->createMock(SecondDependency::class);
+
+        $classWithConstructorDependencies = MockWire::create(ClassWithConstructorDependencies::class, [
+            $secondDependencyMock,
+        ]);
+
+        $providedSecondDependencyMock = $classWithConstructorDependencies->getSecondDependency();
+        $this->assertSame($secondDependencyMock, $providedSecondDependencyMock);
+    }
 }
