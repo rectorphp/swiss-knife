@@ -153,17 +153,28 @@ But we want to mock only one of them:
 ```php
 use Rector\SwissKnife\Testing\MockWire;
 
+// pass a mock
+$thirdDependencyMock = $this->createMock(ThirdDependency::class);
+$thirdDependencyMock->method('someMethod')->willReturn('some value');
+
 $realClass = MockWire::create(RealClass::class, [
-    // pass real/mock class in single argument
-    'thirdDependency' => new ThirdDependency()
+    $thirdDependencyMock
+]);
+
+
+// or pass direct instance
+$realClass = MockWire::create(RealClass::class, [
+    new ThirdDependency()
 ]);
 ```
 
-The rest of argument will be mocked automatically. That way:
+The rest of argument will be mocked automatically.
 
-* we can easily **change the class constructor**, without having burden of changing all the tests.
-* we see what is really being used in the constructor
-* we avoid any mock-mess clutter
+This way we:
+
+* can easily **change the class constructor**, without having burden of changing all the tests.
+* see what is really being used in the constructor
+* avoid any mock-mess clutter properties all over our test
 
 <br>
 
