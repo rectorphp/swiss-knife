@@ -160,6 +160,7 @@ $thirdDependencyMock->method('someMethod')->willReturn('some value');
 $realClass = MockWire::create(RealClass::class, [
     $thirdDependencyMock
 ]);
+```
 
 Or pass direct instance:
 
