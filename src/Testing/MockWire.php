@@ -9,7 +9,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionParameter;
-use Webmozart\Assert\Assert;
 
 /**
  * @api used in public
@@ -33,8 +32,25 @@ final class MockWire
      */
     public static function create(string $class, array $constructorDependencies = [])
     {
-        Assert::classExists($class);
-        Assert::allObject($constructorDependencies);
+        if (! class_exists($class)) {
+            throw new InvalidArgumentException(sprintf(
+                'Class "%s" used in "%s" was not found. Make sure class exists',
+                $class,
+                __METHOD__
+            ));
+        }
+
+        // make sure all are objects
+        foreach ($constructorDependencies as $constructorDependency) {
+            if (is_object($constructorDependency)) {
+                continue;
+            }
+
+            throw new InvalidArgumentException(sprintf(
+                'All constructor dependencies must be objects, but "%s" provided',
+                gettype($constructorDependency)
+            ));
+        }
 
         if ($constructorDependencies === []) {
             throw new InvalidArgumentException(sprintf(
