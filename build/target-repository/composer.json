@@ -7,5 +7,10 @@
     },
     "bin": [
         "bin/swiss-knife"
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rector\\SwissKnife\\": "src"
+        }
+    }
 }
