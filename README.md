@@ -161,8 +161,9 @@ $realClass = MockWire::create(RealClass::class, [
     $thirdDependencyMock
 ]);
 
+Or pass direct instance:
 
-// or pass direct instance
+```php
 $realClass = MockWire::create(RealClass::class, [
     new ThirdDependency()
 ]);
