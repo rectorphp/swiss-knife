@@ -23,6 +23,7 @@ return [
 
         // uses native PHPUnit TestCase class in the project
         'src/Testing/PHPUnitMocker.php',
+        'src/Testing/MockWire.php',
     ],
     'patchers' => [
         // unprefix test case class names
