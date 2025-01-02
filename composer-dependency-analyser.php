@@ -8,8 +8,7 @@ use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 $config = new Configuration();
 
 return $config
-    ->addPathToScan(__DIR__ . '/src', false)
-    ->addPathToScan(__DIR__ . '/tests', false)
+    ->ignoreErrorsOnPackage('phpunit/phpunit', [ErrorType::DEV_DEPENDENCY_IN_PROD])
     // test fixture
     ->ignoreErrorsOnPath(
         __DIR__ . '/tests/EntityClassResolver/Fixture/Anything/SomeAttributeDocument.php',

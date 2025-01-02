@@ -129,4 +129,42 @@ That way all the constants not used outside will be made `private` safely.
 
 <br>
 
+### 6. Mock only constructor param you need with MockWire
+
+Imagine there is a service that has 6 dependencies in `__construct()`:
+
+```php
+final class RealClass
+{
+    public function __construct(
+        private readonly FirstService $firstService,
+        private readonly SecondService $secondService,
+        private readonly ThirdService $thirdService,
+        private readonly FourthService $fourthService,
+        private readonly FifthService $fifthService,
+        private readonly SixthService $sixthService
+    ) {
+    }
+}
+```
+
+But we want to mock only one of them:
+
+```php
+use Rector\SwissKnife\Testing\MockWire;
+
+$realClass = MockWire::create(RealClass::class, [
+    // pass real/mock class in single argument
+    'thirdDependency' => new ThirdDependency()
+]);
+```
+
+The rest of argument will be mocked automatically. That way:
+
+* we can easily **change the class constructor**, without having burden of changing all the tests.
+* we see what is really being used in the constructor
+* we avoid any mock-mess clutter
+
+<br>
+
 Happy coding!
