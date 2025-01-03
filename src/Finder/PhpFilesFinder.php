@@ -13,9 +13,21 @@ final class PhpFilesFinder
     /**
      * @param string[] $paths
      * @param string[] $excludedPaths
+     *
      * @return SplFileInfo[]
      */
     public static function find(array $paths, array $excludedPaths = []): array
+    {
+        $finder = self::createFinderForPathsAndExcludedPaths($paths, $excludedPaths);
+
+        return iterator_to_array($finder->getIterator());
+    }
+
+    /**
+     * @param string[] $paths
+     * @param string[] $excludedPaths
+     */
+    private static function createFinderForPathsAndExcludedPaths(array $paths, array $excludedPaths): Finder
     {
         Assert::allString($paths);
         Assert::allFileExists($paths);
@@ -23,7 +35,7 @@ final class PhpFilesFinder
         Assert::allString($excludedPaths);
         Assert::allFileExists($excludedPaths);
 
-        $finder = Finder::create()
+        return Finder::create()
             ->files()
             ->in($paths)
             ->name('*.php')
@@ -38,7 +50,5 @@ final class PhpFilesFinder
 
                 return true;
             });
-
-        return iterator_to_array($finder->getIterator());
     }
 }

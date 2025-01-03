@@ -7,6 +7,7 @@ namespace Rector\SwissKnife\DependencyInjection;
 use Illuminate\Container\Container;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
+use Rector\SwissKnife\Behastan\Command\BehastanCommand;
 use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
 use Rector\SwissKnife\Command\CheckConflictsCommand;
 use Rector\SwissKnife\Command\DumpEditorconfigCommand;
@@ -34,6 +35,7 @@ final class ContainerFactory
         $container->singleton(Application::class, function (Container $container): Application {
             $application = new Application('Rector Swiss Knife');
 
+            // @todo add automated way to load these, so we don't forget any
             $commands = [
                 $container->make(PrettyJsonCommand::class),
                 $container->make(CheckCommentedCodeCommand::class),
@@ -44,6 +46,8 @@ final class ContainerFactory
                 $container->make(DumpEditorconfigCommand::class),
                 $container->make(FinalizeClassesCommand::class),
                 $container->make(PrivatizeConstantsCommand::class),
+
+                $container->make(BehastanCommand::class),
             ];
 
             $application->addCommands($commands);
