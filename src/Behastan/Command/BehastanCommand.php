@@ -4,16 +4,9 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Behastan\Command;
 
-use Nette\Utils\Strings;
-use Rector\SwissKnife\Behastan\DefinitionMasksResolver;
+use Rector\SwissKnife\Behastan\Behastan;
 use Rector\SwissKnife\Behastan\Finder\BehatMetafilesFinder;
-use Rector\SwissKnife\Behastan\UsedInstructionResolver;
 use Rector\SwissKnife\Behastan\ValueObject\AbstractMask;
-use Rector\SwissKnife\Behastan\ValueObject\ExactMask;
-use Rector\SwissKnife\Behastan\ValueObject\MaskCollection;
-use Rector\SwissKnife\Behastan\ValueObject\NamedMask;
-use Rector\SwissKnife\Behastan\ValueObject\RegexMask;
-use Rector\SwissKnife\Behastan\ValueObject\SkippedMask;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,8 +19,7 @@ final class BehastanCommand extends Command
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
         private readonly BehatMetafilesFinder $behatMetafilesFinder,
-        private readonly DefinitionMasksResolver $definitionMasksResolver,
-        private readonly UsedInstructionResolver $usedInstructionResolver,
+        private readonly Behastan $behastan,
     ) {
         parent::__construct();
     }
@@ -66,45 +58,8 @@ final class BehastanCommand extends Command
             sprintf('Checking static, named and regex masks from %d *Feature files', count($featureFiles))
         );
 
-        $maskCollection = $this->definitionMasksResolver->resolve($contextFiles);
-        $this->printStats($maskCollection);
+        $unusedMasks = $this->behastan->analyse($contextFiles, $featureFiles);
 
-        $featureInstructions = $this->usedInstructionResolver->resolveInstructionsFromFeatureFiles($featureFiles);
-
-        $maskProgressBar = $this->symfonyStyle->createProgressBar($maskCollection->count());
-
-        $unusedMasks = [];
-        foreach ($maskCollection->all() as $mask) {
-            $maskProgressBar->advance();
-
-            if ($mask instanceof SkippedMask) {
-                continue;
-            }
-
-            // is used?
-            if ($mask instanceof ExactMask && in_array($mask->mask, $featureInstructions, true)) {
-                continue;
-            }
-
-            // is used?
-            if ($mask instanceof RegexMask && $this->isRegexDefinitionUsed($mask->mask, $featureInstructions)) {
-                continue;
-            }
-
-            if ($mask instanceof NamedMask) {
-                // normalize :mask definition to regex
-                $regexMask = '#' . Strings::replace($mask->mask, '#(\:[\W\w]+)#', '(.*?)') . '#';
-                if ($this->isRegexDefinitionUsed($regexMask, $featureInstructions)) {
-                    continue;
-                }
-            }
-
-            if ($mask instanceof AbstractMask) {
-                $unusedMasks[] = $mask;
-            }
-        }
-
-        $maskProgressBar->finish();
         $this->symfonyStyle->newLine(2);
 
         if ($unusedMasks === []) {
@@ -118,21 +73,6 @@ final class BehastanCommand extends Command
     }
 
     /**
-     * @param string[] $featureInstructions
-     */
-    private function isRegexDefinitionUsed(string $regexBehatDefinition, array $featureInstructions): bool
-    {
-        foreach ($featureInstructions as $featureInstruction) {
-            if (Strings::match($featureInstruction, $regexBehatDefinition)) {
-                // it is used!
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * @param AbstractMask[] $unusedMasks
      */
     private function reportUnusedDefinitions(array $unusedMasks): void
@@ -142,28 +82,6 @@ final class BehastanCommand extends Command
         }
 
         $this->symfonyStyle->error(sprintf('Found %d unused definitions', count($unusedMasks)));
-    }
-
-    private function printStats(MaskCollection $maskCollection): void
-    {
-        $this->symfonyStyle->writeln(sprintf('Found %d masks:', $maskCollection->count()));
-        $this->symfonyStyle->newLine();
-
-        $this->symfonyStyle->writeln(sprintf(' * %d exact', $maskCollection->countByType(ExactMask::class)));
-        $this->symfonyStyle->writeln(sprintf(' * %d /regex/', $maskCollection->countByType(RegexMask::class)));
-        $this->symfonyStyle->writeln(sprintf(' * %d :named', $maskCollection->countByType(NamedMask::class)));
-        $this->symfonyStyle->writeln(sprintf(' * %d skipped', $maskCollection->countByType(SkippedMask::class)));
-
-        $skippedMasks = $maskCollection->byType(SkippedMask::class);
-        if ($skippedMasks !== []) {
-            $this->symfonyStyle->newLine();
-
-            foreach ($skippedMasks as $skippedMask) {
-                $this->printMask($skippedMask);
-            }
-
-            $this->symfonyStyle->newLine();
-        }
     }
 
     private function printMask(AbstractMask $unusedMask): void

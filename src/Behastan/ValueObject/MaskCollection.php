@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Behastan\ValueObject;
 
-use Rector\SwissKnife\Behastan\Contract\MaskInterface;
-
 final class MaskCollection
 {
     /**
-     * @param MaskInterface[] $masks
+     * @param AbstractMask[] $masks
      */
     public function __construct(
         private readonly array $masks
@@ -31,7 +29,7 @@ final class MaskCollection
     }
 
     /**
-     * @return MaskInterface[]
+     * @return AbstractMask[]
      */
     public function all(): array
     {
@@ -46,6 +44,6 @@ final class MaskCollection
      */
     public function byType(string $type): array
     {
-        return array_filter($this->masks, fn (MaskInterface $mask): bool => $mask instanceof $type);
+        return array_filter($this->masks, fn (AbstractMask $mask): bool => $mask instanceof $type);
     }
 }

@@ -26,6 +26,7 @@ final class UsedInstructionResolver
                 $featureFileInfo->getContents(),
                 '#\s+(Given|When|And|Then)\s+(?<instruction>.*?)\n#m'
             );
+
             if ($matches === []) {
                 // there should be at least one instruction in each feature file
                 throw new RuntimeException(sprintf(
