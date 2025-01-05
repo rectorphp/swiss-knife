@@ -16,6 +16,7 @@ use Rector\SwissKnife\Command\FindMultiClassesCommand;
 use Rector\SwissKnife\Command\NamespaceToPSR4Command;
 use Rector\SwissKnife\Command\PrettyJsonCommand;
 use Rector\SwissKnife\Command\PrivatizeConstantsCommand;
+use Rector\SwissKnife\Command\SearchRegexCommand;
 use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -48,6 +49,7 @@ final class ContainerFactory
                 $container->make(PrivatizeConstantsCommand::class),
 
                 $container->make(BehastanCommand::class),
+                $container->make(SearchRegexCommand::class),
             ];
 
             $application->addCommands($commands);

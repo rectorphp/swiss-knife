@@ -81,6 +81,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
                 $this->classConstantFetches[] = new CurrentClassConstantFetch($currentClassName, $constantName);
                 return $node;
             }
+
             // check if parent class is vendor
             if ($this->currentClass->extends instanceof Name) {
                 $parentClassName = $this->currentClass->extends->toString();
@@ -88,6 +89,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
                     return null;
                 }
             }
+
             $this->classConstantFetches[] = new ParentClassConstantFetch($currentClassName, $constantName);
             return $node;
         }

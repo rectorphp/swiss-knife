@@ -40,10 +40,10 @@ final class MockWireTest extends TestCase
 
         $this->assertInstanceOf(MockObject::class, $classWithConstructorDependencies->getFirstDependency());
 
-        $providedSecondDependencyMock = $classWithConstructorDependencies->getSecondDependency();
-        $this->assertInstanceOf(MockObject::class, $providedSecondDependencyMock);
+        $secondDependency = $classWithConstructorDependencies->getSecondDependency();
+        $this->assertInstanceOf(MockObject::class, $secondDependency);
 
-        $this->assertSame($secondDependencyMock, $providedSecondDependencyMock);
+        $this->assertSame($secondDependencyMock, $secondDependency);
         $this->assertSame(self::SECOND_VALUE, $secondDependencyMock->getName());
     }
 
@@ -55,8 +55,8 @@ final class MockWireTest extends TestCase
             $secondDependencyMock,
         ]);
 
-        $providedSecondDependencyMock = $classWithConstructorDependencies->getSecondDependency();
-        $this->assertSame($secondDependencyMock, $providedSecondDependencyMock);
+        $secondDependency = $classWithConstructorDependencies->getSecondDependency();
+        $this->assertSame($secondDependencyMock, $secondDependency);
     }
 
     public function testRealTypeArguments(): void

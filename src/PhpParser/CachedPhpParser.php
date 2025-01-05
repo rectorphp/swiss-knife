@@ -8,6 +8,8 @@ use Nette\Utils\FileSystem;
 use PhpParser\Node\Stmt;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\Parser;
+use RuntimeException;
+use Throwable;
 
 /**
  * Parse file just once
@@ -36,8 +38,8 @@ final class CachedPhpParser
         $fileContents = FileSystem::read($filePath);
         try {
             $stmts = $this->phpParser->parse($fileContents);
-        } catch (\Throwable $throwable) {
-            throw new \RuntimeException(sprintf(
+        } catch (Throwable $throwable) {
+            throw new RuntimeException(sprintf(
                 'Could not parse file "%s": %s',
                 $filePath,
                 $throwable->getMessage()

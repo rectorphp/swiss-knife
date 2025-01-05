@@ -32,13 +32,7 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         }
 
         $methodName = $node->name->toString();
-        $mockMethodNames = [
-            'createMock',
-            'createPartialMock',
-            'getMock',
-            'getMockBuilder',
-            'mock',
-        ];
+        $mockMethodNames = ['createMock', 'createPartialMock', 'getMock', 'getMockBuilder', 'mock'];
         if (! in_array($methodName, $mockMethodNames, true)) {
             return null;
         }

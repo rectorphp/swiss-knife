@@ -17,12 +17,12 @@ use Symfony\Component\Finder\SplFileInfo;
 /**
  * @see \Rector\SwissKnife\Tests\Behastan\Behastan\BehastanTest
  */
-final class Behastan
+final readonly class Behastan
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly DefinitionMasksResolver $definitionMasksResolver,
-        private readonly UsedInstructionResolver $usedInstructionResolver
+        private SymfonyStyle $symfonyStyle,
+        private DefinitionMasksResolver $definitionMasksResolver,
+        private UsedInstructionResolver $usedInstructionResolver
     ) {
     }
 
