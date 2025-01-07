@@ -10,18 +10,19 @@ use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
+use RuntimeException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\NullOutput;
 
 final class ClassConstantFetchFinderTest extends AbstractTestCase
 {
-    private ClassConstantFetchFinder $classConstantsFetchFinder;
+    private ClassConstantFetchFinder $classConstantFetchFinder;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->classConstantsFetchFinder = $this->make(ClassConstantFetchFinder::class);
+        $this->classConstantFetchFinder = $this->make(ClassConstantFetchFinder::class);
     }
 
     public function testSkipInterfaceTraitAndEnum(): void
@@ -44,7 +45,7 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
 
     public function testParseError(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
             'Could not parse file "' . __DIR__ . '/Fixture/Error/ParseError.php": Syntax error, unexpected T_STRING on line 6'
         );
@@ -52,7 +53,7 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
         $directory = __DIR__ . '/Fixture/Error';
         $progressBar = new ProgressBar(new NullOutput());
         $fileInfos = PhpFilesFinder::find([$directory]);
-        $this->classConstantsFetchFinder->find($fileInfos, $progressBar, false);
+        $this->classConstantFetchFinder->find($fileInfos, $progressBar, false);
     }
 
     /**
@@ -63,6 +64,6 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
         $progressBar = new ProgressBar(new NullOutput());
         $fileInfos = PhpFilesFinder::find([$directory]);
 
-        return $this->classConstantsFetchFinder->find($fileInfos, $progressBar, false);
+        return $this->classConstantFetchFinder->find($fileInfos, $progressBar, false);
     }
 }

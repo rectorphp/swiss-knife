@@ -17,7 +17,7 @@ use Symfony\Component\Finder\SplFileInfo;
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
  */
-final class ClassConstantFetchFinder
+final readonly class ClassConstantFetchFinder
 {
     public function __construct(
         private CachedPhpParser $cachedPhpParser,

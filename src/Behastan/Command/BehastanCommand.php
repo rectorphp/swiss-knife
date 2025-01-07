@@ -43,13 +43,13 @@ final class BehastanCommand extends Command
         Assert::allDirectory($testDirectories);
 
         $featureFiles = $this->behatMetafilesFinder->findFeatureFiles($testDirectories);
-        if (count($featureFiles) === 0) {
+        if ($featureFiles === []) {
             $this->symfonyStyle->error('No *.feature files found. Please provide correct test directory');
             return self::FAILURE;
         }
 
         $contextFiles = $this->behatMetafilesFinder->findContextFiles($testDirectories);
-        if (count($contextFiles) === 0) {
+        if ($contextFiles === []) {
             $this->symfonyStyle->error('No *Context.php files found. Please provide correct test directory');
             return self::FAILURE;
         }

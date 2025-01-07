@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Behastan\ValueObject;
 
-final class MaskCollection
+final readonly class MaskCollection
 {
     /**
      * @param AbstractMask[] $masks
      */
     public function __construct(
-        private readonly array $masks
+        private array $masks
     ) {
     }
 

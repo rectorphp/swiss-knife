@@ -19,13 +19,12 @@ final class BehatMetafilesFinder
         Assert::allString($directories);
         Assert::allDirectory($directories);
 
-        $phpFilesFinder = Finder::create()
+        $filesFinder = Finder::create()
             ->files()
             ->name('*Context.php')
-            ->in($directories)
-            ->getIterator();
+            ->in($directories);
 
-        return iterator_to_array($phpFilesFinder);
+        return iterator_to_array($filesFinder->getIterator());
     }
 
     /**
@@ -38,12 +37,11 @@ final class BehatMetafilesFinder
         Assert::allString($directories);
         Assert::allDirectory($directories);
 
-        $featureFilesFinder = Finder::create()
+        $filesFinder = Finder::create()
             ->files()
             ->name('*.feature')
-            ->in($directories)
-            ->getIterator();
+            ->in($directories);
 
-        return iterator_to_array($featureFilesFinder);
+        return iterator_to_array($filesFinder->getIterator());
     }
 }

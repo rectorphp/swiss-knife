@@ -6,7 +6,9 @@ namespace Rector\SwissKnife\Testing;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
 
@@ -60,10 +62,10 @@ final class MockWire
             ));
         }
 
-        $classReflection = new ReflectionClass($class);
-        $constructorClassMethod = $classReflection->getConstructor();
+        $reflectionClass = new ReflectionClass($class);
+        $constructorClassMethod = $reflectionClass->getConstructor();
 
-        if (! $constructorClassMethod instanceof \ReflectionMethod) {
+        if (! $constructorClassMethod instanceof ReflectionMethod) {
             // no dependencies, create it directly
             return new $class();
         }
@@ -79,14 +81,13 @@ final class MockWire
 
     /**
      * @param object[] $constructorDependencies
-     * @return object|MockObject
      */
     private static function matchPassedMockOrCreate(
         array $constructorDependencies,
         ReflectionParameter $reflectionParameter
     ): object {
         if (! $reflectionParameter->getType() instanceof ReflectionNamedType) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Only typed parameters can be automocked. Provide the typehint for "%s" param',
                 $reflectionParameter->getName()
             ));
@@ -106,16 +107,16 @@ final class MockWire
             }
 
             // is bare object type equal to reflection type?
-            if (get_class($constructorDependency) === $parameterType) {
+            if ($constructorDependency::class === $parameterType) {
                 return $constructorDependency;
             }
         }
 
         // fallback to directly created mock
         // support for PHPUnit 10 and 9
-        $testCaseReflectionClass = new ReflectionClass('PHPUnit\Framework\TestCase');
+        $testCaseReflectionClass = new ReflectionClass(TestCase::class);
         $testCaseConstructor = $testCaseReflectionClass->getConstructor();
-        if ($testCaseConstructor instanceof \ReflectionMethod && $testCaseConstructor->getNumberOfRequiredParameters() > 0) {
+        if ($testCaseConstructor instanceof ReflectionMethod && $testCaseConstructor->getNumberOfRequiredParameters() > 0) {
             $phpunitMocker = new PHPUnitMocker('testName');
         } else {
             $phpunitMocker = new PHPUnitMocker();

@@ -218,4 +218,32 @@ You can also add this command to CI, to get instant feedback about unused defini
 
 <br>
 
+## 8. Quick search PHP files with regex
+
+Data beats guess. Do you need a quick idea how many files contain `$this->get('...')` calls? Or another anti-pattern you want to remove?
+
+PhpStorm helps with similar search, but stops counting at 100+. To get exact data about your codebase, use this command:
+
+```bash
+vendor/bin/swiss-knife search-regex "#this->get\((.*)\)#"
+```
+
+↓
+
+```bash
+Going through 1053 *.php files
+Searching for regex: #this->get\((.*)\)#
+
+ 1053/1053 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+ * src/Controller/ProjectController.php: 15
+ * src/Controller/OrderController.php: 5
+
+
+ [OK] Found 20 cases in 2 files
+
+```
+
+<br>
+
 Happy coding!
