@@ -42,6 +42,7 @@ final class SearchRegexCommand extends Command
         $regex = (string) $input->getArgument('regex');
 
         $projectDirectory = (string) $input->getOption('project-directory');
+
         Assert::directory($projectDirectory);
 
         $phpFileInfos = PhpFilesFinder::find([$projectDirectory]);
@@ -53,7 +54,7 @@ final class SearchRegexCommand extends Command
         $this->symfonyStyle->newLine();
 
         $foundCasesCount = 0;
-        $markedFileCount = 0;
+        $markedFiles = [];
 
         $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
 
@@ -65,15 +66,21 @@ final class SearchRegexCommand extends Command
             }
 
             $foundCasesCount += $currentMatchesCount;
-            ++$markedFileCount;
+            $markedFiles[$phpFileInfo->getRelativePathname()] = $currentMatchesCount;
 
             $progressBar->advance();
         }
 
         $progressBar->finish();
+        $this->symfonyStyle->newLine(2);
+
+        ksort($markedFiles);
+        foreach ($markedFiles as $filePath => $count) {
+            $this->symfonyStyle->writeln(sprintf(' * %s: %d', $filePath, $count));
+        }
 
         $this->symfonyStyle->newLine(2);
-        $this->symfonyStyle->success(sprintf('Found %d cases in %d files', $foundCasesCount, $markedFileCount));
+        $this->symfonyStyle->success(sprintf('Found %d cases in %d files', $foundCasesCount, count($markedFiles)));
 
         return self::SUCCESS;
     }

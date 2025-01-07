@@ -225,8 +225,24 @@ Data beats guess. Do you need a quick idea how many files contain `$this->get('.
 PhpStorm helps with similar search, but stops counting at 100+. To get exact data about your codebase, use this command:
 
 ```bash
- vendor/bin/swiss-knife search-regex "#this->get\((.*)\)#"
- ```
+vendor/bin/swiss-knife search-regex "#this->get\((.*)\)#"
+```
+
+↓
+
+```bash
+Going through 1053 *.php files
+Searching for regex: #this->get\((.*)\)#
+
+ 1053/1053 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+ * src/Controller/ProjectController.php: 15
+ * src/Controller/OrderController.php: 5
+
+
+ [OK] Found 20 cases in 2 files
+
+```
 
 <br>
 
