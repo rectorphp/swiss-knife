@@ -54,8 +54,13 @@ final class AliceYamlFixturesToPhpCommand extends Command
             $return = $this->createArrayReturn($yaml);
             $phpFileContents = $standard->prettyPrintFile([$return]);
 
-            // print PHP file, without YML suffix
-            $phpFilePath = substr($yamlFileInfo->getRealPath(), 0, -4) . '.php';
+            // get real path without yml/yaml suffix
+            if (str_ends_with($yamlFileInfo->getRealPath(), '.yml')) {
+                $phpFilePath = substr($yamlFileInfo->getRealPath(), 0, -4) . '.php';
+            } else {
+                $phpFilePath = substr($yamlFileInfo->getRealPath(), 0, -5) . '.php';
+            }
+
             FileSystem::write($phpFilePath, $phpFileContents);
 
             // remove YAML file
