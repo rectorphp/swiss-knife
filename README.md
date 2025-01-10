@@ -244,6 +244,22 @@ Searching for regex: #this->get\((.*)\)#
 
 ```
 
+
+<br>
+
+## 9. Convert Alice fixtures from YAML to PHP
+
+The `nelmio/alice` package [allows to use PHP](https://github.com/nelmio/alice/blob/v2.3.0/doc/complete-reference.md#php) for test fixture definitions. It's much better format, because Rector and PHPStan can understand it.
+
+But what if we have 100+ YAML files in our project?
+
+```bash
+vendor/bin/swiss-knife convert-alice-yaml-to-php fixtures
+```
+
+That's it!
+
+
 <br>
 
 Happy coding!
