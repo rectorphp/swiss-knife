@@ -7,21 +7,12 @@ namespace Rector\SwissKnife\DependencyInjection;
 use Illuminate\Container\Container;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
-use Rector\SwissKnife\Behastan\Command\BehastanCommand;
-use Rector\SwissKnife\Command\CheckCommentedCodeCommand;
-use Rector\SwissKnife\Command\CheckConflictsCommand;
-use Rector\SwissKnife\Command\DumpEditorconfigCommand;
-use Rector\SwissKnife\Command\FinalizeClassesCommand;
-use Rector\SwissKnife\Command\FindMultiClassesCommand;
-use Rector\SwissKnife\Command\NamespaceToPSR4Command;
-use Rector\SwissKnife\Command\PrettyJsonCommand;
-use Rector\SwissKnife\Command\PrivatizeConstantsCommand;
-use Rector\SwissKnife\Command\SearchRegexCommand;
-use Rector\SwissKnife\Testing\Command\DetectUnitTestsCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Finder\Finder;
+use Webmozart\Assert\Assert;
 
 final class ContainerFactory
 {
@@ -36,23 +27,13 @@ final class ContainerFactory
         $container->singleton(Application::class, function (Container $container): Application {
             $application = new Application('Rector Swiss Knife');
 
-            // @todo add automated way to load these, so we don't forget any
-            $commands = [
-                $container->make(PrettyJsonCommand::class),
-                $container->make(CheckCommentedCodeCommand::class),
-                $container->make(CheckConflictsCommand::class),
-                $container->make(DetectUnitTestsCommand::class),
-                $container->make(FindMultiClassesCommand::class),
-                $container->make(NamespaceToPSR4Command::class),
-                $container->make(DumpEditorconfigCommand::class),
-                $container->make(FinalizeClassesCommand::class),
-                $container->make(PrivatizeConstantsCommand::class),
+            $commandClasses = $this->findCommandClasses();
 
-                $container->make(BehastanCommand::class),
-                $container->make(SearchRegexCommand::class),
-            ];
-
-            $application->addCommands($commands);
+            // register commands
+            foreach ($commandClasses as $commandClass) {
+                $command = $container->make($commandClass);
+                $application->add($command);
+            }
 
             // remove basic command to make output clear
             $this->hideDefaultCommands($application);
@@ -82,5 +63,28 @@ final class ContainerFactory
             ->setHidden(true);
         $application->get('help')
             ->setHidden(true);
+    }
+
+    /**
+     * @return string[]
+     */
+    private function findCommandClasses(): array
+    {
+        $commandFinder = Finder::create()
+            ->files()
+            ->name('*Command.php')
+            ->in(__DIR__ . '/../Command');
+
+        $commandClasses = [];
+        foreach ($commandFinder as $commandFile) {
+            $commandClass = 'Rector\\SwissKnife\\Command\\' . $commandFile->getBasename('.php');
+
+            // make sure it exists
+            Assert::classExists($commandClass);
+
+            $commandClasses[] = $commandClass;
+        }
+
+        return $commandClasses;
     }
 }
