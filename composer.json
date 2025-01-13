@@ -17,6 +17,8 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
+        "symfony/config": "^5.3|^6.4",
+        "symfony/dependency-injection": "^5.3|^6.4",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.5",
