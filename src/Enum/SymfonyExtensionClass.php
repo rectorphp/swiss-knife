@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\Enum;
 
 final class SymfonyExtensionClass
@@ -9,45 +8,37 @@ final class SymfonyExtensionClass
     /**
      * @var string
      */
-    public const SENTRY = 'Sentry\SentryBundle\DependencyInjection\SentryExtension';
-
+    public const SENTRY = 'SwissKnife202501\\Sentry\\SentryBundle\\DependencyInjection\\SentryExtension';
     /**
      * @var string
      */
-    public const DOCTRINE_MIGRATIONS = 'Doctrine\Bundle\MigrationsBundle\DependencyInjection\DoctrineMigrationsExtension';
-
+    public const DOCTRINE_MIGRATIONS = 'SwissKnife202501\\Doctrine\\Bundle\\MigrationsBundle\\DependencyInjection\\DoctrineMigrationsExtension';
     /**
      * @var string
      */
-    public const FRAMEWORK = 'Symfony\Bundle\FrameworkBundle\DependencyInjection\FrameworkExtension';
-
+    public const FRAMEWORK = 'SwissKnife202501\\Symfony\\Bundle\\FrameworkBundle\\DependencyInjection\\FrameworkExtension';
     /**
      * @var string
      */
-    public const MONOLOG = 'Symfony\Bundle\MonologBundle\DependencyInjection\MonologExtension';
-
+    public const MONOLOG = 'SwissKnife202501\\Symfony\\Bundle\\MonologBundle\\DependencyInjection\\MonologExtension';
     /**
      * @var string
      */
-    public const SECURITY = 'Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension';
-
+    public const SECURITY = 'SwissKnife202501\\Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\SecurityExtension';
     /**
      * @var string
      */
-    public const TWIG = 'Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension';
-
+    public const TWIG = 'SwissKnife202501\\Symfony\\Bundle\\TwigBundle\\DependencyInjection\\TwigExtension';
     /**
      * @var string
      */
-    public const DOCTRINE = 'Doctrine\Bundle\DoctrineBundle\DependencyInjection\DoctrineExtension';
-
+    public const DOCTRINE = 'SwissKnife202501\\Doctrine\\Bundle\\DoctrineBundle\\DependencyInjection\\DoctrineExtension';
     /**
      * @var string
      */
-    public const WEBPROFILER = 'Symfony\Bundle\WebProfilerBundle\DependencyInjection\WebProfilerExtension';
-
+    public const WEBPROFILER = 'SwissKnife202501\\Symfony\\Bundle\\WebProfilerBundle\\DependencyInjection\\WebProfilerExtension';
     /**
      * @var string
      */
-    public const AWS = 'Aws\Symfony\DependencyInjection\AwsExtension';
+    public const AWS = 'SwissKnife202501\\Aws\\Symfony\\DependencyInjection\\AwsExtension';
 }
