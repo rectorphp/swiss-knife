@@ -27,6 +27,9 @@ return [
         'vendor/symfony/deprecation-contracts/function.php',
         'stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
 
+        // keep class references
+        'src/Enum/SymfonyExtensionClass.php',
+
         // uses native PHPUnit TestCase class in the project
         'src/Testing/PHPUnitMocker.php',
         'src/Testing/MockWire.php',
