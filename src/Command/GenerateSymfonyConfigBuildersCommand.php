@@ -70,15 +70,18 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
                 continue;
             }
 
+            $this->symfonyStyle->note(sprintf('Found "%s" extension class', $extensionClass));
+
             $configuration = $this->createExtensionConfiguration($extensionClass);
             if (! $configuration instanceof ConfigurationInterface) {
                 continue;
             }
 
             $extensionShortClass = (new ReflectionClass($extensionClass))->getShortName();
-            $this->symfonyStyle->writeln(sprintf('Generated "%s" class', $extensionShortClass));
-
             $configBuilderGenerator->build($configuration);
+
+            $this->symfonyStyle->writeln(sprintf('Generated "%s" class in /var/cache/Symfony', $extensionShortClass));
+            $this->symfonyStyle->newLine();
         }
 
         $this->symfonyStyle->success('Done');
