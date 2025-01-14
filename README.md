@@ -259,6 +259,17 @@ vendor/bin/swiss-knife convert-alice-yaml-to-php fixtures
 
 That's it!
 
+<br>
+
+## 10. Generate Symfony 5.3 configs builders
+
+Symfony 5.3 introduced amazing [config builders](https://symfony.com/blog/new-in-symfony-5-3-config-builder-classes), but those classes are not available for IDE until used. To make it easier, we added a command that generates all config builder classes you project can use, in `/var/cache/Symfony`.
+
+```bash
+vendor/bin/swiss-knife generate-symfony-config-builders
+```
+
+That way IDE, PHPStan after adding those paths and Rector can understand your config files better.
 
 <br>
 
