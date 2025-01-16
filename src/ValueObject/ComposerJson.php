@@ -4,22 +4,18 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\ValueObject;
 
-use Nette\Utils\Json;
 use Nette\Utils\Strings;
 use Webmozart\Assert\Assert;
 
 final class ComposerJson
 {
     /**
-     * @var array<string, mixed>
+     * @param array<string, mixed> $composerJson
      */
-    private readonly array $json;
-
     public function __construct(
         private readonly string $repositoryGit,
-        string $composerJsonContents
+        private readonly array $composerJson
     ) {
-        $this->json = Json::decode($composerJsonContents, forceArrays: true);
     }
 
     public function getRepositoryName(): string
@@ -50,6 +46,6 @@ final class ComposerJson
      */
     private function getBothRequires(): array
     {
-        return array_merge($this->json['require'] ?? [], $this->json['require-dev'] ?? []);
+        return array_merge($this->composerJson['require'] ?? [], $this->composerJson['require-dev'] ?? []);
     }
 }

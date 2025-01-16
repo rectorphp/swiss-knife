@@ -67,12 +67,7 @@ final class FinalizeClassesCommand extends Command
             'Do no change anything, only list classes about to be finalized'
         );
 
-        $this->addOption(
-            'no-progress',
-            null,
-            InputOption::VALUE_NONE,
-            'Do not show progress bar, only results'
-        );
+        $this->addOption('no-progress', null, InputOption::VALUE_NONE, 'Do not show progress bar, only results');
     }
 
     /**

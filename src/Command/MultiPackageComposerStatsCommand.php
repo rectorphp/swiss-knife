@@ -43,12 +43,14 @@ final class MultiPackageComposerStatsCommand extends Command
         $repositories = (array) $input->getArgument('repositories');
         Assert::allString($repositories);
 
-        $this->symfonyStyle->note(sprintf(
+        $this->symfonyStyle->title(sprintf(
             'Downloading "composer.json" files for %d repositories',
             count($repositories)
         ));
 
         $projectsComposerJsons = $this->composerJsonResolver->resolveFromRepositories($repositories);
+        $this->symfonyStyle->newLine(2);
+
         $tableHeadlines = $this->resolveTableHeadlines($projectsComposerJsons);
 
         $requiredPackageNames = $this->resolveProjectsRequiredPackageNames($projectsComposerJsons);
