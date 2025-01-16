@@ -66,6 +66,13 @@ final class FinalizeClassesCommand extends Command
             InputOption::VALUE_NONE,
             'Do no change anything, only list classes about to be finalized'
         );
+
+        $this->addOption(
+            'no-progress',
+            null,
+            InputOption::VALUE_NONE,
+            'Do not show progress bar, only results'
+        );
     }
 
     /**
@@ -82,12 +89,19 @@ final class FinalizeClassesCommand extends Command
         $skippedFiles = $input->getOption('skip-file');
         $phpFileInfos = PhpFilesFinder::find($paths, $skippedFiles);
 
-        // double to count for both parent and entity resolver
-        $stepRatio = $areMockedSkipped ? 3 : 2;
+        $noProgress = (bool) $input->getOption('no-progress');
+        if (! $noProgress) {
+            // double to count for both parent and entity resolver
+            $stepRatio = $areMockedSkipped ? 3 : 2;
 
-        $this->symfonyStyle->progressStart($stepRatio * count($phpFileInfos));
+            $this->symfonyStyle->progressStart($stepRatio * count($phpFileInfos));
+        }
 
-        $progressClosure = function (): void {
+        $progressClosure = function () use ($noProgress): void {
+            if ($noProgress) {
+                return;
+            }
+
             $this->symfonyStyle->progressAdvance();
         };
 
@@ -96,7 +110,9 @@ final class FinalizeClassesCommand extends Command
 
         $mockedClassNames = $areMockedSkipped ? $this->mockedClassResolver->resolve($paths, $progressClosure) : [];
 
-        $this->symfonyStyle->progressFinish();
+        if (! $noProgress) {
+            $this->symfonyStyle->progressFinish();
+        }
 
         $this->symfonyStyle->writeln(sprintf(
             'Found %d parent and %d entity classes',
