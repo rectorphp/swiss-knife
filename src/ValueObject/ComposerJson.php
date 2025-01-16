@@ -15,8 +15,10 @@ final class ComposerJson
      */
     private readonly array $json;
 
-    public function __construct(private readonly string $repositoryGit, string $composerJsonContents)
-    {
+    public function __construct(
+        private readonly string $repositoryGit,
+        string $composerJsonContents
+    ) {
         $this->json = Json::decode($composerJsonContents, forceArrays: true);
     }
 

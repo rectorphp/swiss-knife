@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
-use Nette\Utils\FileSystem;
-use Rector\SwissKnife\Sorting\ArraySorter;
+use Rector\SwissKnife\Composer\ComposerJsonResolver;
+use Rector\SwissKnife\Sorting\ArrayFilter;
 use Rector\SwissKnife\ValueObject\ComposerJson;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -16,13 +16,9 @@ use Webmozart\Assert\Assert;
 
 final class MultiPackageComposerStatsCommand extends Command
 {
-    /**
-     * @var string
-     */
-    private const TEMP_PROJECT_COMPOSER_JSON = 'temp-project-composer.json';
-
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
+        private readonly ComposerJsonResolver $composerJsonResolver,
     ) {
         parent::__construct();
     }
@@ -47,9 +43,12 @@ final class MultiPackageComposerStatsCommand extends Command
         $repositories = (array) $input->getArgument('repositories');
         Assert::allString($repositories);
 
-        $this->symfonyStyle->newLine();
+        $this->symfonyStyle->note(sprintf(
+            'Downloading "composer.json" files for %d repositories',
+            count($repositories)
+        ));
 
-        $projectsComposerJsons = $this->resolveProjectComposerJsons($repositories);
+        $projectsComposerJsons = $this->composerJsonResolver->resolveFromRepositories($repositories);
         $tableHeadlines = $this->resolveTableHeadlines($projectsComposerJsons);
 
         $requiredPackageNames = $this->resolveProjectsRequiredPackageNames($projectsComposerJsons);
@@ -66,42 +65,11 @@ final class MultiPackageComposerStatsCommand extends Command
         }
 
         // sort and put those with both values first
-        $tableRows = ArraySorter::putSharedFirst($tableRows);
+        $tableRows = ArrayFilter::filterOnlyAtLeast2($tableRows);
+
         $this->symfonyStyle->table($tableHeadlines, $tableRows);
 
         return self::SUCCESS;
-    }
-
-
-    /**
-     * @param string[] $repositories
-     * @return ComposerJson[]
-     */
-    private function resolveProjectComposerJsons(array $repositories): array
-    {
-        Assert::allString($repositories);
-
-        $projectsComposerJsons = [];
-        foreach ($repositories as $repository) {
-            // clones only "composer.json" file
-            exec(sprintf(
-                'git archive --remote=%s HEAD composer.json | tar -xO composer.json > %s',
-                $repository,
-                self::TEMP_PROJECT_COMPOSER_JSON
-            ));
-
-            $projectsComposerJsonContents = FileSystem::read(self::TEMP_PROJECT_COMPOSER_JSON);
-
-            Assert::string($projectsComposerJsonContents);
-            Assert::notEmpty($projectsComposerJsonContents);
-
-            $projectsComposerJsons[] = new ComposerJson($repository, $projectsComposerJsonContents);
-        }
-
-        // tidy up temporary file
-        FileSystem::delete(self::TEMP_PROJECT_COMPOSER_JSON);
-
-        return $projectsComposerJsons;
     }
 
     /**
