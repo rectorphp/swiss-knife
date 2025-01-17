@@ -66,6 +66,7 @@ final class SymfonyColumnStyler
     private static function createRedTextCell(string $content): TableCell
     {
         return self::cellWithStyle($content, [
+            'align' => 'right',
             'fg' => 'red',
         ]);
     }
@@ -73,6 +74,7 @@ final class SymfonyColumnStyler
     private static function createGreenTextCell(string $content): TableCell
     {
         return self::cellWithStyle($content, [
+            'align' => 'right',
             'fg' => 'green',
         ]);
     }
@@ -82,6 +84,7 @@ final class SymfonyColumnStyler
      */
     private static function cellWithStyle(string $content, array $styleOptions): TableCell
     {
+
         $tableCellStyle = new TableCellStyle($styleOptions);
 
         return new TableCell($content, [

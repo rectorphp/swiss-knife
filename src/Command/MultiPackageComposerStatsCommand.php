@@ -61,6 +61,7 @@ final class MultiPackageComposerStatsCommand extends Command
 
         $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
         $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
+
         $this->renderTable($tableHeadlines, $tableRows);
 
         return self::SUCCESS;
@@ -123,6 +124,7 @@ final class MultiPackageComposerStatsCommand extends Command
         }
 
         $table->render();
+
         $this->symfonyStyle->newLine();
     }
 
