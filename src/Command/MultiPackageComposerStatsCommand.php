@@ -12,6 +12,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
@@ -40,6 +41,13 @@ final class MultiPackageComposerStatsCommand extends Command
             'One or more repositories to compare package versions of'
         );
 
+        $this->addOption(
+            'is-source',
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Provided repositories are main sources, analyze their dependencies instead'
+        );
+
         $this->setDescription(
             'Compares package versions in multiple repositories, to easily sync multiple package upgrade'
         );
@@ -48,7 +56,11 @@ final class MultiPackageComposerStatsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $repositories = (array) $input->getArgument('repositories');
+        $isSource = (bool) $input->getArgument('is-source');
         Assert::allString($repositories);
+
+        dump($isSource);
+        die;
 
         $this->symfonyStyle->title(sprintf(
             'Loading "composer.json" files for %d repositories',
