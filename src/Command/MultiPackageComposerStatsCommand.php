@@ -63,16 +63,7 @@ final class MultiPackageComposerStatsCommand extends Command
 
         $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
 
-        $table = $this->symfonyStyle->createTable()
-            ->setHeaders($tableHeadlines)
-            ->setRows($tableRows);
-
-        for ($i = 1; $i < count($tableHeadlines); $i++) {
-            $table->setColumnStyle($i, (new TableStyle())->setPadType(STR_PAD_LEFT));
-        }
-
-        $table->render();
-        $this->symfonyStyle->newLine();
+        $this->renderTable($tableHeadlines, $tableRows);
 
         return self::SUCCESS;
     }
@@ -105,5 +96,24 @@ final class MultiPackageComposerStatsCommand extends Command
 
         // sort and put those with both values first
         return ArrayFilter::filterOnlyAtLeast2($tableRows);
+    }
+
+    /**
+     * @param string[] $tableHeadlines
+     * @param mixed[] $tableRows
+     */
+    private function renderTable(array $tableHeadlines, array $tableRows): void
+    {
+        $table = $this->symfonyStyle->createTable()
+            ->setHeaders($tableHeadlines)
+            ->setRows($tableRows);
+
+        // align number to right to
+        for ($i = 1; $i < count($tableHeadlines); $i++) {
+            $table->setColumnStyle($i, (new TableStyle())->setPadType(STR_PAD_LEFT));
+        }
+
+        $table->render();
+        $this->symfonyStyle->newLine();
     }
 }
