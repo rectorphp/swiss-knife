@@ -57,11 +57,10 @@ final class MultiPackageComposerStatsCommand extends Command
 
         $composerJsonCollection = $this->composerJsonResolver->resolveFromRepositories($repositories);
 
-        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
         $requiredPackageNames = $composerJsonCollection->getRequiredPackageNames();
 
+        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
         $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
-
         $this->renderTable($tableHeadlines, $tableRows);
 
         return self::SUCCESS;
@@ -97,11 +96,11 @@ final class MultiPackageComposerStatsCommand extends Command
                 continue;
             }
 
-            // set highs and lows
-            dump($dataRow);
+            $dataRow = SymfonyColumnStyler::styleHighsAndLows($dataRow);
 
             $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
             $tableRow = array_merge([$shortRequiredPackageName], $dataRow);
+
             $tableRows[] = $tableRow;
         }
 
