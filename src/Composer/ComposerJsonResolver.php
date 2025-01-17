@@ -75,6 +75,7 @@ final class ComposerJsonResolver
         $bareComposerJson = [
             'require' => $projectsComposerJson['require'] ?? [],
             'require-dev' => $projectsComposerJson['require-dev'] ?? [],
+            'repositories' => $projectsComposerJson['repositories'] ?? [],
         ];
 
         FileSystem::write($cacheFilePath, Json::encode($bareComposerJson, pretty: true));

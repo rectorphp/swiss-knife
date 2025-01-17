@@ -58,6 +58,7 @@ final class SymfonyColumnStyler
     public static function createRedCell(string $content): TableCell
     {
         return self::cellWithStyle($content, [
+            'align' => 'center',
             'bg' => 'red',
             'fg' => 'white',
         ]);

@@ -42,6 +42,30 @@ final class ComposerJson
     }
 
     /**
+     * @return string[]
+     */
+    public function getRequiredRepositories(): array
+    {
+        $repositories = [];
+
+        $repositoriesData = $this->composerJson['repositories'] ?? [];
+        foreach ($repositoriesData as $repositoryData) {
+            if (! isset($repositoryData['url'])) {
+                continue;
+            }
+
+            // not a git repository reference
+            if (! str_ends_with($repositoryData['url'], '.git')) {
+                continue;
+            }
+
+            $repositories[] = $repositoryData['url'];
+        }
+
+        return $repositories;
+    }
+
+    /**
      * @return array<string, string>
      */
     private function getBothRequires(): array
