@@ -71,10 +71,12 @@ final class MultiPackageComposerStatsCommand extends Command
 
                 // special case for PHP
                 if ($requiredPackageName === 'php' && $packageVersion === null) {
-                    $tableRow[] = new TableCell(self::MISSING_LABEL, ['style' => new TableCellStyle([
-                        'bg' => 'red',
-                        'fg' => 'white',
-                    ])]);
+                    $tableRow[] = new TableCell(self::MISSING_LABEL, [
+                        'style' => new TableCellStyle([
+                            'bg' => 'red',
+                            'fg' => 'white',
+                        ]),
+                    ]);
                 } else {
                     $tableRow[] = $packageVersion;
                 }
