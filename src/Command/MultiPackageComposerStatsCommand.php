@@ -6,12 +6,10 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Composer\ComposerJsonResolver;
+use Rector\SwissKnife\Helper\SymfonyColumnStyler;
 use Rector\SwissKnife\Sorting\ArrayFilter;
-use Rector\SwissKnife\ValueObject\ComposerJson;
 use Rector\SwissKnife\ValueObject\ComposerJsonCollection;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\TableCell;
-use Symfony\Component\Console\Helper\TableCellStyle;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -58,13 +56,12 @@ final class MultiPackageComposerStatsCommand extends Command
             count($repositories)
         ));
 
-        $projectsComposerJsons = $this->composerJsonResolver->resolveFromRepositories($repositories);
-        $composerJsonCollection = new ComposerJsonCollection($projectsComposerJsons);
+        $composerJsonCollection = $this->composerJsonResolver->resolveFromRepositories($repositories);
 
         $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
         $requiredPackageNames = $composerJsonCollection->getRequiredPackageNames();
 
-        $tableRows = $this->createTableRows($requiredPackageNames, $projectsComposerJsons);
+        $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
 
         $table = $this->symfonyStyle->createTable()
             ->setHeaders($tableHeadlines)
@@ -75,30 +72,16 @@ final class MultiPackageComposerStatsCommand extends Command
         }
 
         $table->render();
-
         $this->symfonyStyle->newLine();
 
         return self::SUCCESS;
     }
 
-    private function createRedCell(string $content): TableCell
-    {
-        $redTableCellStyle = new TableCellStyle([
-            'bg' => 'red',
-            'fg' => 'white',
-        ]);
-
-        return new TableCell($content, [
-            'style' => $redTableCellStyle,
-        ]);
-    }
-
     /**
      * @param string[] $requiredPackageNames
-     * @param ComposerJson[] $projectsComposerJsons
      * @return array<mixed[]>
      */
-    private function createTableRows(array $requiredPackageNames, array $projectsComposerJsons): array
+    private function createTableRows(array $requiredPackageNames, ComposerJsonCollection $composerJsonCollection): array
     {
         $tableRows = [];
 
@@ -106,12 +89,12 @@ final class MultiPackageComposerStatsCommand extends Command
             $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
             $tableRow = [$shortRequiredPackageName];
 
-            foreach ($projectsComposerJsons as $composerJson) {
+            foreach ($composerJsonCollection->all() as $composerJson) {
                 $packageVersion = $composerJson->getPackageVersion($requiredPackageName);
 
                 // special case for PHP
                 if ($requiredPackageName === 'php' && $packageVersion === null) {
-                    $tableRow[] = $this->createRedCell(self::MISSING_LABEL);
+                    $tableRow[] = SymfonyColumnStyler::createRedCell(self::MISSING_LABEL);
                 } else {
                     $tableRow[] = $packageVersion;
                 }

@@ -45,6 +45,14 @@ final class ComposerJsonCollection
     }
 
     /**
+     * @return ComposerJson[]
+     */
+    public function all(): array
+    {
+        return $this->composerJsons;
+    }
+
+    /**
      * @param string[] $uniquePackageNames
      * @return string[]
      */

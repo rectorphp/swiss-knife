@@ -7,6 +7,7 @@ namespace Rector\SwissKnife\Composer;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Json;
 use Rector\SwissKnife\ValueObject\ComposerJson;
+use Rector\SwissKnife\ValueObject\ComposerJsonCollection;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
@@ -24,9 +25,8 @@ final class ComposerJsonResolver
 
     /**
      * @param string[] $repositories
-     * @return ComposerJson[]
      */
-    public function resolveFromRepositories(array $repositories): array
+    public function resolveFromRepositories(array $repositories): ComposerJsonCollection
     {
         Assert::allString($repositories);
 
@@ -39,7 +39,7 @@ final class ComposerJsonResolver
         // tidy up temporary file
         FileSystem::delete(self::TEMP_PROJECT_COMPOSER_JSON);
 
-        return $projectsComposerJsons;
+        return new ComposerJsonCollection($projectsComposerJsons);
     }
 
     /**
