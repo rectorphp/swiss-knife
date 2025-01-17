@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Nette\Utils\Strings;
 use Rector\SwissKnife\Composer\ComposerJsonResolver;
 use Rector\SwissKnife\Sorting\ArrayFilter;
 use Rector\SwissKnife\ValueObject\ComposerJson;
@@ -64,7 +65,8 @@ final class MultiPackageComposerStatsCommand extends Command
         $tableRows = [];
 
         foreach ($requiredPackageNames as $requiredPackageName) {
-            $tableRow = [$requiredPackageName];
+            $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
+            $tableRow = [$shortRequiredPackageName];
 
             foreach ($projectsComposerJsons as $composerJson) {
                 $packageVersion = $composerJson->getPackageVersion($requiredPackageName);
