@@ -7,7 +7,6 @@ namespace Rector\SwissKnife\Command;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Composer\ComposerJsonResolver;
 use Rector\SwissKnife\Helper\SymfonyColumnStyler;
-use Rector\SwissKnife\Sorting\ArrayFilter;
 use Rector\SwissKnife\ValueObject\ComposerJsonCollection;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\TableStyle;
@@ -58,21 +57,12 @@ final class MultiPackageComposerStatsCommand extends Command
 
         $composerJsonCollection = $this->composerJsonResolver->resolveFromRepositories($repositories);
 
-        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
         $requiredPackageNames = $composerJsonCollection->getRequiredPackageNames();
 
+        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
         $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
 
-        $table = $this->symfonyStyle->createTable()
-            ->setHeaders($tableHeadlines)
-            ->setRows($tableRows);
-
-        for ($i = 1; $i < count($tableHeadlines); $i++) {
-            $table->setColumnStyle($i, (new TableStyle())->setPadType(STR_PAD_LEFT));
-        }
-
-        $table->render();
-        $this->symfonyStyle->newLine();
+        $this->renderTable($tableHeadlines, $tableRows);
 
         return self::SUCCESS;
     }
@@ -86,24 +76,64 @@ final class MultiPackageComposerStatsCommand extends Command
         $tableRows = [];
 
         foreach ($requiredPackageNames as $requiredPackageName) {
-            $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
-            $tableRow = [$shortRequiredPackageName];
+            $knownValuesCount = 0;
 
+            $dataRow = [];
             foreach ($composerJsonCollection->all() as $composerJson) {
                 $packageVersion = $composerJson->getPackageVersion($requiredPackageName);
+                if ($packageVersion !== null) {
+                    $knownValuesCount++;
+                }
 
-                // special case for PHP
-                if ($requiredPackageName === 'php' && $packageVersion === null) {
-                    $tableRow[] = SymfonyColumnStyler::createRedCell(self::MISSING_LABEL);
+                if ($this->isUnknownPhp($requiredPackageName, $packageVersion)) {
+                    $dataRow[] = SymfonyColumnStyler::createRedCell(self::MISSING_LABEL);
                 } else {
-                    $tableRow[] = $packageVersion;
+                    $dataRow[] = $packageVersion;
                 }
             }
+
+            // we need at least 2 values to compare
+            if ($knownValuesCount < 2) {
+                continue;
+            }
+
+            $dataRow = SymfonyColumnStyler::styleHighsAndLows($dataRow);
+
+            $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
+            $tableRow = array_merge([$shortRequiredPackageName], $dataRow);
 
             $tableRows[] = $tableRow;
         }
 
-        // sort and put those with both values first
-        return ArrayFilter::filterOnlyAtLeast2($tableRows);
+        return $tableRows;
+    }
+
+    /**
+     * @param string[] $tableHeadlines
+     * @param mixed[] $tableRows
+     */
+    private function renderTable(array $tableHeadlines, array $tableRows): void
+    {
+        $table = $this->symfonyStyle->createTable()
+            ->setHeaders($tableHeadlines)
+            ->setRows($tableRows);
+
+        // align number to right to
+        for ($i = 1; $i < count($tableHeadlines); $i++) {
+            $table->setColumnStyle($i, (new TableStyle())->setPadType(STR_PAD_LEFT));
+        }
+
+        $table->render();
+
+        $this->symfonyStyle->newLine();
+    }
+
+    private function isUnknownPhp(string $packageName, ?string $packageVersion): bool
+    {
+        if ($packageName !== 'php') {
+            return false;
+        }
+
+        return $packageVersion === null;
     }
 }
