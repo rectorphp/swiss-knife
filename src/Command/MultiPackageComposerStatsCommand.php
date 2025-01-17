@@ -7,7 +7,6 @@ namespace Rector\SwissKnife\Command;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Composer\ComposerJsonResolver;
 use Rector\SwissKnife\Helper\SymfonyColumnStyler;
-use Rector\SwissKnife\Sorting\ArrayFilter;
 use Rector\SwissKnife\ValueObject\ComposerJsonCollection;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\TableStyle;
@@ -77,25 +76,36 @@ final class MultiPackageComposerStatsCommand extends Command
         $tableRows = [];
 
         foreach ($requiredPackageNames as $requiredPackageName) {
-            $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
-            $tableRow = [$shortRequiredPackageName];
+            $knownValuesCount = 0;
 
+            $dataRow = [];
             foreach ($composerJsonCollection->all() as $composerJson) {
                 $packageVersion = $composerJson->getPackageVersion($requiredPackageName);
+                if ($packageVersion !== null) {
+                    $knownValuesCount++;
+                }
 
-                // special case for PHP
-                if ($requiredPackageName === 'php' && $packageVersion === null) {
-                    $tableRow[] = SymfonyColumnStyler::createRedCell(self::MISSING_LABEL);
+                if ($this->isUnknownPhp($requiredPackageName, $packageVersion)) {
+                    $dataRow[] = SymfonyColumnStyler::createRedCell(self::MISSING_LABEL);
                 } else {
-                    $tableRow[] = $packageVersion;
+                    $dataRow[] = $packageVersion;
                 }
             }
 
+            // we need at least 2 values to compare
+            if ($knownValuesCount < 2) {
+                continue;
+            }
+
+            // set highs and lows
+            dump($dataRow);
+
+            $shortRequiredPackageName = Strings::truncate($requiredPackageName, 22);
+            $tableRow = array_merge([$shortRequiredPackageName], $dataRow);
             $tableRows[] = $tableRow;
         }
 
-        // sort and put those with both values first
-        return ArrayFilter::filterOnlyAtLeast2($tableRows);
+        return $tableRows;
     }
 
     /**
@@ -115,5 +125,14 @@ final class MultiPackageComposerStatsCommand extends Command
 
         $table->render();
         $this->symfonyStyle->newLine();
+    }
+
+    private function isUnknownPhp(string $packageName, ?string $packageVersion): bool
+    {
+        if ($packageName !== 'php') {
+            return false;
+        }
+
+        return $packageVersion === null;
     }
 }
