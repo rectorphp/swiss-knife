@@ -8,6 +8,8 @@ use Rector\SwissKnife\Composer\ComposerJsonResolver;
 use Rector\SwissKnife\Sorting\ArrayFilter;
 use Rector\SwissKnife\ValueObject\ComposerJson;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\TableCell;
+use Symfony\Component\Console\Helper\TableCellStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -16,6 +18,11 @@ use Webmozart\Assert\Assert;
 
 final class MultiPackageComposerStatsCommand extends Command
 {
+    /**
+     * @var string
+     */
+    private const MISSING_LABEL = '*MISSING*';
+
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
         private readonly ComposerJsonResolver $composerJsonResolver,
@@ -60,7 +67,17 @@ final class MultiPackageComposerStatsCommand extends Command
             $tableRow = [$requiredPackageName];
 
             foreach ($projectsComposerJsons as $composerJson) {
-                $tableRow[] = $composerJson->getPackageVersion($requiredPackageName);
+                $packageVersion = $composerJson->getPackageVersion($requiredPackageName);
+
+                // special case for PHP
+                if ($requiredPackageName === 'php' && $packageVersion === null) {
+                    $tableRow[] = new TableCell(self::MISSING_LABEL, ['style' => new TableCellStyle([
+                        'bg' => 'red',
+                        'fg' => 'white',
+                    ])]);
+                } else {
+                    $tableRow[] = $packageVersion;
+                }
             }
 
             $tableRows[] = $tableRow;
