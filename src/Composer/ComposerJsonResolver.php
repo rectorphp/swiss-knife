@@ -32,8 +32,6 @@ final class ComposerJsonResolver
 
         $projectsComposerJsons = [];
         foreach ($repositories as $repository) {
-            $this->symfonyStyle->writeln('Loading for ' . $repository);
-
             $projectsComposerJson = $this->getComposerJsonForRepository($repository, true);
             $projectsComposerJsons[] = new ComposerJson($repository, $projectsComposerJson);
         }
@@ -55,6 +53,8 @@ final class ComposerJsonResolver
             $fileContents = FileSystem::read($cacheFilePath);
             return Json::decode($fileContents, Json::FORCE_ARRAY);
         }
+
+        $this->symfonyStyle->writeln('Loading for ' . $repository);
 
         // clone only "composer.json" file
         exec(sprintf(

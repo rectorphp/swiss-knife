@@ -8,9 +8,11 @@ use Nette\Utils\Strings;
 use Rector\SwissKnife\Composer\ComposerJsonResolver;
 use Rector\SwissKnife\Sorting\ArrayFilter;
 use Rector\SwissKnife\ValueObject\ComposerJson;
+use Rector\SwissKnife\ValueObject\ComposerJsonCollection;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableCellStyle;
+use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -52,16 +54,52 @@ final class MultiPackageComposerStatsCommand extends Command
         Assert::allString($repositories);
 
         $this->symfonyStyle->title(sprintf(
-            'Downloading "composer.json" files for %d repositories',
+            'Loading "composer.json" files for %d repositories',
             count($repositories)
         ));
 
         $projectsComposerJsons = $this->composerJsonResolver->resolveFromRepositories($repositories);
-        $this->symfonyStyle->newLine(2);
+        $composerJsonCollection = new ComposerJsonCollection($projectsComposerJsons);
 
-        $tableHeadlines = $this->resolveTableHeadlines($projectsComposerJsons);
+        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
+        $requiredPackageNames = $composerJsonCollection->getRequiredPackageNames();
 
-        $requiredPackageNames = $this->resolveProjectsRequiredPackageNames($projectsComposerJsons);
+        $tableRows = $this->createTableRows($requiredPackageNames, $projectsComposerJsons);
+
+        $table = $this->symfonyStyle->createTable()
+            ->setHeaders($tableHeadlines)
+            ->setRows($tableRows);
+
+        for ($i = 1; $i < count($tableHeadlines); $i++) {
+            $table->setColumnStyle($i, (new TableStyle())->setPadType(STR_PAD_LEFT));
+        }
+
+        $table->render();
+
+        $this->symfonyStyle->newLine();
+
+        return self::SUCCESS;
+    }
+
+    private function createRedCell(string $content): TableCell
+    {
+        $redTableCellStyle = new TableCellStyle([
+            'bg' => 'red',
+            'fg' => 'white',
+        ]);
+
+        return new TableCell($content, [
+            'style' => $redTableCellStyle,
+        ]);
+    }
+
+    /**
+     * @param string[] $requiredPackageNames
+     * @param ComposerJson[] $projectsComposerJsons
+     * @return array<mixed[]>
+     */
+    private function createTableRows(array $requiredPackageNames, array $projectsComposerJsons): array
+    {
         $tableRows = [];
 
         foreach ($requiredPackageNames as $requiredPackageName) {
@@ -73,12 +111,7 @@ final class MultiPackageComposerStatsCommand extends Command
 
                 // special case for PHP
                 if ($requiredPackageName === 'php' && $packageVersion === null) {
-                    $tableRow[] = new TableCell(self::MISSING_LABEL, [
-                        'style' => new TableCellStyle([
-                            'bg' => 'red',
-                            'fg' => 'white',
-                        ]),
-                    ]);
+                    $tableRow[] = $this->createRedCell(self::MISSING_LABEL);
                 } else {
                     $tableRow[] = $packageVersion;
                 }
@@ -88,39 +121,6 @@ final class MultiPackageComposerStatsCommand extends Command
         }
 
         // sort and put those with both values first
-        $tableRows = ArrayFilter::filterOnlyAtLeast2($tableRows);
-
-        $this->symfonyStyle->table($tableHeadlines, $tableRows);
-
-        return self::SUCCESS;
-    }
-
-    /**
-     * @param ComposerJson[] $projectsComposerJsons
-     * @return string[]
-     */
-    private function resolveTableHeadlines(array $projectsComposerJsons): array
-    {
-        $tableHeadlines = ['required dependency'];
-
-        foreach ($projectsComposerJsons as $composerJson) {
-            $tableHeadlines[] = $composerJson->getRepositoryName();
-        }
-
-        return $tableHeadlines;
-    }
-
-    /**
-     * @param ComposerJson[] $projectsComposerJsons
-     * @return string[]
-     */
-    private function resolveProjectsRequiredPackageNames(array $projectsComposerJsons): array
-    {
-        $requiredPackageNames = [];
-        foreach ($projectsComposerJsons as $composerJson) {
-            $requiredPackageNames = array_merge($requiredPackageNames, $composerJson->getRequiredPackageNames());
-        }
-
-        return array_unique($requiredPackageNames);
+        return ArrayFilter::filterOnlyAtLeast2($tableRows);
     }
 }
