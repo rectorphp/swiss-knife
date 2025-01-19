@@ -49,11 +49,26 @@ final class TraitSpottingCommand extends Command
         $this->symfonyStyle->note(sprintf('Found %d traits', $traitSpottingResult->getTraitCount()));
 
         $maxTimesUsedTraits = $traitSpottingResult->getTraitMaximumUsedTimes($maxUsedCount);
-        $this->symfonyStyle->section(sprintf('Found %d traits', count($maxTimesUsedTraits)));
 
-        foreach ($maxTimesUsedTraits as $maxTimesUsedTrait) {
+        foreach ($maxTimesUsedTraits as $traitUsage) {
+            $this->symfonyStyle->writeln(sprintf(
+                'Trait "%s" (%d lines) is used only in %d files',
+                $traitUsage->shortTraitName,
+                $traitUsage->lineCount,
+                count($traitUsage->usingFiles)
+            ));
+            $this->symfonyStyle->newLine();
 
+            $this->symfonyStyle->listing($traitUsage->usingFiles);
+            $this->symfonyStyle->newLine();
         }
+
+        $this->symfonyStyle->newLine();
+
+        $this->symfonyStyle->warning(sprintf(
+            'Found %d traits, the less the better to make dependencies explicit',
+            count($maxTimesUsedTraits)
+        ));
 
         return self::SUCCESS;
     }

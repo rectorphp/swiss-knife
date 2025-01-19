@@ -9,10 +9,13 @@ use Rector\SwissKnife\Finder\TraitFilesFinder;
 use Rector\SwissKnife\ValueObject\Traits\TraitSpottingResult;
 use Symfony\Component\Finder\SplFileInfo;
 
-final readonly  class TraitSpotter
+/**
+ * @see \Rector\SwissKnife\Tests\Traits\TraitSpotterTest
+ */
+final readonly class TraitSpotter
 {
     public function __construct(
-        private readonly TraitFilesFinder $traitFilesFinder
+        private TraitFilesFinder $traitFilesFinder
     ) {
     }
 
