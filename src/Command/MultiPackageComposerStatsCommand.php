@@ -12,6 +12,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
@@ -40,6 +41,13 @@ final class MultiPackageComposerStatsCommand extends Command
             'One or more repositories to compare package versions of'
         );
 
+        $this->addOption(
+            'is-source',
+            null,
+            InputOption::VALUE_NONE,
+            'Provided repositories are main sources, analyze their dependencies instead'
+        );
+
         $this->setDescription(
             'Compares package versions in multiple repositories, to easily sync multiple package upgrade'
         );
@@ -48,21 +56,33 @@ final class MultiPackageComposerStatsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $repositories = (array) $input->getArgument('repositories');
+        $isSource = (bool) $input->getOption('is-source');
         Assert::allString($repositories);
+
+        if ($isSource) {
+            $this->symfonyStyle->title(sprintf('Loading dependencies for %d projects', count($repositories)));
+
+            $projectsComposerJson = $this->composerJsonResolver->resolveFromRepositories($repositories);
+            foreach ($projectsComposerJson->all() as $i => $projectComposerJson) {
+                $this->symfonyStyle->section(sprintf(
+                    '%d) Showing external repositories for "%s" project',
+                    $i + 1,
+                    $projectComposerJson->getRepositoryName()
+                ));
+
+                $this->renderTableForRepositories($projectComposerJson->getRequiredRepositories());
+                $this->symfonyStyle->newLine();
+            }
+
+            return self::SUCCESS;
+        }
 
         $this->symfonyStyle->title(sprintf(
             'Loading "composer.json" files for %d repositories',
             count($repositories)
         ));
 
-        $composerJsonCollection = $this->composerJsonResolver->resolveFromRepositories($repositories);
-
-        $requiredPackageNames = $composerJsonCollection->getRequiredPackageNames();
-
-        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
-        $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
-
-        $this->renderTable($tableHeadlines, $tableRows);
+        $this->renderTableForRepositories($repositories);
 
         return self::SUCCESS;
     }
@@ -93,7 +113,7 @@ final class MultiPackageComposerStatsCommand extends Command
             }
 
             // we need at least 2 values to compare
-            if ($knownValuesCount < 2) {
+            if ($requiredPackageName !== 'php' && $knownValuesCount < 2) {
                 continue;
             }
 
@@ -135,5 +155,19 @@ final class MultiPackageComposerStatsCommand extends Command
         }
 
         return $packageVersion === null;
+    }
+
+    /**
+     * @param string[] $repositories
+     */
+    private function renderTableForRepositories(array $repositories): void
+    {
+        $composerJsonCollection = $this->composerJsonResolver->resolveFromRepositories($repositories);
+        $requiredPackageNames = $composerJsonCollection->getRequiredPackageNames();
+
+        $tableHeadlines = array_merge(['dependency'], $composerJsonCollection->getRepositoryNames());
+        $tableRows = $this->createTableRows($requiredPackageNames, $composerJsonCollection);
+
+        $this->renderTable($tableHeadlines, $tableRows);
     }
 }
