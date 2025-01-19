@@ -2,62 +2,15 @@
     "name": "rector/swiss-knife",
     "description": "Swiss knife in pocket of every upgrade architect",
     "license": "MIT",
+    "require": {
+        "php": ">=7.2"
+    },
     "bin": [
         "bin/swiss-knife"
     ],
-    "require": {
-        "php": ">=8.2",
-        "composer/semver": "^3.4",
-        "illuminate/container": "^11.35",
-        "nette/robot-loader": "^4.0",
-        "nette/utils": "^4.0",
-        "nikic/php-parser": "^5.4",
-        "symfony/console": "^6.4",
-        "symfony/finder": "^6.4",
-        "symfony/yaml": "^7.2",
-        "webmozart/assert": "^1.11"
-    },
-    "require-dev": {
-        "symfony/config": "^5.3|^6.4",
-        "symfony/dependency-injection": "^5.3|^6.4",
-        "phpstan/extension-installer": "^1.4",
-        "phpstan/phpstan": "^2.0",
-        "phpunit/phpunit": "^11.5",
-        "rector/rector": "^2.0",
-        "shipmonk/composer-dependency-analyser": "^1.8",
-        "symplify/easy-coding-standard": "^12.5",
-        "tomasvotruba/class-leak": "^2.0",
-        "tracy/tracy": "^2.10"
-    },
     "autoload": {
         "psr-4": {
             "Rector\\SwissKnife\\": "src"
-        },
-        "classmap": [
-            "stubs"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Rector\\SwissKnife\\Tests\\": "tests"
         }
-    },
-    "replace": {
-        "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-intl-normalizer": "*",
-        "symfony/polyfill-mbstring": "*"
-    },
-    "config": {
-        "sort-packages": true,
-        "platform-check": false,
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
-    },
-    "scripts": {
-        "check-cs": "vendor/bin/ecs check --ansi",
-        "fix-cs": "vendor/bin/ecs check --fix --ansi",
-        "phpstan": "vendor/bin/phpstan analyse --ansi",
-        "rector": "vendor/bin/rector process --ansi"
     }
 }
