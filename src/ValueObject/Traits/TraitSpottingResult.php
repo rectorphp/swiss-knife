@@ -7,45 +7,55 @@ namespace Rector\SwissKnife\ValueObject\Traits;
 final readonly class TraitSpottingResult
 {
     /**
-     * @param array<string, int> $shortTraitNamesToLineCount
-     * @param array<string, string[]> $traitUsagesToFiles
+     * @param TraitMetadata[] $traitsMetadatas
      */
     public function __construct(
-        private array $shortTraitNamesToLineCount,
-        private array $traitUsagesToFiles
+        private array $traitsMetadatas,
     ) {
     }
 
     public function getTraitCount(): int
     {
-     return count($this->shortTraitNamesToLineCount);
+        return count($this->traitsMetadatas);
     }
 
     /**
-     * @return TraitUsage[]
+     * @return TraitMetadata[]
      */
     public function getTraitMaximumUsedTimes(int $limit): array
     {
-        $traitUsages = [];
+        $usedTraitsMetadatas = [];
 
-        foreach ($this->traitUsagesToFiles as $shortTraitName => $usingFiles) {
+        foreach ($this->traitsMetadatas as $traitMetadata) {
+            // not used at all, already handled by phpstan
+            if ($traitMetadata->getUsedInCount() === 0) {
+                continue;
+            }
+
             // to many places
-            if (count($usingFiles) > $limit) {
+            if ($traitMetadata->getUsedInCount() > $limit) {
                 continue;
             }
 
-            // probably external, nothing we can do about it
-            if (! isset($this->shortTraitNamesToLineCount[$shortTraitName])) {
-                continue;
-            }
-
-            $traitUsages[] = new TraitUsage(
-                $shortTraitName,
-                $this->shortTraitNamesToLineCount[$shortTraitName],
-                $usingFiles
-            );
+            $usedTraitsMetadatas[] = $traitMetadata;
         }
 
-        return $traitUsages;
+        return $usedTraitsMetadatas;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getTraitFilePaths(): array
+    {
+        $traitFilePaths = [];
+
+        foreach ($this->traitsMetadatas as $traitMetadata) {
+            $traitFilePaths[] = $traitMetadata->getFilePath();
+        }
+
+        sort($traitFilePaths);
+
+        return $traitFilePaths;
     }
 }

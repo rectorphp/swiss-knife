@@ -273,4 +273,25 @@ That way IDE, PHPStan after adding those paths and Rector can understand your co
 
 <br>
 
+## 11. Spots Fake Traits
+
+What is trait has 5 lines and used in single service? We know it's better to e inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
+
+We made a command to automate this process and spot the traits most likely to be inlined:
+
+```bash
+vendor/bin/swiss-knife spot-lazy-traits src
+```
+
+By default, the commands look for traits used max 2-times. To change that:
+
+```bash
+vendor/bin/swiss-knife spot-lazy-traits src --max-used 4
+```
+
+That's it! Run this command once upon a time or run it in CI to eliminate traits with low value to exists. Your code will be more robuts and easier to work with.
+
+
+<br>
+
 Happy coding!

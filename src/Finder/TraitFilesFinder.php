@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Finder;
 
+use Nette\Utils\Strings;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
@@ -48,7 +49,7 @@ final class TraitFilesFinder
             ->sortByName()
             ->filter(function (SplFileInfo $fileInfo): bool {
                 $fileContent = $fileInfo->getContents();
-                return str_contains($fileContent, 'trait ');
+                return (bool) Strings::match($fileContent, '#^trait\s#m');
             });
 
         return iterator_to_array($traitFinder->getIterator());

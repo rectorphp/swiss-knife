@@ -6,8 +6,8 @@ namespace Rector\SwissKnife\Traits;
 
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\TraitFilesFinder;
+use Rector\SwissKnife\ValueObject\Traits\TraitMetadata;
 use Rector\SwissKnife\ValueObject\Traits\TraitSpottingResult;
-use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * @see \Rector\SwissKnife\Tests\Traits\TraitSpotterTest
@@ -26,33 +26,46 @@ final readonly class TraitSpotter
     {
         $traitFiles = $this->traitFilesFinder->find($directories);
 
-        $shortNameToLineCount = [];
+        $traitsMetadatas = [];
+
         foreach ($traitFiles as $traitFile) {
             $traitShortName = $traitFile->getBasename('.php');
-            $shortNameToLineCount[$traitShortName] = substr_count($traitFile->getContents(), PHP_EOL);
-        }
 
-        $shortTraitNamesToLineCount = $shortNameToLineCount;
+            $traitsMetadatas[] = new TraitMetadata($traitFile->getRealPath(), $traitShortName);
+        }
 
         $traitUsageFiles = $this->traitFilesFinder->findTraitUsages($directories);
 
-        $usagesToFiles = [];
         foreach ($traitUsageFiles as $traitUsageFile) {
-            $matches = Strings::matchAll($traitUsageFile->getContents(), '#    use (?<short_trait_name>[\w]+);#');
+            $matches = Strings::matchAll($traitUsageFile->getContents(), '#^    use (?<short_trait_name>[\w]+);#m');
 
             foreach ($matches as $match) {
                 $shortTraitName = $match['short_trait_name'];
-                $usagesToFiles[$shortTraitName][] = $this->getRelativeFilePath($traitUsageFile);
+
+                // fuzzy in exchange for speed
+                $currentTraitMetadata = $this->matchTraitByShortName($traitsMetadatas, $shortTraitName);
+                if (! $currentTraitMetadata instanceof TraitMetadata) {
+                    continue;
+                }
+
+                $currentTraitMetadata->markUsedIn($traitUsageFile->getRealPath());
             }
         }
 
-        $traitUsagesToFiles = $usagesToFiles;
-
-        return new TraitSpottingResult($shortTraitNamesToLineCount, $traitUsagesToFiles);
+        return new TraitSpottingResult($traitsMetadatas);
     }
 
-    private function getRelativeFilePath(SplFileInfo $fileInfo): string
+    /**
+     * @param TraitMetadata[] $traitsMetadatas
+     */
+    private function matchTraitByShortName(array $traitsMetadatas, string $shortTraitName): ?TraitMetadata
     {
-        return substr($fileInfo->getRealPath(), strlen((string) getcwd()) + 1);
+        foreach ($traitsMetadatas as $traitMetadata) {
+            if ($traitMetadata->getShortTraitName() === $shortTraitName) {
+                return $traitMetadata;
+            }
+        }
+
+        return null;
     }
 }
