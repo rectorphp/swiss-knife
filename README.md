@@ -148,7 +148,9 @@ final class RealClass
 }
 ```
 
-But we want to mock only one of them:
+<br>
+
+But we want to **mock only one of them**:
 
 ```php
 use Rector\SwissKnife\Testing\MockWire;
@@ -161,6 +163,8 @@ $realClass = MockWire::create(RealClass::class, [
     $thirdDependencyMock
 ]);
 ```
+
+<br>
 
 Or pass direct instance:
 
@@ -282,6 +286,8 @@ We made a command to automate this process and spot the traits most likely to be
 ```bash
 vendor/bin/swiss-knife spot-lazy-traits src
 ```
+
+<br>
 
 By default, the commands look for traits used max 2-times. To change that:
 
