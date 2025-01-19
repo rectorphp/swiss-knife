@@ -28,8 +28,6 @@ Add this command to CI to spot these:
 vendor/bin/swiss-knife check-conflicts .
 ```
 
-*Note: The `/vendor` directory is excluded by default.*
-
 <br>
 
 ### 2. Detect Commented Code
