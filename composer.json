@@ -18,14 +18,15 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "symfony/config": "^5.3|^6.4",
-        "symfony/dependency-injection": "^5.3|^6.4",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.5",
         "rector/rector": "^2.0",
         "shipmonk/composer-dependency-analyser": "^1.8",
+        "symfony/config": "^5.3|^6.4",
+        "symfony/dependency-injection": "^5.3|^6.4",
         "symplify/easy-coding-standard": "^12.5",
+        "symplify/vendor-patches": "^11.3",
         "tomasvotruba/class-leak": "^2.0",
         "tracy/tracy": "^2.10"
     },
@@ -51,6 +52,7 @@
         "sort-packages": true,
         "platform-check": false,
         "allow-plugins": {
+            "cweagans/composer-patches": true,
             "phpstan/extension-installer": true
         }
     },
