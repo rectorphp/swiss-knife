@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Helper;
 
-use ClassLeak202501\Symfony\Component\Console\Helper\Table;
 use Composer\Semver\Comparator;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableCellStyle;
@@ -30,9 +29,10 @@ final class SymfonyColumnStyler
         }
 
         // sort from high to low
-        usort($stringValues, function (string $firstVersion, string $secondVersion): int {
-            return (int) Comparator::lessThan($firstVersion, $secondVersion);
-        });
+        usort(
+            $stringValues,
+            fn (string $firstVersion, string $secondVersion): int => (int) Comparator::lessThan($firstVersion, $secondVersion)
+        );
 
         $highValue = array_shift($stringValues);
         $lowValue = array_pop($stringValues);

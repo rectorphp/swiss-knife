@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\Behastan\DefinitionMasksResolver\Fixture;
 
+use Behat\Step\Then;
+
 final class AnotherBehatContext
 {
     /**
@@ -13,9 +15,7 @@ final class AnotherBehatContext
     {
     }
 
-    /**
-     * @Then never used
-     */
+    #[Then('never used')]
     public function deadAction(): void
     {
     }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Behastan\ValueObject;
 
+use Rector\SwissKnife\Behastan\ValueObject\Mask\AbstractMask;
+
 final readonly class MaskCollection
 {
     /**

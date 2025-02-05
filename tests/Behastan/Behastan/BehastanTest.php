@@ -4,7 +4,7 @@ namespace Rector\SwissKnife\Tests\Behastan\Behastan;
 
 use Rector\SwissKnife\Behastan\Behastan;
 use Rector\SwissKnife\Behastan\Finder\BehatMetafilesFinder;
-use Rector\SwissKnife\Behastan\ValueObject\AbstractMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\AbstractMask;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Style\SymfonyStyle;

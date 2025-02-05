@@ -4,13 +4,22 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Behastan;
 
-use Nette\Utils\Strings;
-use Rector\SwissKnife\Behastan\ValueObject\ExactMask;
+use PhpParser\Comment\Doc;
+use PhpParser\Node\Name;
+use PhpParser\Node\Scalar\String_;
+use PhpParser\Node\Stmt;
+use PhpParser\Node\Stmt\Class_;
+use PhpParser\NodeFinder;
+use PhpParser\NodeTraverser;
+use PhpParser\NodeVisitor\NameResolver;
+use PhpParser\ParserFactory;
+use Rector\SwissKnife\Behastan\ValueObject\ClassMethodContextDefinition;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\ExactMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\NamedMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\RegexMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\SkippedMask;
 use Rector\SwissKnife\Behastan\ValueObject\MaskCollection;
-use Rector\SwissKnife\Behastan\ValueObject\NamedMask;
-use Rector\SwissKnife\Behastan\ValueObject\RegexMask;
-use Rector\SwissKnife\Behastan\ValueObject\SkippedMask;
-use Symfony\Component\Finder\SplFileInfo;
+use SplFileInfo;
 
 final class DefinitionMasksResolver
 {
@@ -20,9 +29,9 @@ final class DefinitionMasksResolver
     private const INSTRUCTION_DOCBLOCK_REGEX = '#\@(Given|Then|When)\s+(?<instruction>.*?)\n#m';
 
     /**
-     * @var string
+     * @var string[]
      */
-    private const INSTRUCTION_ATTRIBUTE_REGEX = '#\#\[(Given|Then|When)\(\'(?<instruction>.*?)\'\)#sm';
+    private const ATTRIBUTE_NAMES = ['Behat\Step\Then', 'Behat\Step\Given', 'Behat\Step\And'];
 
     /**
      * @param SplFileInfo[] $contextFiles
@@ -31,31 +40,53 @@ final class DefinitionMasksResolver
     {
         $masks = [];
 
-        $rawMasksByFilePath = $this->resolveMasksFromFiles($contextFiles);
+        $classMethodContextDefinitions = $this->resolveMasksFromFiles($contextFiles);
 
-        foreach ($rawMasksByFilePath as $filePath => $rawMasks) {
-            foreach ($rawMasks as $rawMask) {
-                // @todo edge case - handle next
-                if (str_contains($rawMask, ' [:')) {
-                    $masks[] = new SkippedMask($rawMask, $filePath);
-                    continue;
-                }
+        foreach ($classMethodContextDefinitions as $classMethodContextDefinition) {
+            $rawMask = $classMethodContextDefinition->getMask();
 
-                // regex pattern, handled else-where
-                if (str_starts_with($rawMask, '/')) {
-                    $masks[] = new RegexMask($rawMask, $filePath);
-                    continue;
-                }
-
-                // handled in mask one
-                if (Strings::match($rawMask, '#(\:[\W\w]+)#')) {
-                    //                if (str_contains($rawMask, ':')) {
-                    $masks[] = new NamedMask($rawMask, $filePath);
-                    continue;
-                }
-
-                $masks[] = new ExactMask($rawMask, $filePath);
+            // @todo edge case - handle next
+            if (str_contains($rawMask, ' [:')) {
+                $masks[] = new SkippedMask(
+                    $rawMask,
+                    $classMethodContextDefinition->getFilePath(),
+                    $classMethodContextDefinition->getClass(),
+                    $classMethodContextDefinition->getMethodName()
+                );
+                continue;
             }
+
+            // regex pattern, handled else-where
+            if (str_starts_with($rawMask, '/')) {
+                $masks[] = new RegexMask(
+                    $rawMask,
+                    $classMethodContextDefinition->getFilePath(),
+                    $classMethodContextDefinition->getClass(),
+                    $classMethodContextDefinition->getMethodName()
+                );
+                continue;
+            }
+
+            // handled in mask one
+            preg_match('#(\:[\W\w]+)#', $rawMask, $match);
+
+            if ($match !== []) {
+                //  if (str_contains($rawMask, ':')) {
+                $masks[] = new NamedMask(
+                    $rawMask,
+                    $classMethodContextDefinition->getFilePath(),
+                    $classMethodContextDefinition->getClass(),
+                    $classMethodContextDefinition->getMethodName()
+                );
+                continue;
+            }
+
+            $masks[] = new ExactMask(
+                $rawMask,
+                $classMethodContextDefinition->getFilePath(),
+                $classMethodContextDefinition->getClass(),
+                $classMethodContextDefinition->getMethodName()
+            );
         }
 
         return new MaskCollection($masks);
@@ -64,37 +95,94 @@ final class DefinitionMasksResolver
     /**
      * @param SplFileInfo[] $fileInfos
      *
-     * @return array<string, string[]>
+     * @return ClassMethodContextDefinition[]
      */
     private function resolveMasksFromFiles(array $fileInfos): array
     {
-        $masksByFilePath = [];
+        $classMethodContextDefinitions = [];
+
+        $parserFactory = new ParserFactory();
+        $nodeFinder = new NodeFinder();
+
+        $phpParser = $parserFactory->createForHostVersion();
+        $nodeTraverser = new NodeTraverser();
+        $nodeTraverser->addVisitor(new NameResolver());
 
         foreach ($fileInfos as $fileInfo) {
-            $matches = $this->matchDocblockAndAttributeDefinitions($fileInfo);
+            /** @var string $fileContents */
+            $fileContents = file_get_contents($fileInfo->getRealPath());
 
-            foreach ($matches as $match) {
-                $mask = trim((string) $match['instruction']);
+            /** @var Stmt[] $stmts */
+            $stmts = $phpParser->parse($fileContents);
+            $nodeTraverser->traverse($stmts);
 
-                // clear extra quote escaping that would cause miss-match with feature masks
-                $mask = str_replace('\\\'', "'", $mask);
-                $mask = str_replace('\\/', '/', $mask);
+            // 1. get class name
+            $class = $nodeFinder->findFirstInstanceOf($stmts, Class_::class);
+            if (! $class instanceof Class_) {
+                continue;
+            }
+            if ($class->isAnonymous()) {
+                continue;
+            }
+            if (! $class->namespacedName instanceof Name) {
+                continue;
+            }
 
-                $masksByFilePath[$fileInfo->getRealPath()][] = $mask;
+            $className = $class->namespacedName->toString();
+
+            foreach ($class->getMethods() as $classMethod) {
+                $methodName = $classMethod->name->toString();
+
+                // 1. collect from docblock
+                if ($classMethod->getDocComment() instanceof Doc) {
+                    preg_match_all(self::INSTRUCTION_DOCBLOCK_REGEX, $classMethod->getDocComment()->getText(), $match);
+
+                    foreach ($match['instruction'] as $instruction) {
+                        $mask = $this->clearMask($instruction);
+
+                        $classMethodContextDefinitions[] = new ClassMethodContextDefinition(
+                            $fileInfo->getRealPath(),
+                            $className,
+                            $methodName,
+                            $mask
+                        );
+                    }
+                }
+
+                // 2. collect from attributes
+                foreach ($classMethod->attrGroups as $attrGroup) {
+                    foreach ($attrGroup->attrs as $attr) {
+                        $attributeName = $attr->name->toString();
+                        if (! in_array($attributeName, self::ATTRIBUTE_NAMES)) {
+                            continue;
+                        }
+
+                        $firstArgValue = $attr->args[0]->value;
+
+                        if (! $firstArgValue instanceof String_) {
+                            continue;
+                        }
+
+                        $classMethodContextDefinitions[] = new ClassMethodContextDefinition(
+                            $fileInfo->getRealPath(),
+                            $className,
+                            $methodName,
+                            $firstArgValue->value
+                        );
+                    }
+                }
             }
         }
 
-        return $masksByFilePath;
+        return $classMethodContextDefinitions;
     }
 
-    /**
-     * @return mixed[]
-     */
-    private function matchDocblockAndAttributeDefinitions(SplFileInfo $contextFileInfo): array
+    private function clearMask(string $mask): string
     {
-        $attributeMatches = Strings::matchAll($contextFileInfo->getContents(), self::INSTRUCTION_ATTRIBUTE_REGEX);
-        $docblockMatches = Strings::matchAll($contextFileInfo->getContents(), self::INSTRUCTION_DOCBLOCK_REGEX);
+        $mask = trim($mask);
 
-        return array_merge($attributeMatches, $docblockMatches);
+        // clear extra quote escaping that would cause miss-match with feature masks
+        $mask = str_replace('\\\'', "'", $mask);
+        return str_replace('\\/', '/', $mask);
     }
 }

@@ -19,7 +19,6 @@ final class DefinitionMasksResolverTest extends AbstractTestCase
 
         $maskCollection = $definitionMasksResolver->resolve($contextFileInfos);
 
-        dump($maskCollection);
-        die;
+        $this->assertCount(2, $maskCollection->all());
     }
 }

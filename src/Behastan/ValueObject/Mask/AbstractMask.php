@@ -1,6 +1,6 @@
 <?php
 
-namespace Rector\SwissKnife\Behastan\ValueObject;
+namespace Rector\SwissKnife\Behastan\ValueObject\Mask;
 
 use Rector\SwissKnife\Behastan\Contract\MaskInterface;
 

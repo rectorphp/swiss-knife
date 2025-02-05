@@ -8,7 +8,7 @@ use Nette\Utils\FileSystem;
 
 final class TraitMetadata
 {
-    private int $lineCount;
+    private readonly int $lineCount;
 
     /**
      * @var string[]
@@ -17,7 +17,7 @@ final class TraitMetadata
 
     public function __construct(
         private readonly string $filePath,
-        private string $shortTraitName
+        private readonly string $shortTraitName
     ) {
         $this->lineCount = substr_count(FileSystem::read($filePath), PHP_EOL);
     }
