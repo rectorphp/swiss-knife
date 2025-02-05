@@ -6,7 +6,7 @@ namespace Rector\SwissKnife\Behastan\Command;
 
 use Rector\SwissKnife\Behastan\Behastan;
 use Rector\SwissKnife\Behastan\Finder\BehatMetafilesFinder;
-use Rector\SwissKnife\Behastan\ValueObject\AbstractMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\AbstractMask;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

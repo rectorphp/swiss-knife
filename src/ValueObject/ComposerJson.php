@@ -7,14 +7,14 @@ namespace Rector\SwissKnife\ValueObject;
 use Nette\Utils\Strings;
 use Webmozart\Assert\Assert;
 
-final class ComposerJson
+final readonly class ComposerJson
 {
     /**
      * @param array<string, mixed> $composerJson
      */
     public function __construct(
-        private readonly string $repositoryGit,
-        private readonly array $composerJson
+        private string $repositoryGit,
+        private array $composerJson
     ) {
     }
 
@@ -55,7 +55,7 @@ final class ComposerJson
             }
 
             // not a git repository reference
-            if (! str_ends_with($repositoryData['url'], '.git')) {
+            if (! str_ends_with((string) $repositoryData['url'], '.git')) {
                 continue;
             }
 

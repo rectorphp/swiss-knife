@@ -6,13 +6,13 @@ namespace Rector\SwissKnife\ValueObject;
 
 use Webmozart\Assert\Assert;
 
-final class ComposerJsonCollection
+final readonly class ComposerJsonCollection
 {
     /**
      * @param ComposerJson[] $composerJsons
      */
     public function __construct(
-        private readonly array $composerJsons
+        private array $composerJsons
     ) {
         Assert::allIsInstanceOf($composerJsons, ComposerJson::class);
     }
@@ -58,6 +58,9 @@ final class ComposerJsonCollection
      */
     private function filterOutExtensions(array $uniquePackageNames): array
     {
-        return array_filter($uniquePackageNames, fn (string $packageName) => ! str_starts_with($packageName, 'ext-'));
+        return array_filter(
+            $uniquePackageNames,
+            fn (string $packageName): bool => ! str_starts_with($packageName, 'ext-')
+        );
     }
 }

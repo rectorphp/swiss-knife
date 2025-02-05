@@ -137,9 +137,11 @@ final class MultiPackageComposerStatsCommand extends Command
         $table = $this->symfonyStyle->createTable()
             ->setHeaders($tableHeadlines)
             ->setRows($tableRows);
+        // align number to right to
+        $counter = count($tableHeadlines);
 
         // align number to right to
-        for ($i = 1; $i < count($tableHeadlines); $i++) {
+        for ($i = 1; $i < $counter; $i++) {
             $table->setColumnStyle($i, (new TableStyle())->setPadType(STR_PAD_LEFT));
         }
 

@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Behastan;
 
 use Nette\Utils\Strings;
-use Rector\SwissKnife\Behastan\ValueObject\AbstractMask;
-use Rector\SwissKnife\Behastan\ValueObject\ExactMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\AbstractMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\ExactMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\NamedMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\RegexMask;
+use Rector\SwissKnife\Behastan\ValueObject\Mask\SkippedMask;
 use Rector\SwissKnife\Behastan\ValueObject\MaskCollection;
-use Rector\SwissKnife\Behastan\ValueObject\NamedMask;
-use Rector\SwissKnife\Behastan\ValueObject\RegexMask;
-use Rector\SwissKnife\Behastan\ValueObject\SkippedMask;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
 

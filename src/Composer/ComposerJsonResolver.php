@@ -11,7 +11,7 @@ use Rector\SwissKnife\ValueObject\ComposerJsonCollection;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class ComposerJsonResolver
+final readonly class ComposerJsonResolver
 {
     /**
      * @var string
@@ -19,7 +19,7 @@ final class ComposerJsonResolver
     private const TEMP_PROJECT_COMPOSER_JSON = 'temp-project-composer.json';
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle
+        private SymfonyStyle $symfonyStyle
     ) {
     }
 
@@ -49,7 +49,7 @@ final class ComposerJsonResolver
     {
         // allow cache to avoid long staling
         $cacheFilePath = sys_get_temp_dir() . '/multi-composer-json/' . md5($repository) . '.json';
-        if ($useCache === true && file_exists($cacheFilePath)) {
+        if ($useCache && file_exists($cacheFilePath)) {
             $fileContents = FileSystem::read($cacheFilePath);
             return Json::decode($fileContents, Json::FORCE_ARRAY);
         }
