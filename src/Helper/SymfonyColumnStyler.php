@@ -31,7 +31,10 @@ final class SymfonyColumnStyler
         // sort from high to low
         usort(
             $stringValues,
-            fn (string $firstVersion, string $secondVersion): int => (int) Comparator::lessThan($firstVersion, $secondVersion)
+            fn (string $firstVersion, string $secondVersion): int => (int) Comparator::lessThan(
+                $firstVersion,
+                $secondVersion
+            )
         );
 
         $highValue = array_shift($stringValues);
