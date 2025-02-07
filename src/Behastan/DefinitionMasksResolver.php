@@ -121,9 +121,11 @@ final class DefinitionMasksResolver
             if (! $class instanceof Class_) {
                 continue;
             }
+
             if ($class->isAnonymous()) {
                 continue;
             }
+
             if (! $class->namespacedName instanceof Name) {
                 continue;
             }
