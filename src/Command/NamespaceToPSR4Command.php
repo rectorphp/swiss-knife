@@ -49,7 +49,8 @@ final class NamespaceToPSR4Command extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $path = (string) $input->getArgument('path');
-        $namespaceRoot = (string) $input->getOption('namespace-root');
+        $namespaceRoot = rtrim((string) $input->getOption('namespace-root'), '\\');
+        $namespaceRoot = str_replace('\\\\', '\\', $namespaceRoot);
 
         $fileInfos = $this->findFilesInPath($path);
 
@@ -115,6 +116,10 @@ final class NamespaceToPSR4Command extends Command
     private function resolveExpectedNamespace(string $namespaceRoot, SplFileInfo $fileInfo): string
     {
         $relativePathNamespace = str_replace('/', '\\', $fileInfo->getRelativePath());
+        if ($relativePathNamespace === '') {
+            return $namespaceRoot;
+        }
+
         return $namespaceRoot . '\\' . $relativePathNamespace;
     }
 }
