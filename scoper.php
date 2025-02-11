@@ -14,7 +14,6 @@ use Nette\Utils\Strings;
 return [
     'prefix' => 'SwissKnife' . $timestamp,
     'expose-constants' => ['#^SYMFONY\_[\p{L}_]+$#'],
-    'exclude-classes' => [\Symfony\Component\Finder\SplFileInfo::class],
     'exclude-namespaces' => [
         '#^Rector\\\\SwissKnife#',
         '#^Symfony\\\\Polyfill#',

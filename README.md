@@ -332,6 +332,20 @@ vendor/bin/swiss-knife multi-package-composer-stats private-company/first-projec
 
 Now all the dependencies are fetched per provided project from the `"repositories"` section of `composer.json`.
 
+<br>
+
+## 13. Split huge Symfony config to per-package in directory
+
+Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
+
+```bash
+vendor/bin/swiss-knife split-config-per-package config/config_dev.php --output-dir config/packages/dev
+```
+
+All the extensions will be extracted to separate files in `config/packages/dev` directory. Not only the configs will be much more readable, but you can make use of [Symfony 5.3: Config Builder Classes](https://symfony.com/blog/new-in-symfony-5-3-config-builder-classes).
+
+<br>
+
 That's it!
 
 <br>
