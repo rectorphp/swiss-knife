@@ -287,7 +287,7 @@ vendor/bin/swiss-knife spot-lazy-traits src
 
 <br>
 
-By default, the commands look for traits used max 2-times. To change that:
+By default, the commands look for traits used max 4-times. To change that:
 
 ```bash
 vendor/bin/swiss-knife spot-lazy-traits src --max-used 4
