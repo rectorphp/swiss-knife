@@ -14,7 +14,7 @@ composer require rector/swiss-knife --dev
 
 ## Usage
 
-### 1. Check your Code for Git Merge Conflicts
+## 1. Check your Code for Git Merge Conflicts
 
 Do you use Git? Then merge conflicts is not what you want in your code ever to see in pushed code:
 
@@ -30,7 +30,7 @@ vendor/bin/swiss-knife check-conflicts .
 
 <br>
 
-### 2. Detect Commented Code
+## 2. Detect Commented Code
 
 Have you ever forgot commented code in your code?
 
@@ -49,9 +49,9 @@ vendor/bin/swiss-knife check-commented-code packages --line-limit 5
 
 <br>
 
-### 3. Reach full PSR-4
+## 3. Reach full PSR-4
 
-#### Find multiple classes in single file
+### Find multiple classes in single file
 
 To make PSR-4 work properly, each class must be in its own file. This command makes it easy to spot multiple classes in single file:
 
@@ -61,7 +61,7 @@ vendor/bin/swiss-knife find-multi-classes src
 
 <br>
 
-#### Update Namespace to match PSR-4 Root
+### Update Namespace to match PSR-4 Root
 
 Is your class in wrong namespace? Make it match your PSR-4 root:
 
@@ -82,7 +82,7 @@ This will update all files in your `/src` directory, to starts with `App\\` and 
 
 <br>
 
-### 4. Finalize classes without children
+## 4. Finalize classes without children
 
 Do you want to finalize all classes that don't have children?
 
@@ -108,7 +108,7 @@ vendor/bin/swiss-knife finalize-classes src tests --skip-file src/SpecialProxy.p
 
 <br>
 
-### 5. Privatize local class constants
+## 5. Privatize local class constants
 
 PHPStan can report unused private class constants, but it skips all the public ones.
 Do you have lots of class constants, all of them public but want to narrow scope to privates?
@@ -127,7 +127,7 @@ That way all the constants not used outside will be made `private` safely.
 
 <br>
 
-### 6. Mock only constructor param you need with MockWire
+## 6. Mock only constructor param you need with MockWire
 
 Imagine there is a service that has 6 dependencies in `__construct()`:
 
