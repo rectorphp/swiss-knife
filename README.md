@@ -190,45 +190,7 @@ This way we:
 
 <br>
 
-## 7. Find unused Behat definitions with static analysis - Behastan
-
-Behat uses `@When()`, `@Then()` and `@Given()` annotations and their PHP 8 attribute alternatives to define method to be called in `*.feature` files. Sometimes test change and lines from `*.feature` files are deleted. But what about definitions?
-
-This command helps you to spot definitions that are no longer needed. Just provide test directory (1 or more) and let it statically compare defined and used masks:
-
-```bash
-vendor/bin/swiss-knife behastan tests
-```
-
-↓
-
-```bash
-Checking static, named and regex masks from 100 *Feature files
-==============================================================
-
-Found 1036 masks:
-
- * 747 exact
- * 106 /regex/
- * 181 :named
-
- 1036/1036 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
-
-the product price is :value
-tests/Behat/ProductContext.php
-
-/^I submit order form and see payment page$/
-tests/Behat/OrderContext.php
-
-
- [ERROR] Found 2 unused definitions
-```
-
-You can also add this command to CI, to get instant feedback about unused definitions.
-
-<br>
-
-## 8. Quick search PHP files with regex
+## 7. Quick search PHP files with regex
 
 Data beats guess. Do you need a quick idea how many files contain `$this->get('...')` calls? Or another anti-pattern you want to remove?
 
@@ -257,7 +219,7 @@ Searching for regex: #this->get\((.*)\)#
 
 <br>
 
-## 9. Convert Alice fixtures from YAML to PHP
+## 8. Convert Alice fixtures from YAML to PHP
 
 The `nelmio/alice` package [allows to use PHP](https://github.com/nelmio/alice/blob/v2.3.0/doc/complete-reference.md#php) for test fixture definitions. It's much better format, because Rector and PHPStan can understand it.
 
@@ -271,7 +233,7 @@ That's it!
 
 <br>
 
-## 10. Generate Symfony 5.3 configs builders
+## 9. Generate Symfony 5.3 configs builders
 
 Symfony 5.3 introduced amazing [config builders](https://symfony.com/blog/new-in-symfony-5-3-config-builder-classes), but those classes are not available for IDE until used. To make it easier, we added a command that generates all config builder classes you project can use, in `/var/cache/Symfony`.
 
@@ -283,7 +245,7 @@ That way IDE, PHPStan after adding those paths and Rector can understand your co
 
 <br>
 
-## 11. Spots Fake Traits
+## 10. Spots Fake Traits
 
 What is trait has 5 lines and used in single service? We know it's better to e inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
 
@@ -306,7 +268,7 @@ That's it! Run this command once upon a time or run it in CI to eliminate traits
 
 <br>
 
-## 12. Mutual Private Repository Dependencies
+## 11. Mutual Private Repository Dependencies
 
 Do you have a project that uses 5 private repositories? And another one that uses different 3 private repositories? Are their open-source dependencies up to date?
 
@@ -342,7 +304,7 @@ Now all the dependencies are fetched per provided project from the `"repositorie
 
 <br>
 
-## 13. Split huge Symfony config to per-package in directory
+## 12. Split huge Symfony config to per-package in directory
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 
