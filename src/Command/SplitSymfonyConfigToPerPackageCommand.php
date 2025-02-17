@@ -40,7 +40,9 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
     protected function configure(): void
     {
         $this->setName('split-config-per-package');
-        $this->setDescription('Split Symfony configs that contains many extension() calls to /packages directory with config per package');
+        $this->setDescription(
+            'Split Symfony configs that contains many extension() calls to /packages directory with config per package'
+        );
 
         $this->addArgument('config-path', InputArgument::REQUIRED, 'Path to the config file');
         $this->addOption('output-dir', null, InputOption::VALUE_REQUIRED, 'Directory to save the split config files');
