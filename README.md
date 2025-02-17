@@ -12,7 +12,11 @@ Swiss knife in pocket of every upgrade architect!
 composer require rector/swiss-knife --dev
 ```
 
+---
+
 ## Usage
+
+<br>
 
 ## 1. Check your Code for Git Merge Conflicts
 
