@@ -7,6 +7,12 @@ use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Rector\SwissKnife\DependencyInjection\ContainerFactory;
 
+$scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
+if (file_exists($scoperAutoloadFilepath)) {
+    require_once $scoperAutoloadFilepath;
+}
+
+// load scoped autoload just once, order matters
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -21,11 +27,6 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
         require_once $possibleAutoloadPath;
         break;
     }
-}
-
-$scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
-if (file_exists($scoperAutoloadFilepath)) {
-    require_once $scoperAutoloadFilepath;
 }
 
 $containerFactory = new ContainerFactory();

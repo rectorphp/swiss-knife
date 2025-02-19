@@ -32,7 +32,6 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
         SymfonyExtensionClass::DOCTRINE_MIGRATIONS,
         SymfonyExtensionClass::SENTRY,
         SymfonyExtensionClass::WEBPROFILER,
-        SymfonyExtensionClass::AWS,
     ];
 
     public function __construct(
@@ -70,8 +69,6 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
                 continue;
             }
 
-            $this->symfonyStyle->note(sprintf('Found "%s" extension class', $extensionClass));
-
             $configuration = $this->createExtensionConfiguration($extensionClass);
             if (! $configuration instanceof ConfigurationInterface) {
                 continue;
@@ -81,7 +78,6 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
             $configBuilderGenerator->build($configuration);
 
             $this->symfonyStyle->writeln(sprintf('Generated "%s" class in /var/cache/Symfony', $extensionShortClass));
-            $this->symfonyStyle->newLine();
         }
 
         $this->symfonyStyle->success('Done');
