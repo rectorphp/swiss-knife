@@ -107,7 +107,7 @@ final class MockWire
             }
 
             // is bare object type equal to reflection type?
-            if ($constructorDependency::class === $parameterType) {
+            if (get_class($constructorDependency) === $parameterType) {
                 return $constructorDependency;
             }
         }
