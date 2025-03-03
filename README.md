@@ -247,7 +247,7 @@ That way IDE, PHPStan after adding those paths and Rector can understand your co
 
 ## 10. Spots Fake Traits
 
-What is trait has 5 lines and used in single service? We know it's better to e inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
+What is trait has 5 lines and used in single service? We know it's better to be inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
 
 We made a command to automate this process and spot the traits most likely to be inlined:
 
