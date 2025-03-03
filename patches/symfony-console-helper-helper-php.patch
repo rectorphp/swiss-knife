@@ -1,4 +1,4 @@
---- /dev/null
+--- ../Helper/Helper.php~
 +++ ../Helper/Helper.php
 @@ -47,9 +47,9 @@
      {
