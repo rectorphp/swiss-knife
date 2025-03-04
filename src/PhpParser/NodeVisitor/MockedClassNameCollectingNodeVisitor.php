@@ -32,7 +32,15 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         }
 
         $methodName = $node->name->toString();
-        $mockMethodNames = ['createMock', 'createPartialMock', 'getMock', 'getMockBuilder', 'mock'];
+        $mockMethodNames = [
+            'createMock', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/TestCase.php#L1177
+            'createPartialMock', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/TestCase.php#L1257
+            'getMock', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/MockObject/MockBuilder.php#L86
+            'getMockBuilder', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/TestCase.php#L1095
+            'mock', // https://github.com/mockery/mockery/blob/73a9714716f87510a7c2add9931884188e657541/library/Mockery.php#L475, https://github.com/laravel/framework/blob/4ca4a16772b2e89233b3606badefae34003e1538/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php#L69
+            'partialMock', // https://github.com/laravel/framework/blob/4ca4a16772b2e89233b3606badefae34003e1538/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php#L81
+            'spy', // https://github.com/mockery/mockery/blob/73a9714716f87510a7c2add9931884188e657541/library/Mockery.php#L675, https://github.com/laravel/framework/blob/4ca4a16772b2e89233b3606badefae34003e1538/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php#L93
+        ];
         if (! in_array($methodName, $mockMethodNames, true)) {
             return null;
         }
