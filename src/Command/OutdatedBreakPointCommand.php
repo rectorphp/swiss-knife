@@ -55,7 +55,9 @@ final class OutdatedBreakPointCommand extends Command
         $outdatedPackages = $this->mapToOutdatedPackages($responseJson[self::INSTALLED_KEY]);
         $outdatedPackageCount = count($outdatedPackages);
 
-        $symfonyStyle->title(sprintf('Found %d outdated package%s', $outdatedPackageCount, $outdatedPackageCount > 1 ? 's' : ''));
+        $symfonyStyle->title(
+            sprintf('Found %d outdated package%s', $outdatedPackageCount, $outdatedPackageCount > 1 ? 's' : '')
+        );
 
         foreach ($outdatedPackages as $outdatedPackage) {
             $symfonyStyle->writeln(sprintf('The "<fg=green>%s</>" package is outdated', $outdatedPackage->name));
