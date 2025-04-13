@@ -1,16 +1,35 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\ValueObject;
 
-final readonly class OutdatedPackage
+final class OutdatedPackage
 {
-    public function __construct(
-        public string $name,
-        public string $latestVersion,
-        public string $installedVersion,
-        public string $installedAge
-    ) {
+    /**
+     * @readonly
+     * @var string
+     */
+    public $name;
+    /**
+     * @readonly
+     * @var string
+     */
+    public $latestVersion;
+    /**
+     * @readonly
+     * @var string
+     */
+    public $installedVersion;
+    /**
+     * @readonly
+     * @var string
+     */
+    public $installedAge;
+    public function __construct(string $name, string $latestVersion, string $installedVersion, string $installedAge)
+    {
+        $this->name = $name;
+        $this->latestVersion = $latestVersion;
+        $this->installedVersion = $installedVersion;
+        $this->installedAge = $installedAge;
     }
 }
