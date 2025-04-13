@@ -66,14 +66,14 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
             return self::SUCCESS;
         }
 
-        foreach ($symfonyExtensionMethodCalls as $extensionMethodCall) {
-            $extensionNameString = $extensionMethodCall->getArgs()[0]
+        foreach ($symfonyExtensionMethodCalls as $symfonyExtensionMethodCall) {
+            $extensionNameString = $symfonyExtensionMethodCall->getArgs()[0]
                 ->value;
             if (! $extensionNameString instanceof String_) {
                 throw new ShouldNotHappenException();
             }
 
-            $configStmts = $this->splitConfigClosureFactory->createStmts($extensionMethodCall);
+            $configStmts = $this->splitConfigClosureFactory->createStmts($symfonyExtensionMethodCall);
             $splitConfigFileContents = $this->printerStandard->prettyPrintFile($configStmts);
 
             $splitConfigFilePath = $outputDir . '/' . $extensionNameString->value . '.php';

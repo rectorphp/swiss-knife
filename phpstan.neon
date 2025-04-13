@@ -6,6 +6,7 @@ parameters:
         - tests
 
     treatPhpDocTypesAsCertain: false
+    errorFormat: symplify
 
     excludePaths:
         - */Fixture/*
