@@ -14,7 +14,6 @@
         "nikic/php-parser": "^5.4",
         "symfony/console": "^6.4",
         "symfony/finder": "^7.2",
-        "symfony/process": "^7.2",
         "symfony/yaml": "^7.2",
         "webmozart/assert": "^1.11"
     },

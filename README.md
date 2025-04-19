@@ -316,30 +316,6 @@ All the extensions will be extracted to separate files in `config/packages/dev` 
 
 <br>
 
-## 12. Let CI watch number of your outdated packages
-
-At daily work, we focus exclusively on fixing bugs and delivering new features.
-It's easy to get lost track of outdated dependencies.
-
-<br>
-
-This command will watch your back in CI and give you report about outdated major versions of your packages.
-
-```bash
-vendor/bin/swiss-knife outdated-breakpoint
-```
-
-The default limit is 10. If you want to change it, you can do so:
-
-```bash
-vendor/bin/swiss-knife outdated-breakpoint --limit 5
-```
-
-Add this command to your CI! The moment there is too many outdated packages, CI will force you to do the upgrade early.
-It's easier upgrade 2-3 packages once upon a time rather than 50 at a time.
-
-<br>
-
 That's it!
 
 <br>
