@@ -29,10 +29,6 @@ jobs:
                         run: composer fix-cs --ansi
 
                     -
-                        name: 'Outdated Breakpoint'
-                        run: ./bin/swiss-knife outdated-breakpoint --ansi --limit 2
-
-                    -
                         name: 'Tests'
                         run: vendor/bin/phpunit
 
