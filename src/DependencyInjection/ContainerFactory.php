@@ -14,11 +14,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Webmozart\Assert\Assert;
 
+/**
+ * @api used in tests
+ */
 final class ContainerFactory
 {
-    /**
-     * @api used in bin and tests
-     */
     public function create(): Container
     {
         $container = new Container();
