@@ -263,44 +263,7 @@ By default, the commands look for traits used max 2-times. To change that:
 vendor/bin/swiss-knife spot-lazy-traits src --max-used 4
 ```
 
-That's it! Run this command once upon a time or run it in CI to eliminate traits with low value to exists. Your code will be more robuts and easier to work with.
-
-
-<br>
-
-## 11. Mutual Private Repository Dependencies
-
-Do you have a project that uses 5 private repositories? And another one that uses different 3 private repositories? Are their open-source dependencies up to date?
-
-In such situations, we want to get a quick idea about the weakest link. Do all those repositories use the same version of "symfony/console"? What about their min PHP versions?
-
-<br>
-
-That's where `multi-package-composer-stats` comes. Feed it the links to dependency repositories you want to know versions for:
-
-```bash
-vendor/bin/swiss-knife multi-package-composer-stats private-company/private-repository.git \
-    private-company/another-private-repository.git
-```
-
-↓
-
-<kbd>
-    <img src="https://pbs.twimg.com/media/GhfcUmoXkAAFA1S?format=png" style="max-width:15em">
-</kbd>
-
-<br>
-<br>
-<br>
-
-Do you want to compare **the main projects** and themselves and fetch their dependencies automatically? Provide urls to the repositories and the `--is-source` option:
-
-```bash
-vendor/bin/swiss-knife multi-package-composer-stats private-company/first-project.git \
-    private-company/another-project.git
-```
-
-Now all the dependencies are fetched per provided project from the `"repositories"` section of `composer.json`.
+That's it! Run this command once upon a time or run it in CI to eliminate traits with low value to exists. Your code will be more robust and easier to work with.
 
 <br>
 
