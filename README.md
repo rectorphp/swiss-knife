@@ -267,7 +267,7 @@ That's it! Run this command once upon a time or run it in CI to eliminate traits
 
 <br>
 
-## 12. Split huge Symfony config to per-package in directory
+## 11. Split huge Symfony config to per-package in directory
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 
