@@ -52,8 +52,10 @@ No more! Add this command to CI to spot these:
 
 ```bash
 vendor/bin/swiss-knife check-commented-code <directory>
-vendor/bin/swiss-knife check-commented-code packages --line-limit 5
+vendor/bin/swiss-knife check-commented-code packages --line-limit 5 --skip-file '*Controller.php'
 ```
+
+
 
 <br>
 
@@ -112,6 +114,12 @@ Do you want to skip file or two?
 
 ```bash
 vendor/bin/swiss-knife finalize-classes src tests --skip-file src/SpecialProxy.php
+```
+
+Skip is also support with `fnmatch()` patterns:
+
+```bash
+vendor/bin/swiss-knife finalize-classes src tests --skip-file '*Controller.php'
 ```
 
 <br>

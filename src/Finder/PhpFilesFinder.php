@@ -33,7 +33,6 @@ final class PhpFilesFinder
         Assert::allFileExists($paths);
 
         Assert::allString($excludedPaths);
-        Assert::allFileExists($excludedPaths);
 
         return Finder::create()
             ->files()
@@ -46,7 +45,12 @@ final class PhpFilesFinder
             // exclude paths, as notPaths() does no work
             ->filter(static function (SplFileInfo $splFileInfo) use ($excludedPaths): bool {
                 foreach ($excludedPaths as $excludedPath) {
-                    if (str_contains($splFileInfo->getRealPath(), $excludedPath)) {
+                    $realpath = $splFileInfo->getRealPath();
+                    if (str_contains($realpath, $excludedPath)) {
+                        return false;
+                    }
+
+                    if (\fnmatch($excludedPath, $realpath)) {
                         return false;
                     }
                 }
