@@ -32,14 +32,14 @@ final class PhpFilesFinder
         Assert::allString($paths);
         Assert::allFileExists($paths);
 
+        Assert::allString($excludedPaths);
         $excludedFileNames = [];
-        foreach($excludedPaths as $excludedPath) {
-            if (!str_contains($excludedPath, '*')) {
+        foreach ($excludedPaths as $excludedPath) {
+            if (! str_contains($excludedPath, '*')) {
                 $excludedFileNames[] = $excludedPath;
             }
         }
         Assert::allFileExists($excludedFileNames);
-        Assert::allString($excludedPaths);
 
         return Finder::create()
             ->files()
