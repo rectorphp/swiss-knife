@@ -32,6 +32,13 @@ final class PhpFilesFinder
         Assert::allString($paths);
         Assert::allFileExists($paths);
 
+        $excludedFileNames = [];
+        foreach($excludedPaths as $excludedPath) {
+            if (!str_contains($excludedPath, '*')) {
+                $excludedFileNames[] = $excludedPath;
+            }
+        }
+        Assert::allFileExists($excludedFileNames);
         Assert::allString($excludedPaths);
 
         return Finder::create()
@@ -50,7 +57,7 @@ final class PhpFilesFinder
                         return false;
                     }
 
-                    if (\fnmatch($excludedPath, $realpath)) {
+                    if (str_contains($excludedPath, '*') && \fnmatch($excludedPath, $realpath)) {
                         return false;
                     }
                 }
