@@ -17,6 +17,7 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
+        "phpecs/phpecs": "^2.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^11.5",
@@ -24,10 +25,10 @@
         "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",
-        "phpecs/phpecs": "^2.0",
         "symplify/phpstan-extensions": "^12.0",
         "symplify/vendor-patches": "^11.3",
         "tomasvotruba/class-leak": "^2.0",
+        "tomasvotruba/unused-public": "^2.0",
         "tracy/tracy": "^2.10"
     },
     "autoload": {
