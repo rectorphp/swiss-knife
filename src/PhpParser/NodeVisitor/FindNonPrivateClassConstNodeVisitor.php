@@ -32,12 +32,12 @@ final class FindNonPrivateClassConstNodeVisitor extends NodeVisitorAbstract
         Assert::isInstanceOf($node->namespacedName, Name::class);
 
         $className = $node->namespacedName->toString();
-        foreach ($node->getConstants() as $classConst) {
-            foreach ($classConst->consts as $constConst) {
+        foreach ($node->getConstants() as $constant) {
+            foreach ($constant->consts as $constConst) {
                 $constantName = $constConst->name->toString();
 
                 // not interested in private constants
-                if ($classConst->isPrivate()) {
+                if ($constant->isPrivate()) {
                     continue;
                 }
 
