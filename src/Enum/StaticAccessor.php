@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\Enum;
 
 final class StaticAccessor
@@ -10,7 +9,6 @@ final class StaticAccessor
      * @var string
      */
     public const STATIC = 'static';
-
     /**
      * @var string
      */
