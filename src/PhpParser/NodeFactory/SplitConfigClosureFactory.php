@@ -10,7 +10,7 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Param;
-use PhpParser\Node\Scalar\LNumber;
+use PhpParser\Node\Scalar\Int_;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Stmt\Declare_;
 use PhpParser\Node\Stmt\DeclareDeclare;
@@ -26,7 +26,7 @@ final class SplitConfigClosureFactory
      */
     public function createStmts(MethodCall $extensionMethodCall): array
     {
-        $strictTypesDeclare = new Declare_([new DeclareDeclare('strict_types', new LNumber(1))]);
+        $strictTypesDeclare = new Declare_([new DeclareDeclare('strict_types', new Int_(1))]);
 
         $closure = new Closure();
         $closure->stmts[] = new Expression($extensionMethodCall);
