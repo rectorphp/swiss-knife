@@ -13,10 +13,10 @@ use Nette\Utils\Strings;
 final class ConflictResolver
 {
     /**
-     * @see https://regex101.com/r/iYPxCV/2
+     * @see https://regex101.com/r/L2CThC/1
      * @var string
      */
-    private const CONFLICT_REGEX = '#^<<<<<<<#';
+    private const CONFLICT_REGEX = '#^(<<<<<<<|>>>>>>>)#m';
 
     /**
      * @api
