@@ -39,6 +39,7 @@ final class PhpFilesFinder
                 $excludedFileNames[] = $excludedPath;
             }
         }
+
         Assert::allFileExists($excludedFileNames);
 
         return Finder::create()
