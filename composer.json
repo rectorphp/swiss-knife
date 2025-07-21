@@ -7,7 +7,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "illuminate/container": "^12.18",
+        "illuminate/container": "^12.19",
         "nette/robot-loader": "^4.0",
         "nette/utils": "^4.0",
         "nikic/php-parser": "^5.5",
@@ -22,7 +22,7 @@
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^11.5",
         "rector/jack": "^0.2.3",
-        "rector/rector": "^2.0.18",
+        "rector/rector": "^2.1",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",

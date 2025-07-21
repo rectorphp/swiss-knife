@@ -27,8 +27,10 @@ final class ConflictResolverTest extends TestCase
 
     public static function provideData(): Iterator
     {
+        yield [__DIR__ . '/Fixture/another_file.txt', 1];
         yield [__DIR__ . '/Fixture/some_file.txt', 1];
-        yield [__DIR__ . '/Fixture/some_other_file.txt', 1];
+        yield [__DIR__ . '/Fixture/some_other_file.txt', 2];
+
         yield [__DIR__ . '/Fixture/correct_file.txt', 0];
     }
 }

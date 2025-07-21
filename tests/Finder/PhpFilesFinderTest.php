@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\Finder;
 
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 
 final class PhpFilesFinderTest extends AbstractTestCase
 {
     public function testExcludeByFnMatch(): void
     {
-        $files = \Rector\SwissKnife\Finder\PhpFilesFinder::find([__DIR__ . '/Fixture'], ['*Controller.php']);
+        $files = PhpFilesFinder::find([__DIR__ . '/Fixture'], ['*Controller.php']);
 
         $this->assertSame(1, count($files));
 
@@ -22,7 +23,7 @@ final class PhpFilesFinderTest extends AbstractTestCase
 
     public function testExcludeByFnMatch2(): void
     {
-        $files = \Rector\SwissKnife\Finder\PhpFilesFinder::find([__DIR__ . '/Fixture'], ['*Model.php']);
+        $files = PhpFilesFinder::find([__DIR__ . '/Fixture'], ['*Model.php']);
 
         $this->assertSame(2, count($files));
 
