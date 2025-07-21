@@ -24,6 +24,8 @@ final class FilesFinder
         $finder = Finder::create()
             ->files()
             ->in($paths)
+            // not our code
+            ->notPath('vendor')
             ->sortByName();
 
         return iterator_to_array($finder->getIterator());
