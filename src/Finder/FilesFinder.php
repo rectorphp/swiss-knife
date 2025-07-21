@@ -26,6 +26,7 @@ final class FilesFinder
             ->in($paths)
             // not our code
             ->notPath('vendor')
+            ->notPath('var/cache')
             ->sortByName();
 
         return iterator_to_array($finder->getIterator());
