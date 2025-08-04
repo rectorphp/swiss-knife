@@ -64,7 +64,7 @@ final class FinalizeClassesCommand extends Command
             'dry-run',
             null,
             InputOption::VALUE_NONE,
-            'Do no change anything, only list classes about to be finalized'
+            'Do no change anything, only list classes about to be finalized. If there are classes to finalize, it will exit with code 1. Useful for CI.'
         );
 
         $this->addOption('no-progress', null, InputOption::VALUE_NONE, 'Do not show progress bar, only results');
@@ -154,17 +154,26 @@ final class FinalizeClassesCommand extends Command
 
         $this->symfonyStyle->listing($finalizedFilePaths);
 
-        $this->symfonyStyle->success(sprintf(
-            '%d classes %s finalized',
-            count($finalizedFilePaths),
-            $isDryRun ? 'would be' : 'were'
-        ));
+        $countFinalizedClasses = count($finalizedFilePaths);
+        $pluralClassText = $countFinalizedClasses === 1 ? 'class' : 'classes';
 
         // to make it fail in CI
         if ($isDryRun) {
+            $this->symfonyStyle->error(sprintf(
+                '%d %s can be finalized',
+                $countFinalizedClasses,
+                $pluralClassText,
+            ));
+
             return self::FAILURE;
         }
 
-        return Command::SUCCESS;
+        $this->symfonyStyle->success(sprintf(
+            '%d %s finalized',
+            $countFinalizedClasses,
+            $pluralClassText,
+        ));
+
+        return self::SUCCESS;
     }
 }
