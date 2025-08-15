@@ -11,7 +11,7 @@
         "nette/robot-loader": "^4.0",
         "nette/utils": "^4.0",
         "nikic/php-parser": "^5.5",
-        "symfony/console": "^6.4",
+        "symfony/console": "^6.4.24",
         "symfony/finder": "^7.3",
         "symfony/yaml": "^7.3",
         "webmozart/assert": "^1.11"
@@ -47,8 +47,7 @@
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-intl-normalizer": "*",
-        "symfony/polyfill-mbstring": "*"
+        "symfony/polyfill-intl-normalizer": "*"
     },
     "config": {
         "sort-packages": true,
@@ -63,13 +62,5 @@
         "fix-cs": "vendor/bin/ecs check --fix --ansi",
         "phpstan": "vendor/bin/phpstan analyse --ansi",
         "rector": "vendor/bin/rector process --ansi"
-    },
-    "extra": {
-        "patches": {
-            "symfony/console": [
-                "patches/symfony-console-helper-helper-php.patch"
-            ]
-        }
     }
 }
-
