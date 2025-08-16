@@ -13,6 +13,11 @@ use Nette\Utils\Strings;
 // see https://github.com/humbug/php-scoper
 return [
     'prefix' => 'SwissKnife' . $timestamp,
+    // exclude
+    'exclude-classes' => [
+        // native class on php 8.3+
+        'DateRangeError',
+    ],
     'expose-constants' => ['#^SYMFONY\_[\p{L}_]+$#'],
     'exclude-namespaces' => [
         '#^Rector\\\\SwissKnife#',
