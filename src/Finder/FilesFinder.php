@@ -25,6 +25,7 @@ final class FilesFinder
             ->files()
             ->in($paths)
             // not our code
+            ->notPath('node_modules')
             ->notPath('vendor')
             ->notPath('var/cache')
             ->sortByName();
