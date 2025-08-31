@@ -143,7 +143,7 @@ final class PrivatizeConstantsCommand extends Command
                 '#((private|public|protected)\s+)?const\s+' . $classConstant->getConstantName() . '#',
                 'private const ' . $classConstant->getConstantName()
             );
-            FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
+            FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents, null);
 
             $this->symfonyStyle->writeln(
                 sprintf('Constant "%s" changed to private', $classConstant->getConstantName())

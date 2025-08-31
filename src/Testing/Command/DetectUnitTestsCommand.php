@@ -57,7 +57,7 @@ final class DetectUnitTestsCommand extends Command
 
         $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths);
 
-        FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
+        FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents, null);
 
         $successMessage = sprintf(
             'List of %d unit tests was dumped into "%s"',

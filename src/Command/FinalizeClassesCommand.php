@@ -143,7 +143,7 @@ final class FinalizeClassesCommand extends Command
             $finalizedFilePaths[] = PathHelper::relativeToCwd($phpFileInfo->getRealPath());
 
             if ($isDryRun === false) {
-                FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents);
+                FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents, null);
             }
         }
 

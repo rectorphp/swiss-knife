@@ -61,7 +61,7 @@ final class AliceYamlFixturesToPhpCommand extends Command
                 $phpFilePath = substr($yamlFileInfo->getRealPath(), 0, -5) . '.php';
             }
 
-            FileSystem::write($phpFilePath, $phpFileContents);
+            FileSystem::write($phpFilePath, $phpFileContents, null);
 
             // remove YAML file
             unlink($yamlFileInfo->getRealPath());
