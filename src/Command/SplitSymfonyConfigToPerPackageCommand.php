@@ -78,7 +78,7 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
 
             $splitConfigFilePath = $outputDir . '/' . $extensionNameString->value . '.php';
 
-            ($splitConfigFilePath, $splitConfigFileContents);
+            FileSystem::write($splitConfigFilePath, $splitConfigFileContents, null);
         }
 
         // load packages from the output dir
