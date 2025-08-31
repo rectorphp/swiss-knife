@@ -75,7 +75,7 @@ final class PrettyJsonCommand extends Command
             }
 
             $prettyJsonContent = Json::encode(Json::decode($jsonContent), JSON_PRETTY_PRINT);
-            FileSystem::write($jsonFileInfo->getRealPath(), $prettyJsonContent);
+            FileSystem::write($jsonFileInfo->getRealPath(), $prettyJsonContent, null);
         }
 
         $successMessage = sprintf(

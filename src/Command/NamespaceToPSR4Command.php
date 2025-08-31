@@ -82,7 +82,7 @@ final class NamespaceToPSR4Command extends Command
             );
 
             // 4. print file
-            FileSystem::write($fileInfo->getRealPath(), $correctedContents);
+            FileSystem::write($fileInfo->getRealPath(), $correctedContents, null);
 
             ++$changedFilesCount;
         }

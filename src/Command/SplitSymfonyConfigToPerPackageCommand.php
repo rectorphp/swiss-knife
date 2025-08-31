@@ -78,7 +78,7 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
 
             $splitConfigFilePath = $outputDir . '/' . $extensionNameString->value . '.php';
 
-            FileSystem::write($splitConfigFilePath, $splitConfigFileContents);
+            ($splitConfigFilePath, $splitConfigFileContents);
         }
 
         // load packages from the output dir
@@ -88,7 +88,7 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
 
         // @todo print config back :)
         $cleanedConfigContents = $this->printerStandard->prettyPrintFile($stmts);
-        FileSystem::write($configPath, $cleanedConfigContents);
+        FileSystem::write($configPath, $cleanedConfigContents, null);
 
         return 0;
     }
