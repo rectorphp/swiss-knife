@@ -168,11 +168,7 @@ final class FinalizeClassesCommand extends Command
             return self::FAILURE;
         }
 
-        $this->symfonyStyle->success(sprintf(
-            '%d %s finalized',
-            $countFinalizedClasses,
-            $pluralClassText,
-        ));
+        $this->symfonyStyle->success(sprintf('%d %s finalized', $countFinalizedClasses, $pluralClassText));
 
         return self::SUCCESS;
     }

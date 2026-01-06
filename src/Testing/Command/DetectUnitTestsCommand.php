@@ -45,7 +45,6 @@ final class DetectUnitTestsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $sources = (array) $input->getArgument('sources');
-        Assert::isArray($sources);
         Assert::allString($sources);
 
         $unitTestCasesClassesToFilePaths = $this->unitTestFilePathsFinder->findInDirectories($sources);
