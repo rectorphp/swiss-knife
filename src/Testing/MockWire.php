@@ -72,8 +72,8 @@ final class MockWire
 
         $constructorMocks = [];
 
-        foreach ($constructorClassMethod->getParameters() as $parameterReflection) {
-            $constructorMocks[] = self::matchPassedMockOrCreate($constructorDependencies, $parameterReflection);
+        foreach ($constructorClassMethod->getParameters() as $reflectionParameter) {
+            $constructorMocks[] = self::matchPassedMockOrCreate($constructorDependencies, $reflectionParameter);
         }
 
         return new $class(...$constructorMocks);

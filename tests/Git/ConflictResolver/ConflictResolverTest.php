@@ -25,6 +25,9 @@ final class ConflictResolverTest extends TestCase
         $this->assertSame($expectedConflictCount, $unresolvedConflictCount);
     }
 
+    /**
+     * @return Iterator<(array<int, int>|array<int, string>)>
+     */
     public static function provideData(): Iterator
     {
         yield [__DIR__ . '/Fixture/another_file.txt', 1];

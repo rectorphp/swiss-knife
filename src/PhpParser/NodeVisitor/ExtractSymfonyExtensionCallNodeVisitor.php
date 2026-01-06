@@ -12,10 +12,7 @@ use PhpParser\NodeVisitorAbstract;
 
 final class ExtractSymfonyExtensionCallNodeVisitor extends NodeVisitorAbstract
 {
-    /**
-     * @var string
-     */
-    private const EXTENSION_METHOD_NAME = 'extension';
+    private const string EXTENSION_METHOD_NAME = 'extension';
 
     /**
      * @var MethodCall[]

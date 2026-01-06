@@ -6,43 +6,19 @@ namespace Rector\SwissKnife\Enum;
 
 final class SymfonyExtensionClass
 {
-    /**
-     * @var string
-     */
-    public const SENTRY = 'Sentry\SentryBundle\DependencyInjection\SentryExtension';
+    public const string SENTRY = 'Sentry\SentryBundle\DependencyInjection\SentryExtension';
 
-    /**
-     * @var string
-     */
-    public const DOCTRINE_MIGRATIONS = 'Doctrine\Bundle\MigrationsBundle\DependencyInjection\DoctrineMigrationsExtension';
+    public const string DOCTRINE_MIGRATIONS = 'Doctrine\Bundle\MigrationsBundle\DependencyInjection\DoctrineMigrationsExtension';
 
-    /**
-     * @var string
-     */
-    public const FRAMEWORK = 'Symfony\Bundle\FrameworkBundle\DependencyInjection\FrameworkExtension';
+    public const string FRAMEWORK = 'Symfony\Bundle\FrameworkBundle\DependencyInjection\FrameworkExtension';
 
-    /**
-     * @var string
-     */
-    public const MONOLOG = 'Symfony\Bundle\MonologBundle\DependencyInjection\MonologExtension';
+    public const string MONOLOG = 'Symfony\Bundle\MonologBundle\DependencyInjection\MonologExtension';
 
-    /**
-     * @var string
-     */
-    public const SECURITY = 'Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension';
+    public const string SECURITY = 'Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension';
 
-    /**
-     * @var string
-     */
-    public const TWIG = 'Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension';
+    public const string TWIG = 'Symfony\Bundle\TwigBundle\DependencyInjection\TwigExtension';
 
-    /**
-     * @var string
-     */
-    public const DOCTRINE = 'Doctrine\Bundle\DoctrineBundle\DependencyInjection\DoctrineExtension';
+    public const string DOCTRINE = 'Doctrine\Bundle\DoctrineBundle\DependencyInjection\DoctrineExtension';
 
-    /**
-     * @var string
-     */
-    public const WEBPROFILER = 'Symfony\Bundle\WebProfilerBundle\DependencyInjection\WebProfilerExtension';
+    public const string WEBPROFILER = 'Symfony\Bundle\WebProfilerBundle\DependencyInjection\WebProfilerExtension';
 }

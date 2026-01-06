@@ -11,6 +11,7 @@ return RectorConfig::configure()
         codeQuality: true,
         deadCode: true,
         typeDeclarations: true,
+        typeDeclarationDocblocks: true,
         privatization: true,
         earlyReturn: true,
         codingStyle: true,

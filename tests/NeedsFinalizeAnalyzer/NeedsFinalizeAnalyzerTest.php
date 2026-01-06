@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\NeedsFinalizeAnalyzer;
 
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
@@ -13,6 +14,7 @@ final class NeedsFinalizeAnalyzerTest extends AbstractTestCase
 {
     private NeedsFinalizeAnalyzer $needsFinalizeAnalyzer;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

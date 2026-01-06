@@ -12,10 +12,7 @@ use Rector\SwissKnife\Tests\Testing\MockWire\Fixture\SecondDependency;
 
 final class MockWireTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private const SECOND_VALUE = 'second';
+    private const string SECOND_VALUE = 'second';
 
     public function testOriginalService(): void
     {

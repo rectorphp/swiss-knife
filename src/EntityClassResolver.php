@@ -20,10 +20,9 @@ use Webmozart\Assert\Assert;
 final readonly class EntityClassResolver
 {
     /**
-     * @var string
      * @see https://regex101.com/r/YFbH1x/1
      */
-    private const YAML_ENTITY_CLASS_NAME_REGEX = '#^(?<class_name>[\w+\\\\]+)\:\n#m';
+    private const string YAML_ENTITY_CLASS_NAME_REGEX = '#^(?<class_name>[\w+\\\\]+)\:\n#m';
 
     public function __construct(
         private CachedPhpParser $cachedPhpParser

@@ -15,10 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class CheckCommentedCodeCommand extends Command
 {
-    /**
-     * @var int
-     */
-    private const DEFAULT_LINE_LIMIT = 5;
+    private const int DEFAULT_LINE_LIMIT = 5;
 
     public function __construct(
         private readonly CommentedCodeAnalyzer $commentedCodeAnalyzer,

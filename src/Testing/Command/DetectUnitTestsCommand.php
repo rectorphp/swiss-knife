@@ -16,10 +16,7 @@ use Webmozart\Assert\Assert;
 
 final class DetectUnitTestsCommand extends Command
 {
-    /**
-     * @var string
-     */
-    private const OUTPUT_FILENAME = 'phpunit-unit-files.xml';
+    private const string OUTPUT_FILENAME = 'phpunit-unit-files.xml';
 
     public function __construct(
         private readonly PHPUnitXmlPrinter $phpunitXmlPrinter,

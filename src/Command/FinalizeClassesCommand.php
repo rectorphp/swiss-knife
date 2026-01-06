@@ -25,7 +25,7 @@ final class FinalizeClassesCommand extends Command
     /**
      * @see https://regex101.com/r/Q5Nfbo/1
      */
-    private const NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
+    private const string NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
 
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
