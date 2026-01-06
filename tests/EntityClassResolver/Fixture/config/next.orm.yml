@@ -1,7 +1,0 @@
-App\Some\Entity\Talk:
-    type: entity
-    manyToOne:
-        property:
-
-App\Some\Entity\Project:
-    type: entity
