@@ -33,7 +33,7 @@ final class CheckCommentedCodeCommand extends Command
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
             'One or more paths to check'
         );
-        $this->addOption('skip-file', null, InputOption::VALUE_REQUIRED, 'Skip file path');
+        $this->addOption('skip-file', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Skip file path');
         $this->setDescription('Checks code for commented snippets');
 
         $this->addOption(
