@@ -6,8 +6,8 @@
         "bin/swiss-knife"
     ],
     "require": {
-        "php": ">=8.2",
-        "illuminate/container": "^12.19",
+        "php": ">=8.3",
+        "illuminate/container": "12.38.*",
         "nette/robot-loader": "^4.0",
         "nette/utils": "^4.0",
         "nikic/php-parser": "^5.5",
@@ -17,12 +17,12 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "phpecs/phpecs": "^2.1",
+        "symplify/easy-coding-standard": "^13.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^11.5",
-        "rector/jack": "^0.2.3",
-        "rector/rector": "^2.1",
+        "phpunit/phpunit": "^12.3",
+        "rector/jack": "^0.5.1",
+        "rector/rector": "^2.3",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",

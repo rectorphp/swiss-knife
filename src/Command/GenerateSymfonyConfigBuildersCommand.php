@@ -23,7 +23,7 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
     /**
      * @var string[]
      */
-    private const EXTENSION_CLASSES = [
+    private const array EXTENSION_CLASSES = [
         SymfonyExtensionClass::MONOLOG,
         SymfonyExtensionClass::SECURITY,
         SymfonyExtensionClass::TWIG,

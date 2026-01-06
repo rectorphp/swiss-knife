@@ -16,12 +16,12 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
     /**
      * @var string[]
      */
-    private const ODM_SUFFIXES = ['Document', 'EmbeddedDocument'];
+    private const array ODM_SUFFIXES = ['Document', 'EmbeddedDocument'];
 
     /**
      * @var string[]
      */
-    private const ORM_SUFFIXES = ['Entity', 'Embeddable'];
+    private const array ORM_SUFFIXES = ['Entity', 'Embeddable'];
 
     /**
      * @var string[]

@@ -13,11 +13,10 @@ use Nette\Utils\Strings;
 final class CommentedCodeAnalyzer
 {
     /**
-     * @var string
      * @see https://regex101.com/r/5OlGjG/1
      * @see https://3v4l.org/Y8pSD
      */
-    private const NEWLINE_REGEX = '#\r?\n#';
+    private const string NEWLINE_REGEX = '#\r?\n#';
 
     /**
      * @return int[]

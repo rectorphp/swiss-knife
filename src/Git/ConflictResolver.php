@@ -14,9 +14,8 @@ final class ConflictResolver
 {
     /**
      * @see https://regex101.com/r/L2CThC/1
-     * @var string
      */
-    private const CONFLICT_REGEX = '#^(<<<<<<<|>>>>>>>)#m';
+    private const string CONFLICT_REGEX = '#^(<<<<<<<|>>>>>>>)#m';
 
     /**
      * @api

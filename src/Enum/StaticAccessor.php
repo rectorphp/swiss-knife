@@ -6,13 +6,7 @@ namespace Rector\SwissKnife\Enum;
 
 final class StaticAccessor
 {
-    /**
-     * @var string
-     */
-    public const STATIC = 'static';
+    public const string STATIC = 'static';
 
-    /**
-     * @var string
-     */
-    public const SELF = 'self';
+    public const string SELF = 'self';
 }

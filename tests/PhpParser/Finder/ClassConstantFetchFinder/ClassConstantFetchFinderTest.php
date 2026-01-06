@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstantFetchFinder;
 
+use Override;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
@@ -18,6 +19,7 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
 {
     private ClassConstantFetchFinder $classConstantFetchFinder;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

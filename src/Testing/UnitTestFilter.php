@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Testing;
 
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
 final class UnitTestFilter
 {
     /**
      * @var string[]|class-string<KernelTestCase>[]
      */
-    private const NON_UNIT_TEST_CASE_CLASSES = [
-        'Symfony\Bundle\FrameworkBundle\Test\KernelTestCase',
+    private const array NON_UNIT_TEST_CASE_CLASSES = [
+        KernelTestCase::class,
         'Symfony\Component\Form\Test\TypeTestCase',
     ];
 
@@ -20,11 +22,7 @@ final class UnitTestFilter
      */
     public function filter(array $testClassesToFilePaths): array
     {
-        return array_filter(
-            $testClassesToFilePaths,
-            fn (string $testClass): bool => $this->isUnitTest($testClass),
-            ARRAY_FILTER_USE_KEY
-        );
+        return array_filter($testClassesToFilePaths, $this->isUnitTest(...), ARRAY_FILTER_USE_KEY);
     }
 
     private function isUnitTest(string $class): bool

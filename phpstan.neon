@@ -18,11 +18,6 @@ parameters:
 
         - '#Parameter \#1 \$objectOrClass of class ReflectionClass constructor expects class-string<T of object>\|T of object, string given#'
 
-        # command status enum
-        -
-            identifier: return.unusedType
-            path: src/Command/
-
         # testing on purpose
         -
             identifier: method.alreadyNarrowedType
