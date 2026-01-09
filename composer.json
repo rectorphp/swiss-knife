@@ -7,30 +7,29 @@
     ],
     "require": {
         "php": ">=8.3",
-        "illuminate/container": "12.38.*",
-        "nette/robot-loader": "^4.0",
-        "nette/utils": "^4.0",
-        "nikic/php-parser": "^5.5",
+        "entropy/entropy": "dev-main",
+        "nette/robot-loader": "^4.1",
+        "nette/utils": "^4.1",
+        "nikic/php-parser": "^5.7",
         "symfony/console": "^6.4.24",
-        "symfony/finder": "^7.3",
-        "symfony/yaml": "^7.3",
-        "webmozart/assert": "^1.11"
+        "symfony/finder": "^7.4",
+        "symfony/yaml": "^7.4",
+        "webmozart/assert": "^1.12"
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^13.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^12.3",
+        "phpunit/phpunit": "^12.5",
         "rector/jack": "^0.5.1",
         "rector/rector": "^2.3",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",
         "symplify/phpstan-extensions": "^12.0",
-        "symplify/vendor-patches": "^11.4",
-        "tomasvotruba/class-leak": "^2.0",
-        "tomasvotruba/unused-public": "^2.0",
-        "tracy/tracy": "^2.10"
+        "tomasvotruba/class-leak": "^2.1",
+        "tomasvotruba/unused-public": "^2.2",
+        "tracy/tracy": "^2.11"
     },
     "autoload": {
         "psr-4": {
@@ -49,7 +48,6 @@
         "sort-packages": true,
         "platform-check": false,
         "allow-plugins": {
-            "cweagans/composer-patches": true,
             "phpstan/extension-installer": true
         }
     },

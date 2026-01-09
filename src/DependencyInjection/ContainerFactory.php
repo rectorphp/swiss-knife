@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\DependencyInjection;
 
-use Illuminate\Container\Container;
+use Entropy\Container\Container;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Finder\Finder;
-use Webmozart\Assert\Assert;
 
 /**
  * @api used in tests
@@ -23,17 +22,14 @@ final class ContainerFactory
     {
         $container = new Container();
 
+        $container->autodiscover(__DIR__ . '/../Command');
+
         // console
-        $container->singleton(Application::class, function (Container $container): Application {
+        $container->service(Application::class, function (Container $container): Application {
             $application = new Application('Rector Swiss Knife');
 
-            $commandClasses = $this->findCommandClasses();
-
-            // register commands
-            foreach ($commandClasses as $commandClass) {
-                $command = $container->make($commandClass);
-                $application->add($command);
-            }
+            $commands = $container->findByContract(Command::class);
+            $application->addCommands($commands);
 
             // remove basic command to make output clear
             $this->hideDefaultCommands($application);
@@ -42,12 +38,12 @@ final class ContainerFactory
         });
 
         // parser
-        $container->singleton(Parser::class, static function (): Parser {
+        $container->service(Parser::class, static function (): Parser {
             $phpParserFactory = new ParserFactory();
             return $phpParserFactory->createForNewestSupportedVersion();
         });
 
-        $container->singleton(
+        $container->service(
             SymfonyStyle::class,
             static fn (): SymfonyStyle => new SymfonyStyle(new ArrayInput([]), new ConsoleOutput())
         );
@@ -63,28 +59,5 @@ final class ContainerFactory
             ->setHidden(true);
         $application->get('help')
             ->setHidden(true);
-    }
-
-    /**
-     * @return string[]
-     */
-    private function findCommandClasses(): array
-    {
-        $commandFinder = Finder::create()
-            ->files()
-            ->name('*Command.php')
-            ->in(__DIR__ . '/../Command');
-
-        $commandClasses = [];
-        foreach ($commandFinder as $commandFile) {
-            $commandClass = 'Rector\\SwissKnife\\Command\\' . $commandFile->getBasename('.php');
-
-            // make sure it exists
-            Assert::classExists($commandClass);
-
-            $commandClasses[] = $commandClass;
-        }
-
-        return $commandClasses;
     }
 }
