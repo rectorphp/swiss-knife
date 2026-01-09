@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests;
 
-use Illuminate\Container\Container;
+use Entropy\Container\Container;
 use PHPUnit\Framework\TestCase;
 use Rector\SwissKnife\DependencyInjection\ContainerFactory;
 
