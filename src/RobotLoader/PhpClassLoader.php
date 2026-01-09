@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rector\SwissKnife\RobotLoader;
 
 use Nette\Loaders\RobotLoader;

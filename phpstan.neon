@@ -33,7 +33,12 @@ parameters:
             identifier: argument.type
             path: src/Testing/MockWire.php
 
-        # optional command, depends on present of classes
+        # magic contract
         -
-            identifier: argument.unresolvableType
-            path: src/Command/GenerateSymfonyConfigBuildersCommand.php
+            identifier: public.method.unused
+            message: '#Public method "Rector\\SwissKnife\\(.*?)Command\:\:run\(\)" is never used#'
+
+        # depends on symfony extenison class presence
+        -
+            message: '#Parameter \#1 \$objectOrClass of class ReflectionClass constructor contains unresolvable type#'
+            path:  src/Command/GenerateSymfonyConfigBuildersCommand.php

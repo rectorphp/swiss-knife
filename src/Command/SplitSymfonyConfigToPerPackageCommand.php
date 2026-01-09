@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -16,43 +18,28 @@ use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\NodeFactory\SplitConfigClosureFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\AddImportConfigMethodCallNodeVisitor;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ExtractSymfonyExtensionCallNodeVisitor;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class SplitSymfonyConfigToPerPackageCommand extends Command
+final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
 {
-    private readonly Standard $printerStandard;
+    private Standard $printerStandard;
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly SplitConfigClosureFactory $splitConfigClosureFactory,
+        private SymfonyStyle $symfonyStyle,
+        private SplitConfigClosureFactory $splitConfigClosureFactory,
     ) {
         $this->printerStandard = new Standard();
-
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string $configPath Path to the config file
+     * @param string $outputDir Directory to save the split config files
+     *
+     * @return ExitCode::*
+     */
+    public function run(string $configPath, string $outputDir): int
     {
-        $this->setName('split-config-per-package');
-        $this->setDescription(
-            'Split Symfony configs that contains many extension() calls to /packages directory with config per package'
-        );
-
-        $this->addArgument('config-path', InputArgument::REQUIRED, 'Path to the config file');
-        $this->addOption('output-dir', null, InputOption::VALUE_REQUIRED, 'Directory to save the split config files');
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $configPath = $input->getArgument('config-path');
-        $outputDir = $input->getOption('output-dir');
-
         Assert::fileExists($configPath);
         Assert::notEmpty($outputDir);
 
@@ -63,7 +50,7 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
         if ($symfonyExtensionMethodCalls === []) {
             $this->symfonyStyle->warning('No extension() method calls found');
 
-            return self::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         foreach ($symfonyExtensionMethodCalls as $symfonyExtensionMethodCall) {
@@ -91,6 +78,16 @@ final class SplitSymfonyConfigToPerPackageCommand extends Command
         FileSystem::write($configPath, $cleanedConfigContents, null);
 
         return 0;
+    }
+
+    public function getName(): string
+    {
+        return 'split-config-per-package';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Split Symfony configs that contains many extension() calls to /packages directory with config per package';
     }
 
     /**

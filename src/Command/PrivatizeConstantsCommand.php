@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
@@ -15,62 +17,43 @@ use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
 use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class PrivatizeConstantsCommand extends Command
+final readonly class PrivatizeConstantsCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly ClassConstantFetchFinder $classConstantFetchFinder,
-        private readonly ClassConstFinder $classConstFinder,
-        private readonly TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
-        private readonly YamlConfigConstantExtractor $yamlConfigConstantExtractor
+        private SymfonyStyle $symfonyStyle,
+        private ClassConstantFetchFinder $classConstantFetchFinder,
+        private ClassConstFinder $classConstFinder,
+        private TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
+        private YamlConfigConstantExtractor $yamlConfigConstantExtractor
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    public function getName(): string
     {
-        $this->setName('privatize-constants');
+        return 'privatize-constants';
+    }
 
-        $this->addArgument(
-            'sources',
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'One or more paths to check, include tests directory as well'
-        );
-
-        $this->addOption(
-            'exclude-path',
-            null,
-            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
-            'Path to exclude'
-        );
-
-        $this->addOption('debug', null, InputOption::VALUE_NONE, 'Debug output');
-
-        $this->setDescription('Make class constants private if not used outside in PHP, Twig and YAML files');
+    public function getDescription(): string
+    {
+        return 'Make class constants private if not used outside in PHP, Twig and YAML files';
     }
 
     /**
-     * @return Command::*
+     * @param string[] $sources One or more paths to check, include tests directory as well
+     * @param string[] $excludedPaths Paths to exclude
+     * @param bool $isDebug Debug output
+     * @return ExitCode::*
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    public function run(array $sources, array $excludedPaths = [], bool $isDebug = false): int
     {
-        $sources = (array) $input->getArgument('sources');
-        $excludedPaths = (array) $input->getOption('exclude-path');
-        $isDebug = (bool) $input->getOption('debug');
-
         $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
         if ($phpFileInfos === []) {
             $this->symfonyStyle->warning('No PHP files found in provided paths');
 
-            return self::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         $this->symfonyStyle->title('Finding class const fetches...');
@@ -107,7 +90,8 @@ final class PrivatizeConstantsCommand extends Command
 
         if (! $visibilityChangeStats->hasAnyChange()) {
             $this->symfonyStyle->warning('No constants were privatized');
-            return self::SUCCESS;
+
+            return ExitCode::SUCCESS;
         }
 
         $this->symfonyStyle->newLine(2);
@@ -116,7 +100,7 @@ final class PrivatizeConstantsCommand extends Command
             sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
         );
 
-        return self::SUCCESS;
+        return ExitCode::SUCCESS;
     }
 
     /**

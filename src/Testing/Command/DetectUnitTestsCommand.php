@@ -4,51 +4,38 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Testing\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
 use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class DetectUnitTestsCommand extends Command
+final readonly class DetectUnitTestsCommand implements CommandInterface
 {
     private const string OUTPUT_FILENAME = 'phpunit-unit-files.xml';
 
     public function __construct(
-        private readonly PHPUnitXmlPrinter $phpunitXmlPrinter,
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly UnitTestFilePathsFinder $unitTestFilePathsFinder,
+        private PHPUnitXmlPrinter $phpunitXmlPrinter,
+        private SymfonyStyle $symfonyStyle,
+        private UnitTestFilePathsFinder $unitTestFilePathsFinder,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string[] $sources Path to directory with tests
+     */
+    public function run(array $sources): int
     {
-        $this->setName('detect-unit-tests');
-
-        $this->setDescription('Get list of tests in specific directory, that are considered "unit"');
-
-        $this->addArgument(
-            'sources',
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'Path to directory with tests'
-        );
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $sources = (array) $input->getArgument('sources');
         Assert::allString($sources);
 
         $unitTestCasesClassesToFilePaths = $this->unitTestFilePathsFinder->findInDirectories($sources);
 
         if ($unitTestCasesClassesToFilePaths === []) {
             $this->symfonyStyle->note('No unit tests found in provided paths');
-            return self::SUCCESS;
+
+            return ExitCode::SUCCESS;
         }
 
         $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths);
@@ -63,6 +50,16 @@ final class DetectUnitTestsCommand extends Command
 
         $this->symfonyStyle->success($successMessage);
 
-        return self::SUCCESS;
+        return ExitCode::SUCCESS;
+    }
+
+    public function getName(): string
+    {
+        return 'detect-unit-tests';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Get list of tests in specific directory, that are considered "unit"';
     }
 }

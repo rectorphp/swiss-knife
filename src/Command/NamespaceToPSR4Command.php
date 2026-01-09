@@ -4,52 +4,30 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class NamespaceToPSR4Command extends Command
+final readonly class NamespaceToPSR4Command implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setName('namespace-to-psr-4');
-
-        $this->setDescription('Change namespace in your PHP files to match PSR-4 root');
-
-        $this->addArgument(
-            'path',
-            InputArgument::REQUIRED,
-            'Single directory path to ensure namespace matches, e.g. "tests"'
-        );
-
-        $this->addOption(
-            'namespace-root',
-            null,
-            InputOption::VALUE_REQUIRED,
-            'Namespace root for files in provided path, e.g. "App\\Tests"'
-        );
     }
 
     /**
-     * @return self::*
+     * @param string $path Single directory path to ensure namespace matches, e.g. "tests"
+     * @param string $namespaceRoot Namespace root for files in provided path, e.g. "App\\Tests"
+     *
+     * @return ExitCode::*
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    public function run(string $path, string $namespaceRoot): int
     {
-        $path = (string) $input->getArgument('path');
-        $namespaceRoot = rtrim((string) $input->getOption('namespace-root'), '\\');
+        $namespaceRoot = rtrim($namespaceRoot, '\\');
         $namespaceRoot = str_replace('\\\\', '\\', $namespaceRoot);
 
         $fileInfos = $this->findFilesInPath($path);
@@ -93,7 +71,17 @@ final class NamespaceToPSR4Command extends Command
             $this->symfonyStyle->success(sprintf('Fixed %d files', $changedFilesCount));
         }
 
-        return self::SUCCESS;
+        return ExitCode::SUCCESS;
+    }
+
+    public function getName(): string
+    {
+        return 'namespace-to-psr-4';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Change namespace in your PHP files to match PSR-4 root';
     }
 
     /**

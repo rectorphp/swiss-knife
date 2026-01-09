@@ -4,37 +4,41 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class DumpEditorconfigCommand extends Command
+final readonly class DumpEditorconfigCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    public function getName(): string
     {
-        $this->setName('dump-editorconfig');
-        $this->setDescription('Dump .editorconfig file to project root');
+        return 'dump-editorconfig';
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    public function getDescription(): string
+    {
+        return 'Dump .editorconfig file to project root';
+    }
+
+    public function run(): int
     {
         $projectEditorconfigFilePath = getcwd() . '/.editorconfig';
         if (file_exists($projectEditorconfigFilePath)) {
             $this->symfonyStyle->error('.editorconfig file already exists');
-            return self::FAILURE;
+
+            return ExitCode::ERROR;
         }
 
         FileSystem::copy(__DIR__ . '/../../templates/.editorconfig', $projectEditorconfigFilePath);
+
         $this->symfonyStyle->success('.editorconfig file was created');
 
-        return self::SUCCESS;
+        return ExitCode::SUCCESS;
     }
 }

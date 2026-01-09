@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Output\ConsoleOutput;
+use Entropy\Console\ConsoleApplication;
 use Rector\SwissKnife\DependencyInjection\ContainerFactory;
 
 $scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
@@ -32,7 +30,7 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 $containerFactory = new ContainerFactory();
 $container = $containerFactory->create();
 
-$application = $container->make(Application::class);
+$consoleApplication = $container->make(ConsoleApplication::class);
 
-$exitCode = $application->run(new ArgvInput(), new ConsoleOutput());
+$exitCode = $consoleApplication->run($argv);
 exit($exitCode);

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
@@ -13,14 +15,9 @@ use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\MockedClassResolver;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class FinalizeClassesCommand extends Command
+final readonly class FinalizeClassesCommand implements CommandInterface
 {
     /**
      * @see https://regex101.com/r/Q5Nfbo/1
@@ -28,66 +25,35 @@ final class FinalizeClassesCommand extends Command
     private const string NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly ParentClassResolver $parentClassResolver,
-        private readonly EntityClassResolver $entityClassResolver,
-        private readonly CachedPhpParser $cachedPhpParser,
-        private readonly MockedClassResolver $mockedClassResolver,
+        private SymfonyStyle $symfonyStyle,
+        private ParentClassResolver $parentClassResolver,
+        private EntityClassResolver $entityClassResolver,
+        private CachedPhpParser $cachedPhpParser,
+        private MockedClassResolver $mockedClassResolver,
     ) {
-        parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setName('finalize-classes');
-        $this->setAliases(['finalise', 'finalise-classes']);
-
-        $this->setDescription('Finalize classes without children');
-
-        $this->addArgument('paths', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Directories to finalize');
-
-        $this->addOption(
-            'skip-mocked',
-            null,
-            InputOption::VALUE_NONE,
-            'Skip mocked classes as well (use only if unable to run bypass-finals package)'
-        );
-
-        $this->addOption(
-            'skip-file',
-            null,
-            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
-            'Skip file or files by path'
-        );
-
-        $this->addOption(
-            'dry-run',
-            null,
-            InputOption::VALUE_NONE,
-            'Do no change anything, only list classes about to be finalized. If there are classes to finalize, it will exit with code 1. Useful for CI.'
-        );
-
-        $this->addOption('no-progress', null, InputOption::VALUE_NONE, 'Do not show progress bar, only results');
     }
 
     /**
-     * @return self::FAILURE|self::SUCCESS
+     * @param string[] $paths Directories to finalize
+     * @param bool $dryRun Do no change anything, only list classes about to be finalized. If there are classes to finalize, it will exit with code 1. Useful for CI.
+     * @param bool $skipMocked Skip mocked classes as well (use only if unable to run bypass-finals package)
+     * @param string[] $skipFiles Skip file or files by path
+     * @param bool $noProgress Do not show progress bar, only results
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $paths = (array) $input->getArgument('paths');
-        $isDryRun = (bool) $input->getOption('dry-run');
-        $areMockedSkipped = (bool) $input->getOption('skip-mocked');
-
+    public function run(
+        array $paths,
+        bool $dryRun = false,
+        bool $skipMocked = false,
+        array $skipFiles = [],
+        bool $noProgress = false
+    ): int {
         $this->symfonyStyle->title('1. Detecting parent and entity classes');
 
-        $skippedFiles = $input->getOption('skip-file');
-        $phpFileInfos = PhpFilesFinder::find($paths, $skippedFiles);
+        $phpFileInfos = PhpFilesFinder::find($paths, $skipFiles);
 
-        $noProgress = (bool) $input->getOption('no-progress');
         if (! $noProgress) {
             // double to count for both parent and entity resolver
-            $stepRatio = $areMockedSkipped ? 3 : 2;
+            $stepRatio = $skipMocked ? 3 : 2;
 
             $this->symfonyStyle->progressStart($stepRatio * count($phpFileInfos));
         }
@@ -103,7 +69,7 @@ final class FinalizeClassesCommand extends Command
         $parentClassNames = $this->parentClassResolver->resolve($phpFileInfos, $progressClosure);
         $entityClassNames = $this->entityClassResolver->resolve($paths, $progressClosure);
 
-        $mockedClassNames = $areMockedSkipped ? $this->mockedClassResolver->resolve($paths, $progressClosure) : [];
+        $mockedClassNames = $skipMocked ? $this->mockedClassResolver->resolve($paths, $progressClosure) : [];
 
         if (! $noProgress) {
             $this->symfonyStyle->progressFinish();
@@ -115,7 +81,7 @@ final class FinalizeClassesCommand extends Command
             count($entityClassNames)
         ));
 
-        if ($areMockedSkipped) {
+        if ($skipMocked) {
             $this->symfonyStyle->writeln(sprintf('Also %d mocked classes', count($mockedClassNames)));
         }
 
@@ -142,14 +108,14 @@ final class FinalizeClassesCommand extends Command
 
             $finalizedFilePaths[] = PathHelper::relativeToCwd($phpFileInfo->getRealPath());
 
-            if ($isDryRun === false) {
+            if ($dryRun === false) {
                 FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents, null);
             }
         }
 
         if ($finalizedFilePaths === []) {
             $this->symfonyStyle->success('Nothing to finalize');
-            return self::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         $this->symfonyStyle->listing($finalizedFilePaths);
@@ -158,18 +124,28 @@ final class FinalizeClassesCommand extends Command
         $pluralClassText = $countFinalizedClasses === 1 ? 'class' : 'classes';
 
         // to make it fail in CI
-        if ($isDryRun) {
+        if ($dryRun) {
             $this->symfonyStyle->error(sprintf(
                 '%d %s can be finalized',
                 $countFinalizedClasses,
                 $pluralClassText,
             ));
 
-            return self::FAILURE;
+            return ExitCode::ERROR;
         }
 
         $this->symfonyStyle->success(sprintf('%d %s finalized', $countFinalizedClasses, $pluralClassText));
 
-        return self::SUCCESS;
+        return ExitCode::SUCCESS;
+    }
+
+    public function getName(): string
+    {
+        return 'finalize-classes';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Finalize classes without children';
     }
 }

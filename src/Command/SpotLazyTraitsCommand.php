@@ -4,51 +4,33 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\Traits\TraitSpotter;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class SpotLazyTraitsCommand extends Command
+final readonly class SpotLazyTraitsCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly TraitSpotter $traitSpotter,
+        private SymfonyStyle $symfonyStyle,
+        private TraitSpotter $traitSpotter,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string[] $sources Paths to scan for traits
+     * @param int $maxUsed Maximum number of times a trait is used to be considered lazy
+     * @return ExitCode::*
+     */
+    public function run(array $sources, int $maxUsed = 2): int
     {
-        $this->setName('spot-lazy-traits');
-
-        $this->addArgument(
-            'sources',
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'One or more paths to check'
-        );
-
-        $this->addOption('max-used', null, InputOption::VALUE_REQUIRED, 'Maximum count the trait is used', 2);
-
-        $this->setDescription(
-            'Spot traits that are use only once, to potentially inline them and make code more robust and readable'
-        );
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $sources = (array) $input->getArgument('sources');
-        $maxUsedCount = (int) $input->getOption('max-used');
-
         $this->symfonyStyle->title('Looking for trait definitions');
         $traitSpottingResult = $this->traitSpotter->analyse($sources);
 
         if ($traitSpottingResult->getTraitCount() === 0) {
             $this->symfonyStyle->success('No traits were found in your project, nothing to worry about');
-            return self::SUCCESS;
+
+            return ExitCode::SUCCESS;
         }
 
         $this->symfonyStyle->writeln(
@@ -62,9 +44,9 @@ final class SpotLazyTraitsCommand extends Command
 
         $this->symfonyStyle->newLine();
 
-        $this->symfonyStyle->title(sprintf('Looking for traits used less than %d-times', $maxUsedCount));
+        $this->symfonyStyle->title(sprintf('Looking for traits used less than %d-times', $maxUsed));
 
-        $leastUsedTraitsMetadatas = $traitSpottingResult->getTraitMaximumUsedTimes($maxUsedCount);
+        $leastUsedTraitsMetadatas = $traitSpottingResult->getTraitMaximumUsedTimes($maxUsed);
 
         foreach ($leastUsedTraitsMetadatas as $leastUsedTraitMetadata) {
             $this->symfonyStyle->writeln(sprintf(
@@ -84,6 +66,16 @@ final class SpotLazyTraitsCommand extends Command
             PHP_EOL
         ));
 
-        return self::SUCCESS;
+        return ExitCode::SUCCESS;
+    }
+
+    public function getName(): string
+    {
+        return 'spot-lazy-traits';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Spot traits that are use only once, to potentially inline them and make code more robust and readable';
     }
 }

@@ -4,37 +4,28 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Git\ConflictResolver;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class CheckConflictsCommand extends Command
+final readonly class CheckConflictsCommand implements CommandInterface
 {
     public function __construct(
-        private readonly ConflictResolver $conflictResolver,
-        private readonly SymfonyStyle $symfonyStyle,
+        private ConflictResolver $conflictResolver,
+        private SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string[] $sources One or more path to project
+     * @return ExitCode::*
+     */
+    public function run(array $sources): int
     {
-        $this->setName('check-conflicts');
-
-        $this->setDescription('Check files for missed git conflicts');
-        $this->addArgument('sources', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        /** @var string[] $sources */
-        $sources = (array) $input->getArgument('sources');
-
         $fileInfos = FilesFinder::find($sources);
+
         $filePaths = [];
         foreach ($fileInfos as $fileInfo) {
             $filePaths[] = $fileInfo->getRealPath();
@@ -45,7 +36,7 @@ final class CheckConflictsCommand extends Command
             $message = sprintf('No conflicts found in %d files', count($fileInfos));
             $this->symfonyStyle->success($message);
 
-            return self::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         foreach ($conflictsCountByFilePath as $file => $conflictCount) {
@@ -53,6 +44,16 @@ final class CheckConflictsCommand extends Command
             $this->symfonyStyle->error($message);
         }
 
-        return self::FAILURE;
+        return ExitCode::ERROR;
+    }
+
+    public function getName(): string
+    {
+        return 'check-conflicts';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Check files for missed git conflicts';
     }
 }
