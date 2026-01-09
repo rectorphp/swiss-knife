@@ -21,13 +21,13 @@ use Rector\SwissKnife\PhpParser\NodeVisitor\ExtractSymfonyExtensionCallNodeVisit
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
+final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
 {
-    private readonly Standard $printerStandard;
+    private Standard $printerStandard;
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly SplitConfigClosureFactory $splitConfigClosureFactory,
+        private SymfonyStyle $symfonyStyle,
+        private SplitConfigClosureFactory $splitConfigClosureFactory,
     ) {
         $this->printerStandard = new Standard();
     }
@@ -50,7 +50,7 @@ final class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
         if ($symfonyExtensionMethodCalls === []) {
             $this->symfonyStyle->warning('No extension() method calls found');
 
-            return \Entropy\Console\Enum\ExitCode::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         foreach ($symfonyExtensionMethodCalls as $symfonyExtensionMethodCall) {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
@@ -19,14 +20,14 @@ use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class PrivatizeConstantsCommand implements \Entropy\Console\Contract\CommandInterface
+final readonly class PrivatizeConstantsCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly ClassConstantFetchFinder $classConstantFetchFinder,
-        private readonly ClassConstFinder $classConstFinder,
-        private readonly TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
-        private readonly YamlConfigConstantExtractor $yamlConfigConstantExtractor
+        private SymfonyStyle $symfonyStyle,
+        private ClassConstantFetchFinder $classConstantFetchFinder,
+        private ClassConstFinder $classConstFinder,
+        private TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
+        private YamlConfigConstantExtractor $yamlConfigConstantExtractor
     ) {
     }
 

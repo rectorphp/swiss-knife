@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use PhpParser\BuilderHelpers;
@@ -16,10 +17,10 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * @see https://github.com/nelmio/alice/blob/v2.3.0/doc/complete-reference.md#php
  */
-final class AliceYamlFixturesToPhpCommand implements \Entropy\Console\Contract\CommandInterface
+final readonly class AliceYamlFixturesToPhpCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 
@@ -61,7 +62,7 @@ final class AliceYamlFixturesToPhpCommand implements \Entropy\Console\Contract\C
             sprintf('Successfully converted %d Alice YAML fixtures to PHP', count($yamlFileInfos))
         );
 
-        return \Entropy\Console\Enum\ExitCode::SUCCESS;
+        return ExitCode::SUCCESS;
     }
 
     public function getName(): string

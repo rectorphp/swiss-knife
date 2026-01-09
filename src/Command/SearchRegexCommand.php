@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class SearchRegexCommand implements \Entropy\Console\Contract\CommandInterface
+final readonly class SearchRegexCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 
@@ -68,7 +69,7 @@ final class SearchRegexCommand implements \Entropy\Console\Contract\CommandInter
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d cases in %d files', $foundCasesCount, count($markedFiles)));
 
-        return \Entropy\Console\Enum\ExitCode::SUCCESS;
+        return ExitCode::SUCCESS;
     }
 
     public function getName(): string

@@ -9,10 +9,10 @@ use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class DumpEditorconfigCommand implements CommandInterface
+final readonly class DumpEditorconfigCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 

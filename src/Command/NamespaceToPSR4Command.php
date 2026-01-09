@@ -12,10 +12,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class NamespaceToPSR4Command implements CommandInterface
+final readonly class NamespaceToPSR4Command implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 

@@ -10,13 +10,13 @@ use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class CheckCommentedCodeCommand implements CommandInterface
+final readonly class CheckCommentedCodeCommand implements CommandInterface
 {
     private const int DEFAULT_LINE_LIMIT = 5;
 
     public function __construct(
-        private readonly CommentedCodeAnalyzer $commentedCodeAnalyzer,
-        private readonly SymfonyStyle $symfonyStyle,
+        private CommentedCodeAnalyzer $commentedCodeAnalyzer,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 

@@ -241,7 +241,19 @@ That's it!
 
 <br>
 
-## 9. Spots Fake Traits
+## 9. Generate Symfony 5.3 configs builders
+
+Symfony 5.3 introduced amazing [config builders](https://symfony.com/blog/new-in-symfony-5-3-config-builder-classes), but those classes are not available for IDE until used. To make it easier, we added a command that generates all config builder classes you project can use, in `/var/cache/Symfony`.
+
+```bash
+vendor/bin/swiss-knife generate-symfony-config-builders
+```
+
+That way IDE, PHPStan after adding those paths and Rector can understand your config files better.
+
+<br>
+
+## 10. Spots Fake Traits
 
 What is trait has 5 lines and used in single service? We know it's better to be inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
 
@@ -263,7 +275,7 @@ That's it! Run this command once upon a time or run it in CI to eliminate traits
 
 <br>
 
-## 10. Split huge Symfony config to per-package in directory
+## 11. Split huge Symfony config to per-package in directory
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 

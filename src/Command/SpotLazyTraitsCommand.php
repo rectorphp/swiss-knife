@@ -9,11 +9,11 @@ use Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\Traits\TraitSpotter;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class SpotLazyTraitsCommand implements CommandInterface
+final readonly class SpotLazyTraitsCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly TraitSpotter $traitSpotter,
+        private SymfonyStyle $symfonyStyle,
+        private TraitSpotter $traitSpotter,
     ) {
     }
 

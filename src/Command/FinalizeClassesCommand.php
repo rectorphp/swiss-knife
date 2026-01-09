@@ -17,7 +17,7 @@ use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class FinalizeClassesCommand implements CommandInterface
+final readonly class FinalizeClassesCommand implements CommandInterface
 {
     /**
      * @see https://regex101.com/r/Q5Nfbo/1
@@ -25,11 +25,11 @@ final class FinalizeClassesCommand implements CommandInterface
     private const string NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly ParentClassResolver $parentClassResolver,
-        private readonly EntityClassResolver $entityClassResolver,
-        private readonly CachedPhpParser $cachedPhpParser,
-        private readonly MockedClassResolver $mockedClassResolver,
+        private SymfonyStyle $symfonyStyle,
+        private ParentClassResolver $parentClassResolver,
+        private EntityClassResolver $entityClassResolver,
+        private CachedPhpParser $cachedPhpParser,
+        private MockedClassResolver $mockedClassResolver,
     ) {
     }
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Json;
@@ -11,11 +12,11 @@ use Rector\SwissKnife\FileSystem\JsonAnalyzer;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class PrettyJsonCommand implements \Entropy\Console\Contract\CommandInterface
+final readonly class PrettyJsonCommand implements CommandInterface
 {
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly JsonAnalyzer $jsonAnalyzer,
+        private SymfonyStyle $symfonyStyle,
+        private JsonAnalyzer $jsonAnalyzer,
     ) {
     }
 
@@ -31,7 +32,7 @@ final class PrettyJsonCommand implements \Entropy\Console\Contract\CommandInterf
 
         if ($jsonFileInfos === []) {
             $this->symfonyStyle->error('No *.json files found');
-            return \Entropy\Console\Enum\ExitCode::ERROR;
+            return ExitCode::ERROR;
         }
 
         $message = sprintf('Analysing %d *.json files', count($jsonFileInfos));
@@ -71,7 +72,7 @@ final class PrettyJsonCommand implements \Entropy\Console\Contract\CommandInterf
         $this->symfonyStyle->success($successMessage);
         $this->symfonyStyle->listing($printedFilePaths);
 
-        return \Entropy\Console\Enum\ExitCode::SUCCESS;
+        return ExitCode::SUCCESS;
     }
 
     public function getName(): string

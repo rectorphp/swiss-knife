@@ -11,11 +11,11 @@ use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class FindMultiClassesCommand implements CommandInterface
+final readonly class FindMultiClassesCommand implements CommandInterface
 {
     public function __construct(
-        private readonly MultipleClassInOneFileFinder $multipleClassInOneFileFinder,
-        private readonly SymfonyStyle $symfonyStyle,
+        private MultipleClassInOneFileFinder $multipleClassInOneFileFinder,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 
@@ -33,7 +33,7 @@ final class FindMultiClassesCommand implements CommandInterface
         if ($multipleClassesByFile === []) {
             $this->symfonyStyle->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
 
-            return \Entropy\Console\Enum\ExitCode::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         foreach ($multipleClassesByFile as $filePath => $classes) {
@@ -45,7 +45,7 @@ final class FindMultiClassesCommand implements CommandInterface
             $this->symfonyStyle->listing($classes);
         }
 
-        return \Entropy\Console\Enum\ExitCode::ERROR;
+        return ExitCode::ERROR;
     }
 
     public function getName(): string

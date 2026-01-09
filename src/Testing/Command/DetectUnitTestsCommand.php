@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Testing\Command;
 
+use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
@@ -11,14 +12,14 @@ use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class DetectUnitTestsCommand implements \Entropy\Console\Contract\CommandInterface
+final readonly class DetectUnitTestsCommand implements CommandInterface
 {
     private const string OUTPUT_FILENAME = 'phpunit-unit-files.xml';
 
     public function __construct(
-        private readonly PHPUnitXmlPrinter $phpunitXmlPrinter,
-        private readonly SymfonyStyle $symfonyStyle,
-        private readonly UnitTestFilePathsFinder $unitTestFilePathsFinder,
+        private PHPUnitXmlPrinter $phpunitXmlPrinter,
+        private SymfonyStyle $symfonyStyle,
+        private UnitTestFilePathsFinder $unitTestFilePathsFinder,
     ) {
     }
 
