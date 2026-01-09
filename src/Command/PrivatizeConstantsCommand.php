@@ -158,14 +158,4 @@ final class PrivatizeConstantsCommand implements \Entropy\Console\Contract\Comma
 
         return false;
     }
-
-    public function getName(): string
-    {
-        return 'privatize-constants';
-    }
-
-    public function getDescription(): string
-    {
-        return 'Make class constants private if not used outside in PHP, Twig and YAML files';
-    }
 }

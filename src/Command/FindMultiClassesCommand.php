@@ -4,54 +4,32 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class FindMultiClassesCommand implements \Entropy\Console\Contract\CommandInterface
+final class FindMultiClassesCommand implements CommandInterface
 {
     public function __construct(
         private readonly MultipleClassInOneFileFinder $multipleClassInOneFileFinder,
         private readonly SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
     }
 
-    private function configure(): void
+    /**
+     * @param string[] $sources Path to source to analyse
+     * @param string[] $excludePaths Paths to exclude
+     *
+     * @return ExitCode::*
+     */
+    public function run(array $sources, array $excludePaths): int
     {
-        $this->setName('find-multi-classes');
+        $phpFileInfos = PhpFilesFinder::find($sources, $excludePaths);
 
-        $this->setDescription('Find multiple classes in one file');
-
-        $this->addArgument(
-            'sources',
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'Path to source to analyse'
-        );
-
-        $this->addOption(
-            'exclude-path',
-            null,
-            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
-            'Path to exclude'
-        );
-    }
-
-    private function execute(InputInterface $input, OutputInterface $output): int
-    {
-        /** @var string[] $source */
-        $source = $input->getArgument('sources');
-
-        $excludedPaths = (array) $input->getOption('exclude-path');
-
-        $phpFileInfos = PhpFilesFinder::find($source, $excludedPaths);
-
-        $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($source, $excludedPaths);
+        $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($sources, $excludePaths);
         if ($multipleClassesByFile === []) {
             $this->symfonyStyle->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
 
@@ -68,5 +46,15 @@ final class FindMultiClassesCommand implements \Entropy\Console\Contract\Command
         }
 
         return \Entropy\Console\Enum\ExitCode::ERROR;
+    }
+
+    public function getName(): string
+    {
+        return 'find-multi-classes';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Find multiple classes in one file';
     }
 }

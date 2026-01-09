@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Git\ConflictResolver;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class CheckConflictsCommand implements \Entropy\Console\Contract\CommandInterface
@@ -17,23 +15,16 @@ final class CheckConflictsCommand implements \Entropy\Console\Contract\CommandIn
         private readonly ConflictResolver $conflictResolver,
         private readonly SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
     }
 
-    private function configure(): void
+    /**
+     * @param string[] $sources One or more path to project
+     * @return ExitCode::*
+     */
+    public function run(array $sources): int
     {
-        $this->setName('check-conflicts');
-
-        $this->setDescription('Check files for missed git conflicts');
-        $this->addArgument('sources', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
-    }
-
-    private function execute(InputInterface $input, OutputInterface $output): int
-    {
-        /** @var string[] $sources */
-        $sources = (array) $input->getArgument('sources');
-
         $fileInfos = FilesFinder::find($sources);
+
         $filePaths = [];
         foreach ($fileInfos as $fileInfo) {
             $filePaths[] = $fileInfo->getRealPath();
@@ -53,5 +44,15 @@ final class CheckConflictsCommand implements \Entropy\Console\Contract\CommandIn
         }
 
         return \Entropy\Console\Enum\ExitCode::ERROR;
+    }
+
+    public function getName(): string
+    {
+        return 'check-conflicts';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Check files for missed git conflicts';
     }
 }

@@ -33,11 +33,6 @@ parameters:
             identifier: argument.type
             path: src/Testing/MockWire.php
 
-        # optional command, depends on present of classes
-        -
-            identifier: argument.unresolvableType
-            path: src/Command/GenerateSymfonyConfigBuildersCommand.php
-
         # magic contract
         -
             identifier: public.method.unused

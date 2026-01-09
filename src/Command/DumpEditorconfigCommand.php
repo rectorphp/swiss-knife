@@ -7,8 +7,6 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class DumpEditorconfigCommand implements CommandInterface
@@ -28,7 +26,7 @@ final class DumpEditorconfigCommand implements CommandInterface
         return 'Dump .editorconfig file to project root';
     }
 
-    private function execute(InputInterface $input, OutputInterface $output): int
+    public function run(): int
     {
         $projectEditorconfigFilePath = getcwd() . '/.editorconfig';
         if (file_exists($projectEditorconfigFilePath)) {
