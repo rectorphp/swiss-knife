@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\Command;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -15,7 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class NamespaceToPSR4Command extends Command
+final class NamespaceToPSR4Command implements \Entropy\Console\Contract\CommandInterface
 {
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
@@ -23,7 +22,7 @@ final class NamespaceToPSR4Command extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    private function configure(): void
     {
         $this->setName('namespace-to-psr-4');
 
@@ -46,7 +45,7 @@ final class NamespaceToPSR4Command extends Command
     /**
      * @return self::*
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    private function execute(InputInterface $input, OutputInterface $output): int
     {
         $path = (string) $input->getArgument('path');
         $namespaceRoot = rtrim((string) $input->getOption('namespace-root'), '\\');
@@ -93,7 +92,7 @@ final class NamespaceToPSR4Command extends Command
             $this->symfonyStyle->success(sprintf('Fixed %d files', $changedFilesCount));
         }
 
-        return self::SUCCESS;
+        return \Entropy\Console\Enum\ExitCode::SUCCESS;
     }
 
     /**

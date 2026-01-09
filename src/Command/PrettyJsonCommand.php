@@ -4,55 +4,38 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Json;
 use Rector\SwissKnife\FileSystem\JsonAnalyzer;
 use Rector\SwissKnife\Finder\FilesFinder;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class PrettyJsonCommand extends Command
+final class PrettyJsonCommand implements \Entropy\Console\Contract\CommandInterface
 {
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
         private readonly JsonAnalyzer $jsonAnalyzer,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string[] $sources JSON file or directory with JSON files to prettify
+     * @param bool $dryRun Dry run - no changes will be made
+     *
+     * @return ExitCode::*
+     */
+    public function run(array $sources, bool $dryRun = false): int
     {
-        $this->setName('pretty-json');
-
-        $this->setDescription('Turns JSON files from 1-line to pretty print format');
-
-        $this->addArgument(
-            'sources',
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'JSON file or directory with JSON files to prettify'
-        );
-
-        $this->addOption('dry-run', null, InputOption::VALUE_NONE, 'Dry run - no changes will be made');
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $sources = (array) $input->getArgument('sources');
         $jsonFileInfos = FilesFinder::findJsonFiles($sources);
 
         if ($jsonFileInfos === []) {
             $this->symfonyStyle->error('No *.json files found');
-            return self::FAILURE;
+            return \Entropy\Console\Enum\ExitCode::ERROR;
         }
 
         $message = sprintf('Analysing %d *.json files', count($jsonFileInfos));
         $this->symfonyStyle->note($message);
-
-        $isDryRun = (bool) $input->getOption('dry-run');
 
         $printedFilePaths = [];
 
@@ -70,7 +53,7 @@ final class PrettyJsonCommand extends Command
             $printedFilePaths[] = $jsonFileInfo->getRelativePathname();
 
             // nothing will be changed
-            if ($isDryRun) {
+            if ($dryRun) {
                 continue;
             }
 
@@ -82,12 +65,22 @@ final class PrettyJsonCommand extends Command
             '%d file%s %s',
             count($printedFilePaths),
             count($printedFilePaths) === 1 ? '' : 's',
-            $isDryRun ? 'would be changed' : 'changed'
+            $dryRun ? 'would be changed' : 'changed'
         );
 
         $this->symfonyStyle->success($successMessage);
         $this->symfonyStyle->listing($printedFilePaths);
 
-        return self::SUCCESS;
+        return \Entropy\Console\Enum\ExitCode::SUCCESS;
+    }
+
+    public function getName(): string
+    {
+        return 'pretty-json';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Turns JSON files from 1-line to pretty print format';
     }
 }

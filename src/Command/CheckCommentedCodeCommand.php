@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Contract\CommandInterface;
+use Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class CheckCommentedCodeCommand extends Command
+final class CheckCommentedCodeCommand implements CommandInterface
 {
     private const int DEFAULT_LINE_LIMIT = 5;
 
@@ -21,46 +18,21 @@ final class CheckCommentedCodeCommand extends Command
         private readonly CommentedCodeAnalyzer $commentedCodeAnalyzer,
         private readonly SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string[] $sources One or more paths to check
+     * @param string[] $skipFiles File paths to skip
+     * @param int $lineLimit Maximum number of comment lines in a row allowed
+     *
+     * @return ExitCode::*
+     */
+    public function run(array $sources, array $skipFiles = [], int $lineLimit = self::DEFAULT_LINE_LIMIT): int
     {
-        $this->setName('check-commented-code');
-
-        $this->addArgument(
-            'sources',
-            InputArgument::REQUIRED | InputArgument::IS_ARRAY,
-            'One or more paths to check'
-        );
-        $this->addOption(
-            'skip-file',
-            null,
-            InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
-            'Skip file path'
-        );
-        $this->setDescription('Checks code for commented snippets');
-
-        $this->addOption(
-            'line-limit',
-            null,
-            InputOption::VALUE_REQUIRED | InputOption::VALUE_OPTIONAL,
-            'Amount of allowed comment lines in a row',
-            self::DEFAULT_LINE_LIMIT
-        );
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $sources = (array) $input->getArgument('sources');
-        $skipFiles = (array) $input->getOption('skip-file');
-
         $phpFileInfos = PhpFilesFinder::find($sources, $skipFiles);
 
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
         $this->symfonyStyle->note($message);
-
-        $lineLimit = (int) $input->getOption('line-limit');
 
         $commentedLinesByFilePaths = [];
         foreach ($phpFileInfos as $phpFileInfo) {
@@ -75,7 +47,7 @@ final class CheckCommentedCodeCommand extends Command
 
         if ($commentedLinesByFilePaths === []) {
             $this->symfonyStyle->success('No commented code found');
-            return self::SUCCESS;
+            return ExitCode::SUCCESS;
         }
 
         foreach ($commentedLinesByFilePaths as $filePath => $commentedLines) {
@@ -86,6 +58,17 @@ final class CheckCommentedCodeCommand extends Command
         }
 
         $this->symfonyStyle->error('Errors found');
-        return self::FAILURE;
+
+        return ExitCode::ERROR;
+    }
+
+    public function getName(): string
+    {
+        return 'check-commented-code';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Checks code for commented snippets';
     }
 }

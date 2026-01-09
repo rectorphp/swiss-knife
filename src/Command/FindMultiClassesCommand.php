@@ -7,14 +7,13 @@ namespace Rector\SwissKnife\Command;
 use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class FindMultiClassesCommand extends Command
+final class FindMultiClassesCommand implements \Entropy\Console\Contract\CommandInterface
 {
     public function __construct(
         private readonly MultipleClassInOneFileFinder $multipleClassInOneFileFinder,
@@ -23,7 +22,7 @@ final class FindMultiClassesCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    private function configure(): void
     {
         $this->setName('find-multi-classes');
 
@@ -43,7 +42,7 @@ final class FindMultiClassesCommand extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    private function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var string[] $source */
         $source = $input->getArgument('sources');
@@ -56,7 +55,7 @@ final class FindMultiClassesCommand extends Command
         if ($multipleClassesByFile === []) {
             $this->symfonyStyle->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
 
-            return self::SUCCESS;
+            return \Entropy\Console\Enum\ExitCode::SUCCESS;
         }
 
         foreach ($multipleClassesByFile as $filePath => $classes) {
@@ -68,6 +67,6 @@ final class FindMultiClassesCommand extends Command
             $this->symfonyStyle->listing($classes);
         }
 
-        return self::FAILURE;
+        return \Entropy\Console\Enum\ExitCode::ERROR;
     }
 }

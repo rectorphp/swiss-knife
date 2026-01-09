@@ -37,3 +37,8 @@ parameters:
         -
             identifier: argument.unresolvableType
             path: src/Command/GenerateSymfonyConfigBuildersCommand.php
+
+        # magic contract
+        -
+            identifier: public.method.unused
+            message: '#Public method "Rector\\SwissKnife\\(.*?)Command\:\:run\(\)" is never used#'

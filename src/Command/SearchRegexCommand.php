@@ -4,44 +4,30 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Entropy\Console\Enum\ExitCode;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
-final class SearchRegexCommand extends Command
+final class SearchRegexCommand implements \Entropy\Console\Contract\CommandInterface
 {
     public function __construct(
         private readonly SymfonyStyle $symfonyStyle,
     ) {
-        parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @param string $regex Code snippet to look in PHP files in the whole codebase
+     * @param string $projectDirectory Project directory
+     *
+     * @return ExitCode::*
+     */
+    public function run(string $regex, ?string $projectDirectory = null): int
     {
-        $this->setName('search-regex');
-
-        $this->addArgument(
-            'regex',
-            InputArgument::REQUIRED,
-            'Code snippet to look in PHP files in the whole codebase'
-        );
-
-        $this->addOption('project-directory', null, InputOption::VALUE_REQUIRED, 'Project directory', getcwd());
-
-        $this->setDescription('Search for regex in PHP files of the whole codebase');
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $regex = (string) $input->getArgument('regex');
-
-        $projectDirectory = (string) $input->getOption('project-directory');
+        if ($projectDirectory === null) {
+            $projectDirectory = getcwd();
+        }
 
         Assert::directory($projectDirectory);
 
@@ -82,6 +68,16 @@ final class SearchRegexCommand extends Command
         $this->symfonyStyle->newLine(2);
         $this->symfonyStyle->success(sprintf('Found %d cases in %d files', $foundCasesCount, count($markedFiles)));
 
-        return self::SUCCESS;
+        return \Entropy\Console\Enum\ExitCode::SUCCESS;
+    }
+
+    public function getName(): string
+    {
+        return 'search-regex';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Search for regex in PHP files of the whole codebase';
     }
 }

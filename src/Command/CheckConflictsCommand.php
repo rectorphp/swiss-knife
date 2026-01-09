@@ -6,13 +6,12 @@ namespace Rector\SwissKnife\Command;
 
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Git\ConflictResolver;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class CheckConflictsCommand extends Command
+final class CheckConflictsCommand implements \Entropy\Console\Contract\CommandInterface
 {
     public function __construct(
         private readonly ConflictResolver $conflictResolver,
@@ -21,7 +20,7 @@ final class CheckConflictsCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    private function configure(): void
     {
         $this->setName('check-conflicts');
 
@@ -29,7 +28,7 @@ final class CheckConflictsCommand extends Command
         $this->addArgument('sources', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to project');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    private function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var string[] $sources */
         $sources = (array) $input->getArgument('sources');
@@ -45,7 +44,7 @@ final class CheckConflictsCommand extends Command
             $message = sprintf('No conflicts found in %d files', count($fileInfos));
             $this->symfonyStyle->success($message);
 
-            return self::SUCCESS;
+            return \Entropy\Console\Enum\ExitCode::SUCCESS;
         }
 
         foreach ($conflictsCountByFilePath as $file => $conflictCount) {
@@ -53,6 +52,6 @@ final class CheckConflictsCommand extends Command
             $this->symfonyStyle->error($message);
         }
 
-        return self::FAILURE;
+        return \Entropy\Console\Enum\ExitCode::ERROR;
     }
 }

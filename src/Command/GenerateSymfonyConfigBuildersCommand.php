@@ -8,7 +8,6 @@ use Rector\SwissKnife\Enum\SymfonyExtensionClass;
 use ReflectionClass;
 use Symfony\Component\Config\Builder\ConfigBuilderGenerator;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -18,7 +17,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 /**
  * @see https://github.com/nelmio/alice/blob/v2.3.0/doc/complete-reference.md#php
  */
-final class GenerateSymfonyConfigBuildersCommand extends Command
+final class GenerateSymfonyConfigBuildersCommand implements \Entropy\Console\Contract\CommandInterface
 {
     /**
      * @var string[]
@@ -40,7 +39,7 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    private function configure(): void
     {
         $this->setName('generate-symfony-config-builders');
 
@@ -49,7 +48,7 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    private function execute(InputInterface $input, OutputInterface $output): int
     {
         // make sure the classes exist
         if (! class_exists(ConfigBuilderGenerator::class) || ! class_exists(ContainerBuilder::class)) {
@@ -57,7 +56,7 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
                 'This command requires symfony/config and symfony/dependency-injection 5.3+ to run. Update your dependencies or install them first.'
             );
 
-            return self::FAILURE;
+            return \Entropy\Console\Enum\ExitCode::ERROR;
         }
 
         $configBuilderGenerator = new ConfigBuilderGenerator(getcwd() . '/var/cache');
@@ -82,7 +81,7 @@ final class GenerateSymfonyConfigBuildersCommand extends Command
 
         $this->symfonyStyle->success('Done');
 
-        return self::SUCCESS;
+        return \Entropy\Console\Enum\ExitCode::SUCCESS;
     }
 
     /**
