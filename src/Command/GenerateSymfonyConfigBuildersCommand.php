@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
@@ -17,7 +19,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 /**
  * @see https://github.com/nelmio/alice/blob/v2.3.0/doc/complete-reference.md#php
  */
-final class GenerateSymfonyConfigBuildersCommand implements CommandInterface
+final readonly class GenerateSymfonyConfigBuildersCommand implements CommandInterface
 {
     /**
      * @var string[]
@@ -34,7 +36,7 @@ final class GenerateSymfonyConfigBuildersCommand implements CommandInterface
     ];
 
     public function __construct(
-        private readonly SymfonyStyle $symfonyStyle,
+        private SymfonyStyle $symfonyStyle,
     ) {
     }
 

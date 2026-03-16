@@ -14,7 +14,7 @@
         "symfony/console": "^6.4.24",
         "symfony/finder": "^7.4",
         "symfony/yaml": "^7.4",
-        "webmozart/assert": "^1.12"
+        "webmozart/assert": "^2.1"
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^13.0",

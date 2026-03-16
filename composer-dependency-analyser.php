@@ -14,8 +14,12 @@ return $config
     ->ignoreErrorsOnPackage('symfony/config', [ErrorType::DEV_DEPENDENCY_IN_PROD])
     ->ignoreErrorsOnPackage('symfony/dependency-injection', [ErrorType::DEV_DEPENDENCY_IN_PROD])
 
-    // test fixture
+    // test fixtures
     ->ignoreErrorsOnPath(
         __DIR__ . '/tests/EntityClassResolver/Fixture/Anything/SomeAttributeDocument.php',
+        [ErrorType::UNKNOWN_CLASS]
+    )
+    ->ignoreErrorsOnPath(
+        __DIR__ . '/tests/PhpParser/NodeVisitor/MockedClassNameCollectingNodeVisitor/Fixture',
         [ErrorType::UNKNOWN_CLASS]
     );
