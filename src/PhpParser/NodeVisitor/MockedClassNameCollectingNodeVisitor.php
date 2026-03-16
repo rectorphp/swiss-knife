@@ -40,6 +40,9 @@ final class MockedClassNameCollectingNodeVisitor extends NodeVisitorAbstract
             'mock', // https://github.com/mockery/mockery/blob/73a9714716f87510a7c2add9931884188e657541/library/Mockery.php#L475, https://github.com/laravel/framework/blob/4ca4a16772b2e89233b3606badefae34003e1538/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php#L69
             'partialMock', // https://github.com/laravel/framework/blob/4ca4a16772b2e89233b3606badefae34003e1538/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php#L81
             'spy', // https://github.com/mockery/mockery/blob/73a9714716f87510a7c2add9931884188e657541/library/Mockery.php#L675, https://github.com/laravel/framework/blob/4ca4a16772b2e89233b3606badefae34003e1538/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php#L93
+            'createStub', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/TestCase.php#L2262
+            'createStubForIntersectionOfInterfaces', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/TestCase.php#L2285
+            'createConfiguredStub', // https://github.com/sebastianbergmann/phpunit/blob/d72b735d34bbff2065cef80653cafbe31cb45ba0/src/Framework/TestCase.php#2312
         ];
         if (! in_array($methodName, $mockMethodNames, true)) {
             return null;
