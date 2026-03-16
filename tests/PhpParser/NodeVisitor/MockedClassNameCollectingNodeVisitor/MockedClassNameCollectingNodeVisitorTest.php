@@ -19,10 +19,10 @@ final class MockedClassNameCollectingNodeVisitorTest extends TestCase
     #[DataProvider('provideData')]
     public function test(string $filePath, array $expectedClassNames): void
     {
-        $visitor = new MockedClassNameCollectingNodeVisitor();
+        $mockedClassNameCollectingNodeVisitor = new MockedClassNameCollectingNodeVisitor();
 
         $nodeTraverser = new NodeTraverser();
-        $nodeTraverser->addVisitor($visitor);
+        $nodeTraverser->addVisitor($mockedClassNameCollectingNodeVisitor);
 
         $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $stmts = $parser->parse((string) file_get_contents($filePath));
@@ -30,7 +30,7 @@ final class MockedClassNameCollectingNodeVisitorTest extends TestCase
 
         $nodeTraverser->traverse($stmts);
 
-        $this->assertSame($expectedClassNames, $visitor->getMockedClassNames());
+        $this->assertSame($expectedClassNames, $mockedClassNameCollectingNodeVisitor->getMockedClassNames());
     }
 
     /**
