@@ -109,7 +109,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 
             return ExitCode::ERROR;
         }
-        
+
         $this->symfonyStyle->success(
             sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
         );
@@ -120,8 +120,11 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
     /**
      * @param ClassConstantFetchInterface[] $classConstantFetches
      */
-    private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches, bool $dryRun): VisibilityChangeStats
-    {
+    private function processFileInfo(
+        SplFileInfo $phpFileInfo,
+        array $classConstantFetches,
+        bool $dryRun
+    ): VisibilityChangeStats {
         $visibilityChangeStats = new VisibilityChangeStats();
 
         $classConstants = $this->classConstFinder->find($phpFileInfo->getRealPath());
@@ -143,7 +146,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
                 );
                 continue;
             }
-            
+
             // make private
             $changedFileContents = Strings::replace(
                 $phpFileInfo->getContents(),
