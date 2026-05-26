@@ -17,15 +17,15 @@
         "webmozart/assert": "^2.1"
     },
     "require-dev": {
-        "symplify/easy-coding-standard": "^13.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^12.5",
-        "symfony/config": "^6.4",
-        "rector/jack": "^0.5.1",
+        "rector/jack": "^1.0",
         "rector/rector": "^2.3",
         "shipmonk/composer-dependency-analyser": "^1.8",
+        "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",
+        "symplify/easy-coding-standard": "^13.0",
         "symplify/phpstan-extensions": "^12.0",
         "tomasvotruba/class-leak": "^2.1",
         "tomasvotruba/unused-public": "^2.2",
