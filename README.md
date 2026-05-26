@@ -267,8 +267,72 @@ That's it! Run this command once upon a time or run it in CI to eliminate traits
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 
+**Before** - one huge `config/config_dev.php` with many extensions in a single file:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->extension('framework', [
+        'secret' => '%env(APP_SECRET)%',
+        'test' => true,
+    ]);
+
+    $containerConfigurator->extension('doctrine', [
+        'dbal' => [
+            'url' => '%env(DATABASE_URL)%',
+        ],
+    ]);
+
+    $containerConfigurator->extension('monolog', [
+        'handlers' => [
+            'main' => [
+                'type' => 'stream',
+                'path' => '%kernel.logs_dir%/%kernel.environment%.log',
+            ],
+        ],
+    ]);
+};
+```
+
+Run the command:
+
 ```bash
 vendor/bin/swiss-knife split-config-per-package config/config_dev.php --output-dir config/packages/dev
+```
+
+**After** - the original config only imports the per-package files:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import(__DIR__ . '/packages/dev/*');
+};
+```
+
+And each extension lives in its own file, e.g. `config/packages/dev/doctrine.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+return static function (Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->extension('doctrine', [
+        'dbal' => [
+            'url' => '%env(DATABASE_URL)%',
+        ],
+    ]);
+};
 ```
 
 All the extensions will be extracted to separate files in `config/packages/dev` directory, making them much more readable.
@@ -291,6 +355,62 @@ The command will:
 * adjust the namespace and `Kernel` class in the templates to match your project (uses `App\Kernel`, `AppKernel`, or `Kernel`, whichever exists)
 
 Existing files are never overwritten, so the command is safe to re-run.
+
+The generated `ServiceContainerTest` boots the kernel and asserts every service can be instantiated:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Unit\Smoke;
+
+use Throwable;
+
+final class ServiceContainerTest extends AbstractContainerTestCase
+{
+    public function testServiceConstruction(): void
+    {
+        $serviceIds = self::$container->getServiceIds();
+
+        $checkedServiceCount = 0;
+
+        foreach ($serviceIds as $serviceId) {
+            if ($this->isDynamicService($serviceId)) {
+                continue;
+            }
+
+            try {
+                self::$container->get($serviceId);
+            } catch (Throwable $throwable) {
+                $this->fail(sprintf('Service "%s" could not be created because:%s%s', $serviceId, PHP_EOL, $throwable->getMessage()));
+            }
+
+            ++$checkedServiceCount;
+        }
+
+        // @todo update this number to match your service count
+        $this->assertSame(100000, $checkedServiceCount);
+    }
+
+    private function isDynamicService(string $serviceId): bool
+    {
+        if (str_contains($serviceId, 'session')) {
+            return true;
+        }
+
+        if (str_starts_with($serviceId, 'doctrine.')) {
+            return true;
+        }
+
+        return in_array(
+            $serviceId,
+            ['kernel', 'database_connection', 'event_dispatcher'],
+            true
+        );
+    }
+}
+```
 
 <br>
 
