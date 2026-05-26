@@ -1,25 +1,34 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\Command;
 
-use Entropy\Console\Contract\CommandInterface;
-use Entropy\Console\Enum\ExitCode;
+use SwissKnife202605\Entropy\Console\Contract\CommandInterface;
+use SwissKnife202605\Entropy\Console\Enum\ExitCode;
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
-
-final readonly class CheckCommentedCodeCommand implements CommandInterface
+use SwissKnife202605\Symfony\Component\Console\Style\SymfonyStyle;
+final class CheckCommentedCodeCommand implements CommandInterface
 {
-    private const int DEFAULT_LINE_LIMIT = 5;
-
-    public function __construct(
-        private CommentedCodeAnalyzer $commentedCodeAnalyzer,
-        private SymfonyStyle $symfonyStyle,
-    ) {
+    /**
+     * @readonly
+     * @var \Rector\SwissKnife\Comments\CommentedCodeAnalyzer
+     */
+    private $commentedCodeAnalyzer;
+    /**
+     * @readonly
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    /**
+     * @var int
+     */
+    private const DEFAULT_LINE_LIMIT = 5;
+    public function __construct(CommentedCodeAnalyzer $commentedCodeAnalyzer, SymfonyStyle $symfonyStyle)
+    {
+        $this->commentedCodeAnalyzer = $commentedCodeAnalyzer;
+        $this->symfonyStyle = $symfonyStyle;
     }
-
     /**
      * @param string[] $sources One or more paths to check
      * @param string[] $skipFiles File paths to skip
@@ -27,47 +36,37 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
      *
      * @return ExitCode::*
      */
-    public function run(array $sources, array $skipFiles = [], int $lineLimit = self::DEFAULT_LINE_LIMIT): int
+    public function run(array $sources, array $skipFiles = [], int $lineLimit = self::DEFAULT_LINE_LIMIT) : int
     {
         $phpFileInfos = PhpFilesFinder::find($sources, $skipFiles);
-
-        $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
+        $message = \sprintf('Analysing %d *.php files', \count($phpFileInfos));
         $this->symfonyStyle->note($message);
-
         $commentedLinesByFilePaths = [];
         foreach ($phpFileInfos as $phpFileInfo) {
             $commentedLines = $this->commentedCodeAnalyzer->process($phpFileInfo->getRealPath(), $lineLimit);
-
             if ($commentedLines === []) {
                 continue;
             }
-
             $commentedLinesByFilePaths[$phpFileInfo->getRealPath()] = $commentedLines;
         }
-
         if ($commentedLinesByFilePaths === []) {
             $this->symfonyStyle->success('No commented code found');
             return ExitCode::SUCCESS;
         }
-
         foreach ($commentedLinesByFilePaths as $filePath => $commentedLines) {
             foreach ($commentedLines as $commentedLine) {
                 $messageLine = ' * ' . $filePath . ':' . $commentedLine;
                 $this->symfonyStyle->writeln($messageLine);
             }
         }
-
         $this->symfonyStyle->error('Errors found');
-
         return ExitCode::ERROR;
     }
-
-    public function getName(): string
+    public function getName() : string
     {
         return 'check-commented-code';
     }
-
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return 'Checks code for commented snippets';
     }

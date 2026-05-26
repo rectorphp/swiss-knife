@@ -1,15 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace SwissKnife202605;
 
-use Entropy\Console\ConsoleApplication;
+use SwissKnife202605\Entropy\Console\ConsoleApplication;
 use Rector\SwissKnife\DependencyInjection\ContainerFactory;
-
 $scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
-if (file_exists($scoperAutoloadFilepath)) {
+if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
-
 // load scoped autoload just once, order matters
 $possibleAutoloadPaths = [
     // dependency
@@ -19,18 +18,14 @@ $possibleAutoloadPaths = [
     // monorepo
     __DIR__ . '/../../../vendor/autoload.php',
 ];
-
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
-    if (file_exists($possibleAutoloadPath)) {
+    if (\file_exists($possibleAutoloadPath)) {
         require_once $possibleAutoloadPath;
         break;
     }
 }
-
 $containerFactory = new ContainerFactory();
 $container = $containerFactory->create();
-
 $consoleApplication = $container->make(ConsoleApplication::class);
-
 $exitCode = $consoleApplication->run($argv);
 exit($exitCode);
