@@ -287,6 +287,25 @@ All the extensions will be extracted to separate files in `config/packages/dev` 
 
 <br>
 
+## 12. Generate Symfony Smoke Tests
+
+Cover your Symfony app with smoke tests in seconds. This command scans your `composer.json`, picks the matching test templates, and drops them under `tests/Unit/Smoke` (or your project's equivalent unit-tests directory).
+
+```bash
+vendor/bin/swiss-knife generate-symfony-smoke-tests
+```
+
+The command will:
+
+* detect your unit tests directory and create a `Smoke` sub-directory
+* generate a `ServiceContainerTest` that boots the kernel and instantiates every service to catch container misconfiguration early
+* add a shared `AbstractContainerTestCase` with a typed `getService()` helper
+* adjust the namespace and `Kernel` class in the templates to match your project (uses `App\Kernel`, `AppKernel`, or `Kernel`, whichever exists)
+
+Existing files are never overwritten, so the command is safe to re-run.
+
+<br>
+
 That's it!
 
 <br>
