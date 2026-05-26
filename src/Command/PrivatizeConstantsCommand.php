@@ -45,10 +45,15 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
      * @param string[] $sources One or more paths to check, include tests directory as well
      * @param string[] $excludedPaths Paths to exclude
      * @param bool $isDebug Debug output
+     * @param bool $dryRun Do no change anything, only list constants able to be privatized. If there are constants to privatize, it will exit with code 1. Useful for CI.
      * @return ExitCode::*
      */
-    public function run(array $sources, array $excludedPaths = [], bool $isDebug = false): int
-    {
+    public function run(
+        array $sources,
+        array $excludedPaths = [],
+        bool $isDebug = false,
+        bool $dryRun = false
+    ): int {
         $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
         if ($phpFileInfos === []) {
             $this->symfonyStyle->warning('No PHP files found in provided paths');
@@ -84,7 +89,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 
         // go file by file and deal with public + protected constants
         foreach ($phpFileInfos as $phpFileInfo) {
-            $currentVisibilityChangeStats = $this->processFileInfo($phpFileInfo, $classConstantFetches);
+            $currentVisibilityChangeStats = $this->processFileInfo($phpFileInfo, $classConstantFetches, $dryRun);
             $visibilityChangeStats->merge($currentVisibilityChangeStats);
         }
 
@@ -96,6 +101,15 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 
         $this->symfonyStyle->newLine(2);
 
+        // to make it fail in CI
+        if ($dryRun) {
+            $this->symfonyStyle->error(
+                sprintf('%d constants can be privatized', $visibilityChangeStats->getPrivateCount())
+            );
+
+            return ExitCode::ERROR;
+        }
+
         $this->symfonyStyle->success(
             sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
         );
@@ -106,8 +120,11 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
     /**
      * @param ClassConstantFetchInterface[] $classConstantFetches
      */
-    private function processFileInfo(SplFileInfo $phpFileInfo, array $classConstantFetches): VisibilityChangeStats
-    {
+    private function processFileInfo(
+        SplFileInfo $phpFileInfo,
+        array $classConstantFetches,
+        bool $dryRun
+    ): VisibilityChangeStats {
         $visibilityChangeStats = new VisibilityChangeStats();
 
         $classConstants = $this->classConstFinder->find($phpFileInfo->getRealPath());
@@ -118,6 +135,15 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
         foreach ($classConstants as $classConstant) {
             if ($this->isClassConstantUsedPublicly($classConstantFetches, $classConstant)) {
                 // keep it public
+                continue;
+            }
+
+            $visibilityChangeStats->countPrivate();
+
+            if ($dryRun) {
+                $this->symfonyStyle->writeln(
+                    sprintf('Constant "%s" could be changed to private', $classConstant->getConstantName())
+                );
                 continue;
             }
 
@@ -132,7 +158,6 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
             $this->symfonyStyle->writeln(
                 sprintf('Constant "%s" changed to private', $classConstant->getConstantName())
             );
-            $visibilityChangeStats->countPrivate();
         }
 
         return $visibilityChangeStats;
