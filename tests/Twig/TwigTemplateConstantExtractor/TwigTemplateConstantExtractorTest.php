@@ -28,7 +28,6 @@ final class TwigTemplateConstantExtractorTest extends AbstractTestCase
 
         $this->assertContainsOnlyInstancesOf(ClassConstantFetchInterface::class, $classConstantFetches);
 
-        /** @var ClassConstantFetchInterface $firstClassConstantFetch */
         $firstClassConstantFetch = $classConstantFetches[0];
 
         $this->assertSame(SomeTemplateUsedConstant::class, $firstClassConstantFetch->getClassName());
