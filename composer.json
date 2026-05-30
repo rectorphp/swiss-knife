@@ -7,7 +7,7 @@
     ],
     "require": {
         "php": ">=8.3",
-        "entropy/entropy": "^0.2.1",
+        "entropy/entropy": "^0.2.2",
         "nette/robot-loader": "^4.1",
         "nette/utils": "^4.1",
         "nikic/php-parser": "^5.7",
