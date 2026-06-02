@@ -20,11 +20,12 @@ final readonly class CheckConflictsCommand implements CommandInterface
 
     /**
      * @param string[] $sources One or more path to project
+     * @param string[] $exclude Skip files or directories by path
      * @return ExitCode::*
      */
-    public function run(array $sources): int
+    public function run(array $sources, array $exclude = []): int
     {
-        $fileInfos = FilesFinder::find($sources);
+        $fileInfos = FilesFinder::find($sources, $exclude);
 
         $filePaths = [];
         foreach ($fileInfos as $fileInfo) {

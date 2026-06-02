@@ -12,9 +12,10 @@ final class FilesFinder
 {
     /**
      * @param string[] $sources
+     * @param string[] $excludedPaths
      * @return SplFileInfo[]
      */
-    public static function find(array $sources): array
+    public static function find(array $sources, array $excludedPaths = []): array
     {
         $paths = [];
         foreach ($sources as $source) {
@@ -29,6 +30,27 @@ final class FilesFinder
             ->notPath('vendor')
             ->notPath('var/cache')
             ->sortByName();
+
+        if ($excludedPaths !== []) {
+            Assert::allString($excludedPaths);
+
+            // exclude paths, as notPath() does not work with absolute paths
+            $finder->filter(static function (SplFileInfo $splFileInfo) use ($excludedPaths): bool {
+                $realPath = $splFileInfo->getRealPath();
+
+                foreach ($excludedPaths as $excludedPath) {
+                    if (str_contains($realPath, $excludedPath)) {
+                        return false;
+                    }
+
+                    if (str_contains($excludedPath, '*') && fnmatch($excludedPath, $realPath)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+        }
 
         return iterator_to_array($finder->getIterator());
     }
