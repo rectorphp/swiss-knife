@@ -36,6 +36,12 @@ Add this command to CI to spot these:
 vendor/bin/swiss-knife check-conflicts .
 ```
 
+You can skip paths with the `--exclude` option:
+
+```bash
+vendor/bin/swiss-knife check-conflicts . --exclude vendor --exclude tests/fixtures
+```
+
 <br>
 
 ## 2. Detect Commented Code
