@@ -12,8 +12,8 @@
         "nette/utils": "^4.1",
         "nikic/php-parser": "^5.7",
         "symfony/console": "^6.4.24",
-        "symfony/finder": "^7.4",
-        "symfony/yaml": "^7.4",
+        "symfony/finder": "^7.4|^8.0",
+        "symfony/yaml": "^7.4|^8.0",
         "webmozart/assert": "^2.4"
     },
     "require-dev": {
@@ -27,7 +27,7 @@
         "symfony/dependency-injection": "^6.4",
         "symplify/easy-coding-standard": "^13.1",
         "symplify/phpstan-extensions": "^12.0",
-        "tomasvotruba/class-leak": "^2.1",
+        "tomasvotruba/class-leak": "^2.1|^3.0",
         "tomasvotruba/unused-public": "^2.2",
         "tracy/tracy": "^2.12"
     },
