@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser\Finder;
 
+use Entropy\Console\Output\OutputPrinter;
+use Entropy\Console\Output\ProgressBar;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**
@@ -21,7 +21,7 @@ final readonly class ClassConstantFetchFinder
 {
     public function __construct(
         private CachedPhpParser $cachedPhpParser,
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -36,7 +36,7 @@ final readonly class ClassConstantFetchFinder
 
         foreach ($phpFileInfos as $phpFileInfo) {
             if ($isDebug) {
-                $this->symfonyStyle->writeln('Processing ' . $phpFileInfo->getRealPath());
+                $this->outputPrinter->writeln('Processing ' . $phpFileInfo->getRealPath());
             }
 
             $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
@@ -46,7 +46,7 @@ final readonly class ClassConstantFetchFinder
             } catch (ShouldNotHappenException|NotImplementedYetException $exception) {
                 // render debug contents if verbose
                 if ($isDebug) {
-                    $this->symfonyStyle->error($exception->getMessage());
+                    $this->outputPrinter->error($exception->getMessage());
                 }
             }
 

@@ -6,13 +6,13 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class DumpEditorconfigCommand implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -30,14 +30,14 @@ final readonly class DumpEditorconfigCommand implements CommandInterface
     {
         $projectEditorconfigFilePath = getcwd() . '/.editorconfig';
         if (file_exists($projectEditorconfigFilePath)) {
-            $this->symfonyStyle->error('.editorconfig file already exists');
+            $this->outputPrinter->error('.editorconfig file already exists');
 
             return ExitCode::ERROR;
         }
 
         FileSystem::copy(__DIR__ . '/../../templates/.editorconfig', $projectEditorconfigFilePath);
 
-        $this->symfonyStyle->success('.editorconfig file was created');
+        $this->outputPrinter->success('.editorconfig file was created');
 
         return ExitCode::SUCCESS;
     }

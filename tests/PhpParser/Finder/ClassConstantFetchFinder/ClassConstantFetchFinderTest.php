@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstantFetchFinder;
 
+use Entropy\Console\Output\OutputColorizer;
+use Entropy\Console\Output\ProgressBar;
 use Override;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
@@ -12,8 +14,6 @@ use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
 use RuntimeException;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Output\NullOutput;
 
 final class ClassConstantFetchFinderTest extends AbstractTestCase
 {
@@ -53,7 +53,7 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
         );
 
         $directory = __DIR__ . '/Fixture/Error';
-        $progressBar = new ProgressBar(new NullOutput());
+        $progressBar = new ProgressBar(new OutputColorizer());
         $fileInfos = PhpFilesFinder::find([$directory]);
         $this->classConstantFetchFinder->find($fileInfos, $progressBar, false);
     }
@@ -63,7 +63,7 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
      */
     private function findInDirectory(string $directory): array
     {
-        $progressBar = new ProgressBar(new NullOutput());
+        $progressBar = new ProgressBar(new OutputColorizer());
         $fileInfos = PhpFilesFinder::find([$directory]);
 
         return $this->classConstantFetchFinder->find($fileInfos, $progressBar, false);

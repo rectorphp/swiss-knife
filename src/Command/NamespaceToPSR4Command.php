@@ -6,16 +6,16 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class NamespaceToPSR4Command implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -45,7 +45,7 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
             }
 
             // 2. incorrect namespace found
-            $this->symfonyStyle->note(sprintf(
+            $this->outputPrinter->writeln(sprintf(
                 'File "%s"%s fixed to expected namespace "%s"',
                 $fileInfo->getRelativePathname(),
                 PHP_EOL,
@@ -66,9 +66,9 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
         }
 
         if ($changedFilesCount === 0) {
-            $this->symfonyStyle->success(sprintf('All %d files have correct namespace', count($fileInfos)));
+            $this->outputPrinter->success(sprintf('All %d files have correct namespace', count($fileInfos)));
         } else {
-            $this->symfonyStyle->success(sprintf('Fixed %d files', $changedFilesCount));
+            $this->outputPrinter->success(sprintf('Fixed %d files', $changedFilesCount));
         }
 
         return ExitCode::SUCCESS;

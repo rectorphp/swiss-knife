@@ -6,15 +6,15 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Git\ConflictResolver;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class CheckConflictsCommand implements CommandInterface
 {
     public function __construct(
         private ConflictResolver $conflictResolver,
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -35,14 +35,14 @@ final readonly class CheckConflictsCommand implements CommandInterface
         $conflictsCountByFilePath = $this->conflictResolver->extractFromFileInfos($filePaths);
         if ($conflictsCountByFilePath === []) {
             $message = sprintf('No conflicts found in %d files', count($fileInfos));
-            $this->symfonyStyle->success($message);
+            $this->outputPrinter->success($message);
 
             return ExitCode::SUCCESS;
         }
 
         foreach ($conflictsCountByFilePath as $file => $conflictCount) {
             $message = sprintf('File "%s" contains %d unresolved conflicts', $file, $conflictCount);
-            $this->symfonyStyle->error($message);
+            $this->outputPrinter->error($message);
         }
 
         return ExitCode::ERROR;

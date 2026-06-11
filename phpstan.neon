@@ -8,6 +8,11 @@ parameters:
     treatPhpDocTypesAsCertain: false
     errorFormat: symplify
 
+    # see https://github.com/symplify/phpstan-rules#usage
+    symfonyReturnType: true
+    laravelReturnType: true
+    pathStrings: true
+
     excludePaths:
         - */Fixture/*
         - */Source/*
