@@ -6,13 +6,13 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Json;
 use Rector\SwissKnife\SmokeTestgen\FileSystem\TestsDirectoryResolver;
 use Rector\SwissKnife\SmokeTestgen\Templating\TemplateDecorator;
 use Rector\SwissKnife\SmokeTestgen\TestTemplateResolver;
 use Rector\SwissKnife\SmokeTestgen\Utils\TestPathResolver;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
 final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterface
@@ -21,7 +21,7 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
         private TestsDirectoryResolver $testsDirectoryResolver,
         private TestTemplateResolver $testTemplateResolver,
         private TemplateDecorator $templateDecorator,
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -40,24 +40,24 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
      */
     public function run(): int
     {
-        $this->symfonyStyle->writeln('<fg=green>Resolving directory for smoke tests</>');
+        $this->outputPrinter->writeln('<fg=green>Resolving directory for smoke tests</>');
 
         $smokeTestsDirectory = $this->testsDirectoryResolver->resolveSmokeUnitTestDirectory(getcwd());
-        $this->symfonyStyle->writeln(' * ' . $smokeTestsDirectory);
+        $this->outputPrinter->writeln(' * ' . $smokeTestsDirectory);
 
         $requirePackages = $this->resolveProjectRequiredPackageNames(getcwd());
         $testByPackageSubscribers = $this->testTemplateResolver->matchProjectPackages($requirePackages);
 
         if ($testByPackageSubscribers === []) {
-            $this->symfonyStyle->warning(
+            $this->outputPrinter->warning(
                 'No test templates found for the required packages. Make sure you project uses Composer to manage version and has Symfony/Doctrine packages listed in "require" section'
             );
 
             return ExitCode::ERROR;
         }
 
-        $this->symfonyStyle->newLine();
-        $this->symfonyStyle->writeln(sprintf(
+        $this->outputPrinter->newline();
+        $this->outputPrinter->writeln(sprintf(
             'Found <fg=yellow>%d smoke test%s</> that might come handy',
             count($testByPackageSubscribers),
             count($testByPackageSubscribers) > 1 ? 's' : ''
@@ -69,7 +69,7 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
             $projectTestFilePath = TestPathResolver::resolve($test, $smokeTestsDirectory);
 
             if (file_exists($projectTestFilePath)) {
-                $this->symfonyStyle->writeln(
+                $this->outputPrinter->writeln(
                     sprintf('File <fg=green>%s</> already exists, skipping', $projectTestFilePath)
                 );
                 continue;
@@ -80,13 +80,13 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
 
             FileSystem::write($projectTestFilePath, $templateContents);
 
-            $this->symfonyStyle->writeln(sprintf('Generated new test file %s', $projectTestFilePath));
+            $this->outputPrinter->writeln(sprintf('Generated new test file %s', $projectTestFilePath));
 
             ++$generatedTestCount;
         }
 
         if ($generatedTestCount === 0) {
-            $this->symfonyStyle->success('No new test files were generated. All required tests already exist.');
+            $this->outputPrinter->success('No new test files were generated. All required tests already exist.');
             return ExitCode::SUCCESS;
         }
 
@@ -101,14 +101,14 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
             FileSystem::write($projectTestCaseFilePath, $templateContents);
         }
 
-        $this->symfonyStyle->success(sprintf(
+        $this->outputPrinter->success(sprintf(
             'Generated %d new test file%s in "%s"',
             $generatedTestCount,
             $generatedTestCount > 1 ? 's' : '',
             $smokeTestsDirectory
         ));
 
-        $this->symfonyStyle->newLine();
+        $this->outputPrinter->newline();
 
         return ExitCode::SUCCESS;
     }

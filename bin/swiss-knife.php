@@ -33,9 +33,11 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 if (! defined('T_FN')) {
     define('T_FN', 5025);
 }
+
 if (! defined('T_COALESCE_EQUAL')) {
     define('T_COALESCE_EQUAL', 5030);
 }
+
 if (! defined('T_BAD_CHARACTER')) {
     define('T_BAD_CHARACTER', 5035);
 }

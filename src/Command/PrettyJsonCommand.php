@@ -6,16 +6,16 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Json;
 use Rector\SwissKnife\FileSystem\JsonAnalyzer;
 use Rector\SwissKnife\Finder\FilesFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class PrettyJsonCommand implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
         private JsonAnalyzer $jsonAnalyzer,
     ) {
     }
@@ -31,12 +31,12 @@ final readonly class PrettyJsonCommand implements CommandInterface
         $jsonFileInfos = FilesFinder::findJsonFiles($sources);
 
         if ($jsonFileInfos === []) {
-            $this->symfonyStyle->error('No *.json files found');
+            $this->outputPrinter->error('No *.json files found');
             return ExitCode::ERROR;
         }
 
         $message = sprintf('Analysing %d *.json files', count($jsonFileInfos));
-        $this->symfonyStyle->note($message);
+        $this->outputPrinter->yellow($message);
 
         $printedFilePaths = [];
 
@@ -44,7 +44,7 @@ final readonly class PrettyJsonCommand implements CommandInterface
         foreach ($jsonFileInfos as $jsonFileInfo) {
             $jsonContent = FileSystem::read($jsonFileInfo->getRealPath());
             if ($this->jsonAnalyzer->isPrettyPrinted($jsonContent)) {
-                $this->symfonyStyle->writeln(
+                $this->outputPrinter->writeln(
                     sprintf('File "%s" is already pretty', $jsonFileInfo->getRelativePathname())
                 );
                 continue;
@@ -69,8 +69,8 @@ final readonly class PrettyJsonCommand implements CommandInterface
             $dryRun ? 'would be changed' : 'changed'
         );
 
-        $this->symfonyStyle->success($successMessage);
-        $this->symfonyStyle->listing($printedFilePaths);
+        $this->outputPrinter->success($successMessage);
+        $this->outputPrinter->listing($printedFilePaths);
 
         return ExitCode::SUCCESS;
     }
