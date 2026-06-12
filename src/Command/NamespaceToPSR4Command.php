@@ -1,113 +1,85 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\Command;
 
-use Entropy\Console\Contract\CommandInterface;
-use Entropy\Console\Enum\ExitCode;
-use Entropy\Console\Output\OutputPrinter;
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
-
-final readonly class NamespaceToPSR4Command implements CommandInterface
+use SwissKnife202606\Entropy\Console\Contract\CommandInterface;
+use SwissKnife202606\Entropy\Console\Enum\ExitCode;
+use SwissKnife202606\Entropy\Console\Output\OutputPrinter;
+use SwissKnife202606\Nette\Utils\FileSystem;
+use SwissKnife202606\Nette\Utils\Strings;
+use SwissKnife202606\Symfony\Component\Finder\Finder;
+use SwissKnife202606\Symfony\Component\Finder\SplFileInfo;
+final class NamespaceToPSR4Command implements CommandInterface
 {
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     * @var \Entropy\Console\Output\OutputPrinter
+     */
+    private $outputPrinter;
+    public function __construct(OutputPrinter $outputPrinter)
+    {
+        $this->outputPrinter = $outputPrinter;
     }
-
     /**
      * @param string $path Single directory path to ensure namespace matches, e.g. "tests"
      * @param string $namespaceRoot Namespace root for files in provided path, e.g. "App\\Tests"
      *
      * @return ExitCode::*
      */
-    public function run(string $path, string $namespaceRoot): int
+    public function run(string $path, string $namespaceRoot) : int
     {
-        $namespaceRoot = rtrim($namespaceRoot, '\\');
-        $namespaceRoot = str_replace('\\\\', '\\', $namespaceRoot);
-
+        $namespaceRoot = \rtrim($namespaceRoot, '\\');
+        $namespaceRoot = \str_replace('\\\\', '\\', $namespaceRoot);
         $fileInfos = $this->findFilesInPath($path);
-
         $changedFilesCount = 0;
-
         /** @var SplFileInfo $fileInfo */
         foreach ($fileInfos as $fileInfo) {
             $expectedNamespace = $this->resolveExpectedNamespace($namespaceRoot, $fileInfo);
             $expectedNamespaceLine = 'namespace ' . $expectedNamespace . ';';
-
             // 1. got the correct namespace
-            if (\str_contains($fileInfo->getContents(), $expectedNamespaceLine)) {
+            if (\strpos($fileInfo->getContents(), $expectedNamespaceLine) !== \false) {
                 continue;
             }
-
             // 2. incorrect namespace found
-            $this->outputPrinter->yellow(sprintf(
-                'File "%s"%s fixed to expected namespace "%s"',
-                $fileInfo->getRelativePathname(),
-                PHP_EOL,
-                $expectedNamespace
-            ));
-
+            $this->outputPrinter->yellow(\sprintf('File "%s"%s fixed to expected namespace "%s"', $fileInfo->getRelativePathname(), \PHP_EOL, $expectedNamespace));
             // 3. replace
-            $correctedContents = Strings::replace(
-                $fileInfo->getContents(),
-                '#namespace (.*?);#',
-                $expectedNamespaceLine
-            );
-
+            $correctedContents = Strings::replace($fileInfo->getContents(), '#namespace (.*?);#', $expectedNamespaceLine);
             // 4. print file
             FileSystem::write($fileInfo->getRealPath(), $correctedContents, null);
-
             ++$changedFilesCount;
         }
-
         if ($changedFilesCount === 0) {
-            $this->outputPrinter->success(sprintf('All %d files have correct namespace', count($fileInfos)));
+            $this->outputPrinter->success(\sprintf('All %d files have correct namespace', \count($fileInfos)));
         } else {
-            $this->outputPrinter->success(sprintf('Fixed %d files', $changedFilesCount));
+            $this->outputPrinter->success(\sprintf('Fixed %d files', $changedFilesCount));
         }
-
         return ExitCode::SUCCESS;
     }
-
-    public function getName(): string
+    public function getName() : string
     {
         return 'namespace-to-psr-4';
     }
-
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return 'Change namespace in your PHP files to match PSR-4 root';
     }
-
     /**
      * @return SplFileInfo[]
      */
-    private function findFilesInPath(string $path): array
+    private function findFilesInPath(string $path) : array
     {
-        $finder = Finder::create()
-            ->files()
-            ->in([$path])
-            ->name('*.php')
-            ->sortByName()
-            ->filter(static fn (SplFileInfo $fileInfo): bool =>
-                // filter classes
-                str_contains($fileInfo->getContents(), 'class '));
-
-        return iterator_to_array($finder->getIterator());
+        $finder = Finder::create()->files()->in([$path])->name('*.php')->sortByName()->filter(static function (SplFileInfo $fileInfo) : bool {
+            return \strpos($fileInfo->getContents(), 'class ') !== \false;
+        });
+        return \iterator_to_array($finder->getIterator());
     }
-
-    private function resolveExpectedNamespace(string $namespaceRoot, SplFileInfo $fileInfo): string
+    private function resolveExpectedNamespace(string $namespaceRoot, SplFileInfo $fileInfo) : string
     {
-        $relativePathNamespace = str_replace('/', '\\', $fileInfo->getRelativePath());
+        $relativePathNamespace = \str_replace('/', '\\', $fileInfo->getRelativePath());
         if ($relativePathNamespace === '') {
             return $namespaceRoot;
         }
-
         return $namespaceRoot . '\\' . $relativePathNamespace;
     }
 }
