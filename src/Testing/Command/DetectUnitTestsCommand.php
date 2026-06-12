@@ -6,10 +6,10 @@ namespace Rector\SwissKnife\Testing\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
 use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
 final readonly class DetectUnitTestsCommand implements CommandInterface
@@ -18,7 +18,7 @@ final readonly class DetectUnitTestsCommand implements CommandInterface
 
     public function __construct(
         private PHPUnitXmlPrinter $phpunitXmlPrinter,
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
         private UnitTestFilePathsFinder $unitTestFilePathsFinder,
     ) {
     }
@@ -33,7 +33,7 @@ final readonly class DetectUnitTestsCommand implements CommandInterface
         $unitTestCasesClassesToFilePaths = $this->unitTestFilePathsFinder->findInDirectories($sources);
 
         if ($unitTestCasesClassesToFilePaths === []) {
-            $this->symfonyStyle->note('No unit tests found in provided paths');
+            $this->outputPrinter->yellow('No unit tests found in provided paths');
 
             return ExitCode::SUCCESS;
         }
@@ -48,7 +48,7 @@ final readonly class DetectUnitTestsCommand implements CommandInterface
             self::OUTPUT_FILENAME,
         );
 
-        $this->symfonyStyle->success($successMessage);
+        $this->outputPrinter->success($successMessage);
 
         return ExitCode::SUCCESS;
     }

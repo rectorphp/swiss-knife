@@ -6,13 +6,13 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\Traits\TraitSpotter;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class SpotLazyTraitsCommand implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
         private TraitSpotter $traitSpotter,
     ) {
     }
@@ -24,32 +24,32 @@ final readonly class SpotLazyTraitsCommand implements CommandInterface
      */
     public function run(array $sources, int $maxUsed = 2): int
     {
-        $this->symfonyStyle->title('Looking for trait definitions');
+        $this->outputPrinter->title('Looking for trait definitions');
         $traitSpottingResult = $this->traitSpotter->analyse($sources);
 
         if ($traitSpottingResult->getTraitCount() === 0) {
-            $this->symfonyStyle->success('No traits were found in your project, nothing to worry about');
+            $this->outputPrinter->success('No traits were found in your project, nothing to worry about');
 
             return ExitCode::SUCCESS;
         }
 
-        $this->symfonyStyle->writeln(
+        $this->outputPrinter->writeln(
             sprintf(
                 'Found %d trait%s in the whole project',
                 $traitSpottingResult->getTraitCount(),
                 $traitSpottingResult->getTraitCount() === 1 ? '' : 's'
             )
         );
-        $this->symfonyStyle->listing($traitSpottingResult->getTraitFilePaths());
+        $this->outputPrinter->listing($traitSpottingResult->getTraitFilePaths());
 
-        $this->symfonyStyle->newLine();
+        $this->outputPrinter->newline();
 
-        $this->symfonyStyle->title(sprintf('Looking for traits used less than %d-times', $maxUsed));
+        $this->outputPrinter->title(sprintf('Looking for traits used less than %d-times', $maxUsed));
 
         $leastUsedTraitsMetadatas = $traitSpottingResult->getTraitMaximumUsedTimes($maxUsed);
 
         foreach ($leastUsedTraitsMetadatas as $leastUsedTraitMetadata) {
-            $this->symfonyStyle->writeln(sprintf(
+            $this->outputPrinter->writeln(sprintf(
                 'Trait "%s" (%d lines) is used only in %d file%s',
                 $leastUsedTraitMetadata->getShortTraitName(),
                 $leastUsedTraitMetadata->getLineCount(),
@@ -57,11 +57,11 @@ final readonly class SpotLazyTraitsCommand implements CommandInterface
                 $leastUsedTraitMetadata->getUsedInCount() === 1 ? '' : 's'
             ));
 
-            $this->symfonyStyle->listing($leastUsedTraitMetadata->getUsedIn());
-            $this->symfonyStyle->newLine();
+            $this->outputPrinter->listing($leastUsedTraitMetadata->getUsedIn());
+            $this->outputPrinter->newline();
         }
 
-        $this->symfonyStyle->warning(sprintf(
+        $this->outputPrinter->warning(sprintf(
             'Inline these traits or refactor them to a service if meaningful.%sChange "--max-used" to different number to get more result',
             PHP_EOL
         ));

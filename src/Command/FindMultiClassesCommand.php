@@ -6,16 +6,16 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class FindMultiClassesCommand implements CommandInterface
 {
     public function __construct(
         private MultipleClassInOneFileFinder $multipleClassInOneFileFinder,
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -31,7 +31,7 @@ final readonly class FindMultiClassesCommand implements CommandInterface
 
         $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($sources, $excludePaths);
         if ($multipleClassesByFile === []) {
-            $this->symfonyStyle->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
+            $this->outputPrinter->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
 
             return ExitCode::SUCCESS;
         }
@@ -41,8 +41,8 @@ final readonly class FindMultiClassesCommand implements CommandInterface
             $relativeFilePath = PathHelper::relativeToCwd($filePath);
 
             $message = sprintf('File "%s" contains %d classes', $relativeFilePath, count($classes));
-            $this->symfonyStyle->section($message);
-            $this->symfonyStyle->listing($classes);
+            $this->outputPrinter->section($message);
+            $this->outputPrinter->listing($classes);
         }
 
         return ExitCode::ERROR;

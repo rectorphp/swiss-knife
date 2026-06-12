@@ -6,9 +6,9 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 final readonly class CheckCommentedCodeCommand implements CommandInterface
 {
@@ -16,7 +16,7 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
 
     public function __construct(
         private CommentedCodeAnalyzer $commentedCodeAnalyzer,
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -32,7 +32,7 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
         $phpFileInfos = PhpFilesFinder::find($sources, $skipFiles);
 
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
-        $this->symfonyStyle->note($message);
+        $this->outputPrinter->yellow($message);
 
         $commentedLinesByFilePaths = [];
         foreach ($phpFileInfos as $phpFileInfo) {
@@ -46,18 +46,18 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
         }
 
         if ($commentedLinesByFilePaths === []) {
-            $this->symfonyStyle->success('No commented code found');
+            $this->outputPrinter->success('No commented code found');
             return ExitCode::SUCCESS;
         }
 
         foreach ($commentedLinesByFilePaths as $filePath => $commentedLines) {
             foreach ($commentedLines as $commentedLine) {
                 $messageLine = ' * ' . $filePath . ':' . $commentedLine;
-                $this->symfonyStyle->writeln($messageLine);
+                $this->outputPrinter->writeln($messageLine);
             }
         }
 
-        $this->symfonyStyle->error('Errors found');
+        $this->outputPrinter->error('Errors found');
 
         return ExitCode::ERROR;
     }

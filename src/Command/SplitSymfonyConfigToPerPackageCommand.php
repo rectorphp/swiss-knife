@@ -6,6 +6,7 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -18,7 +19,6 @@ use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\NodeFactory\SplitConfigClosureFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\AddImportConfigMethodCallNodeVisitor;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ExtractSymfonyExtensionCallNodeVisitor;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
 final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
@@ -26,7 +26,7 @@ final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInt
     private Standard $printerStandard;
 
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
         private SplitConfigClosureFactory $splitConfigClosureFactory,
     ) {
         $this->printerStandard = new Standard();
@@ -48,7 +48,7 @@ final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInt
         $symfonyExtensionMethodCalls = $this->extractSymfonyExtensionMethodCalls($stmts);
 
         if ($symfonyExtensionMethodCalls === []) {
-            $this->symfonyStyle->warning('No extension() method calls found');
+            $this->outputPrinter->warning('No extension() method calls found');
 
             return ExitCode::SUCCESS;
         }

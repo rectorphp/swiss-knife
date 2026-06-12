@@ -6,6 +6,9 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputColorizer;
+use Entropy\Console\Output\OutputPrinter;
+use Entropy\Console\Output\ProgressBar;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
@@ -17,13 +20,13 @@ use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
 use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class PrivatizeConstantsCommand implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
+        private OutputColorizer $outputColorizer,
         private ClassConstantFetchFinder $classConstantFetchFinder,
         private ClassConstFinder $classConstFinder,
         private TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
@@ -56,14 +59,16 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
     ): int {
         $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
         if ($phpFileInfos === []) {
-            $this->symfonyStyle->warning('No PHP files found in provided paths');
+            $this->outputPrinter->warning('No PHP files found in provided paths');
 
             return ExitCode::SUCCESS;
         }
 
-        $this->symfonyStyle->title('Finding class const fetches...');
+        $this->outputPrinter->title('Finding class const fetches...');
 
-        $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
+        $progressBar = new ProgressBar($this->outputColorizer);
+        $progressBar->start(count($phpFileInfos));
+
         $phpClassConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar, $isDebug);
 
         // find usage in twig files
@@ -76,14 +81,16 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
             $yamlClassConstantFetches
         );
 
-        $this->symfonyStyle->newLine(2);
-        $this->symfonyStyle->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
-        $this->symfonyStyle->success(sprintf('Found %d constants in Twig templates', count($twigClassConstantFetches)));
-        $this->symfonyStyle->success(sprintf('Found %d constants in YAML configs', count($yamlClassConstantFetches)));
+        $this->outputPrinter->newline(2);
+        $this->outputPrinter->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
+        $this->outputPrinter->success(
+            sprintf('Found %d constants in Twig templates', count($twigClassConstantFetches))
+        );
+        $this->outputPrinter->success(sprintf('Found %d constants in YAML configs', count($yamlClassConstantFetches)));
 
-        $this->symfonyStyle->newLine(2);
+        $this->outputPrinter->newline(2);
 
-        $this->symfonyStyle->title('Changing class constant visibility based on use...');
+        $this->outputPrinter->title('Changing class constant visibility based on use...');
 
         $visibilityChangeStats = new VisibilityChangeStats();
 
@@ -94,23 +101,23 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
         }
 
         if (! $visibilityChangeStats->hasAnyChange()) {
-            $this->symfonyStyle->warning('No constants were privatized');
+            $this->outputPrinter->warning('No constants were privatized');
 
             return ExitCode::SUCCESS;
         }
 
-        $this->symfonyStyle->newLine(2);
+        $this->outputPrinter->newline(2);
 
         // to make it fail in CI
         if ($dryRun) {
-            $this->symfonyStyle->error(
+            $this->outputPrinter->error(
                 sprintf('%d constants can be privatized', $visibilityChangeStats->getPrivateCount())
             );
 
             return ExitCode::ERROR;
         }
 
-        $this->symfonyStyle->success(
+        $this->outputPrinter->success(
             sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
         );
 
@@ -141,7 +148,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
             $visibilityChangeStats->countPrivate();
 
             if ($dryRun) {
-                $this->symfonyStyle->writeln(
+                $this->outputPrinter->writeln(
                     sprintf('Constant "%s" could be changed to private', $classConstant->getConstantName())
                 );
                 continue;
@@ -155,7 +162,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
             );
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents, null);
 
-            $this->symfonyStyle->writeln(
+            $this->outputPrinter->writeln(
                 sprintf('Constant "%s" changed to private', $classConstant->getConstantName())
             );
         }

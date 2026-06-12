@@ -6,15 +6,18 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputColorizer;
+use Entropy\Console\Output\OutputPrinter;
+use Entropy\Console\Output\ProgressBar;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
 
 final readonly class SearchRegexCommand implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
+        private OutputColorizer $outputColorizer,
     ) {
     }
 
@@ -35,15 +38,16 @@ final readonly class SearchRegexCommand implements CommandInterface
         $phpFileInfos = PhpFilesFinder::find([$projectDirectory]);
 
         $message = sprintf('Going through %d *.php files', count($phpFileInfos));
-        $this->symfonyStyle->writeln($message);
+        $this->outputPrinter->writeln($message);
 
-        $this->symfonyStyle->writeln('Searching for regex: ' . $regex);
-        $this->symfonyStyle->newLine();
+        $this->outputPrinter->writeln('Searching for regex: ' . $regex);
+        $this->outputPrinter->newline();
 
         $foundCasesCount = 0;
         $markedFiles = [];
 
-        $progressBar = $this->symfonyStyle->createProgressBar(count($phpFileInfos));
+        $progressBar = new ProgressBar($this->outputColorizer);
+        $progressBar->start(count($phpFileInfos));
 
         foreach ($phpFileInfos as $phpFileInfo) {
             $matches = Strings::matchAll($phpFileInfo->getContents(), $regex);
@@ -59,15 +63,15 @@ final readonly class SearchRegexCommand implements CommandInterface
         }
 
         $progressBar->finish();
-        $this->symfonyStyle->newLine(2);
+        $this->outputPrinter->newline(2);
 
         ksort($markedFiles);
         foreach ($markedFiles as $filePath => $count) {
-            $this->symfonyStyle->writeln(sprintf(' * %s: %d', $filePath, $count));
+            $this->outputPrinter->writeln(sprintf(' * %s: %d', $filePath, $count));
         }
 
-        $this->symfonyStyle->newLine(2);
-        $this->symfonyStyle->success(sprintf('Found %d cases in %d files', $foundCasesCount, count($markedFiles)));
+        $this->outputPrinter->newline(2);
+        $this->outputPrinter->success(sprintf('Found %d cases in %d files', $foundCasesCount, count($markedFiles)));
 
         return ExitCode::SUCCESS;
     }

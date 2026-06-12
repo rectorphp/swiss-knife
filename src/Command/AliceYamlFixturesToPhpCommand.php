@@ -6,12 +6,12 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
+use Entropy\Console\Output\OutputPrinter;
 use Nette\Utils\FileSystem;
 use PhpParser\BuilderHelpers;
 use PhpParser\Node\Stmt\Return_;
 use PhpParser\PrettyPrinter\Standard;
 use Rector\SwissKnife\Finder\FilesFinder;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -20,7 +20,7 @@ use Symfony\Component\Yaml\Yaml;
 final readonly class AliceYamlFixturesToPhpCommand implements CommandInterface
 {
     public function __construct(
-        private SymfonyStyle $symfonyStyle,
+        private OutputPrinter $outputPrinter,
     ) {
     }
 
@@ -53,12 +53,12 @@ final readonly class AliceYamlFixturesToPhpCommand implements CommandInterface
             // remove YAML file
             unlink($yamlFileInfo->getRealPath());
 
-            $this->symfonyStyle->writeln('[DELETED] ' . $yamlFileInfo->getRelativePathname());
-            $this->symfonyStyle->writeln('[ADDED] ' . $phpFilePath);
-            $this->symfonyStyle->newLine();
+            $this->outputPrinter->writeln('[DELETED] ' . $yamlFileInfo->getRelativePathname());
+            $this->outputPrinter->writeln('[ADDED] ' . $phpFilePath);
+            $this->outputPrinter->newline();
         }
 
-        $this->symfonyStyle->success(
+        $this->outputPrinter->success(
             sprintf('Successfully converted %d Alice YAML fixtures to PHP', count($yamlFileInfos))
         );
 
