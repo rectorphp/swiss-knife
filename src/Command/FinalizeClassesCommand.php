@@ -64,7 +64,7 @@ final readonly class FinalizeClassesCommand implements CommandInterface
         }
 
         $progressClosure = function () use ($noProgress, $progressBar): void {
-            if ($noProgress || !$progressBar instanceof ProgressBar) {
+            if ($noProgress || ! $progressBar instanceof ProgressBar) {
                 return;
             }
 
