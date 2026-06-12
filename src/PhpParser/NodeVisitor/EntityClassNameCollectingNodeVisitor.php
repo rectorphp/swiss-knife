@@ -35,7 +35,8 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         }
 
         // must be named
-        if (! $node->namespacedName instanceof Name) {
+        $namespacedName = $node->namespacedName ?? null;
+        if (! $namespacedName instanceof Name) {
             return null;
         }
 

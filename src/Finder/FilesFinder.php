@@ -90,14 +90,16 @@ final class FilesFinder
             }
         }
 
-        $jsonFileFinder = Finder::create()
-            ->files()
-            ->in($directories)
-            ->name('*.json')
-            ->sortByName();
+        if ($directories !== []) {
+            $jsonFileFinder = Finder::create()
+                ->files()
+                ->in($directories)
+                ->name('*.json')
+                ->sortByName();
 
-        foreach ($jsonFileFinder->getIterator() as $fileInfo) {
-            $jsonFileInfos[] = $fileInfo;
+            foreach ($jsonFileFinder->getIterator() as $fileInfo) {
+                $jsonFileInfos[] = $fileInfo;
+            }
         }
 
         return $jsonFileInfos;

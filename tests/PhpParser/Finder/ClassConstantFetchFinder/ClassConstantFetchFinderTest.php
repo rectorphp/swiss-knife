@@ -13,6 +13,8 @@ use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
+use Rector\SwissKnife\ValueObject\ClassConstantFetch\ParentClassConstantFetch;
+use Rector\SwissKnife\ValueObject\ClassConstantFetch\StaticClassConstantFetch;
 use RuntimeException;
 
 final class ClassConstantFetchFinderTest extends AbstractTestCase
@@ -45,6 +47,18 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
         $this->assertInstanceOf(ExternalClassAccessConstantFetch::class, $secondClassConstantFetch);
     }
 
+    public function testParentAndStaticFetches(): void
+    {
+        require_once __DIR__ . '/Fixture/ParentAndStatic/ParentClassWithConstant.php';
+
+        $classConstantFetches = $this->findInDirectory(__DIR__ . '/Fixture/ParentAndStatic');
+
+        $fetchTypes = array_map(static fn ($fetch) => $fetch::class, $classConstantFetches);
+
+        $this->assertContains(ParentClassConstantFetch::class, $fetchTypes);
+        $this->assertContains(StaticClassConstantFetch::class, $fetchTypes);
+    }
+
     public function testParseError(): void
     {
         $this->expectException(RuntimeException::class);
@@ -61,10 +75,17 @@ final class ClassConstantFetchFinderTest extends AbstractTestCase
     /**
      * @return ClassConstantFetchInterface[]
      */
-    private function findInDirectory(string $directory): array
+    private function findInDirectory(string $directory, ?string $fileName = null): array
     {
         $progressBar = new ProgressBar(new OutputColorizer());
         $fileInfos = PhpFilesFinder::find([$directory]);
+
+        if ($fileName !== null) {
+            $fileInfos = array_values(array_filter(
+                $fileInfos,
+                static fn ($fileInfo) => str_ends_with($fileInfo->getRealPath(), $fileName)
+            ));
+        }
 
         return $this->classConstantFetchFinder->find($fileInfos, $progressBar, false);
     }
