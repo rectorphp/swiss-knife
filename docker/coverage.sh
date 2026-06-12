@@ -5,4 +5,4 @@ cd "$(dirname "$0")/.."
 source docker/common.sh
 
 install_dependencies
-docker compose run --rm php vendor/bin/phpunit --coverage-text --coverage-filter=src "$@"
+docker compose run --rm php vendor/bin/phpunit --configuration phpunit.coverage.xml "$@"
