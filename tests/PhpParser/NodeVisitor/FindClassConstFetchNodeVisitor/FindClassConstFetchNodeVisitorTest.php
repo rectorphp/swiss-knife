@@ -93,6 +93,8 @@ final class User
 }
 PHP;
         $stmts = $parser->parse($code);
+        $this->assertNotNull($stmts);
+
         $nodeTraverser->traverse($stmts);
     }
 }

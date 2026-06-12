@@ -17,6 +17,7 @@ final class MockWireErrorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Class "NonExistingClass" used in');
 
+        /** @phpstan-ignore argument.type (intentionally invalid class name) */
         MockWire::create('NonExistingClass', [new \stdClass()]);
     }
 
@@ -25,6 +26,7 @@ final class MockWireErrorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('All constructor dependencies must be objects');
 
+        /** @phpstan-ignore argument.type (intentionally non-object dependency) */
         MockWire::create(ClassWithConstructorDependencies::class, ['not-an-object']);
     }
 

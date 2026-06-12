@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\PhpParser\NodeVisitor;
 
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Scalar\String_;
@@ -20,12 +21,12 @@ final class ExtractSymfonyExtensionCallNodeVisitorTest extends TestCase
         $extensionCall = new Expression(new MethodCall(
             new Variable('containerConfigurator'),
             new Identifier('extension'),
-            [new String_('framework')]
+            [new Arg(new String_('framework'))]
         ));
         $otherCall = new Expression(new MethodCall(
             new Variable('containerConfigurator'),
             new Identifier('import'),
-            [new String_('services.php')]
+            [new Arg(new String_('services.php'))]
         ));
 
         $extractSymfonyExtensionCallNodeVisitor = new ExtractSymfonyExtensionCallNodeVisitor();

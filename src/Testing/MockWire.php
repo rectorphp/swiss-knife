@@ -11,6 +11,7 @@ use ReflectionClass;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
+use Webmozart\Assert\Assert;
 
 /**
  * @api used in public
@@ -114,6 +115,9 @@ final class MockWire
 
         $phpunitMocker = new PHPUnitMocker('mock');
 
-        return $phpunitMocker->create($reflectionParameter->getType()->getName());
+        $parameterClassName = $reflectionParameter->getType()->getName();
+        Assert::classExists($parameterClassName);
+
+        return $phpunitMocker->create($parameterClassName);
     }
 }

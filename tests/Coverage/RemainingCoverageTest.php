@@ -191,14 +191,12 @@ PHP,
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $visitorWithoutNameResolver = new EntityClassNameCollectingNodeVisitor();
         $nodeTraverserWithoutResolver = new NodeTraverser();
         $nodeTraverserWithoutResolver->addVisitor($visitorWithoutNameResolver);
-        $nodeTraverserWithoutResolver->traverse($parser->parse('<?php class GlobalClassWithoutNamespace {}'));
+        $nodeTraverserWithoutResolver->traverse($this->parseCode('<?php class GlobalClassWithoutNamespace {}'));
 
-        $docClass = $parser->parse('<?php namespace WithDoc; /** Plain comment */ final class PlainDocClass {}');
-        $nodeTraverser->traverse($docClass);
+        $nodeTraverser->traverse($this->parseCode('<?php namespace WithDoc; /** Plain comment */ final class PlainDocClass {}'));
 
         $this->assertSame([], $visitor->getEntityClassNames());
     }
@@ -220,8 +218,6 @@ PHP,
     {
         require_once __DIR__ . '/../PhpParser/Finder/ClassConstantFetchFinder/Fixture/Standard/AnotherClassWithConstant.php';
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
-
         $dynamicClassFetch = <<<'PHP'
 <?php
 namespace DynamicClassFetch;
@@ -237,7 +233,7 @@ PHP;
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
-        $nodeTraverser->traverse($parser->parse($dynamicClassFetch));
+        $nodeTraverser->traverse($this->parseCode($dynamicClassFetch));
 
         $staticCurrent = <<<'PHP'
 <?php
@@ -256,7 +252,7 @@ PHP;
         $nodeTraverser3 = new NodeTraverser();
         $nodeTraverser3->addVisitor(new NameResolver());
         $nodeTraverser3->addVisitor($visitor3);
-        $nodeTraverser3->traverse($parser->parse($staticCurrent));
+        $nodeTraverser3->traverse($this->parseCode($staticCurrent));
         $this->assertCount(1, $visitor3->getClassConstantFetches());
 
         $vendorParent = <<<'PHP'
@@ -275,7 +271,7 @@ PHP;
         $nodeTraverserVendor = new NodeTraverser();
         $nodeTraverserVendor->addVisitor(new NameResolver());
         $nodeTraverserVendor->addVisitor($visitorVendor);
-        $nodeTraverserVendor->traverse($parser->parse($vendorParent));
+        $nodeTraverserVendor->traverse($this->parseCode($vendorParent));
         $this->assertSame([], $visitorVendor->getClassConstantFetches());
 
         $vendorExternal = <<<'PHP'
@@ -293,7 +289,7 @@ PHP;
         $nodeTraverserExternal = new NodeTraverser();
         $nodeTraverserExternal->addVisitor(new NameResolver());
         $nodeTraverserExternal->addVisitor($visitorExternal);
-        $nodeTraverserExternal->traverse($parser->parse($vendorExternal));
+        $nodeTraverserExternal->traverse($this->parseCode($vendorExternal));
         $this->assertSame([], $visitorExternal->getClassConstantFetches());
 
         if (! trait_exists('TraitFetch\\SomeTrait')) {
@@ -315,13 +311,12 @@ PHP;
         $nodeTraverser4 = new NodeTraverser();
         $nodeTraverser4->addVisitor(new NameResolver());
         $nodeTraverser4->addVisitor($visitor4);
-        $nodeTraverser4->traverse($parser->parse($traitFetch));
+        $nodeTraverser4->traverse($this->parseCode($traitFetch));
         $this->assertCount(1, $visitor4->getClassConstantFetches());
     }
 
     public function testFindClassConstFetchNodeVisitorMissingParentThrows(): void
     {
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $missingParent = <<<'PHP'
 <?php
 namespace MissingParent;
@@ -338,12 +333,11 @@ PHP;
         $nodeTraverser5->addVisitor(new NameResolver());
         $nodeTraverser5->addVisitor($visitor5);
         $this->expectException(ShouldNotHappenException::class);
-        $nodeTraverser5->traverse($parser->parse($missingParent));
+        $nodeTraverser5->traverse($this->parseCode($missingParent));
     }
 
     public function testFindClassConstFetchNodeVisitorGetClassNameThrowsWithoutNamespace(): void
     {
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $globalSelf = <<<'PHP'
 <?php
 class GlobalSelf
@@ -360,7 +354,7 @@ PHP;
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($visitor);
         $this->expectException(ShouldNotHappenException::class);
-        $nodeTraverser->traverse($parser->parse($globalSelf));
+        $nodeTraverser->traverse($this->parseCode($globalSelf));
     }
 
     public function testFindNonPrivateClassConstNodeVisitorSkipsPrivateConstants(): void
@@ -370,7 +364,6 @@ PHP;
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace PrivateConst;
@@ -380,7 +373,7 @@ final class User
     public const VISIBLE = 'visible';
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $constants = $visitor->getClassConstants();
         $this->assertCount(1, $constants);
@@ -393,7 +386,6 @@ PHP;
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace MockEdge;
@@ -406,7 +398,7 @@ final class User
     }
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $this->assertSame([], $visitor->getMockedClassNames());
     }
@@ -417,8 +409,7 @@ PHP;
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
-        $nodeTraverser->traverse($parser->parse('<?php class GlobalNotFinal {}'));
+        $nodeTraverser->traverse($this->parseCode('<?php class GlobalNotFinal {}'));
 
         $this->assertFalse($visitor->isNeeded());
     }
@@ -430,7 +421,6 @@ PHP;
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace VendorParents;
@@ -439,7 +429,7 @@ final class B extends \PHPStan\Rules\Rule {}
 final class C extends \PhpParser\NodeVisitorAbstract {}
 final class D extends \App\Legit\Parent {}
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $this->assertSame(['App\\Legit\\Parent'], $visitor->getParentClassNames());
     }
@@ -566,5 +556,17 @@ PHP;
         $matchingExternal = new \Rector\SwissKnife\ValueObject\ClassConstant('SomeClass', 'FOO');
         $isPublicExternal = $reflectionMethod->invoke($command, [$externalFetch], $matchingExternal);
         $this->assertTrue($isPublicExternal);
+    }
+
+    /**
+     * @return array<\PhpParser\Node>
+     */
+    private function parseCode(string $code): array
+    {
+        $parser = (new ParserFactory())->createForNewestSupportedVersion();
+        $nodes = $parser->parse($code);
+        $this->assertNotNull($nodes);
+
+        return $nodes;
     }
 }

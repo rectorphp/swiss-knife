@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
 
+use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\ParserFactory;
@@ -20,7 +21,6 @@ final class FindClassConstFetchNodeVisitorExtendedTest extends TestCase
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace TestAnonymous;
@@ -34,7 +34,7 @@ final class User
     }
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $this->assertSame([], $visitor->getClassConstantFetches());
     }
@@ -46,7 +46,6 @@ PHP;
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace TestMagic;
@@ -58,7 +57,7 @@ final class User
     }
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $this->assertSame([], $visitor->getClassConstantFetches());
     }
@@ -70,7 +69,6 @@ PHP;
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace TestDynamic;
@@ -84,7 +82,7 @@ final class User
     }
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $this->assertSame([], $visitor->getClassConstantFetches());
     }
@@ -96,7 +94,6 @@ PHP;
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace TestCurrent;
@@ -110,7 +107,7 @@ final class User
     }
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $fetches = $visitor->getClassConstantFetches();
         $this->assertCount(1, $fetches);
@@ -124,7 +121,6 @@ PHP;
         $nodeTraverser->addVisitor(new NameResolver());
         $nodeTraverser->addVisitor($visitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $code = <<<'PHP'
 <?php
 namespace TestInterface;
@@ -136,8 +132,20 @@ final class User
     }
 }
 PHP;
-        $nodeTraverser->traverse($parser->parse($code));
+        $nodeTraverser->traverse($this->parseCode($code));
 
         $this->assertSame([], $visitor->getClassConstantFetches());
+    }
+
+    /**
+     * @return array<Node>
+     */
+    private function parseCode(string $code): array
+    {
+        $parser = (new ParserFactory())->createForNewestSupportedVersion();
+        $nodes = $parser->parse($code);
+        $this->assertNotNull($nodes);
+
+        return $nodes;
     }
 }
