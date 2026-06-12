@@ -2,6 +2,8 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Test;
 
-class KernelTestCase
+use PHPUnit\Framework\TestCase;
+
+class KernelTestCase extends TestCase
 {
 }

@@ -112,15 +112,7 @@ final class MockWire
             }
         }
 
-        // fallback to directly created mock
-        // support for PHPUnit 10 and 9
-        $testCaseReflectionClass = new ReflectionClass(TestCase::class);
-        $testCaseConstructor = $testCaseReflectionClass->getConstructor();
-        if ($testCaseConstructor instanceof ReflectionMethod && $testCaseConstructor->getNumberOfRequiredParameters() > 0) {
-            $phpunitMocker = new PHPUnitMocker('testName');
-        } else {
-            $phpunitMocker = new PHPUnitMocker();
-        }
+        $phpunitMocker = new PHPUnitMocker('mock');
 
         return $phpunitMocker->create($reflectionParameter->getType()->getName());
     }

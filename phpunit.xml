@@ -12,4 +12,16 @@
             <exclude>tests/Testing/UnitTestFilePathsFinder/Fixture</exclude>
         </testsuite>
     </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
+
+    <coverage>
+        <report>
+            <text outputFile="php://stdout" showOnlySummary="false"/>
+        </report>
+    </coverage>
 </phpunit>

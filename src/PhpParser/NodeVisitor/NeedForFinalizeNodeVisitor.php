@@ -45,7 +45,8 @@ final class NeedForFinalizeNodeVisitor extends NodeVisitorAbstract
         }
 
         // we need a name to make it work
-        if (! $node->namespacedName instanceof Name) {
+        $namespacedName = $node->namespacedName ?? null;
+        if (! $namespacedName instanceof Name) {
             return null;
         }
 
