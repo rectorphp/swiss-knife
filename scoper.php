@@ -18,18 +18,13 @@ return [
         // native class on php 8.3+
         'DateRangeError',
     ],
-    'expose-constants' => ['#^SYMFONY\_[\p{L}_]+$#'],
     'exclude-namespaces' => [
         '#^Rector\\\\SwissKnife#',
-        '#^Symfony\\\\Polyfill#',
         '#^PHPUnit\\\\',
-        '#^Symfony\\\\Component\\\\Config#',
-        '#^Symfony\\\\Component\\\\DependencyInjection#',
     ],
     'exclude-files' => [
         // do not prefix "trigger_deprecation" from symfony - https://github.com/symfony/symfony/commit/0032b2a2893d3be592d4312b7b098fb9d71aca03
         // these paths are relative to this file location, so it should be in the root directory
-        'vendor/symfony/deprecation-contracts/function.php',
         'stubs/PHPUnit/PHPUnit_Framework_TestCase.php',
 
         // keep class references
