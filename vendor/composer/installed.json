@@ -1,0 +1,579 @@
+{
+    "packages": [
+        {
+            "name": "entropy\/entropy",
+            "version": "0.4.2",
+            "version_normalized": "0.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/TomasVotruba\/entropy.git",
+                "reference": "f0d35f20c9b361a63d0804906d36439a103953fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/TomasVotruba\/entropy\/zipball\/f0d35f20c9b361a63d0804906d36439a103953fd",
+                "reference": "f0d35f20c9b361a63d0804906d36439a103953fd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": "^8.4",
+                "webmozart\/assert": "^2.4"
+            },
+            "require-dev": {
+                "phpstan\/extension-installer": "^1.4",
+                "phpstan\/phpstan": "^2.1",
+                "phpunit\/phpunit": "^12.5",
+                "rector\/jack": "^1.0",
+                "rector\/rector": "^2.4",
+                "rector\/swiss-knife": "^2.4",
+                "shipmonk\/composer-dependency-analyser": "^1.8",
+                "symplify\/easy-coding-standard": "^13.1",
+                "symplify\/phpstan-rules": "^14.10",
+                "tomasvotruba\/type-coverage": "^2.2",
+                "tomasvotruba\/unused-public": "^2.2",
+                "tracy\/tracy": "^2.12"
+            },
+            "time": "2026-06-15T13:31:41+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\Entropy\\": "src"
+                }
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Entropy framework",
+            "support": {
+                "issues": "https:\/\/github.com\/TomasVotruba\/entropy\/issues",
+                "source": "https:\/\/github.com\/TomasVotruba\/entropy\/tree\/0.4.2"
+            },
+            "install-path": "..\/entropy\/entropy"
+        },
+        {
+            "name": "nette\/robot-loader",
+            "version": "v4.1.2",
+            "version_normalized": "4.1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/nette\/robot-loader.git",
+                "reference": "ad3f4be7a9cd8a95ccc7596a1c4982a3b103d91e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/nette\/robot-loader\/zipball\/ad3f4be7a9cd8a95ccc7596a1c4982a3b103d91e",
+                "reference": "ad3f4be7a9cd8a95ccc7596a1c4982a3b103d91e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "nette\/utils": "^4.0",
+                "php": "8.1 - 8.5"
+            },
+            "require-dev": {
+                "nette\/phpstan-rules": "^1.0",
+                "nette\/tester": "^2.6",
+                "phpstan\/extension-installer": "^1.4@stable",
+                "phpstan\/phpstan": "^2.1.39@stable",
+                "tracy\/tracy": "^2.9"
+            },
+            "time": "2026-02-23T04:18:24+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\Nette\\": "src"
+                },
+                "classmap": [
+                    "src\/"
+                ]
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https:\/\/davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https:\/\/nette.org\/contributors"
+                }
+            ],
+            "description": "\ud83c\udf40 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "homepage": "https:\/\/nette.org",
+            "keywords": [
+                "autoload",
+                "class",
+                "interface",
+                "nette",
+                "trait"
+            ],
+            "support": {
+                "issues": "https:\/\/github.com\/nette\/robot-loader\/issues",
+                "source": "https:\/\/github.com\/nette\/robot-loader\/tree\/v4.1.2"
+            },
+            "install-path": "..\/nette\/robot-loader"
+        },
+        {
+            "name": "nette\/utils",
+            "version": "v4.1.4",
+            "version_normalized": "4.1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/nette\/utils.git",
+                "reference": "7da6c396d7ebe142bc857c20479d5e70a5e1aac7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/nette\/utils\/zipball\/7da6c396d7ebe142bc857c20479d5e70a5e1aac7",
+                "reference": "7da6c396d7ebe142bc857c20479d5e70a5e1aac7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "8.2 - 8.5"
+            },
+            "conflict": {
+                "nette\/finder": "<3",
+                "nette\/schema": "<1.2.2"
+            },
+            "require-dev": {
+                "jetbrains\/phpstorm-attributes": "^1.2",
+                "nette\/phpstan-rules": "^1.0",
+                "nette\/tester": "^2.5",
+                "phpstan\/extension-installer": "^1.4@stable",
+                "phpstan\/phpstan": "^2.1@stable",
+                "tracy\/tracy": "^2.9"
+            },
+            "suggest": {
+                "ext-gd": "to use Image",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
+                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
+                "ext-json": "to use Nette\\Utils\\Json",
+                "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()"
+            },
+            "time": "2026-05-11T20:49:54+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\Nette\\": "src"
+                },
+                "classmap": [
+                    "src\/"
+                ]
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https:\/\/davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https:\/\/nette.org\/contributors"
+                }
+            ],
+            "description": "\ud83d\udee0  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding\/decoding, validation, slug or strong password generating etc.",
+            "homepage": "https:\/\/nette.org",
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "support": {
+                "issues": "https:\/\/github.com\/nette\/utils\/issues",
+                "source": "https:\/\/github.com\/nette\/utils\/tree\/v4.1.4"
+            },
+            "install-path": "..\/nette\/utils"
+        },
+        {
+            "name": "nikic\/php-parser",
+            "version": "v5.7.0",
+            "version_normalized": "5.7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/nikic\/PHP-Parser.git",
+                "reference": "dca41cd15c2ac9d055ad70dbfd011130757d1f82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/nikic\/PHP-Parser\/zipball\/dca41cd15c2ac9d055ad70dbfd011130757d1f82",
+                "reference": "dca41cd15c2ac9d055ad70dbfd011130757d1f82",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-tokenizer": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "ircmaxell\/php-yacc": "^0.0.7",
+                "phpunit\/phpunit": "^9.0"
+            },
+            "time": "2025-12-06T11:56:16+00:00",
+            "bin": [
+                "bin\/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\PhpParser\\": "lib\/PhpParser"
+                }
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "support": {
+                "issues": "https:\/\/github.com\/nikic\/PHP-Parser\/issues",
+                "source": "https:\/\/github.com\/nikic\/PHP-Parser\/tree\/v5.7.0"
+            },
+            "install-path": "..\/nikic\/php-parser"
+        },
+        {
+            "name": "symfony\/finder",
+            "version": "v8.1.0",
+            "version_normalized": "8.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/symfony\/finder.git",
+                "reference": "58d2e767a66052c1487356f953445634a8194c64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/finder\/zipball\/58d2e767a66052c1487356f953445634a8194c64",
+                "reference": "58d2e767a66052c1487356f953445634a8194c64",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4.1"
+            },
+            "require-dev": {
+                "symfony\/filesystem": "^7.4|^8.0"
+            },
+            "time": "2026-05-29T05:06:50+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\Symfony\\Component\\Finder\\": ""
+                },
+                "exclude-from-classmap": [
+                    "\/Tests\/"
+                ]
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https:\/\/symfony.com\/contributors"
+                }
+            ],
+            "description": "Finds files and directories via an intuitive fluent interface",
+            "homepage": "https:\/\/symfony.com",
+            "support": {
+                "source": "https:\/\/github.com\/symfony\/finder\/tree\/v8.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https:\/\/symfony.com\/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https:\/\/github.com\/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https:\/\/github.com\/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https:\/\/tidelift.com\/funding\/github\/packagist\/symfony\/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "..\/symfony\/finder"
+        },
+        {
+            "name": "symfony\/yaml",
+            "version": "v8.1.0",
+            "version_normalized": "8.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/symfony\/yaml.git",
+                "reference": "efb42bd2c6f4f3ccfd4683583449938b5fc146b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/yaml\/zipball\/efb42bd2c6f4f3ccfd4683583449938b5fc146b0",
+                "reference": "efb42bd2c6f4f3ccfd4683583449938b5fc146b0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4.1",
+                "symfony\/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "symfony\/console": "<7.4"
+            },
+            "require-dev": {
+                "symfony\/console": "^7.4|^8.0",
+                "yaml\/yaml-test-suite": "*"
+            },
+            "time": "2026-05-29T05:06:50+00:00",
+            "bin": [
+                "Resources\/bin\/yaml-lint"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "\/Tests\/"
+                ]
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https:\/\/symfony.com\/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https:\/\/symfony.com",
+            "support": {
+                "source": "https:\/\/github.com\/symfony\/yaml\/tree\/v8.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https:\/\/symfony.com\/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https:\/\/github.com\/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https:\/\/github.com\/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https:\/\/tidelift.com\/funding\/github\/packagist\/symfony\/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "..\/symfony\/yaml"
+        },
+        {
+            "name": "tomasvotruba\/class-leak",
+            "version": "2.1.7",
+            "version_normalized": "2.1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/TomasVotruba\/class-leak.git",
+                "reference": "d8c62dd42e26bc753fcac1f18225daccc5fc5380"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/TomasVotruba\/class-leak\/zipball\/d8c62dd42e26bc753fcac1f18225daccc5fc5380",
+                "reference": "d8c62dd42e26bc753fcac1f18225daccc5fc5380",
+                "shasum": ""
+            },
+            "require": {
+                "entropy\/entropy": "^0.3 || ^0.4",
+                "nette\/utils": "^4.1",
+                "nikic\/php-parser": "^5.7",
+                "php": ">=8.4",
+                "symfony\/finder": "^7.4|^8.0",
+                "webmozart\/assert": "^2.0"
+            },
+            "replace": {
+                "symfony\/polyfill-ctype": "*",
+                "symfony\/polyfill-intl-normalizer": "*",
+                "symfony\/polyfill-mbstring": "*"
+            },
+            "require-dev": {
+                "phpstan\/extension-installer": "^1.4",
+                "phpstan\/phpstan": "^2.2",
+                "phpunit\/phpunit": "^13.0",
+                "rector\/jack": "^1.0",
+                "rector\/rector": "^2.4",
+                "symplify\/easy-coding-standard": "^13.0",
+                "symplify\/phpstan-extensions": "^12",
+                "tomasvotruba\/unused-public": "^2.2",
+                "tracy\/tracy": "^2.12"
+            },
+            "time": "2026-06-10T12:34:09+00:00",
+            "bin": [
+                "bin\/class-leak",
+                "bin\/class-leak.php"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\TomasVotruba\\ClassLeak\\": "src"
+                }
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Detect leaking classes",
+            "support": {
+                "issues": "https:\/\/github.com\/TomasVotruba\/class-leak\/issues",
+                "source": "https:\/\/github.com\/TomasVotruba\/class-leak\/tree\/2.1.7"
+            },
+            "funding": [
+                {
+                    "url": "https:\/\/www.paypal.me\/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https:\/\/github.com\/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "install-path": "..\/tomasvotruba\/class-leak"
+        },
+        {
+            "name": "webmozart\/assert",
+            "version": "2.4.1",
+            "version_normalized": "2.4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/webmozarts\/assert.git",
+                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/webmozarts\/assert\/zipball\/2ccb7c2e821038c03a3e6e1700c570c158c55f70",
+                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-date": "*",
+                "ext-filter": "*",
+                "php": "^8.2"
+            },
+            "suggest": {
+                "ext-intl": "",
+                "ext-simplexml": "",
+                "ext-spl": ""
+            },
+            "time": "2026-06-15T15:31:57+00:00",
+            "type": "library",
+            "extra": {
+                "psalm": {
+                    "pluginClass": "Webmozart\\Assert\\PsalmPlugin"
+                },
+                "branch-alias": {
+                    "dev-master": "2.0-dev",
+                    "dev-feature\/2-0": "2.0-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SwissKnife202606\\Webmozart\\Assert\\": "src\/"
+                }
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input\/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "support": {
+                "issues": "https:\/\/github.com\/webmozarts\/assert\/issues",
+                "source": "https:\/\/github.com\/webmozarts\/assert\/tree\/2.4.1"
+            },
+            "install-path": "..\/webmozart\/assert"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}

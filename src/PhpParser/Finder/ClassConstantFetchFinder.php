@@ -1,46 +1,50 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Rector\SwissKnife\PhpParser\Finder;
 
-use Entropy\Console\Output\OutputPrinter;
-use Entropy\Console\Output\ProgressBar;
+use SwissKnife202606\Entropy\Console\Output\OutputPrinter;
+use SwissKnife202606\Entropy\Console\Output\ProgressBar;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
-use Symfony\Component\Finder\SplFileInfo;
-
+use SwissKnife202606\Symfony\Component\Finder\SplFileInfo;
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
  */
-final readonly class ClassConstantFetchFinder
+final class ClassConstantFetchFinder
 {
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     * @var \Rector\SwissKnife\PhpParser\CachedPhpParser
+     */
+    private $cachedPhpParser;
+    /**
+     * @readonly
+     * @var \Entropy\Console\Output\OutputPrinter
+     */
+    private $outputPrinter;
+    public function __construct(CachedPhpParser $cachedPhpParser, OutputPrinter $outputPrinter)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
+        $this->outputPrinter = $outputPrinter;
     }
-
     /**
      * @param SplFileInfo[] $phpFileInfos
      * @return ClassConstantFetchInterface[]
      */
-    public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug): array
+    public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug) : array
     {
         $findClassConstFetchNodeVisitor = new FindClassConstFetchNodeVisitor();
         $nodeTraverser = NodeTraverserFactory::create($findClassConstFetchNodeVisitor);
-
         foreach ($phpFileInfos as $phpFileInfo) {
             if ($isDebug) {
                 $this->outputPrinter->writeln('Processing ' . $phpFileInfo->getRealPath());
             }
-
             $fileStmts = $this->cachedPhpParser->parseFile($phpFileInfo->getRealPath());
-
             try {
                 $nodeTraverser->traverse($fileStmts);
             } catch (ShouldNotHappenException|NotImplementedYetException $exception) {
@@ -49,16 +53,13 @@ final readonly class ClassConstantFetchFinder
                     $this->outputPrinter->error($exception->getMessage());
                 }
             }
-
-            if ($isDebug === false) {
+            if ($isDebug === \false) {
                 $progressBar->advance();
             }
         }
-
-        if ($isDebug === false) {
+        if ($isDebug === \false) {
             $progressBar->finish();
         }
-
         return $findClassConstFetchNodeVisitor->getClassConstantFetches();
     }
 }
