@@ -6,18 +6,17 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
-use Entropy\Console\Output\OutputColorizer;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
+use RuntimeException;
 use Webmozart\Assert\Assert;
 
 final readonly class SearchRegexCommand implements CommandInterface
 {
     public function __construct(
         private OutputPrinter $outputPrinter,
-        private OutputColorizer $outputColorizer,
     ) {
     }
 
@@ -31,6 +30,9 @@ final readonly class SearchRegexCommand implements CommandInterface
     {
         if ($projectDirectory === null) {
             $projectDirectory = getcwd();
+            if (! is_string($projectDirectory)) {
+                throw new RuntimeException('Current working directory could not be resolved.');
+            }
         }
 
         Assert::directory($projectDirectory);
@@ -46,7 +48,7 @@ final readonly class SearchRegexCommand implements CommandInterface
         $foundCasesCount = 0;
         $markedFiles = [];
 
-        $progressBar = new ProgressBar($this->outputColorizer);
+        $progressBar = new ProgressBar();
         $progressBar->start(count($phpFileInfos));
 
         foreach ($phpFileInfos as $phpFileInfo) {
