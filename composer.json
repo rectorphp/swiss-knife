@@ -33,15 +33,15 @@
     "autoload": {
         "psr-4": {
             "Rector\\SwissKnife\\": "src"
-        },
-        "classmap": [
-            "stubs"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "Rector\\SwissKnife\\Tests\\": "tests"
-        }
+        },
+        "classmap": [
+            "stubs"
+        ]
     },
     "config": {
         "sort-packages": true,
