@@ -24,7 +24,8 @@ final class MockedClassNameCollectingNodeVisitorTest extends TestCase
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($mockedClassNameCollectingNodeVisitor);
 
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
+        $parser = new ParserFactory()
+            ->createForNewestSupportedVersion();
         $stmts = $parser->parse((string) file_get_contents($filePath));
         $this->assertNotNull($stmts);
 

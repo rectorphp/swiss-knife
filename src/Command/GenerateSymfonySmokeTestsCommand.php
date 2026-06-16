@@ -13,6 +13,7 @@ use Rector\SwissKnife\SmokeTestgen\FileSystem\TestsDirectoryResolver;
 use Rector\SwissKnife\SmokeTestgen\Templating\TemplateDecorator;
 use Rector\SwissKnife\SmokeTestgen\TestTemplateResolver;
 use Rector\SwissKnife\SmokeTestgen\Utils\TestPathResolver;
+use RuntimeException;
 use Webmozart\Assert\Assert;
 
 final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterface
@@ -42,10 +43,15 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
     {
         $this->outputPrinter->writeln('<fg=green>Resolving directory for smoke tests</>');
 
-        $smokeTestsDirectory = $this->testsDirectoryResolver->resolveSmokeUnitTestDirectory(getcwd());
+        $projectDirectory = getcwd();
+        if (! is_string($projectDirectory)) {
+            throw new RuntimeException('Current working directory could not be resolved.');
+        }
+
+        $smokeTestsDirectory = $this->testsDirectoryResolver->resolveSmokeUnitTestDirectory($projectDirectory);
         $this->outputPrinter->writeln(' * ' . $smokeTestsDirectory);
 
-        $requirePackages = $this->resolveProjectRequiredPackageNames(getcwd());
+        $requirePackages = $this->resolveProjectRequiredPackageNames($projectDirectory);
         $testByPackageSubscribers = $this->testTemplateResolver->matchProjectPackages($requirePackages);
 
         if ($testByPackageSubscribers === []) {

@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
-use Entropy\Console\Output\OutputColorizer;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
 use Nette\Utils\FileSystem;
@@ -28,7 +27,6 @@ final readonly class FinalizeClassesCommand implements CommandInterface
 
     public function __construct(
         private OutputPrinter $outputPrinter,
-        private OutputColorizer $outputColorizer,
         private ParentClassResolver $parentClassResolver,
         private EntityClassResolver $entityClassResolver,
         private CachedPhpParser $cachedPhpParser,
@@ -59,7 +57,7 @@ final readonly class FinalizeClassesCommand implements CommandInterface
             // double to count for both parent and entity resolver
             $stepRatio = $skipMocked ? 3 : 2;
 
-            $progressBar = new ProgressBar($this->outputColorizer);
+            $progressBar = new ProgressBar();
             $progressBar->start($stepRatio * count($phpFileInfos));
         }
 

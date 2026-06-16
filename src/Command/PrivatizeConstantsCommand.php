@@ -6,7 +6,6 @@ namespace Rector\SwissKnife\Command;
 
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
-use Entropy\Console\Output\OutputColorizer;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
 use Nette\Utils\FileSystem;
@@ -26,7 +25,6 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 {
     public function __construct(
         private OutputPrinter $outputPrinter,
-        private OutputColorizer $outputColorizer,
         private ClassConstantFetchFinder $classConstantFetchFinder,
         private ClassConstFinder $classConstFinder,
         private TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
@@ -66,7 +64,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 
         $this->outputPrinter->title('Finding class const fetches...');
 
-        $progressBar = new ProgressBar($this->outputColorizer);
+        $progressBar = new ProgressBar();
         $progressBar->start(count($phpFileInfos));
 
         $phpClassConstantFetches = $this->classConstantFetchFinder->find($phpFileInfos, $progressBar, $isDebug);
