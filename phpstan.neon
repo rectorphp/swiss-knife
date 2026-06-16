@@ -11,9 +11,9 @@ parameters:
     # see https://github.com/symplify/phpstan-rules
     symplify:
         ctor: true
-    symfonyReturnType: true
-    laravelReturnType: true
-    pathStrings: true
+        symfonyReturnType: true
+        laravelReturnType: true
+        pathStrings: true
 
     excludePaths:
         - */Fixture/*
