@@ -7,6 +7,7 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
+use Entropy\Console\Output\ProgressBar;
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 
@@ -34,9 +35,14 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
         $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
         $this->outputPrinter->yellow($message);
 
+        $progressBar = new ProgressBar();
+        $progressBar->start(count($phpFileInfos));
+
         $commentedLinesByFilePaths = [];
         foreach ($phpFileInfos as $phpFileInfo) {
             $commentedLines = $this->commentedCodeAnalyzer->process($phpFileInfo->getRealPath(), $lineLimit);
+
+            $progressBar->advance();
 
             if ($commentedLines === []) {
                 continue;
@@ -44,6 +50,8 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
 
             $commentedLinesByFilePaths[$phpFileInfo->getRealPath()] = $commentedLines;
         }
+
+        $progressBar->finish();
 
         if ($commentedLinesByFilePaths === []) {
             $this->outputPrinter->success('No commented code found');
