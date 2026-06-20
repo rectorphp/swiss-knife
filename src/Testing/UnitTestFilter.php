@@ -30,6 +30,7 @@ final class UnitTestFilter
         if (! is_a($class, 'PHPUnit\Framework\TestCase', true) && ! is_a($class, 'PHPUnit_Framework_TestCase', true)) {
             return false;
         }
+
         return array_all(
             self::NON_UNIT_TEST_CASE_CLASSES,
             fn ($nonUnitTestCaseClass): bool => ! is_a($class, $nonUnitTestCaseClass, true)
