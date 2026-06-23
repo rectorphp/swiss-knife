@@ -30,16 +30,6 @@ parameters:
             identifier: method.alreadyNarrowedType
             path: tests
 
-        # compatibility with PHPUnit 9 and 10
-        -
-            identifier: arguments.count
-            path: src/Testing/MockWire.php
-
-        # type from service definition
-        -
-            identifier: argument.type
-            path: src/Testing/MockWire.php
-
         # magic contract
         -
             identifier: public.method.unused

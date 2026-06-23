@@ -18,6 +18,7 @@ final class ContainerFactory
         $container = new Container();
 
         $container->autodiscover(__DIR__ . '/../Command');
+        $container->autodiscover(__DIR__ . '/../Testing/Command');
 
         $container->service(Parser::class, static function (): Parser {
             $phpParserFactory = new ParserFactory();

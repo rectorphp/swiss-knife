@@ -170,7 +170,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
             throw new ShouldNotHappenException('Class_ node is missing');
         }
 
-        $namespaceName = $this->currentClass->namespacedName;
+        $namespaceName = $this->currentClass->namespacedName ?? null;
         if (! $namespaceName instanceof Name) {
             throw new ShouldNotHappenException();
         }

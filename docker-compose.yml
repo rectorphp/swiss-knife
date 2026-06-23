@@ -1,0 +1,8 @@
+services:
+    php:
+        build: .
+        working_dir: /app
+        volumes:
+            - .:/app
+        environment:
+            COMPOSER_ALLOW_SUPERUSER: 1
