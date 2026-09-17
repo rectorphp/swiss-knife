@@ -420,6 +420,27 @@ final class ServiceContainerTest extends AbstractContainerTestCase
 
 <br>
 
+## 12. Detect Duplicated Code
+
+Spot copy-pasted code blocks with a token-based detector, a small clone of phpcpd.
+Add it to CI to fail when a large copy-pasted block is added:
+
+```bash
+vendor/bin/swiss-knife duplicated-code src
+vendor/bin/swiss-knife duplicated-code src rules --min-tokens 150 --min-lines 5
+```
+
+Options:
+
+- `--min-lines` minimum lines of a reported clone (default `5`)
+- `--min-tokens` minimum tokens of a reported clone (default `70`)
+- `--fuzzy` ignore variable names when matching
+- `--skip-file` file paths or masks to skip
+
+Exit code is `1` when clones are found, `0` otherwise.
+
+<br>
+
 That's it!
 
 <br>
