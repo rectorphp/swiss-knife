@@ -33,7 +33,7 @@ final class UnitTestFilter
 
         return array_all(
             self::NON_UNIT_TEST_CASE_CLASSES,
-            fn ($nonUnitTestCaseClass): bool => ! is_a($class, $nonUnitTestCaseClass, true)
+            fn (string $nonUnitTestCaseClass): bool => ! is_a($class, $nonUnitTestCaseClass, true)
         );
     }
 }

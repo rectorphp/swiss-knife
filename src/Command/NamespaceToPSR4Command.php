@@ -12,6 +12,9 @@ use Nette\Utils\Strings;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
+/**
+ * @see \Rector\SwissKnife\Tests\Command\NamespaceToPSR4CommandTest
+ */
 final readonly class NamespaceToPSR4Command implements CommandInterface
 {
     public function __construct(

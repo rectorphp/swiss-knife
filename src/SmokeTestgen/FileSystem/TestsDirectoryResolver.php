@@ -12,10 +12,8 @@ final class TestsDirectoryResolver
     {
         $testDirectory = $this->resolveTestDirectory($projectDirectory);
 
-        if ($testDirectory === null) {
-            // fallback to default
-            $testDirectory = 'tests';
-        }
+        // fallback to default
+        $testDirectory ??= 'tests';
 
         $unitTestDirectory = $this->resolveUnitTestsDirectory($testDirectory);
         if ($unitTestDirectory === null) {

@@ -8,6 +8,9 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
+/**
+ * @see \Rector\SwissKnife\Tests\Finder\FilesFinderTest
+ */
 final class FilesFinder
 {
     /**
