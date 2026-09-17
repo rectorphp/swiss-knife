@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\SmokeTestgen\FileSystem;
 
-use Symfony\Component\Finder\Finder;
-
 final class TestsDirectoryResolver
 {
     public function resolveSmokeUnitTestDirectory(string $projectDirectory): string
@@ -27,33 +25,32 @@ final class TestsDirectoryResolver
 
     private function resolveUnitTestsDirectory(string $testDirectory): ?string
     {
-        // find test directory
-        $iterator = Finder::create()
-            ->directories()
-            ->name('#unit#i')
-            ->in($testDirectory)
-            ->depth(0)
-            ->getIterator();
-
-        foreach ($iterator as $unitTestDirectory) {
-            return $unitTestDirectory->getRelativePathname();
-        }
-
-        return null;
+        return $this->findFirstDirectoryByNameRegex($testDirectory, '#unit#i');
     }
 
     private function resolveTestDirectory(string $projectDirectory): ?string
     {
-        // find test directory
-        $iterator = Finder::create()
-            ->directories()
-            ->name('#test#i')
-            ->in($projectDirectory)
-            ->depth(0)
-            ->getIterator();
+        return $this->findFirstDirectoryByNameRegex($projectDirectory, '#test#i');
+    }
 
-        foreach ($iterator as $testDirectory) {
-            return $testDirectory->getRelativePathname();
+    private function findFirstDirectoryByNameRegex(string $directory, string $nameRegex): ?string
+    {
+        if (! is_dir($directory)) {
+            return null;
+        }
+
+        $childDirectories = glob($directory . '/*', GLOB_ONLYDIR);
+        if ($childDirectories === false) {
+            return null;
+        }
+
+        sort($childDirectories);
+
+        foreach ($childDirectories as $childDirectory) {
+            $directoryName = basename($childDirectory);
+            if (preg_match($nameRegex, $directoryName) === 1) {
+                return $directoryName;
+            }
         }
 
         return null;

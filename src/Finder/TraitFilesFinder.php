@@ -5,53 +5,47 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Finder;
 
 use Nette\Utils\Strings;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
+use Rector\SwissKnife\ValueObject\FileInfo;
 use Webmozart\Assert\Assert;
 
 final class TraitFilesFinder
 {
     /**
      * @param string[] $directories
-     * @return SplFileInfo[]
+     * @return FileInfo[]
      */
     public function findTraitUsages(array $directories): array
     {
         Assert::allString($directories);
 
-        $traitUsersFinder = Finder::create()
-            ->files()
-            ->in($directories)
-            ->name('*.php')
-            ->sortByName()
-            ->filter(function (SplFileInfo $fileInfo): bool {
-                $fileContent = $fileInfo->getContents();
-                return str_contains($fileContent, '    use ');
-            });
+        return FileScanner::scan($directories, static function (FileInfo $fileInfo): bool {
+            if ($fileInfo->getExtension() !== 'php') {
+                return false;
+            }
 
-        return iterator_to_array($traitUsersFinder->getIterator());
+            return str_contains($fileInfo->getContents(), '    use ');
+        });
     }
 
     /**
      * @param string[] $directories
-     * @return array<SplFileInfo>
+     * @return FileInfo[]
      */
     public function find(array $directories): array
     {
         Assert::allString($directories);
 
-        $traitFinder = Finder::create()
-            ->files()
-            ->in($directories)
-            ->name('*.php')
-            ->notPath('Entity')
-            ->notPath('Document')
-            ->sortByName()
-            ->filter(function (SplFileInfo $fileInfo): bool {
-                $fileContent = $fileInfo->getContents();
-                return (bool) Strings::match($fileContent, '#^trait\s#m');
-            });
+        return FileScanner::scan($directories, static function (FileInfo $fileInfo): bool {
+            if ($fileInfo->getExtension() !== 'php') {
+                return false;
+            }
 
-        return iterator_to_array($traitFinder->getIterator());
+            $normalizedPath = str_replace('\\', '/', (string) $fileInfo->getRealPath());
+            if (str_contains($normalizedPath, '/Entity/') || str_contains($normalizedPath, '/Document/')) {
+                return false;
+            }
+
+            return (bool) Strings::match($fileInfo->getContents(), '#^trait\s#m');
+        });
     }
 }

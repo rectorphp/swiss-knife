@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Finder;
 
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
+use Rector\SwissKnife\ValueObject\FileInfo;
 use Webmozart\Assert\Assert;
 
 /**
@@ -14,28 +13,22 @@ use Webmozart\Assert\Assert;
 final class PhpFilesFinder
 {
     /**
-     * @param string[] $paths
-     * @param string[] $excludedPaths
-     *
-     * @return SplFileInfo[]
+     * @var string[]
      */
-    public static function find(array $paths, array $excludedPaths = []): array
-    {
-        $finder = self::createFinderForPathsAndExcludedPaths($paths, $excludedPaths);
-
-        return iterator_to_array($finder->getIterator());
-    }
+    private const array SKIPPED_DIRECTORIES = ['vendor', 'var', 'data-fixtures', 'node_modules'];
 
     /**
      * @param string[] $paths
      * @param string[] $excludedPaths
+     *
+     * @return FileInfo[]
      */
-    private static function createFinderForPathsAndExcludedPaths(array $paths, array $excludedPaths): Finder
+    public static function find(array $paths, array $excludedPaths = []): array
     {
         Assert::allString($paths);
         Assert::allFileExists($paths);
-
         Assert::allString($excludedPaths);
+
         $excludedFileNames = [];
         foreach ($excludedPaths as $excludedPath) {
             if (! str_contains($excludedPath, '*')) {
@@ -45,28 +38,31 @@ final class PhpFilesFinder
 
         Assert::allFileExists($excludedFileNames);
 
-        return Finder::create()
-            ->files()
-            ->in($paths)
-            ->name('*.php')
-            ->notPath('vendor')
-            ->notPath('var')
-            ->notPath('data-fixtures')
-            ->notPath('node_modules')
-            // exclude paths, as notPaths() does no work
-            ->filter(static function (SplFileInfo $splFileInfo) use ($excludedPaths): bool {
-                foreach ($excludedPaths as $excludedPath) {
-                    $realpath = $splFileInfo->getRealPath();
-                    if (str_contains($realpath, $excludedPath)) {
-                        return false;
-                    }
+        return FileScanner::scan($paths, static function (FileInfo $fileInfo) use ($excludedPaths): bool {
+            if ($fileInfo->getExtension() !== 'php') {
+                return false;
+            }
 
-                    if (str_contains($excludedPath, '*') && \fnmatch($excludedPath, $realpath)) {
-                        return false;
-                    }
+            $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
+            foreach (self::SKIPPED_DIRECTORIES as $skippedDirectory) {
+                if (str_contains($normalizedRelativePath, '/' . $skippedDirectory . '/')) {
+                    return false;
+                }
+            }
+
+            $realPath = (string) $fileInfo->getRealPath();
+
+            foreach ($excludedPaths as $excludedPath) {
+                if (str_contains($realPath, $excludedPath)) {
+                    return false;
                 }
 
-                return true;
-            });
+                if (str_contains($excludedPath, '*') && fnmatch($excludedPath, $realPath)) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
     }
 }

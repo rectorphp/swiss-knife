@@ -17,9 +17,9 @@ use Rector\SwissKnife\PhpParser\Finder\ClassConstFinder;
 use Rector\SwissKnife\Twig\TwigTemplateConstantExtractor;
 use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
+use Rector\SwissKnife\ValueObject\FileInfo;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
 use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
-use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class PrivatizeConstantsCommand implements CommandInterface
 {
@@ -126,7 +126,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
      * @param ClassConstantFetchInterface[] $classConstantFetches
      */
     private function processFileInfo(
-        SplFileInfo $phpFileInfo,
+        FileInfo $phpFileInfo,
         array $classConstantFetches,
         bool $dryRun
     ): VisibilityChangeStats {

@@ -11,7 +11,7 @@ use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
-use Symfony\Component\Finder\SplFileInfo;
+use Rector\SwissKnife\ValueObject\FileInfo;
 use Webmozart\Assert\Assert;
 
 /**
@@ -57,7 +57,7 @@ final readonly class EntityClassResolver
     }
 
     /**
-     * @param SplFileInfo[] $phpFileInfos
+     * @param FileInfo[] $phpFileInfos
      */
     private function traverseFileInfos(
         array $phpFileInfos,
@@ -85,7 +85,7 @@ final readonly class EntityClassResolver
 
         $yamlEntityClassNames = [];
 
-        /** @var SplFileInfo $yamlFileInfo */
+        /** @var FileInfo $yamlFileInfo */
         foreach ($yamlFileInfos as $yamlFileInfo) {
             $matches = Strings::matchAll($yamlFileInfo->getContents(), self::YAML_ENTITY_CLASS_NAME_REGEX);
 
