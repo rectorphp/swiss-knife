@@ -6,6 +6,9 @@ namespace Rector\SwissKnife\SmokeTestgen\Utils;
 
 use Rector\SwissKnife\SmokeTestgen\Contract\TestByPackageSubscriberInterface;
 
+/**
+ * @see \Rector\SwissKnife\Tests\SmokeTestgen\Utils\TestPathResolverTest
+ */
 final class TestPathResolver
 {
     public static function resolve(

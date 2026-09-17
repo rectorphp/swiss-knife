@@ -31,8 +31,7 @@ final class TestTemplateResolver
         // find all subscribers, that match any of the required packages
         return array_filter(
             $this->testByPackageSubscribers,
-            fn (TestByPackageSubscriberInterface $testByPackageSubscriber): bool =>
-                array_intersect($testByPackageSubscriber->getPackageNames(), $requiredPackages) !== []
+            fn (TestByPackageSubscriberInterface $testByPackageSubscriber): bool => array_intersect($testByPackageSubscriber->getPackageNames(), $requiredPackages) !== []
         );
     }
 }

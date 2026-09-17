@@ -233,21 +233,7 @@ Searching for regex: #this->get\((.*)\)#
 
 <br>
 
-## 8. Convert Alice fixtures from YAML to PHP
-
-The `nelmio/alice` package [allows to use PHP](https://github.com/nelmio/alice/blob/v2.3.0/doc/complete-reference.md#php) for test fixture definitions. It's much better format, because Rector and PHPStan can understand it.
-
-But what if we have 100+ YAML files in our project?
-
-```bash
-vendor/bin/swiss-knife convert-alice-yaml-to-php fixtures
-```
-
-That's it!
-
-<br>
-
-## 9. Spots Fake Traits
+## 8. Spots Fake Traits
 
 What is trait has 5 lines and used in single service? We know it's better to be inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
 
@@ -269,7 +255,7 @@ That's it! Run this command once upon a time or run it in CI to eliminate traits
 
 <br>
 
-## 10. Split huge Symfony config to per-package in directory
+## 9. Split huge Symfony config to per-package in directory
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 
@@ -345,7 +331,7 @@ All the extensions will be extracted to separate files in `config/packages/dev` 
 
 <br>
 
-## 11. Generate Symfony Smoke Tests
+## 10. Generate Symfony Smoke Tests
 
 Cover your Symfony app with smoke tests in seconds. This command scans your `composer.json`, picks the matching test templates, and drops them under `tests/Unit/Smoke` (or your project's equivalent unit-tests directory).
 
@@ -420,7 +406,7 @@ final class ServiceContainerTest extends AbstractContainerTestCase
 
 <br>
 
-## 12. Detect Duplicated Code
+## 11. Detect Duplicated Code
 
 Spot copy-pasted code blocks with a token-based detector, a small clone of phpcpd.
 Add it to CI to fail when a large copy-pasted block is added:

@@ -13,7 +13,6 @@
         "nette/utils": "^4.1",
         "nikic/php-parser": "^5.7",
         "symfony/finder": "^8.1",
-        "symfony/yaml": "^8.1",
         "webmozart/assert": "^2.4"
     },
     "require-dev": {
