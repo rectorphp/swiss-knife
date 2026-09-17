@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
+use Entropy\FileSystem\FileInfo;
 use Nette\Utils\Strings;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Finder\FilesFinder;
@@ -11,7 +12,6 @@ use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
-use Rector\SwissKnife\ValueObject\FileInfo;
 use Webmozart\Assert\Assert;
 
 /**

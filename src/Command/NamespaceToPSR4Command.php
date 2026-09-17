@@ -7,10 +7,10 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
+use Entropy\FileSystem\FileFinder;
+use Entropy\FileSystem\FileInfo;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Rector\SwissKnife\Finder\FileScanner;
-use Rector\SwissKnife\ValueObject\FileInfo;
 
 /**
  * @see \Rector\SwissKnife\Tests\Command\NamespaceToPSR4CommandTest
@@ -91,7 +91,7 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
      */
     private function findFilesInPath(string $path): array
     {
-        return FileScanner::scan([$path], static function (FileInfo $fileInfo): bool {
+        return FileFinder::find([$path], static function (FileInfo $fileInfo): bool {
             if ($fileInfo->getExtension() !== 'php') {
                 return false;
             }

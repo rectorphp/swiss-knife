@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Finder;
 
-use Rector\SwissKnife\ValueObject\FileInfo;
+use Entropy\FileSystem\FileFinder;
+use Entropy\FileSystem\FileInfo;
 use Webmozart\Assert\Assert;
 
 /**
@@ -31,7 +32,7 @@ final class FilesFinder
             $directories[] = getcwd() . DIRECTORY_SEPARATOR . $source;
         }
 
-        return FileScanner::scan($directories, static function (FileInfo $fileInfo) use ($excludedPaths): bool {
+        return FileFinder::find($directories, static function (FileInfo $fileInfo) use ($excludedPaths): bool {
             // not our code
             $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
             foreach (self::SKIPPED_DIRECTORIES as $skippedDirectory) {
@@ -53,7 +54,7 @@ final class FilesFinder
         Assert::allString($directories);
         Assert::allDirectory($directories);
 
-        return FileScanner::scan(
+        return FileFinder::find(
             $directories,
             static fn (FileInfo $fileInfo): bool => $fileInfo->getExtension() === 'twig'
         );
@@ -76,7 +77,7 @@ final class FilesFinder
             }
         }
 
-        $scannedFileInfos = FileScanner::scan(
+        $scannedFileInfos = FileFinder::find(
             $directories,
             static fn (FileInfo $fileInfo): bool => $fileInfo->getExtension() === 'json'
         );
@@ -93,7 +94,7 @@ final class FilesFinder
         Assert::allString($paths);
         Assert::allFileExists($paths);
 
-        return FileScanner::scan(
+        return FileFinder::find(
             $paths,
             static fn (FileInfo $fileInfo): bool => in_array($fileInfo->getExtension(), ['yml', 'yaml'], true)
         );

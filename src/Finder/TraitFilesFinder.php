@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Finder;
 
+use Entropy\FileSystem\FileFinder;
+use Entropy\FileSystem\FileInfo;
 use Nette\Utils\Strings;
-use Rector\SwissKnife\ValueObject\FileInfo;
 use Webmozart\Assert\Assert;
 
 final class TraitFilesFinder
@@ -18,7 +19,7 @@ final class TraitFilesFinder
     {
         Assert::allString($directories);
 
-        return FileScanner::scan($directories, static function (FileInfo $fileInfo): bool {
+        return FileFinder::find($directories, static function (FileInfo $fileInfo): bool {
             if ($fileInfo->getExtension() !== 'php') {
                 return false;
             }
@@ -35,7 +36,7 @@ final class TraitFilesFinder
     {
         Assert::allString($directories);
 
-        return FileScanner::scan($directories, static function (FileInfo $fileInfo): bool {
+        return FileFinder::find($directories, static function (FileInfo $fileInfo): bool {
             if ($fileInfo->getExtension() !== 'php') {
                 return false;
             }

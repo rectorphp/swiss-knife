@@ -6,13 +6,13 @@ namespace Rector\SwissKnife\PhpParser\Finder;
 
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
+use Entropy\FileSystem\FileInfo;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
-use Rector\SwissKnife\ValueObject\FileInfo;
 
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest

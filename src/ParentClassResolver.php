@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
+use Entropy\FileSystem\FileInfo;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
-use Rector\SwissKnife\ValueObject\FileInfo;
 
 final readonly class ParentClassResolver
 {

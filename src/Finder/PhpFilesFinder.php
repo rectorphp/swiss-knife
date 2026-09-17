@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Finder;
 
-use Rector\SwissKnife\ValueObject\FileInfo;
+use Entropy\FileSystem\FileFinder;
+use Entropy\FileSystem\FileInfo;
 use Webmozart\Assert\Assert;
 
 /**
@@ -38,7 +39,7 @@ final class PhpFilesFinder
 
         Assert::allFileExists($excludedFileNames);
 
-        return FileScanner::scan($paths, static function (FileInfo $fileInfo) use ($excludedPaths): bool {
+        return FileFinder::find($paths, static function (FileInfo $fileInfo) use ($excludedPaths): bool {
             if ($fileInfo->getExtension() !== 'php') {
                 return false;
             }
