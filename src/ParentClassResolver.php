@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
+use Entropy\FileSystem\FileInfo;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
-use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class ParentClassResolver
 {
@@ -18,7 +18,7 @@ final readonly class ParentClassResolver
     }
 
     /**
-     * @param SplFileInfo[] $phpFileInfos
+     * @param FileInfo[] $phpFileInfos
      * @return string[]
      */
     public function resolve(array $phpFileInfos, callable $progressClosure): array
@@ -32,7 +32,7 @@ final readonly class ParentClassResolver
     }
 
     /**
-     * @param SplFileInfo[] $phpFileInfos
+     * @param FileInfo[] $phpFileInfos
      */
     private function traverseFileInfos(
         array $phpFileInfos,

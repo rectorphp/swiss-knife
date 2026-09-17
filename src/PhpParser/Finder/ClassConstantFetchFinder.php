@@ -6,13 +6,13 @@ namespace Rector\SwissKnife\PhpParser\Finder;
 
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
+use Entropy\FileSystem\FileInfo;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Exception\NotImplementedYetException;
 use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
-use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
@@ -26,7 +26,7 @@ final readonly class ClassConstantFetchFinder
     }
 
     /**
-     * @param SplFileInfo[] $phpFileInfos
+     * @param FileInfo[] $phpFileInfos
      * @return ClassConstantFetchInterface[]
      */
     public function find(array $phpFileInfos, ProgressBar $progressBar, bool $isDebug): array

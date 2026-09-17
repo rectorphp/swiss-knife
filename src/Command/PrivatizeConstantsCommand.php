@@ -8,6 +8,7 @@ use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
+use Entropy\FileSystem\FileInfo;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
@@ -19,7 +20,6 @@ use Rector\SwissKnife\ValueObject\ClassConstant;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
 use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
-use Symfony\Component\Finder\SplFileInfo;
 
 final readonly class PrivatizeConstantsCommand implements CommandInterface
 {
@@ -126,7 +126,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
      * @param ClassConstantFetchInterface[] $classConstantFetches
      */
     private function processFileInfo(
-        SplFileInfo $phpFileInfo,
+        FileInfo $phpFileInfo,
         array $classConstantFetches,
         bool $dryRun
     ): VisibilityChangeStats {

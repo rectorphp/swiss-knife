@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Finder;
 
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
+use Entropy\FileSystem\FileFinder;
+use Entropy\FileSystem\FileInfo;
 use Webmozart\Assert\Assert;
 
 /**
@@ -14,71 +14,55 @@ use Webmozart\Assert\Assert;
 final class FilesFinder
 {
     /**
+     * @var string[]
+     */
+    private const array SKIPPED_DIRECTORIES = ['node_modules', 'vendor', 'var/cache'];
+
+    /**
      * @param string[] $sources
      * @param string[] $excludedPaths
-     * @return SplFileInfo[]
+     * @return FileInfo[]
      */
     public static function find(array $sources, array $excludedPaths = []): array
     {
-        $paths = [];
+        Assert::allString($excludedPaths);
+
+        $directories = [];
         foreach ($sources as $source) {
-            $paths[] = getcwd() . DIRECTORY_SEPARATOR . $source;
+            $directories[] = getcwd() . DIRECTORY_SEPARATOR . $source;
         }
 
-        $finder = Finder::create()
-            ->files()
-            ->in($paths)
+        return FileFinder::find($directories, static function (FileInfo $fileInfo) use ($excludedPaths): bool {
             // not our code
-            ->notPath('node_modules')
-            ->notPath('vendor')
-            ->notPath('var/cache')
-            ->sortByName();
-
-        if ($excludedPaths !== []) {
-            Assert::allString($excludedPaths);
-
-            // exclude paths, as notPath() does not work with absolute paths
-            $finder->filter(static function (SplFileInfo $splFileInfo) use ($excludedPaths): bool {
-                $realPath = $splFileInfo->getRealPath();
-
-                foreach ($excludedPaths as $excludedPath) {
-                    if (str_contains($realPath, $excludedPath)) {
-                        return false;
-                    }
-
-                    if (str_contains($excludedPath, '*') && fnmatch($excludedPath, $realPath)) {
-                        return false;
-                    }
+            $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
+            foreach (self::SKIPPED_DIRECTORIES as $skippedDirectory) {
+                if (str_contains($normalizedRelativePath, '/' . $skippedDirectory . '/')) {
+                    return false;
                 }
+            }
 
-                return true;
-            });
-        }
-
-        return iterator_to_array($finder->getIterator());
+            return ! self::isExcluded((string) $fileInfo->getRealPath(), $excludedPaths);
+        });
     }
 
     /**
      * @param string[] $directories
-     * @return SplFileInfo[]
+     * @return FileInfo[]
      */
     public static function findTwigFiles(array $directories): array
     {
         Assert::allString($directories);
         Assert::allDirectory($directories);
 
-        $twigFinder = Finder::create()
-            ->files()
-            ->name('*.twig')
-            ->in($directories)
-            ->sortByName();
-
-        return iterator_to_array($twigFinder->getIterator());
+        return FileFinder::find(
+            $directories,
+            static fn (FileInfo $fileInfo): bool => $fileInfo->getExtension() === 'twig'
+        );
     }
 
     /**
      * @param string[] $sources
-     * @return SplFileInfo[]
+     * @return FileInfo[]
      */
     public static function findJsonFiles(array $sources): array
     {
@@ -87,40 +71,50 @@ final class FilesFinder
 
         foreach ($sources as $source) {
             if (is_file($source)) {
-                $jsonFileInfos[] = new SplFileInfo($source, '', $source);
+                $jsonFileInfos[] = new FileInfo($source, '', $source);
             } else {
                 $directories[] = $source;
             }
         }
 
-        $jsonFileFinder = Finder::create()
-            ->files()
-            ->in($directories)
-            ->name('*.json')
-            ->sortByName();
+        $scannedFileInfos = FileFinder::find(
+            $directories,
+            static fn (FileInfo $fileInfo): bool => $fileInfo->getExtension() === 'json'
+        );
 
-        foreach ($jsonFileFinder->getIterator() as $fileInfo) {
-            $jsonFileInfos[] = $fileInfo;
-        }
-
-        return $jsonFileInfos;
+        return array_merge($jsonFileInfos, $scannedFileInfos);
     }
 
     /**
      * @param string[] $paths
-     * @return SplFileInfo[]
+     * @return FileInfo[]
      */
     public static function findYamlFiles(array $paths): array
     {
         Assert::allString($paths);
         Assert::allFileExists($paths);
 
-        $finder = Finder::create()
-            ->files()
-            ->in($paths)
-            ->name('*.yml')
-            ->name('*.yaml');
+        return FileFinder::find(
+            $paths,
+            static fn (FileInfo $fileInfo): bool => in_array($fileInfo->getExtension(), ['yml', 'yaml'], true)
+        );
+    }
 
-        return iterator_to_array($finder);
+    /**
+     * @param string[] $excludedPaths
+     */
+    private static function isExcluded(string $realPath, array $excludedPaths): bool
+    {
+        foreach ($excludedPaths as $excludedPath) {
+            if (str_contains($realPath, $excludedPath)) {
+                return true;
+            }
+
+            if (str_contains($excludedPath, '*') && fnmatch($excludedPath, $realPath)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

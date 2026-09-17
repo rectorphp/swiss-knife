@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife;
 
+use Entropy\FileSystem\FileInfo;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
-use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 final readonly class MockedClassResolver
@@ -41,7 +41,7 @@ final readonly class MockedClassResolver
     }
 
     /**
-     * @param SplFileInfo[] $phpFileInfos
+     * @param FileInfo[] $phpFileInfos
      */
     private function traverseFileInfos(
         array $phpFileInfos,

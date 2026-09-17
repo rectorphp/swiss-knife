@@ -7,10 +7,10 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
+use Entropy\FileSystem\FileFinder;
+use Entropy\FileSystem\FileInfo;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * @see \Rector\SwissKnife\Tests\Command\NamespaceToPSR4CommandTest
@@ -37,7 +37,6 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
 
         $changedFilesCount = 0;
 
-        /** @var SplFileInfo $fileInfo */
         foreach ($fileInfos as $fileInfo) {
             $expectedNamespace = $this->resolveExpectedNamespace($namespaceRoot, $fileInfo);
             $expectedNamespaceLine = 'namespace ' . $expectedNamespace . ';';
@@ -88,23 +87,21 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
     }
 
     /**
-     * @return SplFileInfo[]
+     * @return FileInfo[]
      */
     private function findFilesInPath(string $path): array
     {
-        $finder = Finder::create()
-            ->files()
-            ->in([$path])
-            ->name('*.php')
-            ->sortByName()
-            ->filter(static fn (SplFileInfo $fileInfo): bool =>
-                // filter classes
-                str_contains($fileInfo->getContents(), 'class '));
+        return FileFinder::find([$path], static function (FileInfo $fileInfo): bool {
+            if ($fileInfo->getExtension() !== 'php') {
+                return false;
+            }
 
-        return iterator_to_array($finder->getIterator());
+            // filter classes
+            return str_contains($fileInfo->getContents(), 'class ');
+        });
     }
 
-    private function resolveExpectedNamespace(string $namespaceRoot, SplFileInfo $fileInfo): string
+    private function resolveExpectedNamespace(string $namespaceRoot, FileInfo $fileInfo): string
     {
         $relativePathNamespace = str_replace('/', '\\', $fileInfo->getRelativePath());
         if ($relativePathNamespace === '') {
