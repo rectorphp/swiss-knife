@@ -57,7 +57,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
     ): int {
         $phpFileInfos = PhpFilesFinder::find($sources, $excludedPaths);
         if ($phpFileInfos === []) {
-            $this->outputPrinter->warning('No PHP files found in provided paths');
+            $this->outputPrinter->writeln('No PHP files found in provided paths');
 
             return ExitCode::SUCCESS;
         }
@@ -81,17 +81,17 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 
         $this->outputPrinter->newline(2);
         $constantFetchCount = count($classConstantFetches);
-        $this->outputPrinter->success(sprintf(
+        $this->outputPrinter->writeln(sprintf(
             'Found %d class constant fetch%s',
             $constantFetchCount,
             $constantFetchCount === 1 ? '' : 'es'
         ));
         $twigFetchCount = count($twigClassConstantFetches);
-        $this->outputPrinter->success(
+        $this->outputPrinter->writeln(
             sprintf('Found %d constant%s in Twig templates', $twigFetchCount, $twigFetchCount === 1 ? '' : 's')
         );
         $yamlFetchCount = count($yamlClassConstantFetches);
-        $this->outputPrinter->success(sprintf(
+        $this->outputPrinter->writeln(sprintf(
             'Found %d constant%s in YAML configs',
             $yamlFetchCount,
             $yamlFetchCount === 1 ? '' : 's'
@@ -110,7 +110,7 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
         }
 
         if (! $visibilityChangeStats->hasAnyChange()) {
-            $this->outputPrinter->warning('No constants were privatized');
+            $this->outputPrinter->success('No constants to privatize, all are already used correctly');
 
             return ExitCode::SUCCESS;
         }

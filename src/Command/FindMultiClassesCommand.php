@@ -31,7 +31,12 @@ final readonly class FindMultiClassesCommand implements CommandInterface
 
         $multipleClassesByFile = $this->multipleClassInOneFileFinder->findInDirectories($sources, $excludePaths);
         if ($multipleClassesByFile === []) {
-            $this->outputPrinter->success(sprintf('No file with 2+ classes found in %d files', count($phpFileInfos)));
+            $fileCount = count($phpFileInfos);
+            $this->outputPrinter->success(sprintf(
+                'No file with 2+ classes found in %d file%s',
+                $fileCount,
+                $fileCount === 1 ? '' : 's'
+            ));
 
             return ExitCode::SUCCESS;
         }
@@ -40,10 +45,18 @@ final readonly class FindMultiClassesCommand implements CommandInterface
             // get relative path to getcwd()
             $relativeFilePath = PathHelper::relativeToCwd($filePath);
 
-            $message = sprintf('File "%s" contains %d classes', $relativeFilePath, count($classes));
+            $classCount = count($classes);
+            $message = sprintf('File "%s" contains %d class%s', $relativeFilePath, $classCount, $classCount === 1 ? '' : 'es');
             $this->outputPrinter->section($message);
             $this->outputPrinter->listing($classes);
         }
+
+        $fileWithMultipleClassesCount = count($multipleClassesByFile);
+        $this->outputPrinter->error(sprintf(
+            'Found %d file%s with multiple classes, split each into its own file',
+            $fileWithMultipleClassesCount,
+            $fileWithMultipleClassesCount === 1 ? '' : 's'
+        ));
 
         return ExitCode::ERROR;
     }
