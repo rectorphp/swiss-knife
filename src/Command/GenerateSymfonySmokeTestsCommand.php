@@ -56,7 +56,7 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
 
         if ($testByPackageSubscribers === []) {
             $this->outputPrinter->warning(
-                'No test templates found for the required packages. Make sure you project uses Composer to manage version and has Symfony/Doctrine packages listed in "require" section'
+                'No test templates found for the required packages. Make sure your project uses Composer to manage versions and has Symfony/Doctrine packages listed in the "require" section'
             );
 
             return ExitCode::ERROR;
@@ -64,7 +64,7 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
 
         $this->outputPrinter->newline();
         $this->outputPrinter->writeln(sprintf(
-            'Found <fg=yellow>%d smoke test%s</> that might come handy',
+            'Found <fg=yellow>%d smoke test%s</> that might come in handy',
             count($testByPackageSubscribers),
             count($testByPackageSubscribers) > 1 ? 's' : ''
         ));

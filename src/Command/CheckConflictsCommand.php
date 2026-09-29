@@ -34,14 +34,20 @@ final readonly class CheckConflictsCommand implements CommandInterface
 
         $conflictsCountByFilePath = $this->conflictResolver->extractFromFileInfos($filePaths);
         if ($conflictsCountByFilePath === []) {
-            $message = sprintf('No conflicts found in %d files', count($fileInfos));
+            $fileCount = count($fileInfos);
+            $message = sprintf('No conflicts found in %d file%s', $fileCount, $fileCount === 1 ? '' : 's');
             $this->outputPrinter->success($message);
 
             return ExitCode::SUCCESS;
         }
 
         foreach ($conflictsCountByFilePath as $file => $conflictCount) {
-            $message = sprintf('File "%s" contains %d unresolved conflicts', $file, $conflictCount);
+            $message = sprintf(
+                'File "%s" contains %d unresolved conflict%s',
+                $file,
+                $conflictCount,
+                $conflictCount === 1 ? '' : 's'
+            );
             $this->outputPrinter->error($message);
         }
 

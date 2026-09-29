@@ -50,9 +50,10 @@ final readonly class SpotLazyTraitsCommand implements CommandInterface
 
         foreach ($leastUsedTraitsMetadatas as $leastUsedTraitMetadata) {
             $this->outputPrinter->writeln(sprintf(
-                'Trait "%s" (%d lines) is used only in %d file%s',
+                'Trait "%s" (%d line%s) is used only in %d file%s',
                 $leastUsedTraitMetadata->getShortTraitName(),
                 $leastUsedTraitMetadata->getLineCount(),
+                $leastUsedTraitMetadata->getLineCount() === 1 ? '' : 's',
                 $leastUsedTraitMetadata->getUsedInCount(),
                 $leastUsedTraitMetadata->getUsedInCount() === 1 ? '' : 's'
             ));
@@ -62,7 +63,7 @@ final readonly class SpotLazyTraitsCommand implements CommandInterface
         }
 
         $this->outputPrinter->warning(sprintf(
-            'Inline these traits or refactor them to a service if meaningful.%sChange "--max-used" to different number to get more result',
+            'Inline these traits or refactor them to a service if meaningful.%sChange "--max-used" to a different number to get more results',
             PHP_EOL
         ));
 

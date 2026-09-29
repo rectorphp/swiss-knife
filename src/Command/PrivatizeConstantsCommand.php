@@ -80,11 +80,22 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
         );
 
         $this->outputPrinter->newline(2);
-        $this->outputPrinter->success(sprintf('Found %d class constant fetches', count($classConstantFetches)));
+        $constantFetchCount = count($classConstantFetches);
+        $this->outputPrinter->success(sprintf(
+            'Found %d class constant fetch%s',
+            $constantFetchCount,
+            $constantFetchCount === 1 ? '' : 'es'
+        ));
+        $twigFetchCount = count($twigClassConstantFetches);
         $this->outputPrinter->success(
-            sprintf('Found %d constants in Twig templates', count($twigClassConstantFetches))
+            sprintf('Found %d constant%s in Twig templates', $twigFetchCount, $twigFetchCount === 1 ? '' : 's')
         );
-        $this->outputPrinter->success(sprintf('Found %d constants in YAML configs', count($yamlClassConstantFetches)));
+        $yamlFetchCount = count($yamlClassConstantFetches);
+        $this->outputPrinter->success(sprintf(
+            'Found %d constant%s in YAML configs',
+            $yamlFetchCount,
+            $yamlFetchCount === 1 ? '' : 's'
+        ));
 
         $this->outputPrinter->newline(2);
 
@@ -108,15 +119,17 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
 
         // to make it fail in CI
         if ($dryRun) {
+            $privatizableCount = $visibilityChangeStats->getPrivateCount();
             $this->outputPrinter->error(
-                sprintf('%d constants can be privatized', $visibilityChangeStats->getPrivateCount())
+                sprintf('%d constant%s can be privatized', $privatizableCount, $privatizableCount === 1 ? '' : 's')
             );
 
             return ExitCode::ERROR;
         }
 
+        $privatizedCount = $visibilityChangeStats->getPrivateCount();
         $this->outputPrinter->success(
-            sprintf('Totally %d constants were made private', $visibilityChangeStats->getPrivateCount())
+            sprintf('Made %d constant%s private', $privatizedCount, $privatizedCount === 1 ? '' : 's')
         );
 
         return ExitCode::SUCCESS;

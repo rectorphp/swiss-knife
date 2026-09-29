@@ -32,7 +32,8 @@ final readonly class CheckCommentedCodeCommand implements CommandInterface
     {
         $phpFileInfos = PhpFilesFinder::find($sources, $skipFiles);
 
-        $message = sprintf('Analysing %d *.php files', count($phpFileInfos));
+        $phpFileCount = count($phpFileInfos);
+        $message = sprintf('Analysing %d *.php file%s', $phpFileCount, $phpFileCount === 1 ? '' : 's');
         $this->outputPrinter->yellow($message);
 
         $progressBar = new ProgressBar();
