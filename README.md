@@ -2,7 +2,7 @@
 
 [![Downloads total](https://img.shields.io/packagist/dt/rector/swiss-knife.svg?style=flat-square)](https://packagist.org/packages/rector/swiss-knife/stats)
 
-Swiss knife in pocket of every upgrade architect!
+Swiss knife in the pocket of every upgrade architect!
 
 <br>
 
@@ -20,15 +20,25 @@ composer require rector/swiss-knife --dev
 
 ## Usage
 
+* [1. Check your Code for Git Merge Conflicts](#1-check-your-code-for-git-merge-conflicts)
+* [2. Detect Commented Code](#2-detect-commented-code)
+* [3. Reach full PSR-4](#3-reach-full-psr-4)
+* [4. Finalize classes without children](#4-finalize-classes-without-children)
+* [5. Privatize local class constants](#5-privatize-local-class-constants)
+* [6. Spots Fake Traits](#6-spots-fake-traits)
+* [7. Split huge Symfony config to per-package in directory](#7-split-huge-symfony-config-to-per-package-in-directory)
+* [8. Generate Symfony Smoke Tests](#8-generate-symfony-smoke-tests)
+* [9. Detect Duplicated Code](#9-detect-duplicated-code)
+
 <br>
 
 ## 1. Check your Code for Git Merge Conflicts
 
-Do you use Git? Then merge conflicts is not what you want in your code ever to see in pushed code:
+Do you use Git? Then merge conflict markers are the last thing you want to see in pushed code:
 
-```bash
+```
 <<<<<<< HEAD
-````
+```
 
 Add this command to CI to spot these:
 
@@ -46,7 +56,7 @@ vendor/bin/swiss-knife check-conflicts . --exclude vendor --exclude tests/fixtur
 
 ## 2. Detect Commented Code
 
-Have you ever forgot commented code in your code?
+Have you ever forgotten commented code in your project?
 
 ```php
 //      foreach ($matches as $match) {
@@ -61,15 +71,13 @@ vendor/bin/swiss-knife check-commented-code <directory>
 vendor/bin/swiss-knife check-commented-code packages --line-limit 5 --skip-file '*Controller.php'
 ```
 
-
-
 <br>
 
 ## 3. Reach full PSR-4
 
 ### Find multiple classes in single file
 
-To make PSR-4 work properly, each class must be in its own file. This command makes it easy to spot multiple classes in single file:
+To make PSR-4 work properly, each class must be in its own file. This command makes it easy to spot multiple classes in a single file:
 
 ```bash
 vendor/bin/swiss-knife find-multi-classes src
