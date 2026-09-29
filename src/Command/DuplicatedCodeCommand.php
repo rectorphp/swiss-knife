@@ -44,13 +44,22 @@ final readonly class DuplicatedCodeCommand implements CommandInterface
             $filePaths[] = $phpFileInfo->getRealPath();
         }
 
-        $this->outputPrinter->yellow(sprintf('Scanning %d *.php files for duplicated code', count($filePaths)));
+        $fileCount = count($filePaths);
+        $this->outputPrinter->yellow(sprintf(
+            'Scanning %d *.php file%s for duplicated code',
+            $fileCount,
+            $fileCount === 1 ? '' : 's'
+        ));
 
         $cloneDetector = new CloneDetector($minLines, $minTokens, $fuzzy);
         $clones = $cloneDetector->detect($filePaths);
 
         if ($clones === []) {
-            $this->outputPrinter->green(sprintf('No duplicates found in %d files', count($filePaths)));
+            $this->outputPrinter->green(sprintf(
+                'No duplicates found in %d file%s',
+                $fileCount,
+                $fileCount === 1 ? '' : 's'
+            ));
             return ExitCode::SUCCESS;
         }
 
@@ -75,11 +84,15 @@ final readonly class DuplicatedCodeCommand implements CommandInterface
             $duplicatedLines += $clone->lines;
         }
 
+        $cloneCount = count($clones);
         $this->outputPrinter->redBackground(sprintf(
-            'Found %d clones with %d duplicated lines in %d scanned files',
-            count($clones),
+            'Found %d clone%s with %d duplicated line%s in %d scanned file%s',
+            $cloneCount,
+            $cloneCount === 1 ? '' : 's',
             $duplicatedLines,
-            count($filePaths)
+            $duplicatedLines === 1 ? '' : 's',
+            $fileCount,
+            $fileCount === 1 ? '' : 's'
         ));
 
         return ExitCode::ERROR;

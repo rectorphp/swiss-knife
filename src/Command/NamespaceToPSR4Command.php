@@ -48,9 +48,8 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
 
             // 2. incorrect namespace found
             $this->outputPrinter->yellow(sprintf(
-                'File "%s"%s fixed to expected namespace "%s"',
+                'File "%s" fixed to expected namespace "%s"',
                 $fileInfo->getRelativePathname(),
-                PHP_EOL,
                 $expectedNamespace
             ));
 
@@ -68,9 +67,18 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
         }
 
         if ($changedFilesCount === 0) {
-            $this->outputPrinter->success(sprintf('All %d files have correct namespace', count($fileInfos)));
+            $fileCount = count($fileInfos);
+            $this->outputPrinter->success(sprintf(
+                'All %d file%s have correct namespace',
+                $fileCount,
+                $fileCount === 1 ? '' : 's'
+            ));
         } else {
-            $this->outputPrinter->success(sprintf('Fixed %d files', $changedFilesCount));
+            $this->outputPrinter->success(sprintf(
+                'Fixed %d file%s',
+                $changedFilesCount,
+                $changedFilesCount === 1 ? '' : 's'
+            ));
         }
 
         return ExitCode::SUCCESS;

@@ -78,14 +78,23 @@ final readonly class FinalizeClassesCommand implements CommandInterface
             $progressBar->finish();
         }
 
+        $parentCount = count($parentClassNames);
+        $entityCount = count($entityClassNames);
         $this->outputPrinter->writeln(sprintf(
-            'Found %d parent and %d entity classes',
-            count($parentClassNames),
-            count($entityClassNames)
+            'Found %d parent class%s and %d entity class%s',
+            $parentCount,
+            $parentCount === 1 ? '' : 'es',
+            $entityCount,
+            $entityCount === 1 ? '' : 'es'
         ));
 
         if ($skipMocked) {
-            $this->outputPrinter->writeln(sprintf('Also %d mocked classes', count($mockedClassNames)));
+            $mockedCount = count($mockedClassNames);
+            $this->outputPrinter->writeln(sprintf(
+                'Also %d mocked class%s',
+                $mockedCount,
+                $mockedCount === 1 ? '' : 'es'
+            ));
         }
 
         $this->outputPrinter->newline(1);
