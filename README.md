@@ -157,29 +157,7 @@ That way all the constants not used outside will be made `private` safely.
 
 <br>
 
-## 6. Spots Fake Traits
-
-What is trait has 5 lines and used in single service? We know it's better to be inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
-
-We made a command to automate this process and spot the traits most likely to be inlined:
-
-```bash
-vendor/bin/swiss-knife spot-lazy-traits src
-```
-
-<br>
-
-By default, the commands look for traits used max 2-times. To change that:
-
-```bash
-vendor/bin/swiss-knife spot-lazy-traits src --max-used 4
-```
-
-That's it! Run this command once upon a time or run it in CI to eliminate traits with low value to exists. Your code will be more robust and easier to work with.
-
-<br>
-
-## 7. Split huge Symfony config to per-package in directory
+## 6. Split huge Symfony config to per-package in directory
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 
@@ -255,7 +233,7 @@ All the extensions will be extracted to separate files in `config/packages/dev` 
 
 <br>
 
-## 8. Generate Symfony Smoke Tests
+## 7. Generate Symfony Smoke Tests
 
 Cover your Symfony app with smoke tests in seconds. This command scans your `composer.json`, picks the matching test templates, and drops them under `tests/Unit/Smoke` (or your project's equivalent unit-tests directory).
 
@@ -330,7 +308,7 @@ final class ServiceContainerTest extends AbstractContainerTestCase
 
 <br>
 
-## 9. Detect Duplicated Code
+## 8. Detect Duplicated Code
 
 Spot copy-pasted code blocks with a token-based detector, a small clone of phpcpd.
 Add it to CI to fail when a large copy-pasted block is added:
