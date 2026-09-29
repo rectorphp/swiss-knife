@@ -12,6 +12,7 @@
         "nette/robot-loader": "^4.1",
         "nette/utils": "^4.1",
         "nikic/php-parser": "^5.9",
+        "sebastian/lines-of-code": "^4.0",
         "webmozart/assert": "^2.4"
     },
     "require-dev": {

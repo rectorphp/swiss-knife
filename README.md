@@ -351,6 +351,40 @@ Exit code is `1` when clones are found, `0` otherwise.
 
 <br>
 
+## 10. Measure Code Size
+
+Measure lines of code and structure size of your project - files, classes, methods, constants and more:
+
+```bash
+vendor/bin/swiss-knife measure src
+vendor/bin/swiss-knife measure src tests --exclude tests/fixtures
+```
+
+Options:
+
+- `--exclude` paths to exclude
+- `--short` print short metrics only
+- `--longest` show top 10 longest files
+- `--allow-vendor` allow the `/vendor` directory to be scanned
+- `--json` output in JSON format
+
+<br>
+
+## 11. Count PHP Features
+
+Count PHP features used in the project, grouped by the PHP version that introduced them.
+Handy to see how modern your code is before an upgrade:
+
+```bash
+vendor/bin/swiss-knife features src
+```
+
+Options:
+
+- `--json` output in JSON format
+
+<br>
+
 That's it!
 
 <br>
