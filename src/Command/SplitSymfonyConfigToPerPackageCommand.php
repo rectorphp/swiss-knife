@@ -77,7 +77,15 @@ final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInt
         $cleanedConfigContents = $this->printerStandard->prettyPrintFile($stmts);
         FileSystem::write($configPath, $cleanedConfigContents, null);
 
-        return 0;
+        $splitFileCount = count($symfonyExtensionMethodCalls);
+        $this->outputPrinter->success(sprintf(
+            'Split config into %d per-package file%s in "%s"',
+            $splitFileCount,
+            $splitFileCount === 1 ? '' : 's',
+            $outputDir
+        ));
+
+        return ExitCode::SUCCESS;
     }
 
     public function getName(): string

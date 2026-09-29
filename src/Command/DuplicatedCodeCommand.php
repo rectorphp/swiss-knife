@@ -55,7 +55,7 @@ final readonly class DuplicatedCodeCommand implements CommandInterface
         $clones = $cloneDetector->detect($filePaths);
 
         if ($clones === []) {
-            $this->outputPrinter->green(sprintf(
+            $this->outputPrinter->success(sprintf(
                 'No duplicates found in %d file%s',
                 $fileCount,
                 $fileCount === 1 ? '' : 's'
@@ -85,7 +85,7 @@ final readonly class DuplicatedCodeCommand implements CommandInterface
         }
 
         $cloneCount = count($clones);
-        $this->outputPrinter->redBackground(sprintf(
+        $this->outputPrinter->error(sprintf(
             'Found %d clone%s with %d duplicated line%s in %d scanned file%s',
             $cloneCount,
             $cloneCount === 1 ? '' : 's',
