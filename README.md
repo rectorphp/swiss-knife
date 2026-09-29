@@ -149,91 +149,7 @@ That way all the constants not used outside will be made `private` safely.
 
 <br>
 
-## 6. Mock only constructor param you need with MockWire
-
-Imagine there is a service that has 6 dependencies in `__construct()`:
-
-```php
-final class RealClass
-{
-    public function __construct(
-        private readonly FirstService $firstService,
-        private readonly SecondService $secondService,
-        private readonly ThirdService $thirdService,
-        private readonly FourthService $fourthService,
-        private readonly FifthService $fifthService,
-        private readonly SixthService $sixthService
-    ) {
-    }
-}
-```
-
-<br>
-
-But we want to **mock only one of them**:
-
-```php
-use Rector\SwissKnife\Testing\MockWire;
-
-// pass a mock
-$thirdDependencyMock = $this->createMock(ThirdDependency::class);
-$thirdDependencyMock->method('someMethod')->willReturn('some value');
-
-$realClass = MockWire::create(RealClass::class, [
-    $thirdDependencyMock
-]);
-```
-
-<br>
-
-Or pass direct instance:
-
-```php
-$realClass = MockWire::create(RealClass::class, [
-    new ThirdDependency()
-]);
-```
-
-The rest of argument will be mocked automatically.
-
-This way we:
-
-* can easily **change the class constructor**, without having burden of changing all the tests.
-* see what is really being used in the constructor
-* avoid any mock-mess clutter properties all over our test
-
-<br>
-
-## 7. Quick search PHP files with regex
-
-Data beats guess. Do you need a quick idea how many files contain `$this->get('...')` calls? Or another anti-pattern you want to remove?
-
-PhpStorm helps with similar search, but stops counting at 100+. To get exact data about your codebase, use this command:
-
-```bash
-vendor/bin/swiss-knife search-regex "#this->get\((.*)\)#"
-```
-
-↓
-
-```bash
-Going through 1053 *.php files
-Searching for regex: #this->get\((.*)\)#
-
- 1053/1053 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
-
- * src/Controller/ProjectController.php: 15
- * src/Controller/OrderController.php: 5
-
-
- [OK] Found 20 cases in 2 files
-
-```
-
-
-<br>
-
-## 8. Spots Fake Traits
+## 6. Spots Fake Traits
 
 What is trait has 5 lines and used in single service? We know it's better to be inlined, to empower IDE, Rector and PHPStan. But don't have time to worry about these details.
 
@@ -255,7 +171,7 @@ That's it! Run this command once upon a time or run it in CI to eliminate traits
 
 <br>
 
-## 9. Split huge Symfony config to per-package in directory
+## 7. Split huge Symfony config to per-package in directory
 
 Do you have a huge Symfony config file that is hard to navigate? Do you want to split it to per-package files?
 
@@ -331,7 +247,7 @@ All the extensions will be extracted to separate files in `config/packages/dev` 
 
 <br>
 
-## 10. Generate Symfony Smoke Tests
+## 8. Generate Symfony Smoke Tests
 
 Cover your Symfony app with smoke tests in seconds. This command scans your `composer.json`, picks the matching test templates, and drops them under `tests/Unit/Smoke` (or your project's equivalent unit-tests directory).
 
@@ -406,7 +322,7 @@ final class ServiceContainerTest extends AbstractContainerTestCase
 
 <br>
 
-## 11. Detect Duplicated Code
+## 9. Detect Duplicated Code
 
 Spot copy-pasted code blocks with a token-based detector, a small clone of phpcpd.
 Add it to CI to fail when a large copy-pasted block is added:

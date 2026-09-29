@@ -34,18 +34,11 @@ return [
 
         // keep class references
         'src/Enum/SymfonyExtensionClass.php',
-
-        // uses native PHPUnit TestCase class in the project
-        'src/Testing/PHPUnitMocker.php',
-        'src/Testing/MockWire.php',
     ],
     'patchers' => [
         // unprefix test case class names
         function (string $filePath, string $prefix, string $content): string {
-            if (! str_ends_with($filePath, 'packages/Testing/UnitTestFilter.php')
-                &&
-                ! str_ends_with($filePath, 'src/Testing/MockWire.php')
-            ) {
+            if (! str_ends_with($filePath, 'packages/Testing/UnitTestFilter.php')) {
                 return $content;
             }
 
