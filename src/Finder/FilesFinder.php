@@ -61,31 +61,6 @@ final class FilesFinder
     }
 
     /**
-     * @param string[] $sources
-     * @return FileInfo[]
-     */
-    public static function findJsonFiles(array $sources): array
-    {
-        $jsonFileInfos = [];
-        $directories = [];
-
-        foreach ($sources as $source) {
-            if (is_file($source)) {
-                $jsonFileInfos[] = new FileInfo($source, '', $source);
-            } else {
-                $directories[] = $source;
-            }
-        }
-
-        $scannedFileInfos = FileFinder::find(
-            $directories,
-            static fn (FileInfo $fileInfo): bool => $fileInfo->getExtension() === 'json'
-        );
-
-        return array_merge($jsonFileInfos, $scannedFileInfos);
-    }
-
-    /**
      * @param string[] $paths
      * @return FileInfo[]
      */
