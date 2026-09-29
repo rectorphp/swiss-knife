@@ -5,12 +5,7 @@ declare(strict_types=1);
 use Entropy\Console\ConsoleApplication;
 use Rector\SwissKnife\DependencyInjection\ContainerFactory;
 
-$scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
-if (file_exists($scoperAutoloadFilepath)) {
-    require_once $scoperAutoloadFilepath;
-}
-
-// load scoped autoload just once, order matters
+// load autoload just once, order matters
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -27,8 +22,8 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
     }
 }
 
-// the released tool is downgraded to PHP 7.2, but the bundled nikic/php-parser
-// references PHP 7.4 token constants directly - define them to avoid fatal errors
+// keep in case the tool is built for a lower PHP version, where the bundled
+// nikic/php-parser references newer token constants directly - define them to avoid fatal errors
 // (see https://github.com/easy-coding-standard/ecs/blob/main/bin/ecs.php for the same approach)
 if (! defined('T_FN')) {
     define('T_FN', 5025);
