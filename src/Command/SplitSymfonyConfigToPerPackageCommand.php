@@ -7,7 +7,7 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
-use Nette\Utils\FileSystem;
+use Entropy\Utils\FileSystem;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
@@ -53,6 +53,8 @@ final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInt
             return ExitCode::SUCCESS;
         }
 
+        FileSystem::ensureDirectoryExists($outputDir);
+
         foreach ($symfonyExtensionMethodCalls as $symfonyExtensionMethodCall) {
             $extensionNameString = $symfonyExtensionMethodCall->getArgs()[0]
                 ->value;
@@ -65,7 +67,7 @@ final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInt
 
             $splitConfigFilePath = $outputDir . '/' . $extensionNameString->value . '.php';
 
-            FileSystem::write($splitConfigFilePath, $splitConfigFileContents, null);
+            FileSystem::write($splitConfigFilePath, $splitConfigFileContents);
         }
 
         // load packages from the output dir
@@ -75,7 +77,7 @@ final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInt
 
         // @todo print config back :)
         $cleanedConfigContents = $this->printerStandard->prettyPrintFile($stmts);
-        FileSystem::write($configPath, $cleanedConfigContents, null);
+        FileSystem::write($configPath, $cleanedConfigContents);
 
         $splitFileCount = count($symfonyExtensionMethodCalls);
         $this->outputPrinter->success(sprintf(

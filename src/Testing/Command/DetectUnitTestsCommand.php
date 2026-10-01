@@ -7,7 +7,7 @@ namespace Rector\SwissKnife\Testing\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
-use Nette\Utils\FileSystem;
+use Entropy\Utils\FileSystem;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
 use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
 use Webmozart\Assert\Assert;
@@ -40,7 +40,7 @@ final readonly class DetectUnitTestsCommand implements CommandInterface
 
         $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths);
 
-        FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents, null);
+        FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
 
         $successMessage = sprintf(
             'List of %d unit tests was dumped into "%s"',

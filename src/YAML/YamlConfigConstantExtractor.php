@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\YAML;
 
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
@@ -41,7 +41,7 @@ final class YamlConfigConstantExtractor
         $fileContents = FileSystem::read($filePath);
 
         // find constant fetches in YAML file
-        $constantMatches = Strings::matchAll($fileContents, '#\b(?<class>[\w\\\]+)::(?<constant>\w+)\b#');
+        $constantMatches = Regex::matchAll($fileContents, '#\b(?<class>[\w\\\]+)::(?<constant>\w+)\b#');
 
         $externalClassAccessConstantFetches = [];
         foreach ($constantMatches as $constantMatch) {

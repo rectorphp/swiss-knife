@@ -7,8 +7,8 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
-use Nette\Utils\FileSystem;
-use Nette\Utils\Json;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Json;
 use Rector\SwissKnife\SmokeTestgen\FileSystem\TestsDirectoryResolver;
 use Rector\SwissKnife\SmokeTestgen\Templating\TemplateDecorator;
 use Rector\SwissKnife\SmokeTestgen\TestTemplateResolver;
@@ -128,7 +128,7 @@ final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterfac
         $composerJsonFilePath = $projectDirectory . '/composer.json';
         Assert::fileExists($composerJsonFilePath);
 
-        $composerJson = Json::decode(FileSystem::read($composerJsonFilePath), true);
+        $composerJson = Json::decode(FileSystem::read($composerJsonFilePath));
 
         $requirePackagesToVersions = $composerJson['require'] ?? [];
 

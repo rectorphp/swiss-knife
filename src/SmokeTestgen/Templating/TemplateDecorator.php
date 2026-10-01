@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\SmokeTestgen\Templating;
 
-use Nette\Utils\FileSystem;
-use Nette\Utils\Json;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Json;
 
 final class TemplateDecorator
 {
@@ -49,7 +49,7 @@ final class TemplateDecorator
     {
         $composerJsonFilePath = getcwd() . '/composer.json';
         if (file_exists($composerJsonFilePath)) {
-            $projectComposerJson = Json::decode(FileSystem::read($composerJsonFilePath), true);
+            $projectComposerJson = Json::decode(FileSystem::read($composerJsonFilePath));
 
             $autoloadDevPsr4 = $projectComposerJson['autoload-dev']['psr-4'] ?? [];
             foreach ($autoloadDevPsr4 as $namespace => $directory) {

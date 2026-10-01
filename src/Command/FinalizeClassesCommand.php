@@ -8,8 +8,8 @@ use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\EntityClassResolver;
 use Rector\SwissKnife\FileSystem\PathHelper;
@@ -112,7 +112,7 @@ final readonly class FinalizeClassesCommand implements CommandInterface
                 continue;
             }
 
-            $finalizedContents = Strings::replace(
+            $finalizedContents = Regex::replace(
                 $phpFileInfo->getContents(),
                 self::NEWLINE_CLASS_START_REGEX,
                 'final $1class '
@@ -121,7 +121,7 @@ final readonly class FinalizeClassesCommand implements CommandInterface
             $finalizedFilePaths[] = PathHelper::relativeToCwd($phpFileInfo->getRealPath());
 
             if ($dryRun === false) {
-                FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents, null);
+                FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents);
             }
         }
 

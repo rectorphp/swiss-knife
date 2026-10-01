@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Comments;
 
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 
 /**
  * @see \Rector\SwissKnife\Tests\Comments\CommentedCodeAnalyzerTest
@@ -25,7 +25,7 @@ final class CommentedCodeAnalyzer
     {
         $commentedLines = [];
 
-        $fileLines = Strings::split(FileSystem::read($filePath), self::NEWLINE_REGEX);
+        $fileLines = Regex::split(FileSystem::read($filePath), self::NEWLINE_REGEX);
 
         $commentLinesCount = 0;
 
