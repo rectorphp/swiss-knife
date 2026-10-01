@@ -6,8 +6,8 @@ namespace Rector\SwissKnife\Lines;
 
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
+use Rector\SwissKnife\Lines\NodeVisitor\CommentLineCountingNodeVisitor;
 use Rector\SwissKnife\Lines\NodeVisitor\StructureNodeVisitor;
-use SebastianBergmann\LinesOfCode\Counter;
 use Throwable;
 use Webmozart\Assert\Assert;
 
@@ -18,7 +18,6 @@ final readonly class Analyser
 {
     public function __construct(
         private Parser $parser,
-        private Counter $counter,
     ) {
     }
 
@@ -63,17 +62,16 @@ final readonly class Analyser
 
         $measurements->addFile($filePath);
 
-        // measure structure
+        // measure structure and comment lines in a single traversal
+        $commentLineCountingNodeVisitor = new CommentLineCountingNodeVisitor();
+
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor(new StructureNodeVisitor($measurements));
+        $nodeTraverser->addVisitor($commentLineCountingNodeVisitor);
         $nodeTraverser->traverse($stmts);
 
-        // measure lines of code
-        $initLinesOfCode = $this->resolveInitLinesOfCode($fileContents);
-        $linesOfCode = $this->counter->countInAbstractSyntaxTree($initLinesOfCode, $stmts);
-
-        $measurements->incrementLines($linesOfCode->linesOfCode());
-        $measurements->incrementCommentLines($linesOfCode->commentLinesOfCode());
+        $measurements->incrementLines($this->resolveInitLinesOfCode($fileContents));
+        $measurements->incrementCommentLines($commentLineCountingNodeVisitor->getCommentLineCount());
     }
 
     /**
