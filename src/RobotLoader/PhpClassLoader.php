@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\RobotLoader;
 
-use Nette\Loaders\RobotLoader;
+use Entropy\Reflection\ClassNameResolver;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 
 final class PhpClassLoader
 {
@@ -15,13 +16,16 @@ final class PhpClassLoader
      */
     public function load(array $directories, array $excludedPaths): array
     {
-        $robotLoader = new RobotLoader();
-        $robotLoader->addDirectory(...$directories);
-        $robotLoader->excludeDirectory(...$excludedPaths);
+        $classesToFilePaths = [];
 
-        $robotLoader->setTempDirectory(sys_get_temp_dir() . '/multiple-classes');
-        $robotLoader->rebuild();
+        foreach (PhpFilesFinder::find($directories, $excludedPaths) as $fileInfo) {
+            $filePath = (string) $fileInfo->getRealPath();
 
-        return $robotLoader->getIndexedClasses();
+            foreach (ClassNameResolver::resolveNamesFromFilePath($filePath) as $className) {
+                $classesToFilePaths[$className] = $filePath;
+            }
+        }
+
+        return $classesToFilePaths;
     }
 }
