@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\Twig\TwigTemplateConstantExtractor;
 
-use Override;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\Tests\Twig\TwigTemplateConstantExtractor\Fixture\SomeTemplateUsedConstant;
@@ -14,7 +13,6 @@ final class TwigTemplateConstantExtractorTest extends AbstractTestCase
 {
     private TwigTemplateConstantExtractor $twigTemplateConstantExtractor;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

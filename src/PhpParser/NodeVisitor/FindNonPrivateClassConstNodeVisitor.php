@@ -69,10 +69,15 @@ final class FindNonPrivateClassConstNodeVisitor extends NodeVisitorAbstract
             }
         }
 
-        return array_any(
-            $class->implements,
-            fn (Name $name): bool => in_array($constantName, $this->getClassConstantNames($name->toString()), true)
-        );
+        $found = false;
+        foreach ($class->implements as $name) {
+            if (in_array($constantName, $this->getClassConstantNames($name->toString()), true)) {
+                $found = true;
+                break;
+            }
+        }
+
+        return $found;
     }
 
     /**

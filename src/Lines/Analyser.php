@@ -14,11 +14,16 @@ use Throwable;
 /**
  * @see \Rector\SwissKnife\Tests\Lines\AnalyserTest
  */
-final readonly class Analyser
+final class Analyser
 {
-    public function __construct(
-        private Parser $parser,
-    ) {
+    /**
+     * @readonly
+     */
+    private Parser $parser;
+
+    public function __construct(Parser $parser)
+    {
+        $this->parser = $parser;
     }
 
     /**
@@ -52,7 +57,7 @@ final readonly class Analyser
         try {
             // avoid stop on invalid file contents
             $stmts = $this->parser->parse($fileContents);
-        } catch (Throwable) {
+        } catch (Throwable $throwable) {
             return;
         }
 

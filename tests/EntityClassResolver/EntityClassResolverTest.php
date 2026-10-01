@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\EntityClassResolver;
 
-use Override;
 use Rector\SwissKnife\EntityClassResolver;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\Tests\EntityClassResolver\Fixture\Anything\SomeAttributeDocument;
@@ -15,7 +14,6 @@ final class EntityClassResolverTest extends AbstractTestCase
 {
     private EntityClassResolver $entityClassResolver;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

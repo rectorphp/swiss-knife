@@ -16,7 +16,7 @@ final class FilesFinder
     /**
      * @var string[]
      */
-    private const array SKIPPED_DIRECTORIES = ['node_modules', 'vendor', 'var/cache'];
+    private const SKIPPED_DIRECTORIES = ['node_modules', 'vendor', 'var/cache'];
 
     /**
      * @param string[] $sources
@@ -36,7 +36,7 @@ final class FilesFinder
             // not our code
             $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
             foreach (self::SKIPPED_DIRECTORIES as $skippedDirectory) {
-                if (str_contains($normalizedRelativePath, '/' . $skippedDirectory . '/')) {
+                if (strpos($normalizedRelativePath, '/' . $skippedDirectory . '/') !== false) {
                     return false;
                 }
             }
@@ -81,11 +81,11 @@ final class FilesFinder
     private static function isExcluded(string $realPath, array $excludedPaths): bool
     {
         foreach ($excludedPaths as $excludedPath) {
-            if (str_contains($realPath, $excludedPath)) {
+            if (strpos($realPath, $excludedPath) !== false) {
                 return true;
             }
 
-            if (str_contains($excludedPath, '*') && fnmatch($excludedPath, $realPath)) {
+            if (strpos($excludedPath, '*') !== false && fnmatch($excludedPath, $realPath)) {
                 return true;
             }
         }

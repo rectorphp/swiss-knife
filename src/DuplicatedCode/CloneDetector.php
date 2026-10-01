@@ -15,11 +15,26 @@ use Rector\SwissKnife\DuplicatedCode\ValueObject\CodeCloneFile;
 final class CloneDetector
 {
     /**
+     * @readonly
+     */
+    private int $minLines;
+
+    /**
+     * @readonly
+     */
+    private int $minTokens;
+
+    /**
+     * @readonly
+     */
+    private bool $fuzzy;
+
+    /**
      * Tokens that carry no structural meaning for clone detection.
      *
      * @var array<int, true>
      */
-    private const array IGNORED_TOKENS = [
+    private const IGNORED_TOKENS = [
         T_INLINE_HTML => true,
         T_COMMENT => true,
         T_DOC_COMMENT => true,
@@ -31,8 +46,9 @@ final class CloneDetector
 
     /**
      * Bytes contributed by each kept token to the signature: 1 type byte + 4 CRC32 bytes.
+     * @var int
      */
-    private const int BYTES_PER_TOKEN = 5;
+    private const BYTES_PER_TOKEN = 5;
 
     /**
      * First seen location per window hash: hash => [filePath, tokenIndex].
@@ -53,11 +69,11 @@ final class CloneDetector
      */
     private array $clones = [];
 
-    public function __construct(
-        private readonly int $minLines,
-        private readonly int $minTokens,
-        private readonly bool $fuzzy
-    ) {
+    public function __construct(int $minLines, int $minTokens, bool $fuzzy)
+    {
+        $this->minLines = $minLines;
+        $this->minTokens = $minTokens;
+        $this->fuzzy = $fuzzy;
     }
 
     /**
@@ -97,7 +113,7 @@ final class CloneDetector
         $originToken = 0;
 
         for ($i = 0; $i <= $lastWindow; ++$i) {
-            $hash = substr(md5(substr($signature, $i * self::BYTES_PER_TOKEN, $windowBytes), true), 0, 8);
+            $hash = substr(md5((string) substr($signature, $i * self::BYTES_PER_TOKEN, $windowBytes), true), 0, 8);
 
             if (isset($this->hashes[$hash])) {
                 if (! $found) {

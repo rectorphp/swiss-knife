@@ -16,12 +16,12 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
     /**
      * @var string[]
      */
-    private const array ODM_SUFFIXES = ['Document', 'EmbeddedDocument'];
+    private const ODM_SUFFIXES = ['Document', 'EmbeddedDocument'];
 
     /**
      * @var string[]
      */
-    private const array ORM_SUFFIXES = ['Entity', 'Embeddable'];
+    private const ORM_SUFFIXES = ['Entity', 'Embeddable'];
 
     /**
      * @var string[]
@@ -68,12 +68,12 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         $docComment = $class->getDocComment();
         if ($docComment instanceof Doc) {
             // dummy check
-            if (! str_contains($docComment->getText(), '@')) {
+            if (strpos($docComment->getText(), '@') === false) {
                 return false;
             }
 
             foreach ($suffixes as $suffix) {
-                if (str_contains($docComment->getText(), $suffix)) {
+                if (strpos($docComment->getText(), $suffix) !== false) {
                     return true;
                 }
             }
@@ -92,7 +92,7 @@ final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
         foreach ($class->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attr) {
                 foreach ($suffixes as $suffix) {
-                    if (str_ends_with($attr->name->toString(), $suffix)) {
+                    if (substr_compare($attr->name->toString(), $suffix, -strlen($suffix)) === 0) {
                         return true;
                     }
                 }

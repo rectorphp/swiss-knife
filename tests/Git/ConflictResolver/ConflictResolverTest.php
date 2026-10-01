@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rector\SwissKnife\Tests\Git\ConflictResolver;
 
 use Iterator;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Rector\SwissKnife\Git\ConflictResolver;
 
@@ -18,7 +17,9 @@ final class ConflictResolverTest extends TestCase
         $this->conflictResolver = new ConflictResolver();
     }
 
-    #[DataProvider('provideData')]
+    /**
+     * @dataProvider provideData
+     */
     public function test(string $filePath, int $expectedConflictCount): void
     {
         $unresolvedConflictCount = $this->conflictResolver->extractFromFileInfo($filePath);

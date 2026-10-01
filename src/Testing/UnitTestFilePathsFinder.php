@@ -9,12 +9,22 @@ use Rector\SwissKnife\Testing\Finder\TestCaseClassFinder;
 /**
  * @see \Rector\SwissKnife\Tests\Testing\UnitTestFilePathsFinder\UnitTestFilePathsFinderTest
  */
-final readonly class UnitTestFilePathsFinder
+final class UnitTestFilePathsFinder
 {
-    public function __construct(
-        private TestCaseClassFinder $testCaseClassFinder,
-        private UnitTestFilter $unitTestFilter,
-    ) {
+    /**
+     * @readonly
+     */
+    private TestCaseClassFinder $testCaseClassFinder;
+
+    /**
+     * @readonly
+     */
+    private UnitTestFilter $unitTestFilter;
+
+    public function __construct(TestCaseClassFinder $testCaseClassFinder, UnitTestFilter $unitTestFilter)
+    {
+        $this->testCaseClassFinder = $testCaseClassFinder;
+        $this->unitTestFilter = $unitTestFilter;
     }
 
     /**

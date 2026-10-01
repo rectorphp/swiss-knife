@@ -15,11 +15,16 @@ use Entropy\Utils\Regex;
 /**
  * @see \Rector\SwissKnife\Tests\Command\NamespaceToPSR4CommandTest
  */
-final readonly class NamespaceToPSR4Command implements CommandInterface
+final class NamespaceToPSR4Command implements CommandInterface
 {
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    public function __construct(OutputPrinter $outputPrinter)
+    {
+        $this->outputPrinter = $outputPrinter;
     }
 
     /**
@@ -42,7 +47,7 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
             $expectedNamespaceLine = 'namespace ' . $expectedNamespace . ';';
 
             // 1. got the correct namespace
-            if (\str_contains($fileInfo->getContents(), $expectedNamespaceLine)) {
+            if (strpos($fileInfo->getContents(), $expectedNamespaceLine) !== false) {
                 continue;
             }
 
@@ -105,7 +110,7 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
             }
 
             // filter classes
-            return str_contains($fileInfo->getContents(), 'class ');
+            return strpos($fileInfo->getContents(), 'class ') !== false;
         });
     }
 

@@ -6,11 +6,16 @@ namespace Rector\SwissKnife\Finder;
 
 use Rector\SwissKnife\RobotLoader\PhpClassLoader;
 
-final readonly class MultipleClassInOneFileFinder
+final class MultipleClassInOneFileFinder
 {
-    public function __construct(
-        private PhpClassLoader $phpClassLoader
-    ) {
+    /**
+     * @readonly
+     */
+    private PhpClassLoader $phpClassLoader;
+
+    public function __construct(PhpClassLoader $phpClassLoader)
+    {
+        $this->phpClassLoader = $phpClassLoader;
     }
 
     /**

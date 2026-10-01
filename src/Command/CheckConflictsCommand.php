@@ -10,12 +10,22 @@ use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Git\ConflictResolver;
 
-final readonly class CheckConflictsCommand implements CommandInterface
+final class CheckConflictsCommand implements CommandInterface
 {
-    public function __construct(
-        private ConflictResolver $conflictResolver,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private ConflictResolver $conflictResolver;
+
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    public function __construct(ConflictResolver $conflictResolver, OutputPrinter $outputPrinter)
+    {
+        $this->conflictResolver = $conflictResolver;
+        $this->outputPrinter = $outputPrinter;
     }
 
     /**

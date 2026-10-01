@@ -10,10 +10,21 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\NeedForFinalizeNodeVisitor;
 
-final readonly class NeedsFinalizeAnalyzer
+final class NeedsFinalizeAnalyzer
 {
+    /**
+     * @readonly
+     */
+    private CachedPhpParser $cachedPhpParser;
+
+    /**
+     * @readonly
+     */
     private NodeTraverser $finalizingNodeTraverser;
 
+    /**
+     * @readonly
+     */
     private NeedForFinalizeNodeVisitor $needForFinalizeNodeVisitor;
 
     /**
@@ -21,8 +32,9 @@ final readonly class NeedsFinalizeAnalyzer
      */
     public function __construct(
         array $excludedClasses,
-        private CachedPhpParser $cachedPhpParser
+        CachedPhpParser $cachedPhpParser
     ) {
+        $this->cachedPhpParser = $cachedPhpParser;
         Assert::allString($excludedClasses);
 
         $this->needForFinalizeNodeVisitor = new NeedForFinalizeNodeVisitor($excludedClasses);

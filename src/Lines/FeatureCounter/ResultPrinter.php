@@ -8,12 +8,22 @@ use Entropy\Console\ConsoleTable\ConsoleTable;
 use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\Lines\FeatureCounter\ValueObject\FeatureCollector;
 
-final readonly class ResultPrinter
+final class ResultPrinter
 {
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-        private ConsoleTable $consoleTable,
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @readonly
+     */
+    private ConsoleTable $consoleTable;
+
+    public function __construct(OutputPrinter $outputPrinter, ConsoleTable $consoleTable)
+    {
+        $this->outputPrinter = $outputPrinter;
+        $this->consoleTable = $consoleTable;
     }
 
     public function print(FeatureCollector $featureCollector): void

@@ -42,17 +42,17 @@ final class MeasureFileFinder
                 $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
 
                 // symfony cache dir
-                if (str_contains($normalizedRelativePath, '/var/')) {
+                if (strpos($normalizedRelativePath, '/var/') !== false) {
                     return false;
                 }
 
-                if (! $allowVendor && str_contains($normalizedRelativePath, '/vendor/')) {
+                if (! $allowVendor && strpos($normalizedRelativePath, '/vendor/') !== false) {
                     return false;
                 }
 
                 $realPath = (string) $fileInfo->getRealPath();
                 foreach ($excludes as $exclude) {
-                    if (str_contains($realPath, $exclude)) {
+                    if (strpos($realPath, $exclude) !== false) {
                         return false;
                     }
                 }

@@ -34,7 +34,10 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
      */
     private array $classConstantFetches = [];
 
-    public function enterNode(Node $node): Node|int|null
+    /**
+     * @return Node|int|null
+     */
+    public function enterNode(Node $node)
     {
         if ($node instanceof Interface_ || $node instanceof Trait_ || $node instanceof Enum_) {
             return NodeTraverser::DONT_TRAVERSE_CHILDREN;
@@ -148,7 +151,7 @@ final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
         }
 
         $reflectionClass = new ReflectionClass($className);
-        return str_contains((string) $reflectionClass->getFileName(), 'vendor');
+        return strpos((string) $reflectionClass->getFileName(), 'vendor') !== false;
     }
 
     private function isCurrentClassConstant(Class_ $currentClass, string $constantName): bool

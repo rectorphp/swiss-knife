@@ -17,13 +17,18 @@ use Throwable;
 final class CachedPhpParser
 {
     /**
+     * @readonly
+     */
+    private Parser $phpParser;
+
+    /**
      * @var array<string, Stmt[]>
      */
     private array $cachedStmts = [];
 
-    public function __construct(
-        private readonly Parser $phpParser
-    ) {
+    public function __construct(Parser $phpParser)
+    {
+        $this->phpParser = $phpParser;
     }
 
     /**

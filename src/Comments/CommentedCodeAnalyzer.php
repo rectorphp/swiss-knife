@@ -15,8 +15,9 @@ final class CommentedCodeAnalyzer
     /**
      * @see https://regex101.com/r/5OlGjG/1
      * @see https://3v4l.org/Y8pSD
+     * @var string
      */
-    private const string NEWLINE_REGEX = '#\r?\n#';
+    private const NEWLINE_REGEX = '#\r?\n#';
 
     /**
      * @return int[]
@@ -30,7 +31,7 @@ final class CommentedCodeAnalyzer
         $commentLinesCount = 0;
 
         foreach ($fileLines as $key => $fileLine) {
-            $isCommentLine = str_starts_with(trim((string) $fileLine), '//');
+            $isCommentLine = strncmp(trim((string) $fileLine), '//', strlen('//')) === 0;
             if ($isCommentLine) {
                 ++$commentLinesCount;
             } else {

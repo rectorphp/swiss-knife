@@ -12,12 +12,22 @@ use Entropy\Validation\Assert;
 use Rector\SwissKnife\Lines\Measurements;
 use Rector\SwissKnife\Lines\NumberFormat;
 
-final readonly class TextOutputFormatter
+final class TextOutputFormatter
 {
-    public function __construct(
-        private ViewRenderer $viewRenderer,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private ViewRenderer $viewRenderer;
+
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    public function __construct(ViewRenderer $viewRenderer, OutputPrinter $outputPrinter)
+    {
+        $this->viewRenderer = $viewRenderer;
+        $this->outputPrinter = $outputPrinter;
     }
 
     public function printMeasurement(Measurements $measurements, bool $isShort, bool $showLongestFiles): void

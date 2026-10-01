@@ -12,15 +12,33 @@ use Entropy\Validation\Assert;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
 use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
 
-final readonly class DetectUnitTestsCommand implements CommandInterface
+final class DetectUnitTestsCommand implements CommandInterface
 {
-    private const string OUTPUT_FILENAME = 'phpunit-unit-files.xml';
+    /**
+     * @readonly
+     */
+    private PHPUnitXmlPrinter $phpUnitXmlPrinter;
 
-    public function __construct(
-        private PHPUnitXmlPrinter $phpunitXmlPrinter,
-        private OutputPrinter $outputPrinter,
-        private UnitTestFilePathsFinder $unitTestFilePathsFinder,
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @readonly
+     */
+    private UnitTestFilePathsFinder $unitTestFilePathsFinder;
+
+    /**
+     * @var string
+     */
+    private const OUTPUT_FILENAME = 'phpunit-unit-files.xml';
+
+    public function __construct(PHPUnitXmlPrinter $phpunitXmlPrinter, OutputPrinter $outputPrinter, UnitTestFilePathsFinder $unitTestFilePathsFinder)
+    {
+        $this->phpUnitXmlPrinter = $phpunitXmlPrinter;
+        $this->outputPrinter = $outputPrinter;
+        $this->unitTestFilePathsFinder = $unitTestFilePathsFinder;
     }
 
     /**
@@ -38,7 +56,7 @@ final readonly class DetectUnitTestsCommand implements CommandInterface
             return ExitCode::SUCCESS;
         }
 
-        $filesPHPUnitXmlContents = $this->phpunitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths);
+        $filesPHPUnitXmlContents = $this->phpUnitXmlPrinter->printFiles($unitTestCasesClassesToFilePaths);
 
         FileSystem::write(self::OUTPUT_FILENAME, $filesPHPUnitXmlContents);
 

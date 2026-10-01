@@ -12,14 +12,17 @@ use PhpParser\NodeVisitorAbstract;
 
 final class ExtractSymfonyExtensionCallNodeVisitor extends NodeVisitorAbstract
 {
-    private const string EXTENSION_METHOD_NAME = 'extension';
+    /**
+     * @var string
+     */
+    private const EXTENSION_METHOD_NAME = 'extension';
 
     /**
      * @var MethodCall[]
      */
     private array $extensionMethodCalls = [];
 
-    public function enterNode(Node $node): int|null
+    public function enterNode(Node $node): ?int
     {
         if (! $node instanceof Expression) {
             return null;

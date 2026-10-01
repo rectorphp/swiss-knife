@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\ParentClassResolver;
 
-use Override;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\Tests\AbstractTestCase;
@@ -16,7 +15,6 @@ final class ParentClassResolverTest extends AbstractTestCase
 {
     private ParentClassResolver $parentClassResolver;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

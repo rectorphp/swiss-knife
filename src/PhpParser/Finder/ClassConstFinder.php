@@ -12,11 +12,16 @@ use Rector\SwissKnife\ValueObject\ClassConstant;
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\Finder\ClassConstFinder\ClassConstFinderTest
  */
-final readonly class ClassConstFinder
+final class ClassConstFinder
 {
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser
-    ) {
+    /**
+     * @readonly
+     */
+    private CachedPhpParser $cachedPhpParser;
+
+    public function __construct(CachedPhpParser $cachedPhpParser)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
     }
 
     /**

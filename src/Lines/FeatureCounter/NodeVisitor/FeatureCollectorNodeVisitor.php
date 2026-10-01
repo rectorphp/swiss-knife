@@ -10,9 +10,14 @@ use Rector\SwissKnife\Lines\FeatureCounter\ValueObject\FeatureCollector;
 
 final class FeatureCollectorNodeVisitor extends NodeVisitorAbstract
 {
-    public function __construct(
-        private readonly FeatureCollector $featureCollector
-    ) {
+    /**
+     * @readonly
+     */
+    private FeatureCollector $featureCollector;
+
+    public function __construct(FeatureCollector $featureCollector)
+    {
+        $this->featureCollector = $featureCollector;
     }
 
     public function enterNode(Node $node): ?Node

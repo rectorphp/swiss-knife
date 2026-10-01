@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\YAML\YamlConfigConstantExtractor;
 
-use Override;
 use Rector\SwissKnife\Tests\AbstractTestCase;
 use Rector\SwissKnife\Tests\YAML\YamlConfigConstantExtractor\Fixture\SomeClassWithConstant;
 use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
@@ -13,7 +12,6 @@ final class YamlConfigConstantExtractorTest extends AbstractTestCase
 {
     private YamlConfigConstantExtractor $yamlConfigConstantExtractor;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

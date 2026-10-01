@@ -6,15 +6,28 @@ namespace Rector\SwissKnife\ValueObject;
 
 use Entropy\Validation\Assert;
 
-final readonly class ClassConstant
+final class ClassConstant
 {
+    /**
+     * @var class-string
+     * @readonly
+     */
+    private string $className;
+
+    /**
+     * @readonly
+     */
+    private string $constantName;
+
     /**
      * @param class-string $className
      */
     public function __construct(
-        private string $className,
-        private string $constantName,
+        string $className,
+        string $constantName
     ) {
+        $this->className = $className;
+        $this->constantName = $constantName;
         Assert::notEmpty($constantName);
         Assert::notEmpty($className);
     }

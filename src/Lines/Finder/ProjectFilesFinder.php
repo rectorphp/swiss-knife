@@ -12,7 +12,7 @@ final class ProjectFilesFinder
     /**
      * @var string[]
      */
-    private const array SKIPPED_DIRECTORIES = ['vendor', 'stubs', 'bin', 'migrations', 'data-fixtures', 'build'];
+    private const SKIPPED_DIRECTORIES = ['vendor', 'stubs', 'bin', 'migrations', 'data-fixtures', 'build'];
 
     /**
      * @return FileInfo[]
@@ -26,7 +26,7 @@ final class ProjectFilesFinder
 
             $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
             foreach (self::SKIPPED_DIRECTORIES as $skippedDirectory) {
-                if (str_contains($normalizedRelativePath, '/' . $skippedDirectory . '/')) {
+                if (strpos($normalizedRelativePath, '/' . $skippedDirectory . '/') !== false) {
                     return false;
                 }
             }

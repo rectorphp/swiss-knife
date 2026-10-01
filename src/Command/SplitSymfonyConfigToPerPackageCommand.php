@@ -21,14 +21,29 @@ use Rector\SwissKnife\PhpParser\NodeFactory\SplitConfigClosureFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\AddImportConfigMethodCallNodeVisitor;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ExtractSymfonyExtensionCallNodeVisitor;
 
-final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
+final class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
 {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @readonly
+     */
+    private SplitConfigClosureFactory $splitConfigClosureFactory;
+
+    /**
+     * @readonly
+     */
     private Standard $printerStandard;
 
     public function __construct(
-        private OutputPrinter $outputPrinter,
-        private SplitConfigClosureFactory $splitConfigClosureFactory,
+        OutputPrinter $outputPrinter,
+        SplitConfigClosureFactory $splitConfigClosureFactory
     ) {
+        $this->outputPrinter = $outputPrinter;
+        $this->splitConfigClosureFactory = $splitConfigClosureFactory;
         $this->printerStandard = new Standard();
     }
 

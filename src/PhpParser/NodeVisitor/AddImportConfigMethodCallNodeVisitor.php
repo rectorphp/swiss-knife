@@ -17,12 +17,17 @@ use PhpParser\NodeVisitorAbstract;
 
 final class AddImportConfigMethodCallNodeVisitor extends NodeVisitorAbstract
 {
-    public function __construct(
-        private readonly string $outputDirectory
-    ) {
+    /**
+     * @readonly
+     */
+    private string $outputDirectory;
+
+    public function __construct(string $outputDirectory)
+    {
+        $this->outputDirectory = $outputDirectory;
     }
 
-    public function enterNode(Node $node): int|null
+    public function enterNode(Node $node): ?int
     {
         if (! $node instanceof Closure) {
             return null;

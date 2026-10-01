@@ -21,15 +21,40 @@ use Rector\SwissKnife\ValueObject\ClassConstantFetch\CurrentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\VisibilityChangeStats;
 use Rector\SwissKnife\YAML\YamlConfigConstantExtractor;
 
-final readonly class PrivatizeConstantsCommand implements CommandInterface
+final class PrivatizeConstantsCommand implements CommandInterface
 {
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-        private ClassConstantFetchFinder $classConstantFetchFinder,
-        private ClassConstFinder $classConstFinder,
-        private TwigTemplateConstantExtractor $twigTemplateConstantExtractor,
-        private YamlConfigConstantExtractor $yamlConfigConstantExtractor
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @readonly
+     */
+    private ClassConstantFetchFinder $classConstantFetchFinder;
+
+    /**
+     * @readonly
+     */
+    private ClassConstFinder $classConstFinder;
+
+    /**
+     * @readonly
+     */
+    private TwigTemplateConstantExtractor $twigTemplateConstantExtractor;
+
+    /**
+     * @readonly
+     */
+    private YamlConfigConstantExtractor $yamlConfigConstantExtractor;
+
+    public function __construct(OutputPrinter $outputPrinter, ClassConstantFetchFinder $classConstantFetchFinder, ClassConstFinder $classConstFinder, TwigTemplateConstantExtractor $twigTemplateConstantExtractor, YamlConfigConstantExtractor $yamlConfigConstantExtractor)
+    {
+        $this->outputPrinter = $outputPrinter;
+        $this->classConstantFetchFinder = $classConstantFetchFinder;
+        $this->classConstFinder = $classConstFinder;
+        $this->twigTemplateConstantExtractor = $twigTemplateConstantExtractor;
+        $this->yamlConfigConstantExtractor = $yamlConfigConstantExtractor;
     }
 
     public function getName(): string
