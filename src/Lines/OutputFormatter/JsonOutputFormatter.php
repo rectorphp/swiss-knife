@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Lines\OutputFormatter;
 
+use Entropy\Validation\Assert;
 use Rector\SwissKnife\Lines\FeatureCounter\ValueObject\FeatureCollector;
 use Rector\SwissKnife\Lines\Measurements;
-use Webmozart\Assert\Assert;
 
 final class JsonOutputFormatter
 {

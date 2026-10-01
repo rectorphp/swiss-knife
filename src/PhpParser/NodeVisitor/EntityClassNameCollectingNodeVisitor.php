@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser\NodeVisitor;
 
+use Entropy\Validation\Assert;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\NodeVisitorAbstract;
-use Webmozart\Assert\Assert;
 
 final class EntityClassNameCollectingNodeVisitor extends NodeVisitorAbstract
 {

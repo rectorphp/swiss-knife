@@ -9,12 +9,12 @@ use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Utils\FileSystem;
 use Entropy\Utils\Json;
+use Entropy\Validation\Assert;
 use Rector\SwissKnife\SmokeTestgen\FileSystem\TestsDirectoryResolver;
 use Rector\SwissKnife\SmokeTestgen\Templating\TemplateDecorator;
 use Rector\SwissKnife\SmokeTestgen\TestTemplateResolver;
 use Rector\SwissKnife\SmokeTestgen\Utils\TestPathResolver;
 use RuntimeException;
-use Webmozart\Assert\Assert;
 
 final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterface
 {

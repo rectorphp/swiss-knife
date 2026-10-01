@@ -8,9 +8,9 @@ use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Utils\FileSystem;
+use Entropy\Validation\Assert;
 use Rector\SwissKnife\Testing\Printer\PHPUnitXmlPrinter;
 use Rector\SwissKnife\Testing\UnitTestFilePathsFinder;
-use Webmozart\Assert\Assert;
 
 final readonly class DetectUnitTestsCommand implements CommandInterface
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\ValueObject;
 
-use Webmozart\Assert\Assert;
+use Entropy\Validation\Assert;
 
 final readonly class ClassConstant
 {

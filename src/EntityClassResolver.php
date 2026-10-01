@@ -6,13 +6,13 @@ namespace Rector\SwissKnife;
 
 use Entropy\FileSystem\FileInfo;
 use Entropy\Utils\Regex;
+use Entropy\Validation\Assert;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor;
-use Webmozart\Assert\Assert;
 
 /**
  * @see \Rector\SwissKnife\Tests\EntityClassResolver\EntityClassResolverTest

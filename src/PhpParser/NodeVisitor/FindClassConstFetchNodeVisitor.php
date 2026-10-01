@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser\NodeVisitor;
 
+use Entropy\Validation\Assert;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ClassConstFetch;
@@ -23,7 +24,6 @@ use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstant
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ParentClassConstantFetch;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\StaticClassConstantFetch;
 use ReflectionClass;
-use Webmozart\Assert\Assert;
 
 final class FindClassConstFetchNodeVisitor extends NodeVisitorAbstract
 {

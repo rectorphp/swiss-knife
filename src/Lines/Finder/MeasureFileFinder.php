@@ -6,7 +6,7 @@ namespace Rector\SwissKnife\Lines\Finder;
 
 use Entropy\FileSystem\FileFinder;
 use Entropy\FileSystem\FileInfo;
-use Webmozart\Assert\Assert;
+use Entropy\Validation\Assert;
 
 final class MeasureFileFinder
 {
