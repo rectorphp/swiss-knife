@@ -8,14 +8,15 @@
     "require": {
         "php": ">=7.4",
         "ext-tokenizer": "*",
+        "composer/semver": "^3.5",
         "entropy/entropy": "^0.4.23",
-        "nikic/php-parser": "^5.9"
+        "nikic/php-parser": "^5.9",
+        "symfony/process": "^5.4 || ^6.4 || ^7.0 || ^8.1"
     },
     "require-dev": {
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.2",
         "phpunit/phpunit": "^9.6",
-        "rector/jack": "^1.1",
         "rector/rector": "^2.4",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/config": "^6.4",

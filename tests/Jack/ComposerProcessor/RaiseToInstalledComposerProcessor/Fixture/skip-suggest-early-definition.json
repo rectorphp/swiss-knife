@@ -1,0 +1,8 @@
+{
+    "suggest": {
+        "nette/utils": "to use container"
+    },
+    "require-dev": {
+        "nette/utils": "^3.4"
+    }
+}
