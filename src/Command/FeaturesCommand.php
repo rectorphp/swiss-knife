@@ -13,14 +13,34 @@ use Rector\SwissKnife\Lines\FeatureCounter\ResultPrinter;
 use Rector\SwissKnife\Lines\Finder\ProjectFilesFinder;
 use Rector\SwissKnife\Lines\OutputFormatter\JsonOutputFormatter;
 
-final readonly class FeaturesCommand implements CommandInterface
+final class FeaturesCommand implements CommandInterface
 {
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-        private FeatureCounterAnalyzer $featureCounterAnalyzer,
-        private ResultPrinter $resultPrinter,
-        private JsonOutputFormatter $jsonOutputFormatter,
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @readonly
+     */
+    private FeatureCounterAnalyzer $featureCounterAnalyzer;
+
+    /**
+     * @readonly
+     */
+    private ResultPrinter $resultPrinter;
+
+    /**
+     * @readonly
+     */
+    private JsonOutputFormatter $jsonOutputFormatter;
+
+    public function __construct(OutputPrinter $outputPrinter, FeatureCounterAnalyzer $featureCounterAnalyzer, ResultPrinter $resultPrinter, JsonOutputFormatter $jsonOutputFormatter)
+    {
+        $this->outputPrinter = $outputPrinter;
+        $this->featureCounterAnalyzer = $featureCounterAnalyzer;
+        $this->resultPrinter = $resultPrinter;
+        $this->jsonOutputFormatter = $jsonOutputFormatter;
     }
 
     /**

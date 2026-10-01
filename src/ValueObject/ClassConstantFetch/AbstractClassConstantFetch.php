@@ -9,10 +9,20 @@ use Rector\SwissKnife\ValueObject\ClassConstant;
 
 abstract class AbstractClassConstantFetch implements ClassConstantFetchInterface
 {
-    public function __construct(
-        private readonly string $className,
-        private readonly string $constantName
-    ) {
+    /**
+     * @readonly
+     */
+    private string $className;
+
+    /**
+     * @readonly
+     */
+    private string $constantName;
+
+    public function __construct(string $className, string $constantName)
+    {
+        $this->className = $className;
+        $this->constantName = $constantName;
     }
 
     public function getClassName(): string

@@ -13,14 +13,34 @@ use Rector\SwissKnife\Lines\Finder\MeasureFileFinder;
 use Rector\SwissKnife\Lines\OutputFormatter\JsonOutputFormatter;
 use Rector\SwissKnife\Lines\OutputFormatter\TextOutputFormatter;
 
-final readonly class MeasureCommand implements CommandInterface
+final class MeasureCommand implements CommandInterface
 {
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-        private Analyser $analyser,
-        private JsonOutputFormatter $jsonOutputFormatter,
-        private TextOutputFormatter $textOutputFormatter,
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @readonly
+     */
+    private Analyser $analyser;
+
+    /**
+     * @readonly
+     */
+    private JsonOutputFormatter $jsonOutputFormatter;
+
+    /**
+     * @readonly
+     */
+    private TextOutputFormatter $textOutputFormatter;
+
+    public function __construct(OutputPrinter $outputPrinter, Analyser $analyser, JsonOutputFormatter $jsonOutputFormatter, TextOutputFormatter $textOutputFormatter)
+    {
+        $this->outputPrinter = $outputPrinter;
+        $this->analyser = $analyser;
+        $this->jsonOutputFormatter = $jsonOutputFormatter;
+        $this->textOutputFormatter = $textOutputFormatter;
     }
 
     /**

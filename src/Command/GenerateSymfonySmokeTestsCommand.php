@@ -16,14 +16,34 @@ use Rector\SwissKnife\SmokeTestgen\TestTemplateResolver;
 use Rector\SwissKnife\SmokeTestgen\Utils\TestPathResolver;
 use RuntimeException;
 
-final readonly class GenerateSymfonySmokeTestsCommand implements CommandInterface
+final class GenerateSymfonySmokeTestsCommand implements CommandInterface
 {
-    public function __construct(
-        private TestsDirectoryResolver $testsDirectoryResolver,
-        private TestTemplateResolver $testTemplateResolver,
-        private TemplateDecorator $templateDecorator,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private TestsDirectoryResolver $testsDirectoryResolver;
+
+    /**
+     * @readonly
+     */
+    private TestTemplateResolver $testTemplateResolver;
+
+    /**
+     * @readonly
+     */
+    private TemplateDecorator $templateDecorator;
+
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    public function __construct(TestsDirectoryResolver $testsDirectoryResolver, TestTemplateResolver $testTemplateResolver, TemplateDecorator $templateDecorator, OutputPrinter $outputPrinter)
+    {
+        $this->testsDirectoryResolver = $testsDirectoryResolver;
+        $this->testTemplateResolver = $testTemplateResolver;
+        $this->templateDecorator = $templateDecorator;
+        $this->outputPrinter = $outputPrinter;
     }
 
     public function getName(): string

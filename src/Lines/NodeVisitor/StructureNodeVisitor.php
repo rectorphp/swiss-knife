@@ -21,9 +21,14 @@ use Rector\SwissKnife\Lines\Measurements;
 
 final class StructureNodeVisitor extends NodeVisitorAbstract
 {
-    public function __construct(
-        private readonly Measurements $measurements
-    ) {
+    /**
+     * @readonly
+     */
+    private Measurements $measurements;
+
+    public function __construct(Measurements $measurements)
+    {
+        $this->measurements = $measurements;
     }
 
     public function enterNode(Node $node): ?Node

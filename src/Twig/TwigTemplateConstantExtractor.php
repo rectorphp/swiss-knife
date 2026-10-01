@@ -47,7 +47,7 @@ final class TwigTemplateConstantExtractor
             $constantMatchValue = $constantMatch['constant'];
 
             // global constant → skip
-            if (! str_contains((string) $constantMatchValue, '::')) {
+            if (strpos((string) $constantMatchValue, '::') === false) {
                 continue;
             }
 

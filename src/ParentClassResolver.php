@@ -10,11 +10,16 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ParentClassNameCollectingNodeVisitor;
 
-final readonly class ParentClassResolver
+final class ParentClassResolver
 {
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser,
-    ) {
+    /**
+     * @readonly
+     */
+    private CachedPhpParser $cachedPhpParser;
+
+    public function __construct(CachedPhpParser $cachedPhpParser)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
     }
 
     /**

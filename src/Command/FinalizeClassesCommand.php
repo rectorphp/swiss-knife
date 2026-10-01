@@ -18,20 +18,46 @@ use Rector\SwissKnife\MockedClassResolver;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 
-final readonly class FinalizeClassesCommand implements CommandInterface
+final class FinalizeClassesCommand implements CommandInterface
 {
     /**
-     * @see https://regex101.com/r/Q5Nfbo/1
+     * @readonly
      */
-    private const string NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
+    private OutputPrinter $outputPrinter;
 
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-        private ParentClassResolver $parentClassResolver,
-        private EntityClassResolver $entityClassResolver,
-        private CachedPhpParser $cachedPhpParser,
-        private MockedClassResolver $mockedClassResolver,
-    ) {
+    /**
+     * @readonly
+     */
+    private ParentClassResolver $parentClassResolver;
+
+    /**
+     * @readonly
+     */
+    private EntityClassResolver $entityClassResolver;
+
+    /**
+     * @readonly
+     */
+    private CachedPhpParser $cachedPhpParser;
+
+    /**
+     * @readonly
+     */
+    private MockedClassResolver $mockedClassResolver;
+
+    /**
+     * @see https://regex101.com/r/Q5Nfbo/1
+     * @var string
+     */
+    private const NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
+
+    public function __construct(OutputPrinter $outputPrinter, ParentClassResolver $parentClassResolver, EntityClassResolver $entityClassResolver, CachedPhpParser $cachedPhpParser, MockedClassResolver $mockedClassResolver)
+    {
+        $this->outputPrinter = $outputPrinter;
+        $this->parentClassResolver = $parentClassResolver;
+        $this->entityClassResolver = $entityClassResolver;
+        $this->cachedPhpParser = $cachedPhpParser;
+        $this->mockedClassResolver = $mockedClassResolver;
     }
 
     /**

@@ -17,12 +17,22 @@ use Rector\SwissKnife\PhpParser\NodeVisitor\FindClassConstFetchNodeVisitor;
 /**
  * @see \Rector\SwissKnife\Tests\PhpParser\ClassConstantFetchFinder\ClassConstantFetchFinderTest
  */
-final readonly class ClassConstantFetchFinder
+final class ClassConstantFetchFinder
 {
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private CachedPhpParser $cachedPhpParser;
+
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    public function __construct(CachedPhpParser $cachedPhpParser, OutputPrinter $outputPrinter)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
+        $this->outputPrinter = $outputPrinter;
     }
 
     /**

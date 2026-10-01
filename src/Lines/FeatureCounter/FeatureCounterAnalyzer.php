@@ -16,13 +16,22 @@ use Rector\SwissKnife\Lines\FeatureCounter\ValueObject\FeatureCollector;
 /**
  * @see \Rector\SwissKnife\Tests\Lines\FeatureCounter\FeatureCounterAnalyzerTest
  */
-final readonly class FeatureCounterAnalyzer
+final class FeatureCounterAnalyzer
 {
+    /**
+     * @readonly
+     */
+    private FeatureCollector $featureCollector;
+
+    /**
+     * @readonly
+     */
     private Parser $parser;
 
     public function __construct(
-        private FeatureCollector $featureCollector,
+        FeatureCollector $featureCollector
     ) {
+        $this->featureCollector = $featureCollector;
         $parserFactory = new ParserFactory();
         $this->parser = $parserFactory->createForNewestSupportedVersion();
     }

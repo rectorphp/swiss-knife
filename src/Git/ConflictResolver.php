@@ -14,8 +14,9 @@ final class ConflictResolver
 {
     /**
      * @see https://regex101.com/r/L2CThC/1
+     * @var string
      */
-    private const string CONFLICT_REGEX = '#^(<<<<<<<|>>>>>>>)#m';
+    private const CONFLICT_REGEX = '#^(<<<<<<<|>>>>>>>)#m';
 
     /**
      * @api
@@ -43,7 +44,7 @@ final class ConflictResolver
             }
 
             // test fixtures, that should be ignored
-            if (str_contains((string) realpath($filePath), '/tests/Git/ConflictResolver/Fixture')) {
+            if (strpos((string) realpath($filePath), '/tests/Git/ConflictResolver/Fixture') !== false) {
                 continue;
             }
 

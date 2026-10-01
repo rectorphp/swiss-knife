@@ -4,12 +4,27 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\DuplicatedCode\ValueObject;
 
-final readonly class CodeCloneFile
+final class CodeCloneFile
 {
-    public function __construct(
-        public string $filePath,
-        public int $startLine,
-        public int $endLine
-    ) {
+    /**
+     * @readonly
+     */
+    public string $filePath;
+
+    /**
+     * @readonly
+     */
+    public int $startLine;
+
+    /**
+     * @readonly
+     */
+    public int $endLine;
+
+    public function __construct(string $filePath, int $startLine, int $endLine)
+    {
+        $this->filePath = $filePath;
+        $this->startLine = $startLine;
+        $this->endLine = $endLine;
     }
 }

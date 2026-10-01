@@ -11,14 +11,20 @@ use PhpParser\NodeVisitorAbstract;
 
 final class NeedForFinalizeNodeVisitor extends NodeVisitorAbstract
 {
+    /**
+     * @var string[]
+     * @readonly
+     */
+    private array $excludedClasses;
+
     private bool $isNeeded = false;
 
     /**
      * @param string[] $excludedClasses
      */
-    public function __construct(
-        private readonly array $excludedClasses
-    ) {
+    public function __construct(array $excludedClasses)
+    {
+        $this->excludedClasses = $excludedClasses;
     }
 
     /**

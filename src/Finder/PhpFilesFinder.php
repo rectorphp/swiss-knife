@@ -16,7 +16,7 @@ final class PhpFilesFinder
     /**
      * @var string[]
      */
-    private const array SKIPPED_DIRECTORIES = ['vendor', 'var', 'data-fixtures', 'node_modules'];
+    private const SKIPPED_DIRECTORIES = ['vendor', 'var', 'data-fixtures', 'node_modules'];
 
     /**
      * @param string[] $paths
@@ -32,7 +32,7 @@ final class PhpFilesFinder
 
         $excludedFileNames = [];
         foreach ($excludedPaths as $excludedPath) {
-            if (! str_contains($excludedPath, '*')) {
+            if (strpos($excludedPath, '*') === false) {
                 $excludedFileNames[] = $excludedPath;
             }
         }
@@ -46,7 +46,7 @@ final class PhpFilesFinder
 
             $normalizedRelativePath = '/' . str_replace('\\', '/', $fileInfo->getRelativePathname());
             foreach (self::SKIPPED_DIRECTORIES as $skippedDirectory) {
-                if (str_contains($normalizedRelativePath, '/' . $skippedDirectory . '/')) {
+                if (strpos($normalizedRelativePath, '/' . $skippedDirectory . '/') !== false) {
                     return false;
                 }
             }
@@ -54,11 +54,11 @@ final class PhpFilesFinder
             $realPath = (string) $fileInfo->getRealPath();
 
             foreach ($excludedPaths as $excludedPath) {
-                if (str_contains($realPath, $excludedPath)) {
+                if (strpos($realPath, $excludedPath) !== false) {
                     return false;
                 }
 
-                if (str_contains($excludedPath, '*') && fnmatch($excludedPath, $realPath)) {
+                if (strpos($excludedPath, '*') !== false && fnmatch($excludedPath, $realPath)) {
                     return false;
                 }
             }

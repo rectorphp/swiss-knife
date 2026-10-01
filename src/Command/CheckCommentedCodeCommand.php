@@ -11,14 +11,27 @@ use Entropy\Console\Output\ProgressBar;
 use Rector\SwissKnife\Comments\CommentedCodeAnalyzer;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 
-final readonly class CheckCommentedCodeCommand implements CommandInterface
+final class CheckCommentedCodeCommand implements CommandInterface
 {
-    private const int DEFAULT_LINE_LIMIT = 5;
+    /**
+     * @readonly
+     */
+    private CommentedCodeAnalyzer $commentedCodeAnalyzer;
 
-    public function __construct(
-        private CommentedCodeAnalyzer $commentedCodeAnalyzer,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    /**
+     * @var int
+     */
+    private const DEFAULT_LINE_LIMIT = 5;
+
+    public function __construct(CommentedCodeAnalyzer $commentedCodeAnalyzer, OutputPrinter $outputPrinter)
+    {
+        $this->commentedCodeAnalyzer = $commentedCodeAnalyzer;
+        $this->outputPrinter = $outputPrinter;
     }
 
     /**

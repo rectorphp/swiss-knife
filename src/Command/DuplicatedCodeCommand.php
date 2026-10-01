@@ -10,15 +10,26 @@ use Entropy\Console\Output\OutputPrinter;
 use Rector\SwissKnife\DuplicatedCode\CloneDetector;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 
-final readonly class DuplicatedCodeCommand implements CommandInterface
+final class DuplicatedCodeCommand implements CommandInterface
 {
-    private const int DEFAULT_MIN_LINES = 5;
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
 
-    private const int DEFAULT_MIN_TOKENS = 70;
+    /**
+     * @var int
+     */
+    private const DEFAULT_MIN_LINES = 5;
 
-    public function __construct(
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @var int
+     */
+    private const DEFAULT_MIN_TOKENS = 70;
+
+    public function __construct(OutputPrinter $outputPrinter)
+    {
+        $this->outputPrinter = $outputPrinter;
     }
 
     /**

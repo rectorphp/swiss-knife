@@ -8,5 +8,8 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 final class SymfonyClass
 {
-    public const string CONTAINER_CONFIGURATOR_CLASS = ContainerConfigurator::class;
+    /**
+     * @var string
+     */
+    public const CONTAINER_CONFIGURATOR_CLASS = ContainerConfigurator::class;
 }

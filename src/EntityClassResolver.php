@@ -17,16 +17,22 @@ use Rector\SwissKnife\PhpParser\NodeVisitor\EntityClassNameCollectingNodeVisitor
 /**
  * @see \Rector\SwissKnife\Tests\EntityClassResolver\EntityClassResolverTest
  */
-final readonly class EntityClassResolver
+final class EntityClassResolver
 {
     /**
-     * @see https://regex101.com/r/YFbH1x/1
+     * @readonly
      */
-    private const string YAML_ENTITY_CLASS_NAME_REGEX = '#^(?<class_name>[\w+\\\\]+)\:\n#m';
+    private CachedPhpParser $cachedPhpParser;
 
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser
-    ) {
+    /**
+     * @see https://regex101.com/r/YFbH1x/1
+     * @var string
+     */
+    private const YAML_ENTITY_CLASS_NAME_REGEX = '#^(?<class_name>[\w+\\\\]+)\:\n#m';
+
+    public function __construct(CachedPhpParser $cachedPhpParser)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
     }
 
     /**

@@ -7,7 +7,6 @@ namespace Rector\SwissKnife\Tests\PhpParser\NodeVisitor\MockedClassNameCollectin
 use Iterator;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Rector\SwissKnife\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
 
@@ -15,22 +14,19 @@ final class MockedClassNameCollectingNodeVisitorTest extends TestCase
 {
     /**
      * @param string[] $expectedClassNames
+     * @dataProvider provideData
      */
-    #[DataProvider('provideData')]
     public function test(string $filePath, array $expectedClassNames): void
     {
         $mockedClassNameCollectingNodeVisitor = new MockedClassNameCollectingNodeVisitor();
-
         $nodeTraverser = new NodeTraverser();
         $nodeTraverser->addVisitor($mockedClassNameCollectingNodeVisitor);
 
-        $parser = new ParserFactory()
+        $parser = (new ParserFactory())
             ->createForNewestSupportedVersion();
         $stmts = $parser->parse((string) file_get_contents($filePath));
         $this->assertNotNull($stmts);
-
         $nodeTraverser->traverse($stmts);
-
         $this->assertSame($expectedClassNames, $mockedClassNameCollectingNodeVisitor->getMockedClassNames());
     }
 

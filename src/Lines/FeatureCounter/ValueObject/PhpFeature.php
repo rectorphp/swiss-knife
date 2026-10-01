@@ -9,15 +9,33 @@ use Rector\SwissKnife\Lines\FeatureCounter\Enum\PhpVersion;
 final class PhpFeature
 {
     /**
+     * @var PhpVersion::*
+     * @readonly
+     */
+    private string $phpVersion;
+
+    /**
+     * @readonly
+     */
+    private string $name;
+
+    /**
+     * @var callable
+     */
+    private $nodeTrigger;
+
+    private int $count;
+
+    /**
      * @param PhpVersion::* $phpVersion
      * @param callable $nodeTrigger
      */
-    public function __construct(
-        private readonly string $phpVersion,
-        private readonly string $name,
-        private $nodeTrigger,
-        private int $count = 0
-    ) {
+    public function __construct(string $phpVersion, string $name, $nodeTrigger, int $count = 0)
+    {
+        $this->phpVersion = $phpVersion;
+        $this->name = $name;
+        $this->nodeTrigger = $nodeTrigger;
+        $this->count = $count;
     }
 
     public function getPhpVersion(): string

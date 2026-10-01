@@ -12,11 +12,16 @@ use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\MockedClassNameCollectingNodeVisitor;
 
-final readonly class MockedClassResolver
+final class MockedClassResolver
 {
-    public function __construct(
-        private CachedPhpParser $cachedPhpParser
-    ) {
+    /**
+     * @readonly
+     */
+    private CachedPhpParser $cachedPhpParser;
+
+    public function __construct(CachedPhpParser $cachedPhpParser)
+    {
+        $this->cachedPhpParser = $cachedPhpParser;
     }
 
     /**

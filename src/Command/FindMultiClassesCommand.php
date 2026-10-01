@@ -11,12 +11,22 @@ use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\MultipleClassInOneFileFinder;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 
-final readonly class FindMultiClassesCommand implements CommandInterface
+final class FindMultiClassesCommand implements CommandInterface
 {
-    public function __construct(
-        private MultipleClassInOneFileFinder $multipleClassInOneFileFinder,
-        private OutputPrinter $outputPrinter,
-    ) {
+    /**
+     * @readonly
+     */
+    private MultipleClassInOneFileFinder $multipleClassInOneFileFinder;
+
+    /**
+     * @readonly
+     */
+    private OutputPrinter $outputPrinter;
+
+    public function __construct(MultipleClassInOneFileFinder $multipleClassInOneFileFinder, OutputPrinter $outputPrinter)
+    {
+        $this->multipleClassInOneFileFinder = $multipleClassInOneFileFinder;
+        $this->outputPrinter = $outputPrinter;
     }
 
     /**

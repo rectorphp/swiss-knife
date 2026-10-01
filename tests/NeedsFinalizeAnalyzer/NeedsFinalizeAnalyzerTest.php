@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Tests\NeedsFinalizeAnalyzer;
 
-use Override;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\Tests\AbstractTestCase;
@@ -14,18 +12,19 @@ final class NeedsFinalizeAnalyzerTest extends AbstractTestCase
 {
     private NeedsFinalizeAnalyzer $needsFinalizeAnalyzer;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->needsFinalizeAnalyzer = new NeedsFinalizeAnalyzer(
-            excludedClasses: ['Rector\SwissKnife\Tests\NeedsFinalizeAnalyzer\Fixture\ExcludedClass'],
-            cachedPhpParser: $this->make(CachedPhpParser::class),
+            ['Rector\SwissKnife\Tests\NeedsFinalizeAnalyzer\Fixture\ExcludedClass'],
+            $this->make(CachedPhpParser::class),
         );
     }
 
-    #[DataProvider('provideData')]
+    /**
+     * @dataProvider provideData
+     */
     public function test(string $filePath, bool $expected): void
     {
         $this->assertSame($expected, $this->needsFinalizeAnalyzer->isNeeded($filePath));
