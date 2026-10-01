@@ -23,10 +23,11 @@ jobs:
                     php-version: ${{ matrix.php_version }}
                     coverage: none
 
-            -   run: composer install --no-dev --ansi
-
             # verify sources parse on the target PHP version
             -   run: find bin src -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
+
+            # install prod dependencies only; dev tooling targets 8.x and is irrelevant here
+            -   run: composer install --no-dev --ignore-platform-reqs --ansi
 
             # smoke-test the binary
             -   run: bin/swiss-knife
