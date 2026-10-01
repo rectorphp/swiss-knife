@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "nette/utils": "^3.4"
+    },
+    "conflict": {
+        "nette/utils": "<3.4"
+    }
+}

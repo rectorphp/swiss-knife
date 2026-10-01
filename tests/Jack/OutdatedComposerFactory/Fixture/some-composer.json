@@ -1,0 +1,7 @@
+{
+    "name": "some/project",
+    "require": {
+        "symfony/console": "^3.5",
+        "phpecs/phpecs": "^2.3"
+    }
+}
