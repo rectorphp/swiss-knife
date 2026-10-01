@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Testing\Finder;
 
-use Nette\Loaders\RobotLoader;
+use Entropy\Reflection\ClassNameResolver;
+use Rector\SwissKnife\Finder\PhpFilesFinder;
 
 final class TestCaseClassFinder
 {
@@ -14,13 +15,19 @@ final class TestCaseClassFinder
      */
     public function findInDirectories(array $directories): array
     {
-        $robotLoader = new RobotLoader();
-        $robotLoader->addDirectory(...$directories);
-        $robotLoader->rebuild();
+        $classesToFilePaths = [];
 
-        $this->includeNonAutoloadedClasses($robotLoader->getIndexedClasses());
+        foreach (PhpFilesFinder::find($directories) as $fileInfo) {
+            $filePath = (string) $fileInfo->getRealPath();
 
-        return $robotLoader->getIndexedClasses();
+            foreach (ClassNameResolver::resolveNamesFromFilePath($filePath) as $className) {
+                $classesToFilePaths[$className] = $filePath;
+            }
+        }
+
+        $this->includeNonAutoloadedClasses($classesToFilePaths);
+
+        return $classesToFilePaths;
     }
 
     /**
