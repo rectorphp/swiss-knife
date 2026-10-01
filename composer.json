@@ -9,8 +9,7 @@
         "php": ">=8.4",
         "ext-tokenizer": "*",
         "entropy/entropy": "^0.4.23",
-        "nikic/php-parser": "^5.9",
-        "webmozart/assert": "^2.4"
+        "nikic/php-parser": "^5.9"
     },
     "require-dev": {
         "phpstan/extension-installer": "^1.4",

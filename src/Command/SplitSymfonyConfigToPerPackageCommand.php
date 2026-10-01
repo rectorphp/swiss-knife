@@ -8,6 +8,7 @@ use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Utils\FileSystem;
+use Entropy\Validation\Assert;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
@@ -19,7 +20,6 @@ use Rector\SwissKnife\Exception\ShouldNotHappenException;
 use Rector\SwissKnife\PhpParser\NodeFactory\SplitConfigClosureFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\AddImportConfigMethodCallNodeVisitor;
 use Rector\SwissKnife\PhpParser\NodeVisitor\ExtractSymfonyExtensionCallNodeVisitor;
-use Webmozart\Assert\Assert;
 
 final readonly class SplitSymfonyConfigToPerPackageCommand implements CommandInterface
 {

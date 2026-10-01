@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Lines;
 
+use Entropy\Validation\Assert;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 use Rector\SwissKnife\Lines\NodeVisitor\CommentLineCountingNodeVisitor;
 use Rector\SwissKnife\Lines\NodeVisitor\StructureNodeVisitor;
 use Throwable;
-use Webmozart\Assert\Assert;
 
 /**
  * @see \Rector\SwissKnife\Tests\Lines\AnalyserTest

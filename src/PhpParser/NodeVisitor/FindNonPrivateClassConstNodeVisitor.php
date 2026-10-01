@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser\NodeVisitor;
 
+use Entropy\Validation\Assert;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\NodeVisitorAbstract;
 use Rector\SwissKnife\ValueObject\ClassConstant;
 use ReflectionClass;
-use Webmozart\Assert\Assert;
 
 final class FindNonPrivateClassConstNodeVisitor extends NodeVisitorAbstract
 {

@@ -8,9 +8,9 @@ use Entropy\Console\ConsoleTable\ValueObject\TableRow;
 use Entropy\Console\ConsoleTable\ValueObject\TableView;
 use Entropy\Console\ConsoleTable\ViewRenderer;
 use Entropy\Console\Output\OutputPrinter;
+use Entropy\Validation\Assert;
 use Rector\SwissKnife\Lines\Measurements;
 use Rector\SwissKnife\Lines\NumberFormat;
-use Webmozart\Assert\Assert;
 
 final readonly class TextOutputFormatter
 {

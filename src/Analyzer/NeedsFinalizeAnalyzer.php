@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Analyzer;
 
+use Entropy\Validation\Assert;
 use PhpParser\NodeTraverser;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
 use Rector\SwissKnife\PhpParser\NodeTraverserFactory;
 use Rector\SwissKnife\PhpParser\NodeVisitor\NeedForFinalizeNodeVisitor;
-use Webmozart\Assert\Assert;
 
 final readonly class NeedsFinalizeAnalyzer
 {

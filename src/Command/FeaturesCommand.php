@@ -7,11 +7,11 @@ namespace Rector\SwissKnife\Command;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
+use Entropy\Validation\Assert;
 use Rector\SwissKnife\Lines\FeatureCounter\FeatureCounterAnalyzer;
 use Rector\SwissKnife\Lines\FeatureCounter\ResultPrinter;
 use Rector\SwissKnife\Lines\Finder\ProjectFilesFinder;
 use Rector\SwissKnife\Lines\OutputFormatter\JsonOutputFormatter;
-use Webmozart\Assert\Assert;
 
 final readonly class FeaturesCommand implements CommandInterface
 {

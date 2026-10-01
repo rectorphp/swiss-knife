@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\SmokeTestgen;
 
+use Entropy\Validation\Assert;
 use Rector\SwissKnife\SmokeTestgen\Contract\TestByPackageSubscriberInterface;
 use Rector\SwissKnife\SmokeTestgen\TestByPackageSubscriber\ServiceContainerTestByPackageSubscriber;
-use Webmozart\Assert\Assert;
 
 final class TestTemplateResolver
 {
