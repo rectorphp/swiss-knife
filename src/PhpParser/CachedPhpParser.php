@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\PhpParser;
 
-use Nette\Utils\FileSystem;
+use Entropy\Utils\FileSystem;
 use PhpParser\Node\Stmt;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\Parser;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Twig;
 
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\FilesFinder;
 use Rector\SwissKnife\ValueObject\ClassConstantFetch\ExternalClassAccessConstantFetch;
@@ -40,7 +40,7 @@ final class TwigTemplateConstantExtractor
     {
         $fileContents = FileSystem::read($filePath);
 
-        $constantMatches = Strings::matchAll($fileContents, '#{{.*?\s*constant\(\s*([\'"])(?<constant>.*?)\1#');
+        $constantMatches = Regex::matchAll($fileContents, '#{{.*?\s*constant\(\s*([\'"])(?<constant>.*?)\1#');
 
         $externalClassAccessConstantFetches = [];
         foreach ($constantMatches as $constantMatch) {

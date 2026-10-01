@@ -9,8 +9,8 @@ use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\FileSystem\FileFinder;
 use Entropy\FileSystem\FileInfo;
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 
 /**
  * @see \Rector\SwissKnife\Tests\Command\NamespaceToPSR4CommandTest
@@ -54,14 +54,14 @@ final readonly class NamespaceToPSR4Command implements CommandInterface
             ));
 
             // 3. replace
-            $correctedContents = Strings::replace(
+            $correctedContents = Regex::replace(
                 $fileInfo->getContents(),
                 '#namespace (.*?);#',
                 $expectedNamespaceLine
             );
 
             // 4. print file
-            FileSystem::write($fileInfo->getRealPath(), $correctedContents, null);
+            FileSystem::write($fileInfo->getRealPath(), $correctedContents);
 
             ++$changedFilesCount;
         }

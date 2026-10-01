@@ -9,8 +9,8 @@ use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
 use Entropy\Console\Output\ProgressBar;
 use Entropy\FileSystem\FileInfo;
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 use Rector\SwissKnife\Contract\ClassConstantFetchInterface;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
 use Rector\SwissKnife\PhpParser\Finder\ClassConstantFetchFinder;
@@ -166,12 +166,12 @@ final readonly class PrivatizeConstantsCommand implements CommandInterface
             }
 
             // make private
-            $changedFileContents = Strings::replace(
+            $changedFileContents = Regex::replace(
                 $phpFileInfo->getContents(),
                 '#((private|public|protected)\s+)?const\s+' . $classConstant->getConstantName() . '#',
                 'private const ' . $classConstant->getConstantName()
             );
-            FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents, null);
+            FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
             $this->outputPrinter->writeln(
                 sprintf('Constant "%s" changed to private', $classConstant->getConstantName())

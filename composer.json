@@ -8,9 +8,8 @@
     "require": {
         "php": ">=8.4",
         "ext-tokenizer": "*",
-        "entropy/entropy": "^0.4.14",
+        "entropy/entropy": "^0.4.20",
         "nette/robot-loader": "^4.1",
-        "nette/utils": "^4.1",
         "nikic/php-parser": "^5.9",
         "sebastian/lines-of-code": "^4.0",
         "webmozart/assert": "^2.4"

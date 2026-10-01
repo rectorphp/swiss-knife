@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Git;
 
-use Nette\Utils\FileSystem;
-use Nette\Utils\Strings;
+use Entropy\Utils\FileSystem;
+use Entropy\Utils\Regex;
 
 /**
  * @see \Rector\SwissKnife\Tests\Git\ConflictResolver\ConflictResolverTest
@@ -23,7 +23,7 @@ final class ConflictResolver
     public function extractFromFileInfo(string $filePath): int
     {
         $fileContents = FileSystem::read($filePath);
-        $conflictsMatch = Strings::matchAll($fileContents, self::CONFLICT_REGEX);
+        $conflictsMatch = Regex::matchAll($fileContents, self::CONFLICT_REGEX);
 
         return count($conflictsMatch);
     }
