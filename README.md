@@ -363,6 +363,96 @@ Options:
 
 <br>
 
+## 12. Check for Outdated Dependencies in CI
+
+Postponing upgrades leads to large, risky jumps. The `breakpoint` command catches **outdated major packages** early, right in your CI pipeline:
+
+```bash
+vendor/bin/swiss-knife breakpoint
+```
+
+↓
+
+<img src="/docs/breakpoint.png" alt="Breakpoint" width="600">
+
+<br>
+
+If there are more than 5 major outdated packages, the **CI will fail**.
+
+Options:
+
+- `--limit` raise or lower the bar, e.g. `--limit 3`
+- `--dev` check dev packages only (safer to upgrade first)
+
+<br>
+
+## 13. Open up Next Versions
+
+We know we're behind, but where to start? Instead of guessing, let Composer handle it - open up package versions to the next nearest step:
+
+```bash
+vendor/bin/swiss-knife open-versions
+```
+
+This opens up 5 versions to their next step, e.g.:
+
+```diff
+ {
+     "require": {
+         "php": "^7.4",
+-        "symfony/console": "5.1.*"
++        "symfony/console": "5.1.*|5.2.*"
+     },
+     "require-dev": {
+-        "phpunit/phpunit": "^9.0"
++        "phpunit/phpunit": "^9.0|^10.0"
+     }
+ }
+```
+
+Then run `composer update` - if no blockers exist, Composer updates packages to their next version.
+
+Options:
+
+- `--limit` number of packages to open, e.g. `--limit 3`
+- `--package-prefix` upgrade only a group, e.g. `--package-prefix symfony`
+- `--dev` low-risk dev packages first
+- `--dry-run` preview changes without modifying `composer.json`
+
+<br>
+
+## 14. Raise to Installed Versions
+
+Sometimes it's the opposite - dependencies are new, but `composer.json` is outdated:
+
+<img src="/docs/composer-outdated-install.png" alt="Outdated composer.json" width="450">
+
+Here `illuminate/container` allows 12.0 but we already use 12.14, and `symfony/finder` allows 6.4 but we use 7.2. Running `composer update` could pull unnecessary older dependencies.
+
+Raise `composer.json` to the installed versions:
+
+```diff
+ {
+     "require": {
+         "php": "^7.4",
+-        "illuminate/container": "^12.0",
++        "illuminate/container": "^12.14",
+-        "symfony/finder": "^6.4|^7.2",
++        "symfony/finder": "^7.2"
+     }
+ }
+```
+
+```bash
+vendor/bin/swiss-knife raise-to-installed
+```
+
+Options:
+
+- `--dry-run` preview changes without applying
+
+<br>
+
 That's it!
 
 <br>
