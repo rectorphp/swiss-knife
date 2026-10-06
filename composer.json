@@ -19,12 +19,12 @@
         "phpunit/phpunit": "^9.6",
         "rector/rector": "^2.4",
         "shipmonk/composer-dependency-analyser": "^1.8",
+        "shipmonk/dead-code-detector": "^1.4",
         "symfony/config": "^6.4",
         "symfony/dependency-injection": "^6.4",
         "symplify/easy-coding-standard": "^13.2",
         "symplify/phpstan-rules": "^14.12",
         "tomasvotruba/class-leak": "^2.1",
-        "tomasvotruba/unused-public": "^2.2",
         "tracy/tracy": "^2.12"
     },
     "autoload": {
