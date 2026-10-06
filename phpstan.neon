@@ -25,7 +25,12 @@ parameters:
 
         - '#Parameter \#1 \$objectOrClass of class ReflectionClass constructor expects class-string<T of object>\|T of object, string given#'
 
-        # magic contract
+        # DI-instantiated constructors
         -
-            identifier: public.method.unused
-            message: '#Public method "Rector\\SwissKnife\\(.*?)Command\:\:run\(\)" is never used#'
+            identifier: shipmonk.deadMethod
+            message: '#^Unused .*?::__construct$#'
+
+        # command run() invoked by the Symfony console
+        -
+            identifier: shipmonk.deadMethod
+            message: '#^Unused Rector\\SwissKnife\\(.*?)Command::run$#'
