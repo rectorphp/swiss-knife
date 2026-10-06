@@ -1,22 +1,10 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\CheckCommentedCodeCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/CheckCommentedCodeCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\CheckCommentedCodeCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Command/CheckCommentedCodeCommand.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\CheckConflictsCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/CheckConflictsCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\CheckConflictsCommand\:\:run$#'
@@ -25,22 +13,10 @@ parameters:
 			path: src/Command/CheckConflictsCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\DuplicatedCodeCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/DuplicatedCodeCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\DuplicatedCodeCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Command/DuplicatedCodeCommand.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\FeaturesCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/FeaturesCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\FeaturesCommand\:\:run$#'
@@ -49,22 +25,10 @@ parameters:
 			path: src/Command/FeaturesCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\FinalizeClassesCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/FinalizeClassesCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\FinalizeClassesCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Command/FinalizeClassesCommand.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\FindMultiClassesCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/FindMultiClassesCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\FindMultiClassesCommand\:\:run$#'
@@ -73,22 +37,10 @@ parameters:
 			path: src/Command/FindMultiClassesCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\GenerateSymfonySmokeTestsCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/GenerateSymfonySmokeTestsCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\GenerateSymfonySmokeTestsCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Command/GenerateSymfonySmokeTestsCommand.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\MeasureCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/MeasureCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\MeasureCommand\:\:run$#'
@@ -97,22 +49,10 @@ parameters:
 			path: src/Command/MeasureCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\NamespaceToPSR4Command\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/NamespaceToPSR4Command.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\NamespaceToPSR4Command\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Command/NamespaceToPSR4Command.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\PrivatizeConstantsCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/PrivatizeConstantsCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\PrivatizeConstantsCommand\:\:run$#'
@@ -121,34 +61,10 @@ parameters:
 			path: src/Command/PrivatizeConstantsCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Command\\SplitSymfonyConfigToPerPackageCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Command/SplitSymfonyConfigToPerPackageCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Command\\SplitSymfonyConfigToPerPackageCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Command/SplitSymfonyConfigToPerPackageCommand.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\EntityClassResolver\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/EntityClassResolver.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Finder\\MultipleClassInOneFileFinder\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Finder/MultipleClassInOneFileFinder.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Jack\\Command\\BreakPointCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Jack/Command/BreakPointCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Jack\\Command\\BreakPointCommand\:\:run$#'
@@ -157,118 +73,16 @@ parameters:
 			path: src/Jack/Command/BreakPointCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Jack\\Command\\OpenVersionsCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Jack/Command/OpenVersionsCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Jack\\Command\\OpenVersionsCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Jack/Command/OpenVersionsCommand.php
 
 		-
-			message: '#^Unused Rector\\SwissKnife\\Jack\\Command\\RaiseToInstalledCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Jack/Command/RaiseToInstalledCommand.php
-
-		-
 			message: '#^Unused Rector\\SwissKnife\\Jack\\Command\\RaiseToInstalledCommand\:\:run$#'
 			identifier: shipmonk.deadMethod
 			count: 1
 			path: src/Jack/Command/RaiseToInstalledCommand.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Jack\\Composer\\NextVersionResolver\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Jack/Composer/NextVersionResolver.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Jack\\ComposerProcessor\\OpenVersionsComposerProcessor\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Jack/ComposerProcessor/OpenVersionsComposerProcessor.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Jack\\OutdatedComposerFactory\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Jack/OutdatedComposerFactory.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Lines\\Analyser\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Lines/Analyser.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Lines\\FeatureCounter\\FeatureCounterAnalyzer\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Lines/FeatureCounter/FeatureCounterAnalyzer.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Lines\\FeatureCounter\\ResultPrinter\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Lines/FeatureCounter/ResultPrinter.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Lines\\FeatureCounter\\ValueObject\\FeatureCollector\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Lines/FeatureCounter/ValueObject/FeatureCollector.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Lines\\OutputFormatter\\TextOutputFormatter\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Lines/OutputFormatter/TextOutputFormatter.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\MockedClassResolver\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/MockedClassResolver.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\ParentClassResolver\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/ParentClassResolver.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\PhpParser\\CachedPhpParser\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/PhpParser/CachedPhpParser.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\PhpParser\\Finder\\ClassConstFinder\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/PhpParser/Finder/ClassConstFinder.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\PhpParser\\Finder\\ClassConstantFetchFinder\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/PhpParser/Finder/ClassConstantFetchFinder.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\SmokeTestgen\\TestTemplateResolver\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/SmokeTestgen/TestTemplateResolver.php
-
-		-
-			message: '#^Unused Rector\\SwissKnife\\Testing\\Command\\DetectUnitTestsCommand\:\:__construct$#'
-			identifier: shipmonk.deadMethod
-			count: 1
-			path: src/Testing/Command/DetectUnitTestsCommand.php
 
 		-
 			message: '#^Unused Rector\\SwissKnife\\Testing\\Command\\DetectUnitTestsCommand\:\:run$#'
