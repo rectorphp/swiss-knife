@@ -11,7 +11,6 @@ use PhpParser\Node\Identifier;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar\Int_;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Stmt\Declare_;
 use PhpParser\Node\Stmt\DeclareDeclare;
 use PhpParser\Node\Stmt\Expression;
@@ -22,7 +21,7 @@ use Rector\SwissKnife\Enum\SymfonyClass;
 final class SplitConfigClosureFactory
 {
     /**
-     * @return Stmt[]
+     * @return array{Declare_, Nop, Return_}
      */
     public function createStmts(MethodCall $extensionMethodCall): array
     {
