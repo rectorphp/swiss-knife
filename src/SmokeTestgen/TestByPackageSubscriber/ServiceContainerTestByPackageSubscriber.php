@@ -9,7 +9,7 @@ use Rector\SwissKnife\SmokeTestgen\Contract\TestByPackageSubscriberInterface;
 final class ServiceContainerTestByPackageSubscriber implements TestByPackageSubscriberInterface
 {
     /**
-     * @return string[]
+     * @return array{string, string}
      */
     public function getPackageNames(): array
     {
