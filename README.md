@@ -138,6 +138,16 @@ vendor/bin/swiss-knife finalize-classes src tests --skip-file '*Controller.php'
 
 <br>
 
+Using Doctrine ORM 3.4+ on PHP 8.4+? Finalize Doctrine entities too, as they no longer need proxy subclasses:
+
+```bash
+vendor/bin/swiss-knife finalize-classes src tests --finalize-doctrine-entities
+```
+
+This option works only when `composer.json` requires `php` 8.4+ and `doctrine/orm` 3.4+, otherwise the command fails.
+
+<br>
+
 ## 5. Privatize local class constants
 
 PHPStan can report unused private class constants, but it skips all the public ones.
