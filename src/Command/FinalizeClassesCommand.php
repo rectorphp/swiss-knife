@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\SwissKnife\Command;
 
+use Composer\Semver\Intervals;
+use Composer\Semver\VersionParser;
 use Entropy\Console\Contract\CommandInterface;
 use Entropy\Console\Enum\ExitCode;
 use Entropy\Console\Output\OutputPrinter;
@@ -14,9 +16,11 @@ use Rector\SwissKnife\Analyzer\NeedsFinalizeAnalyzer;
 use Rector\SwissKnife\EntityClassResolver;
 use Rector\SwissKnife\FileSystem\PathHelper;
 use Rector\SwissKnife\Finder\PhpFilesFinder;
+use Rector\SwissKnife\Jack\Utils\JsonFileLoader;
 use Rector\SwissKnife\MockedClassResolver;
 use Rector\SwissKnife\ParentClassResolver;
 use Rector\SwissKnife\PhpParser\CachedPhpParser;
+use UnexpectedValueException;
 
 final class FinalizeClassesCommand implements CommandInterface
 {
@@ -51,6 +55,10 @@ final class FinalizeClassesCommand implements CommandInterface
      */
     private const NEWLINE_CLASS_START_REGEX = '#^(readonly )?class\s#m';
 
+    private const MINIMAL_PHP_CONSTRAINT = '>=8.4.0';
+
+    private const MINIMAL_DOCTRINE_ORM_CONSTRAINT = '>=3.4.0';
+
     public function __construct(OutputPrinter $outputPrinter, ParentClassResolver $parentClassResolver, EntityClassResolver $entityClassResolver, CachedPhpParser $cachedPhpParser, MockedClassResolver $mockedClassResolver)
     {
         $this->outputPrinter = $outputPrinter;
@@ -66,14 +74,87 @@ final class FinalizeClassesCommand implements CommandInterface
      * @param bool $skipMocked Skip mocked classes as well (use only if unable to run bypass-finals package)
      * @param string[] $skipFiles Skip file or files by path
      * @param bool $noProgress Do not show progress bar, only results
+     * @param bool $finalizeDoctrineEntities Finalize Doctrine entities too. Requires PHP 8.4+ and doctrine/orm 3.4+ in composer.json
      */
     public function run(
         array $paths,
         bool $dryRun = false,
         bool $skipMocked = false,
         array $skipFiles = [],
-        bool $noProgress = false
+        bool $noProgress = false,
+        bool $finalizeDoctrineEntities = false
     ): int {
+        if ($finalizeDoctrineEntities && ! $this->isDoctrineEntitiesFinalizeSupported(getcwd() . '/composer.json')) {
+            $this->outputPrinter->error(
+                '--finalize-doctrine-entities requires "php" 8.4+ and "doctrine/orm" 3.4+ in composer.json'
+            );
+
+            return ExitCode::ERROR;
+        }
+
+        $filePathsToFinalize = $this->resolveFilePathsToFinalize(
+            $paths,
+            $skipMocked,
+            $skipFiles,
+            $finalizeDoctrineEntities,
+            $noProgress
+        );
+
+        $this->outputPrinter->title('2. Finalizing safe classes');
+
+        if ($filePathsToFinalize === []) {
+            $this->outputPrinter->success('Nothing to finalize');
+            return ExitCode::SUCCESS;
+        }
+
+        $finalizedFilePaths = [];
+        foreach ($filePathsToFinalize as $filePathToFinalize) {
+            $finalizedFilePaths[] = PathHelper::relativeToCwd($filePathToFinalize);
+
+            if ($dryRun === false) {
+                $finalizedContents = Regex::replace(
+                    FileSystem::read($filePathToFinalize),
+                    self::NEWLINE_CLASS_START_REGEX,
+                    'final $1class '
+                );
+
+                FileSystem::write($filePathToFinalize, $finalizedContents);
+            }
+        }
+
+        $this->outputPrinter->listing($finalizedFilePaths);
+
+        $countFinalizedClasses = count($finalizedFilePaths);
+        $pluralClassText = $countFinalizedClasses === 1 ? 'class' : 'classes';
+
+        // to make it fail in CI
+        if ($dryRun) {
+            $this->outputPrinter->error(sprintf(
+                '%d %s can be finalized',
+                $countFinalizedClasses,
+                $pluralClassText,
+            ));
+
+            return ExitCode::ERROR;
+        }
+
+        $this->outputPrinter->success(sprintf('%d %s finalized', $countFinalizedClasses, $pluralClassText));
+
+        return ExitCode::SUCCESS;
+    }
+
+    /**
+     * @param string[] $paths
+     * @param string[] $skipFiles
+     * @return string[]
+     */
+    public function resolveFilePathsToFinalize(
+        array $paths,
+        bool $skipMocked = false,
+        array $skipFiles = [],
+        bool $finalizeDoctrineEntities = false,
+        bool $noProgress = true
+    ): array {
         $this->outputPrinter->title('1. Detecting parent and entity classes');
 
         $phpFileInfos = PhpFilesFinder::find($paths, $skipFiles);
@@ -125,56 +206,62 @@ final class FinalizeClassesCommand implements CommandInterface
 
         $this->outputPrinter->newline(1);
 
-        $this->outputPrinter->title('2. Finalizing safe classes');
+        $excludedClasses = array_merge($parentClassNames, $mockedClassNames);
+        if (! $finalizeDoctrineEntities) {
+            $excludedClasses = array_merge($excludedClasses, $entityClassNames);
+        }
 
-        $excludedClasses = array_merge($parentClassNames, $entityClassNames, $mockedClassNames);
         $needsFinalizeAnalyzer = new NeedsFinalizeAnalyzer($excludedClasses, $this->cachedPhpParser);
 
-        $finalizedFilePaths = [];
-
+        $filePathsToFinalize = [];
         foreach ($phpFileInfos as $phpFileInfo) {
             // should be file be finalize, is not and is not excluded?
             if (! $needsFinalizeAnalyzer->isNeeded($phpFileInfo->getRealPath())) {
                 continue;
             }
 
-            $finalizedContents = Regex::replace(
-                $phpFileInfo->getContents(),
-                self::NEWLINE_CLASS_START_REGEX,
-                'final $1class '
+            $filePathsToFinalize[] = $phpFileInfo->getRealPath();
+        }
+
+        return $filePathsToFinalize;
+    }
+
+    public function isDoctrineEntitiesFinalizeSupported(string $composerJsonFilePath): bool
+    {
+        if (! file_exists($composerJsonFilePath)) {
+            return false;
+        }
+
+        $composerJson = JsonFileLoader::loadFileToJson($composerJsonFilePath);
+        $requires = (array) ($composerJson['require'] ?? []);
+        $requiresDev = (array) ($composerJson['require-dev'] ?? []);
+
+        $phpConstraint = $requires['php'] ?? null;
+        $doctrineOrmConstraint = $requires['doctrine/orm'] ?? $requiresDev['doctrine/orm'] ?? null;
+
+        return $this->isConstraintWithin($phpConstraint, self::MINIMAL_PHP_CONSTRAINT)
+            && $this->isConstraintWithin($doctrineOrmConstraint, self::MINIMAL_DOCTRINE_ORM_CONSTRAINT);
+    }
+
+    /**
+     * @param mixed $constraint
+     */
+    private function isConstraintWithin($constraint, string $minimalConstraint): bool
+    {
+        if (! is_string($constraint) || $constraint === '') {
+            return false;
+        }
+
+        $versionParser = new VersionParser();
+
+        try {
+            return Intervals::isSubsetOf(
+                $versionParser->parseConstraints($constraint),
+                $versionParser->parseConstraints($minimalConstraint)
             );
-
-            $finalizedFilePaths[] = PathHelper::relativeToCwd($phpFileInfo->getRealPath());
-
-            if ($dryRun === false) {
-                FileSystem::write($phpFileInfo->getRealPath(), $finalizedContents);
-            }
+        } catch (UnexpectedValueException $exception) {
+            return false;
         }
-
-        if ($finalizedFilePaths === []) {
-            $this->outputPrinter->success('Nothing to finalize');
-            return ExitCode::SUCCESS;
-        }
-
-        $this->outputPrinter->listing($finalizedFilePaths);
-
-        $countFinalizedClasses = count($finalizedFilePaths);
-        $pluralClassText = $countFinalizedClasses === 1 ? 'class' : 'classes';
-
-        // to make it fail in CI
-        if ($dryRun) {
-            $this->outputPrinter->error(sprintf(
-                '%d %s can be finalized',
-                $countFinalizedClasses,
-                $pluralClassText,
-            ));
-
-            return ExitCode::ERROR;
-        }
-
-        $this->outputPrinter->success(sprintf('%d %s finalized', $countFinalizedClasses, $pluralClassText));
-
-        return ExitCode::SUCCESS;
     }
 
     public function getName(): string
