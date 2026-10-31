@@ -190,11 +190,11 @@ final class PrivatizeConstantsCommand implements CommandInterface
                 continue;
             }
 
-            // make private
+            // make private, keep optional constant type if present
             $changedFileContents = Regex::replace(
                 $phpFileInfo->getContents(),
-                '#((private|public|protected)\s+)?const\s+' . $classConstant->getConstantName() . '#',
-                'private const ' . $classConstant->getConstantName()
+                '#((private|public|protected)\s+)?const\s+([\w\\\\|?]+\s+)?' . $classConstant->getConstantName() . '\b#',
+                'private const ${3}' . $classConstant->getConstantName()
             );
             FileSystem::write($phpFileInfo->getRealPath(), $changedFileContents);
 
