@@ -1,0 +1,8 @@
+{
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "doctrine/orm": "^3.3"
+    }
+}
